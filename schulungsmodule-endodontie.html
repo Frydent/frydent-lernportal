@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT — Schulungsmodule Endodontie (Module 1–4)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f2942;
+  --blue: #1a5276;
+  --sky: #2e86c1;
+  --pale: #d6eaf8;
+  --light: #eaf2f8;
+  --ice: #f4f9fd;
+  --gold: #d4a017;
+  --gold-light: #fdf6e3;
+  --green: #1e8449;
+  --green-light: #eafaf1;
+  --red: #c0392b;
+  --red-light: #fdedec;
+  --purple: #6c3483;
+  --purple-light: #f4ecf7;
+  --text: #1c2833;
+  --muted: #5d6d7e;
+  --border: #d5dbdb;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--ice);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Playfair Display',serif;letter-spacing:-0.02em}
+
+/* ===== COVER ===== */
+.cover{position:relative;background:var(--navy);padding:5rem 2rem 4rem;text-align:center;overflow:hidden}
+.cover::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 30% 20%,rgba(46,134,193,0.3) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(212,160,23,0.15) 0%,transparent 50%)}
+.cover-content{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.cover-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);padding:0.4rem 1.2rem;border-radius:999px;font-size:0.75rem;font-weight:600;color:var(--pale);margin-bottom:1.5rem;backdrop-filter:blur(4px)}
+.cover h1{font-size:clamp(2rem,5vw,3rem);color:white;margin-bottom:0.75rem;font-weight:800;line-height:1.15}
+.cover h1 span{color:var(--gold)}
+.cover-sub{color:var(--pale);font-size:1.05rem;font-weight:300;margin-bottom:2rem}
+.cover-stats{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
+.cover-stat{display:flex;flex-direction:column;align-items:center;gap:0.25rem}
+.cover-stat-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold)}
+.cover-stat-label{font-size:0.7rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.08em}
+.cover-line{width:60px;height:3px;background:var(--gold);margin:2rem auto 0;border-radius:2px}
+/* Decorative tooth */
+.cover-deco{position:absolute;bottom:-40px;right:5%;opacity:0.04;font-size:18rem;line-height:1}
+
+/* ===== LAYOUT ===== */
+.wrap{max-width:780px;margin:0 auto;padding:0 1.5rem}
+
+/* ===== MODULE HEADER ===== */
+.mod{margin-top:3rem;margin-bottom:2rem}
+.mod-label{display:inline-flex;align-items:center;gap:0.5rem;padding:0.35rem 1rem;border-radius:999px;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem}
+.mod h2{font-size:1.75rem;color:var(--navy);margin-bottom:0.5rem;line-height:1.25}
+.mod-desc{font-size:0.95rem;color:var(--muted);margin-bottom:1rem}
+.mod-goals{background:white;border:1px solid var(--border);border-radius:1rem;padding:1.25rem 1.5rem;display:grid;gap:0.4rem}
+.mod-goals h4{font-size:0.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;font-family:'DM Sans',sans-serif;font-weight:600;margin-bottom:0.25rem}
+.mod-goal{display:flex;align-items:center;gap:0.75rem;font-size:0.88rem}
+.mod-goal::before{content:'✓';display:flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;border-radius:50%;font-size:0.7rem;font-weight:700;flex-shrink:0}
+
+/* ===== SECTION HEADINGS ===== */
+.sh{font-size:1.2rem;color:var(--navy);margin:2rem 0 1rem;padding-bottom:0.5rem;position:relative}
+.sh::after{content:'';display:block;width:40px;height:3px;border-radius:2px;margin-top:0.5rem}
+
+/* ===== CARDS ===== */
+.card{background:white;border:1px solid var(--border);border-radius:1rem;padding:1.5rem;margin-bottom:1.25rem;transition:box-shadow 0.2s}
+.card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+.card-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem}
+.card-icon{width:2.5rem;height:2.5rem;border-radius:0.75rem;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.card-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem}
+
+/* ===== ILLUSTRATION CONTAINERS ===== */
+.illus{display:flex;justify-content:center;margin:2rem 0;padding:1.5rem;background:white;border:1px solid var(--border);border-radius:1rem}
+.illus svg{max-width:100%;height:auto}
+
+/* ===== INFO BOXES ===== */
+.info{border-radius:0.75rem;padding:1rem 1.25rem;font-size:0.88rem;margin:1.25rem 0;display:flex;gap:0.75rem;align-items:flex-start}
+.info-icon{flex-shrink:0;font-size:1.1rem}
+.info-blue{background:var(--light);border-left:4px solid var(--sky);color:var(--blue)}
+.info-gold{background:var(--gold-light);border-left:4px solid var(--gold);color:#7d6608}
+.info-green{background:var(--green-light);border-left:4px solid var(--green);color:var(--green)}
+.info-red{background:var(--red-light);border-left:4px solid var(--red);color:var(--red)}
+
+/* ===== MERKSATZ ===== */
+.merk{background:var(--gold-light);border:1px solid #f0d77e;border-radius:1rem;padding:1.25rem 1.5rem;margin:1.5rem 0;position:relative;overflow:hidden}
+.merk::before{content:'💡';position:absolute;top:-8px;right:12px;font-size:2.5rem;opacity:0.15}
+.merk strong{color:#7d6608}
+.merk p{font-size:0.9rem;color:#5c4d00}
+
+/* ===== GRID ===== */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+
+/* ===== COMPARE ===== */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0}
+@media(max-width:640px){.vs{grid-template-columns:1fr}}
+.vs-yes{background:var(--green-light);border:1px solid #a9dfbf;border-radius:1rem;padding:1.25rem}
+.vs-no{background:var(--red-light);border:1px solid #f5b7b1;border-radius:1rem;padding:1.25rem}
+
+/* ===== MYTH ===== */
+.myth{display:flex;gap:0.75rem;align-items:flex-start;padding:1rem;border-radius:0.75rem;margin:0.75rem 0;font-size:0.88rem}
+.myth-wrong{background:#fdf2f2;border:1px solid #f5b7b1}
+.myth-right{background:#eafaf1;border:1px solid #a9dfbf}
+
+/* ===== FLOW STEPS ===== */
+.flow{position:relative;padding-left:3.5rem;margin:1.5rem 0}
+.flow::before{content:'';position:absolute;left:1.1rem;top:1rem;bottom:1rem;width:2px;background:var(--border)}
+.flow-s{position:relative;margin-bottom:1.75rem}
+.flow-dot{position:absolute;left:-3.5rem;top:0.15rem;width:2.5rem;height:2.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:0.8rem;box-shadow:0 2px 8px rgba(0,0,0,0.15)}
+.flow-s h4{font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.95rem;color:var(--navy);margin-bottom:0.25rem}
+.flow-s p{font-size:0.85rem;color:var(--muted)}
+.flow-badge{display:inline-block;margin-top:0.35rem;padding:0.2rem 0.65rem;border-radius:999px;font-size:0.7rem;font-weight:600}
+
+/* ===== SUMMARY ===== */
+.sum{background:var(--navy);color:white;border-radius:1rem;padding:1.75rem;margin:2rem 0}
+.sum h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold);margin-bottom:1rem}
+.sum-item{display:flex;gap:0.75rem;align-items:center;font-size:0.88rem;color:var(--pale);padding:0.3rem 0}
+.sum-item::before{content:'';width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ===== QUIZ ===== */
+.quiz{background:white;border:2px dashed var(--sky);border-radius:1rem;padding:1.5rem;margin:1.5rem 0}
+.quiz h4{font-family:'Playfair Display',serif;color:var(--blue);margin-bottom:0.75rem;font-size:1rem}
+.quiz-q{display:flex;gap:0.5rem;align-items:flex-start;font-size:0.88rem;color:var(--muted);padding:0.3rem 0}
+.quiz-q span{color:var(--sky);font-weight:700;flex-shrink:0}
+
+/* ===== DIVIDER ===== */
+.divider{margin:4rem 0 2rem;border:none;border-top:1px solid var(--border);position:relative}
+.divider::after{content:'🦷';position:absolute;top:-0.75rem;left:50%;transform:translateX(-50%);background:var(--ice);padding:0 1rem;font-size:1.2rem}
+
+/* ===== ROLE CARD ===== */
+.role{border-radius:1rem;padding:1.5rem;position:relative;overflow:hidden}
+.role::before{content:attr(data-icon);position:absolute;top:-10px;right:-5px;font-size:4rem;opacity:0.08}
+.role h4{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:0.75rem}
+.role p{font-size:0.85rem;padding:0.2rem 0}
+
+/* ===== DARK CARD ===== */
+.dark-card{background:var(--navy);color:white;border-radius:1rem;padding:1.75rem;margin:1.25rem 0;position:relative;overflow:hidden}
+.dark-card::before{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,rgba(212,160,23,0.15),transparent 70%);border-radius:50%}
+.dark-card h4{font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:0.5rem;position:relative}
+.dark-card p{color:var(--pale);font-size:0.9rem;position:relative}
+
+/* ===== COMPLETION ===== */
+.complete{text-align:center;padding:3.5rem 2rem;margin:3rem 0 2rem;background:white;border:2px solid var(--gold);border-radius:1.5rem;position:relative;overflow:hidden}
+.complete::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,160,23,0.08),transparent 70%)}
+.complete-icon{font-size:3.5rem;margin-bottom:1rem}
+.complete h2{color:var(--navy);margin-bottom:0.5rem}
+.complete p{color:var(--muted);font-size:0.9rem;max-width:480px;margin:0 auto 1.5rem}
+.complete-badges{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.complete-badge{padding:0.5rem 1rem;border-radius:999px;font-size:0.75rem;font-weight:700;color:white}
+
+/* ===== FOOTER ===== */
+.footer{text-align:center;padding:2rem 0 3rem;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border);margin-top:2rem}
+
+/* ===== COLOR MODIFIERS ===== */
+.c-blue{color:var(--sky)}.c-navy{color:var(--navy)}.c-gold{color:var(--gold)}.c-green{color:var(--green)}.c-red{color:var(--red)}.c-purple{color:var(--purple)}
+.bg-blue{background:var(--light)}.bg-gold{background:var(--gold-light)}.bg-green{background:var(--green-light)}.bg-red{background:var(--red-light)}.bg-purple{background:var(--purple-light)}
+
+/* ===== MODULE COLOR THEMES ===== */
+.mod1 .mod-goal::before{background:var(--sky);color:white}
+.mod1 .sh::after{background:var(--sky)}
+.mod1 .sum-item::before{background:var(--sky)}
+.mod2 .mod-goal::before{background:var(--purple);color:white}
+.mod2 .sh::after{background:var(--purple)}
+.mod2 .sum-item::before{background:var(--purple)}
+.mod3 .mod-goal::before{background:var(--gold);color:white}
+.mod3 .sh::after{background:var(--gold)}
+.mod3 .sum-item::before{background:var(--gold)}
+.mod4 .mod-goal::before{background:var(--green);color:white}
+.mod4 .sh::after{background:var(--green)}
+.mod4 .sum-item::before{background:var(--green)}
+
+@media print{
+  body{background:white}
+  .cover{break-after:page;padding:3rem 2rem}
+  .divider{break-before:page;border:none;margin:0}
+  .card,.illus,.sum,.quiz,.info,.merk{break-inside:avoid}
+}
+@media(max-width:640px){
+  .cover{padding:3rem 1.5rem 2.5rem}
+  .cover h1{font-size:1.75rem}
+  .cover-stats{gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ████████████████████████ COVER ████████████████████████ -->
+<div class="cover">
+  <div class="cover-deco">🦷</div>
+  <div class="cover-content">
+    <div class="cover-badge">🏥 FRYDENT Schulungsportal · Endodontie</div>
+    <h1>Wurzelkanal­behandlung</h1>
+    <p class="cover-sub">Verständlich, strukturiert, sicher —<br>Schulungsmodule für <em>alle</em> Mitarbeitenden</p>
+    <div class="cover-stats">
+      <div class="cover-stat"><div class="cover-stat-num">4</div><div class="cover-stat-label">Module</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">~20</div><div class="cover-stat-label">Min. Lesezeit</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">15</div><div class="cover-stat-label">Quiz-Fragen</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">∞</div><div class="cover-stat-label">Wiederholbar</div></div>
+    </div>
+    <div class="cover-line"></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ████████████████████████ MODUL 1 ████████████████████████ -->
+<div class="mod mod1">
+  <div class="mod-label" style="background:var(--light);color:var(--sky)">🦷 Modul 1</div>
+  <h2>Einführung in die Wurzelkanalbehandlung</h2>
+  <p class="mod-desc">Grundlagen für alle Mitarbeitenden — auch ohne zahnmedizinische Ausbildung.</p>
+  <div class="mod-goals">
+    <h4>Lernziele</h4>
+    <div class="mod-goal">Verstehen, was eine Wurzelkanalbehandlung ist</div>
+    <div class="mod-goal">Wissen, warum sie durchgeführt wird</div>
+    <div class="mod-goal">Den medizinischen Sinn erklären können</div>
+  </div>
+</div>
+
+<h3 class="sh">1. Was befindet sich im Inneren eines Zahnes?</h3>
+<p>Ein Zahn ist nicht massiv. Er besteht aus mehreren Schichten, die völlig unterschiedliche Aufgaben erfüllen. Die Pulpa — das weiche Innenleben — versorgt den Zahn mit Nährstoffen und reagiert auf äußere Reize.</p>
+
+<!-- TOOTH ANATOMY SVG -->
+<div class="illus">
+  <svg viewBox="0 0 560 440" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="enamelG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#85C1E9"/><stop offset="100%" stop-color="#5DADE2"/></linearGradient>
+      <linearGradient id="dentinG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F5CBA7"/><stop offset="100%" stop-color="#EB984E"/></linearGradient>
+      <linearGradient id="pulpaG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EC7063"/><stop offset="100%" stop-color="#CB4335"/></linearGradient>
+      <filter id="shadow"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/></filter>
+    </defs>
+    <!-- Tooth body -->
+    <g filter="url(#shadow)">
+      <!-- Enamel -->
+      <path d="M170 50 Q240 10 310 50 Q335 80 335 140 L325 195 Q335 215 335 240 L325 360 Q315 400 295 412 Q285 418 275 405 L265 360 Q255 345 240 345 Q225 345 215 360 L205 405 Q195 418 185 412 Q165 400 155 360 L145 240 Q145 215 155 195 L145 140 Q145 80 170 50Z" fill="url(#enamelG)" stroke="#2E86C1" stroke-width="1.5"/>
+      <!-- Dentin -->
+      <path d="M188 72 Q240 42 292 72 Q310 92 310 140 L302 195 Q310 215 310 240 L302 350 Q295 385 282 394 Q275 398 268 387 L260 350 Q252 335 240 335 Q228 335 220 350 L212 387 Q205 398 198 394 Q185 385 178 350 L170 240 Q170 215 178 195 L170 140 Q170 92 188 72Z" fill="url(#dentinG)" stroke="#CA6F1E" stroke-width="1"/>
+      <!-- Dentintubuli (tiny lines) -->
+      <g stroke="#D4AC6E" stroke-width="0.5" opacity="0.4">
+        <line x1="195" y1="100" x2="225" y2="100"/><line x1="195" y1="115" x2="225" y2="115"/><line x1="195" y1="130" x2="225" y2="130"/>
+        <line x1="285" y1="100" x2="255" y2="100"/><line x1="285" y1="115" x2="255" y2="115"/><line x1="285" y1="130" x2="255" y2="130"/>
+        <line x1="192" y1="220" x2="220" y2="220"/><line x1="192" y1="240" x2="218" y2="240"/>
+        <line x1="288" y1="220" x2="260" y2="220"/><line x1="288" y1="240" x2="262" y2="240"/>
+      </g>
+      <!-- Pulpa -->
+      <path d="M218 100 Q240 82 262 100 Q272 120 268 165 L262 210 Q268 225 265 245 L260 330 Q258 350 254 358 Q248 365 244 355 L241 340 Q240 337 240 337 Q240 337 239 340 L236 355 Q232 365 226 358 Q222 350 220 330 L215 245 Q212 225 218 210 L212 165 Q208 120 218 100Z" fill="url(#pulpaG)" stroke="#922B21" stroke-width="1"/>
+      <!-- Blood vessels / nerves inside pulpa -->
+      <g stroke="#F1948A" stroke-width="1.2" fill="none" opacity="0.6">
+        <path d="M237 130 Q235 180 237 220 Q236 260 235 310"/>
+        <path d="M243 130 Q245 180 243 220 Q244 260 245 310"/>
+        <path d="M233 160 Q230 180 232 200"/><path d="M247 160 Q250 180 248 200"/>
+      </g>
+    </g>
+    <!-- Gumline -->
+    <path d="M110 195 Q145 182 175 195 Q210 210 240 205 Q270 200 305 195 Q335 188 370 195" stroke="#F5B7B1" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <!-- Labels -->
+    <g font-family="DM Sans,sans-serif">
+      <!-- Enamel label -->
+      <line x1="340" y1="80" x2="388" y2="60" stroke="#2E86C1" stroke-width="1.5"/>
+      <circle cx="388" cy="60" r="3" fill="#2E86C1"/>
+      <rect x="398" y="42" width="150" height="38" rx="8" fill="#EBF5FB" stroke="#AED6F1" stroke-width="1"/>
+      <text x="412" y="57" font-size="12" font-weight="700" fill="#1A5276">Zahnschmelz</text>
+      <text x="412" y="72" font-size="9" fill="#5D6D7E">Härteste Substanz im Körper</text>
+      <!-- Dentin label -->
+      <line x1="316" y1="150" x2="388" y2="135" stroke="#CA6F1E" stroke-width="1.5"/>
+      <circle cx="388" cy="135" r="3" fill="#CA6F1E"/>
+      <rect x="398" y="117" width="150" height="38" rx="8" fill="#FEF5E7" stroke="#F5CBA7" stroke-width="1"/>
+      <text x="412" y="132" font-size="12" font-weight="700" fill="#935116">Dentin</text>
+      <text x="412" y="147" font-size="9" fill="#5D6D7E">Leitet Reize zum Nerv</text>
+      <!-- Pulpa label -->
+      <line x1="268" y1="210" x2="388" y2="210" stroke="#CB4335" stroke-width="1.5"/>
+      <circle cx="388" cy="210" r="3" fill="#CB4335"/>
+      <rect x="398" y="192" width="150" height="38" rx="8" fill="#FDEDEC" stroke="#F5B7B1" stroke-width="1"/>
+      <text x="412" y="207" font-size="12" font-weight="700" fill="#922B21">Pulpa (Zahnmark)</text>
+      <text x="412" y="222" font-size="9" fill="#5D6D7E">Nerven + Blutgefäße</text>
+      <!-- Crown / Root -->
+      <text x="118" y="100" font-size="10" fill="#85929E" font-weight="600" text-anchor="end">KRONE</text>
+      <text x="118" y="290" font-size="10" fill="#85929E" font-weight="600" text-anchor="end">WURZEL</text>
+      <path d="M125 108 L125 180" stroke="#D5DBDB" stroke-width="1" stroke-dasharray="3,3"/>
+      <path d="M125 210 L125 370" stroke="#D5DBDB" stroke-width="1" stroke-dasharray="3,3"/>
+      <!-- Gumline label -->
+      <text x="118" y="200" font-size="9" fill="#F5B7B1" font-weight="500" text-anchor="end">Zahnfleisch</text>
+    </g>
+  </svg>
+</div>
+
+<div class="merk">
+  <strong>💡 Einfach erklärt:</strong>
+  <p>Stellen Sie sich den Zahn wie ein kleines Haus vor: Der <strong>Zahnschmelz</strong> ist das Dach — er schützt vor äußeren Einflüssen. Das <strong>Dentin</strong> sind die Wände — stabil, aber nicht unzerstörbar. Und die <strong>Pulpa</strong> ist die Heizungsanlage mit allen Leitungen — wenn die kaputt geht, muss der Installateur kommen!</p>
+</div>
+
+<h3 class="sh">2. Wann entsteht ein Problem?</h3>
+<p>Die Pulpa kann durch verschiedene Ursachen geschädigt werden — am häufigsten durch tiefe Karies, bei der Bakterien ins Zahninnere eindringen.</p>
+
+<div class="g2">
+  <div class="card" style="border-left:4px solid var(--red)">
+    <div class="card-header">
+      <div class="card-icon" style="background:var(--red-light);color:var(--red)">🦠</div>
+      <div class="card-title c-red">Häufigste Ursachen</div>
+    </div>
+    <p style="font-size:0.88rem;color:var(--muted)">▸ Tiefe Karies — Bakterien erreichen die Pulpa<br>▸ Undichte Füllungen — Spalten als Eintrittspforte<br>▸ Zahnunfälle — Frakturen oder Risse<br>▸ Starke Überbelastung des Zahnes</p>
+  </div>
+  <div class="card" style="border-left:4px solid var(--gold)">
+    <div class="card-header">
+      <div class="card-icon" style="background:var(--gold-light);color:var(--gold)">⚡</div>
+      <div class="card-title" style="color:#7d6608">Was dann passiert</div>
+    </div>
+    <p style="font-size:0.88rem;color:var(--muted)">▸ Entzündliche Reaktion der Pulpa<br>▸ Starke, oft pochende Schmerzen<br>▸ Oder: stilles, unbemerktes Absterben<br>▸ Ohne Therapie: Abszess, Knochenverlust</p>
+  </div>
+</div>
+
+<div class="info info-red">
+  <span class="info-icon">⚠️</span>
+  <div><strong>Wichtig:</strong> Eine irreversibel geschädigte Pulpa kann sich nicht selbst heilen. Ohne Behandlung drohen Abszesse, Knochenentzündung und Zahnverlust.</div>
+</div>
+
+<h3 class="sh">3. Warum hilft die Wurzelkanalbehandlung?</h3>
+
+<!-- GOAL FLOW SVG -->
+<div class="illus">
+  <svg viewBox="0 0 580 110" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#B0BEC5"/></marker>
+    </defs>
+    <!-- Step 1 -->
+    <rect x="10" y="15" width="155" height="80" rx="14" fill="#FDEDEC" stroke="#E74C3C" stroke-width="1.5"/>
+    <text x="87" y="47" text-anchor="middle" font-size="26">🦠</text>
+    <text x="87" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="#922B21" font-family="DM Sans">Bakterien entfernen</text>
+    <!-- Arrow 1 -->
+    <line x1="175" y1="55" x2="210" y2="55" stroke="#B0BEC5" stroke-width="2" marker-end="url(#arr)"/>
+    <!-- Step 2 -->
+    <rect x="220" y="15" width="155" height="80" rx="14" fill="#FEF9E7" stroke="#F1C40F" stroke-width="1.5"/>
+    <text x="297" y="47" text-anchor="middle" font-size="26">🛑</text>
+    <text x="297" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="#7D6608" font-family="DM Sans">Entzündung stoppen</text>
+    <!-- Arrow 2 -->
+    <line x1="385" y1="55" x2="420" y2="55" stroke="#B0BEC5" stroke-width="2" marker-end="url(#arr)"/>
+    <!-- Step 3 -->
+    <rect x="430" y="15" width="140" height="80" rx="14" fill="#EAFAF1" stroke="#27AE60" stroke-width="1.5"/>
+    <text x="500" y="47" text-anchor="middle" font-size="26">🦷</text>
+    <text x="500" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1E8449" font-family="DM Sans">Zahn erhalten</text>
+  </svg>
+</div>
+
+<p>Die Wurzelkanalbehandlung ist keine Notlösung, sondern eine <strong>hochwertige zahnerhaltende Therapie</strong>. Der Zahn bleibt im Mund und kann weiter belastet werden — obwohl er „nicht mehr lebt".</p>
+
+<h3 class="sh">4. Ein verbreiteter Irrtum</h3>
+<div class="vs">
+  <div class="vs-no">
+    <p style="font-size:0.9rem"><strong>❌ „Der Nerv ist tot, also ist alles gut."</strong></p>
+    <p style="font-size:0.85rem;color:#922B21;margin-top:0.5rem">Ein häufiger Irrglaube — auch unter Fachpersonal.</p>
+  </div>
+  <div class="vs-yes">
+    <p style="font-size:0.9rem"><strong>✅ Die Wahrheit:</strong></p>
+    <p style="font-size:0.85rem;color:#1E8449;margin-top:0.5rem">Ein toter Zahn kann beschwerdefrei sein und <em>trotzdem</em> eine Entzündung im Knochen verursachen. Deshalb sind Diagnostik und Röntgenkontrollen unverzichtbar.</p>
+  </div>
+</div>
+
+<div class="sum">
+  <h4>📋 Zusammenfassung — Modul 1</h4>
+  <div class="sum-item">Die Pulpa ist das empfindliche Innenleben des Zahnes</div>
+  <div class="sum-item">Bei irreversibler Schädigung hilft nur die Entfernung</div>
+  <div class="sum-item">Ziel: Bakterien raus → Entzündung stoppen → Zahn erhalten</div>
+  <div class="sum-item">Auch „tote" Zähne können krank sein</div>
+  <div class="sum-item">Dieses Grundwissen betrifft das gesamte Team</div>
+</div>
+
+<div class="quiz">
+  <h4>📝 Mini-Quiz (Microsoft Forms)</h4>
+  <div class="quiz-q"><span>1.</span> Was ist die Pulpa?</div>
+  <div class="quiz-q"><span>2.</span> Kann sich eine abgestorbene Pulpa selbst heilen?</div>
+  <div class="quiz-q"><span>3.</span> Was ist das Hauptziel der Wurzelkanalbehandlung?</div>
+</div>
+
+<!-- ████████████████████████ MODUL 2 ████████████████████████ -->
+<hr class="divider">
+
+<div class="mod mod2">
+  <div class="mod-label" style="background:var(--purple-light);color:var(--purple)">🦷 Modul 2</div>
+  <h2>Ablauf der Wurzelkanalbehandlung</h2>
+  <p class="mod-desc">Von der Diagnose bis zur Wurzelfüllung — Schritt für Schritt.</p>
+  <div class="mod-goals">
+    <h4>Lernziele</h4>
+    <div class="mod-goal">Den logischen Ablauf der Behandlung kennen</div>
+    <div class="mod-goal">Wissen, warum jeder Schritt notwendig ist</div>
+    <div class="mod-goal">Verstehen, wann eine Behandlung abgeschlossen ist</div>
+  </div>
+</div>
+
+<h3 class="sh">Der Behandlungsablauf</h3>
+<p>Eine Wurzelkanalbehandlung ist kein einzelner Eingriff, sondern ein präzise geplanter, schrittweiser Prozess:</p>
+
+<!-- TREATMENT FLOW SVG -->
+<div class="illus">
+  <svg viewBox="0 0 540 520" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="sh2"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.1"/></filter>
+    </defs>
+    <!-- Central line -->
+    <line x1="50" y1="30" x2="50" y2="490" stroke="#D5DBDB" stroke-width="2.5"/>
+    <!-- Step 1 -->
+    <circle cx="50" cy="40" r="20" fill="#2E86C1" filter="url(#sh2)"/><text x="50" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="white" font-family="DM Sans">1</text>
+    <rect x="82" y="18" width="420" height="48" rx="10" fill="white" stroke="#AED6F1" stroke-width="1" filter="url(#sh2)"/>
+    <text x="98" y="37" font-size="13" font-weight="700" fill="#1A5276" font-family="DM Sans">Diagnostik</text>
+    <text x="98" y="55" font-size="10.5" fill="#5D6D7E" font-family="DM Sans">Gespräch · Untersuchung · Röntgen · Diagnosestellung</text>
+    <!-- Step 2 -->
+    <circle cx="50" cy="115" r="20" fill="#6C3483" filter="url(#sh2)"/><text x="50" y="121" text-anchor="middle" font-size="13" font-weight="700" fill="white" font-family="DM Sans">2</text>
+    <rect x="82" y="93" width="420" height="48" rx="10" fill="white" stroke="#D2B4DE" stroke-width="1" filter="url(#sh2)"/>
+    <text x="98" y="112" font-size="13" font-weight="700" fill="#4A235A" font-family="DM Sans">Eröffnung des Zahnes (Zugang)</text>
+    <text x="98" y="130" font-size="10.5" fill="#5D6D7E" font-family="DM Sans">Zugang zur Pulpakammer · Entfernung des entzündeten Gewebes</text>
+    <!-- Step 3 -->
+    <circle cx="50" cy="190" r="20" fill="#D4AC0D" filter="url(#sh2)"/><text x="50" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="white" font-family="DM Sans">3</text>
+    <rect x="82" y="168" width="420" height="48" rx="10" fill="white" stroke="#F9E79F" stroke-width="1" filter="url(#sh2)"/>
+    <text x="98" y="187" font-size="13" font-weight="700" fill="#7D6608" font-family="DM Sans">Kanallänge bestimmen</text>
+    <text x="98" y="205" font-size="10.5" fill="#5D6D7E" font-family="DM Sans">Elektronische Messung · Röntgenkontrolle · Exakte Arbeitslänge</text>
+    <!-- Step 4 - HIGHLIGHT -->
+    <circle cx="50" cy="275" r="22" fill="#C0392B" filter="url(#sh2)"/><text x="50" y="281" text-anchor="middle" font-size="13" font-weight="700" fill="white" font-family="DM Sans">4</text>
+    <rect x="82" y="248" width="420" height="58" rx="10" fill="#FDEDEC" stroke="#E74C3C" stroke-width="2" filter="url(#sh2)"/>
+    <text x="98" y="269" font-size="13" font-weight="700" fill="#922B21" font-family="DM Sans">Aufbereitung &amp; Desinfektion  ⭐</text>
+    <text x="98" y="287" font-size="10.5" fill="#7B241C" font-family="DM Sans">Mechanisch + chemisch · Bakterien + Gewebereste entfernen</text>
+    <text x="98" y="300" font-size="9.5" font-weight="600" fill="#C0392B" font-family="DM Sans">→ Der wichtigste Schritt der gesamten Behandlung!</text>
+    <!-- Step 5 -->
+    <circle cx="50" cy="360" r="20" fill="#1E8449" filter="url(#sh2)"/><text x="50" y="366" text-anchor="middle" font-size="13" font-weight="700" fill="white" font-family="DM Sans">5</text>
+    <rect x="82" y="338" width="420" height="48" rx="10" fill="white" stroke="#A9DFBF" stroke-width="1" filter="url(#sh2)"/>
+    <text x="98" y="357" font-size="13" font-weight="700" fill="#1E8449" font-family="DM Sans">Wurzelfüllung</text>
+    <text x="98" y="375" font-size="10.5" fill="#5D6D7E" font-family="DM Sans">Kanäle dicht verschließen · Röntgenkontrolle · Dichtigkeitsprüfung</text>
+    <!-- Step 6 -->
+    <circle cx="50" cy="435" r="20" fill="#1A5276" filter="url(#sh2)"/><text x="50" y="441" text-anchor="middle" font-size="13" font-weight="700" fill="white" font-family="DM Sans">6</text>
+    <rect x="82" y="413" width="420" height="48" rx="10" fill="white" stroke="#AED6F1" stroke-width="1" filter="url(#sh2)"/>
+    <text x="98" y="432" font-size="13" font-weight="700" fill="#1A5276" font-family="DM Sans">Definitive Versorgung</text>
+    <text x="98" y="450" font-size="10.5" fill="#5D6D7E" font-family="DM Sans">Füllung oder Krone · Langzeitschutz · Recall nach 6–12 Monaten</text>
+    <!-- Note -->
+    <rect x="82" y="478" width="420" height="28" rx="6" fill="#FEF9E7" stroke="#F1C40F" stroke-width="1"/>
+    <text x="98" y="497" font-size="10" fill="#7D6608" font-family="DM Sans">⚠️ Zwischen Schritt 4 und 5 können Zwischensitzungen mit med. Einlage nötig sein</text>
+  </svg>
+</div>
+
+<div class="merk">
+  <strong>🧠 Merksatz:</strong>
+  <p>„Was nicht sauber ist, kann nicht dicht gefüllt werden." — Die mechanische und chemische Reinigung der Kanäle ist der wichtigste Schritt der gesamten Behandlung. Instrumente erreichen nur ca. 60 % der Oberfläche — den Rest erledigt die Spülung.</p>
+</div>
+
+<h3 class="sh">Wann ist die Behandlung abgeschlossen?</h3>
+
+<div class="card" style="border-left:4px solid var(--green)">
+  <div class="card-header">
+    <div class="card-icon" style="background:var(--green-light);color:var(--green)">✅</div>
+    <div class="card-title c-green">Abgeschlossen, wenn:</div>
+  </div>
+  <p style="font-size:0.88rem;color:var(--muted)">✓ Alle Kanäle vollständig aufbereitet und gefüllt sind<br>✓ Die Röntgenkontrolle eine korrekte Füllung zeigt<br>✓ Der Zahn provisorisch oder definitiv verschlossen ist</p>
+</div>
+
+<div class="info info-gold">
+  <span class="info-icon">❗</span>
+  <div><strong>Wichtig:</strong> Die definitive Versorgung (Füllung oder Krone) gehört streng genommen nicht zur Endodontie — ist aber entscheidend für den Langzeiterfolg.</div>
+</div>
+
+<div class="sum">
+  <h4>📋 Zusammenfassung — Modul 2</h4>
+  <div class="sum-item">Die Behandlung folgt einem klaren, logischen Ablauf</div>
+  <div class="sum-item">Die Aufbereitung ist der kritischste Schritt</div>
+  <div class="sum-item">Wurzelfüllung darf nur nach vollständiger Reinigung erfolgen</div>
+  <div class="sum-item">Röntgenkontrollen sichern Qualität und Dokumentation</div>
+  <div class="sum-item">Mehrere Sitzungen sind kein Fehler — oft sogar notwendig</div>
+</div>
+
+<div class="quiz">
+  <h4>📝 Mini-Quiz (Microsoft Forms)</h4>
+  <div class="quiz-q"><span>1.</span> Was ist das Ziel der Aufbereitung?</div>
+  <div class="quiz-q"><span>2.</span> Darf eine Wurzelfüllung ohne vollständige Reinigung erfolgen?</div>
+  <div class="quiz-q"><span>3.</span> Warum sind Röntgenkontrollen notwendig?</div>
+  <div class="quiz-q"><span>4.</span> Wann gilt eine Wurzelkanalbehandlung als abgeschlossen?</div>
+</div>
+
+<!-- ████████████████████████ MODUL 3 ████████████████████████ -->
+<hr class="divider">
+
+<div class="mod mod3">
+  <div class="mod-label" style="background:var(--gold-light);color:#7d6608">🦷 Modul 3</div>
+  <h2>Risiken, Grenzen &amp; Missverständnisse</h2>
+  <p class="mod-desc">Was jeder im Team wissen sollte — ehrlich und ohne Panikmache.</p>
+  <div class="mod-goals">
+    <h4>Lernziele</h4>
+    <div class="mod-goal">Typische Risiken und Grenzen benennen können</div>
+    <div class="mod-goal">Häufige Missverständnisse richtig einordnen</div>
+    <div class="mod-goal">Patienten sachlich und ruhig begegnen können</div>
+  </div>
+</div>
+
+<h3 class="sh">1. Anatomische Grenzen</h3>
+<p>Wurzelkanäle sind nicht alle gleich. Sie können gekrümmt, verzweigt, extrem eng oder teilweise verschlossen sein. Das ist keine mangelnde Sorgfalt, sondern <strong>biologische Realität</strong>.</p>
+
+<!-- CANAL TYPES SVG -->
+<div class="illus">
+  <svg viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg">
+    <defs><filter id="sh3"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.08"/></filter></defs>
+    <!-- Simple -->
+    <rect x="15" y="10" width="120" height="160" rx="14" fill="white" stroke="#A9DFBF" stroke-width="1.5" filter="url(#sh3)"/>
+    <rect x="25" y="15" width="100" height="24" rx="6" fill="#EAFAF1"/>
+    <text x="75" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="#1E8449" font-family="DM Sans">Einfach</text>
+    <path d="M62 50 L62 140" stroke="#27AE60" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M88 50 L88 140" stroke="#27AE60" stroke-width="3.5" stroke-linecap="round"/>
+    <text x="75" y="160" text-anchor="middle" font-size="9" fill="#85929E" font-family="DM Sans">gerade Kanäle ✓</text>
+    <!-- Curved -->
+    <rect x="155" y="10" width="120" height="160" rx="14" fill="white" stroke="#F9E79F" stroke-width="1.5" filter="url(#sh3)"/>
+    <rect x="165" y="15" width="100" height="24" rx="6" fill="#FEF9E7"/>
+    <text x="215" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="#7D6608" font-family="DM Sans">Gekrümmt</text>
+    <path d="M200 50 Q188 95 208 140" stroke="#D4AC0D" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M226 50 Q238 95 218 140" stroke="#D4AC0D" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <text x="215" y="160" text-anchor="middle" font-size="9" fill="#85929E" font-family="DM Sans">häufig bei Molaren</text>
+    <!-- Complex -->
+    <rect x="295" y="10" width="120" height="160" rx="14" fill="white" stroke="#F5B7B1" stroke-width="1.5" filter="url(#sh3)"/>
+    <rect x="305" y="15" width="100" height="24" rx="6" fill="#FDEDEC"/>
+    <text x="355" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="#922B21" font-family="DM Sans">Komplex</text>
+    <path d="M338 50 Q322 72 335 90 Q348 108 328 130 L335 140" stroke="#E74C3C" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M358 50 L365 85 Q372 105 358 125 L370 140" stroke="#E74C3C" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M348 85 L365 95" stroke="#E74C3C" stroke-width="2" stroke-dasharray="3,2"/>
+    <text x="355" y="160" text-anchor="middle" font-size="9" fill="#85929E" font-family="DM Sans">verzweigt, eng</text>
+    <!-- Obliterated -->
+    <rect x="435" y="10" width="120" height="160" rx="14" fill="white" stroke="#D2B4DE" stroke-width="1.5" filter="url(#sh3)"/>
+    <rect x="445" y="15" width="100" height="24" rx="6" fill="#F4ECF7"/>
+    <text x="495" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="#6C3483" font-family="DM Sans">Obliteriert</text>
+    <path d="M485 50 L485 85" stroke="#8E44AD" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="478" y1="92" x2="492" y2="92" stroke="#E74C3C" stroke-width="2.5"/>
+    <path d="M485 100 L485 140" stroke="#8E44AD" stroke-width="1.5" stroke-dasharray="4,4" stroke-linecap="round"/>
+    <text x="495" y="160" text-anchor="middle" font-size="9" fill="#85929E" font-family="DM Sans">teilw. verschlossen</text>
+  </svg>
+</div>
+
+<h3 class="sh">2. Technische Risiken</h3>
+<p>Auch bei sorgfältiger Arbeitsweise können bestimmte Komplikationen auftreten:</p>
+
+<div class="g2">
+  <div class="card" style="font-size:0.88rem">
+    <p>🔧 <strong>Instrumentenfrakturen</strong> — feine Feilen können brechen</p>
+    <p>📐 <strong>Stufenbildung</strong> — Abweichung vom natürlichen Kanalverlauf</p>
+  </div>
+  <div class="card" style="font-size:0.88rem">
+    <p>🕳️ <strong>Perforationen</strong> — unbeabsichtigte Öffnung der Kanalwand</p>
+    <p>🧹 <strong>Unvollständige Reinigung</strong> — bei extremer Anatomie</p>
+  </div>
+</div>
+
+<div class="info info-blue">
+  <span class="info-icon">💡</span>
+  <div><strong>Wichtig:</strong> Risiken bedeuten nicht automatisch Behandlungsfehler. Entscheidend ist fachgerechtes Vorgehen, saubere Dokumentation und transparente Kommunikation.</div>
+</div>
+
+<h3 class="sh">3. Typische Missverständnisse</h3>
+
+<div class="myth myth-wrong">
+  <span style="font-size:1.2rem;flex-shrink:0">❌</span>
+  <div><strong>„Der Zahn ist tot, also kann er nicht mehr krank sein."</strong><br><span style="color:var(--muted)">Falsch — ein toter Zahn kann weiterhin Entzündungen im Knochen verursachen.</span></div>
+</div>
+<div class="myth myth-wrong">
+  <span style="font-size:1.2rem;flex-shrink:0">❌</span>
+  <div><strong>„Nach der Wurzelfüllung ist alles endgültig erledigt."</strong><br><span style="color:var(--muted)">Nicht ganz — ohne stabile Versorgung (Krone) kann der Zahn erneut infiziert werden.</span></div>
+</div>
+<div class="myth myth-wrong">
+  <span style="font-size:1.2rem;flex-shrink:0">❌</span>
+  <div><strong>„Eine Wurzelkanalbehandlung hält immer ein Leben lang."</strong><br><span style="color:var(--muted)">Realistisch: viele Jahre bei guter Pflege. Manchmal ist aber eine Revision nötig.</span></div>
+</div>
+
+<h3 class="sh">4. Gute Formulierungen für Patienten</h3>
+
+<div class="card" style="border-left:4px solid var(--sky);background:var(--light)">
+  <div class="card-header"><div class="card-icon" style="background:white;color:var(--sky)">🗣️</div><div class="card-title c-blue">So können Sie Patienten informieren:</div></div>
+  <p style="font-size:0.88rem;color:var(--blue)">✓ „Wir tun alles, um Ihren Zahn zu erhalten."</p>
+  <p style="font-size:0.88rem;color:var(--blue)">✓ „Manchmal zeigt sich erst im Verlauf, wie der Zahn reagiert."</p>
+  <p style="font-size:0.88rem;color:var(--blue)">✓ „Eine erneute Behandlung kann nötig sein — das ist nichts Ungewöhnliches."</p>
+</div>
+
+<div class="sum">
+  <h4>📋 Zusammenfassung — Modul 3</h4>
+  <div class="sum-item">Anatomie kann die Behandlung begrenzen — das ist normal</div>
+  <div class="sum-item">Technische Risiken gehören zur Endodontie</div>
+  <div class="sum-item">Heilung verläuft individuell</div>
+  <div class="sum-item">Revisionen sind Teil der modernen Zahnmedizin</div>
+  <div class="sum-item">Ehrliche, ruhige Kommunikation schafft Vertrauen</div>
+</div>
+
+<div class="quiz">
+  <h4>📝 Mini-Quiz (Microsoft Forms)</h4>
+  <div class="quiz-q"><span>1.</span> Sind Risiken bei der WKB immer Behandlungsfehler?</div>
+  <div class="quiz-q"><span>2.</span> Kann ein toter Zahn noch krank sein?</div>
+  <div class="quiz-q"><span>3.</span> Was bedeutet „Revision"?</div>
+  <div class="quiz-q"><span>4.</span> Warum ist die Kommunikation mit Patienten so wichtig?</div>
+</div>
+
+<!-- ████████████████████████ MODUL 4 ████████████████████████ -->
+<hr class="divider">
+
+<div class="mod mod4">
+  <div class="mod-label" style="background:var(--green-light);color:var(--green)">🦷 Modul 4</div>
+  <h2>Rolle des Teams, Dokumentation &amp; Abrechnung</h2>
+  <p class="mod-desc">Jede Position zählt — Endodontie ist Teamarbeit.</p>
+  <div class="mod-goals">
+    <h4>Lernziele</h4>
+    <div class="mod-goal">Eigene Rolle bei der WKB kennen und verstehen</div>
+    <div class="mod-goal">Wissen, warum Dokumentation entscheidend ist</div>
+    <div class="mod-goal">Grundverständnis der Abrechnungslogik entwickeln</div>
+  </div>
+</div>
+
+<h3 class="sh">Warum ist die WKB Teamarbeit?</h3>
+<p>Jeder Schritt — vom Anruf des Patienten über die Assistenz bis zur Abrechnung — hat Einfluss auf den Behandlungserfolg. Ein Kommunikationsfehler oder ein fehlendes Dokument kann das Vertrauen des Patienten erschüttern.</p>
+
+<!-- TEAM SVG -->
+<div class="illus">
+  <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
+    <defs><filter id="sh4"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/></filter></defs>
+    <!-- Center: Patient -->
+    <circle cx="280" cy="150" r="52" fill="#0F2942" filter="url(#sh4)"/>
+    <text x="280" y="140" text-anchor="middle" font-size="30">🦷</text>
+    <text x="280" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="#D6EAF8" font-family="DM Sans">PATIENT</text>
+    <text x="280" y="178" text-anchor="middle" font-size="8" fill="#85929E" font-family="DM Sans">im Mittelpunkt</text>
+    <!-- Rezeption -->
+    <circle cx="100" cy="75" r="44" fill="white" stroke="#2E86C1" stroke-width="2" filter="url(#sh4)"/>
+    <text x="100" y="65" text-anchor="middle" font-size="24">📞</text>
+    <text x="100" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="#1A5276" font-family="DM Sans">Rezeption</text>
+    <line x1="144" y1="92" x2="230" y2="130" stroke="#AED6F1" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <!-- Assistenz -->
+    <circle cx="100" cy="230" r="44" fill="white" stroke="#27AE60" stroke-width="2" filter="url(#sh4)"/>
+    <text x="100" y="220" text-anchor="middle" font-size="24">🤝</text>
+    <text x="100" y="241" text-anchor="middle" font-size="10" font-weight="700" fill="#1E8449" font-family="DM Sans">Assistenz</text>
+    <line x1="144" y1="213" x2="230" y2="170" stroke="#A9DFBF" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <!-- Behandler -->
+    <circle cx="460" cy="75" r="44" fill="white" stroke="#8E44AD" stroke-width="2" filter="url(#sh4)"/>
+    <text x="460" y="65" text-anchor="middle" font-size="24">👩‍⚕️</text>
+    <text x="460" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="#6C3483" font-family="DM Sans">Behandler/in</text>
+    <line x1="416" y1="92" x2="330" y2="130" stroke="#D2B4DE" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <!-- Verwaltung -->
+    <circle cx="460" cy="230" r="44" fill="white" stroke="#D4AC0D" stroke-width="2" filter="url(#sh4)"/>
+    <text x="460" y="220" text-anchor="middle" font-size="24">📋</text>
+    <text x="460" y="241" text-anchor="middle" font-size="10" font-weight="700" fill="#7D6608" font-family="DM Sans">Verwaltung</text>
+    <line x1="416" y1="213" x2="330" y2="170" stroke="#F9E79F" stroke-width="1.5" stroke-dasharray="5,3"/>
+  </svg>
+</div>
+
+<div class="g2" style="margin-top:1.5rem">
+  <div class="role" style="background:var(--light);border:1px solid #AED6F1" data-icon="📞">
+    <h4 class="c-blue">📞 Rezeption</h4>
+    <p>✓ Ruhige, klare Erklärung des Ablaufs</p>
+    <p>✓ Terminplanung (mehrere Sitzungen!)</p>
+    <p>✓ Hinweis auf Kontrolltermine</p>
+    <p>✓ Vermittlung von Sicherheit und Struktur</p>
+    <div class="info info-blue" style="margin-top:0.75rem;font-size:0.82rem">
+      <span class="info-icon">💬</span>
+      <div><strong>Gute Sprache:</strong> „Das Ziel ist, Ihren Zahn zu erhalten. Manchmal braucht es dafür mehrere Schritte."</div>
+    </div>
+  </div>
+  <div class="role" style="background:var(--green-light);border:1px solid #A9DFBF" data-icon="🤝">
+    <h4 class="c-green">🤝 Assistenz</h4>
+    <p>✓ Strukturierte Assistenz während Behandlung</p>
+    <p>✓ Materialien vorbereiten & prüfen</p>
+    <p>✓ Hygiene & Ablauf sichern</p>
+    <p>✓ Mitdenken in jeder Behandlungsphase</p>
+    <div class="info info-green" style="margin-top:0.75rem;font-size:0.82rem">
+      <span class="info-icon">💡</span>
+      <div><strong>Wichtig:</strong> Aufbereitung ≠ Wurzelfüllung. Provisorium ≠ Abschluss.</div>
+    </div>
+  </div>
+</div>
+
+<h3 class="sh">Dokumentation — kein „Papierkram"</h3>
+
+<div class="dark-card">
+  <h4>🧠 „Was nicht dokumentiert ist, gilt als nicht erfolgt."</h4>
+  <p>Dokumentation ist medizinische Absicherung, Grundlage für die Abrechnung und Nachweis bei Rückfragen der KZV.</p>
+</div>
+
+<div class="card">
+  <div class="card-header"><div class="card-icon" style="background:var(--light);color:var(--navy)">📄</div><div class="card-title">Was muss dokumentiert sein?</div></div>
+  <div class="g2" style="margin-top:0.5rem;font-size:0.88rem;color:var(--muted)">
+    <div>
+      <p>✓ Diagnose &amp; Indikation</p>
+      <p>✓ Anzahl der Kanäle</p>
+      <p>✓ Behandlungsablauf (Sitzungen)</p>
+    </div>
+    <div>
+      <p>✓ Durchgeführte Maßnahmen</p>
+      <p>✓ Röntgenaufnahmen</p>
+      <p>✓ Zeitpunkt der Wurzelfüllung</p>
+    </div>
+  </div>
+</div>
+
+<h3 class="sh">Grundverständnis Abrechnung</h3>
+
+<div class="info info-gold">
+  <span class="info-icon">⚠️</span>
+  <div><strong>Hinweis:</strong> Dieses Modul ersetzt keine Abrechnungsschulung. Es vermittelt ein Grundverständnis der Logik.</div>
+</div>
+
+<div class="card">
+  <div class="card-header"><div class="card-icon" style="background:var(--gold-light);color:var(--gold)">📊</div><div class="card-title">Wichtige Grundprinzipien</div></div>
+  <p style="font-size:0.88rem;color:var(--muted)">✓ Abgerechnet wird nur, was medizinisch korrekt durchgeführt wurde<br>✓ Die Reihenfolge der Leistungen ist entscheidend<br>✓ Bestimmte Leistungen schließen sich gegenseitig aus<br>✓ Ohne saubere Dokumentation — keine korrekte Abrechnung</p>
+</div>
+
+<h3 class="sh">Typische Fehler vermeiden</h3>
+
+<div class="myth myth-wrong">
+  <span style="font-size:1.2rem;flex-shrink:0">❌</span>
+  <div><strong>„Das weiß doch jeder, muss man nicht extra aufschreiben."</strong><br><span style="color:var(--muted)">Doch — immer dokumentieren. Ausnahmslos.</span></div>
+</div>
+<div class="myth myth-wrong">
+  <span style="font-size:1.2rem;flex-shrink:0">❌</span>
+  <div><strong>„Das war ja nur eine Zwischenmaßnahme."</strong><br><span style="color:var(--muted)">Gerade Zwischenschritte (med. Einlage, Provisorium) sind dokumentationspflichtig.</span></div>
+</div>
+<div class="myth myth-wrong">
+  <span style="font-size:1.2rem;flex-shrink:0">❌</span>
+  <div><strong>„Das erklärt der Arzt schon."</strong><br><span style="color:var(--muted)">Das Team verstärkt die Erklärung — ruhig, einheitlich, sachlich. Das schafft Vertrauen.</span></div>
+</div>
+
+<div class="sum">
+  <h4>📋 Zusammenfassung — Modul 4</h4>
+  <div class="sum-item">Wurzelkanalbehandlung ist Teamarbeit — jede Rolle zählt</div>
+  <div class="sum-item">Jede Position trägt Verantwortung für Kommunikation</div>
+  <div class="sum-item">Dokumentation schützt medizinisch und rechtlich</div>
+  <div class="sum-item">Abrechnung folgt klaren, logischen Regeln</div>
+  <div class="sum-item">Ein informiertes Team erzeugt Vertrauen beim Patienten</div>
+</div>
+
+<div class="quiz">
+  <h4>📝 Mini-Quiz (Microsoft Forms)</h4>
+  <div class="quiz-q"><span>1.</span> Warum ist Dokumentation bei der WKB so wichtig?</div>
+  <div class="quiz-q"><span>2.</span> Was ist der Unterschied zwischen Aufbereitung und Wurzelfüllung?</div>
+  <div class="quiz-q"><span>3.</span> Darf man Leistungen abrechnen, die nicht dokumentiert sind?</div>
+  <div class="quiz-q"><span>4.</span> Wie können Sie als Teammitglied zur Patientensicherheit beitragen?</div>
+</div>
+
+<!-- ████████████████████████ COMPLETION ████████████████████████ -->
+<div class="complete">
+  <div class="complete-icon">🎓</div>
+  <h2>Schulung abgeschlossen!</h2>
+  <p>Sie haben alle vier Module der Endodontie-Schulung durchgearbeitet. Bitte absolvieren Sie jetzt die Quizfragen in Microsoft Forms, um Ihr Wissen zu bestätigen.</p>
+  <div class="complete-badges">
+    <span class="complete-badge" style="background:var(--sky)">✅ Modul 1 · Grundlagen</span>
+    <span class="complete-badge" style="background:var(--purple)">✅ Modul 2 · Ablauf</span>
+    <span class="complete-badge" style="background:#B7950B">✅ Modul 3 · Risiken</span>
+    <span class="complete-badge" style="background:var(--green)">✅ Modul 4 · Teamarbeit</span>
+  </div>
+</div>
+
+<div class="footer">
+  FRYDENT Zahnärzte in Bonndorf · Schulungsportal · Endodontie<br>
+  Stand: Februar 2026 · Für alle Mitarbeitenden
+</div>
+
+</div><!-- wrap -->
+</body>
+</html>

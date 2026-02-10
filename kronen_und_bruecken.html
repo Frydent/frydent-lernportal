@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT Lernportal – Kronen und Bruecken</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Source Sans 3', 'Segoe UI', sans-serif; background: linear-gradient(180deg, #f0f4f8 0%, #e8ecf1 100%); color: #2d3748; line-height: 1.7; }
+
+.header { background: linear-gradient(135deg, #1a365d 0%, #2a4a7f 50%, #2b6cb0 100%); border-bottom: 4px solid #63b3ed; padding: 2rem 1.5rem; }
+.header-inner { max-width: 800px; margin: 0 auto; }
+.tags { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+.tag { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }
+.tag-portal { background: rgba(255,255,255,0.15); color: #bee3f8; }
+.tag-prosth { background: rgba(99,179,237,0.2); color: #90cdf4; }
+h1 { font-family: 'Merriweather', serif; font-size: 2rem; color: white; margin-bottom: 0.5rem; line-height: 1.2; }
+.subtitle { color: #bee3f8; font-size: 0.9rem; }
+.meta { display: flex; gap: 1.5rem; margin-top: 1rem; color: #90cdf4; font-size: 0.75rem; }
+
+.content { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+
+.nav { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; margin-bottom: 2rem; -webkit-overflow-scrolling: touch; }
+.nav::-webkit-scrollbar { display: none; }
+.nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; white-space: nowrap; border: 1px solid #e2e8f0; background: white; color: #4a5568; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+.nav-btn:hover { border-color: #1a365d; color: #1a365d; }
+.nav-btn.active { background: #1a365d; color: white; border-color: #1a365d; box-shadow: 0 4px 12px rgba(26,54,93,0.3); }
+
+.section { display: none; }
+.section.active { display: block; }
+.section-title { font-family: 'Merriweather', serif; font-size: 1.5rem; color: #1a365d; margin-bottom: 0.25rem; }
+.section-sub { color: #718096; font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+.card { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; }
+.card-blue { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%); border: 1px solid #c8dff0; }
+.card-yellow { background: #fff9f0; border: 1px solid #f0dcc0; }
+.card-green { background: #f0fff4; border: 1px solid #c6f6d5; }
+.card-purple { background: #f8f4ff; border: 1px solid #d6bcfa; }
+.card-info { background: #ebf8ff; border: 1px solid #90cdf4; color: #2b6cb0; font-size: 0.85rem; }
+.card-warn { background: #fffbeb; border: 1px solid #f6d860; color: #744210; font-size: 0.85rem; }
+.card-danger { background: #fff5f5; border: 1px solid #feb2b2; color: #c53030; font-size: 0.85rem; }
+.card-title { font-family: 'Merriweather', serif; font-weight: 700; margin-bottom: 0.75rem; }
+
+.layers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.layer { background: white; border-radius: 0.75rem; padding: 1rem; }
+.layer-label { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; }
+
+.type-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
+.type-item { border-radius: 0.75rem; padding: 1rem; }
+.type-name { font-size: 0.85rem; font-weight: 700; color: #1a365d; margin-bottom: 0.25rem; }
+.type-desc { font-size: 0.8rem; color: #4a5568; }
+
+.compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+.compare-a { background: linear-gradient(135deg, #f0f7ff 0%, #dbeafe 100%); border: 1px solid #90cdf4; border-radius: 1rem; padding: 1.25rem; }
+.compare-b { background: linear-gradient(135deg, #faf5ff 0%, #e9d8fd 100%); border: 1px solid #d6bcfa; border-radius: 1rem; padding: 1.25rem; }
+
+.step-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; }
+.step-num { width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+.step-title { font-weight: 700; font-size: 0.9rem; color: #1a202c; }
+.bema-tag { display: inline-block; margin-left: 0.5rem; padding: 0.1rem 0.5rem; border-radius: 999px; background: #edf2f7; color: #4a5568; font-size: 0.7rem; font-weight: 400; }
+.step-desc { font-size: 0.85rem; color: #4a5568; margin-top: 0.25rem; }
+
+.session { border: 1px solid #e2e8f0; border-radius: 1rem; overflow: hidden; margin-bottom: 1.25rem; }
+.session-header { padding: 0.75rem 1.25rem; color: white; font-weight: 700; font-size: 0.9rem; }
+.session-body { padding: 1.25rem; background: white; }
+
+.instr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+.instr-card { background: white; border-radius: 0.75rem; padding: 1rem; border-top: 3px solid; }
+.instr-cat { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.75rem; }
+.instr-list { list-style: none; }
+.instr-list li { font-size: 0.85rem; color: #4a5568; padding: 0.25rem 0; }
+
+.phase { background: white; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1rem; margin-bottom: 0.75rem; }
+.phase-title { font-weight: 700; font-size: 0.9rem; color: #1a202c; margin-bottom: 0.75rem; }
+.phase-list { list-style: none; }
+.phase-list li { font-size: 0.85rem; color: #4a5568; padding: 0.2rem 0; }
+
+.quiz-progress { display: flex; gap: 0.25rem; }
+.quiz-dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #e2e8f0; }
+.quiz-dot.current { background: #3182ce; }
+.quiz-dot.correct { background: #68d391; }
+.quiz-dot.wrong { background: #fc8181; }
+.quiz-question { font-family: 'Merriweather', serif; font-weight: 700; font-size: 1rem; color: #1a202c; margin-bottom: 1rem; line-height: 1.5; }
+.quiz-option { width: 100%; text-align: left; border-radius: 0.75rem; padding: 1rem; font-size: 0.85rem; border: 2px solid #e2e8f0; background: #f7fafc; color: #1a202c; cursor: pointer; margin-bottom: 0.5rem; transition: all 0.2s; display: block; font-family: inherit; }
+.quiz-option:hover:not(:disabled) { border-color: #3182ce; background: #ebf8ff; }
+.quiz-option:disabled { cursor: default; }
+.quiz-option.show-correct { background: #f0fff4; border-color: #68d391; color: #276749; }
+.quiz-option.selected-wrong { background: #fff5f5; border-color: #fc8181; color: #c53030; }
+.quiz-explanation { border-radius: 0.75rem; padding: 1rem; font-size: 0.85rem; margin-top: 1rem; }
+.quiz-explanation.ok { background: #f0fff4; border: 1px solid #c6f6d5; color: #276749; }
+.quiz-explanation.nok { background: #fff5f5; border: 1px solid #fed7d7; color: #c53030; }
+.quiz-result { border-radius: 1rem; padding: 2rem; text-align: center; margin-bottom: 1.5rem; }
+.quiz-result.pass { background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%); border: 2px solid #68d391; }
+.quiz-result.fail { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 2px solid #f6d860; }
+.quiz-score { font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0; }
+.quiz-btn { padding: 0.6rem 1.5rem; border-radius: 999px; color: white; background: #3182ce; border: none; font-weight: 700; font-size: 0.85rem; cursor: pointer; margin-top: 1rem; font-family: inherit; }
+.review-item { border-radius: 0.75rem; padding: 1rem; margin-bottom: 0.5rem; display: flex; gap: 0.5rem; align-items: flex-start; font-size: 0.85rem; }
+.review-item.ok { background: #f0fff4; border: 1px solid #c6f6d5; }
+.review-item.nok { background: #fff5f5; border: 1px solid #fed7d7; }
+
+.nav-arrows { display: flex; justify-content: space-between; margin: 2rem 0; }
+.nav-arrow { padding: 0.6rem 1.25rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; border: 1px solid #e2e8f0; cursor: pointer; font-family: inherit; }
+.nav-arrow.prev { background: white; color: #3182ce; }
+.nav-arrow.next { background: #1a365d; color: white; border-color: #1a365d; }
+.nav-arrow:disabled { background: #edf2f7!important; color: #a0aec0!important; border-color: #e2e8f0!important; cursor: default; }
+
+.sources { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+.sources-title { font-family: 'Merriweather', serif; font-weight: 700; font-size: 0.9rem; color: #1a365d; margin-bottom: 0.75rem; }
+.sources ul { list-style: none; }
+.sources li { font-size: 0.75rem; color: #718096; padding: 0.3rem 0; }
+.sources a { color: #3182ce; }
+.footer { text-align: center; font-size: 0.7rem; color: #a0aec0; padding-bottom: 2rem; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.5rem; }
+  .meta { flex-direction: column; gap: 0.25rem; }
+  .layers, .compare, .instr-grid, .type-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="tags">
+      <span class="tag tag-portal">FRYDENT Lernportal</span>
+      <span class="tag tag-prosth">Prothetik</span>
+    </div>
+    <h1>Kronen &amp; Br&#252;cken</h1>
+    <p class="subtitle">Damit jeder Zahn wieder komplett wird &#8211; alles, was Sie als ZFA wissen m&#252;ssen.</p>
+    <div class="meta">
+      <span>&#128214; ca. 15 Min. Lesezeit</span>
+      <span>&#128221; 10 Quiz-Fragen</span>
+      <span>&#128218; Wissenschaftlich fundiert</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="nav" id="nav">
+    <button class="nav-btn active" onclick="go('basics',this)">&#129463; Grundlagen</button>
+    <button class="nav-btn" onclick="go('types',this)">&#128081; Kronenarten</button>
+    <button class="nav-btn" onclick="go('bridges',this)">&#127753; Br&#252;cken</button>
+    <button class="nav-btn" onclick="go('steps',this)">&#9881;&#65039; Ablauf</button>
+    <button class="nav-btn" onclick="go('materials',this)">&#128295; Materialien</button>
+    <button class="nav-btn" onclick="go('zfa',this)">&#128105;&#8205;&#9877;&#65039; Rolle ZFA</button>
+    <button class="nav-btn" onclick="go('quiz',this)">&#128221; Quiz</button>
+  </div>
+
+  <!-- GRUNDLAGEN -->
+  <div class="section active" id="s-basics">
+    <h2 class="section-title">Grundlagen</h2>
+    <p class="section-sub">Was ist eine Krone? Was ist eine Br&#252;cke?</p>
+
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">Festsitzender Zahnersatz &#8211; die Basics</div>
+      <div class="layers">
+        <div class="layer" style="border-left:4px solid #D69E2E">
+          <div class="layer-label" style="color:#D69E2E">&#128081; Krone</div>
+          <p style="font-size:0.85rem">Eine Krone ist eine &#8222;Kappe&#8220;, die &#252;ber einen besch&#228;digten Zahn gesetzt wird. Sie umfasst den gesamten sichtbaren Zahnteil und stellt Form, Funktion und &#196;sthetik wieder her.</p>
+        </div>
+        <div class="layer" style="border-left:4px solid #3182ce">
+          <div class="layer-label" style="color:#3182ce">&#127753; Br&#252;cke</div>
+          <p style="font-size:0.85rem">Eine Br&#252;cke ersetzt einen oder mehrere fehlende Z&#228;hne. Sie wird an den Nachbarz&#228;hnen (Pfeilerz&#228;hne) befestigt und &#8222;&#252;berbr&#252;ckt&#8220; die L&#252;cke mit einem Zwischenglied (Br&#252;ckenglied/Pontic).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-yellow">
+      <div class="card-title" style="color:#8b6914">&#128161; Einfach erkl&#228;rt</div>
+      <p style="font-size:0.85rem">Stellen Sie sich eine Krone wie einen <strong>Schutzhelm</strong> f&#252;r den Zahn vor &#8211; er sch&#252;tzt, was darunter noch &#252;brig ist. Eine Br&#252;cke ist wie eine kleine <strong>H&#228;ngebr&#252;cke</strong>: Links und rechts stehen stabile Pfeiler (die Nachbarz&#228;hne), und dazwischen h&#228;ngt der Ersatzzahn.</p>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-title" style="color:#276749">&#9989; Wann braucht man eine Krone?</div>
+      <p style="font-size:0.85rem"><strong>&#129463; Stark zerst&#246;rter Zahn:</strong> Wenn eine F&#252;llung nicht mehr ausreicht (Zahnsubstanzverlust &gt; 50%)</p>
+      <p style="font-size:0.85rem"><strong>&#128295; Nach Wurzelkanalbehandlung:</strong> Wurzelbehandelte Z&#228;hne sind spr&#246;der &#8211; besonders Seitenz&#228;hne brauchen den Schutz einer Krone</p>
+      <p style="font-size:0.85rem"><strong>&#128142; &#196;sthetische Gr&#252;nde:</strong> Verf&#228;rbungen, Fehlstellungen, unsch&#246;ne Zahnformen</p>
+      <p style="font-size:0.85rem"><strong>&#128297; Verankerung:</strong> Als Anker f&#252;r eine Br&#252;cke oder als Halterung f&#252;r herausnehmbaren Zahnersatz</p>
+    </div>
+
+    <div class="card card-info"><strong>&#128218; Gut zu wissen:</strong> Festsitzender Zahnersatz wird mit Zement oder Adh&#228;sivtechnik dauerhaft befestigt &#8211; der Patient kann ihn nicht selbst herausnehmen. Das unterscheidet ihn von herausnehmbarem Zahnersatz (Prothesen).</div>
+  </div>
+
+  <!-- KRONENARTEN -->
+  <div class="section" id="s-types">
+    <h2 class="section-title">Kronenarten</h2>
+    <p class="section-sub">Welche Krone f&#252;r welchen Zahn?</p>
+
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">&#220;bersicht der Kronenarten</div>
+      <div class="type-grid">
+        <div class="type-item" style="background:#fff9f0; border: 1px solid #f0dcc0;">
+          <div class="type-name">&#129351; Vollgusskrone (VMK-Basis)</div>
+          <div class="type-desc">Komplett aus Metall (NEM oder Gold). Sehr stabil, aber nicht zahnfarben. Wird v.&thinsp;a. im nicht sichtbaren Seitenzahnbereich eingesetzt.</div>
+        </div>
+        <div class="type-item" style="background:#f0f7ff; border: 1px solid #c8dff0;">
+          <div class="type-name">&#127912; Verblendkrone (VMK)</div>
+          <div class="type-desc">Metallger&#252;st mit zahnfarbener Keramikverblendung. Stabil und &#228;sthetisch &#8211; der &#8222;Klassiker&#8220; in der Kassenprothetik.</div>
+        </div>
+        <div class="type-item" style="background:#f8f4ff; border: 1px solid #d6bcfa;">
+          <div class="type-name">&#128142; Vollkeramikkrone</div>
+          <div class="type-desc">Komplett aus Keramik (z.&thinsp;B. Zirkonoxid, Lithiumdisilikat). Beste &#196;sthetik, metallfrei. Besonders f&#252;r den Frontzahnbereich.</div>
+        </div>
+        <div class="type-item" style="background:#f0fff4; border: 1px solid #c6f6d5;">
+          <div class="type-name">&#128737;&#65039; Teilkrone / Overlay</div>
+          <div class="type-desc">Bedeckt nicht den ganzen Zahn, sondern nur die zerst&#246;rten Anteile. Zahnsubstanzschonender als eine Vollkrone.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-yellow">
+      <div class="card-title" style="color:#8b6914">&#128176; Kassenregelung (GKV)</div>
+      <p style="font-size:0.85rem">Die gesetzliche Krankenkasse bezahlt einen <strong>Festzuschuss</strong> basierend auf dem Befund. Die Regelversorgung (das, was die Kasse als Standard vorsieht) ist:</p>
+      <p style="font-size:0.85rem">&#8226; <strong>Seitenzahnbereich:</strong> Vollgusskrone (NEM) = Regelversorgung</p>
+      <p style="font-size:0.85rem">&#8226; <strong>Frontzahnbereich (bis Zahn 5 oben, bis Zahn 4 unten):</strong> Verblendkrone = Regelversorgung</p>
+      <p style="font-size:0.85rem">&#8226; <strong>Vollkeramik:</strong> Gleichartiger oder andersartiger Zahnersatz &#8211; Patient zahlt die Differenz</p>
+    </div>
+
+    <div class="compare" style="margin-top:1rem">
+      <div class="compare-a">
+        <div style="font-size:1.5rem;margin-bottom:0.5rem">&#127981;</div>
+        <h4 style="font-weight:700;color:#2b6cb0;margin-bottom:0.5rem">Konventionelle Herstellung</h4>
+        <ul style="font-size:0.85rem;color:#2c5282;list-style:none">
+          <li>&#8226; Abdrucknahme mit L&#246;ffel + Abformmasse</li>
+          <li>&#8226; Modellherstellung im Labor</li>
+          <li>&#8226; Wachsmodellation &#8594; Guss oder Presskeramik</li>
+          <li>&#8226; Mehrere Sitzungen n&#246;tig</li>
+        </ul>
+      </div>
+      <div class="compare-b">
+        <div style="font-size:1.5rem;margin-bottom:0.5rem">&#128187;</div>
+        <h4 style="font-weight:700;color:#6b46c1;margin-bottom:0.5rem">CAD/CAM (digital)</h4>
+        <ul style="font-size:0.85rem;color:#553c9a;list-style:none">
+          <li>&#8226; Digitaler Scan statt Abdruck</li>
+          <li>&#8226; Computergest&#252;tztes Design</li>
+          <li>&#8226; Fr&#228;sen aus einem Keramikblock</li>
+          <li>&#8226; Teilweise in einer Sitzung m&#246;glich (Chairside)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRUECKEN -->
+  <div class="section" id="s-bridges">
+    <h2 class="section-title">Br&#252;cken</h2>
+    <p class="section-sub">L&#252;cken schlie&#223;en &#8211; fest und sicher</p>
+
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">Aufbau einer Br&#252;cke</div>
+      <div class="layers">
+        <div class="layer" style="border-left:4px solid #e53e3e">
+          <div class="layer-label" style="color:#e53e3e">&#127963;&#65039; Pfeilerz&#228;hne (Anker)</div>
+          <p style="font-size:0.85rem">Die Nachbarz&#228;hne der L&#252;cke. Sie werden beschliffen und &#252;berkront &#8211; sie tragen die Br&#252;cke. M&#252;ssen stabil und parodontal gesund sein.</p>
+        </div>
+        <div class="layer" style="border-left:4px solid #3182ce">
+          <div class="layer-label" style="color:#3182ce">&#129463; Br&#252;ckenglied (Pontic)</div>
+          <p style="font-size:0.85rem">Der Ersatzzahn, der die L&#252;cke f&#252;llt. &#8222;Schwebt&#8220; &#252;ber dem Kieferkamm und ist fest mit den Ankerkronen verbunden.</p>
+        </div>
+        <div class="layer" style="border-left:4px solid #38a169">
+          <div class="layer-label" style="color:#38a169">&#128279; Verbindungselemente</div>
+          <p style="font-size:0.85rem">Die Verbindung zwischen Ankerkrone und Br&#252;ckenglied. Kann starr (fest verl&#246;tet/gegossen) oder bedingt abnehmbar (Geschiebe) sein.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="color:#1a365d">Br&#252;ckenarten</div>
+      <div class="type-grid">
+        <div class="type-item" style="background:#f0f7ff; border: 1px solid #c8dff0;">
+          <div class="type-name">Endpfeilerbr&#252;cke</div>
+          <div class="type-desc">Klassiker: L&#252;cke wird beidseitig von Pfeilerz&#228;hnen begrenzt. Stabil und bew&#228;hrt.</div>
+        </div>
+        <div class="type-item" style="background:#fff9f0; border: 1px solid #f0dcc0;">
+          <div class="type-name">Freiendbr&#252;cke (Extensionsbr&#252;cke)</div>
+          <div class="type-desc">Br&#252;ckenglied h&#228;ngt frei am Ende &#8211; nur einseitig befestigt. H&#246;here Belastung der Pfeilerz&#228;hne.</div>
+        </div>
+        <div class="type-item" style="background:#f8f4ff; border: 1px solid #d6bcfa;">
+          <div class="type-name">Klebebr&#252;cke (Maryland-Br&#252;cke)</div>
+          <div class="type-desc">Minimalinvasiv: Br&#252;ckenglied wird mit &#8222;Fl&#252;geln&#8220; an die Nachbarz&#228;hne geklebt. Wenig Beschleifen n&#246;tig.</div>
+        </div>
+        <div class="type-item" style="background:#f0fff4; border: 1px solid #c6f6d5;">
+          <div class="type-name">Implantatgetragene Br&#252;cke</div>
+          <div class="type-desc">Br&#252;cke wird von Implantaten statt von eigenen Z&#228;hnen getragen. Nachbarz&#228;hne bleiben unversehrt.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-warn"><strong>&#9888;&#65039; Wichtig:</strong> Je mehr Z&#228;hne eine Br&#252;cke ersetzt, desto h&#246;her die Belastung der Pfeilerz&#228;hne. Faustregel: Maximal 2 fehlende Z&#228;hne im Seitenzahnbereich, maximal 4 im Frontzahnbereich.</div>
+
+    <div class="card card-info"><strong>&#128218; Gut zu wissen:</strong> Die Klebebr&#252;cke (Adh&#228;sivbr&#252;cke) zum Ersatz eines einzelnen Frontzahns ist seit 2016 Kassenleistung und eine beliebte minimalinvasive Alternative, besonders bei j&#252;ngeren Patienten.</div>
+  </div>
+
+  <!-- ABLAUF -->
+  <div class="section" id="s-steps">
+    <h2 class="section-title">Ablauf der Behandlung</h2>
+    <p class="section-sub">Schritt f&#252;r Schritt &#8211; von der Planung bis zur Eingliederung</p>
+
+    <div class="session"><div class="session-header" style="background:#3182ce">Sitzung 1 &#8211; Befund &amp; Planung</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#3182ce">1</div><div><div class="step-title">Befundaufnahme <span class="bema-tag">BEMA 01</span></div><div class="step-desc">Klinische und r&#246;ntgenologische Untersuchung. Beurteilung der Pfeilerz&#228;hne.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">2</div><div><div class="step-title">Heil- und Kostenplan (HKP) <span class="bema-tag">BEMA 7a/7b/7c</span></div><div class="step-desc">Erstellung des HKP mit Befund, Regelversorgung und geplanter Versorgung. Einreichen bei der Krankenkasse.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">3</div><div><div class="step-title">Genehmigung abwarten</div><div class="step-desc">Krankenkasse pr&#252;ft und genehmigt den HKP. Erst nach Genehmigung darf die Behandlung starten!</div></div></div>
+    </div></div>
+
+    <div class="session"><div class="session-header" style="background:#805ad5">Sitzung 2 &#8211; Pr&#228;paration &amp; Abformung</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#805ad5">1</div><div><div class="step-title">An&#228;sthesie <span class="bema-tag">I/40 oder L1/41a</span></div><div class="step-desc">&#214;rtliche Bet&#228;ubung der zu beschleifenden Z&#228;hne.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">2</div><div><div class="step-title">Pr&#228;paration <span class="bema-tag">BEMA 20a&#8211;c</span></div><div class="step-desc">Beschleifen des Zahnes: Abtragen von ca. 1&#8211;2 mm Zahnsubstanz rundherum. Anlegen einer Pr&#228;parationsgrenze (Stufe oder Hohlkehle).</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">3</div><div><div class="step-title">Abformung (Abdruck) <span class="bema-tag">BEMA 20d</span></div><div class="step-desc">Pr&#228;zisionsabformung mit Silikon oder Polyether (Doppelmischtechnik). Alternativ: digitaler Intraoralscan.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">4</div><div><div class="step-title">Gegenkieferabformung &amp; Bissregistrat</div><div class="step-desc">Abdruck des Gegenkiefers + Registrierung der Bisslage f&#252;r das Labor.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">5</div><div><div class="step-title">Farbbestimmung</div><div class="step-desc">Zahnfarbe bestimmen (z.&thinsp;B. mit VITA-Farbring). Am besten bei Tageslicht!</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">6</div><div><div class="step-title">Provisorium herstellen <span class="bema-tag">BEMA 19</span></div><div class="step-desc">Tempor&#228;re Krone/Br&#252;cke aus Kunststoff zum Schutz des beschliffenen Zahnes. Befestigung mit provisorischem Zement.</div></div></div>
+    </div></div>
+
+    <div class="session"><div class="session-header" style="background:#d69e2e">Sitzung 3 &#8211; Ger&#252;stanprobe (bei Br&#252;cken/VMK)</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#d69e2e">1</div><div><div class="step-title">Provisorium entfernen</div><div class="step-desc">Vorsichtiges Abhebeln des Provisoriums, Reinigung der St&#252;mpfe.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#d69e2e">2</div><div><div class="step-title">Ger&#252;stanprobe</div><div class="step-desc">Metallger&#252;st oder Zirkonger&#252;st aufsetzen. Kontrolle: Passung, Randschluss, Okklusion, Platzverh&#228;ltnisse.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#d69e2e">3</div><div><div class="step-title">Provisorium wieder einsetzen</div><div class="step-desc">Bis zur Fertigstellung der finalen Arbeit.</div></div></div>
+    </div></div>
+
+    <div class="session"><div class="session-header" style="background:#38a169">Sitzung 4 &#8211; Eingliederung</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#38a169">1</div><div><div class="step-title">Provisorium entfernen &amp; reinigen</div><div class="step-desc">Stumpf reinigen, trocken legen.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">2</div><div><div class="step-title">Einprobe der fertigen Arbeit</div><div class="step-desc">Kontrolle: Farbe, Form, Passung, Randschluss, Kontaktpunkte, Okklusion.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">3</div><div><div class="step-title">Definitives Einsetzen <span class="bema-tag">BEMA 20e</span></div><div class="step-desc">Befestigung mit Zement (z.&thinsp;B. Glasionomerzement, Zinkphosphatzement) oder adh&#228;siv (Befestigungskomposit).</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">4</div><div><div class="step-title">Okklusionskontrolle &amp; Politur</div><div class="step-desc">Bisspr&#252;fung mit Artikulationspapier, &#220;bersch&#252;sse entfernen, R&#228;nder polieren.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">5</div><div><div class="step-title">Nachsorge &amp; Recall</div><div class="step-desc">Pflegehinweise geben (Br&#252;ckenpflege!). Kontrolltermin in 1&#8211;2 Wochen.</div></div></div>
+    </div></div>
+
+    <div class="card card-warn"><strong>&#9888;&#65039; Wichtig:</strong> Der HKP muss VOR Behandlungsbeginn von der Kasse genehmigt werden! Ohne Genehmigung &#8594; kein Festzuschuss. Ausnahme: Notfall-/Schmerzbehandlung.</div>
+  </div>
+
+  <!-- MATERIALIEN -->
+  <div class="section" id="s-materials">
+    <h2 class="section-title">Materialien &amp; Instrumente</h2>
+    <p class="section-sub">Was liegt auf dem Tray?</p>
+    <div class="instr-grid">
+      <div class="instr-card" style="border-top-color:#805ad5"><div class="instr-cat" style="color:#805ad5">Pr&#228;paration</div><ul class="instr-list"><li>&#8226; Diamantschleifer (zylindrisch, konisch, Torpedo)</li><li>&#8226; Pr&#228;parationsset</li><li>&#8226; Retraktionsfaden + Adstringens</li><li>&#8226; Matrizen / Matrizenb&#228;nder</li></ul></div>
+      <div class="instr-card" style="border-top-color:#3182ce"><div class="instr-cat" style="color:#3182ce">Abformung</div><ul class="instr-list"><li>&#8226; Abforml&#246;ffel (individuell oder konfektioniert)</li><li>&#8226; Silikonmaterial (Putty + Wash)</li><li>&#8226; Polyether (z.&thinsp;B. Impregum)</li><li>&#8226; Anmischpistole / Pentamix</li><li>&#8226; Alternativ: Intraoralscanner</li></ul></div>
+      <div class="instr-card" style="border-top-color:#d69e2e"><div class="instr-cat" style="color:#d69e2e">Provisorium</div><ul class="instr-list"><li>&#8226; Provisoriumskunststoff (z.&thinsp;B. Protemp, Luxatemp)</li><li>&#8226; Provisorischer Zement (z.&thinsp;B. TempBond, RelyX Temp)</li><li>&#8226; Tiefziehschiene oder Silikonschl&#252;ssel</li><li>&#8226; Polierscheiben</li></ul></div>
+      <div class="instr-card" style="border-top-color:#38a169"><div class="instr-cat" style="color:#38a169">Eingliederung</div><ul class="instr-list"><li>&#8226; Befestigungszement (GIZ, Zinkphosphat, adh&#228;siv)</li><li>&#8226; Artikulationspapier</li><li>&#8226; Kronenentferner / Hebel</li><li>&#8226; VITA-Farbring</li><li>&#8226; Zahnseide / Superfloss (Br&#252;cke!)</li></ul></div>
+    </div>
+
+    <div class="card card-purple" style="margin-top:1rem">
+      <div class="card-title" style="color:#553c9a">Werkstoffe im &#220;berblick</div>
+      <p style="font-size:0.85rem"><strong>&#128297; NEM (Nicht-Edelmetall):</strong> CoCrMo-Legierung. G&#252;nstig, stabil, Regelversorgung. Allergierisiko selten, aber m&#246;glich (Nickel!).</p>
+      <p style="font-size:0.85rem"><strong>&#129351; Edelmetall (Gold):</strong> Hochgold- oder Goldreduzierte Legierung. Sehr gute Biokompatibilit&#228;t, hoher Preis.</p>
+      <p style="font-size:0.85rem"><strong>&#128142; Zirkonoxid:</strong> Hochfeste Keramik, metallfrei. F&#252;r Ger&#252;ste und monolithische Kronen. CAD/CAM-gefr&#228;st.</p>
+      <p style="font-size:0.85rem"><strong>&#10024; Lithiumdisilikat (z.&thinsp;B. e.max):</strong> Presskeramik, hervorragende &#196;sthetik. Ideal f&#252;r Frontzahnkronen und Veneers.</p>
+    </div>
+
+    <div class="card card-green"><strong>&#128279; Querverweis:</strong> Detaillierte Instrumentenaufstellung f&#252;r das Prothetik-Tray finden Sie in der Instrumenten&#252;bersicht im Lernportal unter &#8222;Trays&#8220;.</div>
+  </div>
+
+  <!-- ZFA -->
+  <div class="section" id="s-zfa">
+    <h2 class="section-title">Die Rolle der ZFA</h2>
+    <p class="section-sub">Was ist meine Aufgabe?</p>
+    <div class="phase"><div class="phase-title">&#128203; Vor der Behandlung</div><ul class="phase-list"><li>&#10004; Prothetik-Tray vorbereiten und auf Vollst&#228;ndigkeit pr&#252;fen</li><li>&#10004; Abformmaterial und -l&#246;ffel bereitlegen</li><li>&#10004; VITA-Farbring bereitlegen</li><li>&#10004; Provisoriumsmaterial vorbereiten</li><li>&#10004; HKP-Status pr&#252;fen: Genehmigung vorhanden?</li><li>&#10004; Laborzettel / digitalen Auftrag vorbereiten</li></ul></div>
+    <div class="phase"><div class="phase-title">&#129309; W&#228;hrend der Behandlung</div><ul class="phase-list"><li>&#10004; Absaugen und Trockenhalten w&#228;hrend der Pr&#228;paration</li><li>&#10004; Retraktionsfaden anreichen</li><li>&#10004; Abformmaterial anmischen und L&#246;ffel bef&#252;llen</li><li>&#10004; Bei Farbbestimmung assistieren (Tageslicht!)</li><li>&#10004; Provisorium mitgestalten (Kunststoff anmischen, ausarbeiten)</li><li>&#10004; Bei Eingliederung: Zement anmischen, &#220;bersch&#252;sse entfernen</li></ul></div>
+    <div class="phase"><div class="phase-title">&#9989; Nach der Behandlung</div><ul class="phase-list"><li>&#10004; Abformung kontrollieren (Blasen? Durchgezogene Pr&#228;parationsgrenze?)</li><li>&#10004; Laborauftrag ausf&#252;llen und versenden</li><li>&#10004; BEMA / BEL-Positionen dokumentieren und abrechnen</li><li>&#10004; N&#228;chsten Termin vereinbaren</li><li>&#10004; Patient &#252;ber Provisorium aufkl&#228;ren: Vorsicht beim Essen, nicht an klebrigen Speisen kauen!</li></ul></div>
+    <div class="card card-danger"><strong>&#128680; Wichtiger Hinweis:</strong> Abformung immer sofort kontrollieren! Fehler in der Abformung = fehlerhafte Krone aus dem Labor = erneute Abformung + Kosten + unzufriedener Patient. Lieber einmal mehr abformen als einmal zu wenig!</div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="section" id="s-quiz">
+    <h2 class="section-title">Wissens-Quiz</h2>
+    <p class="section-sub">Teste dein Wissen! 10 Fragen zu Kronen &amp; Br&#252;cken.</p>
+    <div id="qz"></div>
+  </div>
+
+  <div class="nav-arrows">
+    <button class="nav-arrow prev" id="bp" onclick="prev()">&#8592; Zur&#252;ck</button>
+    <button class="nav-arrow next" id="bn" onclick="next()">Weiter &#8594;</button>
+  </div>
+
+  <div class="sources">
+    <div class="sources-title">&#128218; Quellen &amp; weiterf&#252;hrende Literatur</div>
+    <ul>
+      <li>&#8226; The Glossary of Prosthodontic Terms, 10th Ed. <em>J Prosthet Dent.</em> 2023;130(4S):e1-e70. <a href="https://doi.org/10.1016/j.prosdent.2023.07.017" target="_blank">DOI</a></li>
+      <li>&#8226; Kongkiatkamon S et al. Current classification of zirconia in dentistry. <em>PeerJ.</em> 2023;11:e15514. <a href="https://doi.org/10.7717/peerj.15514" target="_blank">DOI</a></li>
+      <li>&#8226; &#8222;Festzusch&#252;sse f&#252;r Zahnersatz.&#8220; KZBV, Stand 2025. <a href="https://www.kzbv.de" target="_blank">www.kzbv.de</a></li>
+      <li>&#8226; Weber T. <em>Memorix Zahnmedizin.</em> 5. Aufl. Thieme, 2017.</li>
+      <li>&#8226; BLZK Hilfsliste BEMA Teil 1 + BEL II, Stand 02/2025.</li>
+    </ul>
+  </div>
+  <div class="footer">FRYDENT Zahn&#228;rzte in Bonndorf &#183; Lernportal &#183; Prothetik-Modul<br>Stand: Februar 2026</div>
+</div>
+
+<script>
+var ids=['basics','types','bridges','steps','materials','zfa','quiz'],ci=0;
+function go(id,btn){document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active')});document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active')});document.getElementById('s-'+id).classList.add('active');if(btn)btn.classList.add('active');else document.querySelectorAll('.nav-btn')[ids.indexOf(id)].classList.add('active');ci=ids.indexOf(id);ua();window.scrollTo({top:0,behavior:'smooth'});if(id==='quiz')rq();}
+function prev(){if(ci>0)go(ids[ci-1])}
+function next(){if(ci<ids.length-1)go(ids[ci+1])}
+function ua(){document.getElementById('bp').disabled=ci===0;document.getElementById('bn').disabled=ci===ids.length-1;}
+
+var qs=[
+{q:"Was ist der Unterschied zwischen einer Krone und einer Br\u00fccke?",o:["Eine Krone ersetzt fehlende Z\u00e4hne, eine Br\u00fccke sch\u00fctzt besch\u00e4digte Z\u00e4hne","Eine Krone \u00fcberkront einen Zahn, eine Br\u00fccke ersetzt fehlende Z\u00e4hne \u00fcber Pfeilerz\u00e4hne","Es gibt keinen Unterschied","Eine Br\u00fccke besteht immer aus Gold"],c:1,e:"Die Krone ist eine Kappe f\u00fcr einen besch\u00e4digten Zahn. Die Br\u00fccke \u00fcberbr\u00fcckt eine L\u00fccke, indem sie an Nachbarz\u00e4hnen (Pfeilern) befestigt wird."},
+{q:"Welche Kronenart ist die Regelversorgung der Kasse im Seitenzahnbereich?",o:["Vollkeramikkrone","Goldkrone","Vollgusskrone (NEM)","Verblendkrone"],c:2,e:"Im Seitenzahnbereich ist die Vollgusskrone aus NEM die Regelversorgung. Alles dar\u00fcber ist Mehrkosten f\u00fcr den Patienten."},
+{q:"Was muss VOR Beginn der prothetischen Behandlung vorliegen?",o:["Ein R\u00f6ntgenbild","Der genehmigte Heil- und Kostenplan (HKP)","Eine \u00dcberweisung vom Hausarzt","Ein Allergietest"],c:1,e:"Ohne genehmigten HKP kein Festzuschuss! Der HKP muss vor Behandlungsbeginn bei der Kasse eingereicht und genehmigt werden."},
+{q:"Wie viel Zahnsubstanz wird bei einer Kronenpr\u00e4paration ungef\u00e4hr abgetragen?",o:["0,1 mm","0,5 mm","1\u20132 mm","5 mm"],c:2,e:"Bei einer Kronenpr\u00e4paration werden ca. 1\u20132 mm Zahnsubstanz rundherum abgetragen, damit genug Platz f\u00fcr das Kronenmaterial ist."},
+{q:"Was sind die \u201ePfeilerz\u00e4hne\u201c bei einer Br\u00fccke?",o:["Die fehlenden Z\u00e4hne in der L\u00fccke","Die Nachbarz\u00e4hne, die beschliffen werden und die Br\u00fccke tragen","Die Z\u00e4hne im Gegenkiefer","K\u00fcnstliche Implantate"],c:1,e:"Pfeilerz\u00e4hne sind die Nachbarz\u00e4hne der L\u00fccke. Sie werden beschliffen, \u00fcberkront und tragen die gesamte Br\u00fccke."},
+{q:"Was ist ein Provisorium und warum ist es wichtig?",o:["Ein dauerhafter Zahnersatz aus Keramik","Eine tempor\u00e4re Krone aus Kunststoff zum Schutz des beschliffenen Zahns","Ein Abdruckmaterial","Ein spezieller Zement"],c:1,e:"Das Provisorium sch\u00fctzt den beschliffenen Zahnstumpf vor Reizen und Bakterien, h\u00e4lt die Position und stellt die \u00c4sthetik vor\u00fcbergehend wieder her."},
+{q:"Welches Material wird f\u00fcr die Pr\u00e4zisionsabformung verwendet?",o:["Alginat","Gips","Silikon oder Polyether","Wachs"],c:2,e:"Silikon (z.\u202fB. Doppelmischtechnik) oder Polyether (z.\u202fB. Impregum) liefern die n\u00f6tige Pr\u00e4zision f\u00fcr Zahnersatz. Alginat ist zu ungenau."},
+{q:"Was ist eine Klebebr\u00fccke (Maryland-Br\u00fccke)?",o:["Eine Br\u00fccke, die mit Superkleber befestigt wird","Eine minimalinvasive Br\u00fccke, die mit Fl\u00fcgeln an die Nachbarz\u00e4hne geklebt wird","Eine herausnehmbare Br\u00fccke","Eine Br\u00fccke nur aus Kunststoff"],c:1,e:"Die Klebebr\u00fccke wird mit d\u00fcnnen Metallfl\u00fcgeln an die Nachbarz\u00e4hne adh\u00e4siv befestigt. Vorteil: Kaum Beschleifen der Pfeilerz\u00e4hne n\u00f6tig."},
+{q:"Worauf muss die ZFA bei der Abformung besonders achten?",o:["Dass der Farbring bereitliegt","Dass die Abformung sofort auf Blasen und durchgezogene Pr\u00e4parationsgrenze kontrolliert wird","Dass der Patient nicht spricht","Dass der Abdruck mindestens 24 Stunden trocknet"],c:1,e:"Eine fehlerhafte Abformung = fehlerhafte Krone! Sofort kontrollieren: keine Blasen, keine Verz\u00fcge, Pr\u00e4parationsgrenze muss komplett dargestellt sein."},
+{q:"Was ist der Vorteil von Zirkonoxid gegen\u00fcber Metallkronen?",o:["Es ist g\u00fcnstiger","Es ist metallfrei, biokompatibel und hoch\u00e4sthetisch","Es ist weicher und flexibler","Es braucht keine Pr\u00e4paration"],c:1,e:"Zirkonoxid ist metallfrei (ideal bei Allergien), hochfest und \u00e4sthetisch. Es wird per CAD/CAM gefr\u00e4st und eignet sich f\u00fcr Kronen und Br\u00fcckenger\u00fcste."}
+];
+var qi=0,ans=[];
+function rq(){var c=document.getElementById('qz');if(ans.length===qs.length){rr(c);return;}var q=qs[qi],done=ans.length>qi;var dots='<div class="quiz-progress" style="margin-bottom:1rem">';for(var i=0;i<qs.length;i++){var cl='quiz-dot';if(i<ans.length)cl+=ans[i]===qs[i].c?' correct':' wrong';else if(i===qi)cl+=' current';dots+='<div class="'+cl+'"></div>';}dots+='</div>';var h='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem"><span style="font-size:0.85rem;font-weight:700;color:#4a5568">Frage '+(qi+1)+' von '+qs.length+'</span>'+dots+'</div><div class="card"><div class="quiz-question">'+q.q+'</div>';for(var i=0;i<q.o.length;i++){var cl='quiz-option';if(done){if(i===q.c)cl+=' show-correct';if(i===ans[qi]&&i!==q.c)cl+=' selected-wrong';}h+='<button class="'+cl+'" '+(done?'disabled':'')+' onclick="aq('+i+')"><strong>'+String.fromCharCode(65+i)+'.</strong> '+q.o[i]+'</button>';}if(done){var ok=ans[qi]===q.c;h+='<div class="quiz-explanation '+(ok?'ok':'nok')+'"><strong>'+(ok?'\u2705 Richtig!':'\u274c Leider falsch.')+'</strong> '+q.e+'</div>';}h+='</div>';c.innerHTML=h;}
+function aq(i){if(ans.length>qi)return;ans.push(i);rq();setTimeout(function(){if(qi<qs.length-1){qi++;rq();}else{rq();}},2200);}
+function rr(c){var ok=0;for(var i=0;i<qs.length;i++)if(ans[i]===qs[i].c)ok++;var p=Math.round(ok/qs.length*100),g=p>=70;var h='<div class="quiz-result '+(g?'pass':'fail')+'"><div style="font-size:3rem">'+(g?'\uD83C\uDF89':'\uD83D\uDCDA')+'</div><div class="quiz-score" style="color:'+(g?'#276749':'#744210')+'">'+ok+' / '+qs.length+' richtig ('+p+'%)</div><p style="font-size:0.85rem;color:#4a5568">'+(p>=90?'Ausgezeichnet! Sie sind bereit f\u00fcr die Praxis!':p>=70?'Gut gemacht! Lesen Sie die falschen Antworten noch einmal nach.':'Noch etwas \u00dcbung n\u00f6tig.')+'</p><button class="quiz-btn" onclick="xq()">Quiz wiederholen</button></div><h4 style="font-weight:700;font-size:0.9rem;margin:1rem 0 0.75rem">Auswertung:</h4>';for(var i=0;i<qs.length;i++){var v=ans[i]===qs[i].c;h+='<div class="review-item '+(v?'ok':'nok')+'"><span>'+(v?'\u2705':'\u274c')+'</span><div><p style="font-weight:700">'+qs[i].q+'</p><p style="margin-top:0.25rem">'+qs[i].e+'</p></div></div>';}c.innerHTML=h;}
+function xq(){qi=0;ans=[];rq();}
+ua();
+</script>
+</body>
+</html>

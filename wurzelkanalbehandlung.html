@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT Lernportal — Wurzelkanalbehandlung</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Source Sans 3', 'Segoe UI', sans-serif; background: linear-gradient(180deg, #f0f4f8 0%, #e8ecf1 100%); color: #2d3748; line-height: 1.7; }
+
+.header { background: linear-gradient(135deg, #1a365d 0%, #2a4a7f 50%, #2b6cb0 100%); border-bottom: 4px solid #63b3ed; padding: 2rem 1.5rem; }
+.header-inner { max-width: 800px; margin: 0 auto; }
+.tags { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+.tag { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }
+.tag-portal { background: rgba(255,255,255,0.15); color: #bee3f8; }
+.tag-endo { background: rgba(99,179,237,0.2); color: #90cdf4; }
+h1 { font-family: 'Merriweather', serif; font-size: 2rem; color: white; margin-bottom: 0.5rem; line-height: 1.2; }
+.subtitle { color: #bee3f8; font-size: 0.9rem; }
+.meta { display: flex; gap: 1.5rem; margin-top: 1rem; color: #90cdf4; font-size: 0.75rem; }
+
+.content { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+
+.nav { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; margin-bottom: 2rem; -webkit-overflow-scrolling: touch; }
+.nav::-webkit-scrollbar { display: none; }
+.nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; white-space: nowrap; border: 1px solid #e2e8f0; background: white; color: #4a5568; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+.nav-btn:hover { border-color: #1a365d; color: #1a365d; }
+.nav-btn.active { background: #1a365d; color: white; border-color: #1a365d; box-shadow: 0 4px 12px rgba(26,54,93,0.3); }
+
+.section { display: none; }
+.section.active { display: block; }
+.section-title { font-family: 'Merriweather', serif; font-size: 1.5rem; color: #1a365d; margin-bottom: 0.25rem; }
+.section-sub { color: #718096; font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+.card { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; }
+.card-blue { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%); border: 1px solid #c8dff0; }
+.card-yellow { background: #fff9f0; border: 1px solid #f0dcc0; }
+.card-green { background: #f0fff4; border: 1px solid #c6f6d5; }
+.card-purple { background: #f8f4ff; border: 1px solid #d6bcfa; }
+.card-info { background: #ebf8ff; border: 1px solid #90cdf4; color: #2b6cb0; font-size: 0.85rem; }
+.card-warn { background: #fffbeb; border: 1px solid #f6d860; color: #744210; font-size: 0.85rem; }
+.card-danger { background: #fff5f5; border: 1px solid #feb2b2; color: #c53030; font-size: 0.85rem; }
+.card-title { font-family: 'Merriweather', serif; font-weight: 700; margin-bottom: 0.75rem; }
+
+.layers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.layer { background: white; border-radius: 0.75rem; padding: 1rem; }
+.layer-label { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; }
+
+.canal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; }
+.canal-item { border-radius: 0.5rem; padding: 0.75rem; text-align: center; }
+.canal-type { font-size: 0.75rem; font-weight: 700; color: #4a5568; }
+.canal-count { font-size: 1.2rem; font-weight: 700; color: #1a365d; }
+
+.compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+.compare-rev { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 1px solid #f6d860; border-radius: 1rem; padding: 1.25rem; }
+.compare-irr { background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%); border: 1px solid #fca5a5; border-radius: 1rem; padding: 1.25rem; }
+
+.step-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; }
+.step-num { width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+.step-title { font-weight: 700; font-size: 0.9rem; color: #1a202c; }
+.bema-tag { display: inline-block; margin-left: 0.5rem; padding: 0.1rem 0.5rem; border-radius: 999px; background: #edf2f7; color: #4a5568; font-size: 0.7rem; font-weight: 400; }
+.step-desc { font-size: 0.85rem; color: #4a5568; margin-top: 0.25rem; }
+
+.session { border: 1px solid #e2e8f0; border-radius: 1rem; overflow: hidden; margin-bottom: 1.25rem; }
+.session-header { padding: 0.75rem 1.25rem; color: white; font-weight: 700; font-size: 0.9rem; }
+.session-body { padding: 1.25rem; background: white; }
+
+.instr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+.instr-card { background: white; border-radius: 0.75rem; padding: 1rem; border-top: 3px solid; }
+.instr-cat { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.75rem; }
+.instr-list { list-style: none; }
+.instr-list li { font-size: 0.85rem; color: #4a5568; padding: 0.25rem 0; }
+
+.phase { background: white; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1rem; margin-bottom: 0.75rem; }
+.phase-title { font-weight: 700; font-size: 0.9rem; color: #1a202c; margin-bottom: 0.75rem; }
+.phase-list { list-style: none; }
+.phase-list li { font-size: 0.85rem; color: #4a5568; padding: 0.2rem 0; }
+
+.quiz-progress { display: flex; gap: 0.25rem; }
+.quiz-dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #e2e8f0; }
+.quiz-dot.current { background: #3182ce; }
+.quiz-dot.correct { background: #68d391; }
+.quiz-dot.wrong { background: #fc8181; }
+.quiz-question { font-family: 'Merriweather', serif; font-weight: 700; font-size: 1rem; color: #1a202c; margin-bottom: 1rem; line-height: 1.5; }
+.quiz-option { width: 100%; text-align: left; border-radius: 0.75rem; padding: 1rem; font-size: 0.85rem; border: 2px solid #e2e8f0; background: #f7fafc; color: #1a202c; cursor: pointer; margin-bottom: 0.5rem; transition: all 0.2s; display: block; font-family: inherit; }
+.quiz-option:hover:not(:disabled) { border-color: #3182ce; background: #ebf8ff; }
+.quiz-option:disabled { cursor: default; }
+.quiz-option.show-correct { background: #f0fff4; border-color: #68d391; color: #276749; }
+.quiz-option.selected-wrong { background: #fff5f5; border-color: #fc8181; color: #c53030; }
+.quiz-explanation { border-radius: 0.75rem; padding: 1rem; font-size: 0.85rem; margin-top: 1rem; }
+.quiz-explanation.ok { background: #f0fff4; border: 1px solid #c6f6d5; color: #276749; }
+.quiz-explanation.nok { background: #fff5f5; border: 1px solid #fed7d7; color: #c53030; }
+.quiz-result { border-radius: 1rem; padding: 2rem; text-align: center; margin-bottom: 1.5rem; }
+.quiz-result.pass { background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%); border: 2px solid #68d391; }
+.quiz-result.fail { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 2px solid #f6d860; }
+.quiz-score { font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0; }
+.quiz-btn { padding: 0.6rem 1.5rem; border-radius: 999px; color: white; background: #3182ce; border: none; font-weight: 700; font-size: 0.85rem; cursor: pointer; margin-top: 1rem; font-family: inherit; }
+.review-item { border-radius: 0.75rem; padding: 1rem; margin-bottom: 0.5rem; display: flex; gap: 0.5rem; align-items: flex-start; font-size: 0.85rem; }
+.review-item.ok { background: #f0fff4; border: 1px solid #c6f6d5; }
+.review-item.nok { background: #fff5f5; border: 1px solid #fed7d7; }
+
+.nav-arrows { display: flex; justify-content: space-between; margin: 2rem 0; }
+.nav-arrow { padding: 0.6rem 1.25rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; border: 1px solid #e2e8f0; cursor: pointer; font-family: inherit; }
+.nav-arrow.prev { background: white; color: #3182ce; }
+.nav-arrow.next { background: #1a365d; color: white; border-color: #1a365d; }
+.nav-arrow:disabled { background: #edf2f7!important; color: #a0aec0!important; border-color: #e2e8f0!important; cursor: default; }
+
+.sources { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+.sources-title { font-family: 'Merriweather', serif; font-weight: 700; font-size: 0.9rem; color: #1a365d; margin-bottom: 0.75rem; }
+.sources ul { list-style: none; }
+.sources li { font-size: 0.75rem; color: #718096; padding: 0.3rem 0; }
+.sources a { color: #3182ce; }
+.footer { text-align: center; font-size: 0.7rem; color: #a0aec0; padding-bottom: 2rem; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.5rem; }
+  .meta { flex-direction: column; gap: 0.25rem; }
+  .layers, .compare, .instr-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="tags">
+      <span class="tag tag-portal">FRYDENT Lernportal</span>
+      <span class="tag tag-endo">Endodontie</span>
+    </div>
+    <h1>Wurzelkanalbehandlung</h1>
+    <p class="subtitle">Von der Diagnostik bis zur Abrechnung — alles, was Sie als ZFA wissen müssen.</p>
+    <div class="meta">
+      <span>📖 ca. 15 Min. Lesezeit</span>
+      <span>📝 10 Quiz-Fragen</span>
+      <span>📚 Wissenschaftlich fundiert</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="nav" id="nav">
+    <button class="nav-btn active" onclick="go('anatomy',this)">🦷 Anatomie</button>
+    <button class="nav-btn" onclick="go('pulpitis',this)">🔥 Pulpitis</button>
+    <button class="nav-btn" onclick="go('diagnosis',this)">🔍 Diagnostik</button>
+    <button class="nav-btn" onclick="go('steps',this)">⚙️ Ablauf</button>
+    <button class="nav-btn" onclick="go('instruments',this)">🔧 Instrumente</button>
+    <button class="nav-btn" onclick="go('zfa',this)">👩‍⚕️ Rolle ZFA</button>
+    <button class="nav-btn" onclick="go('quiz',this)">📝 Quiz</button>
+  </div>
+
+  <!-- ANATOMIE -->
+  <div class="section active" id="s-anatomy">
+    <h2 class="section-title">Anatomie des Zahnes</h2>
+    <p class="section-sub">Was steckt im Inneren?</p>
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">Der Zahn — Aufbau von außen nach innen</div>
+      <div class="layers">
+        <div class="layer" style="border-left:4px solid #2196F3"><div class="layer-label" style="color:#2196F3">1. Zahnschmelz (Enamel)</div><p style="font-size:0.85rem">Die härteste Substanz des menschlichen Körpers. Sie schützt den Zahn wie ein Schutzhelm. Zahnschmelz enthält keine Nerven — deshalb spüren wir oberflächliche Karies nicht.</p></div>
+        <div class="layer" style="border-left:4px solid #FF9800"><div class="layer-label" style="color:#FF9800">2. Dentin (Zahnbein)</div><p style="font-size:0.85rem">Liegt unter dem Schmelz und macht den Hauptteil des Zahnes aus. Durchzogen von feinen Kanälchen (Dentintubuli), die Reize zum Nerv weiterleiten.</p></div>
+        <div class="layer" style="border-left:4px solid #E91E63"><div class="layer-label" style="color:#E91E63">3. Pulpa (Zahnmark)</div><p style="font-size:0.85rem">Das „Herz" des Zahnes. Enthält Blutgefäße, Nerven und Lymphgefäße. Bei einer Wurzelkanalbehandlung wird die erkrankte Pulpa entfernt.</p></div>
+      </div>
+    </div>
+    <div class="card card-yellow">
+      <div class="card-title" style="color:#8b6914">💡 Einfach erklärt</div>
+      <p style="font-size:0.85rem">Stellen Sie sich den Zahn wie ein kleines Haus vor: Der <strong>Zahnschmelz</strong> ist das Dach — er schützt vor Regen und Sonne. Das <strong>Dentin</strong> sind die Wände — stabil, aber nicht unzerstörbar. Und die <strong>Pulpa</strong> ist die Heizungsanlage mit allen Leitungen — wenn die kaputt geht, muss der Installateur kommen (das ist die Wurzelkanalbehandlung!).</p>
+    </div>
+    <div class="card card-green">
+      <div class="card-title" style="color:#276749">🔢 Wie viele Kanäle hat ein Zahn?</div>
+      <div class="canal-grid">
+        <div class="canal-item" style="background:#e6fffa"><div class="canal-type">Frontzähne</div><div class="canal-count">1 Kanal</div></div>
+        <div class="canal-item" style="background:#ebf8ff"><div class="canal-type">Prämolaren</div><div class="canal-count">1–2 Kanäle</div></div>
+        <div class="canal-item" style="background:#faf5ff"><div class="canal-type">Obere Molaren</div><div class="canal-count">3–4 Kanäle</div></div>
+        <div class="canal-item" style="background:#fff5f5"><div class="canal-type">Untere Molaren</div><div class="canal-count">3–4 Kanäle</div></div>
+      </div>
+      <p style="font-size:0.75rem;font-style:italic;color:#718096;margin-top:0.75rem">Achtung: Die tatsächliche Kanalanzahl variiert! Deshalb ist die Röntgendiagnostik so wichtig.</p>
+    </div>
+  </div>
+
+  <!-- PULPITIS -->
+  <div class="section" id="s-pulpitis">
+    <h2 class="section-title">Was ist eine Pulpitis?</h2>
+    <p class="section-sub">Wenn der Nerv sich entzündet</p>
+    <p style="font-size:0.85rem;margin-bottom:1rem">Eine <strong>Pulpitis</strong> ist eine Entzündung der Zahnpulpa (Zahnnerv). Sie entsteht meist durch Bakterien, die über eine tiefe Karies ins Zahninnere eindringen.</p>
+    <div class="compare">
+      <div class="compare-rev">
+        <div style="font-size:1.5rem;margin-bottom:0.5rem">⚠️</div>
+        <h4 style="font-weight:700;color:#92400e;margin-bottom:0.5rem">Reversible Pulpitis</h4>
+        <ul style="font-size:0.85rem;color:#78350f;list-style:none"><li>• Kurzer, stechender Schmerz bei Kälte/Wärme</li><li>• Schmerz hört auf, wenn der Reiz weg ist</li><li>• Kein Spontanschmerz</li><li>• <strong>Behandlung:</strong> Karies entfernen, Füllung → Pulpa erholt sich</li></ul>
+      </div>
+      <div class="compare-irr">
+        <div style="font-size:1.5rem;margin-bottom:0.5rem">🚨</div>
+        <h4 style="font-weight:700;color:#991b1b;margin-bottom:0.5rem">Irreversible Pulpitis</h4>
+        <ul style="font-size:0.85rem;color:#7f1d1d;list-style:none"><li>• Spontaner, pochender, anhaltender Schmerz</li><li>• Schmerz bleibt auch nach Entfernung des Reizes</li><li>• Oft nachts schlimmer</li><li>• <strong>Behandlung:</strong> Wurzelkanalbehandlung notwendig!</li></ul>
+      </div>
+    </div>
+    <div class="card card-purple" style="margin-top:1rem">
+      <div class="card-title" style="color:#553c9a">Ursachen einer Pulpitis</div>
+      <p style="font-size:0.85rem"><strong>🦠 Bakterielle Infektion:</strong> Tiefe Karies ist die häufigste Ursache</p>
+      <p style="font-size:0.85rem"><strong>💥 Trauma:</strong> Zahnunfall, Fraktur — Bakterien dringen durch Risse ein</p>
+      <p style="font-size:0.85rem"><strong>🔨 Iatrogen:</strong> Zu tiefes Präparieren bei Füllungstherapie</p>
+      <p style="font-size:0.85rem"><strong>📉 Parodontal:</strong> Infektion über tiefe Zahnfleischtaschen</p>
+    </div>
+    <div class="card card-info" style="margin-top:1rem"><strong>📚 Wissenschaftlicher Hinweis:</strong> Laut aktueller Forschung (Yong &amp; Cathro, 2021) wird auch bei der irreversiblen Pulpitis zunehmend die sog. <em>Vital Pulp Therapy</em> untersucht. In der Kassenpraxis bleibt die Wurzelkanalbehandlung jedoch die Standardtherapie.</div>
+  </div>
+
+  <!-- DIAGNOSTIK -->
+  <div class="section" id="s-diagnosis">
+    <h2 class="section-title">Diagnostik</h2>
+    <p class="section-sub">Wie erkennen wir das Problem?</p>
+    <div class="step-item"><div class="step-num" style="background:#3182ce">1</div><div><div class="step-title">Anamnese</div><div class="step-desc">Befragung des Patienten: Wo tut es weh? Seit wann? Wie fühlt sich der Schmerz an?</div></div></div>
+    <div class="step-item"><div class="step-num" style="background:#805ad5">2</div><div><div class="step-title">Sensibilitätsprüfung (ViPr) <span class="bema-tag">BEMA Nr. 8</span></div><div class="step-desc">Mit Kältespray oder CO₂-Schnee wird geprüft, ob der Zahnnerv noch reagiert.</div></div></div>
+    <div class="step-item"><div class="step-num" style="background:#d69e2e">3</div><div><div class="step-title">Perkussionstest</div><div class="step-desc">Klopfen auf den Zahn. Schmerz = Hinweis auf Entzündung an der Wurzelspitze.</div></div></div>
+    <div class="step-item"><div class="step-num" style="background:#38a169">4</div><div><div class="step-title">Röntgenaufnahme (Rö) <span class="bema-tag">BEMA Ä925a</span></div><div class="step-desc">Zeigt: Tiefe der Karies, Zustand der Wurzelspitze, Anzahl und Verlauf der Kanäle.</div></div></div>
+    <div class="step-item"><div class="step-num" style="background:#e53e3e">5</div><div><div class="step-title">Diagnosestellung</div><div class="step-desc">Auf Basis aller Befunde: Ist der Zahn erhaltungswürdig? Ist eine WKB indiziert?</div></div></div>
+  </div>
+
+  <!-- ABLAUF -->
+  <div class="section" id="s-steps">
+    <h2 class="section-title">Ablauf der Behandlung</h2>
+    <p class="section-sub">Schritt für Schritt</p>
+
+    <div class="session"><div class="session-header" style="background:#3182ce">Sitzung 1 — Eröffnung &amp; Erstversorgung</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#3182ce">1</div><div><div class="step-title">Anästhesie <span class="bema-tag">I/40 oder L1/41a</span></div><div class="step-desc">Örtliche Betäubung.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">2</div><div><div class="step-title">Kofferdam anlegen <span class="bema-tag">bMF/12</span></div><div class="step-desc">Spanngummi um den Zahn → Isolation vom Speichel.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">3</div><div><div class="step-title">Trepanation <span class="bema-tag">Trep1/31</span></div><div class="step-desc">Eröffnung der Zahnkrone, Zugang zur Pulpakammer.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">4</div><div><div class="step-title">Exstirpation <span class="bema-tag">VitE/28</span></div><div class="step-desc">Entfernung der entzündeten Pulpa.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">5</div><div><div class="step-title">Spülung &amp; med. Einlage <span class="bema-tag">Med/34</span></div><div class="step-desc">Spülen mit NaOCl. Calciumhydroxid als Zwischeneinlage. Prov. Verschluss.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">6</div><div><div class="step-title">Röntgenkontrolle <span class="bema-tag">Rö/Ä925a</span></div><div class="step-desc">Messaufnahme zur Bestimmung der Arbeitslänge.</div></div></div>
+    </div></div>
+
+    <div class="session"><div class="session-header" style="background:#805ad5">Sitzung 2 — Aufbereitung &amp; Füllung</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#805ad5">1</div><div><div class="step-title">Ggf. Anästhesie</div><div class="step-desc">Bei Bedarf erneute Betäubung.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">2</div><div><div class="step-title">Aufbereitung <span class="bema-tag">WK/32</span></div><div class="step-desc">Mechanische Erweiterung der Kanäle mit Feilen und NiTi-Instrumenten.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">3</div><div><div class="step-title">Röntgenmessaufnahme <span class="bema-tag">Rö/Ä925a</span></div><div class="step-desc">Kontrolle der Arbeitslänge.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">4</div><div><div class="step-title">Wurzelfüllung <span class="bema-tag">WF/35, je Kanal!</span></div><div class="step-desc">Guttapercha-Stifte mit Sealer einbringen und kondensieren.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">5</div><div><div class="step-title">Röntgenkontrolle <span class="bema-tag">Rö/Ä925a</span></div><div class="step-desc">Sind alle Kanäle bis zur Wurzelspitze dicht gefüllt?</div></div></div>
+    </div></div>
+
+    <div class="session"><div class="session-header" style="background:#38a169">Sitzung 3 — Definitive Versorgung</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#38a169">1</div><div><div class="step-title">Definitive Füllung <span class="bema-tag">F1–F4 / 13a–d</span></div><div class="step-desc">Verschluss der Zugangskavität.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">2</div><div><div class="step-title">Ggf. Überkronung</div><div class="step-desc">Seitenzähne nach WKB sind spröder → Krone empfohlen.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">3</div><div><div class="step-title">Recall nach 6–12 Monaten</div><div class="step-desc">Röntgenkontrolle: Hat sich die Entzündung zurückgebildet?</div></div></div>
+    </div></div>
+
+    <div class="card card-warn"><strong>⚠️ Wichtig:</strong> Der Ablauf kann variieren! Bei akuten Infektionen kann eine zusätzliche Sitzung mit Medikamentenwechsel notwendig sein.</div>
+  </div>
+
+  <!-- INSTRUMENTE -->
+  <div class="section" id="s-instruments">
+    <h2 class="section-title">Instrumente &amp; Materialien</h2>
+    <p class="section-sub">Was liegt auf dem Tray?</p>
+    <div class="instr-grid">
+      <div class="instr-card" style="border-top-color:#3182ce"><div class="instr-cat" style="color:#3182ce">Diagnostik</div><ul class="instr-list"><li>• Kältespray / CO₂-Schnee</li><li>• Perkussionsinstrument</li><li>• Sonde</li></ul></div>
+      <div class="instr-card" style="border-top-color:#805ad5"><div class="instr-cat" style="color:#805ad5">Zugang &amp; Isolation</div><ul class="instr-list"><li>• Kofferdam-Set</li><li>• Diamant- und Hartmetallbohrer</li><li>• Rosenbohrer</li></ul></div>
+      <div class="instr-card" style="border-top-color:#e53e3e"><div class="instr-cat" style="color:#e53e3e">Aufbereitung</div><ul class="instr-list"><li>• Handfeilen (K-Feilen, Hedström)</li><li>• Rotierende NiTi-Feilen</li><li>• Extirpationsnadeln</li><li>• Endometrie-Gerät</li><li>• Spülkanülen + NaOCl, EDTA, CHX</li></ul></div>
+      <div class="instr-card" style="border-top-color:#38a169"><div class="instr-cat" style="color:#38a169">Füllung</div><ul class="instr-list"><li>• Guttapercha-Stifte</li><li>• Sealer (z. B. AH Plus)</li><li>• Papierspitzen</li><li>• Spreader / Plugger</li><li>• Prov. Verschluss (Cavit)</li></ul></div>
+    </div>
+    <div class="card card-green" style="margin-top:1rem"><strong>🔗 Querverweis:</strong> Detaillierte Instrumentenaufstellung für das Endodontie-Tray finden Sie in der Instrumentenübersicht im Lernportal unter „Trays".</div>
+  </div>
+
+  <!-- ZFA -->
+  <div class="section" id="s-zfa">
+    <h2 class="section-title">Die Rolle der ZFA</h2>
+    <p class="section-sub">Was ist meine Aufgabe?</p>
+    <div class="phase"><div class="phase-title">📋 Vor der Behandlung</div><ul class="phase-list"><li>✓ Endodontie-Tray vorbereiten und auf Vollständigkeit prüfen</li><li>✓ Kofferdam-Set bereitlegen</li><li>✓ Spüllösungen anmischen/bereitlegen (NaOCl, EDTA)</li><li>✓ Röntgengerät vorbereiten</li><li>✓ Patient aufklären und beruhigen</li></ul></div>
+    <div class="phase"><div class="phase-title">🤝 Während der Behandlung</div><ul class="phase-list"><li>✓ Absaugen — besonders wichtig beim Spülen!</li><li>✓ Instrumente anreichen</li><li>✓ Feilenlängen notieren und kontrollieren</li><li>✓ Spüllösungen nachfüllen</li><li>✓ Röntgenbilder anfertigen</li><li>✓ Papierspitzen und Guttapercha-Stifte anreichen</li></ul></div>
+    <div class="phase"><div class="phase-title">✅ Nach der Behandlung</div><ul class="phase-list"><li>✓ Instrumente aufbereiten (Achtung: feine Feilen!)</li><li>✓ Behandlung dokumentieren (Kanallängen, ISO-Größen)</li><li>✓ BEMA-Positionen abrechnen</li><li>✓ Nächsten Termin vereinbaren</li><li>✓ Patienten über Nachsorge informieren</li></ul></div>
+    <div class="card card-danger"><strong>🚨 Hygiene-Hinweis:</strong> Endodontie-Instrumente sind Einmalartikel oder müssen nach KRINKO/RKI als „kritisch B" aufbereitet werden. NiTi-Feilen auf Frakturrisiko prüfen!</div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="section" id="s-quiz">
+    <h2 class="section-title">Wissens-Quiz</h2>
+    <p class="section-sub">Teste dein Wissen! 10 Fragen zur Wurzelkanalbehandlung.</p>
+    <div id="qz"></div>
+  </div>
+
+  <div class="nav-arrows">
+    <button class="nav-arrow prev" id="bp" onclick="prev()">← Zurück</button>
+    <button class="nav-arrow next" id="bn" onclick="next()">Weiter →</button>
+  </div>
+
+  <div class="sources">
+    <div class="sources-title">📚 Quellen &amp; weiterführende Literatur</div>
+    <ul>
+      <li>• Yong D, Cathro P. Conservative pulp therapy. <em>Aust Dent J.</em> 2021;66 Suppl 1:S4-S14. <a href="https://doi.org/10.1111/adj.12841" target="_blank">DOI</a></li>
+      <li>• Carrotte P. Endodontics. <em>Br Dent J.</em> 2004;197(4):179. <a href="https://doi.org/10.1038/sj.bdj.4811582" target="_blank">DOI</a></li>
+      <li>• Naladkar K et al. Endodontic Irrigants. <em>Cureus.</em> 2024;16(8):e66981. <a href="https://doi.org/10.7759/cureus.66981" target="_blank">DOI</a></li>
+      <li>• Hülsmann M. <em>Endodontie (Checklisten Zahnmedizin).</em> Thieme, 2008.</li>
+      <li>• Weber T. <em>Memorix Zahnmedizin.</em> 5. Aufl. Thieme, 2017.</li>
+      <li>• BLZK Hilfsliste BEMA Teil 1, Stand 02/2025.</li>
+    </ul>
+  </div>
+  <div class="footer">FRYDENT Zahnärzte in Bonndorf · Lernportal · Endodontie-Modul<br>Stand: Februar 2026</div>
+</div>
+
+<script>
+var ids=['anatomy','pulpitis','diagnosis','steps','instruments','zfa','quiz'],ci=0;
+function go(id,btn){document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active')});document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active')});document.getElementById('s-'+id).classList.add('active');if(btn)btn.classList.add('active');else document.querySelectorAll('.nav-btn')[ids.indexOf(id)].classList.add('active');ci=ids.indexOf(id);ua();window.scrollTo({top:0,behavior:'smooth'});if(id==='quiz')rq();}
+function prev(){if(ci>0)go(ids[ci-1])}
+function next(){if(ci<ids.length-1)go(ids[ci+1])}
+function ua(){document.getElementById('bp').disabled=ci===0;document.getElementById('bn').disabled=ci===ids.length-1;}
+
+var qs=[
+{q:"Aus welchen drei Hauptschichten besteht ein Zahn (von außen nach innen)?",o:["Zahnschmelz → Dentin → Pulpa","Dentin → Zahnschmelz → Pulpa","Pulpa → Dentin → Zahnschmelz","Zahnschmelz → Pulpa → Dentin"],c:0,e:"Zahnschmelz bildet die äußere Schutzschicht, darunter Dentin, im Inneren die Pulpa."},
+{q:"Was ist der Unterschied zwischen reversibler und irreversibler Pulpitis?",o:["Der Zahn ist bei reversibler bereits abgestorben","Bei irreversibler heilt die Entzündung nicht mehr von selbst","Es gibt keinen Unterschied","Die reversible ist schmerzhafter"],c:1,e:"Bei reversibler Pulpitis erholt sich die Pulpa. Bei irreversibler ist eine WKB nötig."},
+{q:"Welches Instrument wird bei der Sensibilitätsprüfung (ViPr) verwendet?",o:["Eine Kürette","Kältespray oder elektrischer Pulpatester","Ein Scaler","Ein Guttaperchastift"],c:1,e:"Sensibilitätsprüfung erfolgt mit Kältereizen oder elektrischem Pulpatester."},
+{q:"Wozu dient der Kofferdam?",o:["Zur Betäubung","Zur Isolation vom Speichel und Schutz vor Verschlucken","Zur Füllung des Kanals","Zur Röntgenaufnahme"],c:1,e:"Kofferdam isoliert den Zahn, verhindert Speichelkontamination und schützt vor Verschlucken."},
+{q:"Was bedeutet 'Trepanation' (Trep1)?",o:["Füllen des Kanals","Eröffnen des Zahnes für Zugang zum Kanalsystem","Ziehen des Zahnes","Röntgen des Zahnes"],c:1,e:"Trepanation = Eröffnung der Zahnkrone für Zugang zur Pulpakammer."},
+{q:"Welches Material wird für die Wurzelkanalfüllung verwendet?",o:["Amalgam","Komposit","Guttapercha mit Sealer","Glasionomerzement"],c:2,e:"Guttapercha mit Sealer verschließt den Kanal bakteriendicht."},
+{q:"Wie viele Kanäle hat ein typischer unterer Molar (z. B. Zahn 36)?",o:["1 Kanal","2 Kanäle","3–4 Kanäle","5 Kanäle"],c:2,e:"Untere Molaren haben typischerweise 3–4 Kanäle."},
+{q:"Warum ist die Spülung des Wurzelkanals so wichtig?",o:["Sie macht den Kanal breiter","Sie betäubt den Nerv","Sie desinfiziert und entfernt Reste, die Instrumente nicht erreichen","Sie füllt den Kanal"],c:2,e:"Die Spülung ist der Erfolgsfaktor Nr. 1 — Instrumente erreichen nur ca. 60% der Oberfläche."},
+{q:"Was wird bei der medikamentösen Einlage (Med) eingebracht?",o:["Guttapercha","Calciumhydroxid (Ca(OH)₂)","Fluoridlack","Komposit"],c:1,e:"Calciumhydroxid wirkt antibakteriell (pH ca. 12,5) und fördert die Ausheilung."},
+{q:"Wann ist eine Wurzelkanalbehandlung NICHT mehr möglich?",o:["Wenn der Patient Angst hat","Wenn der Zahn tiefe Karies hat","Wenn der Zahn nicht restaurierbar ist (z. B. Längsfraktur)","Wenn der Patient keine Betäubung möchte"],c:2,e:"Bei Längsfraktur oder unhaltbarem Parodontalzustand ist eine Extraktion nötig."}
+];
+var qi=0,ans=[];
+function rq(){var c=document.getElementById('qz');if(ans.length===qs.length){rr(c);return;}var q=qs[qi],done=ans.length>qi;var dots='<div class="quiz-progress" style="margin-bottom:1rem">';for(var i=0;i<qs.length;i++){var cl='quiz-dot';if(i<ans.length)cl+=ans[i]===qs[i].c?' correct':' wrong';else if(i===qi)cl+=' current';dots+='<div class="'+cl+'"></div>';}dots+='</div>';var h='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem"><span style="font-size:0.85rem;font-weight:700;color:#4a5568">Frage '+(qi+1)+' von '+qs.length+'</span>'+dots+'</div><div class="card"><div class="quiz-question">'+q.q+'</div>';for(var i=0;i<q.o.length;i++){var cl='quiz-option';if(done){if(i===q.c)cl+=' show-correct';if(i===ans[qi]&&i!==q.c)cl+=' selected-wrong';}h+='<button class="'+cl+'" '+(done?'disabled':'')+' onclick="aq('+i+')"><strong>'+String.fromCharCode(65+i)+'.</strong> '+q.o[i]+'</button>';}if(done){var ok=ans[qi]===q.c;h+='<div class="quiz-explanation '+(ok?'ok':'nok')+'"><strong>'+(ok?'✅ Richtig!':'❌ Leider falsch.')+'</strong> '+q.e+'</div>';}h+='</div>';c.innerHTML=h;}
+function aq(i){if(ans.length>qi)return;ans.push(i);rq();setTimeout(function(){if(qi<qs.length-1){qi++;rq();}else{rq();}},2200);}
+function rr(c){var ok=0;for(var i=0;i<qs.length;i++)if(ans[i]===qs[i].c)ok++;var p=Math.round(ok/qs.length*100),g=p>=70;var h='<div class="quiz-result '+(g?'pass':'fail')+'"><div style="font-size:3rem">'+(g?'🎉':'📚')+'</div><div class="quiz-score" style="color:'+(g?'#276749':'#744210')+'">'+ok+' / '+qs.length+' richtig ('+p+'%)</div><p style="font-size:0.85rem;color:#4a5568">'+(p>=90?'Ausgezeichnet! Sie sind bereit für die Praxis!':p>=70?'Gut gemacht! Lesen Sie die falschen Antworten noch einmal nach.':'Noch etwas Übung nötig.')+'</p><button class="quiz-btn" onclick="xq()">Quiz wiederholen</button></div><h4 style="font-weight:700;font-size:0.9rem;margin:1rem 0 0.75rem">Auswertung:</h4>';for(var i=0;i<qs.length;i++){var v=ans[i]===qs[i].c;h+='<div class="review-item '+(v?'ok':'nok')+'"><span>'+(v?'✅':'❌')+'</span><div><p style="font-weight:700">'+qs[i].q+'</p><p style="margin-top:0.25rem">'+qs[i].e+'</p></div></div>';}c.innerHTML=h;}
+function xq(){qi=0;ans=[];rq();}
+ua();
+</script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT &#8211; Kronen &amp; Br&#252;cken: Informationen f&#252;r Patienten</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Source Sans 3', 'Segoe UI', sans-serif; background: linear-gradient(180deg, #f0f4f8 0%, #e8ecf1 100%); color: #2d3748; line-height: 1.7; }
+
+.header { background: linear-gradient(135deg, #1a365d 0%, #2a4a7f 50%, #2b6cb0 100%); border-bottom: 4px solid #63b3ed; padding: 2rem 1.5rem; }
+.header-inner { max-width: 800px; margin: 0 auto; }
+.tags { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+.tag { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }
+.tag-brand { background: rgba(255,255,255,0.15); color: #bee3f8; }
+.tag-patient { background: rgba(99,179,237,0.2); color: #90cdf4; }
+h1 { font-family: 'Merriweather', serif; font-size: 2rem; color: white; margin-bottom: 0.5rem; line-height: 1.2; }
+.subtitle { color: #bee3f8; font-size: 0.9rem; }
+.meta { display: flex; gap: 1.5rem; margin-top: 1rem; color: #90cdf4; font-size: 0.75rem; }
+
+.content { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+
+.nav { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; margin-bottom: 2rem; -webkit-overflow-scrolling: touch; }
+.nav::-webkit-scrollbar { display: none; }
+.nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; white-space: nowrap; border: 1px solid #e2e8f0; background: white; color: #4a5568; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+.nav-btn:hover { border-color: #1a365d; color: #1a365d; }
+.nav-btn.active { background: #1a365d; color: white; border-color: #1a365d; box-shadow: 0 4px 12px rgba(26,54,93,0.3); }
+
+.section { display: none; }
+.section.active { display: block; }
+.section-title { font-family: 'Merriweather', serif; font-size: 1.5rem; color: #1a365d; margin-bottom: 0.25rem; }
+.section-sub { color: #718096; font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+.card { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; }
+.card-blue { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%); border: 1px solid #c8dff0; }
+.card-yellow { background: #fff9f0; border: 1px solid #f0dcc0; }
+.card-green { background: #f0fff4; border: 1px solid #c6f6d5; }
+.card-purple { background: #f8f4ff; border: 1px solid #d6bcfa; }
+.card-info { background: #ebf8ff; border: 1px solid #90cdf4; color: #2b6cb0; font-size: 0.85rem; }
+.card-warn { background: #fffbeb; border: 1px solid #f6d860; color: #744210; font-size: 0.85rem; }
+.card-frydent { background: linear-gradient(135deg, #1a365d 0%, #2a4a7f 100%); border: none; color: white; }
+.card-title { font-family: 'Merriweather', serif; font-weight: 700; margin-bottom: 0.75rem; }
+
+.layers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.layer { background: white; border-radius: 0.75rem; padding: 1rem; }
+.layer-label { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; }
+
+.type-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
+.type-item { border-radius: 0.75rem; padding: 1rem; }
+.type-name { font-size: 0.85rem; font-weight: 700; color: #1a365d; margin-bottom: 0.25rem; }
+.type-desc { font-size: 0.8rem; color: #4a5568; }
+
+.compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+
+.step-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; }
+.step-num { width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+.step-title { font-weight: 700; font-size: 0.9rem; color: #1a202c; }
+.step-desc { font-size: 0.85rem; color: #4a5568; margin-top: 0.25rem; }
+
+.session { border: 1px solid #e2e8f0; border-radius: 1rem; overflow: hidden; margin-bottom: 1.25rem; }
+.session-header { padding: 0.75rem 1.25rem; color: white; font-weight: 700; font-size: 0.9rem; }
+.session-body { padding: 1.25rem; background: white; }
+
+.cost-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 0.75rem; overflow: hidden; margin: 1rem 0; font-size: 0.85rem; }
+.cost-table th { background: #1a365d; color: white; padding: 0.75rem 1rem; text-align: left; font-weight: 700; }
+.cost-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; }
+.cost-table tr:last-child td { border-bottom: none; }
+.cost-table tr:nth-child(even) td { background: #f7fafc; }
+.cost-highlight { background: #f0fff4 !important; font-weight: 700; color: #276749; }
+
+.lab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 1rem 0; }
+.lab-card { border-radius: 1rem; padding: 1.5rem; position: relative; }
+.lab-premium { background: linear-gradient(135deg, #fefcbf 0%, #fef3c7 100%); border: 2px solid #d69e2e; }
+.lab-smart { background: linear-gradient(135deg, #e8f4f8 0%, #ebf8ff 100%); border: 2px solid #3182ce; }
+.lab-badge { position: absolute; top: -0.5rem; right: 1rem; padding: 0.2rem 0.75rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; color: white; }
+.lab-name { font-family: 'Merriweather', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+
+.care-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.care-item { background: white; border-radius: 0.75rem; padding: 1rem; border: 1px solid #e2e8f0; text-align: center; }
+.care-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.care-title { font-weight: 700; font-size: 0.85rem; color: #1a365d; margin-bottom: 0.25rem; }
+.care-desc { font-size: 0.8rem; color: #4a5568; }
+
+.contact-box { background: linear-gradient(135deg, #1a365d 0%, #2a4a7f 100%); border-radius: 1rem; padding: 1.5rem; color: white; text-align: center; margin: 1.5rem 0; }
+.contact-box h3 { font-family: 'Merriweather', serif; font-size: 1.2rem; margin-bottom: 0.75rem; }
+.contact-info { font-size: 0.9rem; line-height: 2; }
+.contact-info a { color: #90cdf4; text-decoration: none; }
+
+.faq-item { background: white; border: 1px solid #e2e8f0; border-radius: 0.75rem; margin-bottom: 0.5rem; overflow: hidden; }
+.faq-q { padding: 1rem 1.25rem; font-weight: 700; font-size: 0.9rem; color: #1a365d; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-q:hover { background: #f7fafc; }
+.faq-a { padding: 0 1.25rem 1rem; font-size: 0.85rem; color: #4a5568; display: none; }
+.faq-item.open .faq-a { display: block; }
+.faq-arrow { transition: transform 0.2s; font-size: 0.75rem; color: #a0aec0; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+.nav-arrows { display: flex; justify-content: space-between; margin: 2rem 0; }
+.nav-arrow { padding: 0.6rem 1.25rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; border: 1px solid #e2e8f0; cursor: pointer; font-family: inherit; }
+.nav-arrow.prev { background: white; color: #3182ce; }
+.nav-arrow.next { background: #1a365d; color: white; border-color: #1a365d; }
+.nav-arrow:disabled { background: #edf2f7!important; color: #a0aec0!important; border-color: #e2e8f0!important; cursor: default; }
+
+.footer { text-align: center; font-size: 0.7rem; color: #a0aec0; padding-bottom: 2rem; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.5rem; }
+  .meta { flex-direction: column; gap: 0.25rem; }
+  .layers, .compare, .type-grid, .lab-grid, .care-grid { grid-template-columns: 1fr; }
+  .cost-table { font-size: 0.75rem; }
+  .cost-table th, .cost-table td { padding: 0.5rem 0.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="tags">
+      <span class="tag tag-brand">FRYDENT Zahn&#228;rzte</span>
+      <span class="tag tag-patient">Patienteninformation</span>
+    </div>
+    <h1>Kronen &amp; Br&#252;cken</h1>
+    <p class="subtitle">Damit jeder Zahn wieder komplett wird &#8211; verst&#228;ndlich erkl&#228;rt f&#252;r unsere Patienten.</p>
+    <div class="meta">
+      <span>&#128214; ca. 8 Min. Lesezeit</span>
+      <span>&#128161; Verst&#228;ndlich erkl&#228;rt</span>
+      <span>&#9989; Mit Kosten&#252;bersicht</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="nav" id="nav">
+    <button class="nav-btn active" onclick="go('what',this)">&#129463; Was ist das?</button>
+    <button class="nav-btn" onclick="go('how',this)">&#9881;&#65039; So l&#228;uft es ab</button>
+    <button class="nav-btn" onclick="go('costs',this)">&#128176; Kosten</button>
+    <button class="nav-btn" onclick="go('labs',this)">&#127942; Unsere Labore</button>
+    <button class="nav-btn" onclick="go('care',this)">&#128150; Nachsorge</button>
+    <button class="nav-btn" onclick="go('faq',this)">&#10067; H&#228;ufige Fragen</button>
+  </div>
+
+  <!-- WAS IST DAS? -->
+  <div class="section active" id="s-what">
+    <h2 class="section-title">Was sind Kronen &amp; Br&#252;cken?</h2>
+    <p class="section-sub">Einfach und verst&#228;ndlich erkl&#228;rt</p>
+
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">Ihr Zahn braucht Hilfe? Wir haben die L&#246;sung.</div>
+      <div class="layers">
+        <div class="layer" style="border-left:4px solid #D69E2E">
+          <div class="layer-label" style="color:#D69E2E">&#128081; Die Krone &#8211; ein Schutzhelm f&#252;r Ihren Zahn</div>
+          <p style="font-size:0.85rem">Wenn ein Zahn stark besch&#228;digt ist &#8211; zum Beispiel durch tiefe Karies oder nach einer Wurzelbehandlung &#8211; kann eine einfache F&#252;llung nicht mehr ausreichen. Eine Krone umh&#252;llt den Zahn wie eine sch&#252;tzende Kappe und gibt ihm seine nat&#252;rliche Form, Farbe und Funktion zur&#252;ck.</p>
+        </div>
+        <div class="layer" style="border-left:4px solid #3182ce">
+          <div class="layer-label" style="color:#3182ce">&#127753; Die Br&#252;cke &#8211; wenn ein Zahn fehlt</div>
+          <p style="font-size:0.85rem">Fehlt ein Zahn, entsteht eine L&#252;cke. Eine Br&#252;cke schlie&#223;t diese L&#252;cke, indem sie fest an den Nachbarz&#228;hnen verankert wird. Sie sieht aus wie echte Z&#228;hne und sitzt so fest, dass Sie ganz normal essen und sprechen k&#246;nnen.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-yellow">
+      <div class="card-title" style="color:#8b6914">&#128161; Wann brauche ich eine Krone oder Br&#252;cke?</div>
+      <p style="font-size:0.85rem">&#129463; Ihr Zahn ist <strong>stark durch Karies zerst&#246;rt</strong> und eine F&#252;llung reicht nicht mehr</p>
+      <p style="font-size:0.85rem">&#128295; Ihr Zahn wurde <strong>wurzelbehandelt</strong> und braucht zus&#228;tzlichen Schutz</p>
+      <p style="font-size:0.85rem">&#128148; Ein Zahn <strong>fehlt</strong> und die L&#252;cke soll geschlossen werden</p>
+      <p style="font-size:0.85rem">&#128142; Sie w&#252;nschen sich eine <strong>sch&#246;nere Zahnform oder Zahnfarbe</strong></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="color:#1a365d">Welche M&#246;glichkeiten gibt es?</div>
+      <div class="type-grid">
+        <div class="type-item" style="background:#fff9f0; border: 1px solid #f0dcc0;">
+          <div class="type-name">Metallkrone</div>
+          <div class="type-desc">Robust und langlebig. Nicht zahnfarben, daher eher f&#252;r den hinteren Bereich. Kassenleistung im Seitenzahnbereich.</div>
+        </div>
+        <div class="type-item" style="background:#f0f7ff; border: 1px solid #c8dff0;">
+          <div class="type-name">Verblendkrone</div>
+          <div class="type-desc">Metall innen, Keramik au&#223;en &#8211; so sieht der Zahn nat&#252;rlich aus. Der Klassiker f&#252;r den sichtbaren Bereich.</div>
+        </div>
+        <div class="type-item" style="background:#f8f4ff; border: 1px solid #d6bcfa;">
+          <div class="type-name">Vollkeramik</div>
+          <div class="type-desc">Komplett metallfrei, naturgem&#228;&#223;e Sch&#246;nheit. Ideal f&#252;r die Frontz&#228;hne und bei Metallallergien. Hochwertigste L&#246;sung.</div>
+        </div>
+        <div class="type-item" style="background:#f0fff4; border: 1px solid #c6f6d5;">
+          <div class="type-name">Teilkrone</div>
+          <div class="type-desc">Bedeckt nur den besch&#228;digten Teil des Zahnes. Schonender, da mehr eigene Zahnsubstanz erhalten bleibt.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-frydent">
+      <p style="font-size:0.9rem">&#128172; <strong>Unser Versprechen:</strong> Wir bei FRYDENT nehmen uns Zeit, Ihnen alle M&#246;glichkeiten genau zu erkl&#228;ren &#8211; transparent, verst&#228;ndlich und ohne Druck. Gemeinsam finden wir die L&#246;sung, die zu Ihnen, Ihren W&#252;nschen und Ihrem Budget passt.</p>
+    </div>
+  </div>
+
+  <!-- ABLAUF -->
+  <div class="section" id="s-how">
+    <h2 class="section-title">So l&#228;uft die Behandlung ab</h2>
+    <p class="section-sub">Schritt f&#252;r Schritt &#8211; damit Sie wissen, was Sie erwartet</p>
+
+    <div class="session"><div class="session-header" style="background:#3182ce">&#128203; Schritt 1 &#8211; Beratung &amp; Planung</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#3182ce">1</div><div><div class="step-title">Untersuchung</div><div class="step-desc">Wir schauen uns Ihren Zahn genau an &#8211; mit R&#246;ntgenbild und klinischer Untersuchung.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">2</div><div><div class="step-title">Beratungsgespr&#228;ch</div><div class="step-desc">Welche M&#246;glichkeiten gibt es? Was zahlt die Kasse? Was kostet es Sie? Wir erkl&#228;ren alles in Ruhe.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">3</div><div><div class="step-title">Heil- und Kostenplan (HKP)</div><div class="step-desc">Wir erstellen einen detaillierten Plan mit allen Kosten. Diesen reichen wir bei Ihrer Krankenkasse ein. <strong>Erst nach der Genehmigung</strong> beginnen wir mit der Behandlung.</div></div></div>
+    </div></div>
+
+    <div class="session"><div class="session-header" style="background:#805ad5">&#129463; Schritt 2 &#8211; Vorbereitung des Zahnes</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#805ad5">1</div><div><div class="step-title">Bet&#228;ubung</div><div class="step-desc">Der Zahn wird &#246;rtlich bet&#228;ubt &#8211; <strong>Sie sp&#252;ren nichts</strong> w&#228;hrend der Behandlung.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">2</div><div><div class="step-title">Zahn vorbereiten</div><div class="step-desc">Der Zahn wird vorsichtig in Form geschliffen, damit die Krone perfekt darauf passt.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">3</div><div><div class="step-title">Abdruck nehmen</div><div class="step-desc">Mit einer pr&#228;zisen Abformmasse oder einem digitalen Scanner erstellen wir ein exaktes Modell Ihres Zahnes f&#252;r das Labor.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">4</div><div><div class="step-title">Zahnfarbe bestimmen</div><div class="step-desc">Wir w&#228;hlen die Farbe so, dass die Krone perfekt zu Ihren nat&#252;rlichen Z&#228;hnen passt.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">5</div><div><div class="step-title">Provisorium einsetzen</div><div class="step-desc">Sie erhalten sofort eine provisorische Krone aus Kunststoff, damit Ihr Zahn gesch&#252;tzt ist und Sie normal essen k&#246;nnen.</div></div></div>
+    </div></div>
+
+    <div class="session"><div class="session-header" style="background:#38a169">&#10024; Schritt 3 &#8211; Einsetzen der fertigen Krone/Br&#252;cke</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#38a169">1</div><div><div class="step-title">Anprobe</div><div class="step-desc">Wir pr&#252;fen: Sitzt alles perfekt? Stimmt die Farbe? F&#252;hlt sich der Biss richtig an?</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">2</div><div><div class="step-title">Einsetzen</div><div class="step-desc">Die Krone oder Br&#252;cke wird dauerhaft mit speziellem Zement befestigt. Sie sitzt bombenfest!</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">3</div><div><div class="step-title">Feinschliff</div><div class="step-desc">Wir kontrollieren den Biss, polieren die R&#228;nder und sorgen daf&#252;r, dass alles perfekt sitzt.</div></div></div>
+    </div></div>
+
+    <div class="card card-info"><strong>&#8987; Zeitrahmen:</strong> Von der ersten Untersuchung bis zum fertigen Zahnersatz vergehen in der Regel <strong>2&#8211;4 Wochen</strong> (inkl. Genehmigung durch die Kasse und Laborarbeit). In dieser Zeit tragen Sie ein Provisorium.</div>
+  </div>
+
+  <!-- KOSTEN -->
+  <div class="section" id="s-costs">
+    <h2 class="section-title">Was kostet das?</h2>
+    <p class="section-sub">Transparent und fair &#8211; so rechnen wir ab</p>
+
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">&#128176; So funktioniert die Kostenerstattung</div>
+      <p style="font-size:0.85rem">Ihre <strong>gesetzliche Krankenkasse</strong> bezahlt einen festen Zuschuss (&#8222;Festzuschuss&#8220;) &#8211; unabh&#228;ngig davon, welches Material Sie w&#228;hlen. Den Rest tragen Sie selbst als Eigenanteil.</p>
+      <p style="font-size:0.85rem; margin-top:0.5rem">Der Festzuschuss betr&#228;gt mindestens <strong>60%</strong> der Regelversorgung. Mit einem gut gef&#252;hrten <strong>Bonusheft</strong> steigt er:</p>
+    </div>
+
+    <table class="cost-table">
+      <tr><th>Bonusheft</th><th>Zuschuss</th><th>Ihr Eigenanteil</th></tr>
+      <tr><td>Ohne / unregelm&#228;&#223;ig</td><td>60%</td><td>40%</td></tr>
+      <tr><td>5 Jahre regelm&#228;&#223;ig</td><td>70%</td><td>30%</td></tr>
+      <tr class="cost-highlight"><td><strong>10 Jahre regelm&#228;&#223;ig</strong></td><td><strong>75%</strong></td><td><strong>25%</strong></td></tr>
+    </table>
+
+    <div class="card card-yellow">
+      <div class="card-title" style="color:#8b6914">&#128200; Rechenbeispiele (Stand 2026)</div>
+      <table class="cost-table">
+        <tr><th>Versorgung</th><th>Gesamtkosten*</th><th>Kasse zahlt (60&#8211;75%)</th><th>Ihr Anteil</th></tr>
+        <tr><td><strong>Krone</strong> (Seitenzahn, Metall)</td><td>ca. 398 &#8364;</td><td>239&#8211;299 &#8364;</td><td>ca. 99&#8211;159 &#8364;</td></tr>
+        <tr><td><strong>Br&#252;cke</strong> (1 Zahn, Metall)</td><td>ca. 922 &#8364;</td><td>553&#8211;691 &#8364;</td><td>ca. 231&#8211;369 &#8364;</td></tr>
+        <tr><td><strong>Vollkeramikkrone</strong></td><td>ca. 700&#8211;1.200 &#8364;</td><td>239&#8211;299 &#8364;**</td><td>ca. 400&#8211;900 &#8364;</td></tr>
+        <tr><td><strong>Keramikbr&#252;cke</strong></td><td>ca. 1.500&#8211;2.500 &#8364;</td><td>553&#8211;691 &#8364;**</td><td>ca. 800&#8211;1.800 &#8364;</td></tr>
+      </table>
+      <p style="font-size:0.75rem;color:#8b6914;margin-top:0.5rem">* Regelversorgung laut Festzuschuss-Richtlinie. Tats&#228;chliche Kosten abh&#228;ngig von Laborwahl und individuellem Befund.</p>
+      <p style="font-size:0.75rem;color:#8b6914">** Der Festzuschuss bleibt gleich &#8211; unabh&#228;ngig vom gew&#228;hlten Material.</p>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-title" style="color:#276749">&#128154; H&#228;rtefallregelung &#8211; f&#252;r Geringverdiener</div>
+      <p style="font-size:0.85rem">Wenn Ihr monatliches Bruttoeinkommen unter <strong>1.582 &#8364;</strong> (Alleinstehende, Stand 2026) liegt, &#252;bernimmt Ihre Krankenkasse <strong>100% der Regelversorgung</strong>. Auch bei etwas h&#246;herem Einkommen kann ein erh&#246;hter Zuschuss m&#246;glich sein. Sprechen Sie uns an &#8211; wir helfen Ihnen gerne!</p>
+    </div>
+
+    <div class="card card-info"><strong>&#128161; Unser Tipp:</strong> Bringen Sie Ihr <strong>Bonusheft</strong> zu jedem Termin mit! Die regelm&#228;&#223;ige Vorsorge kann Ihnen bei Zahnersatz Hunderte Euro sparen.</div>
+  </div>
+
+  <!-- LABORE -->
+  <div class="section" id="s-labs">
+    <h2 class="section-title">Unsere Labore &#8211; Ihre Wahl</h2>
+    <p class="section-sub">Qualit&#228;t, der Sie vertrauen k&#246;nnen</p>
+
+    <div class="card card-blue">
+      <p style="font-size:0.85rem">Bei FRYDENT haben Sie die Wahl: F&#252;r jeden Zahnersatz, der im Labor angefertigt wird, pr&#228;sentieren wir Ihnen <strong>immer zwei Varianten</strong> &#8211; damit Sie die L&#246;sung finden, die am besten zu Ihren W&#252;nschen und Ihrem Budget passt.</p>
+    </div>
+
+    <div class="lab-grid">
+      <div class="lab-card lab-premium">
+        <div class="lab-badge" style="background:#d69e2e">Premium</div>
+        <div style="font-size:2rem;margin-bottom:0.5rem">&#127942;</div>
+        <div class="lab-name" style="color:#92400e">G&#228;ssler Dental-Technik</div>
+        <p style="font-size:0.8rem;color:#78350f;margin-bottom:0.75rem;font-style:italic">Wendlingen am Neckar (Raum Stuttgart)</p>
+        <p style="font-size:0.85rem;color:#78350f">Deutsches Meisterlabor mit &#252;ber 20 Jahren Erfahrung. Zahntechnikermeister Oliver Hutter und sein Team fertigen Ihren Zahnersatz <strong>ausschlie&#223;lich in Deutschland</strong> &#8211; mit h&#246;chster Pr&#228;zision und <strong>k&#252;nstlerischem Anspruch</strong>.</p>
+        <p style="font-size:0.85rem;color:#78350f;margin-top:0.5rem">&#10024; Perfektes Farbspiel und nat&#252;rliche &#196;sthetik</p>
+        <p style="font-size:0.85rem;color:#78350f">&#128296; Modernste CAD/CAM-Technologie + Handwerkskunst</p>
+        <p style="font-size:0.85rem;color:#78350f">&#127465;&#127466; 100% Made in Germany</p>
+      </div>
+
+      <div class="lab-card lab-smart">
+        <div class="lab-badge" style="background:#3182ce">Smart</div>
+        <div style="font-size:2rem;margin-bottom:0.5rem">&#128161;</div>
+        <div class="lab-name" style="color:#2b6cb0">MDH Dental</div>
+        <p style="font-size:0.8rem;color:#2c5282;margin-bottom:0.75rem;font-style:italic">Deutsches Unternehmen mit internationaler Fertigung</p>
+        <p style="font-size:0.85rem;color:#2c5282">Ein <strong>deutsches Dentallabor</strong> mit eigener Produktionsst&#228;tte in China. Die Arbeit wird nach <strong>deutschen Qualit&#228;tsstandards und Vorschriften</strong> gefertigt, ist CE-zertifiziert und unterliegt strengen Qualit&#228;tskontrollen.</p>
+        <p style="font-size:0.85rem;color:#2c5282;margin-top:0.5rem">&#9989; Erstklassige Qualit&#228;t, die &#252;berzeugt</p>
+        <p style="font-size:0.85rem;color:#2c5282">&#128176; Deutlich g&#252;nstigerer Preis</p>
+        <p style="font-size:0.85rem;color:#2c5282">&#128200; Gleiche Materialien, gleiche Garantie</p>
+      </div>
+    </div>
+
+    <div class="card card-frydent">
+      <p style="font-size:0.9rem">&#128172; <strong>Transparenz ist uns wichtig:</strong> Wir pr&#228;sentieren Ihnen <strong>immer beide Varianten</strong> mit klarer Kosten&#252;bersicht. Es gibt keine versteckten Kosten und keinen Druck. Sie entscheiden in Ruhe &#8211; und wir unterst&#252;tzen Sie bei Ihrer Wahl. Fragen Sie uns einfach!</p>
+    </div>
+
+    <div class="card card-info"><strong>&#128274; Gut zu wissen:</strong> Unabh&#228;ngig von der Laborwahl verwenden wir ausschlie&#223;lich <strong>zertifizierte, biokompatible Materialien</strong>, die dem deutschen Medizinproduktegesetz (MPG) entsprechen. Auf alle Arbeiten erhalten Sie eine <strong>Garantie</strong>.</div>
+  </div>
+
+  <!-- NACHSORGE -->
+  <div class="section" id="s-care">
+    <h2 class="section-title">Pflege &amp; Nachsorge</h2>
+    <p class="section-sub">So h&#228;lt Ihr Zahnersatz lange</p>
+
+    <div class="care-grid">
+      <div class="care-item">
+        <div class="care-icon">&#129691;</div>
+        <div class="care-title">Z&#228;hneputzen</div>
+        <div class="care-desc">Mindestens 2x t&#228;glich &#8211; auch am Kronenrand besonders gr&#252;ndlich putzen!</div>
+      </div>
+      <div class="care-item">
+        <div class="care-icon">&#129526;</div>
+        <div class="care-title">Zahnzwischenr&#228;ume</div>
+        <div class="care-desc">Zahnseide oder Interdental&shy;b&#252;rstchen t&#228;glich nutzen. Bei Br&#252;cken: Superfloss verwenden!</div>
+      </div>
+      <div class="care-item">
+        <div class="care-icon">&#128197;</div>
+        <div class="care-title">Regelm&#228;&#223;ige Kontrolle</div>
+        <div class="care-desc">Alle 6 Monate zur Vorsorge &#8211; so sch&#252;tzen Sie Ihre Z&#228;hne und Ihr Bonusheft!</div>
+      </div>
+      <div class="care-item">
+        <div class="care-icon">&#10024;</div>
+        <div class="care-title">Professionelle Reinigung</div>
+        <div class="care-desc">1&#8211;2x pro Jahr eine PZR &#8211; das h&#228;lt Kronenr&#228;nder und Zahnfleisch gesund.</div>
+      </div>
+    </div>
+
+    <div class="card card-yellow" style="margin-top:1rem">
+      <div class="card-title" style="color:#8b6914">&#9888;&#65039; Direkt nach dem Einsetzen</div>
+      <p style="font-size:0.85rem">&#8226; Die Bet&#228;ubung wirkt noch 1&#8211;3 Stunden &#8211; <strong>vorsichtig beim Essen</strong>, damit Sie sich nicht bei&#223;en!</p>
+      <p style="font-size:0.85rem">&#8226; Leichte Druckempfindlichkeit ist in den ersten Tagen <strong>v&#246;llig normal</strong>.</p>
+      <p style="font-size:0.85rem">&#8226; Wenn der Biss sich nach 2&#8211;3 Tagen noch &#8222;zu hoch&#8220; anf&#252;hlt: Bitte kurz bei uns melden &#8211; wir passen das schnell an!</p>
+      <p style="font-size:0.85rem">&#8226; Vermeiden Sie in der ersten Woche besonders <strong>harte und klebrige Speisen</strong>.</p>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-title" style="color:#276749">&#128337; Wie lange h&#228;lt eine Krone?</div>
+      <p style="font-size:0.85rem">Bei guter Pflege h&#228;lt eine hochwertige Krone <strong>15&#8211;25 Jahre</strong> oder sogar l&#228;nger. Regelm&#228;&#223;ige Kontrollen und gute Mundhygiene sind der Schl&#252;ssel zur Langlebigkeit Ihres Zahnersatzes.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" id="s-faq">
+    <h2 class="section-title">H&#228;ufige Fragen</h2>
+    <p class="section-sub">Antworten auf Ihre wichtigsten Fragen</p>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Tut die Behandlung weh? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">Nein! Die Behandlung findet unter &#246;rtlicher Bet&#228;ubung statt &#8211; Sie sp&#252;ren w&#228;hrend der Behandlung keine Schmerzen. Falls Sie unter Zahnarztangst leiden, sprechen Sie uns bitte an. Wir nehmen uns besonders viel Zeit f&#252;r Sie und finden gemeinsam eine L&#246;sung.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Wie lange dauert die ganze Behandlung? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">In der Regel 2&#8211;4 Wochen vom ersten Termin bis zum fertigen Zahnersatz. Dies beinhaltet die Genehmigung durch die Krankenkasse (ca. 1&#8211;2 Wochen) und die Fertigung im Labor. In dieser Zeit tragen Sie ein Provisorium, das Ihren Zahn sch&#252;tzt.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Was kostet mich eine Krone? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">Das h&#228;ngt von der gew&#228;hlten Variante ab. Bei der Regelversorgung (Metallkrone im Seitenzahnbereich) liegt Ihr Eigenanteil bei etwa 99&#8211;159 &#8364; &#8211; je nach Bonusheft. F&#252;r hochwertigere Varianten wie Vollkeramik zeigen wir Ihnen immer vorab die genauen Kosten im Heil- und Kostenplan. Bei FRYDENT erhalten Sie zudem immer zwei Laborvarianten zur Auswahl.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Was passiert, wenn mein Provisorium herausf&#228;llt? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">Kein Grund zur Panik! Bewahren Sie das Provisorium auf und rufen Sie uns an. Wir setzen es schnell wieder ein. Vermeiden Sie in der Zwischenzeit harte und klebrige Speisen auf der betroffenen Seite.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Kann ich zwischen den Laboren frei w&#228;hlen? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">Ja, absolut! Wir stellen Ihnen immer beide Varianten vor &#8211; mit allen Kosten transparent aufgeschl&#252;sselt. Sie entscheiden in Ruhe und ohne Druck, welche Variante am besten zu Ihnen passt. Beide Labore arbeiten mit zertifizierten, hochwertigen Materialien.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Sieht man, dass es keine echten Z&#228;hne sind? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">Bei modernem Zahnersatz &#8211; besonders bei Vollkeramik &#8211; ist der Unterschied zu nat&#252;rlichen Z&#228;hnen praktisch nicht erkennbar. Wir bestimmen die Zahnfarbe sehr sorgf&#228;ltig, damit Ihre Krone oder Br&#252;cke perfekt zu Ihren eigenen Z&#228;hnen passt.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Gibt es eine Garantie auf den Zahnersatz? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">Ja. Auf Kronen und Br&#252;cken besteht eine gesetzliche Gew&#228;hrleistung von 2 Jahren. Dar&#252;ber hinaus stehen wir Ihnen bei FRYDENT jederzeit zur Seite, wenn etwas nicht stimmt. Regelm&#228;&#223;ige Kontrollen helfen, Probleme fr&#252;hzeitig zu erkennen.</div>
+    </div>
+
+    <div class="contact-box">
+      <h3>&#128222; Noch Fragen? Wir sind f&#252;r Sie da!</h3>
+      <div class="contact-info">
+        <strong>FRYDENT Zahn&#228;rzte in Bonndorf</strong><br>
+        Dr. Nikolina Frydrycz<br>
+        &#128205; Martinstra&#223;e 4 &#183; 79848 Bonndorf im Schwarzwald<br>
+        &#128222; <a href="tel:+497703920910">07703 &#8211; 920 910</a><br>
+        &#128231; <a href="mailto:info@frydent.de">info@frydent.de</a><br>
+        &#127760; <a href="https://www.frydent.de" target="_blank">www.frydent.de</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-arrows">
+    <button class="nav-arrow prev" id="bp" onclick="prev()">&#8592; Zur&#252;ck</button>
+    <button class="nav-arrow next" id="bn" onclick="next()">Weiter &#8594;</button>
+  </div>
+
+  <div class="footer">FRYDENT Zahn&#228;rzte in Bonndorf &#183; Patienteninformation &#183; Kronen &amp; Br&#252;cken<br>Stand: Februar 2026 &#183; Alle Angaben ohne Gew&#228;hr.</div>
+</div>
+
+<script>
+var ids=['what','how','costs','labs','care','faq'],ci=0;
+function go(id,btn){document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active')});document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active')});document.getElementById('s-'+id).classList.add('active');if(btn)btn.classList.add('active');else document.querySelectorAll('.nav-btn')[ids.indexOf(id)].classList.add('active');ci=ids.indexOf(id);ua();window.scrollTo({top:0,behavior:'smooth'});}
+function prev(){if(ci>0)go(ids[ci-1])}
+function next(){if(ci<ids.length-1)go(ids[ci+1])}
+function ua(){document.getElementById('bp').disabled=ci===0;document.getElementById('bn').disabled=ci===ids.length-1;}
+ua();
+</script>
+</body>
+</html>
