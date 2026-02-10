@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT Lernportal – Zahnkronen</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Source Sans 3', 'Segoe UI', sans-serif; background: linear-gradient(180deg, #f0f4f8 0%, #e8ecf1 100%); color: #2d3748; line-height: 1.7; }
+
+.header { background: linear-gradient(135deg, #1a365d 0%, #2a4a7f 50%, #2b6cb0 100%); border-bottom: 4px solid #63b3ed; padding: 2rem 1.5rem; }
+.header-inner { max-width: 800px; margin: 0 auto; }
+.tags { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+.tag { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }
+.tag-portal { background: rgba(255,255,255,0.15); color: #bee3f8; }
+.tag-prothetik { background: rgba(99,179,237,0.2); color: #90cdf4; }
+h1 { font-family: 'Merriweather', serif; font-size: 2rem; color: white; margin-bottom: 0.5rem; line-height: 1.2; }
+.subtitle { color: #bee3f8; font-size: 0.9rem; }
+.meta { display: flex; gap: 1.5rem; margin-top: 1rem; color: #90cdf4; font-size: 0.75rem; }
+
+.content { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+
+.nav { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; margin-bottom: 2rem; -webkit-overflow-scrolling: touch; }
+.nav::-webkit-scrollbar { display: none; }
+.nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; white-space: nowrap; border: 1px solid #e2e8f0; background: white; color: #4a5568; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+.nav-btn:hover { border-color: #1a365d; color: #1a365d; }
+.nav-btn.active { background: #1a365d; color: white; border-color: #1a365d; box-shadow: 0 4px 12px rgba(26,54,93,0.3); }
+
+.section { display: none; }
+.section.active { display: block; }
+.section-title { font-family: 'Merriweather', serif; font-size: 1.5rem; color: #1a365d; margin-bottom: 0.25rem; }
+.section-sub { color: #718096; font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+.card { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; }
+.card-blue { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%); border: 1px solid #c8dff0; }
+.card-yellow { background: #fff9f0; border: 1px solid #f0dcc0; }
+.card-green { background: #f0fff4; border: 1px solid #c6f6d5; }
+.card-purple { background: #f8f4ff; border: 1px solid #d6bcfa; }
+.card-info { background: #ebf8ff; border: 1px solid #90cdf4; color: #2b6cb0; font-size: 0.85rem; }
+.card-warn { background: #fffbeb; border: 1px solid #f6d860; color: #744210; font-size: 0.85rem; }
+.card-danger { background: #fff5f5; border: 1px solid #feb2b2; color: #c53030; font-size: 0.85rem; }
+.card-title { font-family: 'Merriweather', serif; font-weight: 700; margin-bottom: 0.75rem; }
+
+.layers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.layer { background: white; border-radius: 0.75rem; padding: 1rem; }
+.layer-label { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; }
+
+.compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+.compare-cerec { background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%); border: 1px solid #68d391; border-radius: 1rem; padding: 1.25rem; }
+.compare-labor { background: linear-gradient(135deg, #faf5ff 0%, #e9d5ff 100%); border: 1px solid #b794f4; border-radius: 1rem; padding: 1.25rem; }
+
+.step-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; }
+.step-num { width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+.step-title { font-weight: 700; font-size: 0.9rem; color: #1a202c; }
+.step-desc { font-size: 0.85rem; color: #4a5568; margin-top: 0.25rem; }
+
+.session { border: 1px solid #e2e8f0; border-radius: 1rem; overflow: hidden; margin-bottom: 1.25rem; }
+.session-header { padding: 0.75rem 1.25rem; color: white; font-weight: 700; font-size: 0.9rem; }
+.session-body { padding: 1.25rem; background: white; }
+
+.mat-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.mat-card { border-radius: 1rem; padding: 1.25rem; border-top: 4px solid; }
+.mat-title { font-family: 'Merriweather', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.75rem; }
+.mat-props { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-top: 0.75rem; }
+.mat-prop { text-align: center; padding: 0.5rem; border-radius: 0.5rem; background: rgba(255,255,255,0.7); }
+.mat-prop-label { font-size: 0.7rem; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; }
+.mat-prop-value { font-size: 0.9rem; font-weight: 700; margin-top: 0.2rem; }
+.mat-bar { height: 6px; border-radius: 3px; background: #e2e8f0; margin-top: 0.5rem; overflow: hidden; }
+.mat-bar-fill { height: 100%; border-radius: 3px; }
+
+.ind-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
+.ind-item { background: white; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1rem; text-align: center; }
+.ind-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.ind-title { font-weight: 700; font-size: 0.85rem; color: #1a202c; }
+.ind-desc { font-size: 0.8rem; color: #4a5568; margin-top: 0.25rem; }
+
+.dur-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+.dur-table th { background: #1a365d; color: white; padding: 0.75rem 1rem; font-size: 0.8rem; font-weight: 700; text-align: left; }
+.dur-table th:first-child { border-radius: 0.75rem 0 0 0; }
+.dur-table th:last-child { border-radius: 0 0.75rem 0 0; }
+.dur-table td { padding: 0.75rem 1rem; font-size: 0.85rem; border-bottom: 1px solid #e2e8f0; }
+.dur-table tr:last-child td { border-bottom: none; }
+.dur-table tr:nth-child(even) { background: #f7fafc; }
+
+.quiz-progress { display: flex; gap: 0.25rem; }
+.quiz-dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #e2e8f0; }
+.quiz-dot.current { background: #3182ce; }
+.quiz-dot.correct { background: #68d391; }
+.quiz-dot.wrong { background: #fc8181; }
+.quiz-question { font-family: 'Merriweather', serif; font-weight: 700; font-size: 1rem; color: #1a202c; margin-bottom: 1rem; line-height: 1.5; }
+.quiz-option { width: 100%; text-align: left; border-radius: 0.75rem; padding: 1rem; font-size: 0.85rem; border: 2px solid #e2e8f0; background: #f7fafc; color: #1a202c; cursor: pointer; margin-bottom: 0.5rem; transition: all 0.2s; display: block; font-family: inherit; }
+.quiz-option:hover:not(:disabled) { border-color: #3182ce; background: #ebf8ff; }
+.quiz-option:disabled { cursor: default; }
+.quiz-option.show-correct { background: #f0fff4; border-color: #68d391; color: #276749; }
+.quiz-option.selected-wrong { background: #fff5f5; border-color: #fc8181; color: #c53030; }
+.quiz-explanation { border-radius: 0.75rem; padding: 1rem; font-size: 0.85rem; margin-top: 1rem; }
+.quiz-explanation.ok { background: #f0fff4; border: 1px solid #c6f6d5; color: #276749; }
+.quiz-explanation.nok { background: #fff5f5; border: 1px solid #fed7d7; color: #c53030; }
+.quiz-result { border-radius: 1rem; padding: 2rem; text-align: center; margin-bottom: 1.5rem; }
+.quiz-result.pass { background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%); border: 2px solid #68d391; }
+.quiz-result.fail { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 2px solid #f6d860; }
+.quiz-score { font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0; }
+.quiz-btn { padding: 0.6rem 1.5rem; border-radius: 999px; color: white; background: #3182ce; border: none; font-weight: 700; font-size: 0.85rem; cursor: pointer; margin-top: 1rem; font-family: inherit; }
+.review-item { border-radius: 0.75rem; padding: 1rem; margin-bottom: 0.5rem; display: flex; gap: 0.5rem; align-items: flex-start; font-size: 0.85rem; }
+.review-item.ok { background: #f0fff4; border: 1px solid #c6f6d5; }
+.review-item.nok { background: #fff5f5; border: 1px solid #fed7d7; }
+
+.nav-arrows { display: flex; justify-content: space-between; margin: 2rem 0; }
+.nav-arrow { padding: 0.6rem 1.25rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; border: 1px solid #e2e8f0; cursor: pointer; font-family: inherit; }
+.nav-arrow.prev { background: white; color: #3182ce; }
+.nav-arrow.next { background: #1a365d; color: white; border-color: #1a365d; }
+.nav-arrow:disabled { background: #edf2f7!important; color: #a0aec0!important; border-color: #e2e8f0!important; cursor: default; }
+
+.sources { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+.sources-title { font-family: 'Merriweather', serif; font-weight: 700; font-size: 0.9rem; color: #1a365d; margin-bottom: 0.75rem; }
+.sources ul { list-style: none; }
+.sources li { font-size: 0.75rem; color: #718096; padding: 0.3rem 0; }
+.sources a { color: #3182ce; }
+.footer { text-align: center; font-size: 0.7rem; color: #a0aec0; padding-bottom: 2rem; }
+
+.pro-con { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 0.75rem; }
+.pro { font-size: 0.8rem; color: #276749; padding: 0.2rem 0; }
+.con { font-size: 0.8rem; color: #c53030; padding: 0.2rem 0; }
+
+.befestigung-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.bef-card { background: white; border-radius: 0.75rem; padding: 1rem; border: 1px solid #e2e8f0; }
+.bef-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.bef-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; }
+.bef-desc { font-size: 0.82rem; color: #4a5568; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.5rem; }
+  .meta { flex-direction: column; gap: 0.25rem; }
+  .layers, .compare, .mat-props, .ind-grid, .befestigung-grid { grid-template-columns: 1fr; }
+  .pro-con { grid-template-columns: 1fr; }
+  .dur-table { font-size: 0.8rem; }
+  .dur-table th, .dur-table td { padding: 0.5rem 0.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="tags">
+      <span class="tag tag-portal">FRYDENT Lernportal</span>
+      <span class="tag tag-prothetik">Prothetik</span>
+    </div>
+    <h1>Zahnkronen</h1>
+    <p class="subtitle">Materialien, Herstellungswege, Indikationen und Haltbarkeit – verständlich erklärt für unsere Patienten.</p>
+    <div class="meta">
+      <span>📖 ca. 12 Min. Lesezeit</span>
+      <span>📝 10 Quiz-Fragen</span>
+      <span>📚 Wissenschaftlich fundiert</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="nav" id="nav">
+    <button class="nav-btn active" onclick="go('was',this)">👑 Was ist eine Krone?</button>
+    <button class="nav-btn" onclick="go('arten',this)">🔬 Kronenarten</button>
+    <button class="nav-btn" onclick="go('cerec',this)">💻 CEREC vs. Labor</button>
+    <button class="nav-btn" onclick="go('wann',this)">🩺 Wann brauche ich eine?</button>
+    <button class="nav-btn" onclick="go('ablauf',this)">⚙️ Ablauf</button>
+    <button class="nav-btn" onclick="go('haltbarkeit',this)">⏱️ Haltbarkeit</button>
+    <button class="nav-btn" onclick="go('quiz',this)">📝 Quiz</button>
+  </div>
+
+  <!-- WAS IST EINE KRONE? -->
+  <div class="section active" id="s-was">
+    <h2 class="section-title">Was ist eine Zahnkrone?</h2>
+    <p class="section-sub">Schutz und Wiederherstellung für Ihren Zahn</p>
+
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">👑 Die Zahnkrone – einfach erklärt</div>
+      <p style="font-size:0.85rem;margin-bottom:1rem">Eine <strong>Zahnkrone</strong> (auch „Überkronung" genannt) ist eine Art <strong>Schutzkappe</strong>, die über einen beschädigten Zahn gesetzt wird. Sie umschließt den sichtbaren Teil des Zahnes vollständig und stellt Form, Funktion und Aussehen wieder her.</p>
+      <p style="font-size:0.85rem">Übrigens: Der sichtbare Teil eines natürlichen Zahnes – also alles, was oberhalb des Zahnfleisches liegt – heißt ebenfalls „Zahnkrone". Wenn Ihr Zahnarzt von einer „Krone" spricht, meint er jedoch meist die <strong>künstliche Krone</strong>, die im Zahnlabor oder direkt in der Praxis (mit CEREC) hergestellt wird.</p>
+    </div>
+
+    <div class="card card-yellow">
+      <div class="card-title" style="color:#8b6914">💡 Einfach vorgestellt</div>
+      <p style="font-size:0.85rem">Stellen Sie sich Ihren beschädigten Zahn wie ein altes Haus vor, dessen Dach undicht geworden ist. Die Zahnkrone ist wie ein <strong>neues Dach</strong>: Sie wird passgenau auf die vorhandenen Mauern (den Zahnstumpf) gesetzt, schützt das Innere vor Regen (Bakterien) und gibt dem Haus wieder ein schönes Aussehen. Die Mauern bleiben stehen – es muss also kein neues Haus gebaut werden!</p>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-title" style="color:#276749">✅ Was leistet eine Zahnkrone?</div>
+      <div class="layers">
+        <div class="layer" style="border-left:4px solid #38a169"><div class="layer-label" style="color:#38a169">Stabilität</div><p style="font-size:0.85rem">Hält einen geschwächten Zahn zusammen und schützt ihn vor dem Brechen – besonders nach einer Wurzelkanalbehandlung.</p></div>
+        <div class="layer" style="border-left:4px solid #3182ce"><div class="layer-label" style="color:#3182ce">Kaufunktion</div><p style="font-size:0.85rem">Stellt die natürliche Kaufläche wieder her, sodass Sie problemlos beißen und kauen können.</p></div>
+        <div class="layer" style="border-left:4px solid #805ad5"><div class="layer-label" style="color:#805ad5">Ästhetik</div><p style="font-size:0.85rem">Moderne Keramikkronen sind optisch von echten Zähnen kaum zu unterscheiden – natürliche Farbe, Schimmer und Transparenz.</p></div>
+      </div>
+    </div>
+
+    <div class="card card-info"><strong>🏥 Gut zu wissen:</strong> Eine Zahnkrone sitzt <strong>fest und dauerhaft</strong> auf Ihrem Zahn. Sie wird mit speziellem Zahnzement oder Klebstoff befestigt und kann nur vom Zahnarzt entfernt werden. Im Alltag fühlt sie sich an wie ein normaler Zahn.</div>
+  </div>
+
+  <!-- KRONENARTEN -->
+  <div class="section" id="s-arten">
+    <h2 class="section-title">Welche Kronenarten gibt es?</h2>
+    <p class="section-sub">Materialien im Vergleich – von Metall bis Vollkeramik</p>
+
+    <div class="mat-grid">
+      <!-- Vollgusskrone (Metall) -->
+      <div class="mat-card" style="border-top-color:#A0AEC0; background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);">
+        <div class="mat-title" style="color:#4a5568">⚙️ Vollgusskrone (Metall)</div>
+        <p style="font-size:0.85rem">Die Klassikerin unter den Zahnkronen. Sie wird aus einem einzigen Stück Metall gegossen – häufig aus einer <strong>Goldlegierung</strong> oder einer <strong>Nicht-Edelmetall-Legierung (NEM)</strong> wie Cobalt-Chrom.</p>
+        <div class="mat-props">
+          <div class="mat-prop"><div class="mat-prop-label">Ästhetik</div><div class="mat-prop-value" style="color:#e53e3e">★★☆☆☆</div><div class="mat-bar"><div class="mat-bar-fill" style="width:30%;background:#e53e3e"></div></div></div>
+          <div class="mat-prop"><div class="mat-prop-label">Haltbarkeit</div><div class="mat-prop-value" style="color:#38a169">★★★★★</div><div class="mat-bar"><div class="mat-bar-fill" style="width:95%;background:#38a169"></div></div></div>
+          <div class="mat-prop"><div class="mat-prop-label">Verträglichkeit</div><div class="mat-prop-value" style="color:#d69e2e">★★★★☆</div><div class="mat-bar"><div class="mat-bar-fill" style="width:75%;background:#d69e2e"></div></div></div>
+          <div class="mat-prop"><div class="mat-prop-label">Kosten</div><div class="mat-prop-value" style="color:#38a169">€€</div></div>
+        </div>
+        <div class="pro-con" style="margin-top:0.75rem">
+          <div><p style="font-size:0.75rem;font-weight:700;color:#276749;margin-bottom:0.25rem">Vorteile:</p><p class="pro">✓ Extrem langlebig</p><p class="pro">✓ Wenig Substanzabtrag</p><p class="pro">✓ Guter Kaukomfort</p></div>
+          <div><p style="font-size:0.75rem;font-weight:700;color:#c53030;margin-bottom:0.25rem">Nachteile:</p><p class="con">✗ Sichtbare Metallfarbe</p><p class="con">✗ Kein natürliches Aussehen</p><p class="con">✗ Selten Metallallergien</p></div>
+        </div>
+        <p style="font-size:0.8rem;font-style:italic;color:#718096;margin-top:0.75rem">→ Einsatz: Backenzähne (nicht sichtbarer Bereich). Goldkronen gelten als eine der haltbarsten Lösungen.</p>
+      </div>
+
+      <!-- Metallkeramikkrone (VMK) -->
+      <div class="mat-card" style="border-top-color:#805ad5; background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);">
+        <div class="mat-title" style="color:#553c9a">🔗 Metallkeramikkrone (VMK-Krone)</div>
+        <p style="font-size:0.85rem">Das Beste aus zwei Welten: Ein <strong>stabiles Metallgerüst</strong> im Inneren, außen mit <strong>zahnfarbener Keramik</strong> verblendet. Auch „Verblend-Metall-Krone" (VMK) genannt.</p>
+        <div class="mat-props">
+          <div class="mat-prop"><div class="mat-prop-label">Ästhetik</div><div class="mat-prop-value" style="color:#d69e2e">★★★★☆</div><div class="mat-bar"><div class="mat-bar-fill" style="width:70%;background:#d69e2e"></div></div></div>
+          <div class="mat-prop"><div class="mat-prop-label">Haltbarkeit</div><div class="mat-prop-value" style="color:#38a169">★★★★★</div><div class="mat-bar"><div class="mat-bar-fill" style="width:90%;background:#38a169"></div></div></div>
+          <div class="mat-prop"><div class="mat-prop-label">Verträglichkeit</div><div class="mat-prop-value" style="color:#d69e2e">★★★☆☆</div><div class="mat-bar"><div class="mat-bar-fill" style="width:65%;background:#d69e2e"></div></div></div>
+          <div class="mat-prop"><div class="mat-prop-label">Kosten</div><div class="mat-prop-value" style="color:#d69e2e">€€€</div></div>
+        </div>
+        <div class="pro-con" style="margin-top:0.75rem">
+          <div><p style="font-size:0.75rem;font-weight:700;color:#276749;margin-bottom:0.25rem">Vorteile:</p><p class="pro">✓ Zahnfarbenes Aussehen</p><p class="pro">✓ Sehr hohe Stabilität</p><p class="pro">✓ Bewährt seit Jahrzehnten</p></div>
+          <div><p style="font-size:0.75rem;font-weight:700;color:#c53030;margin-bottom:0.25rem">Nachteile:</p><p class="con">✗ Metallrand kann sichtbar werden</p><p class="con">✗ Keramik kann abplatzen</p><p class="con">✗ Mehr Zahnsubstanz muss abgeschliffen werden</p></div>
+        </div>
+        <p style="font-size:0.8rem;font-style:italic;color:#718096;margin-top:0.75rem">→ Einsatz: Front- und Seitenzähne. Besonders gut bei längeren Brückenkonstruktionen.</p>
+      </div>
+
+      <!-- Vollkeramikkrone -->
+      <div class="mat-card" style="border-top-color:#3182ce; background: linear-gradient(135deg, #ebf8ff 0%, #e1f0ff 100%);">
+        <div class="mat-title" style="color:#2b6cb0">✨ Vollkeramikkrone (100 % metallfrei)</div>
+        <p style="font-size:0.85rem">Der <strong>moderne Standard</strong> in der Zahnmedizin. Die gesamte Krone besteht aus hochwertiger Keramik – meist <strong>Zirkonoxid</strong> (auch „weißes Gold" genannt) oder <strong>Lithiumdisilikat</strong> (z. B. IPS e.max). Komplett metallfrei.</p>
+        <div class="mat-props">
+          <div class="mat-prop"><div class="mat-prop-label">Ästhetik</div><div class="mat-prop-value" style="color:#38a169">★★★★★</div><div class="mat-bar"><div class="mat-bar-fill" style="width:98%;background:#38a169"></div></div></div>
+          <div class="mat-prop"><div class="mat-prop-label">Haltbarkeit</div><div class="mat-prop-value" style="color:#38a169">★★★★☆</div><div class="mat-bar"><div class="mat-bar-fill" style="width:85%;background:#38a169"></div></div></div>
+          <div class="mat-prop"><div class="mat-prop-label">Verträglichkeit</div><div class="mat-prop-value" style="color:#38a169">★★★★★</div><div class="mat-bar"><div class="mat-bar-fill" style="width:98%;background:#38a169"></div></div></div>
+          <div class="mat-prop"><div class="mat-prop-label">Kosten</div><div class="mat-prop-value" style="color:#e53e3e">€€€€</div></div>
+        </div>
+        <div class="pro-con" style="margin-top:0.75rem">
+          <div><p style="font-size:0.75rem;font-weight:700;color:#276749;margin-bottom:0.25rem">Vorteile:</p><p class="pro">✓ Natürlichstes Aussehen</p><p class="pro">✓ Keine Metallallergien</p><p class="pro">✓ Keine Temperaturleitung</p><p class="pro">✓ Weniger Substanzabtrag</p></div>
+          <div><p style="font-size:0.75rem;font-weight:700;color:#c53030;margin-bottom:0.25rem">Nachteile:</p><p class="con">✗ Höhere Kosten</p><p class="con">✗ Bei extremem Knirschen etwas frakturanfälliger</p></div>
+        </div>
+        <p style="font-size:0.8rem;font-style:italic;color:#718096;margin-top:0.75rem">→ Einsatz: Alle Zahnbereiche. Unser Standard bei FRYDENT – auch über CEREC herstellbar!</p>
+      </div>
+    </div>
+
+    <div class="card card-info" style="margin-top:1rem"><strong>💡 Unser Tipp:</strong> In der FRYDENT-Praxis setzen wir bevorzugt auf <strong>Vollkeramik</strong>. Dieses Material kommt dem natürlichen Zahn in Aussehen, Verträglichkeit und Funktion am nächsten. Bei Fragen beraten wir Sie gerne individuell!</div>
+  </div>
+
+  <!-- CEREC VS. LABOR -->
+  <div class="section" id="s-cerec">
+    <h2 class="section-title">CEREC vs. Labor</h2>
+    <p class="section-sub">Zwei Wege zu Ihrer Krone – was ist der Unterschied?</p>
+
+    <div class="card card-blue" style="margin-bottom:1.5rem">
+      <div class="card-title" style="color:#1a4a6e">Was ist CEREC?</div>
+      <p style="font-size:0.85rem"><strong>CEREC</strong> steht für <strong>CEramic REConstruction</strong> – zu Deutsch: Keramik-Rekonstruktion. Es handelt sich um ein computergestütztes Verfahren (CAD/CAM), mit dem Ihr Zahnarzt Ihre Krone <strong>direkt in der Praxis</strong> herstellen kann – in nur einer einzigen Sitzung. Die Methode wurde 1985 an der Universität Zürich entwickelt und ist heute weltweit bewährt.</p>
+    </div>
+
+    <div class="compare">
+      <div class="compare-cerec">
+        <div style="font-size:1.5rem;margin-bottom:0.5rem">💻</div>
+        <h4 style="font-weight:700;color:#276749;margin-bottom:0.75rem">CEREC-Krone (Praxis)</h4>
+        <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Herstellungsort:</strong> Direkt bei uns in der Praxis</p>
+        <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Dauer:</strong> Ca. 60–90 Minuten, eine Sitzung</p>
+        <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Abdruck:</strong> Digitaler 3D-Scan (kein Silikon!)</p>
+        <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Provisorium:</strong> Nicht nötig!</p>
+        <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Material:</strong> Hochwertige Vollkeramik</p>
+        <p style="font-size:0.85rem"><strong>Besonderheit:</strong> Krone wird am Computer konstruiert und aus einem Keramikblock gefräst</p>
+      </div>
+      <div class="compare-labor">
+        <div style="font-size:1.5rem;margin-bottom:0.5rem">🏭</div>
+        <h4 style="font-weight:700;color:#553c9a;margin-bottom:0.75rem">Laborgefertigte Krone</h4>
+        <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Herstellungsort:</strong> Externes Zahntechniklabor</p>
+        <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Dauer:</strong> Mindestens 2 Termine, ca. 1–2 Wochen Wartezeit</p>
+        <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Abdruck:</strong> Silikon-Abdruck oder Scan</p>
+        <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Provisorium:</strong> Notwendig (Kunststoff)</p>
+        <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Material:</strong> Alle Materialien möglich</p>
+        <p style="font-size:0.85rem"><strong>Besonderheit:</strong> Zahntechniker formt die Krone von Hand – ideal für komplexe Fälle</p>
+      </div>
+    </div>
+
+    <div class="card card-yellow" style="margin-top:1.25rem">
+      <div class="card-title" style="color:#8b6914">🤔 Welches Verfahren ist besser?</div>
+      <p style="font-size:0.85rem;margin-bottom:0.75rem">Beide Verfahren liefern hervorragende Ergebnisse! Die Wahl hängt von Ihrer individuellen Situation ab:</p>
+      <p style="font-size:0.85rem"><strong>CEREC eignet sich besonders,</strong> wenn Sie wenig Zeit haben, keine Abdruckmasse mögen oder eine schnelle, metallfreie Lösung wünschen. Studien zeigen, dass CEREC-Kronen nach 18 Jahren noch zu rund 85 % intakt sind.</p>
+      <p style="font-size:0.85rem;margin-top:0.5rem"><strong>Laborkronen sind ideal,</strong> wenn besonders komplexe Fälle vorliegen (z. B. mehrere Zähne, tiefe Defekte unter dem Zahnfleisch) oder wenn Sie eine Metallkeramik- oder Goldkrone wünschen.</p>
+    </div>
+
+    <div class="card card-green" style="margin-top:1rem"><strong>🏥 Bei FRYDENT:</strong> Wir nutzen CEREC für die Herstellung hochwertiger Vollkeramikkronen direkt in der Praxis. Bei komplexen Fällen arbeiten wir eng mit unserem Zahntechniklabor zusammen. In jedem Fall beraten wir Sie ausführlich über den für Sie besten Weg.</div>
+  </div>
+
+  <!-- WANN BRAUCHE ICH EINE KRONE? -->
+  <div class="section" id="s-wann">
+    <h2 class="section-title">Wann brauche ich eine Krone?</h2>
+    <p class="section-sub">Typische Gründe für eine Überkronung</p>
+
+    <div class="ind-grid">
+      <div class="ind-item">
+        <div class="ind-icon">🦷</div>
+        <div class="ind-title">Große Karies / Defekte</div>
+        <div class="ind-desc">Wenn der Zahn so stark zerstört ist, dass eine normale Füllung nicht mehr hält.</div>
+      </div>
+      <div class="ind-item">
+        <div class="ind-icon">🔧</div>
+        <div class="ind-title">Nach Wurzelbehandlung</div>
+        <div class="ind-desc">Wurzelbehandelte Zähne werden spröder. Eine Krone schützt vor Frakturen.</div>
+      </div>
+      <div class="ind-item">
+        <div class="ind-icon">💥</div>
+        <div class="ind-title">Zahnfraktur</div>
+        <div class="ind-desc">Ein abgebrochener oder gerissener Zahn kann durch eine Krone zusammengehalten werden.</div>
+      </div>
+      <div class="ind-item">
+        <div class="ind-icon">📐</div>
+        <div class="ind-title">Große alte Füllungen</div>
+        <div class="ind-desc">Wenn eine alte Füllung zu groß ist und zu wenig eigener Zahn übrig bleibt.</div>
+      </div>
+      <div class="ind-item">
+        <div class="ind-icon">😁</div>
+        <div class="ind-title">Ästhetische Gründe</div>
+        <div class="ind-desc">Stark verfärbte, schiefe oder unschöne Zähne können mit Kronen verschönert werden.</div>
+      </div>
+      <div class="ind-item">
+        <div class="ind-icon">🌉</div>
+        <div class="ind-title">Brückenpfeiler</div>
+        <div class="ind-desc">Wenn ein fehlender Zahn durch eine Brücke ersetzt wird, dienen die Nachbarzähne als überkronte Pfeiler.</div>
+      </div>
+    </div>
+
+    <div class="card card-purple" style="margin-top:1.25rem">
+      <div class="card-title" style="color:#553c9a">📋 Die Faustregel</div>
+      <p style="font-size:0.85rem">Wenn <strong>mehr als die Hälfte</strong> der natürlichen Zahnkrone zerstört ist, reicht eine Füllung in der Regel nicht mehr aus. Dann empfiehlt Ihr Zahnarzt eine Krone, um den Zahn langfristig zu erhalten. Eine Krone ist also keine kosmetische Maßnahme, sondern ein <strong>medizinisch notwendiger Schutz</strong> für Ihren Zahn.</p>
+    </div>
+
+    <div class="card card-warn" style="margin-top:1rem"><strong>⚠️ Wann ist eine Krone nicht möglich?</strong> Wenn die Zahnwurzel instabil ist, eine Längsfraktur vorliegt oder der Parodontalzustand zu schlecht ist, muss der Zahn eventuell entfernt werden. Eine Krone kann nur auf einem <strong>stabil im Kiefer verankerten</strong> Zahnstumpf gesetzt werden.</div>
+  </div>
+
+  <!-- ABLAUF -->
+  <div class="section" id="s-ablauf">
+    <h2 class="section-title">So läuft die Behandlung ab</h2>
+    <p class="section-sub">Schritt für Schritt zu Ihrer neuen Krone</p>
+
+    <div class="session"><div class="session-header" style="background:#3182ce">Option A – CEREC (eine Sitzung, ca. 60–90 Min.)</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#3182ce">1</div><div><div class="step-title">Betäubung & Vorbereitung</div><div class="step-desc">Der Zahn wird örtlich betäubt. Karies oder alte Füllungen werden entfernt, der Zahn wird für die Krone in Form geschliffen („präpariert").</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">2</div><div><div class="step-title">Digitaler 3D-Scan</div><div class="step-desc">Anstelle eines Silikonabdrucks wird Ihr Zahn mit einer Spezialkamera abgescannt. Am Bildschirm entsteht ein dreidimensionales Modell.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">3</div><div><div class="step-title">Digitale Konstruktion</div><div class="step-desc">Die Krone wird am Computer maßgeschneidert konstruiert – Form, Größe und Bisslage werden perfekt angepasst.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">4</div><div><div class="step-title">Fräsen aus Keramikblock</div><div class="step-desc">Die CAD/CAM-Fräsmaschine schleift Ihre Krone aus einem massiven Keramikblock – dauert nur wenige Minuten. Sie können sich währenddessen entspannen!</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">5</div><div><div class="step-title">Anpassung & Einsetzen</div><div class="step-desc">Die Krone wird farblich und in der Passform überprüft, poliert und mit Spezialkleber fest am Zahn befestigt. Fertig!</div></div></div>
+    </div></div>
+
+    <div class="session"><div class="session-header" style="background:#805ad5">Option B – Laborgefertigte Krone (2 Termine)</div><div class="session-body">
+      <p style="font-size:0.85rem;font-weight:700;color:#553c9a;margin-bottom:1rem">Termin 1 – Vorbereitung</p>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">1</div><div><div class="step-title">Betäubung & Präparation</div><div class="step-desc">Wie bei CEREC: Betäubung, Entfernung von Karies, Beschleifen des Zahnes.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">2</div><div><div class="step-title">Abdrucknahme</div><div class="step-desc">Ein präziser Abdruck (Silikon oder digitaler Scan) wird genommen und ans Zahntechniklabor geschickt.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">3</div><div><div class="step-title">Provisorische Krone</div><div class="step-desc">Eine temporäre Kunststoffkrone wird eingesetzt, um den Zahnstumpf bis zum nächsten Termin zu schützen.</div></div></div>
+      <p style="font-size:0.85rem;font-weight:700;color:#553c9a;margin:1rem 0">Termin 2 – Einsetzen (nach ca. 1–2 Wochen)</p>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">4</div><div><div class="step-title">Anprobe</div><div class="step-desc">Das Provisorium wird entfernt. Die fertige Krone aus dem Labor wird anprobiert – Passform, Biss und Farbe werden kontrolliert.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">5</div><div><div class="step-title">Befestigung</div><div class="step-desc">Die Krone wird dauerhaft mit Zahnzement oder Spezialkleber am Zahnstumpf befestigt.</div></div></div>
+    </div></div>
+
+    <div class="card card-info"><strong>🤝 Gut zu wissen:</strong> Die Behandlung ist dank örtlicher Betäubung <strong>schmerzfrei</strong>. Nach dem Abklingen der Betäubung können für 1–2 Tage leichte Empfindlichkeiten auftreten – das ist völlig normal und klingt von selbst ab.</div>
+  </div>
+
+  <!-- HALTBARKEIT & BEFESTIGUNG -->
+  <div class="section" id="s-haltbarkeit">
+    <h2 class="section-title">Haltbarkeit & Befestigung</h2>
+    <p class="section-sub">Wie lange hält eine Krone? Und wie sitzt sie fest?</p>
+
+    <div class="card">
+      <div class="card-title" style="color:#1a365d">📊 Durchschnittliche Haltbarkeit</div>
+      <table class="dur-table">
+        <thead>
+          <tr><th>Kronenart</th><th>Haltbarkeit</th><th>Hinweise</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Goldkrone</strong></td><td>15–25+ Jahre</td><td>Höchste Haltbarkeit; bei guter Pflege auch lebenslang</td></tr>
+          <tr><td><strong>Metallkeramik (VMK)</strong></td><td>10–20 Jahre</td><td>5-Jahres-Überlebensrate ca. 95 % laut Studien</td></tr>
+          <tr><td><strong>Vollkeramik (Zirkon)</strong></td><td>10–20+ Jahre</td><td>5-Jahres-Überlebensrate ca. 96 %; sehr stabil</td></tr>
+          <tr><td><strong>CEREC-Krone</strong></td><td>10–20 Jahre</td><td>Ca. 85 % nach 18 Jahren noch intakt (Studienlage)</td></tr>
+          <tr><td><strong>Kunststoffkrone</strong></td><td>3–5 Jahre</td><td>Nur als Übergangslösung geeignet</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;font-style:italic;color:#718096;margin-top:0.75rem">Quellen: Sailer et al. 2015, Raedel et al. 2020, Collares et al. 2018. Individuelle Haltbarkeit hängt von Pflege, Belastung und Ausgangs­situation ab.</p>
+    </div>
+
+    <div class="card card-blue" style="margin-top:1rem">
+      <div class="card-title" style="color:#1a4a6e">🔩 Wie wird die Krone befestigt?</div>
+      <div class="befestigung-grid">
+        <div class="bef-card">
+          <div class="bef-icon">🧪</div>
+          <div class="bef-title">Konventionell zementiert</div>
+          <div class="bef-desc">Die Krone wird mit <strong>Zahnzement</strong> (z. B. Glasionomer- oder Zinkphosphatzement) auf den Zahnstumpf aufgesetzt. Der Zement füllt den Spalt zwischen Krone und Zahn und härtet aus. Dies ist die klassische Methode – stabil und bewährt.</div>
+        </div>
+        <div class="bef-card">
+          <div class="bef-icon">🔬</div>
+          <div class="bef-title">Adhäsiv geklebt</div>
+          <div class="bef-desc">Die Krone wird mit einem <strong>Spezialklebstoff</strong> (Adhäsivtechnik) chemisch mit dem Zahnstumpf verbunden. Diese Technik bietet eine besonders <strong>hohe Haftkraft</strong> und wird vor allem bei Vollkeramikkronen eingesetzt.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-green" style="margin-top:1rem">
+      <div class="card-title" style="color:#276749">💪 So verlängern Sie die Lebensdauer Ihrer Krone</div>
+      <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>✓ Gründliche Mundhygiene:</strong> Zweimal täglich putzen, Zahnseide oder Interdentalbürsten verwenden – besonders am Kronenrand!</p>
+      <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>✓ Regelmäßige Kontrollen:</strong> Mindestens zweimal jährlich zur Vorsorge kommen.</p>
+      <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>✓ Professionelle Zahnreinigung (PZR):</strong> Regelmäßig durchführen lassen.</p>
+      <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>✓ Knirscher-Schutz:</strong> Wenn Sie nachts knirschen, schützt eine Aufbissschiene Ihre Kronen.</p>
+      <p style="font-size:0.85rem"><strong>✗ Vermeiden:</strong> Nüsse knacken, Flaschen öffnen, auf Eis oder Stifte beißen – das kann jede Krone beschädigen!</p>
+    </div>
+
+    <div class="card card-info" style="margin-top:1rem"><strong>📌 Wichtig:</strong> Eine Krone sitzt <strong>fest und dauerhaft</strong>. Sie können damit ganz normal essen, trinken und lachen. Die Krone fühlt sich an wie ein natürlicher Zahn und ist im Alltag nicht spürbar. Nur Ihr Zahnarzt kann sie gezielt entfernen, falls das je nötig werden sollte.</div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="section" id="s-quiz">
+    <h2 class="section-title">Wissens-Quiz</h2>
+    <p class="section-sub">Testen Sie Ihr Wissen! 10 Fragen rund um Zahnkronen.</p>
+    <div id="qz"></div>
+  </div>
+
+  <div class="nav-arrows">
+    <button class="nav-arrow prev" id="bp" onclick="prev()">← Zurück</button>
+    <button class="nav-arrow next" id="bn" onclick="next()">Weiter →</button>
+  </div>
+
+  <div class="sources">
+    <div class="sources-title">📚 Quellen & weiterführende Literatur</div>
+    <ul>
+      <li>• Sailer I, Makarov NA, Thoma DS, Zwahlen M, Pjetursson BE. All-ceramic or metal-ceramic tooth-supported FDPs? Part I: Single crowns. <em>Dent Mater.</em> 2015;31(6):603-23. <a href="https://doi.org/10.1016/j.dental.2015.02.010" target="_blank">DOI</a></li>
+      <li>• Raedel M et al. Six-year survival of single crowns – A massive data analysis. <em>J Dent.</em> 2020;101:103459. <a href="https://doi.org/10.1016/j.jdent.2020.103459" target="_blank">DOI</a></li>
+      <li>• Collares K, Bronkhorst EM, Öztürk Ö et al. A practice based longevity study on single-unit crowns. <em>J Dent.</em> 2018;74:43-48. <a href="https://doi.org/10.1016/j.jdent.2018.05.013" target="_blank">DOI</a></li>
+      <li>• Elzubair AR et al. Fifteen-year recall period on zirconia-based single crowns and FDPs. <em>BDJ Open.</em> 2024;10:46. <a href="https://doi.org/10.1038/s41405-024-00214-7" target="_blank">DOI</a></li>
+      <li>• Weber T. <em>Memorix Zahnmedizin.</em> 5. Aufl. Thieme, 2017.</li>
+      <li>• Schwenzer N, AutorenTeam. <em>Prothetische Zahnheilkunde (ZMK-Heilkunde).</em> Thieme.</li>
+      <li>• KZBV/BZÄK: Festzuschussrichtlinien, Stand 2025.</li>
+    </ul>
+  </div>
+  <div class="footer">FRYDENT Zahnärzte in Bonndorf · Lernportal · Prothetik-Modul: Zahnkronen<br>Stand: Februar 2026</div>
+</div>
+
+<script>
+var ids=['was','arten','cerec','wann','ablauf','haltbarkeit','quiz'],ci=0;
+function go(id,btn){document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active')});document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active')});document.getElementById('s-'+id).classList.add('active');if(btn)btn.classList.add('active');else document.querySelectorAll('.nav-btn')[ids.indexOf(id)].classList.add('active');ci=ids.indexOf(id);ua();window.scrollTo({top:0,behavior:'smooth'});if(id==='quiz')rq();}
+function prev(){if(ci>0)go(ids[ci-1])}
+function next(){if(ci<ids.length-1)go(ids[ci+1])}
+function ua(){document.getElementById('bp').disabled=ci===0;document.getElementById('bn').disabled=ci===ids.length-1;}
+
+var qs=[
+{q:"Was ist eine Zahnkrone?",o:["Ein lockerer Zahnersatz zum Herausnehmen","Eine Schutzkappe, die fest über einen beschädigten Zahn gesetzt wird","Eine Füllung für kleine Löcher","Ein Bleaching-Verfahren für weiße Zähne"],c:1,e:"Eine Zahnkrone ist eine fest zementierte Schutzkappe, die den gesamten sichtbaren Teil eines geschädigten Zahnes umschließt."},
+{q:"Welche Zahnkronenart bietet die beste Ästhetik?",o:["Vollgusskrone aus Gold","Metallkeramikkrone (VMK)","Vollkeramikkrone","Kunststoffkrone"],c:2,e:"Vollkeramikkronen kommen dem natürlichen Zahn in Farbe, Transparenz und Lichtdurchlässigkeit am nächsten – sie sind von echten Zähnen kaum zu unterscheiden."},
+{q:"Wofür steht die Abkürzung CEREC?",o:["Central European Reconstruction of Esthetic Ceramics","CEramic REConstruction","Certified Excellence in Restorative Care","Computer Enhanced Rapid Enamel Creation"],c:1,e:"CEREC steht für CEramic REConstruction (Keramik-Rekonstruktion) – ein computergestütztes Verfahren zur Herstellung von Keramikrestaurationen direkt in der Praxis."},
+{q:"Was ist ein wesentlicher Vorteil von CEREC gegenüber der Laborkrone?",o:["CEREC-Kronen sind aus Gold","Die Krone wird in nur einer Sitzung fertig","CEREC-Kronen sind immer günstiger","CEREC funktioniert ohne Betäubung"],c:1,e:"Der größte Vorteil von CEREC ist die Zeitersparnis: Die Krone wird in einer einzigen Sitzung hergestellt und eingesetzt – kein Provisorium und kein zweiter Termin nötig."},
+{q:"Was passiert mit dem Zahn, bevor die Krone aufgesetzt wird?",o:["Er wird gezogen und ersetzt","Er wird in Form geschliffen (präpariert)","Nichts – die Krone wird einfach aufgeklebt","Er wird gebleicht"],c:1,e:"Der Zahn wird beschliffen (präpariert), um Platz für die Krone zu schaffen. Dabei werden auch Karies und alte Füllungen entfernt."},
+{q:"Wann ist eine Zahnkrone besonders empfehlenswert?",o:["Bei einem kleinen Loch im Zahnschmelz","Bei Zahnfleischentzündung","Nach einer Wurzelkanalbehandlung","Bei einer leichten Verfärbung"],c:2,e:"Wurzelbehandelte Zähne werden spröder und können leichter brechen. Eine Krone schützt den Zahn und gibt ihm Stabilität zurück."},
+{q:"Was ist ein Nachteil der Metallkeramikkrone (VMK)?",o:["Sie ist nicht stabil genug","Der Metallrand kann bei Zahnfleischrückgang sichtbar werden","Sie hält nur 2–3 Jahre","Sie verursacht immer Allergien"],c:1,e:"Bei Metallkeramikkronen kann der dunkle Metallrand sichtbar werden, wenn sich das Zahnfleisch mit der Zeit zurückzieht – besonders im Frontzahnbereich störend."},
+{q:"Wie wird eine Zahnkrone befestigt?",o:["Mit einer Klammer, die man herausnehmen kann","Mit Zahnzement oder Spezialkleber – fest und dauerhaft","Mit Schrauben","Mit Draht"],c:1,e:"Zahnkronen werden entweder konventionell mit Zahnzement oder adhäsiv mit Spezialkleber fest und dauerhaft am Zahnstumpf befestigt."},
+{q:"Wie lange hält eine gut versorgte Vollkeramikkrone durchschnittlich?",o:["2–3 Jahre","5–7 Jahre","10–20 Jahre oder länger","Genau 5 Jahre"],c:2,e:"Bei guter Pflege und regelmäßigen Kontrollen halten Vollkeramikkronen 10–20 Jahre und oft deutlich länger."},
+{q:"Was können Sie selbst tun, um die Lebensdauer Ihrer Krone zu verlängern?",o:["Nüsse nur auf der Kronenseite kauen","Zähne nur einmal pro Woche putzen","Gründliche Mundhygiene, Zahnseide, regelmäßige Kontrollen und PZR","Möglichst wenig zum Zahnarzt gehen"],c:2,e:"Gründliche Mundhygiene (besonders am Kronenrand!), Zahnseide, regelmäßige Kontrollen und professionelle Zahnreinigung sind der Schlüssel zur Langlebigkeit Ihrer Krone."}
+];
+var qi=0,ans=[];
+function rq(){var c=document.getElementById('qz');if(ans.length===qs.length){rr(c);return;}var q=qs[qi],done=ans.length>qi;var dots='<div class="quiz-progress" style="margin-bottom:1rem">';for(var i=0;i<qs.length;i++){var cl='quiz-dot';if(i<ans.length)cl+=ans[i]===qs[i].c?' correct':' wrong';else if(i===qi)cl+=' current';dots+='<div class="'+cl+'"></div>';}dots+='</div>';var h='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem"><span style="font-size:0.85rem;font-weight:700;color:#4a5568">Frage '+(qi+1)+' von '+qs.length+'</span>'+dots+'</div><div class="card"><div class="quiz-question">'+q.q+'</div>';for(var i=0;i<q.o.length;i++){var cl='quiz-option';if(done){if(i===q.c)cl+=' show-correct';if(i===ans[qi]&&i!==q.c)cl+=' selected-wrong';}h+='<button class="'+cl+'" '+(done?'disabled':'')+' onclick="aq('+i+')"><strong>'+String.fromCharCode(65+i)+'.</strong> '+q.o[i]+'</button>';}if(done){var ok=ans[qi]===q.c;h+='<div class="quiz-explanation '+(ok?'ok':'nok')+'"><strong>'+(ok?'✅ Richtig!':'❌ Leider falsch.')+'</strong> '+q.e+'</div>';}h+='</div>';c.innerHTML=h;}
+function aq(i){if(ans.length>qi)return;ans.push(i);rq();setTimeout(function(){if(qi<qs.length-1){qi++;rq();}else{rq();}},2200);}
+function rr(c){var ok=0;for(var i=0;i<qs.length;i++)if(ans[i]===qs[i].c)ok++;var p=Math.round(ok/qs.length*100),g=p>=70;var h='<div class="quiz-result '+(g?'pass':'fail')+'"><div style="font-size:3rem">'+(g?'🎉':'📚')+'</div><div class="quiz-score" style="color:'+(g?'#276749':'#744210')+'">'+ok+' / '+qs.length+' richtig ('+p+'%)</div><p style="font-size:0.85rem;color:#4a5568">'+(p>=90?'Ausgezeichnet! Sie kennen sich bestens mit Zahnkronen aus!':p>=70?'Gut gemacht! Schauen Sie sich die falschen Antworten noch einmal an.':'Noch etwas Übung nötig – lesen Sie die Abschnitte noch einmal in Ruhe durch.')+'</p><button class="quiz-btn" onclick="xq()">Quiz wiederholen</button></div><h4 style="font-weight:700;font-size:0.9rem;margin:1rem 0 0.75rem">Auswertung:</h4>';for(var i=0;i<qs.length;i++){var v=ans[i]===qs[i].c;h+='<div class="review-item '+(v?'ok':'nok')+'"><span>'+(v?'✅':'❌')+'</span><div><p style="font-weight:700">'+qs[i].q+'</p><p style="margin-top:0.25rem">'+qs[i].e+'</p></div></div>';}c.innerHTML=h;}
+function xq(){qi=0;ans=[];rq();}
+ua();
+</script>
+</body>
+</html>
