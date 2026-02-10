@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT Lernportal – Bleaching</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Source Sans 3', 'Segoe UI', sans-serif; background: linear-gradient(180deg, #f0f4f8 0%, #e8ecf1 100%); color: #2d3748; line-height: 1.7; }
+
+.header { background: linear-gradient(135deg, #1a365d 0%, #2a4a7f 50%, #2b6cb0 100%); border-bottom: 4px solid #63b3ed; padding: 2rem 1.5rem; }
+.header-inner { max-width: 800px; margin: 0 auto; }
+.tags { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+.tag { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }
+.tag-portal { background: rgba(255,255,255,0.15); color: #bee3f8; }
+.tag-topic { background: rgba(99,179,237,0.2); color: #90cdf4; }
+h1 { font-family: 'Merriweather', serif; font-size: 2rem; color: white; margin-bottom: 0.5rem; line-height: 1.2; }
+.subtitle { color: #bee3f8; font-size: 0.9rem; }
+.meta { display: flex; gap: 1.5rem; margin-top: 1rem; color: #90cdf4; font-size: 0.75rem; }
+
+.content { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+
+.nav { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; margin-bottom: 2rem; -webkit-overflow-scrolling: touch; }
+.nav::-webkit-scrollbar { display: none; }
+.nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; white-space: nowrap; border: 1px solid #e2e8f0; background: white; color: #4a5568; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+.nav-btn:hover { border-color: #1a365d; color: #1a365d; }
+.nav-btn.active { background: #1a365d; color: white; border-color: #1a365d; box-shadow: 0 4px 12px rgba(26,54,93,0.3); }
+
+.section { display: none; }
+.section.active { display: block; }
+.section-title { font-family: 'Merriweather', serif; font-size: 1.5rem; color: #1a365d; margin-bottom: 0.25rem; }
+.section-sub { color: #718096; font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+.card { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; }
+.card-blue { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%); border: 1px solid #c8dff0; }
+.card-yellow { background: #fff9f0; border: 1px solid #f0dcc0; }
+.card-green { background: #f0fff4; border: 1px solid #c6f6d5; }
+.card-purple { background: #f8f4ff; border: 1px solid #d6bcfa; }
+.card-info { background: #ebf8ff; border: 1px solid #90cdf4; color: #2b6cb0; font-size: 0.85rem; }
+.card-warn { background: #fffbeb; border: 1px solid #f6d860; color: #744210; font-size: 0.85rem; }
+.card-danger { background: #fff5f5; border: 1px solid #feb2b2; color: #c53030; font-size: 0.85rem; }
+.card-title { font-family: 'Merriweather', serif; font-weight: 700; margin-bottom: 0.75rem; }
+
+.compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.compare-io { background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%); border: 2px solid #63b3ed; border-radius: 1rem; padding: 1.25rem; }
+.compare-home { background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%); border: 2px solid #68d391; border-radius: 1rem; padding: 1.25rem; }
+
+.step-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; }
+.step-num { width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+.step-title { font-weight: 700; font-size: 0.9rem; color: #1a202c; }
+.step-desc { font-size: 0.85rem; color: #4a5568; margin-top: 0.25rem; }
+
+.conc-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.75rem; }
+.conc-table th { background: #1a365d; color: white; padding: 0.6rem; text-align: left; font-size: 0.8rem; }
+.conc-table td { padding: 0.6rem; border-bottom: 1px solid #e2e8f0; }
+.conc-table tr:nth-child(even) { background: #f7fafc; }
+
+.session { border: 1px solid #e2e8f0; border-radius: 1rem; overflow: hidden; margin-bottom: 1.25rem; }
+.session-header { padding: 0.75rem 1.25rem; color: white; font-weight: 700; font-size: 0.9rem; }
+.session-body { padding: 1.25rem; background: white; }
+
+.phase { background: white; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1rem; margin-bottom: 0.75rem; }
+.phase-title { font-weight: 700; font-size: 0.9rem; color: #1a202c; margin-bottom: 0.75rem; }
+.phase-list { list-style: none; }
+.phase-list li { font-size: 0.85rem; color: #4a5568; padding: 0.2rem 0; }
+
+.quiz-progress { display: flex; gap: 0.25rem; }
+.quiz-dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #e2e8f0; }
+.quiz-dot.current { background: #3182ce; }
+.quiz-dot.correct { background: #68d391; }
+.quiz-dot.wrong { background: #fc8181; }
+.quiz-question { font-family: 'Merriweather', serif; font-weight: 700; font-size: 1rem; color: #1a202c; margin-bottom: 1rem; line-height: 1.5; }
+.quiz-option { width: 100%; text-align: left; border-radius: 0.75rem; padding: 1rem; font-size: 0.85rem; border: 2px solid #e2e8f0; background: #f7fafc; color: #1a202c; cursor: pointer; margin-bottom: 0.5rem; transition: all 0.2s; display: block; font-family: inherit; }
+.quiz-option:hover:not(:disabled) { border-color: #3182ce; background: #ebf8ff; }
+.quiz-option:disabled { cursor: default; }
+.quiz-option.show-correct { background: #f0fff4; border-color: #68d391; color: #276749; }
+.quiz-option.selected-wrong { background: #fff5f5; border-color: #fc8181; color: #c53030; }
+.quiz-explanation { border-radius: 0.75rem; padding: 1rem; font-size: 0.85rem; margin-top: 1rem; }
+.quiz-explanation.ok { background: #f0fff4; border: 1px solid #c6f6d5; color: #276749; }
+.quiz-explanation.nok { background: #fff5f5; border: 1px solid #fed7d7; color: #c53030; }
+.quiz-result { border-radius: 1rem; padding: 2rem; text-align: center; margin-bottom: 1.5rem; }
+.quiz-result.pass { background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%); border: 2px solid #68d391; }
+.quiz-result.fail { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 2px solid #f6d860; }
+.quiz-score { font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0; }
+.quiz-btn { padding: 0.6rem 1.5rem; border-radius: 999px; color: white; background: #3182ce; border: none; font-weight: 700; font-size: 0.85rem; cursor: pointer; margin-top: 1rem; font-family: inherit; }
+.review-item { border-radius: 0.75rem; padding: 1rem; margin-bottom: 0.5rem; display: flex; gap: 0.5rem; align-items: flex-start; font-size: 0.85rem; }
+.review-item.ok { background: #f0fff4; border: 1px solid #c6f6d5; }
+.review-item.nok { background: #fff5f5; border: 1px solid #fed7d7; }
+
+.nav-arrows { display: flex; justify-content: space-between; margin: 2rem 0; }
+.nav-arrow { padding: 0.6rem 1.25rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; border: 1px solid #e2e8f0; cursor: pointer; font-family: inherit; }
+.nav-arrow.prev { background: white; color: #3182ce; }
+.nav-arrow.next { background: #1a365d; color: white; border-color: #1a365d; }
+.nav-arrow:disabled { background: #edf2f7!important; color: #a0aec0!important; border-color: #e2e8f0!important; cursor: default; }
+
+.sources { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+.sources-title { font-family: 'Merriweather', serif; font-weight: 700; font-size: 0.9rem; color: #1a365d; margin-bottom: 0.75rem; }
+.sources ul { list-style: none; }
+.sources li { font-size: 0.75rem; color: #718096; padding: 0.3rem 0; }
+.sources a { color: #3182ce; }
+.footer { text-align: center; font-size: 0.7rem; color: #a0aec0; padding-bottom: 2rem; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.5rem; }
+  .meta { flex-direction: column; gap: 0.25rem; }
+  .compare { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="tags">
+      <span class="tag tag-portal">FRYDENT Lernportal</span>
+      <span class="tag tag-topic">Ästhetische Zahnmedizin</span>
+    </div>
+    <h1>Bleaching – Schulungsmodul</h1>
+    <p class="subtitle">Wirkstoffe, Techniken, Kontraindikationen und Patientenberatung.</p>
+    <div class="meta">
+      <span>📖 ca. 12 Min. Lesezeit</span>
+      <span>📝 10 Quiz-Fragen</span>
+      <span>🔬 Wissenschaftlich fundiert</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="nav" id="nav">
+    <button class="nav-btn active" onclick="go('basics',this)">🔬 Grundlagen</button>
+    <button class="nav-btn" onclick="go('agents',this)">🧪 Wirkstoffe</button>
+    <button class="nav-btn" onclick="go('methods',this)">⚙️ Methoden</button>
+    <button class="nav-btn" onclick="go('contra',this)">🚫 Kontraindikationen</button>
+    <button class="nav-btn" onclick="go('zfa',this)">👩‍⚕️ Rolle ZFA</button>
+    <button class="nav-btn" onclick="go('billing',this)">💰 Abrechnung</button>
+    <button class="nav-btn" onclick="go('quiz',this)">📝 Quiz</button>
+  </div>
+
+  <!-- GRUNDLAGEN -->
+  <div class="section active" id="s-basics">
+    <h2 class="section-title">Grundlagen des Bleachings</h2>
+    <p class="section-sub">Wie funktioniert die Zahnaufhellung?</p>
+
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">Wirkprinzip</div>
+      <p style="font-size:0.85rem;margin-bottom:0.75rem">Beim Bleaching dringen Peroxide (H₂O₂ oder Carbamidperoxid) in den Zahnschmelz ein und setzen dort <strong>reaktive Sauerstoffradikale</strong> frei. Diese spalten die chromogenen (farbgebenden) Moleküle im Schmelz und Dentin durch Oxidation auf.</p>
+      <p style="font-size:0.85rem">Das Ergebnis: Die langen, dunklen Farbmolekülketten werden in kürzere, farblose Fragmente zerlegt. Der Zahn erscheint heller.</p>
+    </div>
+
+    <div class="card card-yellow">
+      <div class="card-title" style="color:#8b6914">💡 Einfach erklärt</div>
+      <p style="font-size:0.85rem">Stellen Sie sich Verfärbungen wie ein verflochtenes Wollknäuel vor. Das Bleaching-Gel wirkt wie eine Schere – es schneidet die Farbfäden in kleine Stücke, die dann farblos werden. Der Zahn selbst (die „Stricknadeln") bleibt dabei intakt.</p>
+    </div>
+
+    <div class="card card-purple">
+      <div class="card-title" style="color:#553c9a">Arten der Verfärbung</div>
+      <p style="font-size:0.85rem"><strong>Extrinsisch (äußerlich):</strong> Ablagerungen auf der Zahnoberfläche durch Kaffee, Tee, Rotwein, Tabak. Werden meist durch PZR entfernt – Bleaching nicht zwingend nötig.</p>
+      <p style="font-size:0.85rem;margin-top:0.5rem"><strong>Intrinsisch (innerlich):</strong> Farbstoffe im Zahnschmelz/Dentin. Ursachen: Alter, Tetracyclin-Antibiotika, Fluorose, Trauma. Hier wirkt Bleaching.</p>
+    </div>
+
+    <div class="card card-info"><strong>🔬 Wissenschaftlich:</strong> Die Penetrationstiefe von H₂O₂ durch den Schmelz ins Dentin ist belegt. Die Aufhellungswirkung betrifft beide Schichten, wobei die Schmelzstruktur bei korrekter Anwendung reversibel verändert wird (Remineralisation durch Speichel).</div>
+  </div>
+
+  <!-- WIRKSTOFFE -->
+  <div class="section" id="s-agents">
+    <h2 class="section-title">Wirkstoffe & Konzentrationen</h2>
+    <p class="section-sub">Was steckt im Gel?</p>
+
+    <div class="card">
+      <div class="card-title" style="color:#1a365d">Bleaching-Wirkstoffe im Überblick</div>
+      <table class="conc-table">
+        <tr><th>Wirkstoff</th><th>Konzentration</th><th>Anwendung</th><th>Einwirkzeit</th></tr>
+        <tr><td><strong>Wasserstoffperoxid (H₂O₂)</strong></td><td>25–40 %</td><td>In-Office</td><td>15–20 Min. × 2–3</td></tr>
+        <tr><td><strong>Carbamidperoxid (CP)</strong></td><td>10–22 %</td><td>Home Bleaching</td><td>30–60 Min./Tag</td></tr>
+        <tr><td><strong>Natriumperborat</strong></td><td>variabel</td><td>Walking Bleach (internes)</td><td>3–7 Tage</td></tr>
+      </table>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-title" style="color:#276749">📊 Umrechnung: Carbamidperoxid → H₂O₂</div>
+      <p style="font-size:0.85rem;margin-bottom:0.5rem">Carbamidperoxid zerfällt in H₂O₂ und Harnstoff. Die Faustregel:</p>
+      <p style="font-size:0.85rem"><strong>10 % Carbamidperoxid ≈ 3,5 % H₂O₂</strong></p>
+      <p style="font-size:0.85rem"><strong>16 % Carbamidperoxid ≈ 5,6 % H₂O₂</strong></p>
+      <p style="font-size:0.85rem"><strong>22 % Carbamidperoxid ≈ 7,7 % H₂O₂</strong></p>
+      <p style="font-size:0.75rem;font-style:italic;color:#718096;margin-top:0.5rem">Wichtig: Laut EU-Kosmetikverordnung dürfen Produkte mit &gt; 6 % H₂O₂ (bzw. &gt; 16,62 % CP) nur durch Zahnärzte angewendet werden.</p>
+    </div>
+
+    <div class="card card-yellow">
+      <div class="card-title" style="color:#8b6914">⚗️ Zusätzliche Inhaltsstoffe im Bleaching-Gel</div>
+      <p style="font-size:0.85rem"><strong>Kaliumnitrat:</strong> Desensibilisiert – reduziert Empfindlichkeit während/nach Behandlung</p>
+      <p style="font-size:0.85rem"><strong>Fluorid:</strong> Unterstützt Remineralisation des Schmelzes</p>
+      <p style="font-size:0.85rem"><strong>Verdickungsmittel (Carbomer):</strong> Sorgt für Haftung am Zahn</p>
+      <p style="font-size:0.85rem"><strong>pH-Stabilisatoren:</strong> Halten den pH-Wert neutral bis leicht sauer (optimal: pH 6–7)</p>
+    </div>
+
+    <div class="card card-danger"><strong>🚨 Achtung:</strong> Bei Kontakt mit Schleimhaut (Zahnfleisch, Lippen) können hochkonzentrierte Gele (25–40 % H₂O₂) Verätzungen verursachen. Der Gingiva-Protektor ist daher zwingend notwendig!</div>
+  </div>
+
+  <!-- METHODEN -->
+  <div class="section" id="s-methods">
+    <h2 class="section-title">Methoden im Detail</h2>
+    <p class="section-sub">In-Office vs. Home Bleaching – Protokolle</p>
+
+    <div class="session"><div class="session-header" style="background:#3182ce">In-Office Bleaching – Praxis-Protokoll</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#3182ce">1</div><div><div class="step-title">Dokumentation Ausgangsfarbe</div><div class="step-desc">Zahnfarbe mit VITA-Farbschlüssel bestimmen und dokumentieren (z. B. A3,5). Ggf. Foto.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">2</div><div><div class="step-title">Lippen- und Zahnfleischschutz</div><div class="step-desc">Lippen mit Vaseline schützen. Gingiva-Protektor (lichthärtender Schutzwall) auftragen und aushärten.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">3</div><div><div class="step-title">Gel-Applikation</div><div class="step-desc">Bleaching-Gel (25–40 % H₂O₂) gleichmäßig auf die Labialflächen auftragen. Schichtstärke: ca. 1–2 mm.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">4</div><div><div class="step-title">Einwirkzeit</div><div class="step-desc">15–20 Minuten pro Durchgang. Je nach System 2–3 Durchgänge. Gel zwischen den Durchgängen absaugen und erneuern.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">5</div><div><div class="step-title">Gel entfernen & Fluoridierung</div><div class="step-desc">Gel vollständig absaugen/abspülen. Gingiva-Protektor entfernen. Fluoridgel oder Tooth Mousse auftragen.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">6</div><div><div class="step-title">Ergebnis dokumentieren</div><div class="step-desc">Neue Zahnfarbe bestimmen, dokumentieren, ggf. Foto. Patienten über Nachsorge aufklären.</div></div></div>
+    </div></div>
+
+    <div class="session"><div class="session-header" style="background:#38a169">Home Bleaching – Praxis-Protokoll</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#38a169">1</div><div><div class="step-title">Sitzung 1: Abdrücke & Beratung</div><div class="step-desc">Alginat-Abdrücke OK/UK. Zahnfarbe dokumentieren. Patienten über Ablauf und Nachsorge aufklären.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">2</div><div><div class="step-title">Laborauftrag: Schienenherstellung</div><div class="step-desc">Individuelle Tiefziehschienen mit Reservoir an den Labialflächen. Schienengrenzen: 1 mm vor dem Gingivarand.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">3</div><div><div class="step-title">Sitzung 2: Einweisung</div><div class="step-desc">Schienen-Passung kontrollieren. Patient einweisen: Gel-Menge (kleiner Tropfen pro Zahn), Tragezeit (30–60 Min.), Häufigkeit (täglich für 1–2 Wochen).</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">4</div><div><div class="step-title">Kontrolle nach 1–2 Wochen</div><div class="step-desc">Ergebnis kontrollieren. Zahnfarbe dokumentieren. Bei Bedarf Nachbleachen empfehlen.</div></div></div>
+    </div></div>
+
+    <div class="card card-warn"><strong>⚠️ Wichtig:</strong> Vor jedem Bleaching sollte eine PZR durchgeführt werden! Beläge und Zahnstein beeinträchtigen die gleichmäßige Gelwirkung.</div>
+  </div>
+
+  <!-- KONTRAINDIKATIONEN -->
+  <div class="section" id="s-contra">
+    <h2 class="section-title">Kontraindikationen & Risiken</h2>
+    <p class="section-sub">Wann darf nicht gebleacht werden?</p>
+
+    <div class="card card-danger" style="font-size:0.85rem">
+      <div class="card-title" style="color:#c53030">🚫 Absolute Kontraindikationen</div>
+      <p>❌ Unbehandelte Karies</p>
+      <p>❌ Offene Füllungsränder / undichte Restaurationen</p>
+      <p>❌ Akute Gingivitis oder Parodontitis</p>
+      <p>❌ Schwangerschaft und Stillzeit</p>
+      <p>❌ Allergie gegen Peroxide</p>
+      <p>❌ Kinder und Jugendliche (unter 18 Jahren)</p>
+    </div>
+
+    <div class="card card-warn">
+      <div class="card-title" style="color:#744210">⚠️ Relative Kontraindikationen</div>
+      <p style="font-size:0.85rem">⚠️ Freiliegende Zahnhälse (erhöhte Sensibilität)</p>
+      <p style="font-size:0.85rem">⚠️ Stark fluorotische Zähne (ungleichmäßiges Ergebnis)</p>
+      <p style="font-size:0.85rem">⚠️ Tetracyclinverfärbungen Grad 3–4 (schwer aufzuhellen)</p>
+      <p style="font-size:0.85rem">⚠️ Viele sichtbare Restaurationen im Frontzahnbereich</p>
+      <p style="font-size:0.85rem">⚠️ Bruxismus (erhöhte Sensibilität möglich)</p>
+    </div>
+
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">Mögliche Nebenwirkungen</div>
+      <p style="font-size:0.85rem"><strong>Zahnempfindlichkeit (häufig):</strong> Tritt bei ca. 60–70 % der Patienten auf. Meist mild und reversibel (1–3 Tage). Maßnahme: Kaliumnitrat-haltige Zahnpasta, kürzere Einwirkzeit.</p>
+      <p style="font-size:0.85rem;margin-top:0.5rem"><strong>Zahnfleischreizung (selten bei In-Office):</strong> Durch Kontakt mit hochkonz. Gel. Maßnahme: Korrekter Gingiva-Protektor.</p>
+      <p style="font-size:0.85rem;margin-top:0.5rem"><strong>Ungleichmäßiges Ergebnis:</strong> Bei unterschiedlichen Restaurationen. Lösung: Vorab aufklären, ggf. Restaurationen anpassen.</p>
+    </div>
+  </div>
+
+  <!-- ROLLE ZFA -->
+  <div class="section" id="s-zfa">
+    <h2 class="section-title">Die Rolle der ZFA</h2>
+    <p class="section-sub">Deine Aufgaben beim Bleaching</p>
+
+    <div class="phase"><div class="phase-title">📋 Vor der Behandlung</div><ul class="phase-list">
+      <li>✔ Bleaching-Tray vorbereiten (Gel, Protektor, Applikationszubehör)</li>
+      <li>✔ VITA-Farbschlüssel bereitlegen</li>
+      <li>✔ Dokumentationsbogen vorbereiten (Ausgangsfarbe, Fotos)</li>
+      <li>✔ Patienten über Ablauf informieren und beruhigen</li>
+      <li>✔ Bei Home Bleaching: Abdrücke nehmen (Alginat OK/UK)</li>
+    </ul></div>
+
+    <div class="phase"><div class="phase-title">🤝 Während der Behandlung (In-Office)</div><ul class="phase-list">
+      <li>✔ Lippen mit Vaseline schützen</li>
+      <li>✔ Gingiva-Protektor auftragen (unter Anleitung des ZA)</li>
+      <li>✔ Gel auftragen und Timer stellen</li>
+      <li>✔ Patienten betreuen (Empfindlichkeit abfragen)</li>
+      <li>✔ Gel absaugen und erneuern (bei Mehrfach-Durchgängen)</li>
+      <li>✔ Fluoridierung durchführen</li>
+    </ul></div>
+
+    <div class="phase"><div class="phase-title">✅ Nach der Behandlung</div><ul class="phase-list">
+      <li>✔ Ergebnis dokumentieren (neue Zahnfarbe, Foto)</li>
+      <li>✔ Patienten über die „Weiße Diät" aufklären (48 Stunden kein Kaffee, Tee, Rotwein etc.)</li>
+      <li>✔ Bei Home Bleaching: Patienten in die Schienenpflege einweisen</li>
+      <li>✔ Materialien aufräumen und nachbestellen</li>
+      <li>✔ GOZ-Positionen dokumentieren / abrechnen</li>
+    </ul></div>
+
+    <div class="card card-green">
+      <div class="card-title" style="color:#276749">💬 Typische Patientenfragen – So antwortest du:</div>
+      <p style="font-size:0.85rem"><strong>„Wird das wehtun?"</strong> → „Die meisten Patienten spüren nur eine leichte Empfindlichkeit, die nach 1–2 Tagen verschwindet."</p>
+      <p style="font-size:0.85rem;margin-top:0.5rem"><strong>„Wie lange hält das?"</strong> → „In der Regel 1–3 Jahre, je nach Ernährung. Eine Auffrischung ist jederzeit möglich."</p>
+      <p style="font-size:0.85rem;margin-top:0.5rem"><strong>„Schadet das meinen Zähnen?"</strong> → „Bei professioneller Durchführung ist Bleaching sicher und der Schmelz wird nicht geschädigt."</p>
+    </div>
+  </div>
+
+  <!-- ABRECHNUNG -->
+  <div class="section" id="s-billing">
+    <h2 class="section-title">Abrechnung</h2>
+    <p class="section-sub">GOZ-Positionen und Preisgestaltung</p>
+
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">📑 Bleaching ist eine Privatleistung (GOZ)</div>
+      <p style="font-size:0.85rem">Bleaching wird <strong>nicht</strong> von der gesetzlichen Krankenkasse übernommen. Die Abrechnung erfolgt vollständig über die GOZ (Gebührenordnung für Zahnärzte) bzw. als Verlangensleistung nach § 2 GOZ.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="color:#1a365d">GOZ-Positionen In-Office Bleaching</div>
+      <table class="conc-table">
+        <tr><th>Position</th><th>Beschreibung</th><th>Faktor</th></tr>
+        <tr><td><strong>GOZ 2130</strong></td><td>Externes Bleichen – je Zahn, je Sitzung</td><td>1,0–3,5</td></tr>
+        <tr><td><strong>GOZ 1000</strong></td><td>Eingehende Untersuchung</td><td>2,3</td></tr>
+        <tr><td><strong>GOZ 0010</strong></td><td>Beratung (mind. 5 Min.)</td><td>2,3</td></tr>
+        <tr><td><strong>GOÄ 390a</strong></td><td>Zahnfarbbestimmung / Dokumentation</td><td>analog</td></tr>
+      </table>
+      <p style="font-size:0.75rem;color:#718096;margin-top:0.75rem">Hinweis: Die Faktorhöhe ist abhängig von Aufwand und Schwierigkeitsgrad.</p>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-title" style="color:#276749">💰 Unsere Preise bei FRYDENT</div>
+      <p style="font-size:0.85rem"><strong>In-Office Bleaching (OK + UK):</strong> 500 €</p>
+      <p style="font-size:0.85rem;margin-top:0.5rem">Im Preis enthalten: Beratung, Farbbestimmung, Zahnfleischschutz, Gel (2–3 Durchgänge), Fluoridierung, Nachkontrolle.</p>
+    </div>
+
+    <div class="card card-warn"><strong>📋 Wichtig:</strong> Vor der Behandlung muss der Patient einen <strong>Heil- und Kostenplan (HKP)</strong> bzw. eine Privatvereinbarung unterschreiben. Bei Kassenpatienten: § 2 GOZ-Vereinbarung (Verlangensleistung).</div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="section" id="s-quiz">
+    <h2 class="section-title">Wissens-Quiz</h2>
+    <p class="section-sub">Teste dein Wissen! 10 Fragen zum Thema Bleaching.</p>
+    <div id="qz"></div>
+  </div>
+
+  <div class="nav-arrows">
+    <button class="nav-arrow prev" id="bp" onclick="prev()">← Zurück</button>
+    <button class="nav-arrow next" id="bn" onclick="next()">Weiter →</button>
+  </div>
+
+  <div class="sources">
+    <div class="sources-title">📚 Quellen & weiterführende Literatur</div>
+    <ul>
+      <li>• Auschill TM et al. Randomized clinical trial of the efficacy, tolerability, and long-term color stability of two bleaching techniques. <em>Quintessence Int.</em> 2012;43(8):683-694.</li>
+      <li>• Kawamoto K, Tsujimoto Y. Effects of the hydroxyl radical and hydrogen peroxide on tooth bleaching. <em>J Endod.</em> 2004;30(1):45-50.</li>
+      <li>• Li Y, Greenwall L. Safety issues of tooth whitening using peroxide-based materials. <em>Br Dent J.</em> 2013;215(1):29-34.</li>
+      <li>• EU-Kosmetikverordnung (EG) Nr. 1223/2009, Anhang III, Nr. 12.</li>
+      <li>• Weber T. <em>Memorix Zahnmedizin.</em> 5. Aufl. Thieme, 2017.</li>
+      <li>• BZÄK/KZBV: Leitlinie Bleaching, 2018.</li>
+    </ul>
+  </div>
+  <div class="footer">FRYDENT Zahnärzte in Bonndorf · Lernportal · Bleaching-Modul<br>Stand: Februar 2026</div>
+</div>
+
+<script>
+var ids=['basics','agents','methods','contra','zfa','billing','quiz'],ci=0;
+function go(id,btn){document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active')});document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active')});document.getElementById('s-'+id).classList.add('active');if(btn)btn.classList.add('active');else document.querySelectorAll('.nav-btn')[ids.indexOf(id)].classList.add('active');ci=ids.indexOf(id);ua();window.scrollTo({top:0,behavior:'smooth'});if(id==='quiz')rq();}
+function prev(){if(ci>0)go(ids[ci-1])}
+function next(){if(ci<ids.length-1)go(ids[ci+1])}
+function ua(){document.getElementById('bp').disabled=ci===0;document.getElementById('bn').disabled=ci===ids.length-1;}
+
+var qs=[
+{q:"Welcher Wirkstoff wird beim In-Office Bleaching hauptsächlich verwendet?",o:["Carbamidperoxid 10 %","Wasserstoffperoxid 25–40 %","Natriumfluorid","Chlorhexidin"],c:1,e:"Beim In-Office Bleaching wird hochkonzentriertes Wasserstoffperoxid (25–40 %) unter zahnärztlicher Kontrolle verwendet."},
+{q:"Wie funktioniert das Wirkprinzip des Bleachings?",o:["Das Gel schleift den verfärbten Schmelz ab","Reaktive Sauerstoffradikale spalten Farbmoleküle auf","Das Gel färbt den Zahn von außen weiß","Der Zahnnerv wird betäubt und der Zahn erscheint heller"],c:1,e:"Peroxide setzen Sauerstoffradikale frei, die chromogene Moleküle durch Oxidation spalten."},
+{q:"Welche Aussage zu Carbamidperoxid ist korrekt?",o:["10 % Carbamidperoxid ≈ 10 % H₂O₂","10 % Carbamidperoxid ≈ 3,5 % H₂O₂","Carbamidperoxid ist stärker als H₂O₂","Carbamidperoxid wird nur in der Praxis verwendet"],c:1,e:"10 % CP zerfällt in ca. 3,5 % H₂O₂ und Harnstoff. Es wird hauptsächlich beim Home Bleaching eingesetzt."},
+{q:"Welche ist KEINE Kontraindikation für Bleaching?",o:["Unbehandelte Karies","Schwangerschaft","Leichte extrinsische Verfärbung durch Kaffee","Akute Parodontitis"],c:2,e:"Extrinsische Verfärbungen können durch PZR entfernt werden, sind aber keine Kontraindikation für Bleaching."},
+{q:"Wozu dient der Gingiva-Protektor beim In-Office Bleaching?",o:["Er hellt das Zahnfleisch auf","Er schützt das Zahnfleisch vor Verätzungen durch das Gel","Er fixiert den Kofferdam","Er beschleunigt die Gelwirkung"],c:1,e:"Hochkonzentriertes H₂O₂ kann Zahnfleisch verätzen. Der Protektor bildet eine Schutzbarriere."},
+{q:"Wie lange sollte die Weiße Diät nach dem Bleaching eingehalten werden?",o:["24 Stunden","48 Stunden","1 Woche","1 Monat"],c:1,e:"In den ersten 48 Stunden sind die Zähne besonders anfällig für erneute Farbstoffaufnahme."},
+{q:"Welche GOZ-Position wird für das externe Bleaching je Zahn berechnet?",o:["GOZ 2130","BEMA Nr. 8","GOZ 1000","GOÄ 5000"],c:0,e:"GOZ 2130 ist die spezifische Position für externes Bleichen, je Zahn und je Sitzung."},
+{q:"Welche Aufgabe hat die ZFA beim In-Office Bleaching?",o:["Entscheidung über die Gel-Konzentration","Lippen schützen, Gel auftragen, Timer stellen, Patienten betreuen","Diagnose stellen und Behandlungsplan erstellen","Medikamente verschreiben"],c:1,e:"Die ZFA bereitet vor, assistiert beim Gel-Auftrag, betreut den Patienten und dokumentiert das Ergebnis."},
+{q:"Was passiert bei Kontakt von 35 % H₂O₂ mit der Mundschleimhaut?",o:["Nichts – das Gel ist harmlos","Leichte Rötung, die sofort verschwindet","Chemische Verätzung (weißliche Verfärbung, Schmerzen)","Der Zahn wird schneller aufgehellt"],c:2,e:"Hochkonzentriertes H₂O₂ verursacht chemische Verätzungen der Schleimhaut – daher ist der Gingiva-Protektor Pflicht."},
+{q:"Warum wird vor dem Bleaching eine PZR empfohlen?",o:["Um den Zahn weicher zu machen","Damit das Gel gleichmäßig wirken kann – ohne Beläge oder Zahnstein","PZR ist gesetzlich vorgeschrieben vor Bleaching","Um die Zähne dunkler erscheinen zu lassen"],c:1,e:"Beläge und Zahnstein verhindern gleichmäßigen Gel-Kontakt. PZR sorgt für optimale Ausgangsbedingungen."}
+];
+var qi=0,ans=[];
+function rq(){var c=document.getElementById('qz');if(ans.length===qs.length){rr(c);return;}var q=qs[qi],done=ans.length>qi;var dots='<div class="quiz-progress" style="margin-bottom:1rem">';for(var i=0;i<qs.length;i++){var cl='quiz-dot';if(i<ans.length)cl+=ans[i]===qs[i].c?' correct':' wrong';else if(i===qi)cl+=' current';dots+='<div class="'+cl+'"></div>';}dots+='</div>';var h='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem"><span style="font-size:0.85rem;font-weight:700;color:#4a5568">Frage '+(qi+1)+' von '+qs.length+'</span>'+dots+'</div><div class="card"><div class="quiz-question">'+q.q+'</div>';for(var i=0;i<q.o.length;i++){var cl='quiz-option';if(done){if(i===q.c)cl+=' show-correct';if(i===ans[qi]&&i!==q.c)cl+=' selected-wrong';}h+='<button class="'+cl+'" '+(done?'disabled':'')+' onclick="aq('+i+')"><strong>'+String.fromCharCode(65+i)+'.</strong> '+q.o[i]+'</button>';}if(done){var ok=ans[qi]===q.c;h+='<div class="quiz-explanation '+(ok?'ok':'nok')+'"><strong>'+(ok?'✅ Richtig!':'❌ Leider falsch.')+'</strong> '+q.e+'</div>';}h+='</div>';c.innerHTML=h;}
+function aq(i){if(ans.length>qi)return;ans.push(i);rq();setTimeout(function(){if(qi<qs.length-1){qi++;rq();}else{rq();}},2200);}
+function rr(c){var ok=0;for(var i=0;i<qs.length;i++)if(ans[i]===qs[i].c)ok++;var p=Math.round(ok/qs.length*100),g=p>=70;var h='<div class="quiz-result '+(g?'pass':'fail')+'"><div style="font-size:3rem">'+(g?'🎉':'📚')+'</div><div class="quiz-score" style="color:'+(g?'#276749':'#744210')+'">'+ok+' / '+qs.length+' richtig ('+p+'%)</div><p style="font-size:0.85rem;color:#4a5568">'+(p>=90?'Ausgezeichnet! Sie sind Bleaching-Profi!':p>=70?'Gut gemacht! Wiederholen Sie die falschen Antworten.':'Noch etwas Übung nötig.')+'</p><button class="quiz-btn" onclick="xq()">Quiz wiederholen</button></div><h4 style="font-weight:700;font-size:0.9rem;margin:1rem 0 0.75rem">Auswertung:</h4>';for(var i=0;i<qs.length;i++){var v=ans[i]===qs[i].c;h+='<div class="review-item '+(v?'ok':'nok')+'"><span>'+(v?'✅':'❌')+'</span><div><p style="font-weight:700">'+qs[i].q+'</p><p style="margin-top:0.25rem">'+qs[i].e+'</p></div></div>';}c.innerHTML=h;}
+function xq(){qi=0;ans=[];rq();}
+ua();
+</script>
+</body>
+</html>

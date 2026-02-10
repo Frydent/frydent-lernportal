@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT Lernportal &#8211; Veneers</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Source Sans 3', 'Segoe UI', sans-serif; background: linear-gradient(180deg, #f0f4f8 0%, #e8ecf1 100%); color: #2d3748; line-height: 1.7; }
+
+.header { background: linear-gradient(135deg, #1a365d 0%, #2a4a7f 50%, #2b6cb0 100%); border-bottom: 4px solid #63b3ed; padding: 2rem 1.5rem; }
+.header-inner { max-width: 800px; margin: 0 auto; }
+.tags { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+.tag { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }
+.tag-portal { background: rgba(255,255,255,0.15); color: #bee3f8; }
+.tag-topic { background: rgba(99,179,237,0.2); color: #90cdf4; }
+h1 { font-family: 'Merriweather', serif; font-size: 2rem; color: white; margin-bottom: 0.5rem; line-height: 1.2; }
+.subtitle { color: #bee3f8; font-size: 0.9rem; }
+.meta { display: flex; gap: 1.5rem; margin-top: 1rem; color: #90cdf4; font-size: 0.75rem; }
+
+.content { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+
+.nav { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; margin-bottom: 2rem; -webkit-overflow-scrolling: touch; }
+.nav::-webkit-scrollbar { display: none; }
+.nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; white-space: nowrap; border: 1px solid #e2e8f0; background: white; color: #4a5568; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+.nav-btn:hover { border-color: #1a365d; color: #1a365d; }
+.nav-btn.active { background: #1a365d; color: white; border-color: #1a365d; box-shadow: 0 4px 12px rgba(26,54,93,0.3); }
+
+.section { display: none; }
+.section.active { display: block; }
+.section-title { font-family: 'Merriweather', serif; font-size: 1.5rem; color: #1a365d; margin-bottom: 0.25rem; }
+.section-sub { color: #718096; font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+.card { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; }
+.card-blue { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%); border: 1px solid #c8dff0; }
+.card-yellow { background: #fff9f0; border: 1px solid #f0dcc0; }
+.card-green { background: #f0fff4; border: 1px solid #c6f6d5; }
+.card-purple { background: #f8f4ff; border: 1px solid #d6bcfa; }
+.card-info { background: #ebf8ff; border: 1px solid #90cdf4; color: #2b6cb0; font-size: 0.85rem; }
+.card-warn { background: #fffbeb; border: 1px solid #f6d860; color: #744210; font-size: 0.85rem; }
+.card-danger { background: #fff5f5; border: 1px solid #feb2b2; color: #c53030; font-size: 0.85rem; }
+.card-title { font-family: 'Merriweather', serif; font-weight: 700; margin-bottom: 0.75rem; }
+
+.layers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.layer { background: white; border-radius: 0.75rem; padding: 1rem; }
+.layer-label { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; }
+
+.compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+
+.step-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; }
+.step-num { width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+.step-title { font-weight: 700; font-size: 0.9rem; color: #1a202c; }
+.goz-tag { display: inline-block; margin-left: 0.5rem; padding: 0.1rem 0.5rem; border-radius: 999px; background: #faf5ff; color: #805ad5; font-size: 0.7rem; font-weight: 400; border: 1px solid #d6bcfa; }
+.step-desc { font-size: 0.85rem; color: #4a5568; margin-top: 0.25rem; }
+
+.session { border: 1px solid #e2e8f0; border-radius: 1rem; overflow: hidden; margin-bottom: 1.25rem; }
+.session-header { padding: 0.75rem 1.25rem; color: white; font-weight: 700; font-size: 0.9rem; }
+.session-body { padding: 1.25rem; background: white; }
+
+.instr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+.instr-card { background: white; border-radius: 0.75rem; padding: 1rem; border-top: 3px solid; }
+.instr-cat { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.75rem; }
+.instr-list { list-style: none; }
+.instr-list li { font-size: 0.85rem; color: #4a5568; padding: 0.25rem 0; }
+
+.phase { background: white; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1rem; margin-bottom: 0.75rem; }
+.phase-title { font-weight: 700; font-size: 0.9rem; color: #1a202c; margin-bottom: 0.75rem; }
+.phase-list { list-style: none; }
+.phase-list li { font-size: 0.85rem; color: #4a5568; padding: 0.2rem 0; }
+
+.quiz-progress { display: flex; gap: 0.25rem; }
+.quiz-dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #e2e8f0; }
+.quiz-dot.current { background: #3182ce; }
+.quiz-dot.correct { background: #68d391; }
+.quiz-dot.wrong { background: #fc8181; }
+.quiz-question { font-family: 'Merriweather', serif; font-weight: 700; font-size: 1rem; color: #1a202c; margin-bottom: 1rem; line-height: 1.5; }
+.quiz-option { width: 100%; text-align: left; border-radius: 0.75rem; padding: 1rem; font-size: 0.85rem; border: 2px solid #e2e8f0; background: #f7fafc; color: #1a202c; cursor: pointer; margin-bottom: 0.5rem; transition: all 0.2s; display: block; font-family: inherit; }
+.quiz-option:hover:not(:disabled) { border-color: #3182ce; background: #ebf8ff; }
+.quiz-option:disabled { cursor: default; }
+.quiz-option.show-correct { background: #f0fff4; border-color: #68d391; color: #276749; }
+.quiz-option.selected-wrong { background: #fff5f5; border-color: #fc8181; color: #c53030; }
+.quiz-explanation { border-radius: 0.75rem; padding: 1rem; font-size: 0.85rem; margin-top: 1rem; }
+.quiz-explanation.ok { background: #f0fff4; border: 1px solid #c6f6d5; color: #276749; }
+.quiz-explanation.nok { background: #fff5f5; border: 1px solid #fed7d7; color: #c53030; }
+.quiz-result { border-radius: 1rem; padding: 2rem; text-align: center; margin-bottom: 1.5rem; }
+.quiz-result.pass { background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%); border: 2px solid #68d391; }
+.quiz-result.fail { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 2px solid #f6d860; }
+.quiz-score { font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0; }
+.quiz-btn { padding: 0.6rem 1.5rem; border-radius: 999px; color: white; background: #3182ce; border: none; font-weight: 700; font-size: 0.85rem; cursor: pointer; margin-top: 1rem; font-family: inherit; }
+.review-item { border-radius: 0.75rem; padding: 1rem; margin-bottom: 0.5rem; display: flex; gap: 0.5rem; align-items: flex-start; font-size: 0.85rem; }
+.review-item.ok { background: #f0fff4; border: 1px solid #c6f6d5; }
+.review-item.nok { background: #fff5f5; border: 1px solid #fed7d7; }
+
+.nav-arrows { display: flex; justify-content: space-between; margin: 2rem 0; }
+.nav-arrow { padding: 0.6rem 1.25rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; border: 1px solid #e2e8f0; cursor: pointer; font-family: inherit; }
+.nav-arrow.prev { background: white; color: #3182ce; }
+.nav-arrow.next { background: #1a365d; color: white; border-color: #1a365d; }
+.nav-arrow:disabled { background: #edf2f7!important; color: #a0aec0!important; border-color: #e2e8f0!important; cursor: default; }
+
+.sources { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+.sources-title { font-family: 'Merriweather', serif; font-weight: 700; font-size: 0.9rem; color: #1a365d; margin-bottom: 0.75rem; }
+.sources ul { list-style: none; }
+.sources li { font-size: 0.75rem; color: #718096; padding: 0.3rem 0; }
+.sources a { color: #3182ce; }
+.footer { text-align: center; font-size: 0.7rem; color: #a0aec0; padding-bottom: 2rem; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.5rem; }
+  .meta { flex-direction: column; gap: 0.25rem; }
+  .layers, .compare, .instr-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="tags">
+      <span class="tag tag-portal">FRYDENT Lernportal</span>
+      <span class="tag tag-topic">&#196;sthetische Zahnheilkunde</span>
+    </div>
+    <h1>Veneers</h1>
+    <p class="subtitle">Keramikschalen f&#252;r perfekte Frontz&#228;hne &#8211; alles, was Sie als ZFA wissen m&#252;ssen.</p>
+    <div class="meta">
+      <span>&#128214; ca. 12 Min. Lesezeit</span>
+      <span>&#128221; 10 Quiz-Fragen</span>
+      <span>&#128218; Wissenschaftlich fundiert</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="nav" id="nav">
+    <button class="nav-btn active" onclick="go('basics',this)">&#10024; Grundlagen</button>
+    <button class="nav-btn" onclick="go('types',this)">&#128300; Arten</button>
+    <button class="nav-btn" onclick="go('indications',this)">&#9989; Indikationen</button>
+    <button class="nav-btn" onclick="go('steps',this)">&#9881;&#65039; Ablauf</button>
+    <button class="nav-btn" onclick="go('instruments',this)">&#128295; Instrumente</button>
+    <button class="nav-btn" onclick="go('zfa',this)">&#128105;&#8205;&#9877;&#65039; Rolle ZFA</button>
+    <button class="nav-btn" onclick="go('quiz',this)">&#128221; Quiz</button>
+  </div>
+
+  <!-- GRUNDLAGEN -->
+  <div class="section active" id="s-basics">
+    <h2 class="section-title">Was sind Veneers?</h2>
+    <p class="section-sub">Hauchdünne Schalen f&#252;r ein perfektes L&#228;cheln</p>
+
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">Definition</div>
+      <p style="font-size:0.85rem"><strong>Veneers</strong> (engl. &#8222;Furnier&#8220; / &#8222;Verblendschale&#8220;) sind hauchdünne Keramik- oder Kompositschalen, die auf die <strong>sichtbare Frontfl&#228;che</strong> der Z&#228;hne dauerhaft aufgeklebt werden. Sie korrigieren Zahnform, Zahnfarbe und leichte Fehlstellungen &#8211; <strong>minimalinvasiv</strong> und mit hervorragender &#196;sthetik.</p>
+    </div>
+
+    <div class="card card-yellow">
+      <div class="card-title" style="color:#8b6914">&#128161; Einfach erkl&#228;rt</div>
+      <p style="font-size:0.85rem">Stellen Sie sich Veneers wie <strong>Kontaktlinsen f&#252;r die Z&#228;hne</strong> vor: Hauchdünne, individuell angepasste Schalen, die auf die Zahnoberfl&#228;che geklebt werden und sofort ein perfektes Erscheinungsbild schaffen &#8211; ohne den Zahn stark zu ver&#228;ndern.</p>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-title" style="color:#276749">Krone vs. Veneer &#8211; der Unterschied</div>
+      <div class="compare">
+        <div style="background:#f0fff4;border-radius:0.75rem;padding:1rem;border:1px solid #c6f6d5">
+          <p style="font-size:0.85rem;font-weight:700;color:#276749;margin-bottom:0.5rem">&#128081; Krone</p>
+          <p style="font-size:0.8rem;color:#4a5568">Umh&#252;llt den <strong>gesamten Zahn</strong> (360&#176;). Ca. 1,5&#8211;2 mm Abtrag rundum. F&#252;r stark zerst&#246;rte Z&#228;hne.</p>
+        </div>
+        <div style="background:#faf5ff;border-radius:0.75rem;padding:1rem;border:1px solid #d6bcfa">
+          <p style="font-size:0.85rem;font-weight:700;color:#553c9a;margin-bottom:0.5rem">&#10024; Veneer</p>
+          <p style="font-size:0.8rem;color:#4a5568">Bedeckt nur die <strong>sichtbare Au&#223;enfl&#228;che</strong>. Nur 0,3&#8211;1 mm Abtrag (oder gar keiner). F&#252;r &#228;sthetische Korrekturen.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-info"><strong>&#128176; Wichtig zur Abrechnung:</strong> Veneers sind in der Regel eine <strong>reine Privatleistung</strong> (GOZ). Die gesetzliche Krankenkasse &#252;bernimmt keine Kosten, es sei denn, eine medizinische Indikation (z.&#160;B. Zahnfraktur) liegt vor &#8211; dann kann ggf. ein Festzuschuss f&#252;r Teilkrone (Befund 1.2) beantragt werden.</div>
+  </div>
+
+  <!-- ARTEN -->
+  <div class="section" id="s-types">
+    <h2 class="section-title">Veneer-Arten</h2>
+    <p class="section-sub">Welche Varianten gibt es?</p>
+
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">1. Konventionelle Veneers (Prep-Veneers)</div>
+      <p style="font-size:0.85rem"><strong>Dicke:</strong> ca. 0,5&#8211;1,0 mm &#8226; <strong>Pr&#228;paration:</strong> Ja &#8211; d&#252;nne Schicht Zahnschmelz wird abgetragen (0,3&#8211;0,7 mm)</p>
+      <p style="font-size:0.85rem"><strong>Material:</strong> Feldspatkeramik oder Lithiumdisilikat (z.&#160;B. e.max)</p>
+      <p style="font-size:0.85rem"><strong>Fertigung:</strong> Im Dentallabor, individuell geschichtet oder gepresst</p>
+      <p style="font-size:0.85rem"><strong>Haltbarkeit:</strong> 15&#8211;20 Jahre &#8226; <strong>Kosten:</strong> ca. 700&#8211;1.500 &#8364;/Zahn</p>
+      <p style="font-size:0.85rem;margin-top:0.5rem;font-style:italic;color:#718096">&#10132; Der Goldstandard in der &#228;sthetischen Zahnheilkunde.</p>
+    </div>
+
+    <div class="card card-purple">
+      <div class="card-title" style="color:#553c9a">2. Non-Prep-Veneers</div>
+      <p style="font-size:0.85rem"><strong>Dicke:</strong> ca. 0,3 mm (hauchdünn) &#8226; <strong>Pr&#228;paration:</strong> Keine oder minimal</p>
+      <p style="font-size:0.85rem"><strong>Material:</strong> Spezialkeramik (z.&#160;B. Lumineers&#8482; aus Cerinate-Keramik)</p>
+      <p style="font-size:0.85rem"><strong>Fertigung:</strong> Im Dentallabor &#8226; <strong>Haltbarkeit:</strong> 5&#8211;15 Jahre &#8226; <strong>Kosten:</strong> ca. 600&#8211;1.200 &#8364;/Zahn</p>
+      <p style="font-size:0.85rem;margin-top:0.5rem;font-style:italic;color:#718096">&#10132; Vorteil: Reversibel! Kann r&#252;ckstandslos entfernt werden.</p>
+    </div>
+
+    <div class="card card-yellow">
+      <div class="card-title" style="color:#8b6914">3. Komposit-Veneers (Direkte Veneers)</div>
+      <p style="font-size:0.85rem"><strong>Pr&#228;paration:</strong> Minimal oder keine &#8226; <strong>Material:</strong> Komposit-Kunststoff (F&#252;llungsmaterial)</p>
+      <p style="font-size:0.85rem"><strong>Fertigung:</strong> Direkt am Stuhl &#8211; Schicht f&#252;r Schicht aufgetragen und lichtgeh&#228;rtet</p>
+      <p style="font-size:0.85rem"><strong>Haltbarkeit:</strong> 5&#8211;10 Jahre &#8226; <strong>Kosten:</strong> ca. 250&#8211;500 &#8364;/Zahn</p>
+      <p style="font-size:0.85rem;margin-top:0.5rem;font-style:italic;color:#718096">&#10132; G&#252;nstige Alternative, aber verf&#228;rbungsanf&#228;lliger. Reparaturen m&#246;glich.</p>
+    </div>
+
+    <div class="card card-warn"><strong>&#9888;&#65039; Achtung:</strong> Konventionelle Prep-Veneers sind <strong>irreversibel</strong>! Sobald Zahnschmelz abgetragen wurde, muss der Zahn dauerhaft verblendet werden. Der Patient muss dar&#252;ber ausf&#252;hrlich aufgekl&#228;rt werden.</div>
+  </div>
+
+  <!-- INDIKATIONEN -->
+  <div class="section" id="s-indications">
+    <h2 class="section-title">Indikationen &amp; Kontraindikationen</h2>
+    <p class="section-sub">Wann eignen sich Veneers &#8211; und wann nicht?</p>
+
+    <div class="card card-green">
+      <div class="card-title" style="color:#276749">&#9989; Indikationen</div>
+      <p style="font-size:0.85rem"><strong>&#127912; &#196;sthetisch:</strong></p>
+      <p style="font-size:0.85rem">&#8226; Starke Zahnverf&#228;rbungen (z.&#160;B. Tetrazyklin, Fluorose), die sich nicht bleachen lassen</p>
+      <p style="font-size:0.85rem">&#8226; Unsch&#246;ne Zahnform (z.&#160;B. Zapfenz&#228;hne, zu kleine Z&#228;hne)</p>
+      <p style="font-size:0.85rem">&#8226; Diastema (L&#252;cke zwischen den Frontz&#228;hnen)</p>
+      <p style="font-size:0.85rem">&#8226; Leichte Zahnfehlstellungen im Frontzahnbereich</p>
+      <p style="font-size:0.85rem;margin-top:0.5rem"><strong>&#128682;&#65039; Medizinisch:</strong></p>
+      <p style="font-size:0.85rem">&#8226; Schmelzdefekte / Schmelzhypoplasien</p>
+      <p style="font-size:0.85rem">&#8226; Abgesplitterte Zahnecken / Frakturen im Frontzahnbereich</p>
+      <p style="font-size:0.85rem">&#8226; Insuffiziente alte Kompositf&#252;llungen an Frontz&#228;hnen</p>
+      <p style="font-size:0.85rem">&#8226; Abrasion / Erosion der Zahnhartsubstanz</p>
+    </div>
+
+    <div class="card card-danger" style="margin-top:0">
+      <div class="card-title" style="color:#c53030">&#10060; Kontraindikationen</div>
+      <p style="font-size:0.85rem">&#8226; <strong>Bruxismus</strong> (Z&#228;hneknirschen) &#8211; ohne Schienentherapie hohes Frakturrisiko!</p>
+      <p style="font-size:0.85rem">&#8226; <strong>Starke Fehlstellungen</strong> &#8211; hier ist KFO die bessere L&#246;sung</p>
+      <p style="font-size:0.85rem">&#8226; <strong>Zu wenig Zahnschmelz</strong> &#8211; Haftung auf Dentin deutlich schlechter</p>
+      <p style="font-size:0.85rem">&#8226; <strong>Stark zerst&#246;rte Z&#228;hne</strong> &#8211; hier ist eine Krone indiziert</p>
+      <p style="font-size:0.85rem">&#8226; <strong>Tiefbiss / Kopfbiss</strong> &#8211; zu hohe Belastung auf die Keramikschale</p>
+      <p style="font-size:0.85rem">&#8226; <strong>Schlechte Mundhygiene</strong> &#8211; erh&#246;htes Kariesrisiko am Rand</p>
+    </div>
+
+    <div class="card card-info"><strong>&#128218; Merke:</strong> Veneers funktionieren am besten auf <strong>intaktem Zahnschmelz</strong>. Die adh&#228;sive Befestigung auf Schmelz (Schmelz-&#196;tz-Technik) ist deutlich zuverl&#228;ssiger als auf Dentin. Je mehr Schmelz erhalten bleibt, desto besser!</div>
+  </div>
+
+  <!-- ABLAUF -->
+  <div class="section" id="s-steps">
+    <h2 class="section-title">Ablauf der Behandlung</h2>
+    <p class="section-sub">Schritt f&#252;r Schritt &#8211; mit GOZ-Abrechnungsnummern</p>
+
+    <div class="card card-warn" style="margin-bottom:1.25rem"><strong>&#128176; Abrechnung:</strong> Veneers werden &#252;ber die <strong>GOZ</strong> abgerechnet &#8211; <strong>nicht &#252;ber BEMA</strong>. Bei rein &#228;sthetischer Indikation: Abrechnung als <strong>Verlangensleistung</strong> nach &#167;&#160;2 Abs.&#160;3 GOZ. Vor Behandlungsbeginn: Schriftliche Vereinbarung mit dem Patienten!</div>
+
+    <div class="session"><div class="session-header" style="background:#3182ce">Sitzung 1 &#8211; Beratung &amp; Planung</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#3182ce">1</div><div><div class="step-title">Beratung &amp; Aufkl&#228;rung <span class="goz-tag">GOZ 0030</span></div><div class="step-desc">Ausf&#252;hrliche Beratung: Patientenwunsch, Erwartungen kl&#228;ren, alle Optionen vorstellen.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">2</div><div><div class="step-title">Befund &amp; Diagnostik <span class="goz-tag">GOZ 0010</span></div><div class="step-desc">Klinische Untersuchung, Fotodokumentation, ggf. R&#246;ntgen. Beurteilung: Genug Zahnschmelz? Okklusion? Bruxismus?</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">3</div><div><div class="step-title">Situationsabdruck</div><div class="step-desc">Abdruck oder digitaler Scan f&#252;r das diagnostische Wax-up / Mock-up im Labor.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">4</div><div><div class="step-title">Heil- und Kostenplan</div><div class="step-desc">Schriftlicher HKP mit allen GOZ-Positionen. Bei Verlangensleistung: Vereinbarung nach &#167;&#160;2 Abs.&#160;3 GOZ unterschreiben lassen!</div></div></div>
+    </div></div>
+
+    <div class="session"><div class="session-header" style="background:#805ad5">Sitzung 2 &#8211; Pr&#228;paration &amp; Abformung</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#805ad5">1</div><div><div class="step-title">Ggf. An&#228;sthesie <span class="goz-tag">GO&#196; 340/490</span></div><div class="step-desc">Bei Prep-Veneers: &#246;rtliche Bet&#228;ubung. Bei Non-Prep: oft nicht n&#246;tig.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">2</div><div><div class="step-title">Pr&#228;paration <span class="goz-tag">GOZ 2220</span></div><div class="step-desc">Minimalinvasiver Abtrag der Labialfl&#228;che (0,3&#8211;0,7 mm). Tiefenmarkierungen mit Diamantbohrer &#8594; kontrollierter Abtrag.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">3</div><div><div class="step-title">Farbbestimmung</div><div class="step-desc">VITA-Farbring oder digitale Farbbestimmung. Foto mit Farbmuster an das Labor.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">4</div><div><div class="step-title">Pr&#228;zisionsabformung</div><div class="step-desc">A-Silikon oder Intraoralscan. Retraktionsfaden f&#252;r Darstellung der Pr&#228;parationsgrenze.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#805ad5">5</div><div><div class="step-title">Provisorium</div><div class="step-desc">Provisorische Verblendschale aus Komposit. Spot-&#196;tzung &#8211; damit es sp&#228;ter wieder abnehmbar ist!</div></div></div>
+    </div></div>
+
+    <div class="session"><div class="session-header" style="background:#38a169">Sitzung 3 &#8211; Einsetzen (Bonding)</div><div class="session-body">
+      <div class="step-item"><div class="step-num" style="background:#38a169">1</div><div><div class="step-title">Provisorium entfernen</div><div class="step-desc">Vorsichtig entfernen, Zahnfl&#228;che reinigen und trockenlegen.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">2</div><div><div class="step-title">Einprobe (Try-in)</div><div class="step-desc">Veneers mit Try-in-Paste probeweise aufsetzen: Passung, Farbe, Form pr&#252;fen. Patient im Spiegel zeigen!</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">3</div><div><div class="step-title">Adh&#228;sive Befestigung <span class="goz-tag">GOZ 2197</span></div><div class="step-desc"><strong>Kritischster Schritt!</strong> Zahnfl&#228;che: &#196;tzen &#8594; Primer &#8594; Bonding. Veneer-Innenfl&#228;che: Flusss&#228;ure-&#196;tzung + Silan. Befestigung mit dualth&#228;rtendem Kompositzement.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">4</div><div><div class="step-title">Ausarbeitung &amp; Politur</div><div class="step-desc">&#220;bersch&#252;sse entfernen, R&#228;nder polieren, Okklusion und Kontaktpunkte kontrollieren.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">5</div><div><div class="step-title">Fotodokumentation</div><div class="step-desc">Vorher-Nachher-Fotos (mit Einverst&#228;ndnis des Patienten).</div></div></div>
+    </div></div>
+
+    <div class="card card-purple">
+      <div class="card-title" style="color:#553c9a">&#128176; GOZ-Positionen auf einen Blick</div>
+      <p style="font-size:0.85rem">&#8226; <strong>GOZ 2220</strong> &#8211; Teilkrone / Veneer (Gesamtleistung inkl. Pr&#228;paration, Abformung, Einprobe, Eingliederung)</p>
+      <p style="font-size:0.85rem">&#8226; <strong>GOZ 2197</strong> &#8211; Adh&#228;sive Befestigung (zus&#228;tzlich zur GOZ 2220)</p>
+      <p style="font-size:0.85rem">&#8226; <strong>GOZ 0030</strong> &#8211; Eingehende Beratung (mind. 10 Min.)</p>
+      <p style="font-size:0.85rem">&#8226; <strong>GOZ 0010</strong> &#8211; Eingehende Untersuchung</p>
+      <p style="font-size:0.85rem">&#8226; <strong>GOZ 2230</strong> &#8211; Teilleistung (falls Behandlung abgebrochen)</p>
+      <p style="font-size:0.85rem">&#8226; <strong>GOZ 2310</strong> &#8211; Wiedereingliederung (falls sich ein Veneer l&#246;st)</p>
+      <p style="font-size:0.85rem;margin-top:0.75rem;font-style:italic;color:#718096">Honorar GOZ 2220 bei Faktor 2,3: ca. 267 &#8364; / bei 3,5: ca. 407 &#8364; (zzgl. Labor + Material)</p>
+    </div>
+  </div>
+
+  <!-- INSTRUMENTE -->
+  <div class="section" id="s-instruments">
+    <h2 class="section-title">Instrumente &amp; Materialien</h2>
+    <p class="section-sub">Was liegt auf dem Tray?</p>
+    <div class="instr-grid">
+      <div class="instr-card" style="border-top-color:#3182ce"><div class="instr-cat" style="color:#3182ce">Diagnostik &amp; Planung</div><ul class="instr-list"><li>&#8226; Foto-Set (Wangenhalter, Spiegel, Kontrastoren)</li><li>&#8226; VITA-Farbring / digitale Farbmessung</li><li>&#8226; Sonde, Spiegel</li></ul></div>
+      <div class="instr-card" style="border-top-color:#805ad5"><div class="instr-cat" style="color:#805ad5">Pr&#228;paration</div><ul class="instr-list"><li>&#8226; Tiefenmarkierungsbohrer (0,3 / 0,5 / 0,7 mm)</li><li>&#8226; Torpedo-Diamantbohrer (konisch)</li><li>&#8226; Feink&#246;rnige Finierdiamanten</li><li>&#8226; Retraktionsfaden + Applikator</li><li>&#8226; Silikon-Schl&#252;ssel (aus Wax-up)</li></ul></div>
+      <div class="instr-card" style="border-top-color:#e53e3e"><div class="instr-cat" style="color:#e53e3e">Abformung</div><ul class="instr-list"><li>&#8226; A-Silikon (Putty + Light Body) oder Polyether</li><li>&#8226; Intraoral-Scanner (digital)</li><li>&#8226; Abforml&#246;ffel</li><li>&#8226; Retraktionsfaden</li></ul></div>
+      <div class="instr-card" style="border-top-color:#38a169"><div class="instr-cat" style="color:#38a169">Bonding &amp; Eingliederung</div><ul class="instr-list"><li>&#8226; Phosphors&#228;ure-&#196;tzgel (37%)</li><li>&#8226; Dentinadh&#228;siv / Bonding-Agent</li><li>&#8226; Silan (f&#252;r Keramikhaftung)</li><li>&#8226; Dualth&#228;rtender Befestigungskomposit</li><li>&#8226; Try-in-Pasten (Farbproben)</li><li>&#8226; Polymerisationslampe</li><li>&#8226; Skalpell Nr. 12 (&#220;berschussentfernung)</li><li>&#8226; Polierscheiben / Silikonpolierer</li></ul></div>
+    </div>
+    <div class="card card-green" style="margin-top:1rem"><strong>&#128279; Querverweis:</strong> Detaillierte Instrumentenaufstellung f&#252;r das Veneer-Tray finden Sie in der Instrumenten&#252;bersicht im Lernportal unter &#8222;Trays&#8220;.</div>
+  </div>
+
+  <!-- ZFA -->
+  <div class="section" id="s-zfa">
+    <h2 class="section-title">Die Rolle der ZFA</h2>
+    <p class="section-sub">Was ist meine Aufgabe bei der Veneer-Behandlung?</p>
+
+    <div class="phase"><div class="phase-title">&#128203; Vor der Behandlung</div><ul class="phase-list">
+      <li>&#10004; Veneer-Tray vorbereiten und auf Vollst&#228;ndigkeit pr&#252;fen</li>
+      <li>&#10004; Foto-Set bereitlegen (Wangenhalter, Spiegel, Kontrastoren)</li>
+      <li>&#10004; HKP-Unterlagen vorbereiten: GOZ-Positionen, Verlangensleistungs-Formular</li>
+      <li>&#10004; Patient aufkl&#228;ren: Rein private Leistung &#8211; keine GKV-Erstattung bei &#228;sthetischer Indikation</li>
+      <li>&#10004; Wax-up / Mock-up vom Labor kontrollieren</li>
+      <li>&#10004; Fotodokumentation: Vorher-Bilder anfertigen</li>
+    </ul></div>
+
+    <div class="phase"><div class="phase-title">&#129309; W&#228;hrend der Pr&#228;paration (Sitzung 2)</div><ul class="phase-list">
+      <li>&#10004; Absaugen &#8211; trockenes Arbeitsfeld ist essenziell</li>
+      <li>&#10004; Retraktionsfaden bereitlegen und anreichen</li>
+      <li>&#10004; Abformmaterial anmischen oder Scanner vorbereiten</li>
+      <li>&#10004; Provisorium anfertigen (Komposit auf Silikonschl&#252;ssel)</li>
+      <li>&#10004; Farbauswahl dokumentieren und Laborauftrag ausf&#252;llen</li>
+    </ul></div>
+
+    <div class="phase"><div class="phase-title">&#129309; W&#228;hrend des Bondings (Sitzung 3)</div><ul class="phase-list">
+      <li>&#10004; <strong>Absolute Trockenlegung</strong> sicherstellen &#8211; entscheidend f&#252;r den Erfolg!</li>
+      <li>&#10004; Bonding-Materialien in korrekter Reihenfolge anreichen</li>
+      <li>&#10004; Polymerisationslampe bereithalten (Akku gepr&#252;ft!)</li>
+      <li>&#10004; Try-in-Pasten vorbereiten</li>
+      <li>&#10004; Patient den Spiegel zum Begutachten geben</li>
+      <li>&#10004; Bei Mehrfach-Veneers: Teflonband zwischen den Z&#228;hnen</li>
+    </ul></div>
+
+    <div class="phase"><div class="phase-title">&#9989; Nach der Behandlung</div><ul class="phase-list">
+      <li>&#10004; Instrumente aufbereiten (Diamantbohrer reinigen!)</li>
+      <li>&#10004; Fotodokumentation: Nachher-Bilder anfertigen</li>
+      <li>&#10004; GOZ-Abrechnung: GOZ 2220 + 2197 + Begleitleistungen</li>
+      <li>&#10004; Rechnung erstellen (Privatrechnung!)</li>
+      <li>&#10004; Patienten &#252;ber Nachsorge informieren</li>
+      <li>&#10004; Recall vereinbaren (6 Monate)</li>
+    </ul></div>
+
+    <div class="card card-danger"><strong>&#128680; Wichtig &#8211; Trockenlegung!</strong> Der Erfolg der adh&#228;siven Befestigung h&#228;ngt zu 90% von der <strong>Trockenlegung</strong> ab. Speichelkontamination = Haftverlust! Kofferdam oder mindestens Lippen-/Wangenhalter + Watterollen + Speichelsauger verwenden.</div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="section" id="s-quiz">
+    <h2 class="section-title">Wissens-Quiz</h2>
+    <p class="section-sub">Teste dein Wissen! 10 Fragen zu Veneers.</p>
+    <div id="qz"></div>
+  </div>
+
+  <div class="nav-arrows">
+    <button class="nav-arrow prev" id="bp" onclick="prev()">&#8592; Zur&#252;ck</button>
+    <button class="nav-arrow next" id="bn" onclick="next()">Weiter &#8594;</button>
+  </div>
+
+  <div class="sources">
+    <div class="sources-title">&#128218; Quellen &amp; weiterf&#252;hrende Literatur</div>
+    <ul>
+      <li>&#8226; Peumans M et al. A prospective ten-year clinical trial of porcelain veneers. <em>J Adhes Dent.</em> 2004;6(1):65&#8211;76.</li>
+      <li>&#8226; Beier US et al. Clinical performance of porcelain laminate veneers. <em>Int J Prosthodont.</em> 2012;25(2):135&#8211;40.</li>
+      <li>&#8226; Thalji G, Al Aali KA. All-Ceramic Laminate Veneers. <em>Dent Clin North Am.</em> 2024;68(1):41&#8211;60.</li>
+      <li>&#8226; Weber T. <em>Memorix Zahnmedizin.</em> 5. Aufl. Thieme, 2017.</li>
+      <li>&#8226; Geb&#252;hrenordnung f&#252;r Zahn&#228;rzte (GOZ), Fassung 2012.</li>
+      <li>&#8226; Bundeszahn&#228;rztekammer: GOZ 2220 Teilkrone/Veneer &#8211; Abrechnungshinweise.</li>
+    </ul>
+  </div>
+  <div class="footer">FRYDENT Zahn&#228;rzte in Bonndorf &#183; Lernportal &#183; Veneers-Modul<br>Stand: Februar 2026</div>
+</div>
+
+<script>
+var ids=['basics','types','indications','steps','instruments','zfa','quiz'],ci=0;
+function go(id,btn){document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active')});document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active')});document.getElementById('s-'+id).classList.add('active');if(btn)btn.classList.add('active');else document.querySelectorAll('.nav-btn')[ids.indexOf(id)].classList.add('active');ci=ids.indexOf(id);ua();window.scrollTo({top:0,behavior:'smooth'});if(id==='quiz')rq();}
+function prev(){if(ci>0)go(ids[ci-1])}
+function next(){if(ci<ids.length-1)go(ids[ci+1])}
+function ua(){document.getElementById('bp').disabled=ci===0;document.getElementById('bn').disabled=ci===ids.length-1;}
+
+var qs=[
+{q:"Was sind Veneers?",o:["Metallkappen, die den Zahn komplett umschlie\u00dfen","Hauchdünne Keramik- oder Kompositschalen für die sichtbare Zahnfläche","Herausnehmbare Zahnspangen","Provisorische Füllungen für Backenzähne"],c:1,e:"Veneers sind hauchdünne Verblendschalen, die auf die Labialfläche der Frontzähne geklebt werden."},
+{q:"Wie wird ein Veneer abgerechnet?",o:["BEMA Nr. 20a (Krone)","BEMA Nr. 13a (Füllung)","GOZ 2220 (Teilkrone/Veneer)","GOZ 5000 (Implantat)"],c:2,e:"Veneers werden über die GOZ abgerechnet: GOZ 2220 für das Veneer, GOZ 2197 für die adhäsive Befestigung."},
+{q:"Was ist der Hauptunterschied zwischen Prep- und Non-Prep-Veneers?",o:["Non-Prep-Veneers sind aus Metall","Bei Prep-Veneers wird Zahnschmelz abgetragen, bei Non-Prep nicht","Non-Prep-Veneers sind dicker","Es gibt keinen Unterschied"],c:1,e:"Bei Prep-Veneers wird 0,3\u20130,7 mm Zahnschmelz abgetragen. Non-Prep-Veneers benötigen keinen oder minimalen Abtrag."},
+{q:"Welches Material gilt als Goldstandard für Veneers?",o:["Amalgam","Komposit-Kunststoff","Feldspatkeramik oder Lithiumdisilikat (z. B. e.max)","Glasionomerzement"],c:2,e:"Keramik-Veneers (Feldspatkeramik, Lithiumdisilikat) bieten die beste Ästhetik und Langlebigkeit (15\u201320 Jahre)."},
+{q:"Warum ist die Trockenlegung beim Veneer-Bonding so wichtig?",o:["Damit der Patient nicht schluckt","Weil Speichelkontamination den adhäsiven Verbund zerstört","Um die Behandlung schneller durchzuführen","Aus hygienischen Gründen"],c:1,e:"Die adhäsive Befestigung funktioniert nur auf absolut trockener Oberfläche. Speichel = Haftverlust!"},
+{q:"Was bedeutet \u2018Verlangensleistung\u2019 nach \u00a7 2 Abs. 3 GOZ?",o:["Eine Notfallbehandlung","Eine medizinisch notwendige Leistung","Eine Leistung auf Wunsch des Patienten ohne medizinische Notwendigkeit","Eine Kassenleistung"],c:2,e:"Bei rein ästhetischer Indikation sind Veneers Verlangensleistungen. Der Patient muss schriftlich aufgeklärt werden, dass keine GKV-Erstattung erfolgt."},
+{q:"Welche Kontraindikation ist besonders kritisch für Veneers?",o:["Leichte Zahnverfärbungen","Bruxismus (Zähneknirschen)","Der Patient ist über 60 Jahre alt","Der Patient hat eine Zahnzusatzversicherung"],c:1,e:"Bruxismus ohne Schienentherapie führt zu hohem Frakturrisiko der dünnen Keramikschalen."},
+{q:"Worauf haftet ein Keramik-Veneer am besten?",o:["Auf Dentin","Auf Zahnschmelz","Auf Komposit","Auf Metall"],c:1,e:"Die Schmelz-Ätz-Technik bietet die beste adhäsive Haftung. Darum: Möglichst viel Zahnschmelz erhalten!"},
+{q:"Was ist ein \u2018Try-in\u2019 bei Veneers?",o:["Die endgültige Befestigung","Eine provisorische Anprobe mit wasserbasierten Farbpasten","Das Abschleifen des Zahnes","Die Röntgenkontrolle"],c:1,e:"Beim Try-in werden die Veneers mit Farbpasten probeweise aufgesetzt, um Farbe und Passung vor dem Bonding zu prüfen."},
+{q:"Übernimmt die GKV die Kosten für Veneers?",o:["Ja, immer","Ja, bei Bonusheft","Nein \u2013 nur bei medizinischer Indikation ist ein Festzuschuss (Teilkrone) möglich","Ja, aber nur für Backenzähne"],c:2,e:"Veneers sind in der Regel reine Privatleistung. Nur bei medizinisch begründeter Indikation kann ein Festzuschuss für Teilkrone beantragt werden."}
+];
+var qi=0,ans=[];
+function rq(){var c=document.getElementById('qz');if(ans.length===qs.length){rr(c);return;}var q=qs[qi],done=ans.length>qi;var dots='<div class="quiz-progress" style="margin-bottom:1rem">';for(var i=0;i<qs.length;i++){var cl='quiz-dot';if(i<ans.length)cl+=ans[i]===qs[i].c?' correct':' wrong';else if(i===qi)cl+=' current';dots+='<div class="'+cl+'"></div>';}dots+='</div>';var h='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem"><span style="font-size:0.85rem;font-weight:700;color:#4a5568">Frage '+(qi+1)+' von '+qs.length+'</span>'+dots+'</div><div class="card"><div class="quiz-question">'+q.q+'</div>';for(var i=0;i<q.o.length;i++){var cl='quiz-option';if(done){if(i===q.c)cl+=' show-correct';if(i===ans[qi]&&i!==q.c)cl+=' selected-wrong';}h+='<button class="'+cl+'" '+(done?'disabled':'')+' onclick="aq('+i+')"><strong>'+String.fromCharCode(65+i)+'.</strong> '+q.o[i]+'</button>';}if(done){var ok=ans[qi]===q.c;h+='<div class="quiz-explanation '+(ok?'ok':'nok')+'"><strong>'+(ok?'\u2705 Richtig!':'\u274c Leider falsch.')+'</strong> '+q.e+'</div>';}h+='</div>';c.innerHTML=h;}
+function aq(i){if(ans.length>qi)return;ans.push(i);rq();setTimeout(function(){if(qi<qs.length-1){qi++;rq();}else{rq();}},2200);}
+function rr(c){var ok=0;for(var i=0;i<qs.length;i++)if(ans[i]===qs[i].c)ok++;var p=Math.round(ok/qs.length*100),g=p>=70;var h='<div class="quiz-result '+(g?'pass':'fail')+'"><div style="font-size:3rem">'+(g?'\ud83c\udf89':'\ud83d\udcda')+'</div><div class="quiz-score" style="color:'+(g?'#276749':'#744210')+'">'+ok+' / '+qs.length+' richtig ('+p+'%)</div><p style="font-size:0.85rem;color:#4a5568">'+(p>=90?'Ausgezeichnet! Sie sind Veneer-Expertin!':p>=70?'Gut gemacht! Schauen Sie sich die falschen Antworten nochmal an.':'Noch etwas \u00dcbung n\u00f6tig.')+'</p><button class="quiz-btn" onclick="xq()">Quiz wiederholen</button></div><h4 style="font-weight:700;font-size:0.9rem;margin:1rem 0 0.75rem">Auswertung:</h4>';for(var i=0;i<qs.length;i++){var v=ans[i]===qs[i].c;h+='<div class="review-item '+(v?'ok':'nok')+'"><span>'+(v?'\u2705':'\u274c')+'</span><div><p style="font-weight:700">'+qs[i].q+'</p><p style="margin-top:0.25rem">'+qs[i].e+'</p></div></div>';}c.innerHTML=h;}
+function xq(){qi=0;ans=[];rq();}
+ua();
+</script>
+</body>
+</html>
