@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT — Verteiler-Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Source Sans 3','Segoe UI',sans-serif;background:linear-gradient(180deg,#f0f4f8 0%,#e8ecf1 100%);color:#2d3748;line-height:1.7;min-height:100vh}
+
+.header{background:linear-gradient(135deg,#1a365d 0%,#2a4a7f 50%,#2b6cb0 100%);border-bottom:4px solid #63b3ed;padding:1.5rem}
+.header-inner{max-width:900px;margin:0 auto}
+.tags{display:flex;gap:0.5rem;margin-bottom:0.5rem}
+.tag{padding:0.25rem 0.75rem;border-radius:999px;font-size:0.7rem;font-weight:700}
+.tag-portal{background:rgba(255,255,255,0.15);color:#bee3f8}
+.tag-intern{background:rgba(252,129,129,0.3);color:#fed7d7}
+h1{font-family:'Merriweather',serif;font-size:1.75rem;color:white;margin-bottom:0.25rem;line-height:1.2}
+.subtitle{color:#bee3f8;font-size:0.85rem}
+
+.content{max-width:900px;margin:0 auto;padding:1.5rem}
+
+/* Topic tabs */
+.topic-bar{display:flex;gap:0.5rem;overflow-x:auto;padding-bottom:0.5rem;margin-bottom:1.5rem;-webkit-overflow-scrolling:touch}
+.topic-bar::-webkit-scrollbar{display:none}
+.topic-btn{display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.1rem;border-radius:0.75rem;font-size:0.85rem;font-weight:700;white-space:nowrap;border:2px solid #e2e8f0;background:white;color:#4a5568;cursor:pointer;transition:all 0.2s;font-family:inherit}
+.topic-btn:hover{border-color:#1a365d;color:#1a365d}
+.topic-btn.active{background:#1a365d;color:white;border-color:#1a365d;box-shadow:0 4px 12px rgba(26,54,93,0.3)}
+
+/* Topic sections */
+.topic-section{display:none}
+.topic-section.active{display:block}
+
+/* Section title */
+.section-title{font-family:'Merriweather',serif;font-size:1.3rem;color:#1a365d;margin-bottom:0.25rem}
+.section-sub{color:#718096;font-size:0.85rem;margin-bottom:1rem}
+
+/* Language grid */
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:1.5rem}
+
+/* Language card */
+.lang-card{background:white;border:1px solid #e2e8f0;border-radius:1rem;overflow:hidden;transition:all 0.2s}
+.lang-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08);border-color:#90cdf4}
+.lang-header{padding:0.75rem 1rem;display:flex;align-items:center;gap:0.75rem;cursor:pointer;user-select:none}
+.lang-flag{font-size:1.5rem}
+.lang-name{font-weight:700;font-size:0.9rem;color:#1a365d}
+.lang-native{font-size:0.8rem;color:#718096}
+.lang-arrow{margin-left:auto;font-size:0.7rem;color:#a0aec0;transition:transform 0.3s}
+.lang-card.open .lang-arrow{transform:rotate(180deg)}
+
+.lang-body{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.lang-card.open .lang-body{max-height:800px}
+.lang-body-inner{padding:0 1rem 1rem}
+
+/* QR container */
+.qr-box{background:#f7fafc;border:1px solid #e2e8f0;border-radius:0.75rem;padding:1rem;text-align:center;margin-bottom:0.75rem}
+.qr-box canvas{border-radius:0.5rem}
+.qr-label{font-size:0.7rem;color:#a0aec0;margin-top:0.5rem}
+
+/* Action buttons */
+.actions{display:flex;flex-direction:column;gap:0.5rem}
+.act-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.6rem 1rem;border-radius:0.75rem;font-size:0.8rem;font-weight:700;border:none;cursor:pointer;transition:all 0.2s;font-family:inherit;width:100%}
+.act-wa{background:#25D366;color:white}
+.act-wa:hover{background:#1da851}
+.act-link{background:#3182ce;color:white}
+.act-link:hover{background:#2b6cb0}
+.act-open{background:white;color:#3182ce;border:1px solid #3182ce}
+.act-open:hover{background:#ebf8ff}
+.act-btn.copied{background:#38a169!important;color:white!important;border-color:#38a169!important}
+
+/* WhatsApp preview */
+.wa-preview{background:#dcf8c6;border-radius:0.75rem;padding:0.75rem;font-size:0.8rem;color:#1a1a1a;margin-bottom:0.75rem;border:1px solid #b7eb8f;line-height:1.5;position:relative}
+.wa-preview::before{content:'';position:absolute;top:-6px;left:12px;width:12px;height:12px;background:#dcf8c6;transform:rotate(45deg);border-left:1px solid #b7eb8f;border-top:1px solid #b7eb8f}
+
+/* Info cards */
+.info-card{background:linear-gradient(135deg,#ebf8ff 0%,#bee3f8 100%);border:1px solid #90cdf4;border-radius:1rem;padding:1.25rem;margin-bottom:1.5rem}
+.info-card p{font-size:0.85rem;color:#2b6cb0}
+
+/* Print section */
+.print-section{background:white;border:1px solid #e2e8f0;border-radius:1rem;padding:1.25rem;margin-bottom:1.5rem}
+.print-title{font-family:'Merriweather',serif;font-weight:700;font-size:0.95rem;color:#1a365d;margin-bottom:0.75rem}
+.print-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.25rem;border-radius:0.75rem;font-size:0.85rem;font-weight:700;border:2px solid #1a365d;background:white;color:#1a365d;cursor:pointer;transition:all 0.2s;font-family:inherit}
+.print-btn:hover{background:#1a365d;color:white}
+
+/* QR print grid */
+.qr-print-grid{display:none}
+
+.footer{text-align:center;font-size:0.7rem;color:#a0aec0;padding-bottom:2rem;margin-top:1rem}
+
+/* Toast */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:#1a365d;color:white;padding:0.75rem 1.5rem;border-radius:999px;font-size:0.85rem;font-weight:700;z-index:1000;transition:transform 0.3s ease;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+@media print{
+  body{background:white!important}
+  .header,.topic-bar,.info-card,.print-section,.footer,.lang-card,.toast{display:none!important}
+  .qr-print-grid{display:grid!important;grid-template-columns:repeat(2,1fr);gap:2rem;padding:1rem}
+  .qr-print-item{text-align:center;border:1px solid #ddd;border-radius:1rem;padding:1.5rem;break-inside:avoid}
+  .qr-print-item h3{font-family:'Merriweather',serif;font-size:1rem;margin-bottom:0.25rem}
+  .qr-print-item p{font-size:0.8rem;color:#666;margin-bottom:0.75rem}
+  .qr-print-item canvas{margin:0 auto}
+  .qr-print-item .print-url{font-size:0.65rem;color:#999;margin-top:0.5rem;word-break:break-all}
+}
+
+@media(max-width:640px){
+  h1{font-size:1.4rem}
+  .lang-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="tags">
+      <span class="tag tag-portal">FRYDENT Praxis-Portal</span>
+      <span class="tag tag-intern">🔒 Nur für das Team</span>
+    </div>
+    <h1>📋 Verteiler-Dashboard</h1>
+    <p class="subtitle">QR-Codes, WhatsApp-Nachrichten & Links für Patienteninfos — alles an einem Ort.</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="info-card">
+    <p><strong>💡 So funktioniert's:</strong> Thema wählen → Sprache aufklappen → WhatsApp-Nachricht kopieren oder QR-Code zeigen. Fertig!</p>
+  </div>
+
+  <!-- TOPIC TABS -->
+  <div class="topic-bar">
+    <button class="topic-btn active" onclick="showTopic('extraction',this)">🦷 Nach Zahnentfernung</button>
+    <button class="topic-btn" onclick="showTopic('bleaching',this)">✨ Bleaching</button>
+    <button class="topic-btn" onclick="showTopic('veneers',this)">💎 Veneers</button>
+    <button class="topic-btn" onclick="showTopic('kronen',this)">👑 Kronen & Brücken</button>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- NACH ZAHNENTFERNUNG -->
+  <!-- ============================================ -->
+  <div class="topic-section active" id="t-extraction">
+    <h2 class="section-title">Nach der Zahnentfernung</h2>
+    <p class="section-sub">Patienteninformation in 7 Sprachen verfügbar</p>
+    <div class="lang-grid" id="grid-extraction"></div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- BLEACHING -->
+  <!-- ============================================ -->
+  <div class="topic-section" id="t-bleaching">
+    <h2 class="section-title">Professionelles Zahnbleaching</h2>
+    <p class="section-sub">Patienteninformation</p>
+    <div class="lang-grid" id="grid-bleaching"></div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- VENEERS -->
+  <!-- ============================================ -->
+  <div class="topic-section" id="t-veneers">
+    <h2 class="section-title">Veneers</h2>
+    <p class="section-sub">Patienteninformation</p>
+    <div class="lang-grid" id="grid-veneers"></div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- KRONEN -->
+  <!-- ============================================ -->
+  <div class="topic-section" id="t-kronen">
+    <h2 class="section-title">Kronen & Brücken</h2>
+    <p class="section-sub">Patienteninformation</p>
+    <div class="lang-grid" id="grid-kronen"></div>
+  </div>
+
+  <!-- PRINT SECTION -->
+  <div class="print-section">
+    <div class="print-title">🖨️ QR-Codes zum Ausdrucken</div>
+    <p style="font-size:0.85rem;color:#718096;margin-bottom:0.75rem">Alle QR-Codes des aktuellen Themas auf einer Seite ausdrucken — perfekt fürs Wartezimmer oder die Rezeption.</p>
+    <button class="print-btn" onclick="printQRs()">🖨️ QR-Codes drucken</button>
+  </div>
+
+  <!-- Hidden print grid -->
+  <div class="qr-print-grid" id="print-grid"></div>
+
+</div>
+
+<div class="footer">FRYDENT Zahnärzte in Bonndorf · Verteiler-Dashboard · Internes Tool<br>Stand: Februar 2026</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var BASE = 'https://frydent.github.io/frydent-lernportal/';
+
+var DATA = {
+  extraction: {
+    title: 'Nach der Zahnentfernung',
+    items: [
+      {flag:'🇩🇪',lang:'Deutsch',native:'Deutsch',file:'nach_zahnentfernung.html',
+       wa:'Liebe/r Patient/in,\nhier finden Sie wichtige Hinweise nach Ihrer Zahnentfernung:\n{link}\nBei Fragen rufen Sie uns an: 07703-284\nIhr FRYDENT-Team 🦷'},
+      {flag:'🇬🇧',lang:'English',native:'English',file:'nach_zahnentfernung_en.html',
+       wa:'Dear Patient,\nhere you will find important information after your tooth extraction:\n{link}\nIf you have any questions, please call: 07703-284\nYour FRYDENT Team 🦷'},
+      {flag:'🇹🇷',lang:'Türkisch',native:'Türkçe',file:'nach_zahnentfernung_tr.html',
+       wa:'Sayın Hastamız,\ndiş çekimi sonrası önemli bilgileri buradan bulabilirsiniz:\n{link}\nSorularınız için bizi arayın: 07703-284\nFRYDENT Ekibi 🦷'},
+      {flag:'🇷🇴',lang:'Rumänisch',native:'Română',file:'nach_zahnentfernung_ro.html',
+       wa:'Stimat(ă) Pacient(ă),\naici găsiți informații importante după extracția dentară:\n{link}\nPentru întrebări sunați-ne: 07703-284\nEchipa FRYDENT 🦷'},
+      {flag:'🇷🇺',lang:'Russisch',native:'Русский',file:'nach_zahnentfernung_ru.html',
+       wa:'Уважаемый(ая) пациент(ка),\nздесь Вы найдёте важную информацию после удаления зуба:\n{link}\nПри вопросах звоните: 07703-284\nВаша команда FRYDENT 🦷'},
+      {flag:'🇵🇱',lang:'Polnisch',native:'Polski',file:'nach_zahnentfernung_pl.html',
+       wa:'Szanowna Pacjentko / Szanowny Pacjencie,\ntutaj znajdą Państwo ważne wskazówki po usunięciu zęba:\n{link}\nW razie pytań proszę dzwonić: 07703-284\nZespół FRYDENT 🦷'},
+      {flag:'🇸🇦',lang:'Arabisch',native:'العربية',file:'nach_zahnentfernung_ar.html',
+       wa:'عزيزي/عزيزتي المريض/ة،\nهنا تجدون معلومات مهمة بعد خلع السن:\n{link}\nللأسئلة اتصلوا بنا: 07703-284\nفريق FRYDENT 🦷'}
+    ]
+  },
+  bleaching: {
+    title: 'Professionelles Zahnbleaching',
+    items: [
+      {flag:'🇩🇪',lang:'Deutsch',native:'Deutsch',file:'bleaching_patienten.html',
+       wa:'Liebe/r Patient/in,\nhier finden Sie alle Informationen zum professionellen Zahnbleaching bei FRYDENT:\n{link}\nWir beraten Sie gerne! 07703-284\nIhr FRYDENT-Team ✨🦷'}
+    ]
+  },
+  veneers: {
+    title: 'Veneers',
+    items: [
+      {flag:'🇩🇪',lang:'Deutsch',native:'Deutsch',file:'veneers_patienten.html',
+       wa:'Liebe/r Patient/in,\nhier finden Sie alle Informationen zu Veneers bei FRYDENT:\n{link}\nWir beraten Sie gerne! 07703-284\nIhr FRYDENT-Team 💎🦷'}
+    ]
+  },
+  kronen: {
+    title: 'Kronen & Brücken',
+    items: [
+      {flag:'🇩🇪',lang:'Deutsch',native:'Deutsch',file:'kronen_bruecken_patienten.html',
+       wa:'Liebe/r Patient/in,\nhier finden Sie alle Informationen zu Kronen und Brücken bei FRYDENT:\n{link}\nWir beraten Sie gerne! 07703-284\nIhr FRYDENT-Team 👑🦷'}
+    ]
+  }
+};
+
+var currentTopic = 'extraction';
+
+function showTopic(topic, btn) {
+  document.querySelectorAll('.topic-section').forEach(function(s){s.classList.remove('active')});
+  document.querySelectorAll('.topic-btn').forEach(function(b){b.classList.remove('active')});
+  document.getElementById('t-'+topic).classList.add('active');
+  btn.classList.add('active');
+  currentTopic = topic;
+  buildGrid(topic);
+}
+
+function buildGrid(topic) {
+  var grid = document.getElementById('grid-'+topic);
+  if (grid.children.length > 0) return; // already built
+
+  var items = DATA[topic].items;
+  items.forEach(function(item, idx) {
+    var url = BASE + item.file;
+    var waText = item.wa.replace('{link}', url);
+
+    var card = document.createElement('div');
+    card.className = 'lang-card';
+    card.innerHTML =
+      '<div class="lang-header" onclick="toggleCard(this)">' +
+        '<span class="lang-flag">' + item.flag + '</span>' +
+        '<div><div class="lang-name">' + item.lang + '</div><div class="lang-native">' + item.native + '</div></div>' +
+        '<span class="lang-arrow">▼</span>' +
+      '</div>' +
+      '<div class="lang-body"><div class="lang-body-inner">' +
+        '<div class="qr-box"><div id="qr-' + topic + '-' + idx + '"></div><div class="qr-label">QR-Code scannen = Patienteninfo öffnen</div></div>' +
+        '<div class="wa-preview">' + escapeHtml(waText) + '</div>' +
+        '<div class="actions">' +
+          '<button class="act-btn act-wa" onclick="copyWA(this,\'' + topic + '\',' + idx + ')">📋 WhatsApp-Nachricht kopieren</button>' +
+          '<button class="act-btn act-link" onclick="copyLink(this,\'' + topic + '\',' + idx + ')">🔗 Link kopieren</button>' +
+          '<button class="act-btn act-open" onclick="openLink(\'' + topic + '\',' + idx + ')">↗️ Seite öffnen</button>' +
+        '</div>' +
+      '</div></div>';
+
+    grid.appendChild(card);
+
+    // Generate QR
+    setTimeout(function(){
+      var qrEl = document.getElementById('qr-' + topic + '-' + idx);
+      if (qrEl && !qrEl.hasChildNodes()) {
+        new QRCode(qrEl, {
+          text: url,
+          width: 160,
+          height: 160,
+          colorDark: '#1a365d',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      }
+    }, 100);
+  });
+}
+
+function toggleCard(header) {
+  var card = header.parentElement;
+  card.classList.toggle('open');
+}
+
+function escapeHtml(text) {
+  return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+}
+
+function copyWA(btn, topic, idx) {
+  var item = DATA[topic].items[idx];
+  var url = BASE + item.file;
+  var text = item.wa.replace('{link}', url);
+  navigator.clipboard.writeText(text).then(function(){
+    btn.classList.add('copied');
+    btn.innerHTML = '✅ Kopiert!';
+    showToast('WhatsApp-Nachricht kopiert!');
+    setTimeout(function(){
+      btn.classList.remove('copied');
+      btn.innerHTML = '📋 WhatsApp-Nachricht kopieren';
+    }, 2500);
+  });
+}
+
+function copyLink(btn, topic, idx) {
+  var item = DATA[topic].items[idx];
+  var url = BASE + item.file;
+  navigator.clipboard.writeText(url).then(function(){
+    btn.classList.add('copied');
+    btn.innerHTML = '✅ Kopiert!';
+    showToast('Link kopiert!');
+    setTimeout(function(){
+      btn.classList.remove('copied');
+      btn.innerHTML = '🔗 Link kopieren';
+    }, 2500);
+  });
+}
+
+function openLink(topic, idx) {
+  var item = DATA[topic].items[idx];
+  window.open(BASE + item.file, '_blank');
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2000);
+}
+
+function printQRs() {
+  var pg = document.getElementById('print-grid');
+  pg.innerHTML = '';
+  var items = DATA[currentTopic].items;
+  var title = DATA[currentTopic].title;
+
+  var header = document.createElement('div');
+  header.style.cssText = 'grid-column:1/-1;text-align:center;padding:1rem 0';
+  header.innerHTML = '<h2 style="font-family:Merriweather,serif;font-size:1.3rem;color:#1a365d">FRYDENT — ' + title + '</h2><p style="color:#718096;font-size:0.85rem">QR-Codes für Patienteninformationen</p>';
+  pg.appendChild(header);
+
+  items.forEach(function(item, idx) {
+    var url = BASE + item.file;
+    var div = document.createElement('div');
+    div.className = 'qr-print-item';
+    div.innerHTML = '<h3>' + item.flag + ' ' + item.lang + '</h3><p>' + item.native + '</p><div id="qr-print-' + currentTopic + '-' + idx + '"></div><div class="print-url">' + url + '</div>';
+    pg.appendChild(div);
+
+    setTimeout(function(){
+      var qrEl = document.getElementById('qr-print-' + currentTopic + '-' + idx);
+      if (qrEl) {
+        new QRCode(qrEl, {
+          text: url,
+          width: 200,
+          height: 200,
+          colorDark: '#1a365d',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      }
+    }, 100);
+  });
+
+  setTimeout(function(){ window.print(); }, 500);
+}
+
+// Build initial grid
+buildGrid('extraction');
+</script>
+
+</body>
+</html>
