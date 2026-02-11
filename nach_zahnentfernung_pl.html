@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT — Po usunięciu zęba</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Source Sans 3','Segoe UI',sans-serif;background:linear-gradient(180deg,#f0f4f8 0%,#e8ecf1 100%);color:#2d3748;line-height:1.7}
+.header{background:linear-gradient(135deg,#1a365d 0%,#2a4a7f 50%,#2b6cb0 100%);border-bottom:4px solid #63b3ed;padding:2rem 1.5rem}
+.header-inner{max-width:800px;margin:0 auto}
+.tags{display:flex;gap:0.5rem;margin-bottom:0.75rem;flex-wrap:wrap}
+.tag{padding:0.25rem 0.75rem;border-radius:999px;font-size:0.7rem;font-weight:700}
+.tag-portal{background:rgba(255,255,255,0.15);color:#bee3f8}
+.tag-info{background:rgba(99,179,237,0.2);color:#90cdf4}
+.lang-bar{display:flex;gap:0.4rem;margin-top:1rem;flex-wrap:wrap}
+.lang-btn{padding:0.25rem 0.6rem;border-radius:999px;font-size:0.7rem;font-weight:700;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#bee3f8;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.lang-btn:hover{background:rgba(255,255,255,0.2)}
+.lang-btn.active{background:white;color:#1a365d}
+h1{font-family:'Merriweather',serif;font-size:2rem;color:white;margin-bottom:0.5rem;line-height:1.2}
+.subtitle{color:#bee3f8;font-size:0.9rem}
+.meta{display:flex;gap:1.5rem;margin-top:0.75rem;color:#90cdf4;font-size:0.75rem}
+.content{max-width:800px;margin:0 auto;padding:1.5rem}
+.card{background:white;border:1px solid #e2e8f0;border-radius:1rem;padding:1.25rem;margin-bottom:1rem}
+.card-red{background:linear-gradient(135deg,#fff5f5 0%,#ffe0e0 100%);border:2px solid #fc8181}
+.card-yellow{background:#fff9f0;border:1px solid #f0dcc0}
+.card-green{background:#f0fff4;border:1px solid #c6f6d5}
+.card-blue{background:linear-gradient(135deg,#f0f7ff 0%,#e8f4f8 100%);border:1px solid #c8dff0}
+.card-purple{background:#f8f4ff;border:1px solid #d6bcfa}
+.card-info{background:#ebf8ff;border:1px solid #90cdf4;color:#2b6cb0;font-size:0.85rem}
+.card-warn{background:#fffbeb;border:1px solid #f6d860;color:#744210;font-size:0.85rem}
+.card-danger{background:#fff5f5;border:1px solid #feb2b2;color:#c53030;font-size:0.85rem}
+.card-title{font-family:'Merriweather',serif;font-weight:700;margin-bottom:0.75rem}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0.75rem;top:0.5rem;bottom:0.5rem;width:2px;background:#e2e8f0}
+.tl-item{position:relative;margin-bottom:1.25rem}
+.tl-dot{position:absolute;left:-1.65rem;top:0.3rem;width:1.1rem;height:1.1rem;border-radius:50%;border:2px solid white}
+.tl-time{font-weight:700;font-size:0.85rem;margin-bottom:0.25rem}
+.tl-text{font-size:0.85rem;color:#4a5568}
+.do-dont{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1rem}
+.do-card{background:linear-gradient(135deg,#f0fff4 0%,#c6f6d5 100%);border:2px solid #68d391;border-radius:1rem;padding:1.25rem}
+.dont-card{background:linear-gradient(135deg,#fff5f5 0%,#fed7d7 100%);border:2px solid #fc8181;border-radius:1rem;padding:1.25rem}
+.rule{font-size:0.85rem;padding:0.3rem 0}
+.emergency-box{background:linear-gradient(135deg,#c53030 0%,#e53e3e 100%);border-radius:1rem;padding:1.5rem;color:white;text-align:center;margin-bottom:1rem}
+.emergency-title{font-family:'Merriweather',serif;font-size:1.2rem;margin-bottom:0.5rem}
+.emergency-phone{font-family:'Merriweather',serif;font-size:1.8rem;font-weight:900;margin:0.5rem 0}
+.cta-box{background:linear-gradient(135deg,#f0fff4 0%,#c6f6d5 100%);border:2px solid #68d391;border-radius:1rem;padding:1.5rem;text-align:center;margin-bottom:1rem}
+.cta-title{font-family:'Merriweather',serif;font-size:1.1rem;color:#276749;margin-bottom:0.5rem}
+.cta-phone{font-family:'Merriweather',serif;font-size:1.3rem;font-weight:700;color:#276749;margin-top:0.5rem}
+.footer{text-align:center;font-size:0.7rem;color:#a0aec0;padding-bottom:2rem}
+@media(max-width:640px){h1{font-size:1.5rem}.meta{flex-direction:column;gap:0.25rem}.do-dont{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="tags">
+      <span class="tag tag-portal">FRYDENT Zahnärzte</span>
+      <span class="tag tag-info">Informacja dla pacjenta</span>
+    </div>
+    <h1>Po usunięciu zęba</h1>
+    <p class="subtitle">Ważne wskazówki dla szybkiego i bezproblemowego gojenia się rany.</p>
+    <div class="meta">
+      <span>📖 ok. 3 min. czytania</span>
+      <span>🩹 Instrukcja po zabiegu</span>
+    </div>
+    <div class="lang-bar">
+      <a class="lang-btn" href="#">🇩🇪 Deutsch</a>
+      <a class="lang-btn" href="#">🇬🇧 English</a>
+      <a class="lang-btn" href="#">🇹🇷 Türkçe</a>
+      <a class="lang-btn" href="#">🇺🇦 Українська</a>
+      <a class="lang-btn" href="#">🇷🇴 Română</a>
+      <a class="lang-btn" href="#">🇷🇺 Русский</a>
+      <a class="lang-btn active" href="#">🇵🇱 Polski</a>
+      <a class="lang-btn" href="#">🇦🇱 Shqip</a>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- NAJWAŻNIEJSZE ZASADY -->
+  <div class="card card-red">
+    <div class="card-title" style="color:#c53030;font-size:1.1rem">⚠️ 3 najważniejsze zasady</div>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">1. Przygryzaj tampon przez co najmniej 30 minut!</p>
+    <p style="font-size:0.85rem;color:#742a2a;padding-bottom:0.5rem">Tampon pomaga zatrzymać krwawienie. Nie zaglądaj co chwilę — po prostu przygryzaj i czekaj.</p>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">2. Dzisiaj nie płucz, nie ssij, nie pluj!</p>
+    <p style="font-size:0.85rem;color:#742a2a;padding-bottom:0.5rem">Skrzep w ranie to Twój najlepszy przyjaciel — chroni ranę. Nie wypłukuj go!</p>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">3. Chłodź, chłodź, chłodź!</p>
+    <p style="font-size:0.85rem;color:#742a2a">Owiń okład zimny ręcznikiem i przykładaj do policzka od zewnątrz. 20 min. chłodzenie, 20 min. przerwa.</p>
+  </div>
+
+  <!-- HARMONOGRAM GOJENIA -->
+  <div class="card">
+    <div class="card-title" style="color:#1a365d">🕐 Harmonogram gojenia</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#e53e3e"></div>
+        <div class="tl-time" style="color:#e53e3e">Pierwsze 2 godziny</div>
+        <div class="tl-text">Przygryzaj tampon. Nic nie jedz ani nie pij. Nie pal. Zacznij chłodzić.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#dd6b20"></div>
+        <div class="tl-time" style="color:#dd6b20">Dzień 1 (dzisiaj)</div>
+        <div class="tl-text">Miękkie, chłodne jedzenie (jogurt, zupa, lody). Nie płucz! Żadnego sportu. Podczas snu podłóż wyżej głowę. Przy bólu: Ibuprofen 400 mg (maks. 3x dziennie).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#d69e2e"></div>
+        <div class="tl-time" style="color:#d69e2e">Dzień 2–3</div>
+        <div class="tl-text">Ostrożnie płucz letnią herbatą szałwiową lub płynem Chlorhexamed (delikatnie!). Obrzęk może się nasilić — to normalne. Nadal miękka dieta.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#38a169"></div>
+        <div class="tl-time" style="color:#38a169">Dzień 4–7</div>
+        <div class="tl-text">Obrzęk ustępuje. Stopniowo normalna dieta. Rana goi się od brzegów. Szwy usuwa się po ok. 7–10 dniach (jeśli zostały założone).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#3182ce"></div>
+        <div class="tl-time" style="color:#3182ce">Po 2–3 tygodniach</div>
+        <div class="tl-text">Rana jest powierzchniowo zamknięta. Pełne wygojenie kości trwa ok. 3–6 miesięcy.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAK & NIE -->
+  <div class="do-dont">
+    <div class="do-card">
+      <div style="font-size:1.3rem;margin-bottom:0.5rem">✅</div>
+      <h4 style="font-weight:700;color:#276749;margin-bottom:0.75rem">To pomaga w gojeniu</h4>
+      <p class="rule" style="color:#22543d">✔ Chłodzić (20 min. tak, 20 min. przerwa)</p>
+      <p class="rule" style="color:#22543d">✔ Miękkie, chłodne jedzenie</p>
+      <p class="rule" style="color:#22543d">✔ Dużo wody (nie przez ranę)</p>
+      <p class="rule" style="color:#22543d">✔ Spać z wyżej podłożoną głową</p>
+      <p class="rule" style="color:#22543d">✔ Ibuprofen przy bólu (wg zaleceń)</p>
+      <p class="rule" style="color:#22543d">✔ Ostrożnie myć zęby (omijając ranę)</p>
+      <p class="rule" style="color:#22543d">✔ Od dnia 2: delikatnie płukać herbatą szałwiową</p>
+    </div>
+    <div class="dont-card">
+      <div style="font-size:1.3rem;margin-bottom:0.5rem">🚫</div>
+      <h4 style="font-weight:700;color:#c53030;margin-bottom:0.75rem">Tego proszę unikać</h4>
+      <p class="rule" style="color:#7f1d1d">✘ Palenie (min. 48 godzin, lepiej tydzień!)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Alkohol (24 godziny)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Gorące napoje i jedzenie (dzień 1)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Nabiał bezpośrednio na ranę</p>
+      <p class="rule" style="color:#7f1d1d">✘ Energiczne płukanie lub plucie (dzień 1)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Picie przez słomkę (efekt ssania!)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Sport i ciężka praca fizyczna (2–3 dni)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Aspiryna (nasila krwawienie!)</p>
+    </div>
+  </div>
+
+  <!-- BÓL I LEKI -->
+  <div class="card card-blue">
+    <div class="card-title" style="color:#1a4a6e">💊 Ból i leki</div>
+    <p style="font-size:0.85rem;margin-bottom:0.75rem">Znieczulenie działa jeszcze <strong>2–4 godziny</strong>. Weź tabletkę przeciwbólową <strong>zanim</strong> znieczulenie przestanie działać — wtedy wyprzedzisz ból.</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Zalecany:</strong> Ibuprofen 400 mg — do 3x dziennie (z posiłkiem).</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Alternatywa:</strong> Paracetamol 500 mg — do 4x dziennie.</p>
+    <p style="font-size:0.85rem;color:#c53030"><strong>⚠️ Żadnej Aspiryny (ASS)!</strong> Aspiryna rozrzedza krew i może nasilić krwawienie.</p>
+    <p style="font-size:0.85rem;margin-top:0.5rem;font-style:italic;color:#718096">Jeśli przepisano Ci antybiotyk, przyjmuj go dokładnie według zaleceń i do końca opakowania.</p>
+  </div>
+
+  <!-- OBRZĘK -->
+  <div class="card card-yellow">
+    <div class="card-title" style="color:#8b6914">🧊 Obrzęk — to normalne!</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">Obrzęk po usunięciu zęba jest <strong>całkowicie normalny</strong> i nie jest powodem do niepokoju. Szczyt obrzęku przypada zwykle na <strong>2. lub 3. dzień</strong> i potem stopniowo ustępuje.</p>
+    <p style="font-size:0.85rem"><strong>Wskazówka:</strong> Chłodzenie pomaga najlepiej w pierwszych 24 godzinach. Potem lepiej działa wilgotne ciepło (np. ciepły ręcznik) od 3. dnia.</p>
+  </div>
+
+  <!-- KRWAWIENIE -->
+  <div class="card card-purple">
+    <div class="card-title" style="color:#553c9a">🩸 Lekkie krwawienie</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">Lekkie krwawienie lub smak krwi w ślinie w pierwszych 24 godzinach jest <strong>normalne</strong>.</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Co robić:</strong> Zroluj czysty gazik lub chusteczkę, połóż na ranę i przygryzaj przez 30 minut. Siedź spokojnie, głowę trzymaj wysoko.</p>
+    <p style="font-size:0.85rem;color:#553c9a"><strong>Ważne:</strong> Jeśli krwawienie nie ustępuje po 1–2 godzinach mimo przygryzania, proszę do nas zadzwonić.</p>
+  </div>
+
+  <!-- JEDZENIE I PICIE -->
+  <div class="card card-green">
+    <div class="card-title" style="color:#276749">🍽️ Jedzenie i picie — co wolno?</div>
+    <p style="font-size:0.85rem;font-weight:700;color:#276749;margin-bottom:0.5rem">Polecane:</p>
+    <p style="font-size:0.85rem;color:#22543d">🥣 Zupa (letnia, nie gorąca!) · 🧊 Lody (bez kawałków) · 🫐 Jogurt · 🥑 Awokado · 🍌 Banan · 🥚 Jajecznica · 🍝 Miękki makaron · 🥔 Puree ziemniaczane</p>
+    <p style="font-size:0.85rem;font-weight:700;color:#c53030;margin-top:0.75rem;margin-bottom:0.5rem">Proszę unikać:</p>
+    <p style="font-size:0.85rem;color:#742a2a">🚫 Twarde jedzenie (orzechy, chipsy, skórki) · 🚫 Ostre potrawy · 🚫 Bardzo gorące · 🚫 Sypkie produkty (ryż, chleb ziarnisty)</p>
+    <p style="font-size:0.85rem;font-style:italic;color:#718096;margin-top:0.75rem">Żuj po drugiej stronie i jedz dopiero, gdy znieczulenie całkowicie ustąpi — ryzyko przygryzienia wargi!</p>
+  </div>
+
+  <!-- PALENIE -->
+  <div class="card card-warn"><strong>🚬 Palenie:</strong> Palenie to najczęstsza przyczyna zaburzeń gojenia po usunięciu zęba! Nikotyna zwęża naczynia krwionośne i hamuje gojenie. Proszę nie palić przez co najmniej <strong>48 godzin</strong> — najlepiej tydzień.</div>
+
+  <!-- NAGŁY PRZYPADEK -->
+  <div class="emergency-box">
+    <div class="emergency-title">🚨 Kiedy natychmiast do nas zadzwonić?</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• Silne, niestopowalne krwawienie po 2+ godzinach</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• Narastający ból po 3–4 dniach (zamiast poprawy)</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• Gorączka powyżej 38,5°C</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• Silny obrzęk, który po 3. dniu się zwiększa</p>
+    <p style="font-size:0.85rem;margin-bottom:0.75rem">• Drętwienie, które nie ustępuje po 24 godzinach</p>
+    <div class="emergency-phone">📞 07703 — 284</div>
+    <p style="font-size:0.8rem;margin-top:0.5rem;color:#fed7d7">Poza godzinami przyjęć: stomatologiczny dyżur pod numerem 01805 — 911 630</p>
+  </div>
+
+  <!-- HIGIENA JAMY USTNEJ -->
+  <div class="card card-blue">
+    <div class="card-title" style="color:#1a4a6e">🪥 Higiena jamy ustnej po ekstrakcji</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Dzień 1:</strong> Ostrożnie myj zęby, ale omijaj okolice rany. Nie płucz!</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Od dnia 2:</strong> Delikatnie płucz herbatą szałwiową lub płynem Chlorhexamed. Nie energicznie — po prostu nabierz płyn do ust, potrzymaj i delikatnie wypuść.</p>
+    <p style="font-size:0.85rem"><strong>Od dnia 3–4:</strong> Stopniowo wracaj do normalnego mycia zębów. Okolice rany czyść delikatnie miękką szczoteczką.</p>
+  </div>
+
+  <!-- KONTAKT -->
+  <div class="cta-box">
+    <div class="cta-title">Pytania? Jesteśmy do Państwa dyspozycji!</div>
+    <p style="font-size:0.9rem;color:#2f855a">W razie wątpliwości proszę się z nami skontaktować.</p>
+    <div class="cta-phone">📞 07703 — 284</div>
+    <p style="font-size:0.9rem;color:#2f855a;margin-top:0.5rem">🌐 <a href="https://www.frydent.de" target="_blank" style="color:#276749;font-weight:700">www.frydent.de</a></p>
+  </div>
+
+  <div class="card card-info"><strong>💡 Informacja:</strong> Ta strona nie zastępuje osobistej rozmowy z dentystką. W razie indywidualnych pytań proszę się z nami bezpośrednio skontaktować.</div>
+
+  <div class="footer" style="margin-top:1.5rem">FRYDENT Zahnärzte in Bonndorf · Informacja dla pacjenta · Po usunięciu zęba<br>Stan: luty 2026</div>
+</div>
+
+</body>
+</html>

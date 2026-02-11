@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT — Nach der Zahnentfernung</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Source Sans 3','Segoe UI',sans-serif;background:linear-gradient(180deg,#f0f4f8 0%,#e8ecf1 100%);color:#2d3748;line-height:1.7}
+.header{background:linear-gradient(135deg,#1a365d 0%,#2a4a7f 50%,#2b6cb0 100%);border-bottom:4px solid #63b3ed;padding:2rem 1.5rem}
+.header-inner{max-width:800px;margin:0 auto}
+.tags{display:flex;gap:0.5rem;margin-bottom:0.75rem;flex-wrap:wrap}
+.tag{padding:0.25rem 0.75rem;border-radius:999px;font-size:0.7rem;font-weight:700}
+.tag-portal{background:rgba(255,255,255,0.15);color:#bee3f8}
+.tag-info{background:rgba(99,179,237,0.2);color:#90cdf4}
+.lang-bar{display:flex;gap:0.4rem;margin-top:1rem;flex-wrap:wrap}
+.lang-btn{padding:0.25rem 0.6rem;border-radius:999px;font-size:0.7rem;font-weight:700;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#bee3f8;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.lang-btn:hover{background:rgba(255,255,255,0.2)}
+.lang-btn.active{background:white;color:#1a365d}
+h1{font-family:'Merriweather',serif;font-size:2rem;color:white;margin-bottom:0.5rem;line-height:1.2}
+.subtitle{color:#bee3f8;font-size:0.9rem}
+.meta{display:flex;gap:1.5rem;margin-top:0.75rem;color:#90cdf4;font-size:0.75rem}
+.content{max-width:800px;margin:0 auto;padding:1.5rem}
+.card{background:white;border:1px solid #e2e8f0;border-radius:1rem;padding:1.25rem;margin-bottom:1rem}
+.card-red{background:linear-gradient(135deg,#fff5f5 0%,#ffe0e0 100%);border:2px solid #fc8181}
+.card-yellow{background:#fff9f0;border:1px solid #f0dcc0}
+.card-green{background:#f0fff4;border:1px solid #c6f6d5}
+.card-blue{background:linear-gradient(135deg,#f0f7ff 0%,#e8f4f8 100%);border:1px solid #c8dff0}
+.card-purple{background:#f8f4ff;border:1px solid #d6bcfa}
+.card-info{background:#ebf8ff;border:1px solid #90cdf4;color:#2b6cb0;font-size:0.85rem}
+.card-warn{background:#fffbeb;border:1px solid #f6d860;color:#744210;font-size:0.85rem}
+.card-danger{background:#fff5f5;border:1px solid #feb2b2;color:#c53030;font-size:0.85rem}
+.card-title{font-family:'Merriweather',serif;font-weight:700;margin-bottom:0.75rem}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0.75rem;top:0.5rem;bottom:0.5rem;width:2px;background:#e2e8f0}
+.tl-item{position:relative;margin-bottom:1.25rem}
+.tl-dot{position:absolute;left:-1.65rem;top:0.3rem;width:1.1rem;height:1.1rem;border-radius:50%;border:2px solid white}
+.tl-time{font-weight:700;font-size:0.85rem;margin-bottom:0.25rem}
+.tl-text{font-size:0.85rem;color:#4a5568}
+.do-dont{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1rem}
+.do-card{background:linear-gradient(135deg,#f0fff4 0%,#c6f6d5 100%);border:2px solid #68d391;border-radius:1rem;padding:1.25rem}
+.dont-card{background:linear-gradient(135deg,#fff5f5 0%,#fed7d7 100%);border:2px solid #fc8181;border-radius:1rem;padding:1.25rem}
+.rule{font-size:0.85rem;padding:0.3rem 0}
+.emergency-box{background:linear-gradient(135deg,#c53030 0%,#e53e3e 100%);border-radius:1rem;padding:1.5rem;color:white;text-align:center;margin-bottom:1rem}
+.emergency-title{font-family:'Merriweather',serif;font-size:1.2rem;margin-bottom:0.5rem}
+.emergency-phone{font-family:'Merriweather',serif;font-size:1.8rem;font-weight:900;margin:0.5rem 0}
+.cta-box{background:linear-gradient(135deg,#f0fff4 0%,#c6f6d5 100%);border:2px solid #68d391;border-radius:1rem;padding:1.5rem;text-align:center;margin-bottom:1rem}
+.cta-title{font-family:'Merriweather',serif;font-size:1.1rem;color:#276749;margin-bottom:0.5rem}
+.cta-phone{font-family:'Merriweather',serif;font-size:1.3rem;font-weight:700;color:#276749;margin-top:0.5rem}
+.footer{text-align:center;font-size:0.7rem;color:#a0aec0;padding-bottom:2rem}
+@media(max-width:640px){h1{font-size:1.5rem}.meta{flex-direction:column;gap:0.25rem}.do-dont{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="tags">
+      <span class="tag tag-portal">FRYDENT Zahnärzte</span>
+      <span class="tag tag-info">Patienteninformation</span>
+    </div>
+    <h1>Nach der Zahnentfernung</h1>
+    <p class="subtitle">Wichtige Hinweise für eine schnelle und komplikationslose Heilung.</p>
+    <div class="meta">
+      <span>📖 ca. 3 Min. Lesezeit</span>
+      <span>🩹 Nachsorge-Anleitung</span>
+    </div>
+    <div class="lang-bar">
+      <a class="lang-btn active" href="#">🇩🇪 Deutsch</a>
+      <a class="lang-btn" href="#" title="Demnächst verfügbar">🇬🇧 English</a>
+      <a class="lang-btn" href="#" title="Demnächst verfügbar">🇹🇷 Türkçe</a>
+      <a class="lang-btn" href="#" title="Demnächst verfügbar">🇺🇦 Українська</a>
+      <a class="lang-btn" href="#" title="Demnächst verfügbar">🇷🇴 Română</a>
+      <a class="lang-btn" href="#" title="Demnächst verfügbar">🇷🇺 Русский</a>
+      <a class="lang-btn" href="#" title="Demnächst verfügbar">🇵🇱 Polski</a>
+      <a class="lang-btn" href="#" title="Demnächst verfügbar">🇦🇱 Shqip</a>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- WICHTIGSTE REGELN -->
+  <div class="card card-red">
+    <div class="card-title" style="color:#c53030;font-size:1.1rem">⚠️ Die 3 wichtigsten Regeln</div>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">1. Beißen Sie mindestens 30 Minuten fest auf den Tupfer!</p>
+    <p style="font-size:0.85rem;color:#742a2a;padding-bottom:0.5rem">Der Tupfer hilft, die Blutung zu stoppen. Nicht ständig nachschauen — einfach zubeißen und warten.</p>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">2. Heute nicht spülen, nicht saugen, nicht spucken!</p>
+    <p style="font-size:0.85rem;color:#742a2a;padding-bottom:0.5rem">Der Blutpfropf (Koagel) in der Wunde ist Ihr bester Freund — er schützt die Wunde. Nicht ausspülen!</p>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">3. Kühlen, kühlen, kühlen!</p>
+    <p style="font-size:0.85rem;color:#742a2a">Kühlpack in ein Tuch einwickeln und von außen auf die Wange legen. 20 Min. kühlen, 20 Min. Pause.</p>
+  </div>
+
+  <!-- ZEITSTRAHL -->
+  <div class="card">
+    <div class="card-title" style="color:#1a365d">🕐 Ihr Fahrplan zur Heilung</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#e53e3e"></div>
+        <div class="tl-time" style="color:#e53e3e">Erste 2 Stunden</div>
+        <div class="tl-text">Auf Tupfer beißen. Nichts essen oder trinken. Nicht rauchen. Kühlen beginnen.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#dd6b20"></div>
+        <div class="tl-time" style="color:#dd6b20">Tag 1 (heute)</div>
+        <div class="tl-text">Weiche, kühle Nahrung (Joghurt, Suppe, Eis). Nicht spülen! Kein Sport. Oberkörper beim Schlafen leicht erhöht lagern. Bei Schmerzen: Ibuprofen 400 mg (max. 3x täglich).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#d69e2e"></div>
+        <div class="tl-time" style="color:#d69e2e">Tag 2–3</div>
+        <div class="tl-text">Vorsichtig mit lauwarmem Salbeitee oder Chlorhexidin-Spülung spülen (nicht kräftig!). Schwellung kann zunehmen — das ist normal. Weiterhin weiche Kost.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#38a169"></div>
+        <div class="tl-time" style="color:#38a169">Tag 4–7</div>
+        <div class="tl-text">Schwellung geht zurück. Langsam normale Ernährung. Wunde heilt von den Rändern her zu. Fäden werden nach ca. 7–10 Tagen entfernt (falls genäht wurde).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#3182ce"></div>
+        <div class="tl-time" style="color:#3182ce">Nach 2–3 Wochen</div>
+        <div class="tl-text">Die Wunde ist oberflächlich geschlossen. Vollständige Knochenheilung dauert ca. 3–6 Monate.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOS & DON'TS -->
+  <div class="do-dont">
+    <div class="do-card">
+      <div style="font-size:1.3rem;margin-bottom:0.5rem">✅</div>
+      <h4 style="font-weight:700;color:#276749;margin-bottom:0.75rem">Das hilft der Heilung</h4>
+      <p class="rule" style="color:#22543d">✔ Kühlen (20 Min. an, 20 Min. Pause)</p>
+      <p class="rule" style="color:#22543d">✔ Weiche, kühle Nahrung</p>
+      <p class="rule" style="color:#22543d">✔ Viel Wasser trinken (nicht über die Wunde)</p>
+      <p class="rule" style="color:#22543d">✔ Kopf beim Schlafen höher lagern</p>
+      <p class="rule" style="color:#22543d">✔ Ibuprofen bei Schmerzen (nach Anweisung)</p>
+      <p class="rule" style="color:#22543d">✔ Zähne vorsichtig weiterputzen (Wundbereich auslassen)</p>
+      <p class="rule" style="color:#22543d">✔ Ab Tag 2: Vorsichtig mit Salbeitee spülen</p>
+    </div>
+    <div class="dont-card">
+      <div style="font-size:1.3rem;margin-bottom:0.5rem">🚫</div>
+      <h4 style="font-weight:700;color:#c53030;margin-bottom:0.75rem">Das bitte vermeiden</h4>
+      <p class="rule" style="color:#7f1d1d">✘ Rauchen (mind. 48 Stunden, besser 1 Woche!)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Alkohol (24 Stunden)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Heiße Getränke und Speisen (Tag 1)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Milchprodukte direkt auf die Wunde</p>
+      <p class="rule" style="color:#7f1d1d">✘ Kräftig spülen oder spucken (Tag 1)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Mit Strohhalm trinken (Saugeffekt!)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Sport und schwere körperliche Arbeit (2–3 Tage)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Aspirin (fördert Blutung!)</p>
+    </div>
+  </div>
+
+  <!-- SCHMERZEN -->
+  <div class="card card-blue">
+    <div class="card-title" style="color:#1a4a6e">💊 Schmerzen & Medikamente</div>
+    <p style="font-size:0.85rem;margin-bottom:0.75rem">Die Betäubung hält noch <strong>2–4 Stunden</strong> an. Nehmen Sie Ihre Schmerztablette am besten <strong>bevor</strong> die Betäubung nachlässt — so kommen Sie dem Schmerz zuvor.</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Empfohlen:</strong> Ibuprofen 400 mg — bis zu 3x täglich (mit etwas Nahrung).</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Alternative:</strong> Paracetamol 500 mg — bis zu 4x täglich.</p>
+    <p style="font-size:0.85rem;color:#c53030"><strong>⚠️ Kein Aspirin (ASS)!</strong> Aspirin verdünnt das Blut und kann die Blutung verstärken.</p>
+    <p style="font-size:0.85rem;margin-top:0.5rem;font-style:italic;color:#718096">Falls Ihnen ein Antibiotikum verschrieben wurde, nehmen Sie es bitte genau nach Anweisung und bis zum Ende der Packung ein.</p>
+  </div>
+
+  <!-- SCHWELLUNG -->
+  <div class="card card-yellow">
+    <div class="card-title" style="color:#8b6914">🧊 Schwellung — das ist normal!</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">Eine Schwellung nach einer Zahnentfernung ist <strong>völlig normal</strong> und kein Grund zur Sorge. Sie erreicht ihren Höhepunkt meist am <strong>2. oder 3. Tag</strong> und bildet sich danach langsam zurück.</p>
+    <p style="font-size:0.85rem"><strong>Tipp:</strong> Kühlen hilft am besten in den ersten 24 Stunden. Danach bringt Kühlen weniger Effekt — dafür hilft feuchte Wärme (z. B. warmer Waschlappen) ab Tag 3.</p>
+  </div>
+
+  <!-- NACHBLUTUNG -->
+  <div class="card card-purple">
+    <div class="card-title" style="color:#553c9a">🩸 Leichte Nachblutung</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">Eine leichte Nachblutung oder der Geschmack von Blut im Speichel ist in den ersten 24 Stunden <strong>normal</strong>.</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Was tun:</strong> Ein sauberes Stofftaschentuch oder eine Mullkompresse fest zusammenrollen, auf die Wunde legen und 30 Minuten zubeißen. Ruhig sitzen bleiben, Kopf hoch lagern.</p>
+    <p style="font-size:0.85rem;color:#553c9a"><strong>Wichtig:</strong> Hört die Blutung nach 1–2 Stunden trotz Aufbeißen nicht auf, rufen Sie uns bitte an.</p>
+  </div>
+
+  <!-- ESSEN & TRINKEN -->
+  <div class="card card-green">
+    <div class="card-title" style="color:#276749">🍽️ Essen & Trinken — was geht?</div>
+    <p style="font-size:0.85rem;font-weight:700;color:#276749;margin-bottom:0.5rem">Gut geeignet:</p>
+    <p style="font-size:0.85rem;color:#22543d">🥣 Suppe (lauwarm, nicht heiß!) · 🧊 Eis (ohne Stückchen) · 🫐 Joghurt · 🥑 Avocado · 🍌 Banane · 🥚 Rührei · 🍝 Weiche Nudeln · 🥔 Kartoffelpüree</p>
+    <p style="font-size:0.85rem;font-weight:700;color:#c53030;margin-top:0.75rem;margin-bottom:0.5rem">Bitte vermeiden:</p>
+    <p style="font-size:0.85rem;color:#742a2a">🚫 Harte Nahrung (Nüsse, Chips, Krusten) · 🚫 Scharfes Essen · 🚫 Sehr heißes · 🚫 Krümelige Lebensmittel (Reis, Körnerbrot)</p>
+    <p style="font-size:0.85rem;font-style:italic;color:#718096;margin-top:0.75rem">Kauen Sie möglichst auf der anderen Seite und essen Sie erst, wenn die Betäubung vollständig nachgelassen hat — Bissverletzungsgefahr!</p>
+  </div>
+
+  <!-- RAUCHEN -->
+  <div class="card card-warn"><strong>🚬 Rauchen:</strong> Rauchen ist der häufigste Grund für Wundheilungsstörungen nach Zahnentfernungen! Das Nikotin verengt die Blutgefäße und verhindert eine gute Heilung. Bitte mindestens <strong>48 Stunden</strong> nicht rauchen — ideal wäre eine Woche.</div>
+
+  <!-- NOTRUF -->
+  <div class="emergency-box">
+    <div class="emergency-title">🚨 Wann sollten Sie uns sofort anrufen?</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• Starke, nicht stoppbare Blutung nach 2+ Stunden</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• Zunehmende Schmerzen nach 3–4 Tagen (statt besser)</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• Fieber über 38,5°C</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• Starke Schwellung, die nach Tag 3 zunimmt</p>
+    <p style="font-size:0.85rem;margin-bottom:0.75rem">• Taubheitsgefühl, das nach 24 Stunden nicht nachlässt</p>
+    <div class="emergency-phone">📞 07703 — 284</div>
+    <p style="font-size:0.8rem;margin-top:0.5rem;color:#fed7d7">Außerhalb der Sprechzeiten: Zahnärztlicher Notdienst unter 01805 — 911 630</p>
+  </div>
+
+  <!-- MUNDHYGIENE -->
+  <div class="card card-blue">
+    <div class="card-title" style="color:#1a4a6e">🪥 Mundhygiene nach der Extraktion</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Tag 1:</strong> Zähne vorsichtig putzen, aber den Wundbereich auslassen. Nicht spülen!</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Ab Tag 2:</strong> Vorsichtig mit Salbeitee oder Chlorhexidin-Spülung (z. B. Chlorhexamed) spülen. Nicht kräftig — den Mund einfach füllen, kurz halten, vorsichtig auslaufen lassen.</p>
+    <p style="font-size:0.85rem"><strong>Ab Tag 3–4:</strong> Langsam wieder normal putzen. Den Wundbereich sanft mit einer weichen Zahnbürste reinigen.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <div class="cta-title">Fragen? Wir sind für Sie da!</div>
+    <p style="font-size:0.9rem;color:#2f855a">Zögern Sie nicht, uns bei Unsicherheiten zu kontaktieren.</p>
+    <div class="cta-phone">📞 07703 — 284</div>
+    <p style="font-size:0.9rem;color:#2f855a;margin-top:0.5rem">🌐 <a href="https://www.frydent.de" target="_blank" style="color:#276749;font-weight:700">www.frydent.de</a></p>
+  </div>
+
+  <div class="card card-info"><strong>💡 Gut zu wissen:</strong> Diese Informationen ersetzen nicht das persönliche Gespräch mit Ihrer Zahnärztin. Bei individuellen Fragen wenden Sie sich bitte direkt an uns.</div>
+
+  <div class="footer" style="margin-top:1.5rem">FRYDENT Zahnärzte in Bonndorf · Patienteninformation · Nach der Zahnentfernung<br>Stand: Februar 2026</div>
+</div>
+
+</body>
+</html>
