@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT — بعد خلع السن</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans Arabic','Source Sans 3','Segoe UI',sans-serif;background:linear-gradient(180deg,#f0f4f8 0%,#e8ecf1 100%);color:#2d3748;line-height:1.9;direction:rtl}
+.header{background:linear-gradient(135deg,#1a365d 0%,#2a4a7f 50%,#2b6cb0 100%);border-bottom:4px solid #63b3ed;padding:2rem 1.5rem}
+.header-inner{max-width:800px;margin:0 auto}
+.tags{display:flex;gap:0.5rem;margin-bottom:0.75rem;flex-wrap:wrap}
+.tag{padding:0.25rem 0.75rem;border-radius:999px;font-size:0.7rem;font-weight:700}
+.tag-portal{background:rgba(255,255,255,0.15);color:#bee3f8}
+.tag-info{background:rgba(99,179,237,0.2);color:#90cdf4}
+.lang-bar{display:flex;gap:0.4rem;margin-top:1rem;flex-wrap:wrap}
+.lang-btn{padding:0.25rem 0.6rem;border-radius:999px;font-size:0.7rem;font-weight:700;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#bee3f8;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.lang-btn:hover{background:rgba(255,255,255,0.2)}
+.lang-btn.active{background:white;color:#1a365d}
+h1{font-family:'Noto Sans Arabic','Merriweather',serif;font-size:2rem;color:white;margin-bottom:0.5rem;line-height:1.4}
+.subtitle{color:#bee3f8;font-size:0.9rem}
+.meta{display:flex;gap:1.5rem;margin-top:0.75rem;color:#90cdf4;font-size:0.75rem}
+.content{max-width:800px;margin:0 auto;padding:1.5rem}
+.card{background:white;border:1px solid #e2e8f0;border-radius:1rem;padding:1.25rem;margin-bottom:1rem}
+.card-red{background:linear-gradient(135deg,#fff5f5 0%,#ffe0e0 100%);border:2px solid #fc8181}
+.card-yellow{background:#fff9f0;border:1px solid #f0dcc0}
+.card-green{background:#f0fff4;border:1px solid #c6f6d5}
+.card-blue{background:linear-gradient(135deg,#f0f7ff 0%,#e8f4f8 100%);border:1px solid #c8dff0}
+.card-purple{background:#f8f4ff;border:1px solid #d6bcfa}
+.card-info{background:#ebf8ff;border:1px solid #90cdf4;color:#2b6cb0;font-size:0.85rem}
+.card-warn{background:#fffbeb;border:1px solid #f6d860;color:#744210;font-size:0.85rem}
+.card-title{font-family:'Noto Sans Arabic','Merriweather',serif;font-weight:700;margin-bottom:0.75rem}
+.timeline{position:relative;padding-right:2rem;padding-left:0}
+.timeline::before{content:'';position:absolute;right:0.75rem;top:0.5rem;bottom:0.5rem;width:2px;background:#e2e8f0}
+.tl-item{position:relative;margin-bottom:1.25rem}
+.tl-dot{position:absolute;right:-1.65rem;top:0.3rem;width:1.1rem;height:1.1rem;border-radius:50%;border:2px solid white}
+.tl-time{font-weight:700;font-size:0.85rem;margin-bottom:0.25rem}
+.tl-text{font-size:0.85rem;color:#4a5568}
+.do-dont{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1rem}
+.do-card{background:linear-gradient(135deg,#f0fff4 0%,#c6f6d5 100%);border:2px solid #68d391;border-radius:1rem;padding:1.25rem}
+.dont-card{background:linear-gradient(135deg,#fff5f5 0%,#fed7d7 100%);border:2px solid #fc8181;border-radius:1rem;padding:1.25rem}
+.rule{font-size:0.85rem;padding:0.3rem 0}
+.emergency-box{background:linear-gradient(135deg,#c53030 0%,#e53e3e 100%);border-radius:1rem;padding:1.5rem;color:white;text-align:center;margin-bottom:1rem}
+.emergency-title{font-family:'Noto Sans Arabic','Merriweather',serif;font-size:1.2rem;margin-bottom:0.5rem}
+.emergency-phone{font-family:'Merriweather',serif;font-size:1.8rem;font-weight:900;margin:0.5rem 0;direction:ltr;display:inline-block}
+.cta-box{background:linear-gradient(135deg,#f0fff4 0%,#c6f6d5 100%);border:2px solid #68d391;border-radius:1rem;padding:1.5rem;text-align:center;margin-bottom:1rem}
+.cta-title{font-family:'Noto Sans Arabic','Merriweather',serif;font-size:1.1rem;color:#276749;margin-bottom:0.5rem}
+.cta-phone{font-family:'Merriweather',serif;font-size:1.3rem;font-weight:700;color:#276749;margin-top:0.5rem;direction:ltr;display:inline-block}
+.footer{text-align:center;font-size:0.7rem;color:#a0aec0;padding-bottom:2rem}
+@media(max-width:640px){h1{font-size:1.5rem}.meta{flex-direction:column;gap:0.25rem}.do-dont{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="tags">
+      <span class="tag tag-portal">FRYDENT Zahnärzte</span>
+      <span class="tag tag-info">معلومات للمريض</span>
+    </div>
+    <h1>بعد خلع السن</h1>
+    <p class="subtitle">نصائح مهمة من أجل شفاء سريع وبدون مضاعفات.</p>
+    <div class="meta">
+      <span>📖 حوالي ٣ دقائق قراءة</span>
+      <span>🩹 تعليمات ما بعد العلاج</span>
+    </div>
+    <div class="lang-bar">
+      <a class="lang-btn" href="#">🇩🇪 Deutsch</a>
+      <a class="lang-btn" href="#">🇬🇧 English</a>
+      <a class="lang-btn" href="#">🇹🇷 Türkçe</a>
+      <a class="lang-btn" href="#">🇺🇦 Українська</a>
+      <a class="lang-btn" href="#">🇷🇴 Română</a>
+      <a class="lang-btn" href="#">🇷🇺 Русский</a>
+      <a class="lang-btn" href="#">🇵🇱 Polski</a>
+      <a class="lang-btn" href="#">🇦🇱 Shqip</a>
+      <a class="lang-btn active" href="#">🇸🇦 العربية</a>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- أهم القواعد -->
+  <div class="card card-red">
+    <div class="card-title" style="color:#c53030;font-size:1.1rem">⚠️ أهم ٣ قواعد</div>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">١. اعضّ على القطنة لمدة ٣٠ دقيقة على الأقل!</p>
+    <p style="font-size:0.85rem;color:#742a2a;padding-bottom:0.5rem">القطنة تساعد في وقف النزيف. لا تتفقد الجرح باستمرار — فقط اعضّ وانتظر.</p>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">٢. اليوم لا تمضمض، لا تمصّ، لا تبصق!</p>
+    <p style="font-size:0.85rem;color:#742a2a;padding-bottom:0.5rem">الخثرة الدموية في الجرح هي أفضل صديق لك — فهي تحمي الجرح. لا تغسلها!</p>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">٣. برّد، برّد، برّد!</p>
+    <p style="font-size:0.85rem;color:#742a2a">لفّ كمادة باردة بمنشفة وضعها على الخد من الخارج. ٢٠ دقيقة تبريد، ٢٠ دقيقة استراحة.</p>
+  </div>
+
+  <!-- الجدول الزمني -->
+  <div class="card">
+    <div class="card-title" style="color:#1a365d">🕐 مراحل الشفاء</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#e53e3e"></div>
+        <div class="tl-time" style="color:#e53e3e">أول ساعتين</div>
+        <div class="tl-text">اعضّ على القطنة. لا تأكل ولا تشرب. لا تدخّن. ابدأ بالتبريد.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#dd6b20"></div>
+        <div class="tl-time" style="color:#dd6b20">اليوم الأول (اليوم)</div>
+        <div class="tl-text">طعام طري وبارد (زبادي، شوربة، آيس كريم). لا تمضمض! لا رياضة. ارفع رأسك قليلاً عند النوم. عند الألم: إيبوبروفين ٤٠٠ ملغ (بحد أقصى ٣ مرات يومياً).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#d69e2e"></div>
+        <div class="tl-time" style="color:#d69e2e">اليوم ٢–٣</div>
+        <div class="tl-text">تمضمض بحذر بشاي الميرمية الفاتر أو غسول كلورهيكسيدين (بلطف!). قد يزداد التورم — هذا طبيعي. استمر في تناول الطعام الطري.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#38a169"></div>
+        <div class="tl-time" style="color:#38a169">اليوم ٤–٧</div>
+        <div class="tl-text">التورم يتراجع. عد تدريجياً للأكل العادي. الجرح يلتئم من الحواف. تُزال الغرز بعد حوالي ٧–١٠ أيام (إذا تم الخياطة).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#3182ce"></div>
+        <div class="tl-time" style="color:#3182ce">بعد ٢–٣ أسابيع</div>
+        <div class="tl-text">الجرح يكون مغلقاً سطحياً. الشفاء الكامل للعظم يستغرق حوالي ٣–٦ أشهر.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- افعل ولا تفعل -->
+  <div class="do-dont">
+    <div class="do-card">
+      <div style="font-size:1.3rem;margin-bottom:0.5rem">✅</div>
+      <h4 style="font-weight:700;color:#276749;margin-bottom:0.75rem">هذا يساعد على الشفاء</h4>
+      <p class="rule" style="color:#22543d">✔ التبريد (٢٠ دقيقة تشغيل، ٢٠ دقيقة استراحة)</p>
+      <p class="rule" style="color:#22543d">✔ طعام طري وبارد</p>
+      <p class="rule" style="color:#22543d">✔ شرب الكثير من الماء (ليس فوق الجرح)</p>
+      <p class="rule" style="color:#22543d">✔ النوم مع رفع الرأس</p>
+      <p class="rule" style="color:#22543d">✔ إيبوبروفين عند الألم (حسب التعليمات)</p>
+      <p class="rule" style="color:#22543d">✔ تنظيف الأسنان بحذر (تجنب منطقة الجرح)</p>
+      <p class="rule" style="color:#22543d">✔ من اليوم الثاني: مضمضة لطيفة بشاي الميرمية</p>
+    </div>
+    <div class="dont-card">
+      <div style="font-size:1.3rem;margin-bottom:0.5rem">🚫</div>
+      <h4 style="font-weight:700;color:#c53030;margin-bottom:0.75rem">يُرجى تجنّب ما يلي</h4>
+      <p class="rule" style="color:#7f1d1d">✘ التدخين (٤٨ ساعة على الأقل، الأفضل أسبوع!)</p>
+      <p class="rule" style="color:#7f1d1d">✘ الكحول (٢٤ ساعة)</p>
+      <p class="rule" style="color:#7f1d1d">✘ المشروبات والأطعمة الساخنة (اليوم الأول)</p>
+      <p class="rule" style="color:#7f1d1d">✘ منتجات الألبان مباشرة على الجرح</p>
+      <p class="rule" style="color:#7f1d1d">✘ المضمضة القوية أو البصق (اليوم الأول)</p>
+      <p class="rule" style="color:#7f1d1d">✘ الشرب بالشفاطة (تأثير الشفط!)</p>
+      <p class="rule" style="color:#7f1d1d">✘ الرياضة والعمل البدني الشاق (٢–٣ أيام)</p>
+      <p class="rule" style="color:#7f1d1d">✘ الأسبرين (يزيد النزيف!)</p>
+    </div>
+  </div>
+
+  <!-- الألم والأدوية -->
+  <div class="card card-blue">
+    <div class="card-title" style="color:#1a4a6e">💊 الألم والأدوية</div>
+    <p style="font-size:0.85rem;margin-bottom:0.75rem">التخدير يستمر لمدة <strong>٢–٤ ساعات</strong>. تناول حبة المسكّن <strong>قبل</strong> أن يزول التخدير — هكذا تسبق الألم.</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>يُنصح بـ:</strong> إيبوبروفين ٤٠٠ ملغ — حتى ٣ مرات يومياً (مع الطعام).</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>بديل:</strong> باراسيتامول ٥٠٠ ملغ — حتى ٤ مرات يومياً.</p>
+    <p style="font-size:0.85rem;color:#c53030"><strong>⚠️ لا أسبرين!</strong> الأسبرين يُميّع الدم وقد يزيد النزيف.</p>
+    <p style="font-size:0.85rem;margin-top:0.5rem;font-style:italic;color:#718096">إذا تم وصف مضاد حيوي، يُرجى تناوله تماماً حسب التعليمات وحتى نهاية العلبة.</p>
+  </div>
+
+  <!-- التورم -->
+  <div class="card card-yellow">
+    <div class="card-title" style="color:#8b6914">🧊 التورم — هذا طبيعي!</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">التورم بعد خلع السن <strong>أمر طبيعي تماماً</strong> ولا داعي للقلق. يصل إلى ذروته عادةً في <strong>اليوم الثاني أو الثالث</strong> ثم يبدأ بالتراجع تدريجياً.</p>
+    <p style="font-size:0.85rem"><strong>نصيحة:</strong> التبريد يساعد بشكل أفضل في أول ٢٤ ساعة. بعد ذلك تساعد الحرارة الرطبة (مثل منشفة دافئة) من اليوم الثالث.</p>
+  </div>
+
+  <!-- النزيف -->
+  <div class="card card-purple">
+    <div class="card-title" style="color:#553c9a">🩸 نزيف خفيف</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">نزيف خفيف أو طعم الدم في اللعاب في أول ٢٤ ساعة أمر <strong>طبيعي</strong>.</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>ماذا تفعل:</strong> لفّ قطعة شاش نظيفة أو منديل، ضعها على الجرح واعضّ عليها لمدة ٣٠ دقيقة. اجلس بهدوء وارفع رأسك.</p>
+    <p style="font-size:0.85rem;color:#553c9a"><strong>مهم:</strong> إذا لم يتوقف النزيف بعد ١–٢ ساعة رغم العض، يُرجى الاتصال بنا.</p>
+  </div>
+
+  <!-- الأكل والشرب -->
+  <div class="card card-green">
+    <div class="card-title" style="color:#276749">🍽️ الأكل والشرب — ماذا يُسمح؟</div>
+    <p style="font-size:0.85rem;font-weight:700;color:#276749;margin-bottom:0.5rem">مناسب:</p>
+    <p style="font-size:0.85rem;color:#22543d">🥣 شوربة (فاترة، ليست ساخنة!) · 🧊 آيس كريم (بدون قطع) · 🫐 زبادي · 🥑 أفوكادو · 🍌 موز · 🥚 بيض مقلي · 🍝 معكرونة طرية · 🥔 بطاطس مهروسة</p>
+    <p style="font-size:0.85rem;font-weight:700;color:#c53030;margin-top:0.75rem;margin-bottom:0.5rem">يُرجى تجنّب:</p>
+    <p style="font-size:0.85rem;color:#742a2a">🚫 طعام صلب (مكسرات، رقائق، قشور) · 🚫 طعام حار · 🚫 ساخن جداً · 🚫 أطعمة متفتتة (أرز، خبز بالحبوب)</p>
+    <p style="font-size:0.85rem;font-style:italic;color:#718096;margin-top:0.75rem">امضغ على الجهة الأخرى ولا تأكل إلا بعد زوال التخدير تماماً — خطر عض الشفة!</p>
+  </div>
+
+  <!-- التدخين -->
+  <div class="card card-warn"><strong>🚬 التدخين:</strong> التدخين هو السبب الأكثر شيوعاً لمشاكل التئام الجرح بعد خلع الأسنان! النيكوتين يُضيّق الأوعية الدموية ويمنع الشفاء الجيد. يُرجى عدم التدخين لمدة <strong>٤٨ ساعة</strong> على الأقل — الأفضل أسبوع.</div>
+
+  <!-- حالة طوارئ -->
+  <div class="emergency-box">
+    <div class="emergency-title">🚨 متى يجب الاتصال بنا فوراً؟</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• نزيف شديد لا يتوقف بعد ساعتين أو أكثر</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• ألم متزايد بعد ٣–٤ أيام (بدلاً من التحسن)</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• حمّى فوق ٣٨٫٥ درجة</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• تورم شديد يزداد بعد اليوم الثالث</p>
+    <p style="font-size:0.85rem;margin-bottom:0.75rem">• خدر لا يزول بعد ٢٤ ساعة</p>
+    <div class="emergency-phone">📞 07703 — 284</div>
+    <p style="font-size:0.8rem;margin-top:0.5rem;color:#fed7d7">خارج ساعات العمل: خدمة طوارئ الأسنان على الرقم 01805 — 911 630</p>
+  </div>
+
+  <!-- نظافة الفم -->
+  <div class="card card-blue">
+    <div class="card-title" style="color:#1a4a6e">🪥 نظافة الفم بعد الخلع</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>اليوم الأول:</strong> نظّف أسنانك بحذر لكن تجنّب منطقة الجرح. لا تمضمض!</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>من اليوم الثاني:</strong> تمضمض بلطف بشاي الميرمية أو غسول كلورهيكسيدين. ليس بقوة — فقط املأ فمك بالسائل، أبقِه قليلاً، ثم اتركه يخرج بلطف.</p>
+    <p style="font-size:0.85rem"><strong>من اليوم ٣–٤:</strong> عد تدريجياً لتنظيف الأسنان الطبيعي. نظّف منطقة الجرح بلطف بفرشاة ناعمة.</p>
+  </div>
+
+  <!-- اتصل بنا -->
+  <div class="cta-box">
+    <div class="cta-title">أسئلة؟ نحن هنا من أجلكم!</div>
+    <p style="font-size:0.9rem;color:#2f855a">لا تتردد في التواصل معنا عند أي شك.</p>
+    <div class="cta-phone">📞 07703 — 284</div>
+    <p style="font-size:0.9rem;color:#2f855a;margin-top:0.5rem">🌐 <a href="https://www.frydent.de" target="_blank" style="color:#276749;font-weight:700">www.frydent.de</a></p>
+  </div>
+
+  <div class="card card-info"><strong>💡 ملاحظة:</strong> هذه المعلومات لا تُغني عن المحادثة الشخصية مع طبيبة الأسنان. في حال وجود أسئلة فردية يُرجى التواصل معنا مباشرة.</div>
+
+  <div class="footer" style="margin-top:1.5rem">FRYDENT Zahnärzte in Bonndorf · معلومات للمريض · بعد خلع السن<br>فبراير ٢٠٢٦</div>
+</div>
+
+</body>
+</html>
