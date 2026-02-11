@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT — Diş Çekimi Sonrası</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Source Sans 3','Segoe UI',sans-serif;background:linear-gradient(180deg,#f0f4f8 0%,#e8ecf1 100%);color:#2d3748;line-height:1.7}
+.header{background:linear-gradient(135deg,#1a365d 0%,#2a4a7f 50%,#2b6cb0 100%);border-bottom:4px solid #63b3ed;padding:2rem 1.5rem}
+.header-inner{max-width:800px;margin:0 auto}
+.tags{display:flex;gap:0.5rem;margin-bottom:0.75rem;flex-wrap:wrap}
+.tag{padding:0.25rem 0.75rem;border-radius:999px;font-size:0.7rem;font-weight:700}
+.tag-portal{background:rgba(255,255,255,0.15);color:#bee3f8}
+.tag-info{background:rgba(99,179,237,0.2);color:#90cdf4}
+.lang-bar{display:flex;gap:0.4rem;margin-top:1rem;flex-wrap:wrap}
+.lang-btn{padding:0.25rem 0.6rem;border-radius:999px;font-size:0.7rem;font-weight:700;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#bee3f8;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.lang-btn:hover{background:rgba(255,255,255,0.2)}
+.lang-btn.active{background:white;color:#1a365d}
+h1{font-family:'Merriweather',serif;font-size:2rem;color:white;margin-bottom:0.5rem;line-height:1.2}
+.subtitle{color:#bee3f8;font-size:0.9rem}
+.meta{display:flex;gap:1.5rem;margin-top:0.75rem;color:#90cdf4;font-size:0.75rem}
+.content{max-width:800px;margin:0 auto;padding:1.5rem}
+.card{background:white;border:1px solid #e2e8f0;border-radius:1rem;padding:1.25rem;margin-bottom:1rem}
+.card-red{background:linear-gradient(135deg,#fff5f5 0%,#ffe0e0 100%);border:2px solid #fc8181}
+.card-yellow{background:#fff9f0;border:1px solid #f0dcc0}
+.card-green{background:#f0fff4;border:1px solid #c6f6d5}
+.card-blue{background:linear-gradient(135deg,#f0f7ff 0%,#e8f4f8 100%);border:1px solid #c8dff0}
+.card-purple{background:#f8f4ff;border:1px solid #d6bcfa}
+.card-info{background:#ebf8ff;border:1px solid #90cdf4;color:#2b6cb0;font-size:0.85rem}
+.card-warn{background:#fffbeb;border:1px solid #f6d860;color:#744210;font-size:0.85rem}
+.card-title{font-family:'Merriweather',serif;font-weight:700;margin-bottom:0.75rem}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0.75rem;top:0.5rem;bottom:0.5rem;width:2px;background:#e2e8f0}
+.tl-item{position:relative;margin-bottom:1.25rem}
+.tl-dot{position:absolute;left:-1.65rem;top:0.3rem;width:1.1rem;height:1.1rem;border-radius:50%;border:2px solid white}
+.tl-time{font-weight:700;font-size:0.85rem;margin-bottom:0.25rem}
+.tl-text{font-size:0.85rem;color:#4a5568}
+.do-dont{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1rem}
+.do-card{background:linear-gradient(135deg,#f0fff4 0%,#c6f6d5 100%);border:2px solid #68d391;border-radius:1rem;padding:1.25rem}
+.dont-card{background:linear-gradient(135deg,#fff5f5 0%,#fed7d7 100%);border:2px solid #fc8181;border-radius:1rem;padding:1.25rem}
+.rule{font-size:0.85rem;padding:0.3rem 0}
+.emergency-box{background:linear-gradient(135deg,#c53030 0%,#e53e3e 100%);border-radius:1rem;padding:1.5rem;color:white;text-align:center;margin-bottom:1rem}
+.emergency-title{font-family:'Merriweather',serif;font-size:1.2rem;margin-bottom:0.5rem}
+.emergency-phone{font-family:'Merriweather',serif;font-size:1.8rem;font-weight:900;margin:0.5rem 0}
+.cta-box{background:linear-gradient(135deg,#f0fff4 0%,#c6f6d5 100%);border:2px solid #68d391;border-radius:1rem;padding:1.5rem;text-align:center;margin-bottom:1rem}
+.cta-title{font-family:'Merriweather',serif;font-size:1.1rem;color:#276749;margin-bottom:0.5rem}
+.cta-phone{font-family:'Merriweather',serif;font-size:1.3rem;font-weight:700;color:#276749;margin-top:0.5rem}
+.footer{text-align:center;font-size:0.7rem;color:#a0aec0;padding-bottom:2rem}
+@media(max-width:640px){h1{font-size:1.5rem}.meta{flex-direction:column;gap:0.25rem}.do-dont{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="tags">
+      <span class="tag tag-portal">FRYDENT Diş Hekimliği</span>
+      <span class="tag tag-info">Hasta Bilgilendirmesi</span>
+    </div>
+    <h1>Diş Çekimi Sonrası</h1>
+    <p class="subtitle">Hızlı ve sorunsuz iyileşme için önemli bilgiler.</p>
+    <div class="meta">
+      <span>📖 yaklaşık 3 dk. okuma</span>
+      <span>🩹 Bakım kılavuzu</span>
+    </div>
+    <div class="lang-bar">
+      <a class="lang-btn" href="#">🇩🇪 Deutsch</a>
+      <a class="lang-btn" href="#">🇬🇧 English</a>
+      <a class="lang-btn active" href="#">🇹🇷 Türkçe</a>
+      <a class="lang-btn" href="#">🇺🇦 Українська</a>
+      <a class="lang-btn" href="#">🇷🇴 Română</a>
+      <a class="lang-btn" href="#">🇷🇺 Русский</a>
+      <a class="lang-btn" href="#">🇵🇱 Polski</a>
+      <a class="lang-btn" href="#">🇦🇱 Shqip</a>
+      <a class="lang-btn" href="#">🇸🇦 العربية</a>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="card card-red">
+    <div class="card-title" style="color:#c53030;font-size:1.1rem">⚠️ En Önemli 3 Kural</div>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">1. Tampona en az 30 dakika sıkıca ısırın!</p>
+    <p style="font-size:0.85rem;color:#742a2a;padding-bottom:0.5rem">Tampon kanamayı durdurmaya yardımcı olur. Sürekli kontrol etmeyin — sadece ısırın ve bekleyin.</p>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">2. Bugün çalkalamayın, emmeyin, tükürmeyin!</p>
+    <p style="font-size:0.85rem;color:#742a2a;padding-bottom:0.5rem">Yaradaki kan pıhtısı en iyi dostunuzdur — yarayı korur. Yıkamayın!</p>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">3. Soğutun, soğutun, soğutun!</p>
+    <p style="font-size:0.85rem;color:#742a2a">Buz paketini bir havluya sarın ve dışarıdan yanağa uygulayın. 20 dk. soğutma, 20 dk. ara.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="color:#1a365d">🕐 İyileşme Takviminiz</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#e53e3e"></div>
+        <div class="tl-time" style="color:#e53e3e">İlk 2 Saat</div>
+        <div class="tl-text">Tampona ısırın. Yemeyin, içmeyin. Sigara içmeyin. Soğutmaya başlayın.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#dd6b20"></div>
+        <div class="tl-time" style="color:#dd6b20">1. Gün (Bugün)</div>
+        <div class="tl-text">Yumuşak, serin gıdalar (yoğurt, çorba, dondurma). Çalkalamayın! Spor yapmayın. Uyurken başınızı yüksek tutun. Ağrıda: İbuprofen 400 mg (günde en fazla 3 kez).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#d69e2e"></div>
+        <div class="tl-time" style="color:#d69e2e">2.–3. Gün</div>
+        <div class="tl-text">Ilık adaçayı çayı veya klorheksidin gargarası ile hafifçe çalkalayın (nazikçe!). Şişlik artabilir — bu normaldir. Yumuşak beslenmeye devam edin.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#38a169"></div>
+        <div class="tl-time" style="color:#38a169">4.–7. Gün</div>
+        <div class="tl-text">Şişlik azalır. Yavaş yavaş normal beslenmeye dönün. Yara kenarlardan iyileşir. Dikişler yaklaşık 7–10 gün sonra alınır (dikiş atıldıysa).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#3182ce"></div>
+        <div class="tl-time" style="color:#3182ce">2–3 Hafta Sonra</div>
+        <div class="tl-text">Yara yüzeysel olarak kapanmıştır. Kemiğin tam iyileşmesi yaklaşık 3–6 ay sürer.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-card">
+      <div style="font-size:1.3rem;margin-bottom:0.5rem">✅</div>
+      <h4 style="font-weight:700;color:#276749;margin-bottom:0.75rem">İyileşmeye Yardımcı Olanlar</h4>
+      <p class="rule" style="color:#22543d">✔ Soğutma (20 dk. uygula, 20 dk. ara)</p>
+      <p class="rule" style="color:#22543d">✔ Yumuşak, serin gıdalar</p>
+      <p class="rule" style="color:#22543d">✔ Bol su için (yaranın üzerinden değil)</p>
+      <p class="rule" style="color:#22543d">✔ Uyurken başı yüksek tutun</p>
+      <p class="rule" style="color:#22543d">✔ Ağrıda İbuprofen (talimata göre)</p>
+      <p class="rule" style="color:#22543d">✔ Dişleri dikkatli fırçalayın (yara bölgesini atlayın)</p>
+      <p class="rule" style="color:#22543d">✔ 2. günden itibaren: Hafifçe adaçayı çayı ile çalkalayın</p>
+    </div>
+    <div class="dont-card">
+      <div style="font-size:1.3rem;margin-bottom:0.5rem">🚫</div>
+      <h4 style="font-weight:700;color:#c53030;margin-bottom:0.75rem">Lütfen Bunlardan Kaçının</h4>
+      <p class="rule" style="color:#7f1d1d">✘ Sigara (en az 48 saat, ideal olarak 1 hafta!)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Alkol (24 saat)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Sıcak içecekler ve yiyecekler (1. gün)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Süt ürünlerini doğrudan yaraya temas ettirmeyin</p>
+      <p class="rule" style="color:#7f1d1d">✘ Sert çalkalama veya tükürme (1. gün)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Pipet ile içme (emme etkisi!)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Spor ve ağır fiziksel iş (2–3 gün)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Aspirin (kanamayı artırır!)</p>
+    </div>
+  </div>
+
+  <div class="card card-blue">
+    <div class="card-title" style="color:#1a4a6e">💊 Ağrı ve İlaçlar</div>
+    <p style="font-size:0.85rem;margin-bottom:0.75rem">Anestezi <strong>2–4 saat</strong> daha sürer. Ağrı kesiciyi uyuşukluk geçmeden <strong>önce</strong> alın — böylece ağrının önüne geçersiniz.</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Önerilen:</strong> İbuprofen 400 mg — günde en fazla 3 kez (yemekle birlikte).</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Alternatif:</strong> Parasetamol 500 mg — günde en fazla 4 kez.</p>
+    <p style="font-size:0.85rem;color:#c53030"><strong>⚠️ Aspirin almayın!</strong> Aspirin kanı sulandırır ve kanamayı artırabilir.</p>
+    <p style="font-size:0.85rem;margin-top:0.5rem;font-style:italic;color:#718096">Size antibiyotik reçete edildiyse, lütfen tam talimata göre ve kutunun sonuna kadar kullanın.</p>
+  </div>
+
+  <div class="card card-yellow">
+    <div class="card-title" style="color:#8b6914">🧊 Şişlik — Bu Normal!</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">Diş çekimi sonrası şişlik <strong>tamamen normaldir</strong> ve endişe sebebi değildir. Genellikle <strong>2. veya 3. günde</strong> zirveye ulaşır ve sonra yavaş yavaş azalır.</p>
+    <p style="font-size:0.85rem"><strong>İpucu:</strong> Soğutma ilk 24 saatte en etkilidir. Sonrasında 3. günden itibaren nemli sıcaklık (örn. ılık havlu) daha iyi yardımcı olur.</p>
+  </div>
+
+  <div class="card card-purple">
+    <div class="card-title" style="color:#553c9a">🩸 Hafif Kanama</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">İlk 24 saatte hafif kanama veya tükürükte kan tadı <strong>normaldir</strong>.</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Ne yapmalı:</strong> Temiz bir gazlı bez veya mendili sıkıca rulo yapın, yaranın üzerine koyun ve 30 dakika ısırın. Sakin oturun, başınızı yüksek tutun.</p>
+    <p style="font-size:0.85rem;color:#553c9a"><strong>Önemli:</strong> Isırmaya rağmen kanama 1–2 saat sonra durmuyorsa, lütfen bizi arayın.</p>
+  </div>
+
+  <div class="card card-green">
+    <div class="card-title" style="color:#276749">🍽️ Yeme ve İçme — Ne Uygun?</div>
+    <p style="font-size:0.85rem;font-weight:700;color:#276749;margin-bottom:0.5rem">Uygun olanlar:</p>
+    <p style="font-size:0.85rem;color:#22543d">🥣 Çorba (ılık, sıcak değil!) · 🧊 Dondurma (parçasız) · 🫐 Yoğurt · 🥑 Avokado · 🍌 Muz · 🥚 Çırpılmış yumurta · 🍝 Yumuşak makarna · 🥔 Patates püresi</p>
+    <p style="font-size:0.85rem;font-weight:700;color:#c53030;margin-top:0.75rem;margin-bottom:0.5rem">Lütfen kaçının:</p>
+    <p style="font-size:0.85rem;color:#742a2a">🚫 Sert gıdalar (fındık, cips, kabuk) · 🚫 Baharatlı yemekler · 🚫 Çok sıcak · 🚫 Ufalanan gıdalar (pirinç, çekirdekli ekmek)</p>
+    <p style="font-size:0.85rem;font-style:italic;color:#718096;margin-top:0.75rem">Diğer tarafta çiğneyin ve uyuşukluk tamamen geçene kadar yemeyin — dudak ısırma tehlikesi!</p>
+  </div>
+
+  <div class="card card-warn"><strong>🚬 Sigara:</strong> Sigara, diş çekimi sonrası yara iyileşme sorunlarının en yaygın nedenidir! Nikotin damarları daraltır ve iyileşmeyi engeller. Lütfen en az <strong>48 saat</strong> sigara içmeyin — ideal olanı bir haftadır.</div>
+
+  <div class="emergency-box">
+    <div class="emergency-title">🚨 Bizi Ne Zaman Hemen Aramalısınız?</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• 2+ saat sonra durmayan şiddetli kanama</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• 3–4 gün sonra artan ağrı (iyileşmek yerine)</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• 38,5°C üzerinde ateş</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• 3. günden sonra artan şiddetli şişlik</p>
+    <p style="font-size:0.85rem;margin-bottom:0.75rem">• 24 saat sonra geçmeyen uyuşukluk</p>
+    <div class="emergency-phone">📞 07703 — 284</div>
+    <p style="font-size:0.8rem;margin-top:0.5rem;color:#fed7d7">Mesai saatleri dışında: Acil diş hekimi hattı 01805 — 911 630</p>
+  </div>
+
+  <div class="card card-blue">
+    <div class="card-title" style="color:#1a4a6e">🪥 Çekim Sonrası Ağız Bakımı</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>1. Gün:</strong> Dişleri dikkatli fırçalayın ama yara bölgesini atlayın. Çalkalamayın!</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>2. Günden itibaren:</strong> Adaçayı çayı veya klorheksidin gargarası ile hafifçe çalkalayın. Sert değil — sadece ağzınızı doldurun, kısa tutun, nazikçe bırakın.</p>
+    <p style="font-size:0.85rem"><strong>3.–4. Günden itibaren:</strong> Yavaş yavaş normal fırçalamaya dönün. Yara bölgesini yumuşak diş fırçasıyla nazikçe temizleyin.</p>
+  </div>
+
+  <div class="cta-box">
+    <div class="cta-title">Sorularınız mı var? Sizin için buradayız!</div>
+    <p style="font-size:0.9rem;color:#2f855a">Herhangi bir şüpheniz olduğunda bizimle iletişime geçmekten çekinmeyin.</p>
+    <div class="cta-phone">📞 07703 — 284</div>
+    <p style="font-size:0.9rem;color:#2f855a;margin-top:0.5rem">🌐 <a href="https://www.frydent.de" target="_blank" style="color:#276749;font-weight:700">www.frydent.de</a></p>
+  </div>
+
+  <div class="card card-info"><strong>💡 Not:</strong> Bu bilgiler diş hekiminizle yapılan kişisel görüşmenin yerini almaz. Bireysel sorularınız için lütfen doğrudan bizimle iletişime geçin.</div>
+
+  <div class="footer" style="margin-top:1.5rem">FRYDENT Zahnärzte in Bonndorf · Hasta Bilgilendirmesi · Diş Çekimi Sonrası<br>Güncelleme: Şubat 2026</div>
+</div>
+
+</body>
+</html>

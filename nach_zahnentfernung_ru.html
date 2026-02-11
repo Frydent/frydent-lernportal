@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT — После удаления зуба</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Source Sans 3','Segoe UI',sans-serif;background:linear-gradient(180deg,#f0f4f8 0%,#e8ecf1 100%);color:#2d3748;line-height:1.7}
+.header{background:linear-gradient(135deg,#1a365d 0%,#2a4a7f 50%,#2b6cb0 100%);border-bottom:4px solid #63b3ed;padding:2rem 1.5rem}
+.header-inner{max-width:800px;margin:0 auto}
+.tags{display:flex;gap:0.5rem;margin-bottom:0.75rem;flex-wrap:wrap}
+.tag{padding:0.25rem 0.75rem;border-radius:999px;font-size:0.7rem;font-weight:700}
+.tag-portal{background:rgba(255,255,255,0.15);color:#bee3f8}
+.tag-info{background:rgba(99,179,237,0.2);color:#90cdf4}
+.lang-bar{display:flex;gap:0.4rem;margin-top:1rem;flex-wrap:wrap}
+.lang-btn{padding:0.25rem 0.6rem;border-radius:999px;font-size:0.7rem;font-weight:700;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#bee3f8;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.lang-btn:hover{background:rgba(255,255,255,0.2)}
+.lang-btn.active{background:white;color:#1a365d}
+h1{font-family:'Merriweather',serif;font-size:2rem;color:white;margin-bottom:0.5rem;line-height:1.2}
+.subtitle{color:#bee3f8;font-size:0.9rem}
+.meta{display:flex;gap:1.5rem;margin-top:0.75rem;color:#90cdf4;font-size:0.75rem}
+.content{max-width:800px;margin:0 auto;padding:1.5rem}
+.card{background:white;border:1px solid #e2e8f0;border-radius:1rem;padding:1.25rem;margin-bottom:1rem}
+.card-red{background:linear-gradient(135deg,#fff5f5 0%,#ffe0e0 100%);border:2px solid #fc8181}
+.card-yellow{background:#fff9f0;border:1px solid #f0dcc0}
+.card-green{background:#f0fff4;border:1px solid #c6f6d5}
+.card-blue{background:linear-gradient(135deg,#f0f7ff 0%,#e8f4f8 100%);border:1px solid #c8dff0}
+.card-purple{background:#f8f4ff;border:1px solid #d6bcfa}
+.card-info{background:#ebf8ff;border:1px solid #90cdf4;color:#2b6cb0;font-size:0.85rem}
+.card-warn{background:#fffbeb;border:1px solid #f6d860;color:#744210;font-size:0.85rem}
+.card-title{font-family:'Merriweather',serif;font-weight:700;margin-bottom:0.75rem}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0.75rem;top:0.5rem;bottom:0.5rem;width:2px;background:#e2e8f0}
+.tl-item{position:relative;margin-bottom:1.25rem}
+.tl-dot{position:absolute;left:-1.65rem;top:0.3rem;width:1.1rem;height:1.1rem;border-radius:50%;border:2px solid white}
+.tl-time{font-weight:700;font-size:0.85rem;margin-bottom:0.25rem}
+.tl-text{font-size:0.85rem;color:#4a5568}
+.do-dont{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1rem}
+.do-card{background:linear-gradient(135deg,#f0fff4 0%,#c6f6d5 100%);border:2px solid #68d391;border-radius:1rem;padding:1.25rem}
+.dont-card{background:linear-gradient(135deg,#fff5f5 0%,#fed7d7 100%);border:2px solid #fc8181;border-radius:1rem;padding:1.25rem}
+.rule{font-size:0.85rem;padding:0.3rem 0}
+.emergency-box{background:linear-gradient(135deg,#c53030 0%,#e53e3e 100%);border-radius:1rem;padding:1.5rem;color:white;text-align:center;margin-bottom:1rem}
+.emergency-title{font-family:'Merriweather',serif;font-size:1.2rem;margin-bottom:0.5rem}
+.emergency-phone{font-family:'Merriweather',serif;font-size:1.8rem;font-weight:900;margin:0.5rem 0}
+.cta-box{background:linear-gradient(135deg,#f0fff4 0%,#c6f6d5 100%);border:2px solid #68d391;border-radius:1rem;padding:1.5rem;text-align:center;margin-bottom:1rem}
+.cta-title{font-family:'Merriweather',serif;font-size:1.1rem;color:#276749;margin-bottom:0.5rem}
+.cta-phone{font-family:'Merriweather',serif;font-size:1.3rem;font-weight:700;color:#276749;margin-top:0.5rem}
+.footer{text-align:center;font-size:0.7rem;color:#a0aec0;padding-bottom:2rem}
+@media(max-width:640px){h1{font-size:1.5rem}.meta{flex-direction:column;gap:0.25rem}.do-dont{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="tags">
+      <span class="tag tag-portal">FRYDENT Стоматология</span>
+      <span class="tag tag-info">Информация для пациента</span>
+    </div>
+    <h1>После удаления зуба</h1>
+    <p class="subtitle">Важные рекомендации для быстрого заживления без осложнений.</p>
+    <div class="meta">
+      <span>📖 ок. 3 мин. чтения</span>
+      <span>🩹 Инструкция по уходу</span>
+    </div>
+    <div class="lang-bar">
+      <a class="lang-btn" href="#">🇩🇪 Deutsch</a>
+      <a class="lang-btn" href="#">🇬🇧 English</a>
+      <a class="lang-btn" href="#">🇹🇷 Türkçe</a>
+      <a class="lang-btn" href="#">🇺🇦 Українська</a>
+      <a class="lang-btn" href="#">🇷🇴 Română</a>
+      <a class="lang-btn active" href="#">🇷🇺 Русский</a>
+      <a class="lang-btn" href="#">🇵🇱 Polski</a>
+      <a class="lang-btn" href="#">🇦🇱 Shqip</a>
+      <a class="lang-btn" href="#">🇸🇦 العربية</a>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="card card-red">
+    <div class="card-title" style="color:#c53030;font-size:1.1rem">⚠️ 3 самых важных правила</div>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">1. Прикусывайте тампон не менее 30 минут!</p>
+    <p style="font-size:0.85rem;color:#742a2a;padding-bottom:0.5rem">Тампон помогает остановить кровотечение. Не проверяйте постоянно — просто прикусите и ждите.</p>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">2. Сегодня не полоскать, не сосать, не сплёвывать!</p>
+    <p style="font-size:0.85rem;color:#742a2a;padding-bottom:0.5rem">Кровяной сгусток в ране — ваш лучший друг. Он защищает рану. Не вымывайте его!</p>
+    <p style="font-size:0.9rem;font-weight:700;color:#c53030;padding:0.3rem 0">3. Охлаждайте, охлаждайте, охлаждайте!</p>
+    <p style="font-size:0.85rem;color:#742a2a">Оберните холодный компресс полотенцем и прикладывайте к щеке снаружи. 20 мин. охлаждение, 20 мин. перерыв.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="color:#1a365d">🕐 График заживления</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#e53e3e"></div>
+        <div class="tl-time" style="color:#e53e3e">Первые 2 часа</div>
+        <div class="tl-text">Прикусывайте тампон. Не ешьте и не пейте. Не курите. Начните охлаждение.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#dd6b20"></div>
+        <div class="tl-time" style="color:#dd6b20">День 1 (сегодня)</div>
+        <div class="tl-text">Мягкая, прохладная пища (йогурт, суп, мороженое). Не полоскать! Никакого спорта. Спите с приподнятой головой. При боли: Ибупрофен 400 мг (макс. 3 раза в день).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#d69e2e"></div>
+        <div class="tl-time" style="color:#d69e2e">День 2–3</div>
+        <div class="tl-text">Аккуратно полоскайте тёплым чаем из шалфея или раствором хлоргексидина (нежно!). Отёк может усилиться — это нормально. Продолжайте мягкую диету.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#38a169"></div>
+        <div class="tl-time" style="color:#38a169">День 4–7</div>
+        <div class="tl-text">Отёк уменьшается. Постепенно возвращайтесь к обычному питанию. Рана заживает от краёв. Швы снимают через 7–10 дней (если были наложены).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#3182ce"></div>
+        <div class="tl-time" style="color:#3182ce">Через 2–3 недели</div>
+        <div class="tl-text">Рана поверхностно закрыта. Полное заживление кости занимает около 3–6 месяцев.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-card">
+      <div style="font-size:1.3rem;margin-bottom:0.5rem">✅</div>
+      <h4 style="font-weight:700;color:#276749;margin-bottom:0.75rem">Это помогает заживлению</h4>
+      <p class="rule" style="color:#22543d">✔ Охлаждение (20 мин. компресс, 20 мин. перерыв)</p>
+      <p class="rule" style="color:#22543d">✔ Мягкая, прохладная пища</p>
+      <p class="rule" style="color:#22543d">✔ Пейте много воды (не через рану)</p>
+      <p class="rule" style="color:#22543d">✔ Спите с приподнятой головой</p>
+      <p class="rule" style="color:#22543d">✔ Ибупрофен при боли (по назначению)</p>
+      <p class="rule" style="color:#22543d">✔ Осторожно чистите зубы (обходя рану)</p>
+      <p class="rule" style="color:#22543d">✔ Со 2-го дня: аккуратное полоскание чаем из шалфея</p>
+    </div>
+    <div class="dont-card">
+      <div style="font-size:1.3rem;margin-bottom:0.5rem">🚫</div>
+      <h4 style="font-weight:700;color:#c53030;margin-bottom:0.75rem">Пожалуйста, избегайте</h4>
+      <p class="rule" style="color:#7f1d1d">✘ Курение (мин. 48 часов, лучше неделю!)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Алкоголь (24 часа)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Горячие напитки и еда (день 1)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Молочные продукты непосредственно на рану</p>
+      <p class="rule" style="color:#7f1d1d">✘ Интенсивное полоскание или сплёвывание (день 1)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Питьё через трубочку (эффект всасывания!)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Спорт и тяжёлый физический труд (2–3 дня)</p>
+      <p class="rule" style="color:#7f1d1d">✘ Аспирин (усиливает кровотечение!)</p>
+    </div>
+  </div>
+
+  <div class="card card-blue">
+    <div class="card-title" style="color:#1a4a6e">💊 Боль и лекарства</div>
+    <p style="font-size:0.85rem;margin-bottom:0.75rem">Анестезия действует ещё <strong>2–4 часа</strong>. Примите обезболивающее <strong>до того</strong>, как анестезия пройдёт — так вы опередите боль.</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Рекомендуется:</strong> Ибупрофен 400 мг — до 3 раз в день (с едой).</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Альтернатива:</strong> Парацетамол 500 мг — до 4 раз в день.</p>
+    <p style="font-size:0.85rem;color:#c53030"><strong>⚠️ Никакого аспирина!</strong> Аспирин разжижает кровь и может усилить кровотечение.</p>
+    <p style="font-size:0.85rem;margin-top:0.5rem;font-style:italic;color:#718096">Если вам назначили антибиотик, пожалуйста, принимайте его строго по назначению и до конца упаковки.</p>
+  </div>
+
+  <div class="card card-yellow">
+    <div class="card-title" style="color:#8b6914">🧊 Отёк — это нормально!</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">Отёк после удаления зуба — это <strong>совершенно нормально</strong> и не повод для беспокойства. Обычно он достигает максимума на <strong>2-й или 3-й день</strong> и затем постепенно спадает.</p>
+    <p style="font-size:0.85rem"><strong>Совет:</strong> Охлаждение помогает лучше всего в первые 24 часа. После этого с 3-го дня лучше помогает влажное тепло (например, тёплое полотенце).</p>
+  </div>
+
+  <div class="card card-purple">
+    <div class="card-title" style="color:#553c9a">🩸 Лёгкое кровотечение</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">Лёгкое кровотечение или привкус крови в слюне в первые 24 часа — это <strong>нормально</strong>.</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Что делать:</strong> Сверните чистый марлевый тампон или платок, положите на рану и прикусите на 30 минут. Сидите спокойно, голову держите высоко.</p>
+    <p style="font-size:0.85rem;color:#553c9a"><strong>Важно:</strong> Если кровотечение не прекращается через 1–2 часа несмотря на прикусывание, пожалуйста, позвоните нам.</p>
+  </div>
+
+  <div class="card card-green">
+    <div class="card-title" style="color:#276749">🍽️ Еда и питьё — что можно?</div>
+    <p style="font-size:0.85rem;font-weight:700;color:#276749;margin-bottom:0.5rem">Рекомендуется:</p>
+    <p style="font-size:0.85rem;color:#22543d">🥣 Суп (тёплый, не горячий!) · 🧊 Мороженое (без кусочков) · 🫐 Йогурт · 🥑 Авокадо · 🍌 Банан · 🥚 Яичница · 🍝 Мягкая паста · 🥔 Картофельное пюре</p>
+    <p style="font-size:0.85rem;font-weight:700;color:#c53030;margin-top:0.75rem;margin-bottom:0.5rem">Пожалуйста, избегайте:</p>
+    <p style="font-size:0.85rem;color:#742a2a">🚫 Твёрдая пища (орехи, чипсы, корочки) · 🚫 Острая еда · 🚫 Очень горячее · 🚫 Рассыпчатые продукты (рис, зерновой хлеб)</p>
+    <p style="font-size:0.85rem;font-style:italic;color:#718096;margin-top:0.75rem">Жуйте на другой стороне и ешьте только после полного окончания действия анестезии — риск прикусить губу!</p>
+  </div>
+
+  <div class="card card-warn"><strong>🚬 Курение:</strong> Курение — самая частая причина нарушений заживления после удаления зуба! Никотин сужает кровеносные сосуды и препятствует заживлению. Пожалуйста, не курите минимум <strong>48 часов</strong> — в идеале неделю.</div>
+
+  <div class="emergency-box">
+    <div class="emergency-title">🚨 Когда нужно немедленно позвонить нам?</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• Сильное, неостанавливающееся кровотечение после 2+ часов</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• Нарастающая боль через 3–4 дня (вместо улучшения)</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• Температура выше 38,5°C</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem">• Сильный отёк, увеличивающийся после 3-го дня</p>
+    <p style="font-size:0.85rem;margin-bottom:0.75rem">• Онемение, не проходящее через 24 часа</p>
+    <div class="emergency-phone">📞 07703 — 284</div>
+    <p style="font-size:0.8rem;margin-top:0.5rem;color:#fed7d7">В нерабочее время: Стоматологическая скорая помощь 01805 — 911 630</p>
+  </div>
+
+  <div class="card card-blue">
+    <div class="card-title" style="color:#1a4a6e">🪥 Гигиена полости рта после удаления</div>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>День 1:</strong> Осторожно чистите зубы, но обходите область раны. Не полоскайте!</p>
+    <p style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Со 2-го дня:</strong> Аккуратно полоскайте чаем из шалфея или раствором хлоргексидина. Не интенсивно — просто наберите жидкость в рот, подержите и аккуратно выпустите.</p>
+    <p style="font-size:0.85rem"><strong>С 3–4 дня:</strong> Постепенно возвращайтесь к обычной чистке зубов. Область раны очищайте мягкой зубной щёткой.</p>
+  </div>
+
+  <div class="cta-box">
+    <div class="cta-title">Вопросы? Мы к вашим услугам!</div>
+    <p style="font-size:0.9rem;color:#2f855a">Не стесняйтесь обращаться к нам при любых сомнениях.</p>
+    <div class="cta-phone">📞 07703 — 284</div>
+    <p style="font-size:0.9rem;color:#2f855a;margin-top:0.5rem">🌐 <a href="https://www.frydent.de" target="_blank" style="color:#276749;font-weight:700">www.frydent.de</a></p>
+  </div>
+
+  <div class="card card-info"><strong>💡 Обратите внимание:</strong> Эта информация не заменяет личную беседу с вашим стоматологом. При индивидуальных вопросах, пожалуйста, обращайтесь к нам напрямую.</div>
+
+  <div class="footer" style="margin-top:1.5rem">FRYDENT Zahnärzte in Bonndorf · Информация для пациента · После удаления зуба<br>Обновлено: Февраль 2026</div>
+</div>
+
+</body>
+</html>
