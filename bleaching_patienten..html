@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT – Professionelles Zahnbleaching</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Source Sans 3', 'Segoe UI', sans-serif; background: linear-gradient(180deg, #f0f4f8 0%, #e8ecf1 100%); color: #2d3748; line-height: 1.7; }
+
+.header { background: linear-gradient(135deg, #1a365d 0%, #2a4a7f 50%, #2b6cb0 100%); border-bottom: 4px solid #63b3ed; padding: 2rem 1.5rem; }
+.header-inner { max-width: 800px; margin: 0 auto; }
+.tags { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+.tag { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }
+.tag-portal { background: rgba(255,255,255,0.15); color: #bee3f8; }
+.tag-bleaching { background: rgba(99,179,237,0.2); color: #90cdf4; }
+h1 { font-family: 'Merriweather', serif; font-size: 2rem; color: white; margin-bottom: 0.5rem; line-height: 1.2; }
+.subtitle { color: #bee3f8; font-size: 0.9rem; }
+.meta { display: flex; gap: 1.5rem; margin-top: 1rem; color: #90cdf4; font-size: 0.75rem; }
+
+.content { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+
+.nav { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; margin-bottom: 2rem; -webkit-overflow-scrolling: touch; }
+.nav::-webkit-scrollbar { display: none; }
+.nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; white-space: nowrap; border: 1px solid #e2e8f0; background: white; color: #4a5568; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+.nav-btn:hover { border-color: #1a365d; color: #1a365d; }
+.nav-btn.active { background: #1a365d; color: white; border-color: #1a365d; box-shadow: 0 4px 12px rgba(26,54,93,0.3); }
+
+.section { display: none; }
+.section.active { display: block; }
+.section-title { font-family: 'Merriweather', serif; font-size: 1.5rem; color: #1a365d; margin-bottom: 0.25rem; }
+.section-sub { color: #718096; font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+.card { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; }
+.card-blue { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%); border: 1px solid #c8dff0; }
+.card-yellow { background: #fff9f0; border: 1px solid #f0dcc0; }
+.card-green { background: #f0fff4; border: 1px solid #c6f6d5; }
+.card-purple { background: #f8f4ff; border: 1px solid #d6bcfa; }
+.card-gold { background: linear-gradient(135deg, #fffdf5 0%, #fef9e7 100%); border: 1px solid #f6e05e; }
+.card-info { background: #ebf8ff; border: 1px solid #90cdf4; color: #2b6cb0; font-size: 0.85rem; }
+.card-warn { background: #fffbeb; border: 1px solid #f6d860; color: #744210; font-size: 0.85rem; }
+.card-title { font-family: 'Merriweather', serif; font-weight: 700; margin-bottom: 0.75rem; }
+
+.compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.compare-card { border-radius: 1rem; padding: 1.25rem; }
+.compare-io { background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%); border: 2px solid #63b3ed; }
+.compare-home { background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%); border: 2px solid #68d391; }
+
+.step-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; }
+.step-num { width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+.step-title { font-weight: 700; font-size: 0.9rem; color: #1a202c; }
+.step-desc { font-size: 0.85rem; color: #4a5568; margin-top: 0.25rem; }
+
+.faq-item { border-bottom: 1px solid #e2e8f0; padding: 1rem 0; cursor: pointer; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 700; font-size: 0.9rem; color: #1a365d; display: flex; justify-content: space-between; align-items: center; }
+.faq-a { font-size: 0.85rem; color: #4a5568; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding-top: 0; }
+.faq-item.open .faq-a { max-height: 300px; padding-top: 0.75rem; }
+.faq-arrow { transition: transform 0.3s; font-size: 0.8rem; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+.price-box { background: linear-gradient(135deg, #1a365d 0%, #2a4a7f 100%); border-radius: 1rem; padding: 1.5rem; color: white; text-align: center; margin-bottom: 1rem; }
+.price-amount { font-family: 'Merriweather', serif; font-size: 2.5rem; font-weight: 900; margin: 0.5rem 0; }
+.price-label { font-size: 0.85rem; color: #bee3f8; }
+.price-note { font-size: 0.75rem; color: #90cdf4; margin-top: 0.5rem; }
+
+.cta-box { background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%); border: 2px solid #68d391; border-radius: 1rem; padding: 1.5rem; text-align: center; margin-bottom: 1rem; }
+.cta-title { font-family: 'Merriweather', serif; font-size: 1.2rem; color: #276749; margin-bottom: 0.5rem; }
+.cta-text { font-size: 0.9rem; color: #2f855a; }
+.cta-phone { font-family: 'Merriweather', serif; font-size: 1.3rem; font-weight: 700; color: #276749; margin-top: 0.75rem; }
+
+.shade-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 0.25rem; margin: 1rem 0; }
+.shade { height: 2.5rem; border-radius: 0.5rem; position: relative; }
+.shade-label { position: absolute; bottom: -1.2rem; left: 50%; transform: translateX(-50%); font-size: 0.6rem; color: #718096; white-space: nowrap; }
+
+.nav-arrows { display: flex; justify-content: space-between; margin: 2rem 0; }
+.nav-arrow { padding: 0.6rem 1.25rem; border-radius: 0.75rem; font-size: 0.85rem; font-weight: 700; border: 1px solid #e2e8f0; cursor: pointer; font-family: inherit; }
+.nav-arrow.prev { background: white; color: #3182ce; }
+.nav-arrow.next { background: #1a365d; color: white; border-color: #1a365d; }
+.nav-arrow:disabled { background: #edf2f7!important; color: #a0aec0!important; border-color: #e2e8f0!important; cursor: default; }
+
+.footer { text-align: center; font-size: 0.7rem; color: #a0aec0; padding-bottom: 2rem; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.5rem; }
+  .meta { flex-direction: column; gap: 0.25rem; }
+  .compare { grid-template-columns: 1fr; }
+  .shade-grid { grid-template-columns: repeat(4, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="tags">
+      <span class="tag tag-portal">FRYDENT Zahnärzte</span>
+      <span class="tag tag-bleaching">Patienteninformation</span>
+    </div>
+    <h1>Professionelles Zahnbleaching</h1>
+    <p class="subtitle">Strahlend weiße Zähne – sicher, schonend und professionell bei FRYDENT.</p>
+    <div class="meta">
+      <span>📖 ca. 5 Min. Lesezeit</span>
+      <span>✨ In-Office & Home Bleaching</span>
+      <span>🦷 Wissenschaftlich bewährt</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="nav" id="nav">
+    <button class="nav-btn active" onclick="go('overview',this)">✨ Überblick</button>
+    <button class="nav-btn" onclick="go('methods',this)">🔬 Methoden</button>
+    <button class="nav-btn" onclick="go('process',this)">📋 Ablauf</button>
+    <button class="nav-btn" onclick="go('care',this)">🛡️ Pflege</button>
+    <button class="nav-btn" onclick="go('costs',this)">💰 Kosten</button>
+    <button class="nav-btn" onclick="go('faq',this)">❓ FAQ</button>
+  </div>
+
+  <!-- ÜBERBLICK -->
+  <div class="section active" id="s-overview">
+    <h2 class="section-title">Was ist Zahnbleaching?</h2>
+    <p class="section-sub">Ihr Weg zu einem strahlenden Lächeln</p>
+
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">Professionelle Zahnaufhellung – sicher und wirksam</div>
+      <p style="font-size:0.85rem;margin-bottom:0.75rem">Beim professionellen Bleaching werden Verfärbungen im Zahnschmelz mit einem speziellen Aufhellungsgel sanft und kontrolliert entfernt. Das Ergebnis: natürlich weiße Zähne, die zu Ihrem Lächeln passen.</p>
+      <p style="font-size:0.85rem">Im Gegensatz zu frei verkäuflichen Produkten aus der Drogerie arbeiten wir mit <strong>höheren Wirkstoffkonzentrationen</strong> unter zahnärztlicher Kontrolle – das bedeutet: bessere Ergebnisse, weniger Nebenwirkungen und ein Ergebnis, das hält.</p>
+    </div>
+
+    <div class="card card-yellow">
+      <div class="card-title" style="color:#8b6914">💡 Warum werden Zähne dunkler?</div>
+      <p style="font-size:0.85rem"><strong>☕ Genussmittel:</strong> Kaffee, Tee, Rotwein und Zigaretten lagern Farbpigmente ein.</p>
+      <p style="font-size:0.85rem"><strong>⏳ Alter:</strong> Mit der Zeit wird der Zahnschmelz dünner und das gelbliche Dentin scheint durch.</p>
+      <p style="font-size:0.85rem"><strong>💊 Medikamente:</strong> Bestimmte Antibiotika (z. B. Tetracyclin) können Verfärbungen verursachen.</p>
+      <p style="font-size:0.85rem"><strong>🧬 Veranlagung:</strong> Die natürliche Zahnfarbe ist genetisch unterschiedlich.</p>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-title" style="color:#276749">✅ Für wen ist Bleaching geeignet?</div>
+      <p style="font-size:0.85rem;margin-bottom:0.5rem">Bleaching eignet sich für Erwachsene mit gesunden Zähnen und gesundem Zahnfleisch. Vor dem Bleaching führen wir immer eine gründliche Untersuchung durch und empfehlen eine professionelle Zahnreinigung (PZR).</p>
+      <p style="font-size:0.85rem"><strong>Wichtig:</strong> Kronen, Füllungen und Veneers werden durch Bleaching nicht aufgehellt. Bei Bedarf können diese nach dem Bleaching farblich angepasst werden.</p>
+    </div>
+
+    <div class="card card-info"><strong>🔬 Gut zu wissen:</strong> Professionelles Bleaching ist wissenschaftlich gut untersucht und gilt als sicher. Bei korrekter Anwendung wird der Zahnschmelz nicht geschädigt.</div>
+  </div>
+
+  <!-- METHODEN -->
+  <div class="section" id="s-methods">
+    <h2 class="section-title">Unsere Methoden</h2>
+    <p class="section-sub">Zwei Wege zum weißen Lächeln</p>
+
+    <div class="compare">
+      <div class="compare-card compare-io">
+        <div style="font-size:1.5rem;margin-bottom:0.5rem">🏥</div>
+        <h4 style="font-weight:700;color:#2b6cb0;margin-bottom:0.75rem">In-Office Bleaching</h4>
+        <p style="font-size:0.85rem;color:#2c5282;margin-bottom:0.5rem"><strong>Sofort-Ergebnis in einer Sitzung</strong></p>
+        <p style="font-size:0.85rem;color:#2c5282">• Durchführung direkt in unserer Praxis</p>
+        <p style="font-size:0.85rem;color:#2c5282">• Hochkonzentriertes Gel mit Lichtaktivierung</p>
+        <p style="font-size:0.85rem;color:#2c5282">• Dauer: ca. 60–90 Minuten</p>
+        <p style="font-size:0.85rem;color:#2c5282">• Ergebnis: bis zu 6–8 Stufen heller</p>
+        <p style="font-size:0.85rem;color:#2c5282;margin-top:0.5rem"><strong>Ideal für:</strong> Wer sofort Ergebnisse sehen möchte</p>
+      </div>
+      <div class="compare-card compare-home">
+        <div style="font-size:1.5rem;margin-bottom:0.5rem">🏠</div>
+        <h4 style="font-weight:700;color:#276749;margin-bottom:0.75rem">Home Bleaching</h4>
+        <p style="font-size:0.85rem;color:#22543d;margin-bottom:0.5rem"><strong>Sanfte Aufhellung zu Hause</strong></p>
+        <p style="font-size:0.85rem;color:#22543d">• Individuell angefertigte Bleaching-Schienen</p>
+        <p style="font-size:0.85rem;color:#22543d">• Niedrig dosiertes Gel für tägliche Anwendung</p>
+        <p style="font-size:0.85rem;color:#22543d">• Dauer: ca. 1–2 Wochen, je 30–60 Min. täglich</p>
+        <p style="font-size:0.85rem;color:#22543d">• Ergebnis: schrittweise, natürliche Aufhellung</p>
+        <p style="font-size:0.85rem;color:#22543d;margin-top:0.5rem"><strong>Ideal für:</strong> Wer eine flexible, schonende Lösung bevorzugt</p>
+      </div>
+    </div>
+
+    <div class="card card-purple">
+      <div class="card-title" style="color:#553c9a">🤔 Welche Methode passt zu mir?</div>
+      <p style="font-size:0.85rem">Die Entscheidung treffen wir gemeinsam. In einem persönlichen Beratungsgespräch analysieren wir Ihre aktuelle Zahnfarbe, besprechen Ihre Wünsche und empfehlen die optimale Methode. Beide Verfahren sind sicher und effektiv – der Unterschied liegt im Komfort und der Geschwindigkeit.</p>
+    </div>
+
+    <div class="card card-yellow">
+      <div class="card-title" style="color:#8b6914">💡 So funktioniert die Aufhellung</div>
+      <p style="font-size:0.85rem">Der Wirkstoff (Wasserstoffperoxid oder Carbamidperoxid) dringt in den Zahnschmelz ein und spaltet dort die Farbmoleküle auf. Einfach gesagt: Die Verfärbungen werden „aufgelöst" – der Zahn selbst bleibt intakt. Der Vorgang ist vergleichbar mit dem Entfernen eines Flecks aus einem weißen Hemd – nur viel sanfter.</p>
+    </div>
+  </div>
+
+  <!-- ABLAUF -->
+  <div class="section" id="s-process">
+    <h2 class="section-title">So läuft die Behandlung ab</h2>
+    <p class="section-sub">Schritt für Schritt zu weißen Zähnen</p>
+
+    <div class="card">
+      <div class="card-title" style="color:#2b6cb0">🏥 In-Office Bleaching – Ablauf</div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">1</div><div><div class="step-title">Beratung & Zahnfarbbestimmung</div><div class="step-desc">Wir bestimmen Ihre aktuelle Zahnfarbe und besprechen das gewünschte Ergebnis.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">2</div><div><div class="step-title">Professionelle Zahnreinigung</div><div class="step-desc">Falls noch nicht erfolgt, empfehlen wir vor dem Bleaching eine PZR für optimale Ergebnisse.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">3</div><div><div class="step-title">Zahnfleisch-Schutz</div><div class="step-desc">Wir tragen einen Schutzwall (Gingiva-Protektor) auf, damit das Gel nur auf die Zähne wirkt.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">4</div><div><div class="step-title">Gel-Auftrag & Einwirkzeit</div><div class="step-desc">Das hochkonzentrierte Bleaching-Gel wird auf die Zähne aufgetragen. Je nach System 2–3 Durchgänge à 15–20 Minuten.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#3182ce">5</div><div><div class="step-title">Ergebnis & Fluoridierung</div><div class="step-desc">Wir vergleichen das Ergebnis mit der Ausgangsfarbe. Zum Abschluss wird ein Fluoridgel aufgetragen, um den Zahnschmelz zu stärken.</div></div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="color:#276749">🏠 Home Bleaching – Ablauf</div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">1</div><div><div class="step-title">Beratung & Abdrucknahme</div><div class="step-desc">Wir nehmen Abdrücke für Ihre individuellen Bleaching-Schienen.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">2</div><div><div class="step-title">Schienen-Anpassung</div><div class="step-desc">Innerhalb weniger Tage erhalten Sie Ihre maßgefertigten Schienen – perfekter Sitz garantiert.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">3</div><div><div class="step-title">Anwendung zu Hause</div><div class="step-desc">Sie füllen eine kleine Menge Gel in die Schiene und tragen sie täglich 30–60 Minuten. Wir zeigen Ihnen genau, wie es geht.</div></div></div>
+      <div class="step-item"><div class="step-num" style="background:#38a169">4</div><div><div class="step-title">Kontrolle in der Praxis</div><div class="step-desc">Nach 1–2 Wochen kontrollieren wir das Ergebnis und passen bei Bedarf die Behandlung an.</div></div></div>
+    </div>
+
+    <div class="card card-info"><strong>⏱️ Gut zu wissen:</strong> Beim In-Office Bleaching sehen Sie das Ergebnis sofort. Beim Home Bleaching wird das Ergebnis Tag für Tag sichtbar – wie ein langsamer Sonnenaufgang für Ihr Lächeln.</div>
+  </div>
+
+  <!-- PFLEGE -->
+  <div class="section" id="s-care">
+    <h2 class="section-title">Pflege nach dem Bleaching</h2>
+    <p class="section-sub">So bleibt Ihr Lächeln lange strahlend</p>
+
+    <div class="card card-yellow">
+      <div class="card-title" style="color:#8b6914">⚠️ Die ersten 48 Stunden – „Weiße Diät"</div>
+      <p style="font-size:0.85rem;margin-bottom:0.75rem">In den ersten zwei Tagen nach dem Bleaching sind Ihre Zähne besonders aufnahmebereit für Farbstoffe. Vermeiden Sie in dieser Zeit:</p>
+      <p style="font-size:0.85rem">🚫 Kaffee, Tee, Rotwein, Cola</p>
+      <p style="font-size:0.85rem">🚫 Curry, Tomatensoße, Beeren</p>
+      <p style="font-size:0.85rem">🚫 Rauchen</p>
+      <p style="font-size:0.85rem">🚫 Farbige Mundspülungen</p>
+      <p style="font-size:0.85rem;margin-top:0.75rem"><strong>Faustregel:</strong> Alles, was ein weißes T-Shirt verfärben würde, sollten Sie in diesen 48 Stunden meiden.</p>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-title" style="color:#276749">✅ Langfristige Pflege-Tipps</div>
+      <p style="font-size:0.85rem">☑️ Regelmäßige professionelle Zahnreinigung (alle 6 Monate)</p>
+      <p style="font-size:0.85rem">☑️ Elektrische Zahnbürste mit weichen Borsten</p>
+      <p style="font-size:0.85rem">☑️ Fluoridhaltige Zahnpasta verwenden</p>
+      <p style="font-size:0.85rem">☑️ Nach Kaffee oder Tee: Mund mit Wasser ausspülen</p>
+      <p style="font-size:0.85rem">☑️ Nicht rauchen</p>
+    </div>
+
+    <div class="card card-blue">
+      <div class="card-title" style="color:#1a4a6e">🔄 Wie lange hält das Ergebnis?</div>
+      <p style="font-size:0.85rem">Je nach Lebensgewohnheiten hält das Bleaching-Ergebnis <strong>1–3 Jahre</strong>. Wer auf Kaffee und Zigaretten verzichtet, genießt das Ergebnis am längsten. Ein Auffrischungs-Bleaching (besonders mit den Home-Bleaching-Schienen) ist jederzeit einfach möglich.</p>
+    </div>
+
+    <div class="card card-info"><strong>💡 Tipp:</strong> Vorübergehende Empfindlichkeit nach dem Bleaching ist normal und klingt innerhalb von 1–2 Tagen vollständig ab. Bei Bedarf empfehlen wir eine Sensitiv-Zahnpasta.</div>
+  </div>
+
+  <!-- KOSTEN -->
+  <div class="section" id="s-costs">
+    <h2 class="section-title">Kosten & Investition</h2>
+    <p class="section-sub">Transparent und fair</p>
+
+    <div class="price-box">
+      <div style="font-size:1.5rem">✨</div>
+      <div class="price-label">Professionelles Zahnbleaching bei FRYDENT</div>
+      <div class="price-amount">500 €</div>
+      <div class="price-note">Preis gilt für In-Office Bleaching (eine Sitzung, Ober- und Unterkiefer)</div>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-title" style="color:#276749">📋 In diesem Preis enthalten:</div>
+      <p style="font-size:0.85rem">☑️ Ausführliches Beratungsgespräch</p>
+      <p style="font-size:0.85rem">☑️ Zahnfarbbestimmung vorher & nachher</p>
+      <p style="font-size:0.85rem">☑️ Zahnfleischschutz (Gingiva-Protektor)</p>
+      <p style="font-size:0.85rem">☑️ Professionelles Bleaching-Gel (2–3 Durchgänge)</p>
+      <p style="font-size:0.85rem">☑️ Abschließende Fluoridierung</p>
+      <p style="font-size:0.85rem">☑️ Nachkontrolle</p>
+    </div>
+
+    <div class="card card-warn"><strong>💡 Hinweis:</strong> Bleaching ist eine ästhetische Leistung und wird nicht von der gesetzlichen Krankenkasse übernommen. Wir bieten Ihnen gerne flexible Zahlungsmöglichkeiten an. Sprechen Sie uns einfach an!</div>
+
+    <div class="cta-box">
+      <div class="cta-title">Interesse? Wir beraten Sie gerne!</div>
+      <div class="cta-text">Vereinbaren Sie einen unverbindlichen Beratungstermin – so wie es Ihnen am besten passt:</div>
+      <div class="cta-phone">📞 07703 – 284</div>
+      <p style="font-size:0.9rem;color:#2f855a;margin-top:0.5rem">🌐 Online-Termin: <a href="https://www.frydent.de" target="_blank" style="color:#276749;font-weight:700">www.frydent.de</a></p>
+      <p style="font-size:0.9rem;color:#2f855a;margin-top:0.25rem">🏥 Oder sprechen Sie uns einfach direkt in der Praxis an!</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" id="s-faq">
+    <h2 class="section-title">Häufige Fragen</h2>
+    <p class="section-sub">Ihre Fragen – unsere Antworten</p>
+
+    <div class="card">
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Tut Bleaching weh? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Nein! Manche Patienten spüren während oder nach der Behandlung eine leichte Empfindlichkeit – das ist normal und verschwindet innerhalb von 1–2 Tagen. Wir verwenden desensibilisierende Gele, um den Komfort zu maximieren.</div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Schadet Bleaching meinen Zähnen? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Bei professioneller Durchführung: Nein. Studien belegen, dass der Zahnschmelz nicht geschädigt wird. Wichtig ist, dass die Behandlung unter zahnärztlicher Kontrolle stattfindet – genau deshalb sollten Sie auf Drogerie-Produkte verzichten.</div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Werden meine Kronen und Füllungen auch heller? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Nein, Bleaching wirkt nur auf natürliche Zahnsubstanz. Kronen, Füllungen und Veneers verändern ihre Farbe nicht. Falls nötig, können wir diese nach dem Bleaching farblich anpassen.</div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Kann ich während der Schwangerschaft bleachen? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Wir empfehlen, während der Schwangerschaft und Stillzeit auf Bleaching zu verzichten – nicht weil es nachweislich schädlich ist, sondern aus Vorsicht.</div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Wie weiß werden meine Zähne? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Das Ergebnis hängt von der Ausgangsfarbe und der Art der Verfärbung ab. In der Regel sind 4–8 Farbstufen Aufhellung möglich. Bei der Beratung zeigen wir Ihnen anhand eines Farbschlüssels, welches Ergebnis realistisch ist.</div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">In-Office oder Home Bleaching – was ist besser? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Beide Methoden führen zu sehr guten Ergebnissen. In-Office ist schneller (sofort sichtbar), Home Bleaching ist flexibler und etwas schonender. Wir beraten Sie gerne, welche Methode am besten zu Ihnen passt.</div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Kann ich das Ergebnis auffrischen? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Ja! Besonders mit Home-Bleaching-Schienen ist eine Auffrischung jederzeit einfach möglich. Wir empfehlen ein Auffrischungs-Bleaching je nach Bedarf alle 6–12 Monate.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-arrows">
+    <button class="nav-arrow prev" id="bp" onclick="prev()">← Zurück</button>
+    <button class="nav-arrow next" id="bn" onclick="next()">Weiter →</button>
+  </div>
+
+  <div class="cta-box" style="margin-top:1rem">
+    <div class="cta-title">Bereit für Ihr strahlendes Lächeln?</div>
+    <div class="cta-text">Vereinbaren Sie jetzt Ihren persönlichen Beratungstermin bei FRYDENT.</div>
+    <div class="cta-phone">📞 07703 – 284</div>
+    <p style="font-size:0.9rem;color:#2f855a;margin-top:0.5rem">🌐 Online-Termin: <a href="https://www.frydent.de" target="_blank" style="color:#276749;font-weight:700">www.frydent.de</a></p>
+    <p style="font-size:0.9rem;color:#2f855a;margin-top:0.25rem">🏥 Oder sprechen Sie uns einfach direkt in der Praxis an!</p>
+  </div>
+
+  <div class="footer" style="margin-top:1.5rem">FRYDENT Zahnärzte in Bonndorf · Patienteninformation · Zahnbleaching<br>Stand: Februar 2026</div>
+</div>
+
+<script>
+var ids=['overview','methods','process','care','costs','faq'],ci=0;
+function go(id,btn){document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active')});document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active')});document.getElementById('s-'+id).classList.add('active');if(btn)btn.classList.add('active');else document.querySelectorAll('.nav-btn')[ids.indexOf(id)].classList.add('active');ci=ids.indexOf(id);ua();window.scrollTo({top:0,behavior:'smooth'});}
+function prev(){if(ci>0)go(ids[ci-1])}
+function next(){if(ci<ids.length-1)go(ids[ci+1])}
+function ua(){document.getElementById('bp').disabled=ci===0;document.getElementById('bn').disabled=ci===ids.length-1;}
+ua();
+</script>
+</body>
+</html>
