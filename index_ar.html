@@ -63,7 +63,7 @@
         .lang-btn:hover{background:var(--blue-light);color:var(--blue)}
         .lang-btn.active{background:var(--blue);color:var(--white)}
         .lang-btn .flag{width:22px;height:15px;border-radius:2px;display:block;background-size:cover;background-position:center}
-        .gold-line{height:3px;background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--gold-dark))}
+        
         .card.tool{border-color:var(--gold-light);background:linear-gradient(135deg,var(--white) 0%,#FFFDF6 100%)}
         .card.tool:hover{border-color:var(--gold);box-shadow:0 8px 30px rgba(212,168,67,.15)}
         .card.tool:hover .card-arrow{background:var(--gold)}
@@ -105,16 +105,14 @@
         .sidebar-tab.location .sidebar-icon{background:var(--blue-darker)}
         .sidebar-tab.location .sidebar-label{background:var(--blue-darker);color:var(--white)}
         .sidebar-tab.location .sidebar-icon svg{stroke:var(--white)}
-        @media(max-width:640px){
-            .sidebar{display:none}
-            .mobile-bar{display:flex!important}
-        }
         .mobile-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;background:var(--white);border-top:1px solid var(--gray-200);padding:8px 12px;justify-content:space-around;box-shadow:0 -2px 10px rgba(0,0,0,.08)}
         .mobile-bar a{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;font-size:.65rem;font-weight:600;color:var(--blue-dark);padding:4px 8px;border-radius:8px}
         .mobile-bar a:active{background:var(--blue-light)}
         .mobile-bar a svg{width:22px;height:22px;stroke:var(--blue);stroke-width:2;fill:none}
         .mobile-bar a.phone-m svg{stroke:#D4A843}
         .mobile-bar a.phone-m{color:var(--gold-dark)}
+        @media(max-width:640px){.sidebar{display:none}.mobile-bar{display:flex!important}}
+        
     </style>
 </head>
 <body>
@@ -132,7 +130,6 @@
     <div class="hero-divider"></div>
     <p>ستجدون هنا معلومات مهمة حول علاجكم ونماذج مفيدة لزيارتكم.</p>
 </div>
-<div class="gold-line"></div>
 <div class="lang-bar">
     
     <div class="lang-bar-flags">
