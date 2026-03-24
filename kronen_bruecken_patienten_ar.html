@@ -42,10 +42,6 @@
         .tab-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:.55rem .5rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid #D4C48A;background:#F0E8C4;color:#5A4A1E;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
         .tab-btn:hover{border-color:var(--gold);color:#3D3010;background:#E6DBB0}
         .tab-btn.active{background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)}
-        .tab-btn.secondary{background:var(--gray-100);border-color:var(--gray-200);color:var(--gray-600);font-size:.78rem;font-weight:500;flex:0.7}
-        .tab-btn.secondary:hover{background:var(--gray-200);border-color:var(--gray-400);color:var(--gray-800)}
-        .tab-btn.secondary.active{background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)}
-        .tab-group-divider{width:1px;background:var(--gray-200);margin:.2rem 2px;flex-shrink:0;align-self:stretch;min-height:24px}
         .tab-btn svg{flex-shrink:0}
         @media(max-width:640px){.tab-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tab-btn{flex:none;padding:.55rem 1rem}}
 
@@ -233,15 +229,15 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg>
             التكاليف
         </button>
-        <div class="tab-group-divider"></div><button class="tab-btn secondary" onclick="go('labs',this)">
+        <button class="tab-btn" onclick="go('labs',this)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
             مختبراتنا
         </button>
-        <button class="tab-btn secondary" onclick="go('care',this)">
+        <button class="tab-btn" onclick="go('care',this)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"></path></svg>
             الرعاية
         </button>
-        <button class="tab-btn secondary" onclick="go('faq',this)">
+        <button class="tab-btn" onclick="go('faq',this)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"></path></svg>
             FAQ
         </button>
