@@ -39,7 +39,7 @@
         /* TAB NAVIGATION */
         .tab-nav{display:flex;gap:.4rem;padding-bottom:.5rem;margin-bottom:1.75rem}
         .tab-nav::-webkit-scrollbar{display:none}
-        .tab-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:.55rem .5rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid #D4C48A;background:#F0E8C4;color:#5A4A1E;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
+        .tab-btn{display:flex;align-items:center;gap:6px;padding:.55rem 1rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid #D4C48A;background:#F0E8C4;color:#5A4A1E;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
         .tab-btn:hover{border-color:var(--gold);color:#3D3010;background:#E6DBB0}
         .tab-btn.active{background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)}
         .tab-btn svg{flex-shrink:0}
@@ -194,9 +194,8 @@
         }
     
         .nav-arrows{display:flex;justify-content:space-between;margin-top:1.5rem}
-        .nav-arrow{padding:.5rem 1.25rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;cursor:pointer;border:1px solid #D4C48A;background:#F0E8C4;color:#5A4A1E;transition:all .2s}
+        .nav-arrow{padding:.5rem 1.25rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;cursor:pointer;border:1px solid #D4C48A;background:#F0E8C4;color:#5A4A1E;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif}
         .nav-arrow:hover{background:#E6DBB0;border-color:var(--gold)}
-        .nav-arrow.active-nav{background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)}
         .nav-arrow:disabled{opacity:.4;cursor:default}
         </style>
 <script>
@@ -205,14 +204,8 @@ function go(id,btn){
     document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
     var sec=document.getElementById('s-'+id);
     if(sec) sec.classList.add('active');
-    if(btn){
-        btn.classList.add('active');
-    } else {
-        document.querySelectorAll('.tab-btn').forEach(function(b){
-            var oc=b.getAttribute('onclick')||'';
-            if(oc.indexOf("'"+id+"'")>-1) b.classList.add('active');
-        });
-    }
+    if(btn){btn.classList.add('active');}
+    else{document.querySelectorAll('.tab-btn').forEach(function(b){var oc=b.getAttribute('onclick')||'';if(oc.indexOf("'"+id+"'")>-1)b.classList.add('active');});}
     var nav=document.getElementById('nav');
     if(nav) nav.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
@@ -295,8 +288,9 @@ function go(id,btn){
         </div>
 
         <div class="hint"><strong>Good to know:</strong> Professional whitening is well-researched and considered safe. When applied correctly, tooth enamel is not damaged.</div>
-    
-        <div class="nav-arrows"><button class="nav-arrow" disabled>← Back</button><button class="nav-arrow" onclick="go('methods',null)">Next →</button></div>
+
+        <div class="nav-arrows"><button class="nav-arrow" disabled>← Back</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('methods')">Next →</button></div>
+
     </div>
 
     <!-- METHODEN -->
@@ -337,8 +331,9 @@ function go(id,btn){
             <div class="card-title">How whitening works</div>
             <p style="font-size:.85rem">The active ingredient (hydrogen peroxide or carbamide peroxide) penetrates the enamel and breaks down the colour molecules. Simply put: the discolouration is "dissolved" — the tooth itself remains intact. The process is comparable to removing a stain from a white shirt — just much gentler.</p>
         </div>
-    
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('overview',null)">← Back</button><button class="nav-arrow" onclick="go('process',null)">Next →</button></div>
+
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('overview')">← Back</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('process')">Next →</button></div>
+
     </div>
 
     <!-- ABLAUF -->
@@ -358,17 +353,18 @@ function go(id,btn){
             <div class="step-item"><div class="step-num" style="background:var(--gold-dark)">5</div><div><div class="step-title">Result &amp; fluoride treatment</div><div class="step-desc">We compare the result with the original shade. Finally, a fluoride gel is applied to strengthen the enamel.</div></div></div>
         </div>
 
-        <div class="card">
+        <div class="card" style="background:#F0F5FB;border:1px solid #C8D9EE">
             <div class="card-title" style="color:var(--green-text)">Home Whitening — Ablauf</div>
-            <div class="step-item"><div class="step-num" style="background:var(--green-text)">1</div><div><div class="step-title">Consultation &amp; impressions</div><div class="step-desc">We take impressions for your custom whitening trays.</div></div></div>
-            <div class="step-item"><div class="step-num" style="background:var(--green-text)">2</div><div><div class="step-title">Tray fitting</div><div class="step-desc">Within a few days you receive your custom-made trays — perfect fit guaranteed.</div></div></div>
-            <div class="step-item"><div class="step-num" style="background:var(--green-text)">3</div><div><div class="step-title">Application at home</div><div class="step-desc">You fill a small amount of gel into the tray and wear it daily for 30–60 minutes. We show you exactly how it works.</div></div></div>
-            <div class="step-item"><div class="step-num" style="background:var(--green-text)">4</div><div><div class="step-title">Check-up at the practice</div><div class="step-desc">After 1–2 weeks we check the result and adjust the treatment if necessary.</div></div></div>
+            <div class="step-item"><div class="step-num" style="background:var(--blue-dark)">1</div><div><div class="step-title">Consultation &amp; impressions</div><div class="step-desc">We take impressions for your custom whitening trays.</div></div></div>
+            <div class="step-item"><div class="step-num" style="background:var(--blue-dark)">2</div><div><div class="step-title">Tray fitting</div><div class="step-desc">Within a few days you receive your custom-made trays — perfect fit guaranteed.</div></div></div>
+            <div class="step-item"><div class="step-num" style="background:var(--blue-dark)">3</div><div><div class="step-title">Application at home</div><div class="step-desc">You fill a small amount of gel into the tray and wear it daily for 30–60 minutes. We show you exactly how it works.</div></div></div>
+            <div class="step-item"><div class="step-num" style="background:var(--blue-dark)">4</div><div><div class="step-title">Check-up at the practice</div><div class="step-desc">After 1–2 weeks we check the result and adjust the treatment if necessary.</div></div></div>
         </div>
 
         <div class="hint"><strong>Gut zu wissen:</strong> Beim In-Office Whitening sehen Sie das Ergebnis sofort. Beim Home Whitening wird das Ergebnis Tag für Tag sichtbar — wie ein langsamer Sonnenaufgang für Ihr Lächeln.</div>
-    
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('methods',null)">← Back</button><button class="nav-arrow" onclick="go('care',null)">Next →</button></div>
+
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('methods')">← Back</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('care')">Next →</button></div>
+
     </div>
 
     <!-- PFLEGE -->
@@ -411,8 +407,9 @@ function go(id,btn){
         </div>
 
         <div class="hint"><strong>Tip:</strong> Temporary sensitivity after whitening is normal and subsides completely within 1–2 days. If needed, we recommend a sensitivity toothpaste.</div>
-    
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('process',null)">← Back</button><button class="nav-arrow" onclick="go('costs',null)">Next →</button></div>
+
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('process')">← Back</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('costs')">Next →</button></div>
+
     </div>
 
     <!-- KOSTEN -->
@@ -474,8 +471,9 @@ function go(id,btn){
             <p>Book a no-obligation consultation.</p>
             <div class="phone"><a href="tel:+497703284">07703 — 284</a></div>
         </div>
-    
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('care',null)">← Back</button><button class="nav-arrow" onclick="go('faq',null)">Next →</button></div>
+
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('care')">← Back</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('faq')">Next →</button></div>
+
     </div>
 
     <!-- FAQ -->
@@ -531,8 +529,9 @@ function go(id,btn){
     <div class="print-bar">
         <a href="https://info.frydent.de/index_en.html" class="btn-back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg> Back to Portal</a>
         <button class="btn-print" onclick="window.print()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg> Print</button>
-    
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('costs',null)">← Back</button><button class="nav-arrow" disabled>Next →</button></div>
+
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('costs')">← Back</button><button class="nav-arrow" disabled>Next →</button></div>
+
     </div>
 
 </main>
@@ -545,11 +544,11 @@ function go(id,btn){
         <span class="sidebar-label">07703 284</span>
         <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></div>
     </a>
-    <a href="/cdn-cgi/l/email-protection#2841464e47684e5a514c4d465c064c4d175b5d4a424d4b5c156a4d5a495c5d464f5b5c4d5a4541460d1a186a444d494b4041464f" class="sidebar-tab termin">
+    <a href="/cdn-cgi/l/email-protection#71181f171e3117030815141f055f15144e0204131b1412054c3314031005041f16020514031c181f544341331d14101219181f16" class="sidebar-tab termin">
         <span class="sidebar-label">Request appointment · online from May!</span>
         <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></div>
     </a>
-    <a href="/cdn-cgi/l/email-protection#5a33343c351a3c28233e3f342e743e3f" class="sidebar-tab email">
+    <a href="/cdn-cgi/l/email-protection#c3aaada5ac83a5b1baa7a6adb7eda7a6" class="sidebar-tab email">
         <span class="sidebar-label">Send email</span>
         <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
     </a>
@@ -562,8 +561,8 @@ function go(id,btn){
 <!-- MOBILE BAR -->
 <div class="mobile-bar">
     <a href="tel:+497703284" class="phone-m"><svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>Call</a>
-    <a href="/cdn-cgi/l/email-protection#3f565159507f594d465b5a514b115b5a004c4a5d555a5c4b027d5a4d5e4b4a51584c4b5a4d5256511a0d0f7d535a5e5c57565158"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>Appointment</a>
-    <a href="/cdn-cgi/l/email-protection#157c7b737a5573676c71707b613b7170"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>Email</a>
+    <a href="/cdn-cgi/l/email-protection#7b12151d143b1d09021f1e150f551f1e44080e19111e180f46391e091a0f0e151c080f1e091612155e494b39171e1a181312151c"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>Appointment</a>
+    <a href="/cdn-cgi/l/email-protection#87eee9e1e8c7e1f5fee3e2e9f3a9e3e2"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>Email</a>
     <a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><circle cx="12" cy="11" r="3"></circle></svg>Address</a>
 </div>
 </body>

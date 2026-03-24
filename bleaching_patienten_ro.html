@@ -39,7 +39,7 @@
         /* TAB NAVIGATION */
         .tab-nav{display:flex;gap:.4rem;padding-bottom:.5rem;margin-bottom:1.75rem}
         .tab-nav::-webkit-scrollbar{display:none}
-        .tab-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:.55rem .5rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid #D4C48A;background:#F0E8C4;color:#5A4A1E;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
+        .tab-btn{display:flex;align-items:center;gap:6px;padding:.55rem 1rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid #D4C48A;background:#F0E8C4;color:#5A4A1E;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
         .tab-btn:hover{border-color:var(--gold);color:#3D3010;background:#E6DBB0}
         .tab-btn.active{background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)}
         .tab-btn svg{flex-shrink:0}
@@ -194,9 +194,8 @@
         }
     
         .nav-arrows{display:flex;justify-content:space-between;margin-top:1.5rem}
-        .nav-arrow{padding:.5rem 1.25rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;cursor:pointer;border:1px solid #D4C48A;background:#F0E8C4;color:#5A4A1E;transition:all .2s}
+        .nav-arrow{padding:.5rem 1.25rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;cursor:pointer;border:1px solid #D4C48A;background:#F0E8C4;color:#5A4A1E;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif}
         .nav-arrow:hover{background:#E6DBB0;border-color:var(--gold)}
-        .nav-arrow.active-nav{background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)}
         .nav-arrow:disabled{opacity:.4;cursor:default}
         </style>
 <script>
@@ -205,14 +204,8 @@ function go(id,btn){
     document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
     var sec=document.getElementById('s-'+id);
     if(sec) sec.classList.add('active');
-    if(btn){
-        btn.classList.add('active');
-    } else {
-        document.querySelectorAll('.tab-btn').forEach(function(b){
-            var oc=b.getAttribute('onclick')||'';
-            if(oc.indexOf("'"+id+"'")>-1) b.classList.add('active');
-        });
-    }
+    if(btn){btn.classList.add('active');}
+    else{document.querySelectorAll('.tab-btn').forEach(function(b){var oc=b.getAttribute('onclick')||'';if(oc.indexOf("'"+id+"'")>-1)b.classList.add('active');});}
     var nav=document.getElementById('nav');
     if(nav) nav.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
@@ -295,8 +288,9 @@ function go(id,btn){
         </div>
 
         <div class="hint"><strong>Bine de știut:</strong> Albirea profesională este bine cercetată științific și este considerată sigură. La aplicare corectă, smalțul dentar nu este deteriorat.</div>
-    
-        <div class="nav-arrows"><button class="nav-arrow" disabled>← Înapoi</button><button class="nav-arrow" onclick="go('methods',null)">Înainte →</button></div>
+
+        <div class="nav-arrows"><button class="nav-arrow" disabled>← Înapoi</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('methods')">Înainte →</button></div>
+
     </div>
 
     <!-- METHODEN -->
@@ -337,8 +331,9 @@ function go(id,btn){
             <div class="card-title">Cum funcționează albirea</div>
             <p style="font-size:.85rem">Substanța activă (peroxid de hidrogen sau carbamidă) pătrunde în smalț și descompune moleculele de culoare. Pe scurt: decolorările sunt „dizolvate" — dintele rămâne intact. Procesul este comparabil cu îndepărtarea unei pete de pe o cămașă albă — doar mult mai delicat.</p>
         </div>
-    
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('overview',null)">← Înapoi</button><button class="nav-arrow" onclick="go('process',null)">Înainte →</button></div>
+
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('overview')">← Înapoi</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('process')">Înainte →</button></div>
+
     </div>
 
     <!-- ABLAUF -->
@@ -358,17 +353,18 @@ function go(id,btn){
             <div class="step-item"><div class="step-num" style="background:var(--gold-dark)">5</div><div><div class="step-title">Rezultat și fluorizare</div><div class="step-desc">Comparăm rezultatul cu nuanța inițială. La final se aplică un gel cu fluor pentru a întări smalțul.</div></div></div>
         </div>
 
-        <div class="card">
+        <div class="card" style="background:#F0F5FB;border:1px solid #C8D9EE">
             <div class="card-title" style="color:var(--green-text)">Albire la domiciliu — Ablauf</div>
-            <div class="step-item"><div class="step-num" style="background:var(--green-text)">1</div><div><div class="step-title">Consultație și amprentare</div><div class="step-desc">Luăm amprente pentru gutierele dvs. individuale de albire.</div></div></div>
-            <div class="step-item"><div class="step-num" style="background:var(--green-text)">2</div><div><div class="step-title">Adaptarea gutierelor</div><div class="step-desc">În câteva zile primiți gutierele confecționate la comandă — potrivire perfectă garantată.</div></div></div>
-            <div class="step-item"><div class="step-num" style="background:var(--green-text)">3</div><div><div class="step-title">Aplicare acasă</div><div class="step-desc">Puneți o cantitate mică de gel în gutieră și o purtați zilnic 30–60 minute. Vă arătăm exact cum funcționează.</div></div></div>
-            <div class="step-item"><div class="step-num" style="background:var(--green-text)">4</div><div><div class="step-title">Control în cabinet</div><div class="step-desc">După 1–2 săptămâni verificăm rezultatul și ajustăm tratamentul dacă este necesar.</div></div></div>
+            <div class="step-item"><div class="step-num" style="background:var(--blue-dark)">1</div><div><div class="step-title">Consultație și amprentare</div><div class="step-desc">Luăm amprente pentru gutierele dvs. individuale de albire.</div></div></div>
+            <div class="step-item"><div class="step-num" style="background:var(--blue-dark)">2</div><div><div class="step-title">Adaptarea gutierelor</div><div class="step-desc">În câteva zile primiți gutierele confecționate la comandă — potrivire perfectă garantată.</div></div></div>
+            <div class="step-item"><div class="step-num" style="background:var(--blue-dark)">3</div><div><div class="step-title">Aplicare acasă</div><div class="step-desc">Puneți o cantitate mică de gel în gutieră și o purtați zilnic 30–60 minute. Vă arătăm exact cum funcționează.</div></div></div>
+            <div class="step-item"><div class="step-num" style="background:var(--blue-dark)">4</div><div><div class="step-title">Control în cabinet</div><div class="step-desc">După 1–2 săptămâni verificăm rezultatul și ajustăm tratamentul dacă este necesar.</div></div></div>
         </div>
 
         <div class="hint"><strong>Gut zu wissen:</strong> Beim Albire în cabinet sehen Sie das Ergebnis sofort. Beim Albire la domiciliu wird das Ergebnis Tag für Tag sichtbar — wie ein langsamer Sonnenaufgang für Ihr Lächeln.</div>
-    
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('methods',null)">← Înapoi</button><button class="nav-arrow" onclick="go('care',null)">Înainte →</button></div>
+
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('methods')">← Înapoi</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('care')">Înainte →</button></div>
+
     </div>
 
     <!-- PFLEGE -->
@@ -411,8 +407,9 @@ function go(id,btn){
         </div>
 
         <div class="hint"><strong>Sfat:</strong> Sensibilitatea temporară după albire este normală și dispare complet în 1–2 zile. La nevoie, recomandăm o pastă de dinți pentru dinți sensibili.</div>
-    
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('process',null)">← Înapoi</button><button class="nav-arrow" onclick="go('costs',null)">Înainte →</button></div>
+
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('process')">← Înapoi</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('costs')">Înainte →</button></div>
+
     </div>
 
     <!-- KOSTEN -->
@@ -474,8 +471,9 @@ function go(id,btn){
             <p>Programați o consultație fără obligații.</p>
             <div class="phone"><a href="tel:+497703284">07703 — 284</a></div>
         </div>
-    
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('care',null)">← Înapoi</button><button class="nav-arrow" onclick="go('faq',null)">Înainte →</button></div>
+
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('care')">← Înapoi</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('faq')">Înainte →</button></div>
+
     </div>
 
     <!-- FAQ -->
@@ -531,8 +529,9 @@ function go(id,btn){
     <div class="print-bar">
         <a href="https://info.frydent.de/index_ro.html" class="btn-back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg> Înapoi la portal</a>
         <button class="btn-print" onclick="window.print()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg> Tipărire</button>
-    
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('costs',null)">← Înapoi</button><button class="nav-arrow" disabled>Înainte →</button></div>
+
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('costs')">← Înapoi</button><button class="nav-arrow" disabled>Înainte →</button></div>
+
     </div>
 
 </main>
@@ -545,11 +544,11 @@ function go(id,btn){
         <span class="sidebar-label">07703 284</span>
         <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></div>
     </a>
-    <a href="/cdn-cgi/l/email-protection#8fe6e1e9e0cfe9fdf6ebeae1fba1ebeab0fcfaede5eaecfbb2cdeafdeefbfae1e8fcfbeafde2e6e1aabdbfcde3eaeeece7e6e1e8" class="sidebar-tab termin">
+    <a href="/cdn-cgi/l/email-protection#157c7b737a5573676c71707b613b71702a6660777f707661285770677461607b7266617067787c7b30272557797074767d7c7b72" class="sidebar-tab termin">
         <span class="sidebar-label">Programare · din mai online!</span>
         <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></div>
     </a>
-    <a href="/cdn-cgi/l/email-protection#87eee9e1e8c7e1f5fee3e2e9f3a9e3e2" class="sidebar-tab email">
+    <a href="/cdn-cgi/l/email-protection#147d7a727b5472666d70717a603a7071" class="sidebar-tab email">
         <span class="sidebar-label">Trimite email</span>
         <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
     </a>
@@ -562,8 +561,8 @@ function go(id,btn){
 <!-- MOBILE BAR -->
 <div class="mobile-bar">
     <a href="tel:+497703284" class="phone-m"><svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>Sună</a>
-    <a href="/cdn-cgi/l/email-protection#076e6961684761757e63626973296362387472656d6264733a4562756673726960747362756a6e69223537456b6266646f6e6960"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>Programare</a>
-    <a href="/cdn-cgi/l/email-protection#89e0e7efe6c9effbf0edece7fda7edec"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>Email</a>
+    <a href="/cdn-cgi/l/email-protection#94fdfaf2fbd4f2e6edf0f1fae0baf0f1abe7e1f6fef1f7e0a9d6f1e6f5e0e1faf3e7e0f1e6f9fdfab1a6a4d6f8f1f5f7fcfdfaf3"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>Programare</a>
+    <a href="/cdn-cgi/l/email-protection#d8b1b6beb798beaaa1bcbdb6acf6bcbd"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>Email</a>
     <a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><circle cx="12" cy="11" r="3"></circle></svg>Adresă</a>
 </div>
 </body>
