@@ -66,14 +66,14 @@
         /* COMPARE GRID */
         .compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem}
         .compare-card{border-radius:var(--radius);padding:1.5rem 1.75rem}
-        .compare-card h4{font-family:'Quicksand',sans-serif;font-size:.92rem;font-weight:600;margin-bottom:.6rem}
+        .compare-card h4{font-family:'Quicksand',sans-serif;font-size:.92rem;font-weight:600;margin-bottom:.6rem;padding-bottom:.5rem;border-bottom:2px solid rgba(0,0,0,.08)}
         .compare-card p{font-size:.84rem;line-height:1.55;padding:.15rem 0}
-        .compare-io{background:#F0F5FB;border:1px solid #C8D9EE}
-        .compare-io h4{color:var(--blue-dark)}
-        .compare-io p{color:var(--blue-dark)}
-        .compare-home{background:#EEF4EA;border:1px solid #C8D9BE}
-        .compare-home h4{color:var(--green-text)}
-        .compare-home p{color:var(--green-text)}
+        .compare-io{background:#FDFAF2;border:1px solid #EDE5C8}
+        .compare-io h4{color:#5A4A1E;border-bottom-color:#E4DCC0}
+        .compare-io p{color:#5A4A1E}
+        .compare-home{background:#F0F5FB;border:1px solid #C8D9EE}
+        .compare-home h4{color:var(--blue-dark);border-bottom-color:#C8D9EE}
+        .compare-home p{color:var(--blue-dark)}
 
         /* STEPS */
         .step-item{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem}
@@ -139,14 +139,14 @@
 
         /* PRICING GRID */
         .pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin-bottom:1.25rem;align-items:stretch}
-        .pricing-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:1.5rem 1.35rem;text-align:center;position:relative;display:flex;flex-direction:column}
+        .pricing-card{background:#F8F7F2;border:1px solid #E2DACE;border-radius:var(--radius);padding:1.5rem 1.35rem;text-align:center;position:relative;display:flex;flex-direction:column}
         .pricing-card h4{font-family:'Quicksand',sans-serif;font-size:.92rem;font-weight:600;color:var(--blue-dark);margin-bottom:.15rem}
         .pricing-card .pricing-sub{font-size:.8rem;color:var(--gray-600);margin-bottom:.7rem}
         .pricing-card .pricing-price{font-family:'Quicksand',sans-serif;font-size:1.5rem;font-weight:700;color:var(--blue-dark);margin-bottom:.75rem}
         .pricing-card .pricing-feature{font-size:.82rem;color:var(--gray-600);text-align:left;padding:.25rem 0;display:flex;align-items:baseline;gap:6px}
         .pricing-card .pricing-feature svg{flex-shrink:0;position:relative;top:1px}
         .pricing-card .pricing-note{font-size:.76rem;color:var(--gray-400);margin-top:auto;padding-top:.75rem;font-style:italic}
-        .pricing-card.recommended{border:2px solid var(--gold);box-shadow:0 4px 20px rgba(212,168,67,.1)}
+        .pricing-card.recommended{background:var(--white);border:2px solid var(--gold);box-shadow:0 4px 20px rgba(212,168,67,.1)}
         .pricing-card.recommended h4{color:var(--blue-darker)}
         .pricing-card.recommended .pricing-price{color:var(--gold-dark)}
         .pricing-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--blue-darker);font-family:'Quicksand',sans-serif;font-size:.68rem;font-weight:700;padding:.25rem 1rem;border-radius:0 0 var(--radius-sm) var(--radius-sm);letter-spacing:.3px;text-transform:uppercase}
@@ -506,12 +506,6 @@ function go(id,btn){
         </div>
         <div class="nav-arrows"><button class="nav-arrow" onclick="go('costs')">→ السابق</button><button class="nav-arrow" disabled>التالي ←</button></div>
     </div>
-
-    <!-- CTA BOTTOM -->
-    <div class="cta-card" style="margin-top:.5rem">
-        <h3>مستعد لابتسامتك المشرقة؟</h3>
-        <p>احجز موعد استشارتك الشخصية في FRYDENT الآن.</p>
-        <div class="phone"><a href="tel:+497703284">07703 — 284</a></div>
     </div>
 
     <div class="hint" style="background:#F8F7F2;border-color:#E2DACE;color:#3A3226"><strong>من المفيد معرفة:</strong> هذه المعلومات لا تحل محل الاستشارة الشخصية مع طبيبة أسنانك. لأسئلتك الخاصة يرجى التواصل معنا مباشرة.</div>
