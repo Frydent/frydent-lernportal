@@ -201,10 +201,13 @@
             .tab-section+.tab-section{margin-top:2rem;padding-top:1.5rem;border-top:2px solid var(--gray-200)}
         }
     
-        .nav-arrows{display:flex;justify-content:space-between;margin-top:1.5rem;margin-bottom:1.5rem}
-        .nav-arrow{padding:.5rem 1.25rem;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;border:1px solid var(--blue);background:var(--blue-light);color:var(--blue-dark);transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif}
-        .nav-arrow:hover{background:var(--blue);color:var(--white)}
-        .nav-arrow:disabled{opacity:.3;cursor:default;border-color:var(--gray-200);background:var(--gray-100);color:var(--gray-400)}
+        .nav-arrows{display:flex;justify-content:center;gap:1rem;margin:2.5rem 0}
+        .nav-arrow{padding:.5rem 1.25rem;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;border:none}
+        .nav-arrow.prev{background:#E8EEF7;color:var(--blue-dark);border:1px solid #C8D9EE}
+        .nav-arrow.prev:hover{background:#D4E1F2;border-color:var(--blue)}
+        .nav-arrow.next{background:var(--blue-dark);color:var(--white)}
+        .nav-arrow.next:hover{background:var(--blue)}
+        .nav-arrow:disabled{opacity:.3;cursor:default;border-color:var(--gray-200)!important;background:var(--gray-100)!important;color:var(--gray-400)!important}
 
         .phase-label{font-family:'Quicksand',sans-serif;font-weight:600;font-size:.88rem;color:var(--blue-dark);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:2px solid var(--gray-200)}
         </style>
@@ -301,7 +304,7 @@ function go(id,btn){
         </div>
 
         <div class="hint" style="background:#F8F7F2;border-color:#E2DACE;color:#3A3226"><strong>من المفيد معرفة:</strong> التبييض الاحترافي مدروس علمياً جيداً ويُعتبر آمناً. عند التطبيق الصحيح لا يتضرر مينا الأسنان.</div>
-        <div class="nav-arrows"><button class="nav-arrow" disabled>→ السابق</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('methods')">التالي ←</button></div>
+        <div class="nav-arrows"><button class="nav-arrow prev" disabled>→ السابق</button><button class="nav-arrow next" onclick="go('methods')">التالي ←</button></div>
     </div>
 
     <!-- METHODEN -->
@@ -342,7 +345,7 @@ function go(id,btn){
             <div class="card-title">كيف يعمل التبييض</div>
             <p style="font-size:.85rem">تخترق المادة الفعّالة (بيروكسيد الهيدروجين أو الكارباميد) مينا الأسنان وتفكك جزيئات اللون. ببساطة: التصبغات "تُذاب" — السن نفسه يبقى سليماً. العملية مشابهة لإزالة بقعة من قميص أبيض — لكن بلطف أكبر بكثير.</p>
         </div>
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('overview')">→ السابق</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('process')">التالي ←</button></div>
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('overview')">→ السابق</button><button class="nav-arrow next" onclick="go('process')">التالي ←</button></div>
     </div>
 
     <!-- ABLAUF -->
@@ -371,7 +374,7 @@ function go(id,btn){
         </div>
 
         <div class="hint" style="background:#F8F7F2;border-color:#E2DACE;color:#3A3226"><strong>Gut zu wissen:</strong> Beim التبييض في العيادة sehen Sie das Ergebnis sofort. Beim التبييض المنزلي wird das Ergebnis Tag für Tag sichtbar — wie ein langsamer Sonnenaufgang für Ihr Lächeln.</div>
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('methods')">→ السابق</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('care')">التالي ←</button></div>
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('methods')">→ السابق</button><button class="nav-arrow next" onclick="go('care')">التالي ←</button></div>
     </div>
 
     <!-- PFLEGE -->
@@ -414,7 +417,7 @@ function go(id,btn){
         </div>
 
         <div class="hint" style="background:#F8F7F2;border-color:#E2DACE;color:#3A3226"><strong>نصيحة:</strong> الحساسية المؤقتة بعد التبييض طبيعية وتزول تماماً خلال 1–2 يوم. عند الحاجة نوصي بمعجون أسنان للأسنان الحساسة.</div>
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('process')">→ السابق</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('costs')">التالي ←</button></div>
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('process')">→ السابق</button><button class="nav-arrow next" onclick="go('costs')">التالي ←</button></div>
     </div>
 
     <!-- KOSTEN -->
@@ -476,7 +479,7 @@ function go(id,btn){
             <p>احجز موعد استشارة بدون التزام.</p>
             <div class="phone"><a href="tel:+497703284">07703 — 284</a></div>
         </div>
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('care')">→ السابق</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('faq')">التالي ←</button></div>
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('care')">→ السابق</button><button class="nav-arrow next" onclick="go('faq')">التالي ←</button></div>
     </div>
 
     <!-- FAQ -->
@@ -517,7 +520,7 @@ function go(id,btn){
                 <div class="faq-a">نعم! خاصة بقوالب التبييض المنزلي يمكن التجديد في أي وقت بسهولة. ننصح بتبييض تجديدي كل 6–12 شهراً حسب الحاجة.</div>
             </div>
         </div>
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('costs')">→ السابق</button><button class="nav-arrow" disabled>التالي ←</button></div>
+        <div class="nav-arrows"><button class="nav-arrow" onclick="go('costs')">→ السابق</button><button class="nav-arrow prev" disabled>التالي ←</button></div>
     </div>
     </div>
 

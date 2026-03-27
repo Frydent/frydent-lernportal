@@ -201,10 +201,13 @@
             .tab-section+.tab-section{margin-top:2rem;padding-top:1.5rem;border-top:2px solid var(--gray-200)}
         }
     
-        .nav-arrows{display:flex;justify-content:space-between;margin-top:1.5rem;margin-bottom:1.5rem}
-        .nav-arrow{padding:.5rem 1.25rem;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;border:1px solid var(--blue);background:var(--blue-light);color:var(--blue-dark);transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif}
-        .nav-arrow:hover{background:var(--blue);color:var(--white)}
-        .nav-arrow:disabled{opacity:.3;cursor:default;border-color:var(--gray-200);background:var(--gray-100);color:var(--gray-400)}
+        .nav-arrows{display:flex;justify-content:center;gap:1rem;margin:2.5rem 0}
+        .nav-arrow{padding:.5rem 1.25rem;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;border:none}
+        .nav-arrow.prev{background:#E8EEF7;color:var(--blue-dark);border:1px solid #C8D9EE}
+        .nav-arrow.prev:hover{background:#D4E1F2;border-color:var(--blue)}
+        .nav-arrow.next{background:var(--blue-dark);color:var(--white)}
+        .nav-arrow.next:hover{background:var(--blue)}
+        .nav-arrow:disabled{opacity:.3;cursor:default;border-color:var(--gray-200)!important;background:var(--gray-100)!important;color:var(--gray-400)!important}
 
         .phase-label{font-family:'Quicksand',sans-serif;font-weight:600;font-size:.88rem;color:var(--blue-dark);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:2px solid var(--gray-200)}
         </style>
@@ -301,7 +304,7 @@ function go(id,btn){
         </div>
 
         <div class="hint" style="background:#F8F7F2;border-color:#E2DACE;color:#3A3226"><strong>Good to know:</strong> Professional whitening is well-researched and considered safe. When applied correctly, tooth enamel is not damaged.</div>
-        <div class="nav-arrows"><button class="nav-arrow" disabled>← Back</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('methods')">Next →</button></div>
+        <div class="nav-arrows"><button class="nav-arrow prev" disabled>← Back</button><button class="nav-arrow next" onclick="go('methods')">Next →</button></div>
     </div>
 
     <!-- METHODEN -->
@@ -342,7 +345,7 @@ function go(id,btn){
             <div class="card-title">How whitening works</div>
             <p style="font-size:.85rem">The active ingredient (hydrogen peroxide or carbamide peroxide) penetrates the enamel and breaks down the colour molecules. Simply put: the discolouration is "dissolved" — the tooth itself remains intact. The process is comparable to removing a stain from a white shirt — just much gentler.</p>
         </div>
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('overview')">← Back</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('process')">Next →</button></div>
+        <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('overview')">← Back</button><button class="nav-arrow next" onclick="go('process')">Next →</button></div>
     </div>
 
     <!-- ABLAUF -->
@@ -371,7 +374,7 @@ function go(id,btn){
         </div>
 
         <div class="hint" style="background:#F8F7F2;border-color:#E2DACE;color:#3A3226"><strong>Gut zu wissen:</strong> Beim In-Office Whitening sehen Sie das Ergebnis sofort. Beim Home Whitening wird das Ergebnis Tag für Tag sichtbar — wie ein langsamer Sonnenaufgang für Ihr Lächeln.</div>
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('methods')">← Back</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('care')">Next →</button></div>
+        <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('methods')">← Back</button><button class="nav-arrow next" onclick="go('care')">Next →</button></div>
     </div>
 
     <!-- PFLEGE -->
@@ -414,7 +417,7 @@ function go(id,btn){
         </div>
 
         <div class="hint" style="background:#F8F7F2;border-color:#E2DACE;color:#3A3226"><strong>Tip:</strong> Temporary sensitivity after whitening is normal and subsides completely within 1–2 days. If needed, we recommend a sensitivity toothpaste.</div>
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('process')">← Back</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('costs')">Next →</button></div>
+        <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('process')">← Back</button><button class="nav-arrow next" onclick="go('costs')">Next →</button></div>
     </div>
 
     <!-- KOSTEN -->
@@ -476,7 +479,7 @@ function go(id,btn){
             <p>Book a no-obligation consultation.</p>
             <div class="phone"><a href="tel:+497703284">07703 — 284</a></div>
         </div>
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('care')">← Back</button><button class="nav-arrow" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)" onclick="go('faq')">Next →</button></div>
+        <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('care')">← Back</button><button class="nav-arrow next" onclick="go('faq')">Next →</button></div>
     </div>
 
     <!-- FAQ -->
@@ -517,7 +520,7 @@ function go(id,btn){
                 <div class="faq-a">Yes! Especially with home whitening trays, a touch-up is easily possible at any time. We recommend a touch-up whitening every 6–12 months as needed.</div>
             </div>
         </div>
-        <div class="nav-arrows"><button class="nav-arrow" onclick="go('costs')">← Back</button><button class="nav-arrow" disabled>Next →</button></div>
+        <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('costs')">← Back</button><button class="nav-arrow prev" disabled>Next →</button></div>
     </div>
     </div>
 
