@@ -130,12 +130,7 @@
         .rule{font-size:.84rem;padding:.25rem 0;color:var(--gray-800)}
         @media(max-width:640px){.do-dont{grid-template-columns:1fr}}
 
-        /* LANG BAR */
-        .lang-bar{display:flex;align-items:center;justify-content:center;padding:14px 1.5rem;background:var(--white);border-bottom:1px solid var(--gray-200)}
-        .lang-bar-flags{display:flex;gap:8px}
-        .lang-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 12px;border-radius:8px;text-decoration:none;font-size:10px;font-weight:700;color:var(--gray-600);background:var(--gray-100);min-width:42px}
-        .lang-btn.active{background:var(--blue);color:var(--white)}
-        .lang-btn .flag{width:22px;height:15px;border-radius:2px;display:block;background-size:cover;background-position:center}
+        
 
         /* SIDEBAR */
         .sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:8px}
@@ -173,7 +168,7 @@
         footer{text-align:center;padding:2rem 1.5rem 4rem;font-size:.75rem;color:var(--gray-400);border-top:1px solid var(--gray-200);background:var(--white)}
         footer a{color:var(--blue);text-decoration:none}
 
-        @media print{.sidebar,.mobile-bar,.header-right,.nav-arrows,.print-bar,.lang-bar{display:none!important}main{padding:1rem}}
+        @media print{.sidebar,.mobile-bar,.header-right,.nav-arrows,.print-bar{display:none!important}main{padding:1rem}}
     </style>
     <script src="https://dr-flex.de/embed.js?medicalPracticeId=60190"></script>
 </head>
@@ -192,16 +187,6 @@
 <p>Вы боитесь стоматолога? Вы не одиноки. Мы уделяем вам время, в вашем темпе.</p>
 
 </div>
-
-<div class="lang-bar"><div class="lang-bar-flags">
-<a href="angstpatienten.html" class="lang-btn"><span class="flag" style="background-image:url(https://flagcdn.com/w40/de.png)"></span>DE</a>
-<a href="angstpatienten_en.html" class="lang-btn"><span class="flag" style="background-image:url(https://flagcdn.com/w40/gb.png)"></span>EN</a>
-<a href="angstpatienten_pl.html" class="lang-btn"><span class="flag" style="background-image:url(https://flagcdn.com/w40/pl.png)"></span>PL</a>
-<a href="angstpatienten_tr.html" class="lang-btn"><span class="flag" style="background-image:url(https://flagcdn.com/w40/tr.png)"></span>TR</a>
-<a href="angstpatienten_ar.html" class="lang-btn"><span class="flag" style="background-image:url(https://flagcdn.com/w40/sa.png)"></span>AR</a>
-<a href="angstpatienten_ru.html" class="lang-btn active"><span class="flag" style="background-image:url(https://flagcdn.com/w40/ru.png)"></span>RU</a>
-<a href="angstpatienten_ro.html" class="lang-btn"><span class="flag" style="background-image:url(https://flagcdn.com/w40/ro.png)"></span>RO</a>
-</div></div>
 
 <main>
 <div class="tab-nav">
@@ -545,7 +530,7 @@
 </div>
 </main>
 
-<footer><p>© 2026 FRYDENT · Стоматология Татьяна Фридрих · <a href="https://frydent.de/">www.frydent.de</a><br>Обновлено: Март 2026</p></footer>
+<footer><p>© 2026 FRYDENT · Стоматология Татьяна Фридрих · <a href="https://frydent.de/">www.frydent.de</a><br>Обновлено: Март 2026</p><p style="margin-top:6px"><a href="impressum_ru.html">Импрессум</a> · <a href="datenschutz_ru.html">Защита данных</a></p></footer>
 
 <!-- SIDEBAR -->
 <div class="sidebar">
