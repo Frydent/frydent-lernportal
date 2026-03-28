@@ -185,11 +185,14 @@
         .card-purple .card-title{color:#4A3566}
         
         /* COLORFUL PRODUCT CARDS */
-        .product-hero{background:linear-gradient(145deg,#2C4170 0%,#3D5A98 50%,#5a7da8 100%);padding:2rem 1.5rem;text-align:center;border-radius:0 0 var(--radius) var(--radius);margin:-2rem -1.5rem 2rem;position:relative;overflow:hidden}
-        .product-hero::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(212,168,67,.15)}
-        .product-hero::after{content:'';position:absolute;bottom:-20px;left:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.05)}
-        .product-hero h2{font-family:'Quicksand',sans-serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:.3rem}
-        .product-hero p{font-size:.88rem;color:rgba(255,255,255,.7);max-width:500px;margin:0 auto}
+        .color-banner{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:1.75rem 2rem;margin-bottom:1.75rem;text-align:center;position:relative;overflow:hidden}
+        .color-dots{display:flex;justify-content:center;gap:8px;margin-bottom:1rem}
+        .color-dots span{width:28px;height:28px;border-radius:50%;display:inline-block;opacity:.85;transition:transform .3s}
+        .color-dots span:hover{transform:scale(1.2);opacity:1}
+        .color-banner h2{font-family:'Quicksand',sans-serif;font-size:1.05rem;font-weight:700;color:var(--blue-dark);margin-bottom:.3rem}
+        .color-banner p{font-size:.84rem;color:var(--gray-600);max-width:480px;margin:0 auto;line-height:1.55}
+        .swiss-badge{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.8px;margin-top:.75rem}
+        .swiss-badge svg{width:16px;height:16px}
         .color-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem;border-top:5px solid;position:relative;transition:transform .2s,box-shadow .2s}
         .color-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.08)}
         .color-card.magenta{border-top-color:#E91E8C}
@@ -235,9 +238,18 @@
 
 <main>
 
-<div class="product-hero">
-<h2>Warum wir Curaprox empfehlen</h2>
-<p>Maximale Reinigung bei maximaler Schonung. Seit 1972 entwickelt die Schweizer Familienmanufaktur Curaden Produkte, die Zahnpflege effektiv, schonend und — ja — auch schön machen.</p>
+<div class="color-banner">
+<div class="color-dots">
+    <span style="background:#7EC8E3"></span>
+    <span style="background:#E91E8C"></span>
+    <span style="background:#FFD93D"></span>
+    <span style="background:#6BBF59"></span>
+    <span style="background:#FF8C42"></span>
+    <span style="background:#FF5252"></span>
+</div>
+<h2>Maximale Reinigung. Maximale Schonung. Maximale Farbe.</h2>
+<p>Seit 1972 entwickelt die Schweizer Familienmanufaktur Curaden Produkte, die Zahnpflege effektiv, schonend und — ja — auch schön machen.</p>
+<div class="swiss-badge"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" fill="#FF0000"/><rect x="10" y="6" width="4" height="12" rx="1" fill="white"/><rect x="6" y="10" width="12" height="4" rx="1" fill="white"/></svg>Swiss Premium Oral Care</div>
 </div>
 
 <p class="section-intro">Alle hier vorgestellten Produkte verwenden wir selbst in der Praxis und empfehlen sie unseren Patienten aus Überzeugung. <strong>Wir verdienen nicht an diesen Empfehlungen</strong> — wir geben sie, weil sie funktionieren. Die Produkte sind bei uns in der Praxis erhältlich.</p>
@@ -292,6 +304,24 @@
     </div>
     <div class="price-tag">Preis wird in Kürze ergänzt</div>
     <div class="avail-tag"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Bei uns in der Praxis erhältlich — wir helfen bei der Größenauswahl</div>
+</div>
+
+<!-- ZAHNPASTA -->
+<div class="category-label"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Zahnpasta</div>
+
+<div class="color-card purple">
+    <span class="brand-tag">Curaprox · Farbenfroh</span>
+    <h3>Be You — Whitening-Zahnpasta</h3>
+    <p>Zahnpflege darf Spaß machen — und gut aussehen. Die <strong>Be You</strong>-Zahnpasten von Curaprox bieten sanftes, tägliches Whitening in sechs leuchtenden Farben und überraschenden Geschmacksrichtungen: von Brombeere-Lakritz über Wassermelone bis Gin Tonic.</p>
+    <p style="margin-top:.5rem">Dabei wird auf schädliche Inhaltsstoffe konsequent verzichtet: <strong>kein Mikroplastik, kein Triclosan, kein SLS</strong> (Natriumlaurylsulfat). Stattdessen natürliche Whitening-Enzyme, die sanft Verfärbungen lösen — ohne den Zahnschmelz zu beschädigen.</p>
+    <div class="specs">
+        <span class="spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>Sanftes Whitening</span>
+        <span class="spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>Kein Mikroplastik</span>
+        <span class="spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>Kein SLS / Triclosan</span>
+        <span class="spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>6 Geschmacksrichtungen</span>
+    </div>
+    <div class="price-tag">Preis wird in Kürze ergänzt</div>
+    <div class="avail-tag"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Bei uns in der Praxis erhältlich</div>
 </div>
 
 <!-- ELEKTRISCH -->
