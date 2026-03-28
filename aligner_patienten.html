@@ -205,17 +205,16 @@
     <div class="card" style="background:linear-gradient(135deg,#faf6ed 0%,#f7f0de 35%,#f5edd4 60%,#e8eef7 100%);border:1px solid #e8dfc8;box-shadow:0 8px 32px rgba(180,146,46,.15),0 2px 8px rgba(0,0,0,.07);padding:0;overflow:hidden">
         <div class="intro-card-inner">
             <div class="intro-accent">
-                <style>
-                    @keyframes al-smile{0%,100%{d:path('M12 18 Q24 22 36 18')}50%{d:path('M8 17 Q24 30 40 17')}}
-                    @keyframes al-eyes{0%,90%,100%{ry:2.5}95%{ry:.3}}
-                    .al-smile-path{animation:al-smile 4s ease-in-out infinite}
-                    .al-eye{animation:al-eyes 5s ease-in-out infinite}
-                    .al-eye-r{animation:al-eyes 5s ease-in-out .15s infinite}
-                </style>
                 <svg width="72" height="56" viewBox="0 0 48 38" fill="none" style="margin-bottom:.7rem">
-                    <ellipse cx="16" cy="8" rx="2.5" ry="2.5" fill="#D4A843" opacity=".55" class="al-eye"/>
-                    <ellipse cx="32" cy="8" rx="2.5" ry="2.5" fill="#D4A843" opacity=".55" class="al-eye-r"/>
-                    <path d="M12 18 Q24 22 36 18" stroke="#D4A843" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".6" class="al-smile-path"/>
+                    <ellipse cx="16" cy="8" rx="2.5" ry="2.5" fill="#D4A843" opacity=".55">
+                        <animate attributeName="ry" values="2.5;2.5;.3;2.5;2.5" keyTimes="0;.9;.95;1;1" dur="5s" repeatCount="indefinite"/>
+                    </ellipse>
+                    <ellipse cx="32" cy="8" rx="2.5" ry="2.5" fill="#D4A843" opacity=".55">
+                        <animate attributeName="ry" values="2.5;2.5;.3;2.5;2.5" keyTimes="0;.9;.95;1;1" dur="5s" begin=".15s" repeatCount="indefinite"/>
+                    </ellipse>
+                    <path stroke="#D4A843" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".6" d="M12 18 Q24 22 36 18">
+                        <animate attributeName="d" values="M12 18 Q24 22 36 18;M8 17 Q24 30 40 17;M12 18 Q24 22 36 18" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines=".42 0 .58 1;.42 0 .58 1"/>
+                    </path>
                 </svg>
                 <div style="font-family:'Quicksand',sans-serif;font-size:.95rem;font-weight:500;color:#8a7340;text-align:center;line-height:1.5;letter-spacing:.2px">Sanft in die<br>richtige Position.</div>
             </div>
