@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRYDENT · Contact form</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#3D5A98;--blue-dark:#2C4170;--blue-darker:#1E2D4D;--blue-light:#E8EEF7;--gold:#D4A843;--gold-light:#F5ECD4;--gold-dark:#B8922E;--white:#FFFFFF;--gray-50:#F7F8FA;--gray-100:#F0F2F5;--gray-200:#E4E6EB;--gray-400:#B0B3B8;--gray-600:#6B7280;--gray-800:#1F2937;--radius:14px;--radius-sm:8px}
+body{font-family:'Plus Jakarta Sans',-apple-system,sans-serif;background:var(--gray-50);color:var(--gray-800);line-height:1.6}
+header{background:var(--white);position:sticky;top:0;z-index:100}
+.header-inner{max-width:960px;margin:0 auto;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.logo-img{height:36px;width:auto}
+.back-link{font-family:'Quicksand',sans-serif;font-size:13px;font-weight:600;color:var(--blue);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
+.back-link:hover{color:var(--blue-dark)}
+main{max-width:560px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.form-header{background:linear-gradient(135deg,#2C4170 0%,#3D5A98 100%);border-radius:14px 14px 0 0;padding:28px 28px 20px;position:relative;overflow:hidden}
+.form-header-bg1{position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:rgba(212,168,67,0.12)}
+.form-header-bg2{position:absolute;bottom:-30px;right:40px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,0.05)}
+.form-header-inner{display:flex;align-items:center;gap:14px;position:relative}
+.form-icon{width:42px;height:42px;border-radius:10px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center}
+.form-title{font-family:'Quicksand',sans-serif;font-weight:700;font-size:22px;color:#ffffff;letter-spacing:.3px}
+.form-subtitle{font-family:'Quicksand',sans-serif;font-weight:500;font-size:14px;color:rgba(255,255,255,0.8);margin-top:4px}
+.form-body{background:#ffffff;border:1px solid #E4E6EB;border-top:none;border-radius:0 0 14px 14px;padding:26px 28px 28px}
+.field{margin-bottom:18px}
+.field label{display:block;font-family:'Quicksand',sans-serif;font-size:14px;font-weight:700;color:#2C4170;margin-bottom:7px}
+.field label .req{color:#D4A843}
+.field label .opt{font-weight:500;color:#999;font-size:12px}
+.field input,.field select,.field textarea{width:100%;padding:11px 14px;border:1.5px solid #E4E6EB;border-radius:8px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;color:#2C4170;background:#FAFBFC;outline:none;transition:border-color .2s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#3D5A98}
+.field textarea{resize:vertical}
+.field select{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%232C4170%22 stroke-width=%222%22><path d=%22M6 9l6 6 6-6%22/></svg>');background-repeat:no-repeat;background-position:right 12px center}
+.privacy{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:12px;color:#666;line-height:1.5;margin-bottom:20px}
+.privacy input{margin-top:3px;accent-color:#3D5A98;width:16px;height:16px;flex-shrink:0}
+.privacy a{color:#3D5A98;text-decoration:underline}
+.submit-btn{width:100%;padding:14px;background:#D4A843;color:#ffffff;font-family:'Quicksand',sans-serif;font-weight:700;font-size:16px;border:none;border-radius:8px;cursor:pointer;letter-spacing:.5px;transition:all .3s ease;text-shadow:0 1px 2px rgba(0,0,0,.15)}
+.submit-btn:hover{background:#2C4170;transform:translateY(-1px);text-shadow:none}
+.secure-note{text-align:center;margin-top:14px;font-size:11px;color:#999}
+.secure-note svg{vertical-align:middle;margin-right:4px}
+.sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:8px}
+.sidebar-tab{display:flex;align-items:center;justify-content:flex-end;transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:pointer;text-decoration:none;height:58px}
+.sidebar-icon{width:58px;height:58px;border-radius:16px 0 0 16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .4s cubic-bezier(.25,.46,.45,.94);box-shadow:-2px 2px 8px rgba(0,0,0,.1)}
+.sidebar-icon svg{width:24px;height:24px}
+.sidebar-label{max-width:0;overflow:hidden;white-space:nowrap;font-size:.92rem;font-weight:600;height:58px;line-height:58px;padding:0;transition:all .4s cubic-bezier(.25,.46,.45,.94);opacity:0;border-radius:16px 0 0 16px;box-shadow:-2px 2px 8px rgba(0,0,0,.1)}
+.sidebar-tab:hover .sidebar-label{max-width:280px;padding:0 20px 0 16px;opacity:1}
+.sidebar-tab:hover .sidebar-icon{border-radius:0;box-shadow:none}
+.sidebar-tab.phone .sidebar-icon{background:#7a96b8}.sidebar-tab.phone .sidebar-label{background:#7a96b8;color:white}.sidebar-tab.phone .sidebar-icon svg{stroke:white}
+.sidebar-tab.termin .sidebar-icon{background:#D4A843}.sidebar-tab.termin .sidebar-label{background:#D4A843;color:#1E2D4D}.sidebar-tab.termin .sidebar-icon svg{stroke:#1E2D4D}
+.sidebar-tab.email .sidebar-icon{background:#5a7da8}.sidebar-tab.email .sidebar-label{background:#5a7da8;color:white}.sidebar-tab.email .sidebar-icon svg{stroke:white}
+.sidebar-tab.location .sidebar-icon{background:#3d6498}.sidebar-tab.location .sidebar-label{background:#3d6498;color:white}.sidebar-tab.location .sidebar-icon svg{stroke:white}
+.mobile-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;background:var(--white);border-top:1px solid var(--gray-200);padding:8px 12px;justify-content:space-around;box-shadow:0 -2px 10px rgba(0,0,0,.08)}
+.mobile-bar a{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;font-size:.65rem;font-weight:600;color:var(--blue-dark);padding:4px 8px;border-radius:8px}
+.mobile-bar a:active{background:var(--blue-light)}
+.mobile-bar a svg{width:22px;height:22px;stroke:var(--blue);stroke-width:2;fill:none}
+.mobile-bar a.phone-m svg{stroke:#6b8bb5}.mobile-bar a.phone-m{color:#6b8bb5}
+.mobile-bar a.termin-m svg{stroke:#D4A843!important}.mobile-bar a.termin-m{color:#D4A843!important;font-weight:700}
+@media(max-width:640px){.sidebar{display:none}.mobile-bar{display:flex!important}main{padding:1.5rem 1rem 5rem}.form-body{padding:20px 18px 24px}}
+</style>
+<script src="https://dr-flex.de/embed.js?medicalPracticeId=60190"></script>
+</head>
+<body>
+
+<header><div class="header-inner">
+<a href="https://frydent.de"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJFYmVuZV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4OTEuODcgMTg1LjI2Ij48ZGVmcz48c3R5bGU+LmNscy0xLC5jbHMtMntzdHJva2Utd2lkdGg6MHB4O30uY2xzLTJ7ZmlsbDojMzc1MzhlO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im0xOS42NywxMDAuNzNjMCwxLjMsMCwyLjIzLDAsMy4xNSwwLDI2LjE5LDAsNTIuMzgsMCw3OC41N3EwLDIuODEtMi44MiwyLjgxYy00LjgsMC05LjYsMC0xNC4zOSwwSC4wNGMwLS45NCwwLTEuNjUsMC0yLjM2Qy4wNCwxMjIuNzMuMDUsNjIuNTUsMCwyLjM4LDAsLjQ3LjU5LjA0LDIuMzYuMDRjMzcuNzkuMDQsNzUuNTctLjE0LDExMy4zNi4xMiwxNC4yNC4xLDI3LjEzLDUuMDEsMzguNDgsMTMuNjgsMTMuMzcsMTAuMjEsMjIuMDQsMjMuOCwyNy44NSwzOS4zNyw1LjY0LDE1LjEyLDcuOTMsMzAuODEsNy4yNSw0Ni44Ni0uNzksMTguNjgtNS41MSwzNi4zMy0xNi4wMSw1Mi4wMi0xMS4xOCwxNi43MS0yNi43NCwyNy4wOS00Ni42NSwzMC4yNy03LjUyLDEuMi0xNS4yMywxLjM1LTIyLjg3LDEuNjQtMTQuMzEuNTUtMjguNjMuODUtNDIuOTQsMS4yNS0uNzIuMDItMS40NSwwLTIuNCwwLS4wNi0uODgtLjE2LTEuNjUtLjE2LTIuNDEsMC0yMS41MywwLTQzLjA1LDAtNjQuNTgsMC0yLjYyLjAxLTIuNjMsMi42Ny0yLjYzLDUuNCwwLDEwLjguMDYsMTYuMTktLjAzLDEuNzktLjAzLDIuMzkuNDYsMi4zNiwyLjM1LS4yMiwxNS4yNi0uMzMsMzAuNTItLjQ2LDQ1Ljc3LS4wMiwyLjUxLDAsMi40MywyLjU3LDIuMzcsNi43My0uMTQsMTMuNDYtLjA4LDIwLjE4LS4zMyw5Ljk4LS4zOCwxOS45NS0uODgsMjkuNTQtNC4xNiwxMC4xOS0zLjQ5LDE3Ljg1LTEwLjAxLDIzLjUzLTE5LjA2LDcuMzYtMTEuNzQsMTEuMzItMjQuNTgsMTIuOC0zOC4yOCwxLjgtMTYuNjUtLjAyLTMyLjgyLTYuMjgtNDguNC01LjI3LTEzLjExLTE0LjA4LTIzLjI2LTI2LjI4LTMwLjMzLTYuMTUtMy41Ni0xMi45My01LjM2LTIwLjA0LTUuMzgtMzAuODUtLjA3LTYxLjcxLS4wMy05Mi41Ni0uMDMtLjg1LDAtMS43LDAtMi42NywwdjYwLjM2Yy45LjA1LDEuNzMuMTMsMi41Ni4xMywyMi45MiwwLDQ1Ljg1LjA0LDY4Ljc3LS4wNSwyLjM1LDAsMy40Ny44NiwzLjk1LDIuOTUsMS4xMiw0LjgxLDEuMTksOS42Mi0uMDgsMTQuNDItLjUzLDIuMDEtMS43MiwyLjg0LTMuOTEsMi44NC0yMi43OS0uMDctNDUuNTgtLjA0LTY4LjM3LS4wNC0uOTIsMC0xLjgzLDAtMy4wNiwwWiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0ibTI4Ni43MSwxMDcuMWgtMTcuMzZWLjAyaDYwLjQzdjE0Ljc5aC00My4wN3YzMy40N2g0MC4zNnYxNC44N2gtNDAuMzZ2NDMuOTVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMzYyLjUyLDY0LjMzdjQyLjc3aC0xNy41MVYuMDJoMzAuMjVjMTMuODIsMCwyNC4wNSwyLjU5LDMwLjY5LDcuNzYsNi42NCw1LjE4LDkuOTYsMTIuOTksOS45NiwyMy40NCwwLDEzLjMzLTYuOTMsMjIuODMtMjAuOCwyOC40OWwzMC4yNSw0Ny4zOWgtMTkuOTJsLTI1LjYzLTQyLjc3aC0xNy4yOVptMC0xNC41aDEyLjE2YzguMTUsMCwxNC4wNi0xLjUxLDE3LjcyLTQuNTQsMy42Ni0zLjAzLDUuNDktNy41Miw1LjQ5LTEzLjQ4cy0xLjk4LTEwLjQtNS45My0xMy4wNC05LjkxLTMuOTYtMTcuODctMy45NmgtMTEuNTd2MzUuMDFaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNDY2LjA3LDQ4Ljg3TDQ5MS40MS4wMmgxOS4wNGwtMzUuNjcsNjUuNTV2NDEuNTNoLTE3LjU4di00MC45NEw0MjEuNjguMDJoMTkuMDRsMjUuMzQsNDguODVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjA5Ljc5LDUyLjUzYzAsMTcuNjgtNC45MSwzMS4xOS0xNC43Miw0MC41NC05LjgxLDkuMzUtMjMuOTUsMTQuMDMtNDIuNDEsMTQuMDNoLTI5Ljk2Vi4wMmgzMy4xMWMxNy4wNCwwLDMwLjMsNC41OSwzOS43NywxMy43Nyw5LjQ3LDkuMTgsMTQuMjEsMjIuMSwxNC4yMSwzOC43NVptLTE4LjQ2LjU5YzAtMjUuNjMtMTEuOTktMzguNDUtMzUuOTYtMzguNDVoLTE1LjE2djc3LjcxaDEyLjQ1YzI1Ljc4LDAsMzguNjctMTMuMDgsMzguNjctMzkuMjZaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjg5LjMzLDEwNy4xaC02MC41N1YuMDJoNjAuNTd2MTQuNzloLTQzLjA3djI5LjE1aDQwLjM2djE0LjY1aC00MC4zNnYzMy42Mmg0My4wN3YxNC44N1oiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im03OTcuNjQsMTA3LjFoLTIxLjQ2bC01Mi42Ni04NS4zM2gtLjU5bC4zNyw0Ljc2Yy42OCw5LjA0LDEuMDMsMTcuMzgsMS4wMywyNC45djU1LjY2aC0xNS44OVYuMDJoMjEuMjRsNTIuNTIsODQuODloLjQ0Yy0uMS0xLjEyLS4yOS01LjIxLS41OS0xMi4yNy0uMjktNy4wNi0uNDQtMTIuNTYtLjQ0LTE2LjUyVi4wMmgxNi4wNHYxMDcuMDhaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtODYwLjM4LDEwNy4xaC0xNy41VjE1LjAzaC0zMS40OVYuMDJoODAuNDl2MTUuMDFoLTMxLjQ5djkyLjA3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTI5Ny41NiwxODQuNzJoLTI4LjIxdi00LjQ4bDE5Ljg4LTI5LjQyaC0xOS4zNHYtNS41M2gyNy4xM3Y0LjUzbC0xOS45NiwyOS4zN2gyMC41djUuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzIyLjU3LDE4NC43MmwtMS4yNy00LjE1aC0uMjJjLTEuNDQsMS44Mi0yLjg5LDMuMDUtNC4zNCwzLjcxLTEuNDYuNjYtMy4zMy45OC01LjYxLjk4LTIuOTMsMC01LjIyLS43OS02Ljg2LTIuMzctMS42NS0xLjU4LTIuNDctMy44Mi0yLjQ3LTYuNzIsMC0zLjA3LDEuMTQtNS4zOSwzLjQyLTYuOTZzNS43Ni0yLjQyLDEwLjQ0LTIuNTZsNS4xNS0uMTZ2LTEuNTljMC0xLjkxLS40NC0zLjMzLTEuMzMtNC4yNy0uODktLjk0LTIuMjctMS40Mi00LjE0LTEuNDItMS41MywwLTIuOTkuMjItNC40LjY3LTEuNC40NS0yLjc1Ljk4LTQuMDUsMS41OWwtMi4wNS00LjUzYzEuNjItLjg1LDMuMzktMS40OSw1LjMxLTEuOTMsMS45Mi0uNDQsMy43NC0uNjYsNS40NS0uNjYsMy43OSwwLDYuNjYuODMsOC41OSwyLjQ4LDEuOTMsMS42NSwyLjksNC4yNSwyLjksNy43OXYyMC4wOWgtNC41M1ptLTkuNDQtNC4zMWMyLjMsMCw0LjE1LS42NCw1LjU0LTEuOTMsMS4zOS0xLjI5LDIuMDktMy4wOSwyLjA5LTUuNDF2LTIuNTlsLTMuODMuMTZjLTIuOTguMTEtNS4xNi42MS02LjUxLDEuNS0xLjM2Ljg5LTIuMDQsMi4yNS0yLjA0LDQuMDksMCwxLjMzLjM5LDIuMzYsMS4xOSwzLjA5Ljc5LjczLDEuOTgsMS4wOSwzLjU2LDEuMDlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzYxLjA4LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjYsMC00LjYxLjgtNS44NiwyLjM5LTEuMjUsMS41OS0xLjg4LDQuMjYtMS44OCw4djE0LjgxaC02LjM0di00MS45Nmg2LjM0djEwLjY1YzAsMS43MS0uMTEsMy41My0uMzIsNS40OGguNGMuODYtMS40NCwyLjA2LTIuNTUsMy42LTMuMzRzMy4zMy0xLjE5LDUuMzgtMS4xOWM3LjIzLDAsMTAuODQsMy42NCwxMC44NCwxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im0zOTUuMDYsMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQyMS4zNSwxODQuNzJsLTEuMjctNC4xNWgtLjIyYy0xLjQ0LDEuODItMi44OSwzLjA1LTQuMzQsMy43MXMtMy4zMy45OC01LjYxLjk4Yy0yLjkzLDAtNS4yMi0uNzktNi44Ni0yLjM3LTEuNjQtMS41OC0yLjQ3LTMuODItMi40Ny02LjcyLDAtMy4wNywxLjE0LTUuMzksMy40Mi02Ljk2czUuNzYtMi40MiwxMC40NC0yLjU2bDUuMTUtLjE2di0xLjU5YzAtMS45MS0uNDUtMy4zMy0xLjM0LTQuMjctLjg5LS45NC0yLjI3LTEuNDItNC4xNC0xLjQyLTEuNTMsMC0yLjk5LjIyLTQuNC42Ny0xLjQuNDUtMi43NS45OC00LjA0LDEuNTlsLTIuMDUtNC41M2MxLjYyLS44NSwzLjM5LTEuNDksNS4zMS0xLjkzLDEuOTItLjQ0LDMuNzQtLjY2LDUuNDUtLjY2LDMuNzksMCw2LjY2LjgzLDguNTksMi40OCwxLjkzLDEuNjUsMi45LDQuMjUsMi45LDcuNzl2MjAuMDloLTQuNTNabS0xNS41OS0zNy43M2MwLTEuMTEuMy0xLjkyLjktMi40MS42LS40OSwxLjMzLS43NCwyLjItLjc0Ljk1LDAsMS43MS4yOCwyLjI4Ljg0LjU3LjU2Ljg1LDEuMzMuODUsMi4zMnMtLjI5LDEuNzItLjg2LDIuMjljLS41Ny41OC0xLjMzLjg2LTIuMjcuODYtLjg2LDAtMS41OS0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3Wm02LjE1LDMzLjQxYzIuMywwLDQuMTUtLjY0LDUuNTQtMS45MywxLjM5LTEuMjksMi4wOS0zLjA5LDIuMDktNS40MXYtMi41OWwtMy44My4xNmMtMi45OS4xMS01LjE2LjYxLTYuNTEsMS41LTEuMzYuODktMi4wNCwyLjI1LTIuMDQsNC4wOSwwLDEuMzMuNCwyLjM2LDEuMTksMy4wOS43OS43MywxLjk4LDEuMDksMy41NiwxLjA5Wm00LjQ1LTMzLjQxYzAtMS4xMS4zLTEuOTIuOS0yLjQxLjYtLjQ5LDEuMzMtLjc0LDIuMi0uNzQuOTUsMCwxLjcyLjI4LDIuMjkuODQuNTcuNTYuODYsMS4zMy44NiwyLjMycy0uMywxLjc0LS44OSwyLjMxYy0uNTkuNTctMS4zNS44NS0yLjI3Ljg1LS44NiwwLTEuNi0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQ0OC43NiwxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNS4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTMsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDc3LjUxLDE4NC43MmgtMjIuNjN2LTMuOTFsMTUuMDctMjEuMDZoLTE0LjE2di00Ljg1aDIxLjI4djQuNDJsLTE0Ljc1LDIwLjU1aDE1LjE4djQuODVaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDk1LjM4LDE4MC4xNGMxLjU1LDAsMy4wOS0uMjQsNC42NC0uNzN2NC43N2MtLjcuMzEtMS42LjU2LTIuNzEuNzctMS4xLjIxLTIuMjUuMzEtMy40NC4zMS02LDAtOS4wMS0zLjE2LTkuMDEtOS40OXYtMTYuMDdoLTQuMDd2LTIuOGw0LjM3LTIuMzIsMi4xNi02LjMxaDMuOTF2Ni42M2g4LjQ5djQuOGgtOC40OXYxNS45N2MwLDEuNTMuMzgsMi42NiwxLjE1LDMuMzguNzYuNzMsMS43NywxLjA5LDMuMDEsMS4wOVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im01MTcuODIsMTg1LjI2Yy00LjY0LDAtOC4yNy0xLjM1LTEwLjg4LTQuMDZzLTMuOTItNi40My0zLjkyLTExLjE4LDEuMjEtOC43LDMuNjQtMTEuNDljMi40My0yLjc5LDUuNzYtNC4xOCwxMC4wMS00LjE4LDMuOTQsMCw3LjA1LDEuMiw5LjMzLDMuNTksMi4yOCwyLjM5LDMuNDMsNS42OCwzLjQzLDkuODd2My40M2gtMTkuODhjLjA5LDIuODkuODcsNS4xMiwyLjM1LDYuNjcsMS40NywxLjU2LDMuNTUsMi4zMyw2LjIzLDIuMzMsMS43NiwwLDMuNC0uMTcsNC45Mi0uNSwxLjUyLS4zMywzLjE1LS44OSw0Ljg5LTEuNjZ2NS4xNWMtMS41NS43NC0zLjExLDEuMjYtNC42OSwxLjU2LTEuNTguMzEtMy4zOS40Ni01LjQyLjQ2Wm0tMS4xNi0yNi4xMWMtMi4wMSwwLTMuNjMuNjQtNC44NCwxLjkxLTEuMjEsMS4yOC0xLjk0LDMuMTQtMi4xNyw1LjU4aDEzLjU0Yy0uMDQtMi40Ni0uNjMtNC4zMy0xLjc4LTUuNi0xLjE1LTEuMjctMi43My0xLjktNC43NS0xLjlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTUwLjU4LDE0N2MwLTEuMTMuMzEtMiwuOTMtMi42Mi42Mi0uNjEsMS41LS45MiwyLjY2LS45MnMxLjk4LjMxLDIuNi45Mi45MywxLjQ4LjkzLDIuNjItLjMxLDEuOTMtLjkzLDIuNTVjLS42Mi42Mi0xLjQ5LjkzLTIuNi45M3MtMi4wNC0uMzEtMi42Ni0uOTNjLS42Mi0uNjItLjkzLTEuNDctLjkzLTIuNTVabTYuNzIsMzcuNzNoLTYuMzR2LTI5LjgzaDYuMzR2MjkuODNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTkxLjQ2LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjgsMC00LjY0Ljc5LTUuODgsMi4zNy0xLjI0LDEuNTgtMS44Niw0LjIzLTEuODYsNy45NnYxNC44NmgtNi4zNHYtMjkuODNoNC45NmwuODksMy45MWguMzJjLjktMS40MiwyLjE4LTIuNTIsMy44My0zLjI5LDEuNjUtLjc3LDMuNDktMS4xNiw1LjUtMS4xNiw3LjE1LDAsMTAuNzMsMy42NCwxMC43MywxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im02MTUuMywxNDUuM2gxMS43YzUuNDMsMCw5LjM1Ljc5LDExLjc3LDIuMzcsMi40MiwxLjU4LDMuNjMsNC4wOCwzLjYzLDcuNSwwLDIuMy0uNTksNC4yMi0xLjc4LDUuNzQtMS4xOSwxLjUzLTIuODksMi40OS01LjEyLDIuODl2LjI3YzIuNzcuNTIsNC44MSwxLjU1LDYuMTEsMy4wOSwxLjMsMS41NCwxLjk1LDMuNjIsMS45NSw2LjI0LDAsMy41NC0xLjI0LDYuMzEtMy43MSw4LjMyLTIuNDcsMi01LjkxLDMuMDEtMTAuMzIsMy4wMWgtMTQuMjR2LTM5LjQzWm02LjQ1LDE2LjI5aDYuMmMyLjcsMCw0LjY3LS40Myw1LjkxLTEuMjgsMS4yNC0uODUsMS44Ni0yLjMxLDEuODYtNC4zNiwwLTEuODUtLjY3LTMuMTktMi4wMS00LjAycy0zLjQ3LTEuMjQtNi4zOC0xLjI0aC01LjU4djEwLjlabTAsNS4yM3YxMi40OWg2Ljg1YzIuNywwLDQuNzMtLjUyLDYuMTEtMS41NSwxLjM3LTEuMDMsMi4wNi0yLjY3LDIuMDYtNC44OSwwLTIuMDUtLjctMy41Ny0yLjEtNC41Ni0xLjQtLjk5LTMuNTMtMS40OC02LjM5LTEuNDhoLTYuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNjc2Ljg0LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDEtMi41LDIuNzMtNS45OCw0LjEtMTAuNDQsNC4xLTIuNzksMC01LjI1LS42My03LjM5LTEuODlzLTMuNzktMy4wNy00LjkzLTUuNDJjLTEuMTUtMi4zNS0xLjczLTUuMDktMS43My04LjIsMC00Ljg0LDEuMjQtOC42MSwzLjcyLTExLjMzLDIuNDgtMi43MSw1Ljk4LTQuMDcsMTAuNDktNC4wN3M3LjczLDEuMzksMTAuMjUsNC4xN2MyLjUyLDIuNzgsMy43OCw2LjUyLDMuNzgsMTEuMjNabS0yMS43MSwwYzAsNi44OSwyLjU0LDEwLjMzLDcuNjMsMTAuMzNzNy41NS0zLjQ0LDcuNTUtMTAuMzMtMi41NC0xMC4yMi03LjYxLTEwLjIyYy0yLjY2LDAtNC41OS44OC01Ljc0LDIuNjQtMS4yLDEuNzYtMS43OSw0LjI5LTEuNzksNy41OFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im03MDkuMzksMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTc0My4zNywxODQuNzJoLTYuMzZ2LTE4LjM0YzAtMi4zLS40Ni00LjAyLTEuMzktNS4xNS0uOTMtMS4xMy0yLjM5LTEuNy00LjQxLTEuNy0yLjY4LDAtNC42NC43OS01Ljg4LDIuMzctMS4yNCwxLjU4LTEuODYsNC4yMy0xLjg2LDcuOTZ2MTQuODZoLTYuMzR2LTI5LjgzaDQuOTZsLjg5LDMuOTFoLjMyYy45LTEuNDIsMi4xOC0yLjUyLDMuODMtMy4yOSwxLjY1LS43NywzLjQ5LTEuMTYsNS41LTEuMTYsNy4xNSwwLDEwLjczLDMuNjQsMTAuNzMsMTAuOTJ2MTkuNDRaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNzYxLjQzLDE4NS4yNmMtMy43MiwwLTYuNjMtMS4zNS04LjcxLTQuMDVzLTMuMTMtNi40OC0zLjEzLTExLjM1LDEuMDYtOC43LDMuMTctMTEuNDJjMi4xMS0yLjcyLDUuMDQtNC4wOSw4Ljc4LTQuMDlzNi45LDEuNDUsOC45NSw0LjM0aC4zMmMtLjMxLTIuMTQtLjQ2LTMuODMtLjQ2LTUuMDd2LTEwLjg3aDYuMzZ2NDEuOTZoLTQuOTZsLTEuMTEtMy45MWgtLjNjLTIuMDMsMi45Ny01LjAxLDQuNDUtOC45Myw0LjQ1Wm0xLjctNS4xMmMyLjYxLDAsNC41LS43Myw1LjY5LTIuMiwxLjE5LTEuNDcsMS44LTMuODQsMS44My03LjEzdi0uODljMC0zLjc2LS42MS02LjQzLTEuODMtOC4wMS0xLjIyLTEuNTgtMy4xNC0yLjM3LTUuNzQtMi4zNy0yLjIzLDAtMy45NS45LTUuMTUsMi43MS0xLjIsMS44MS0xLjgxLDQuMzgtMS44MSw3Ljczcy41OCw1LjgzLDEuNzUsNy41NmMxLjE3LDEuNzMsMi45MiwyLjYsNS4yNiwyLjZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODExLjI5LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDFzLTUuOTgsNC4xLTEwLjQ0LDQuMWMtMi43OSwwLTUuMjUtLjYzLTcuMzktMS44OXMtMy43OC0zLjA3LTQuOTMtNS40MmMtMS4xNS0yLjM1LTEuNzMtNS4wOS0xLjczLTguMiwwLTQuODQsMS4yNC04LjYxLDMuNzItMTEuMzMsMi40OC0yLjcxLDUuOTgtNC4wNywxMC40OS00LjA3czcuNzMsMS4zOSwxMC4yNSw0LjE3YzIuNTIsMi43OCwzLjc4LDYuNTIsMy43OCwxMS4yM1ptLTIxLjcxLDBjMCw2Ljg5LDIuNTQsMTAuMzMsNy42MywxMC4zM3M3LjU1LTMuNDQsNy41NS0xMC4zMy0yLjU0LTEwLjIyLTcuNjEtMTAuMjJjLTIuNjYsMC00LjU5Ljg4LTUuNzgsMi42NC0xLjIsMS43Ni0xLjc5LDQuMjktMS43OSw3LjU4WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTgzMi43MywxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNi4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTQsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODU3LjM4LDE1OS43aC03LjI4djI1LjAzaC02LjM2di0yNS4wM2gtNC45MXYtMi45N2w0LjkxLTEuOTR2LTEuOTRjMC0zLjUyLjgzLTYuMTQsMi40OC03LjgzLDEuNjUtMS43LDQuMTgtMi41NSw3LjU4LTIuNTUsMi4yMywwLDQuNDIuMzcsNi41OCwxLjExbC0xLjY3LDQuOGMtMS41Ni0uNS0zLjA2LS43Ni00LjQ0LS43NnMtMi40OS40NS0zLjE0LDEuMzNjLS42Ni44OS0uOTgsMi4yMy0uOTgsNC4wMXYxLjk0aDcuMjh2NC44WiIvPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iMjI3LjkxIiB5PSIwIiB3aWR0aD0iMyIgaGVpZ2h0PSIxODUuMjYiLz48L3N2Zz4=" alt="FRYDENT" class="logo-img"></a>
+<a href="index_en.html" class="back-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to portal</a>
+</div></header>
+
+<main>
+<div class="form-header">
+<div class="form-header-bg1"></div>
+<div class="form-header-bg2"></div>
+<div class="form-header-inner">
+<div class="form-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+<div>
+<div class="form-title">Contact form</div>
+<div class="form-subtitle">Get in touch – we will get back to you shortly</div>
+</div>
+</div>
+</div>
+
+<div class="form-body">
+<form action="https://formsubmit.co/info@frydent.de" method="POST">
+<input type="hidden" name="_subject" value="Kontaktformular · Contact form">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://info.frydent.de/danke_en.html">
+<input type="text" name="_honey" style="display:none">
+<input type="hidden" name="_template" value="table">
+
+<div class="field">
+<label>Name <span class="req">*</span></label>
+<input type="text" name="Name" placeholder="Your full name" required>
+</div>
+
+<div class="field">
+<label>Email <span class="req">*</span></label>
+<input type="email" name="E-Mail" placeholder="your.email@example.com" required>
+</div>
+
+<div class="field">
+<label>Phone <span class="opt">(optional)</span></label>
+<input type="tel" name="Telefon" placeholder="+49 7703 ...">
+</div>
+
+<div class="field">
+<label>Subject</label>
+<select name="Betreff">
+<option>General enquiry</option>
+<option>Appointment request</option>
+<option>Dental prosthetics / Consultation</option>
+<option>Bleaching / Aesthetics</option>
+<option>Callback requested</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="field" style="margin-bottom:22px">
+<label>Your message <span class="req">*</span></label>
+<textarea name="Nachricht" rows="4" placeholder="How can we help you?" required></textarea>
+</div>
+
+<label class="privacy">
+<input type="checkbox" required>
+<span>I agree that my details may be used to respond to my enquiry. <a href="https://frydent.de/datenschutz" target="_blank">Privacy policy</a></span>
+</label>
+
+<button type="submit" class="submit-btn">Send message</button>
+
+<div class="secure-note">
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+Your data is transmitted securely
+</div>
+</form>
+</div>
+</main>
+
+<footer style="text-align:center;padding:2rem 1.5rem 4rem;font-size:.75rem;color:#B0B3B8;border-top:1px solid #E4E6EB;background:#fff"><p>&copy; 2026 FRYDENT &middot; Zahnarztpraxis Tatiana Frydrych &middot; <a href="https://frydent.de" style="color:#3D5A98;text-decoration:none">www.frydent.de</a></p></footer>
+
+<div class="sidebar">
+<a href="javascript:toggleDrFlexAppointments()" class="sidebar-tab termin">
+<span class="sidebar-label">Book appointment online</span>
+<div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+</a>
+<a href="tel:+497703284" class="sidebar-tab phone">
+<span class="sidebar-label">07703 284</span>
+<div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+</a>
+<a href="mailto:info@frydent.de" class="sidebar-tab email">
+<span class="sidebar-label">Send email</span>
+<div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+</a>
+<a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank" class="sidebar-tab location">
+<span class="sidebar-label">Martinstraße 21, Bonndorf</span>
+<div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg></div>
+</a>
+</div>
+<div class="mobile-bar">
+<a href="tel:+497703284" class="phone-m"><svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>Call</a>
+<a href="javascript:toggleDrFlexAppointments()" class="termin-m"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Appointment</a>
+<a href="mailto:info@frydent.de"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Email</a>
+<a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>Directions</a>
+</div>
+
+</body>
+</html>
