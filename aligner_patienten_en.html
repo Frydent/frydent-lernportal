@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRYDENT · Aligner · Straight teeth gently & invisibly</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --blue:#3D5A98;--blue-dark:#2C4170;--blue-darker:#1E2D4D;--blue-light:#E8EEF7;
+            --gold:#D4A843;--gold-light:#F5ECD4;--gold-dark:#B8922E;
+            --white:#FFFFFF;--gray-50:#F7F8FA;--gray-100:#F0F2F5;--gray-200:#E4E6EB;
+            --gray-400:#B0B3B8;--gray-600:#6B7280;--gray-800:#1F2937;
+            --red-soft:#FEF2F2;--red-border:#FECACA;--red-text:#991B1B;
+            --green-soft:#EEF6EA;--green-border:#c3ddb8;--green-text:#3d6b32;
+            --amber-soft:#FFFBEB;--amber-border:#FDE68A;--amber-text:#92400E;
+            --teal-soft:#ECFDF5;--teal-border:#A7F3D0;--teal-text:#065F46;
+            --purple-soft:#F5F3FF;--purple-border:#C4B5FD;--purple-text:#5B21B6;
+            --radius:14px;--radius-sm:8px
+        }
+        body{font-family:'Plus Jakarta Sans',-apple-system,sans-serif;background:var(--gray-50);color:var(--gray-800);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+        /* HEADER */
+        header{background:var(--white);border-bottom:1px solid var(--gray-200);position:sticky;top:0;z-index:100}
+        .header-inner{max-width:820px;margin:0 auto;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+        .logo-img{height:32px;width:auto}
+        .header-right{display:flex;align-items:center;gap:8px}
+        .header-btn{font-size:12px;font-weight:700;padding:9px 20px;border-radius:8px;text-decoration:none;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:6px}
+        .header-back{background:#2C4170;color:#FFFFFF}
+        .header-back:hover{background:#1E2D4D}
+        .header-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+        .header-back .back-text{display:inline}
+        .header-termin{background:#D4A843;color:#1E2D4D}
+        .header-termin:hover{background:#2C4170;color:#FFFFFF}
+        @media(max-width:640px){.header-back .back-text{display:none}.header-back{padding:9px 10px}}
+
+        /* HERO */
+        .hero{background:linear-gradient(145deg,#5a7da8 0%,#3D5A98 40%,var(--blue-dark) 100%);padding:4rem 1.5rem 3.5rem;text-align:center;box-shadow:0 8px 30px rgba(30,45,77,.2)}
+        .hero h1{font-family:'Quicksand',sans-serif;font-size:2.1rem;font-weight:400;color:var(--white);margin-bottom:.6rem;letter-spacing:-.3px}
+        .hero-divider{width:280px;max-width:80%;height:2px;background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--gold-dark));margin:.8rem auto}
+        .hero p{color:rgba(255,255,255,.75);font-size:1rem;font-weight:300;max-width:520px;margin:0 auto}
+
+        /* MAIN */
+        main{max-width:820px;margin:0 auto;padding:2rem 1.5rem 3rem}
+
+        /* TAB NAVIGATION */
+        .tab-nav{display:flex;gap:.4rem;padding-bottom:.5rem;margin-bottom:1.75rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+        .tab-nav::-webkit-scrollbar{display:none}
+        .tab-btn{display:flex;align-items:center;gap:6px;padding:.55rem 1rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid #D4C48A;background:#F0E8C4;color:#5A4A1E;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
+        .tab-btn:hover{border-color:var(--gold);color:#3D3010;background:#E6DBB0}
+        .tab-btn.active{background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)}
+        @media(max-width:640px){.tab-btn{flex:0 0 auto}}
+        .tab-btn svg{flex-shrink:0}
+
+        /* SECTION */
+        .tab-section{display:none}
+        .tab-section.active{display:block}
+        .section-title{font-family:'Quicksand',sans-serif;font-size:1.05rem;font-weight:600;color:var(--blue-dark);margin:1.75rem 0 .75rem;display:flex;align-items:center;gap:10px}
+        .section-title:first-child{margin-top:0}
+        .section-title svg{flex-shrink:0}
+        .section-sub{color:var(--gray-600);font-size:.88rem;margin-bottom:1.25rem;margin-top:-.4rem}
+
+        /* CARD */
+        .card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:1.5rem 1.75rem;margin-bottom:1.25rem}
+        .card-title{font-family:'Quicksand',sans-serif;font-weight:600;color:var(--blue-dark);font-size:.95rem;margin-bottom:.6rem}
+        .card p,.card li{font-size:.88rem;color:var(--gray-600);line-height:1.65}
+        .card ul{list-style:none;margin:.5rem 0}
+        .card ul li{padding:.35rem 0 .35rem 1.5rem;position:relative}
+        .card ul li::before{content:'✓';position:absolute;left:0;color:var(--green-text);font-weight:700}
+
+        /* CARD VARIANTS */
+        .card-blue{background:#F0F5FB;border:1px solid #C8D9EE}
+        .card-amber{background:#F7F4EE;border:1px solid #E2DACE}
+        .card-amber .card-title{color:#5C4E38}
+        .card-green{background:#EEF4EA;border:1px solid #C8D9BE}
+        .card-green .card-title{color:var(--green-text)}
+        .card-warm{background:#FBF8F3;border:1px solid #E8DFD0}
+        .card-warm .card-title{color:#5C4E38}
+        .card-teal{background:var(--teal-soft);border:1px solid var(--teal-border)}
+        .card-teal .card-title{color:var(--teal-text)}
+        .card-purple{background:var(--purple-soft);border:1px solid var(--purple-border)}
+        .card-purple .card-title{color:var(--purple-text)}
+
+        /* HINT */
+        .hint{font-size:.84rem;background:var(--amber-soft);border:1px solid var(--amber-border);border-radius:var(--radius-sm);padding:1rem 1.25rem;margin-bottom:1.25rem;line-height:1.55;color:var(--amber-text)}
+
+        /* STEP LIST */
+        .step-list{counter-reset:step}
+        .step-item{display:flex;gap:1rem;margin-bottom:1.25rem;align-items:flex-start}
+        .step-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--blue-dark);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+        .step-content h4{font-family:'Quicksand',sans-serif;font-size:.92rem;font-weight:600;color:var(--blue-dark);margin-bottom:.2rem}
+        .step-content p{font-size:.84rem;color:var(--gray-600);line-height:1.55}
+
+        /* PROMISE CARDS */
+        .promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem}
+        .promise-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:1.25rem;text-align:center}
+        .promise-card svg{margin-bottom:.5rem}
+        .promise-card h4{font-family:'Quicksand',sans-serif;font-size:.88rem;font-weight:600;color:var(--blue-dark);margin-bottom:.35rem}
+        .promise-card p{font-size:.8rem;color:var(--gray-600);line-height:1.5}
+        @media(max-width:640px){.promise-grid{grid-template-columns:1fr}}
+
+        /* COMPARISON TABLE */
+        .compare-table{width:100%;border-collapse:collapse;font-size:.84rem;margin-bottom:1.25rem}
+        .compare-table th{background:var(--blue-dark);color:var(--white);padding:.7rem 1rem;text-align:left;font-weight:600;font-family:'Quicksand',sans-serif}
+        .compare-table td{padding:.6rem 1rem;border-bottom:1px solid var(--gray-200);color:var(--gray-600)}
+        .compare-table tr:nth-child(even){background:var(--gray-50)}
+        .compare-table .check{color:var(--green-text);font-weight:700}
+        .compare-table .cross{color:#991B1B;font-weight:700}
+
+        /* COST CARD */
+        .cost-card{background:linear-gradient(135deg,var(--teal-soft),#f0fdf4);border:2px solid var(--teal-border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem;text-align:center}
+        .cost-card .cost-label{font-size:.82rem;color:var(--teal-text);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.3rem}
+        .cost-card .cost-range{font-family:'Quicksand',sans-serif;font-size:1.6rem;font-weight:700;color:var(--teal-text);margin-bottom:.4rem}
+        .cost-card .cost-note{font-size:.82rem;color:var(--gray-600)}
+
+        /* MOOD CARD */
+        .intro-card-inner{display:flex;align-items:stretch;min-height:120px}
+        .intro-accent{flex:0 0 200px;background:linear-gradient(160deg,#f5ecd4 0%,#efe3c4 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem 1.25rem;border-right:1px solid rgba(212,168,67,.15)}
+        .intro-content{flex:1;padding:1.5rem 1.75rem}
+        @media(max-width:640px){.intro-card-inner{flex-direction:column}.intro-accent{flex:none;padding:1.2rem;border-right:none;border-bottom:1px solid rgba(212,168,67,.15)}}
+
+        /* FAQ */
+        .faq-item{border-bottom:1px solid var(--gray-200);padding:.8rem 0;cursor:pointer}
+        .faq-item:last-child{border-bottom:none}
+        .faq-q{font-weight:600;font-size:.9rem;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:center}
+        .faq-arrow{font-size:.7rem;color:var(--gray-400);transition:transform .3s}
+        .faq-item.open .faq-arrow{transform:rotate(180deg)}
+        .faq-a{display:none;font-size:.84rem;color:var(--gray-600);padding-top:.6rem;line-height:1.6}
+        .faq-item.open .faq-a{display:block}
+
+        /* FOOTER */
+        footer{text-align:center;padding:2rem 1.5rem;font-size:.78rem;color:var(--gray-400);border-top:1px solid var(--gray-200);background:var(--white)}
+        footer a{color:var(--blue);text-decoration:none}
+        footer a:hover{text-decoration:underline}
+
+        /* SIDEBAR */
+        .sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:8px}
+        .sidebar-tab{display:flex;align-items:center;justify-content:flex-end;transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:pointer;text-decoration:none;height:58px}
+        .sidebar-icon{width:58px;height:58px;border-radius:16px 0 0 16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .4s cubic-bezier(.25,.46,.45,.94);box-shadow:-2px 2px 8px rgba(0,0,0,.1)}
+        .sidebar-icon svg{width:24px;height:24px}
+        .sidebar-label{max-width:0;overflow:hidden;white-space:nowrap;font-size:.92rem;font-weight:600;height:58px;line-height:58px;padding:0;transition:all .4s cubic-bezier(.25,.46,.45,.94);opacity:0;border-radius:16px 0 0 16px;box-shadow:-2px 2px 8px rgba(0,0,0,.1)}
+        .sidebar-tab:hover .sidebar-label{max-width:280px;padding:0 20px 0 16px;opacity:1}
+        .sidebar-tab:hover .sidebar-icon{border-radius:0;box-shadow:none}
+        .sidebar-tab.phone .sidebar-icon{background:#7a96b8}
+        .sidebar-tab.phone .sidebar-label{background:#7a96b8;color:white}
+        .sidebar-tab.phone .sidebar-icon svg{stroke:white}
+        .sidebar-tab.termin .sidebar-icon{background:#D4A843}
+        .sidebar-tab.termin .sidebar-label{background:#D4A843;color:#1E2D4D}
+        .sidebar-tab.termin .sidebar-icon svg{stroke:#1E2D4D}
+        .sidebar-tab.email .sidebar-icon{background:#5a7da8}
+        .sidebar-tab.email .sidebar-label{background:#5a7da8;color:white}
+        .sidebar-tab.email .sidebar-icon svg{stroke:white}
+        .sidebar-tab.location .sidebar-icon{background:#3d6498}
+        .sidebar-tab.location .sidebar-label{background:#3d6498;color:white}
+        .sidebar-tab.location .sidebar-icon svg{stroke:white}
+        @media(max-width:640px){.sidebar{display:none}}
+
+        /* MOBILE BAR */
+        .mobile-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:1px solid var(--gray-200);z-index:100;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px));justify-content:space-around}
+        .mobile-bar a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.65rem;font-weight:600;text-decoration:none;color:var(--gray-600);padding:4px 8px}
+        .mobile-bar svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5}
+        .mobile-bar .phone-m{color:var(--blue)}
+        .mobile-bar .phone-m svg{stroke:var(--blue)}
+        .mobile-bar a.termin-m svg{stroke:#D4A843!important}
+        .mobile-bar a.termin-m{color:#D4A843!important;font-weight:700}
+        @media(max-width:640px){.mobile-bar{display:flex!important}}
+
+        @media print{.sidebar,.mobile-bar,.header-right,.nav-arrows,.print-bar{display:none!important}main{padding:1rem}}
+    </style>
+    <script src="https://dr-flex.de/embed.js?medicalPracticeId=60190"></script>
+</head>
+<body>
+<header><div class="header-inner">
+<a href="https://frydent.de"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJFYmVuZV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4OTEuODcgMTg1LjI2Ij48ZGVmcz48c3R5bGU+LmNscy0xLC5jbHMtMntzdHJva2Utd2lkdGg6MHB4O30uY2xzLTJ7ZmlsbDojMzc1MzhlO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im0xOS42NywxMDAuNzNjMCwxLjMsMCwyLjIzLDAsMy4xNSwwLDI2LjE5LDAsNTIuMzgsMCw3OC41N3EwLDIuODEtMi44MiwyLjgxYy00LjgsMC05LjYsMC0xNC4zOSwwSC4wNGMwLS45NCwwLTEuNjUsMC0yLjM2Qy4wNCwxMjIuNzMuMDUsNjIuNTUsMCwyLjM4LDAsLjQ3LjU5LjA0LDIuMzYuMDRjMzcuNzkuMDQsNzUuNTctLjE0LDExMy4zNi4xMiwxNC4yNC4xLDI3LjEzLDUuMDEsMzguNDgsMTMuNjgsMTMuMzcsMTAuMjEsMjIuMDQsMjMuOCwyNy44NSwzOS4zNyw1LjY0LDE1LjEyLDcuOTMsMzAuODEsNy4yNSw0Ni44Ni0uNzksMTguNjgtNS41MSwzNi4zMy0xNi4wMSw1Mi4wMi0xMS4xOCwxNi43MS0yNi43NCwyNy4wOS00Ni42NSwzMC4yNy03LjUyLDEuMi0xNS4yMywxLjM1LTIyLjg3LDEuNjQtMTQuMzEuNTUtMjguNjMuODUtNDIuOTQsMS4yNS0uNzIuMDItMS40NSwwLTIuNCwwLS4wNi0uODgtLjE2LTEuNjUtLjE2LTIuNDEsMC0yMS41MywwLTQzLjA1LDAtNjQuNTgsMC0yLjYyLjAxLTIuNjMsMi42Ny0yLjYzLDUuNCwwLDEwLjguMDYsMTYuMTktLjAzLDEuNzktLjAzLDIuMzkuNDYsMi4zNiwyLjM1LS4yMiwxNS4yNi0uMzMsMzAuNTItLjQ2LDQ1Ljc3LS4wMiwyLjUxLDAsMi40MywyLjU3LDIuMzcsNi43My0uMTQsMTMuNDYtLjA4LDIwLjE4LS4zMyw5Ljk4LS4zOCwxOS45NS0uODgsMjkuNTQtNC4xNiwxMC4xOS0zLjQ5LDE3Ljg1LTEwLjAxLDIzLjUzLTE5LjA2LDcuMzYtMTEuNzQsMTEuMzItMjQuNTgsMTIuOC0zOC4yOCwxLjgtMTYuNjUtLjAyLTMyLjgyLTYuMjgtNDguNC01LjI3LTEzLjExLTE0LjA4LTIzLjI2LTI2LjI4LTMwLjMzLTYuMTUtMy41Ni0xMi45My01LjM2LTIwLjA0LTUuMzgtMzAuODUtLjA3LTYxLjcxLS4wMy05Mi41Ni0uMDMtLjg1LDAtMS43LDAtMi42NywwdjYwLjM2Yy45LjA1LDEuNzMuMTMsMi41Ni4xMywyMi45MiwwLDQ1Ljg1LjA0LDY4Ljc3LS4wNSwyLjM1LDAsMy40Ny44NiwzLjk1LDIuOTUsMS4xMiw0LjgxLDEuMTksOS42Mi0uMDgsMTQuNDItLjUzLDIuMDEtMS43MiwyLjg0LTMuOTEsMi44NC0yMi43OS0uMDctNDUuNTgtLjA0LTY4LjM3LS4wNC0uOTIsMC0xLjgzLDAtMy4wNiwwWiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0ibTI4Ni43MSwxMDcuMWgtMTcuMzZWLjAyaDYwLjQzdjE0Ljc5aC00My4wN3YzMy40N2g0MC4zNnYxNC44N2gtNDAuMzZ2NDMuOTVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMzYyLjUyLDY0LjMzdjQyLjc3aC0xNy41MVYuMDJoMzAuMjVjMTMuODIsMCwyNC4wNSwyLjU5LDMwLjY5LDcuNzYsNi42NCw1LjE4LDkuOTYsMTIuOTksOS45NiwyMy40NCwwLDEzLjMzLTYuOTMsMjIuODMtMjAuOCwyOC40OWwzMC4yNSw0Ny4zOWgtMTkuOTJsLTI1LjYzLTQyLjc3aC0xNy4yOVptMC0xNC41aDEyLjE2YzguMTUsMCwxNC4wNi0xLjUxLDE3LjcyLTQuNTQsMy42Ni0zLjAzLDUuNDktNy41Miw1LjQ5LTEzLjQ4cy0xLjk4LTEwLjQtNS45My0xMy4wNC05LjkxLTMuOTYtMTcuODctMy45NmgtMTEuNTd2MzUuMDFaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNDY2LjA3LDQ4Ljg3TDQ5MS40MS4wMmgxOS4wNGwtMzUuNjcsNjUuNTV2NDEuNTNoLTE3LjU4di00MC45NEw0MjEuNjguMDJoMTkuMDRsMjUuMzQsNDguODVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjA5Ljc5LDUyLjUzYzAsMTcuNjgtNC45MSwzMS4xOS0xNC43Miw0MC41NC05LjgxLDkuMzUtMjMuOTUsMTQuMDMtNDIuNDEsMTQuMDNoLTI5Ljk2Vi4wMmgzMy4xMWMxNy4wNCwwLDMwLjMsNC41OSwzOS43NywxMy43Nyw5LjQ3LDkuMTgsMTQuMjEsMjIuMSwxNC4yMSwzOC43NVptLTE4LjQ2LjU5YzAtMjUuNjMtMTEuOTktMzguNDUtMzUuOTYtMzguNDVoLTE1LjE2djc3LjcxaDEyLjQ1YzI1Ljc4LDAsMzguNjctMTMuMDgsMzguNjctMzkuMjZaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjg5LjMzLDEwNy4xaC02MC41N1YuMDJoNjAuNTd2MTQuNzloLTQzLjA3djI5LjE1aDQwLjM2djE0LjY1aC00MC4zNnYzMy42Mmg0My4wN3YxNC44N1oiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im03OTcuNjQsMTA3LjFoLTIxLjQ2bC01Mi42Ni04NS4zM2gtLjU5bC4zNyw0Ljc2Yy42OCw5LjA0LDEuMDMsMTcuMzgsMS4wMywyNC45djU1LjY2aC0xNS44OVYuMDJoMjEuMjRsNTIuNTIsODQuODloLjQ0Yy0uMS0xLjEyLS4yOS01LjIxLS41OS0xMi4yNy0uMjktNy4wNi0uNDQtMTIuNTYtLjQ0LTE2LjUyVi4wMmgxNi4wNHYxMDcuMDhaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtODYwLjM4LDEwNy4xaC0xNy41VjE1LjAzaC0zMS40OVYuMDJoODAuNDl2MTUuMDFoLTMxLjQ5djkyLjA3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTI5Ny41NiwxODQuNzJoLTI4LjIxdi00LjQ4bDE5Ljg4LTI5LjQyaC0xOS4zNHYtNS41M2gyNy4xM3Y0LjUzbC0xOS45NiwyOS4zN2gyMC41djUuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzIyLjU3LDE4NC43MmwtMS4yNy00LjE1aC0uMjJjLTEuNDQsMS44Mi0yLjg5LDMuMDUtNC4zNCwzLjcxLTEuNDYuNjYtMy4zMy45OC01LjYxLjk4LTIuOTMsMC01LjIyLS43OS02Ljg2LTIuMzctMS42NS0xLjU4LTIuNDctMy44Mi0yLjQ3LTYuNzIsMC0zLjA3LDEuMTQtNS4zOSwzLjQyLTYuOTZzNS43Ni0yLjQyLDEwLjQ0LTIuNTZsNS4xNS0uMTZ2LTEuNTljMC0xLjkxLS40NC0zLjMzLTEuMzMtNC4yNy0uODktLjk0LTIuMjctMS40Mi00LjE0LTEuNDItMS41MywwLTIuOTkuMjItNC40LjY3LTEuNC40NS0yLjc1Ljk4LTQuMDUsMS41OWwtMi4wNS00LjUzYzEuNjItLjg1LDMuMzktMS40OSw1LjMxLTEuOTMsMS45Mi0uNDQsMy43NC0uNjYsNS40NS0uNjYsMy43OSwwLDYuNjYuODMsOC41OSwyLjQ4LDEuOTMsMS42NSwyLjksNC4yNSwyLjksNy43OXYyMC4wOWgtNC41M1ptLTkuNDQtNC4zMWMyLjMsMCw0LjE1LS42NCw1LjU0LTEuOTMsMS4zOS0xLjI5LDIuMDktMy4wOSwyLjA5LTUuNDF2LTIuNTlsLTMuODMuMTZjLTIuOTguMTEtNS4xNi42MS02LjUxLDEuNS0xLjM2Ljg5LTIuMDQsMi4yNS0yLjA0LDQuMDksMCwxLjMzLjM5LDIuMzYsMS4xOSwzLjA5Ljc5LjczLDEuOTgsMS4wOSwzLjU2LDEuMDlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzYxLjA4LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjYsMC00LjYxLjgtNS44NiwyLjM5LTEuMjUsMS41OS0xLjg4LDQuMjYtMS44OCw4djE0LjgxaC02LjM0di00MS45Nmg2LjM0djEwLjY1YzAsMS43MS0uMTEsMy41My0uMzIsNS40OGguNGMuODYtMS40NCwyLjA2LTIuNTUsMy42LTMuMzRzMy4zMy0xLjE5LDUuMzgtMS4xOWM3LjIzLDAsMTAuODQsMy42NCwxMC44NCwxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im0zOTUuMDYsMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQyMS4zNSwxODQuNzJsLTEuMjctNC4xNWgtLjIyYy0xLjQ0LDEuODItMi44OSwzLjA1LTQuMzQsMy43MXMtMy4zMy45OC01LjYxLjk4Yy0yLjkzLDAtNS4yMi0uNzktNi44Ni0yLjM3LTEuNjQtMS41OC0yLjQ3LTMuODItMi40Ny02LjcyLDAtMy4wNywxLjE0LTUuMzksMy40Mi02Ljk2czUuNzYtMi40MiwxMC40NC0yLjU2bDUuMTUtLjE2di0xLjU5YzAtMS45MS0uNDUtMy4zMy0xLjM0LTQuMjctLjg5LS45NC0yLjI3LTEuNDItNC4xNC0xLjQyLTEuNTMsMC0yLjk5LjIyLTQuNC42Ny0xLjQuNDUtMi43NS45OC00LjA0LDEuNTlsLTIuMDUtNC41M2MxLjYyLS44NSwzLjM5LTEuNDksNS4zMS0xLjkzLDEuOTItLjQ0LDMuNzQtLjY2LDUuNDUtLjY2LDMuNzksMCw2LjY2LjgzLDguNTksMi40OCwxLjkzLDEuNjUsMi45LDQuMjUsMi45LDcuNzl2MjAuMDloLTQuNTNabS0xNS41OS0zNy43M2MwLTEuMTEuMy0xLjkyLjktMi40MS42LS40OSwxLjMzLS43NCwyLjItLjc0Ljk1LDAsMS43MS4yOCwyLjI4Ljg0LjU3LjU2Ljg1LDEuMzMuODUsMi4zMnMtLjI5LDEuNzItLjg2LDIuMjljLS41Ny41OC0xLjMzLjg2LTIuMjcuODYtLjg2LDAtMS41OS0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3Wm02LjE1LDMzLjQxYzIuMywwLDQuMTUtLjY0LDUuNTQtMS45MywxLjM5LTEuMjksMi4wOS0zLjA5LDIuMDktNS40MXYtMi41OWwtMy44My4xNmMtMi45OS4xMS01LjE2LjYxLTYuNTEsMS41LTEuMzYuODktMi4wNCwyLjI1LTIuMDQsNC4wOSwwLDEuMzMuNCwyLjM2LDEuMTksMy4wOS43OS43MywxLjk4LDEuMDksMy41NiwxLjA5Wm00LjQ1LTMzLjQxYzAsMS4xMS4zLTEuOTIuOS0yLjQxLjYtLjQ5LDEuMzMtLjc0LDIuMi0uNzQuOTUsMCwxLjcyLjI4LDIuMjkuODQuNTcuNTYuODYsMS4zMy44NiwyLjMycy0uMywxLjc0LS44OSwyLjMxYy0uNTkuNTctMS4zNS44NS0yLjI3Ljg1LS44NiwwLTEuNi0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQ0OC43NiwxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNS4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTMsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDc3LjUxLDE4NC43MmgtMjIuNjN2LTMuOTFsMTUuMDctMjEuMDZoLTE0LjE2di00Ljg1aDIxLjI4djQuNDJsLTE0Ljc1LDIwLjU1aDE1LjE4djQuODVaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDk1LjM4LDE4MC4xNGMxLjU1LDAsMy4wOS0uMjQsNC42NC0uNzN2NC43N2MtLjcuMzEtMS42LjU2LTIuNzEuNzctMS4xLjIxLTIuMjUuMzEtMy40NC4zMS02LDAtOS4wMS0zLjE2LTkuMDEtOS40OXYtMTYuMDdoLTQuMDd2LTIuOGw0LjM3LTIuMzIsMi4xNi02LjMxaDMuOTF2Ni42M2g4LjQ5djQuOGgtOC40OXYxNS45N2MwLDEuNTMuMzgsMi42NiwxLjE1LDMuMzguNzYuNzMsMS43NywxLjA5LDMuMDEsMS4wOVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im01MTcuODIsMTg1LjI2Yy00LjY0LDAtOC4yNy0xLjM1LTEwLjg4LTQuMDZzLTMuOTItNi40My0zLjkyLTExLjE4LDEuMjEtOC43LDMuNjQtMTEuNDljMi40My0yLjc5LDUuNzYtNC4xOCwxMC4wMS00LjE4LDMuOTQsMCw3LjA1LDEuMiw5LjMzLDMuNTksMi4yOCwyLjM5LDMuNDMsNS42OCwzLjQzLDkuODd2My40M2gtMTkuODhjLjA5LDIuODkuODcsNS4xMiwyLjM1LDYuNjcsMS40NywxLjU2LDMuNTUsMi4zMyw2LjIzLDIuMzMsMS43NiwwLDMuNC0uMTcsNC45Mi0uNSwxLjUyLS4zMywzLjE1LS44OSw0Ljg5LTEuNjZ2NS4xNWMtMS41NS43NC0zLjExLDEuMjYtNC42OSwxLjU2LTEuNTguMzEtMy4zOS40Ni01LjQyLjQ2Wm0tMS4xNi0yNi4xMWMtMi4wMSwwLTMuNjMuNjQtNC44NCwxLjkxLTEuMjEsMS4yOC0xLjk0LDMuMTQtMi4xNyw1LjU4aDEzLjU0Yy0uMDQtMi40Ni0uNjMtNC4zMy0xLjc4LTUuNi0xLjE1LTEuMjctMi43My0xLjktNC43NS0xLjlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTUwLjU4LDE0N2MwLTEuMTMuMzEtMiwuOTMtMi42Mi42Mi0uNjEsMS41LS45MiwyLjY2LS45MnMxLjk4LjMxLDIuNi45Mi45MywxLjQ4LjkzLDIuNjItLjMxLDEuOTMtLjkzLDIuNTVjLS42Mi42Mi0xLjQ5LjkzLTIuNi45M3MtMi4wNC0uMzEtMi42Ni0uOTNjLS42Mi0uNjItLjkzLTEuNDctLjkzLTIuNTVabTYuNzIsMzcuNzNoLTYuMzR2LTI5LjgzaDYuMzR2MjkuODNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTkxLjQ2LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjgsMC00LjY0Ljc5LTUuODgsMi4zNy0xLjI0LDEuNTgtMS44Niw0LjIzLTEuODYsNy45NnYxNC44NmgtNi4zNHYtMjkuODNoNC45NmwuODksMy45MWguMzJjLjktMS40MiwyLjE4LTIuNTIsMy44My0zLjI5LDEuNjUtLjc3LDMuNDktMS4xNiw1LjUtMS4xNiw3LjE1LDAsMTAuNzMsMy42NCwxMC43MywxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im02MTUuMywxNDUuM2gxMS43YzUuNDMsMCw5LjM1Ljc5LDExLjc3LDIuMzcsMi40MiwxLjU4LDMuNjMsNC4wOCwzLjYzLDcuNSwwLDIuMy0uNTksNC4yMi0xLjc4LDUuNzQtMS4xOSwxLjUzLTIuODksMi40OS01LjEyLDIuODl2LjI3YzIuNzcuNTIsNC44MSwxLjU1LDYuMTEsMy4wOSwxLjMsMS41NCwxLjk1LDMuNjIsMS45NSw2LjI0LDAsMy41NC0xLjI0LDYuMzEtMy43MSw4LjMyLTIuNDcsMi01LjkxLDMuMDEtMTAuMzIsMy4wMWgtMTQuMjR2LTM5LjQzWm02LjQ1LDE2LjI5aDYuMmMyLjcsMCw0LjY3LS40Myw1LjkxLTEuMjgsMS4yNC0uODUsMS44Ni0yLjMxLDEuODYtNC4zNiwwLTEuODUtLjY3LTMuMTktMi4wMS00LjAycy0zLjQ3LTEuMjQtNi4zOC0xLjI0aC01LjU4djEwLjlabTAsNS4yM3YxMi40OWg2Ljg1YzIuNywwLDQuNzMtLjUyLDYuMTEtMS41NSwxLjM3LTEuMDMsMi4wNi0yLjY3LDIuMDYtNC44OSwwLTIuMDUtLjctMy41Ny0yLjEtNC41Ni0xLjQtLjk5LTMuNTMtMS40OC02LjM5LTEuNDhoLTYuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNjc2Ljg0LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDEtMi41LDIuNzMtNS45OCw0LjEtMTAuNDQsNC4xLTIuNzksMC01LjI1LS42My03LjM5LTEuODlzLTMuNzktMy4wNy00LjkzLTUuNDJjLTEuMTUtMi4zNS0xLjczLTUuMDktMS43My04LjIsMC00Ljg0LDEuMjQtOC42MSwzLjcyLTExLjMzLDIuNDgtMi43MSw1Ljk4LTQuMDcsMTAuNDktNC4wN3M3LjczLDEuMzksMTAuMjUsNC4xN2MyLjUyLDIuNzgsMy43OCw2LjUyLDMuNzgsMTEuMjNabS0yMS43MSwwYzAsNi44OSwyLjU0LDEwLjMzLDcuNjMsMTAuMzNzNy41NS0zLjQ0LDcuNTUtMTAuMzMtMi41NC0xMC4yMi03LjYxLTEwLjIyYy0yLjY2LDAtNC41OS44OC01Ljc0LDIuNjQtMS4yLDEuNzYtMS43OSw0LjI5LTEuNzksNy41OFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im03MDkuMzksMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTc0My4zNywxODQuNzJoLTYuMzZ2LTE4LjM0YzAtMi4zLS40Ni00LjAyLTEuMzktNS4xNS0uOTMtMS4xMy0yLjM5LTEuNy00LjQxLTEuNy0yLjY4LDAtNC42NC43OS01Ljg4LDIuMzctMS4yNCwxLjU4LTEuODYsNC4yMy0xLjg2LDcuOTZ2MTQuODZoLTYuMzR2LTI5LjgzaDQuOTZsLjg5LDMuOTFoLjMyYy45LTEuNDIsMi4xOC0yLjUyLDMuODMtMy4yOSwxLjY1LS43NywzLjQ5LTEuMTYsNS41LTEuMTYsNy4xNSwwLDEwLjczLDMuNjQsMTAuNzMsMTAuOTJ2MTkuNDRaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNzYxLjQzLDE4NS4yNmMtMy43MiwwLTYuNjMtMS4zNS04LjcxLTQuMDVzLTMuMTMtNi40OC0zLjEzLTExLjM1LDEuMDYtOC43LDMuMTctMTEuNDJjMi4xMS0yLjcyLDUuMDQtNC4wOSw4Ljc4LTQuMDlzNi45LDEuNDUsOC45NSw0LjM0aC4zMmMtLjMxLTIuMTQtLjQ2LTMuODMtLjQ2LTUuMDd2LTEwLjg3aDYuMzZ2NDEuOTZoLTQuOTZsLTEuMTEtMy45MWgtLjNjLTIuMDMsMi45Ny01LjAxLDQuNDUtOC45Myw0LjQ1Wm0xLjctNS4xMmMyLjYxLDAsNC41LS43Myw1LjY5LTIuMiwxLjE5LTEuNDcsMS44LTMuODQsMS44My03LjEzdi0uODljMC0zLjc2LS42MS02LjQzLTEuODMtOC4wMS0xLjIyLTEuNTgtMy4xNC0yLjM3LTUuNzQtMi4zNy0yLjIzLDAtMy45NS45LTUuMTUsMi43MS0xLjIsMS44MS0xLjgxLDQuMzgtMS44MSw3Ljczcy41OCw1LjgzLDEuNzUsNy41NmMxLjE3LDEuNzMsMi45MiwyLjYsNS4yNiwyLjZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODExLjI5LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDFzLTUuOTgsNC4xLTEwLjQ0LDQuMWMtMi43OSwwLTUuMjUtLjYzLTcuMzktMS44OXMtMy43OC0zLjA3LTQuOTMtNS40MmMtMS4xNS0yLjM1LTEuNzMtNS4wOS0xLjczLTguMiwwLTQuODQsMS4yNC04LjYxLDMuNzItMTEuMzMsMi40OC0yLjcxLDUuOTgtNC4wNywxMC40OS00LjA3czcuNzMsMS4zOSwxMC4yNSw0LjE3YzIuNTIsMi43OCwzLjc4LDYuNTIsMy43OCwxMS4yM1ptLTIxLjcxLDBjMCw2Ljg5LDIuNTQsMTAuMzMsNy42MywxMC4zM3M3LjU1LTMuNDQsNy41NS0xMC4zMy0yLjU0LTEwLjIyLTcuNjEtMTAuMjJjLTIuNjYsMC00LjU5Ljg4LTUuNzgsMi42NC0xLjIsMS43Ni0xLjc5LDQuMjktMS43OSw3LjU4WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTgzMi43MywxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNi4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTQsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODU3LjM4LDE1OS43aC03LjI4djI1LjAzaC02LjM2di0yNS4wM2gtNC45MXYtMi45N2w0LjkxLTEuOTR2LTEuOTRjMC0zLjUyLjgzLTYuMTQsMi40OC03LjgzLDEuNjUtMS43LDQuMTgtMi41NSw3LjU4LTIuNTUsMi4yMywwLDQuNDIuMzcsNi41OCwxLjExbC0xLjY3LDQuOGMtMS41Ni0uNS0zLjA2LS43Ni00LjQ0LS43NnMtMi40OS40NS0zLjE0LDEuMzNjLS42Ni44OS0uOTgsMi4yMy0uOTgsNC4wMXYxLjk0aDcuMjh2NC44WiIvPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iMjI3LjkxIiB5PSIwIiB3aWR0aD0iMyIgaGVpZ2h0PSIxODUuMjYiLz48L3N2Zz4=" alt="FRYDENT" class="logo-img"></a>
+<div class="header-right">
+<a href="index.html" class="header-btn header-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span class="back-text">Back to portal</span></a>
+<a href="javascript:toggleDrFlexAppointments()" class="header-btn header-termin">Book appointment</a>
+</div>
+</div></header>
+
+<div class="hero">
+<h1>Straight teeth gently & invisibly</h1>
+<div class="hero-divider"></div>
+<p>Teeth correction with transparent aligners — no metal, no wires, no compromises.</p>
+</div>
+
+<main>
+<div class="tab-nav">
+<button class="tab-btn active" onclick="go('overview')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>Overview</button>
+<button class="tab-btn" onclick="go('process')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>Process</button>
+<button class="tab-btn" onclick="go('daily')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>Daily life</button>
+<button class="tab-btn" onclick="go('costs')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg>Costs</button>
+<button class="tab-btn" onclick="go('faq')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"></path></svg>FAQ</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════ TAB 1: ÜBERBLICK ═══════════════════════════════════════════════ -->
+<div class="tab-section active" id="s-overview">
+    <div class="section-title" style="margin-top:0">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D5A98" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        What are aligners?
+    </div>
+    <p class="section-sub">The invisible alternative to traditional braces</p>
+
+    <div class="card" style="background:linear-gradient(135deg,#faf6ed 0%,#f7f0de 35%,#f5edd4 60%,#e8eef7 100%);border:1px solid #e8dfc8;box-shadow:0 8px 32px rgba(180,146,46,.15),0 2px 8px rgba(0,0,0,.07);padding:0;overflow:hidden">
+        <div class="intro-card-inner">
+            <div class="intro-accent">
+                <style>
+                    @keyframes al-smile{0%,100%{d:path('M12 18 Q24 22 36 18')}50%{d:path('M8 17 Q24 30 40 17')}}
+                    @keyframes al-eyes{0%,90%,100%{ry:2.5}95%{ry:.3}}
+                    .al-smile-path{animation:al-smile 4s ease-in-out infinite}
+                    .al-eye{animation:al-eyes 5s ease-in-out infinite}
+                    .al-eye-r{animation:al-eyes 5s ease-in-out .15s infinite}
+                </style>
+                <svg width="72" height="56" viewBox="0 0 48 38" fill="none" style="margin-bottom:.7rem">
+                    <ellipse cx="16" cy="8" rx="2.5" ry="2.5" fill="#D4A843" opacity=".55" class="al-eye"/>
+                    <ellipse cx="32" cy="8" rx="2.5" ry="2.5" fill="#D4A843" opacity=".55" class="al-eye-r"/>
+                    <path d="M12 18 Q24 22 36 18" stroke="#D4A843" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".6" class="al-smile-path"/>
+                </svg>
+                <div style="font-family:'Quicksand',sans-serif;font-size:.95rem;font-weight:500;color:#8a7340;text-align:center;line-height:1.5;letter-spacing:.2px">Gently into the<br>right position.</div>
+            </div>
+            <div class="intro-content">
+                <div class="card-title">Transparent aligners for straight teeth</div>
+                <p>Aligners are custom-made, transparent plastic trays that move your teeth step by step into the desired position. Each tray is changed approximately every two weeks. The trays are so thin and transparent that they are barely noticeable in everyday life.</p>
+                <p style="margin-top:.6rem">Unlike traditional metal braces, there are no wires or brackets. The trays can simply be removed for eating and brushing your teeth.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D5A98" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Benefits at a glance
+    </div>
+
+    <div class="promise-grid">
+        <div class="promise-card">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3D5A98" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <h4>Nearly invisible</h4>
+            <p>The transparent trays are barely noticeable in conversation, meetings, and photos.</p>
+        </div>
+        <div class="promise-card">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3D5A98" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <h4>Removable</h4>
+            <p>Simply remove the trays for eating, drinking, and brushing your teeth.</p>
+        </div>
+        <div class="promise-card">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3D5A98" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+            <h4>Comfortable</h4>
+            <p>No metal, no wires — significantly less irritation than fixed braces.</p>
+        </div>
+        <div class="promise-card">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3D5A98" stroke-width="1.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            <h4>Predictable results</h4>
+            <p>Thanks to digital 3D planning, you can see the goal of your treatment in advance.</p>
+        </div>
+    </div>
+
+    <div class="section-title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D5A98" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Who are aligners suitable for?
+    </div>
+
+    <div class="card card-green">
+        <div class="card-title">Suitable for:</div>
+        <ul>
+            <li>Mild to moderate misalignments (crowding, gaps, slight rotations)</li>
+            <li>Adults and teenagers who have completed tooth replacement</li>
+            <li>Patients with high aesthetic expectations</li>
+            <li>People who do not want to wear visible braces professionally or privately</li>
+        </ul>
+    </div>
+
+    <div class="hint"><strong>Good to know:</strong> For severe jaw misalignments or very complex tooth rotations, traditional braces or a combination of both methods may be the better choice. We discuss this individually with you during the consultation.</div>
+
+    <div class="section-title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D5A98" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        Aligners vs. fixed braces
+    </div>
+
+    <table class="compare-table">
+        <tr><th></th><th>Aligners</th><th>Fixed braces</th></tr>
+        <tr><td>Visibility</td><td class="check">Nearly invisible</td><td class="cross">Visible</td></tr>
+        <tr><td>Removable</td><td class="check">Yes</td><td class="cross">No</td></tr>
+        <tr><td>Eating & drinking</td><td class="check">No restrictions</td><td class="cross">Restrictions</td></tr>
+        <tr><td>Oral hygiene</td><td class="check">Normally possible</td><td class="cross">Difficult</td></tr>
+        <tr><td>Severe cases</td><td>Limited</td><td class="check">Very well suited</td></tr>
+        <tr><td>Discipline required</td><td>Wear 22 hrs/day</td><td>Automatically active</td></tr>
+    </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════ TAB 2: ABLAUF ═══════════════════════════════════════════════ -->
+<div class="tab-section" id="s-process">
+    <div class="section-title" style="margin-top:0">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D5A98" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Your path to a straight smile
+    </div>
+    <p class="section-sub">Step by step — from consultation to results</p>
+
+    <div class="step-list">
+        <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <h4>Consultation</h4>
+                <p>We examine your teeth, discuss your wishes, and check whether aligner treatment is suitable for you. This also includes checking for cavities or gum problems — these may need to be treated beforehand.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <h4>Impressions & planning</h4>
+                <p>We take precise impressions of your teeth. A digital 3D model is created in the lab, showing the entire tooth movement to the goal. You can see in advance what your teeth will look like after treatment.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <h4>Treatment plan & cost estimate</h4>
+                <p>You receive a transparent cost plan with all details: duration, number of trays, costs. Only when you agree do we start manufacturing the trays.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <h4>Your trays arrive</h4>
+                <p>You receive your first series of trays, which you wear one after another. Each tray is worn for about 14 days, then the next one follows. The trays are numbered — an easy switch.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-content">
+                <h4>Regular check-ups</h4>
+                <p>Every 4–8 weeks, you come for a short check-up at our practice. We check progress and give you new trays. Check-ups are much less frequent than with fixed braces.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">6</div>
+            <div class="step-content">
+                <h4>Fine-tuning (Refinement)</h4>
+                <p>After the main treatment, additional fine corrections may be necessary. Additional trays may be made to perfect the result.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">7</div>
+            <div class="step-content">
+                <h4>Stabilization (Retention)</h4>
+                <p>To keep your teeth in their new position, you wear a retainer afterward — a thin, invisible wire behind the front teeth or a night tray. Without retention, teeth can shift back.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card card-amber">
+        <div class="card-title">How long does treatment take?</div>
+        <p>The duration depends on the complexity of your misalignment. Minor corrections can be completed in 3–4 months, moderate cases take 6–12 months, more complex treatments up to 18 months. After the initial examination, we will give you an individual estimate.</p>
+    </div>
+
+    <div class="hint"><strong>Important:</strong> Before starting aligner therapy, your teeth and gums must be healthy. Cavities, periodontitis, or other problems are treated beforehand — this ensures the success of the correction.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ TAB 3: ALLTAG ═══════════════════════════════════════════════ -->
+<div class="tab-section" id="s-daily">
+    <div class="section-title" style="margin-top:0">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D5A98" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Living with aligners
+    </div>
+    <p class="section-sub">What you need to know in daily life</p>
+
+    <div class="card card-blue">
+        <div class="card-title">The golden rule: 22 hours a day</div>
+        <p>For treatment to be successful, the trays must be worn for at least 22 hours daily. This sounds like a lot, but it is easier than you think: you only remove the trays for eating and brushing — the rest of the day and at night you wear them.</p>
+        <p style="margin-top:.5rem">If you wear the trays too little, treatment takes longer and the result may be compromised.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Eating & drinking</div>
+        <ul>
+            <li><strong>Remove trays before eating</strong> — there are no dietary restrictions</li>
+            <li><strong>Drinking water</strong> is possible with trays at any time</li>
+            <li><strong>Coffee, tea, juices:</strong> remove trays beforehand, as they may become discolored</li>
+            <li><strong>After eating:</strong> brush teeth, rinse trays, and put them back in</li>
+        </ul>
+    </div>
+
+    <div class="card card-green">
+        <div class="card-title">Caring for your trays</div>
+        <p>Care is simple: morning and evening, rinse the trays under lukewarm water and gently clean with a soft toothbrush. Do not use toothpaste — the abrasive particles can roughen the surface and lead to discoloration. Plain water and mild soap are perfectly sufficient.</p>
+    </div>
+
+    <div class="card card-warm">
+        <div class="card-title">The first days with new trays</div>
+        <p>When you put in a new tray, you may notice a slight feeling of pressure in the first 1–2 days. This is completely normal — it shows that your teeth are moving. This feeling passes quickly. Some patients also notice a slight change in speech, which resolves within a few days.</p>
+    </div>
+
+    <div class="hint"><strong>Tip:</strong> Wear new trays for the first time in the evening — you will get used to the slight pressure overnight, and by the next morning the feeling is already much better.</div>
+
+    <div class="card">
+        <div class="card-title">What to avoid</div>
+        <p style="margin-bottom:.5rem">To keep your trays intact and treatment running smoothly:</p>
+        <ul style="list-style:none;margin:0">
+            <li style="padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:#991B1B;font-weight:700">✗</span>Do not clean trays with hot water (risk of deformation)</li>
+            <li style="padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:#991B1B;font-weight:700">✗</span>Do not eat or chew gum with trays in</li>
+            <li style="padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:#991B1B;font-weight:700">✗</span>Avoid smoking with trays — it causes strong discoloration</li>
+            <li style="padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:#991B1B;font-weight:700">✗</span>Do not use toothpaste for cleaning trays</li>
+        </ul>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ TAB 4: KOSTEN ═══════════════════════════════════════════════ -->
+<div class="tab-section" id="s-costs">
+    <div class="section-title" style="margin-top:0">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D5A98" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        Kosten & Finanzierung
+    </div>
+    <p class="section-sub">Transparency is important to us — no hidden costs</p>
+
+    <div class="cost-card">
+        <div class="cost-label">Treatment costs</div>
+        <div class="cost-range">from approx. 2,000 – 5,000 €</div>
+        <div class="cost-note">Depending on complexity · including all trays and check-ups</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">What do the costs depend on?</div>
+        <p>The exact costs depend on the complexity of your misalignment, the treatment duration, and the number of trays needed. A minor front tooth correction costs significantly less than comprehensive full-jaw treatment. After the initial examination, you will receive a transparent, binding cost estimate — with no hidden fees.</p>
+    </div>
+
+    <div class="card card-teal">
+        <div class="card-title">Convenient installment payments available</div>
+        <p>A beautiful smile should not be a question of budget. We offer flexible installment payments so you can pay for treatment in convenient monthly installments. Just ask us — together we will find a solution that fits your budget.</p>
+    </div>
+
+    <div class="card card-amber">
+        <div class="card-title">What does health insurance cover?</div>
+        <p>Statutory health insurance in Germany generally does not cover aligner treatment for adults, as it is usually classified as cosmetic. With private insurance, partial coverage may be possible depending on the plan. If you have supplementary dental insurance, check before starting treatment whether orthodontic services are included.</p>
+    </div>
+
+    <div class="hint"><strong>Our tip:</strong> Schedule a non-binding consultation. The initial examination gives you clarity about treatment options and costs — before you decide.</div>
+
+    <div class="card card-blue">
+        <div class="card-title">What is included in the price?</div>
+        <ul>
+            <li>Detailed consultation and examination</li>
+            <li>Impressions and digital 3D treatment planning</li>
+            <li>All required aligner trays</li>
+            <li>Regular check-up appointments throughout the entire treatment</li>
+            <li>Retainer or retention tray for stabilization after completion</li>
+        </ul>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ TAB 5: FAQ ═══════════════════════════════════════════════ -->
+<div class="tab-section" id="s-faq">
+    <div class="section-title" style="margin-top:0">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D5A98" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+        Frequently asked questions
+    </div>
+    <p class="section-sub">The most important answers at a glance</p>
+
+    <div class="card">
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Does the treatment hurt?<span class="faq-arrow">▼</span></div>
+            <div class="faq-a">No. In the first 1–2 days after switching to a new tray, you may feel slight pressure — this shows your teeth are gently moving. Most patients find this barely bothersome. Pain in the true sense does not occur.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Can you see the trays?<span class="faq-arrow">▼</span></div>
+            <div class="faq-a">The trays are made of transparent plastic and are barely visible in everyday life. At normal conversation distance, most people will not even notice you are wearing aligners.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Can I eat and drink normally?<span class="faq-arrow">▼</span></div>
+            <div class="faq-a">Yes — there are no dietary restrictions. You remove the trays before eating and put them back after brushing. Only water can be drunk with trays at any time. Colored drinks like coffee or tea should be consumed without trays.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Do aligners affect speech?<span class="faq-arrow">▼</span></div>
+            <div class="faq-a">In the first few days, a slight lisp may occur. This usually resolves within a few days as your tongue quickly adjusts to the trays.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">How often do I need to visit the dentist?<span class="faq-arrow">▼</span></div>
+            <div class="faq-a">Much less frequently than with fixed braces. Typically, you come every 4–8 weeks for a short check-up. Between appointments, you switch trays independently according to our plan.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Am I too old for teeth correction?<span class="faq-arrow">▼</span></div>
+            <div class="faq-a">No. Teeth correction with aligners is possible at any age — provided your teeth and gums are healthy. Many of our aligner patients are between 25 and 60 years old. It is never too late for a beautiful smile.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Can I remove the trays for important occasions?<span class="faq-arrow">▼</span></div>
+            <div class="faq-a">For short periods (e.g., photos, an important meeting), you can temporarily remove the trays. However, make sure you still reach 22 hours of wearing time per day. Regular removal for longer periods delays treatment.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">What happens if I lose a tray or it breaks?<span class="faq-arrow">▼</span></div>
+            <div class="faq-a">Contact us as soon as possible. In most cases, you can temporarily wear the previous or next tray until a replacement is made. Therefore, keep used trays as a precaution.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Does my health insurance pay for treatment?<span class="faq-arrow">▼</span></div>
+            <div class="faq-a">Statutory health insurance generally does not cover aligner costs for adults. Some private health insurances or supplementary dental insurances may contribute under certain conditions. We are happy to advise you and prepare a cost estimate that you can submit to your insurance.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Is installment payment available?<span class="faq-arrow">▼</span></div>
+            <div class="faq-a">Yes! We offer flexible installment payments. In a personal conversation, we will find a monthly rate that fits your budget. This way you can finance your treatment comfortably — without a large one-time payment.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Do teeth shift back after treatment?<span class="faq-arrow">▼</span></div>
+            <div class="faq-a">Without stabilization, teeth can indeed move back to their old position. That is why the retention phase after treatment is important: a thin retainer wire is invisibly attached behind the front teeth and/or a night tray is worn. The costs for this are already included in our treatment package.</div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<footer><p>© 2026 FRYDENT · Zahnarztpraxis Tatiana Frydrych · <a href="https://frydent.de/">www.frydent.de</a><br>Updated: March 2026</p><p style="margin-top:6px"><a href="impressum.html">Impressum</a> · <a href="datenschutz_en.html">Datenschutz</a></p></footer>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<a href="javascript:toggleDrFlexAppointments()" class="sidebar-tab termin">
+    <span class="sidebar-label">Book appointment online</span>
+    <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></div>
+</a>
+<a href="tel:+497703284" class="sidebar-tab phone">
+    <span class="sidebar-label">07703 284</span>
+    <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></div>
+</a>
+<a href="mailto:info@frydent.de" class="sidebar-tab email">
+    <span class="sidebar-label">Write an email</span>
+    <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
+</a>
+<a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank" class="sidebar-tab location">
+    <span class="sidebar-label">Martinstraße 21, Bonndorf</span>
+    <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><circle cx="12" cy="11" r="3"></circle></svg></div>
+</a>
+</div>
+
+<!-- MOBILE BAR -->
+<div class="mobile-bar">
+    <a href="tel:+497703284" class="phone-m"><svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>Call</a>
+    <a href="javascript:toggleDrFlexAppointments()" class="termin-m"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book appointment</a>
+    <a href="mailto:info@frydent.de"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>Email</a>
+    <a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><circle cx="12" cy="11" r="3"></circle></svg>Address</a>
+</div>
+
+<script>
+function go(id){
+    document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('s-'+id).classList.add('active');
+    const tabs=['overview','process','daily','costs','faq'];
+    const i=tabs.indexOf(id);
+    document.querySelectorAll('.tab-btn')[i].classList.add('active');
+    window.scrollTo({top:document.querySelector('.tab-nav').offsetTop-80,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
