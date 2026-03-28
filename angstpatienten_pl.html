@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRYDENT · Pacjenci z lękiem · Nie bój się dentysty</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --blue:#3D5A98;--blue-dark:#2C4170;--blue-darker:#1E2D4D;--blue-light:#E8EEF7;
+            --gold:#D4A843;--gold-light:#F5ECD4;--gold-dark:#B8922E;
+            --white:#FFFFFF;--gray-50:#F7F8FA;--gray-100:#F0F2F5;--gray-200:#E4E6EB;
+            --gray-400:#B0B3B8;--gray-600:#6B7280;--gray-800:#1F2937;
+            --red-soft:#FEF2F2;--red-border:#FECACA;--red-text:#991B1B;
+            --green-soft:#EEF6EA;--green-border:#c3ddb8;--green-text:#3d6b32;
+            --amber-soft:#FFFBEB;--amber-border:#FDE68A;--amber-text:#92400E;
+            --radius:14px;--radius-sm:8px
+        }
+        body{font-family:'Plus Jakarta Sans',-apple-system,sans-serif;background:var(--gray-50);color:var(--gray-800);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+        /* HEADER */
+        header{background:var(--white);border-bottom:1px solid var(--gray-200);position:sticky;top:0;z-index:100}
+        .header-inner{max-width:820px;margin:0 auto;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+        .logo-img{height:32px;width:auto}
+        .header-right{display:flex;align-items:center;gap:8px}
+        .header-btn{font-size:12px;font-weight:700;padding:9px 20px;border-radius:8px;text-decoration:none;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:6px}
+        .header-back{background:#2C4170;color:#FFFFFF}
+        .header-back:hover{background:#1E2D4D}
+        .header-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+        .header-back .back-text{display:inline}
+        .header-termin{background:#D4A843;color:#1E2D4D}
+        .header-termin:hover{background:#2C4170;color:#FFFFFF}
+        @media(max-width:640px){.header-back .back-text{display:none}.header-back{padding:9px 10px}}
+
+        /* HERO */
+        .hero{background:linear-gradient(145deg,#5a7da8 0%,#3D5A98 40%,var(--blue-dark) 100%);padding:4rem 1.5rem 3.5rem;text-align:center;box-shadow:0 8px 30px rgba(30,45,77,.2)}
+        .hero h1{font-family:'Quicksand',sans-serif;font-size:2.1rem;font-weight:400;color:var(--white);margin-bottom:.6rem;letter-spacing:-.3px}
+        .hero-divider{width:280px;max-width:80%;height:2px;background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--gold-dark));margin:.8rem auto}
+        .hero p{color:rgba(255,255,255,.75);font-size:1rem;font-weight:300;max-width:520px;margin:0 auto}
+        .hero-meta{display:flex;gap:1rem;justify-content:center;margin-top:.8rem;color:rgba(255,255,255,.45);font-size:.75rem}
+
+        /* MAIN */
+        main{max-width:820px;margin:0 auto;padding:2rem 1.5rem 3rem}
+
+        /* TAB NAVIGATION */
+        .tab-nav{display:flex;gap:.4rem;padding-bottom:.5rem;margin-bottom:1.75rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+        .tab-nav::-webkit-scrollbar{display:none}
+        .tab-btn{display:flex;align-items:center;gap:6px;padding:.55rem 1rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid #D4C48A;background:#F0E8C4;color:#5A4A1E;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
+        .tab-btn:hover{border-color:var(--gold);color:#3D3010;background:#E6DBB0}
+        .tab-btn.active{background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)}
+        @media(max-width:640px){.tab-btn{flex:0 0 auto}}
+        .tab-btn svg{flex-shrink:0}
+
+        /* SECTION */
+        .tab-section{display:none}
+        .tab-section.active{display:block}
+        .section-title{font-family:'Quicksand',sans-serif;font-size:1.05rem;font-weight:600;color:var(--blue-dark);margin:1.75rem 0 .75rem;display:flex;align-items:center;gap:10px}
+        .section-title:first-child{margin-top:0}
+        .section-title svg{flex-shrink:0}
+        .section-sub{color:var(--gray-600);font-size:.88rem;margin-bottom:1.25rem;margin-top:-.4rem}
+
+        /* CARD */
+        .card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:1.5rem 1.75rem;margin-bottom:1.25rem}
+        .card-title{font-family:'Quicksand',sans-serif;font-weight:600;color:var(--blue-dark);font-size:.95rem;margin-bottom:.6rem}
+
+        /* CARD VARIANTS */
+        .card-blue{background:#F0F5FB;border:1px solid #C8D9EE}
+        .card-amber{background:#F7F4EE;border:1px solid #E2DACE}
+        .card-amber .card-title{color:#5C4E38}
+        .card-green{background:#EEF4EA;border:1px solid #C8D9BE}
+        .card-green .card-title{color:var(--green-text)}
+        .card-warm{background:#FBF8F3;border:1px solid #E8DFD0}
+        .card-warm .card-title{color:#5C4E38}
+
+        /* HINT */
+        .hint{font-size:.84rem;background:var(--amber-soft);border:1px solid var(--amber-border);border-radius:var(--radius-sm);padding:1rem 1.25rem;margin-bottom:1.25rem;line-height:1.55;color:var(--amber-text)}
+
+        /* STEP LIST */
+        .step-list{counter-reset:step}
+        .step-item{display:flex;gap:1rem;margin-bottom:1.25rem;align-items:flex-start}
+        .step-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--blue-dark);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+        .step-content h4{font-family:'Quicksand',sans-serif;font-size:.92rem;font-weight:600;color:var(--blue-dark);margin-bottom:.2rem}
+        .step-content p{font-size:.84rem;color:var(--gray-600);line-height:1.55}
+
+        /* PROMISE CARDS */
+        .promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem}
+        .promise-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:1.25rem;text-align:center}
+        .promise-card svg{margin-bottom:.5rem}
+        .promise-card h4{font-family:'Quicksand',sans-serif;font-size:.88rem;font-weight:600;color:var(--blue-dark);margin-bottom:.35rem}
+        .promise-card p{font-size:.8rem;color:var(--gray-600);line-height:1.5}
+        @media(max-width:640px){.promise-grid{grid-template-columns:1fr}}
+
+        /* FAQ */
+        .faq-item{border-bottom:1px solid var(--gray-200);padding:.8rem 0;cursor:pointer}
+        .faq-item:last-child{border-bottom:none}
+        .faq-q{font-weight:600;font-size:.9rem;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:center}
+        .faq-arrow{font-size:.7rem;color:var(--gray-400);transition:transform .3s}
+        .faq-item.open .faq-arrow{transform:rotate(180deg)}
+        .faq-a{display:none;font-size:.84rem;color:var(--gray-600);padding-top:.6rem;line-height:1.6}
+        .faq-item.open .faq-a{display:block}
+
+        /* NAV ARROWS */
+        .nav-arrows{display:flex;justify-content:center;gap:1rem;margin:2.5rem 0}
+        .nav-arrow{padding:.5rem 1.25rem;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;border:none}
+        .nav-arrow.prev{background:#E8EEF7;color:var(--blue-dark);border:1px solid #C8D9EE}
+        .nav-arrow.prev:hover{background:#D4E1F2;border-color:var(--blue)}
+        .nav-arrow.next{background:var(--blue);color:var(--white)}
+        .nav-arrow.next:hover{background:var(--blue-dark)}
+        .nav-arrow:disabled{opacity:.3;cursor:default;border-color:var(--gray-200)!important;background:var(--gray-100)!important;color:var(--gray-400)!important}
+
+        /* CTA */
+        .cta-card{background:linear-gradient(135deg,#E8EEF7 0%,#F0F4FA 100%);border:1px solid var(--blue);border-radius:var(--radius);padding:2rem;text-align:center;margin:1.5rem 0}
+        .cta-card h3{font-family:'Quicksand',sans-serif;font-size:1.1rem;font-weight:700;color:var(--blue-dark);margin-bottom:.4rem}
+        .cta-card p{font-size:.85rem;color:var(--gray-600);margin-bottom:.8rem}
+        .cta-card .phone{margin-top:.5rem}
+        .cta-card .phone a{font-size:1.2rem;font-weight:700;color:var(--blue-dark);text-decoration:none}
+
+        /* PRINT */
+        .print-bar{display:flex;justify-content:center;margin:1.5rem 0 .5rem}
+        .btn-print{display:inline-flex;align-items:center;gap:6px;background:var(--gray-100);color:var(--gray-600);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:.5rem 1.2rem;font-size:.78rem;font-weight:600;cursor:pointer;transition:all .3s;font-family:'Plus Jakarta Sans',sans-serif}
+        .btn-print:hover{background:var(--blue-light);color:var(--blue-dark);border-color:var(--blue)}
+
+        /* DO/DONT */
+        .do-dont{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem}
+        .do-card{background:var(--green-soft);border:1px solid var(--green-border);border-radius:var(--radius);padding:1.25rem 1.5rem}
+        .do-card h4{color:var(--green-text);font-family:'Quicksand',sans-serif;font-size:.9rem;font-weight:600;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:2px solid #c3ddb8}
+        .dont-card{background:var(--red-soft);border:1px solid var(--red-border);border-radius:var(--radius);padding:1.25rem 1.5rem}
+        .dont-card h4{color:var(--red-text);font-family:'Quicksand',sans-serif;font-size:.9rem;font-weight:600;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:2px solid #FECACA}
+        .rule{font-size:.84rem;padding:.25rem 0;color:var(--gray-800)}
+        @media(max-width:640px){.do-dont{grid-template-columns:1fr}}
+
+        /* LANG BAR */
+        .lang-bar{display:flex;align-items:center;justify-content:center;padding:14px 1.5rem;background:var(--white);border-bottom:1px solid var(--gray-200)}
+        .lang-bar-flags{display:flex;gap:8px}
+        .lang-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 12px;border-radius:8px;text-decoration:none;font-size:10px;font-weight:700;color:var(--gray-600);background:var(--gray-100);min-width:42px}
+        .lang-btn.active{background:var(--blue);color:var(--white)}
+        .lang-btn .flag{width:22px;height:15px;border-radius:2px;display:block;background-size:cover;background-position:center}
+
+        /* SIDEBAR */
+        .sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:8px}
+        .sidebar-tab{display:flex;align-items:center;justify-content:flex-end;transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:pointer;text-decoration:none;height:58px}
+        .sidebar-icon{width:58px;height:58px;border-radius:16px 0 0 16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .4s cubic-bezier(.25,.46,.45,.94);box-shadow:-2px 2px 8px rgba(0,0,0,.1)}
+        .sidebar-icon svg{width:24px;height:24px}
+        .sidebar-label{max-width:0;overflow:hidden;white-space:nowrap;font-size:.92rem;font-weight:600;height:58px;line-height:58px;padding:0;transition:all .4s cubic-bezier(.25,.46,.45,.94);opacity:0;border-radius:16px 0 0 16px;box-shadow:-2px 2px 8px rgba(0,0,0,.1)}
+        .sidebar-tab:hover .sidebar-label{max-width:280px;padding:0 20px 0 16px;opacity:1}
+        .sidebar-tab:hover .sidebar-icon{border-radius:0;box-shadow:none}
+        .sidebar-tab.phone .sidebar-icon{background:#7a96b8}
+        .sidebar-tab.phone .sidebar-label{background:#7a96b8;color:white}
+        .sidebar-tab.phone .sidebar-icon svg{stroke:white}
+        .sidebar-tab.termin .sidebar-icon{background:#D4A843}
+        .sidebar-tab.termin .sidebar-label{background:#D4A843;color:#1E2D4D}
+        .sidebar-tab.termin .sidebar-icon svg{stroke:#1E2D4D}
+        .sidebar-tab.email .sidebar-icon{background:#5a7da8}
+        .sidebar-tab.email .sidebar-label{background:#5a7da8;color:white}
+        .sidebar-tab.email .sidebar-icon svg{stroke:white}
+        .sidebar-tab.location .sidebar-icon{background:#3d6498}
+        .sidebar-tab.location .sidebar-label{background:#3d6498;color:white}
+        .sidebar-tab.location .sidebar-icon svg{stroke:white}
+
+        /* MOBILE BAR */
+        .mobile-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;background:var(--white);border-top:1px solid var(--gray-200);padding:8px 12px;justify-content:space-around;box-shadow:0 -2px 10px rgba(0,0,0,.08)}
+        .mobile-bar a{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;font-size:.65rem;font-weight:600;color:var(--blue-dark);padding:4px 8px;border-radius:8px}
+        .mobile-bar a:active{background:var(--blue-light)}
+        .mobile-bar a svg{width:22px;height:22px;stroke:var(--blue);stroke-width:2;fill:none}
+        .mobile-bar a.phone-m svg{stroke:#6b8bb5}
+        .mobile-bar a.phone-m{color:#6b8bb5}
+        .mobile-bar a.termin-m svg{stroke:#D4A843!important}
+        .mobile-bar a.termin-m{color:#D4A843!important;font-weight:700}
+        @media(max-width:640px){.sidebar{display:none}.mobile-bar{display:flex!important}}
+
+        /* FOOTER */
+        footer{text-align:center;padding:2rem 1.5rem 4rem;font-size:.75rem;color:var(--gray-400);border-top:1px solid var(--gray-200);background:var(--white)}
+        footer a{color:var(--blue);text-decoration:none}
+
+        @media print{.sidebar,.mobile-bar,.header-right,.nav-arrows,.print-bar,.lang-bar{display:none!important}main{padding:1rem}}
+    </style>
+    <script src="https://dr-flex.de/embed.js?medicalPracticeId=60190"></script>
+</head>
+<body>
+<header><div class="header-inner">
+<a href="https://frydent.de"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJFYmVuZV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4OTEuODcgMTg1LjI2Ij48ZGVmcz48c3R5bGU+LmNscy0xLC5jbHMtMntzdHJva2Utd2lkdGg6MHB4O30uY2xzLTJ7ZmlsbDojMzc1MzhlO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im0xOS42NywxMDAuNzNjMCwxLjMsMCwyLjIzLDAsMy4xNSwwLDI2LjE5LDAsNTIuMzgsMCw3OC41N3EwLDIuODEtMi44MiwyLjgxYy00LjgsMC05LjYsMC0xNC4zOSwwSC4wNGMwLS45NCwwLTEuNjUsMC0yLjM2Qy4wNCwxMjIuNzMuMDUsNjIuNTUsMCwyLjM4LDAsLjQ3LjU5LjA0LDIuMzYuMDRjMzcuNzkuMDQsNzUuNTctLjE0LDExMy4zNi4xMiwxNC4yNC4xLDI3LjEzLDUuMDEsMzguNDgsMTMuNjgsMTMuMzcsMTAuMjEsMjIuMDQsMjMuOCwyNy44NSwzOS4zNyw1LjY0LDE1LjEyLDcuOTMsMzAuODEsNy4yNSw0Ni44Ni0uNzksMTguNjgtNS41MSwzNi4zMy0xNi4wMSw1Mi4wMi0xMS4xOCwxNi43MS0yNi43NCwyNy4wOS00Ni42NSwzMC4yNy03LjUyLDEuMi0xNS4yMywxLjM1LTIyLjg3LDEuNjQtMTQuMzEuNTUtMjguNjMuODUtNDIuOTQsMS4yNS0uNzIuMDItMS40NSwwLTIuNCwwLS4wNi0uODgtLjE2LTEuNjUtLjE2LTIuNDEsMC0yMS41MywwLTQzLjA1LDAtNjQuNTgsMC0yLjYyLjAxLTIuNjMsMi42Ny0yLjYzLDUuNCwwLDEwLjguMDYsMTYuMTktLjAzLDEuNzktLjAzLDIuMzkuNDYsMi4zNiwyLjM1LS4yMiwxNS4yNi0uMzMsMzAuNTItLjQ2LDQ1Ljc3LS4wMiwyLjUxLDAsMi40MywyLjU3LDIuMzcsNi43My0uMTQsMTMuNDYtLjA4LDIwLjE4LS4zMyw5Ljk4LS4zOCwxOS45NS0uODgsMjkuNTQtNC4xNiwxMC4xOS0zLjQ5LDE3Ljg1LTEwLjAxLDIzLjUzLTE5LjA2LDcuMzYtMTEuNzQsMTEuMzItMjQuNTgsMTIuOC0zOC4yOCwxLjgtMTYuNjUtLjAyLTMyLjgyLTYuMjgtNDguNC01LjI3LTEzLjExLTE0LjA4LTIzLjI2LTI2LjI4LTMwLjMzLTYuMTUtMy41Ni0xMi45My01LjM2LTIwLjA0LTUuMzgtMzAuODUtLjA3LTYxLjcxLS4wMy05Mi41Ni0uMDMtLjg1LDAtMS43LDAtMi42NywwdjYwLjM2Yy45LjA1LDEuNzMuMTMsMi41Ni4xMywyMi45MiwwLDQ1Ljg1LjA0LDY4Ljc3LS4wNSwyLjM1LDAsMy40Ny44NiwzLjk1LDIuOTUsMS4xMiw0LjgxLDEuMTksOS42Mi0uMDgsMTQuNDItLjUzLDIuMDEtMS43MiwyLjg0LTMuOTEsMi44NC0yMi43OS0uMDctNDUuNTgtLjA0LTY4LjM3LS4wNC0uOTIsMC0xLjgzLDAtMy4wNiwwWiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0ibTI4Ni43MSwxMDcuMWgtMTcuMzZWLjAyaDYwLjQzdjE0Ljc5aC00My4wN3YzMy40N2g0MC4zNnYxNC44N2gtNDAuMzZ2NDMuOTVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMzYyLjUyLDY0LjMzdjQyLjc3aC0xNy41MVYuMDJoMzAuMjVjMTMuODIsMCwyNC4wNSwyLjU5LDMwLjY5LDcuNzYsNi42NCw1LjE4LDkuOTYsMTIuOTksOS45NiwyMy40NCwwLDEzLjMzLTYuOTMsMjIuODMtMjAuOCwyOC40OWwzMC4yNSw0Ny4zOWgtMTkuOTJsLTI1LjYzLTQyLjc3aC0xNy4yOVptMC0xNC41aDEyLjE2YzguMTUsMCwxNC4wNi0xLjUxLDE3LjcyLTQuNTQsMy42Ni0zLjAzLDUuNDktNy41Miw1LjQ5LTEzLjQ4cy0xLjk4LTEwLjQtNS45My0xMy4wNC05LjkxLTMuOTYtMTcuODctMy45NmgtMTEuNTd2MzUuMDFaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNDY2LjA3LDQ4Ljg3TDQ5MS40MS4wMmgxOS4wNGwtMzUuNjcsNjUuNTV2NDEuNTNoLTE3LjU4di00MC45NEw0MjEuNjguMDJoMTkuMDRsMjUuMzQsNDguODVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjA5Ljc5LDUyLjUzYzAsMTcuNjgtNC45MSwzMS4xOS0xNC43Miw0MC41NC05LjgxLDkuMzUtMjMuOTUsMTQuMDMtNDIuNDEsMTQuMDNoLTI5Ljk2Vi4wMmgzMy4xMWMxNy4wNCwwLDMwLjMsNC41OSwzOS43NywxMy43Nyw5LjQ3LDkuMTgsMTQuMjEsMjIuMSwxNC4yMSwzOC43NVptLTE4LjQ2LjU5YzAtMjUuNjMtMTEuOTktMzguNDUtMzUuOTYtMzguNDVoLTE1LjE2djc3LjcxaDEyLjQ1YzI1Ljc4LDAsMzguNjctMTMuMDgsMzguNjctMzkuMjZaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjg5LjMzLDEwNy4xaC02MC41N1YuMDJoNjAuNTd2MTQuNzloLTQzLjA3djI5LjE1aDQwLjM2djE0LjY1aC00MC4zNnYzMy42Mmg0My4wN3YxNC44N1oiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im03OTcuNjQsMTA3LjFoLTIxLjQ2bC01Mi42Ni04NS4zM2gtLjU5bC4zNyw0Ljc2Yy42OCw5LjA0LDEuMDMsMTcuMzgsMS4wMywyNC45djU1LjY2aC0xNS44OVYuMDJoMjEuMjRsNTIuNTIsODQuODloLjQ0Yy0uMS0xLjEyLS4yOS01LjIxLS41OS0xMi4yNy0uMjktNy4wNi0uNDQtMTIuNTYtLjQ0LTE2LjUyVi4wMmgxNi4wNHYxMDcuMDhaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtODYwLjM4LDEwNy4xaC0xNy41VjE1LjAzaC0zMS40OVYuMDJoODAuNDl2MTUuMDFoLTMxLjQ5djkyLjA3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTI5Ny41NiwxODQuNzJoLTI4LjIxdi00LjQ4bDE5Ljg4LTI5LjQyaC0xOS4zNHYtNS41M2gyNy4xM3Y0LjUzbC0xOS45NiwyOS4zN2gyMC41djUuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzIyLjU3LDE4NC43MmwtMS4yNy00LjE1aC0uMjJjLTEuNDQsMS44Mi0yLjg5LDMuMDUtNC4zNCwzLjcxLTEuNDYuNjYtMy4zMy45OC01LjYxLjk4LTIuOTMsMC01LjIyLS43OS02Ljg2LTIuMzctMS42NS0xLjU4LTIuNDctMy44Mi0yLjQ3LTYuNzIsMC0zLjA3LDEuMTQtNS4zOSwzLjQyLTYuOTZzNS43Ni0yLjQyLDEwLjQ0LTIuNTZsNS4xNS0uMTZ2LTEuNTljMC0xLjkxLS40NC0zLjMzLTEuMzMtNC4yNy0uODktLjk0LTIuMjctMS40Mi00LjE0LTEuNDItMS41MywwLTIuOTkuMjItNC40LjY3LTEuNC40NS0yLjc1Ljk4LTQuMDUsMS41OWwtMi4wNS00LjUzYzEuNjItLjg1LDMuMzktMS40OSw1LjMxLTEuOTMsMS45Mi0uNDQsMy43NC0uNjYsNS40NS0uNjYsMy43OSwwLDYuNjYuODMsOC41OSwyLjQ4LDEuOTMsMS42NSwyLjksNC4yNSwyLjksNy43OXYyMC4wOWgtNC41M1ptLTkuNDQtNC4zMWMyLjMsMCw0LjE1LS42NCw1LjU0LTEuOTMsMS4zOS0xLjI5LDIuMDktMy4wOSwyLjA5LTUuNDF2LTIuNTlsLTMuODMuMTZjLTIuOTguMTEtNS4xNi42MS02LjUxLDEuNS0xLjM2Ljg5LTIuMDQsMi4yNS0yLjA0LDQuMDksMCwxLjMzLjM5LDIuMzYsMS4xOSwzLjA5Ljc5LjczLDEuOTgsMS4wOSwzLjU2LDEuMDlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzYxLjA4LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjYsMC00LjYxLjgtNS44NiwyLjM5LTEuMjUsMS41OS0xLjg4LDQuMjYtMS44OCw4djE0LjgxaC02LjM0di00MS45Nmg2LjM0djEwLjY1YzAsMS43MS0uMTEsMy41My0uMzIsNS40OGguNGMuODYtMS40NCwyLjA2LTIuNTUsMy42LTMuMzRzMy4zMy0xLjE5LDUuMzgtMS4xOWM3LjIzLDAsMTAuODQsMy42NCwxMC44NCwxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im0zOTUuMDYsMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQyMS4zNSwxODQuNzJsLTEuMjctNC4xNWgtLjIyYy0xLjQ0LDEuODItMi44OSwzLjA1LTQuMzQsMy43MXMtMy4zMy45OC01LjYxLjk4Yy0yLjkzLDAtNS4yMi0uNzktNi44Ni0yLjM3LTEuNjQtMS41OC0yLjQ3LTMuODItMi40Ny02LjcyLDAtMy4wNywxLjE0LTUuMzksMy40Mi02Ljk2czUuNzYtMi40MiwxMC40NC0yLjU2bDUuMTUtLjE2di0xLjU5YzAtMS45MS0uNDUtMy4zMy0xLjM0LTQuMjctLjg5LS45NC0yLjI3LTEuNDItNC4xNC0xLjQyLTEuNTMsMC0yLjk5LjIyLTQuNC42Ny0xLjQuNDUtMi43NS45OC00LjA0LDEuNTlsLTIuMDUtNC41M2MxLjYyLS44NSwzLjM5LTEuNDksNS4zMS0xLjkzLDEuOTItLjQ0LDMuNzQtLjY2LDUuNDUtLjY2LDMuNzksMCw2LjY2LjgzLDguNTksMi40OCwxLjkzLDEuNjUsMi45LDQuMjUsMi45LDcuNzl2MjAuMDloLTQuNTNabS0xNS41OS0zNy43M2MwLTEuMTEuMy0xLjkyLjktMi40MS42LS40OSwxLjMzLS43NCwyLjItLjc0Ljk1LDAsMS43MS4yOCwyLjI4Ljg0LjU3LjU2Ljg1LDEuMzMuODUsMi4zMnMtLjI5LDEuNzItLjg2LDIuMjljLS41Ny41OC0xLjMzLjg2LTIuMjcuODYtLjg2LDAtMS41OS0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3Wm02LjE1LDMzLjQxYzIuMywwLDQuMTUtLjY0LDUuNTQtMS45MywxLjM5LTEuMjksMi4wOS0zLjA5LDIuMDktNS40MXYtMi41OWwtMy44My4xNmMtMi45OS4xMS01LjE2LjYxLTYuNTEsMS41LTEuMzYuODktMi4wNCwyLjI1LTIuMDQsNC4wOSwwLDEuMzMuNCwyLjM2LDEuMTksMy4wOS43OS43MywxLjk4LDEuMDksMy41NiwxLjA5Wm00LjQ1LTMzLjQxYzAtMS4xMS4zLTEuOTIuOS0yLjQxLjYtLjQ5LDEuMzMtLjc0LDIuMi0uNzQuOTUsMCwxLjcyLjI4LDIuMjkuODQuNTcuNTYuODYsMS4zMy44NiwyLjMycy0uMywxLjc0LS44OSwyLjMxYy0uNTkuNTctMS4zNS44NS0yLjI3Ljg1LS44NiwwLTEuNi0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQ0OC43NiwxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNS4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTMsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDc3LjUxLDE4NC43MmgtMjIuNjN2LTMuOTFsMTUuMDctMjEuMDZoLTE0LjE2di00Ljg1aDIxLjI4djQuNDJsLTE0Ljc1LDIwLjU1aDE1LjE4djQuODVaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDk1LjM4LDE4MC4xNGMxLjU1LDAsMy4wOS0uMjQsNC42NC0uNzN2NC43N2MtLjcuMzEtMS42LjU2LTIuNzEuNzctMS4xLjIxLTIuMjUuMzEtMy40NC4zMS02LDAtOS4wMS0zLjE2LTkuMDEtOS40OXYtMTYuMDdoLTQuMDd2LTIuOGw0LjM3LTIuMzIsMi4xNi02LjMxaDMuOTF2Ni42M2g4LjQ5djQuOGgtOC40OXYxNS45N2MwLDEuNTMuMzgsMi42NiwxLjE1LDMuMzguNzYuNzMsMS43NywxLjA5LDMuMDEsMS4wOVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im01MTcuODIsMTg1LjI2Yy00LjY0LDAtOC4yNy0xLjM1LTEwLjg4LTQuMDZzLTMuOTItNi40My0zLjkyLTExLjE4LDEuMjEtOC43LDMuNjQtMTEuNDljMi40My0yLjc5LDUuNzYtNC4xOCwxMC4wMS00LjE4LDMuOTQsMCw3LjA1LDEuMiw5LjMzLDMuNTksMi4yOCwyLjM5LDMuNDMsNS42OCwzLjQzLDkuODd2My40M2gtMTkuODhjLjA5LDIuODkuODcsNS4xMiwyLjM1LDYuNjcsMS40NywxLjU2LDMuNTUsMi4zMyw2LjIzLDIuMzMsMS43NiwwLDMuNC0uMTcsNC45Mi0uNSwxLjUyLS4zMywzLjE1LS44OSw0Ljg5LTEuNjZ2NS4xNWMtMS41NS43NC0zLjExLDEuMjYtNC42OSwxLjU2LTEuNTguMzEtMy4zOS40Ni01LjQyLjQ2Wm0tMS4xNi0yNi4xMWMtMi4wMSwwLTMuNjMuNjQtNC44NCwxLjkxLTEuMjEsMS4yOC0xLjk0LDMuMTQtMi4xNyw1LjU4aDEzLjU0Yy0uMDQtMi40Ni0uNjMtNC4zMy0xLjc4LTUuNi0xLjE1LTEuMjctMi43My0xLjktNC43NS0xLjlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTUwLjU4LDE0N2MwLTEuMTMuMzEtMiwuOTMtMi42Mi42Mi0uNjEsMS41LS45MiwyLjY2LS45MnMxLjk4LjMxLDIuNi45Mi45MywxLjQ4LjkzLDIuNjItLjMxLDEuOTMtLjkzLDIuNTVjLS42Mi42Mi0xLjQ5LjkzLTIuNi45M3MtMi4wNC0uMzEtMi42Ni0uOTNjLS42Mi0uNjItLjkzLTEuNDctLjkzLTIuNTVabTYuNzIsMzcuNzNoLTYuMzR2LTI5LjgzaDYuMzR2MjkuODNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTkxLjQ2LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjgsMC00LjY0Ljc5LTUuODgsMi4zNy0xLjI0LDEuNTgtMS44Niw0LjIzLTEuODYsNy45NnYxNC44NmgtNi4zNHYtMjkuODNoNC45NmwuODksMy45MWguMzJjLjktMS40MiwyLjE4LTIuNTIsMy44My0zLjI5LDEuNjUtLjc3LDMuNDktMS4xNiw1LjUtMS4xNiw3LjE1LDAsMTAuNzMsMy42NCwxMC43MywxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im02MTUuMywxNDUuM2gxMS43YzUuNDMsMCw5LjM1Ljc5LDExLjc3LDIuMzcsMi40MiwxLjU4LDMuNjMsNC4wOCwzLjYzLDcuNSwwLDIuMy0uNTksNC4yMi0xLjc4LDUuNzQtMS4xOSwxLjUzLTIuODksMi40OS01LjEyLDIuODl2LjI3YzIuNzcuNTIsNC44MSwxLjU1LDYuMTEsMy4wOSwxLjMsMS41NCwxLjk1LDMuNjIsMS45NSw2LjI0LDAsMy41NC0xLjI0LDYuMzEtMy43MSw4LjMyLTIuNDcsMi01LjkxLDMuMDEtMTAuMzIsMy4wMWgtMTQuMjR2LTM5LjQzWm02LjQ1LDE2LjI5aDYuMmMyLjcsMCw0LjY3LS40Myw1LjkxLTEuMjgsMS4yNC0uODUsMS44Ni0yLjMxLDEuODYtNC4zNiwwLTEuODUtLjY3LTMuMTktMi4wMS00LjAycy0zLjQ3LTEuMjQtNi4zOC0xLjI0aC01LjU4djEwLjlabTAsNS4yM3YxMi40OWg2Ljg1YzIuNywwLDQuNzMtLjUyLDYuMTEtMS41NSwxLjM3LTEuMDMsMi4wNi0yLjY3LDIuMDYtNC44OSwwLTIuMDUtLjctMy41Ny0yLjEtNC41Ni0xLjQtLjk5LTMuNTMtMS40OC02LjM5LTEuNDhoLTYuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNjc2Ljg0LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDEtMi41LDIuNzMtNS45OCw0LjEtMTAuNDQsNC4xLTIuNzksMC01LjI1LS42My03LjM5LTEuODlzLTMuNzktMy4wNy00LjkzLTUuNDJjLTEuMTUtMi4zNS0xLjczLTUuMDktMS43My04LjIsMC00Ljg0LDEuMjQtOC42MSwzLjcyLTExLjMzLDIuNDgtMi43MSw1Ljk4LTQuMDcsMTAuNDktNC4wN3M3LjczLDEuMzksMTAuMjUsNC4xN2MyLjUyLDIuNzgsMy43OCw2LjUyLDMuNzgsMTEuMjNabS0yMS43MSwwYzAsNi44OSwyLjU0LDEwLjMzLDcuNjMsMTAuMzNzNy41NS0zLjQ0LDcuNTUtMTAuMzMtMi41NC0xMC4yMi03LjYxLTEwLjIyYy0yLjY2LDAtNC41OS44OC01Ljc0LDIuNjQtMS4yLDEuNzYtMS43OSw0LjI5LTEuNzksNy41OFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im03MDkuMzksMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTc0My4zNywxODQuNzJoLTYuMzZ2LTE4LjM0YzAtMi4zLS40Ni00LjAyLTEuMzktNS4xNS0uOTMtMS4xMy0yLjM5LTEuNy00LjQxLTEuNy0yLjY4LDAtNC42NC43OS01Ljg4LDIuMzctMS4yNCwxLjU4LTEuODYsNC4yMy0xLjg2LDcuOTZ2MTQuODZoLTYuMzR2LTI5LjgzaDQuOTZsLjg5LDMuOTFoLjMyYy45LTEuNDIsMi4xOC0yLjUyLDMuODMtMy4yOSwxLjY1LS43NywzLjQ5LTEuMTYsNS41LTEuMTYsNy4xNSwwLDEwLjczLDMuNjQsMTAuNzMsMTAuOTJ2MTkuNDRaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNzYxLjQzLDE4NS4yNmMtMy43MiwwLTYuNjMtMS4zNS04LjcxLTQuMDVzLTMuMTMtNi40OC0zLjEzLTExLjM1LDEuMDYtOC43LDMuMTctMTEuNDJjMi4xMS0yLjcyLDUuMDQtNC4wOSw4Ljc4LTQuMDlzNi45LDEuNDUsOC45NSw0LjM0aC4zMmMtLjMxLTIuMTQtLjQ2LTMuODMtLjQ2LTUuMDd2LTEwLjg3aDYuMzZ2NDEuOTZoLTQuOTZsLTEuMTEtMy45MWgtLjNjLTIuMDMsMi45Ny01LjAxLDQuNDUtOC45Myw0LjQ1Wm0xLjctNS4xMmMyLjYxLDAsNC41LS43Myw1LjY5LTIuMiwxLjE5LTEuNDcsMS44LTMuODQsMS44My03LjEzdi0uODljMC0zLjc2LS42MS02LjQzLTEuODMtOC4wMS0xLjIyLTEuNTgtMy4xNC0yLjM3LTUuNzQtMi4zNy0yLjIzLDAtMy45NS45LTUuMTUsMi43MS0xLjIsMS44MS0xLjgxLDQuMzgtMS44MSw3Ljczcy41OCw1LjgzLDEuNzUsNy41NmMxLjE3LDEuNzMsMi45MiwyLjYsNS4yNiwyLjZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODExLjI5LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDFzLTUuOTgsNC4xLTEwLjQ0LDQuMWMtMi43OSwwLTUuMjUtLjYzLTcuMzktMS44OXMtMy43OC0zLjA3LTQuOTMtNS40MmMtMS4xNS0yLjM1LTEuNzMtNS4wOS0xLjczLTguMiwwLTQuODQsMS4yNC04LjYxLDMuNzItMTEuMzMsMi40OC0yLjcxLDUuOTgtNC4wNywxMC40OS00LjA3czcuNzMsMS4zOSwxMC4yNSw0LjE3YzIuNTIsMi43OCwzLjc4LDYuNTIsMy43OCwxMS4yM1ptLTIxLjcxLDBjMCw2Ljg5LDIuNTQsMTAuMzMsNy42MywxMC4zM3M3LjU1LTMuNDQsNy41NS0xMC4zMy0yLjU0LTEwLjIyLTcuNjEtMTAuMjJjLTIuNjYsMC00LjU5Ljg4LTUuNzgsMi42NC0xLjIsMS43Ni0xLjc5LDQuMjktMS43OSw3LjU4WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTgzMi43MywxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNi4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTQsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODU3LjM4LDE1OS43aC03LjI4djI1LjAzaC02LjM2di0yNS4wM2gtNC45MXYtMi45N2w0LjkxLTEuOTR2LTEuOTRjMC0zLjUyLjgzLTYuMTQsMi40OC03LjgzLDEuNjUtMS43LDQuMTgtMi41NSw3LjU4LTIuNTUsMi4yMywwLDQuNDIuMzcsNi41OCwxLjExbC0xLjY3LDQuOGMtMS41Ni0uNS0zLjA2LS43Ni00LjQ0LS43NnMtMi40OS40NS0zLjE0LDEuMzNjLS42Ni44OS0uOTgsMi4yMy0uOTgsNC4wMXYxLjk0aDcuMjh2NC44WiIvPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iMjI3LjkxIiB5PSIwIiB3aWR0aD0iMyIgaGVpZ2h0PSIxODUuMjYiLz48L3N2Zz4=" alt="FRYDENT" class="logo-img"></a>
+<div class="header-right">
+<a href="index.html" class="header-btn header-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span class="back-text">Powrót do portalu</span></a>
+<a href="javascript:toggleDrFlexAppointments()" class="header-btn header-termin">Umów wizytę</a>
+</div>
+</div></header>
+
+<div class="hero">
+<h1>Nie bój się dentysty</h1>
+<div class="hero-divider"></div>
+<p>Boisz się dentysty? Nie jesteś sam/sama. Poświęcamy Ci czas, w Twoim tempie.</p>
+
+</div>
+
+<div class="lang-bar"><div class="lang-bar-flags">
+<a href="angstpatienten.html" class="lang-btn"><span class="flag" style="background-image:url(https://flagcdn.com/w40/de.png)"></span>DE</a>
+<a href="angstpatienten_en.html" class="lang-btn"><span class="flag" style="background-image:url(https://flagcdn.com/w40/gb.png)"></span>EN</a>
+<a href="angstpatienten_pl.html" class="lang-btn active"><span class="flag" style="background-image:url(https://flagcdn.com/w40/pl.png)"></span>PL</a>
+<a href="angstpatienten_tr.html" class="lang-btn"><span class="flag" style="background-image:url(https://flagcdn.com/w40/tr.png)"></span>TR</a>
+<a href="angstpatienten_ar.html" class="lang-btn"><span class="flag" style="background-image:url(https://flagcdn.com/w40/sa.png)"></span>AR</a>
+<a href="angstpatienten_ru.html" class="lang-btn"><span class="flag" style="background-image:url(https://flagcdn.com/w40/ru.png)"></span>RU</a>
+<a href="angstpatienten_ro.html" class="lang-btn"><span class="flag" style="background-image:url(https://flagcdn.com/w40/ro.png)"></span>RO</a>
+</div></div>
+
+<main>
+<div class="tab-nav">
+<button class="tab-btn active" onclick="go('understand')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"></path></svg>Zrozumieć</button>
+<button class="tab-btn" onclick="go('approach')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg>Nasze podejście</button>
+<button class="tab-btn" onclick="go('methods')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Metody</button>
+<button class="tab-btn" onclick="go('first')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>Pierwsza wizyta</button>
+<button class="tab-btn" onclick="go('tips')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>Porady</button>
+<button class="tab-btn" onclick="go('faq')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"></path></svg>FAQ</button>
+</div>
+
+<div>
+<!-- VERSTEHEN -->
+<div class="tab-section active" id="s-understand">
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"></path></svg>
+        Nie jesteś sam/sama
+    </div>
+    <p class="section-sub">Lęk przed dentystą dotyczy więcej osób, niż myślisz</p>
+
+    <!-- PUSTEBLUME ANIMATION -->
+    <div style="border-radius:14px;overflow:hidden;margin:1.5rem 0 2rem">
+    <svg viewBox="0 0 820 300" style="width:100%;display:block" xmlns="http://www.w3.org/2000/svg">
+    <style>
+    @keyframes ap-stemgrow{0%{stroke-dashoffset:150}100%{stroke-dashoffset:0}}
+    @keyframes ap-leafin{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+    @keyframes ap-headfade{0%{opacity:0;transform:scale(.2)}100%{opacity:1;transform:scale(1)}}
+    @keyframes ap-filgrow{0%{stroke-dashoffset:45}100%{stroke-dashoffset:0}}
+    @keyframes ap-puffin{0%{r:0;opacity:0}100%{opacity:1}}
+    @keyframes ap-sway{0%,100%{transform:rotate(-.8deg)}50%{transform:rotate(.8deg)}}
+    @keyframes ap-breathe{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:.45;transform:scale(1.08)}}
+    @keyframes ap-textfade{0%{opacity:0}100%{opacity:1}}
+    @keyframes ap-w1{0%,100%{transform:translate(0,0)}25%{transform:translate(1.5px,-1px)}50%{transform:translate(-1px,1.5px)}75%{transform:translate(1px,-1.5px)}}
+    @keyframes ap-w2{0%,100%{transform:translate(0,0)}25%{transform:translate(-1px,1px)}50%{transform:translate(1.5px,-1px)}75%{transform:translate(-1.5px,1.5px)}}
+    @keyframes ap-w3{0%,100%{transform:translate(0,0)}25%{transform:translate(1px,1.5px)}50%{transform:translate(-1.5px,-1px)}75%{transform:translate(1.5px,1px)}}
+    @keyframes ap-s1{0%{transform:translate(0,0);opacity:.8}100%{transform:translate(-80px,-240px);opacity:0}}
+    @keyframes ap-s2{0%{transform:translate(0,0);opacity:.75}100%{transform:translate(60px,-260px);opacity:0}}
+    @keyframes ap-s3{0%{transform:translate(0,0);opacity:.7}100%{transform:translate(-50px,-220px);opacity:0}}
+    @keyframes ap-s4{0%{transform:translate(0,0);opacity:.75}100%{transform:translate(90px,-250px);opacity:0}}
+    @keyframes ap-s5{0%{transform:translate(0,0);opacity:.65}100%{transform:translate(-100px,-230px);opacity:0}}
+    @keyframes ap-s6{0%{transform:translate(0,0);opacity:.7}100%{transform:translate(40px,-270px);opacity:0}}
+    @keyframes ap-s7{0%{transform:translate(0,0);opacity:.65}100%{transform:translate(-65px,-280px);opacity:0}}
+    @keyframes ap-s8{0%{transform:translate(0,0);opacity:.7}100%{transform:translate(75px,-240px);opacity:0}}
+    @keyframes ap-s9{0%{transform:translate(0,0);opacity:.6}100%{transform:translate(-30px,-260px);opacity:0}}
+    @keyframes ap-s10{0%{transform:translate(0,0);opacity:.65}100%{transform:translate(55px,-290px);opacity:0}}
+    @keyframes ap-s11{0%{transform:translate(0,0);opacity:.6}100%{transform:translate(-90px,-250px);opacity:0}}
+    @keyframes ap-s12{0%{transform:translate(0,0);opacity:.7}100%{transform:translate(25px,-240px);opacity:0}}
+    @keyframes ap-s13{0%{transform:translate(0,0);opacity:.55}100%{transform:translate(-20px,-300px);opacity:0}}
+    @keyframes ap-s14{0%{transform:translate(0,0);opacity:.6}100%{transform:translate(110px,-230px);opacity:0}}
+    @keyframes ap-s15{0%{transform:translate(0,0);opacity:.55}100%{transform:translate(-110px,-260px);opacity:0}}
+    </style>
+    <defs><linearGradient id="ap-sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#2C4170"/><stop offset="45%" stop-color="#4A6A90"/>
+    <stop offset="75%" stop-color="#8AAABE"/><stop offset="100%" stop-color="#F0EAE0"/>
+    </linearGradient></defs>
+    <rect width="820" height="300" fill="url(#ap-sky)"/>
+    <!-- Light --><circle cx="620" cy="65" r="70" fill="#FFD8A0" opacity=".2" style="animation:ap-breathe 8s ease-in-out infinite"/><circle cx="620" cy="65" r="40" fill="#FFE0B8" opacity=".15" style="animation:ap-breathe 8s ease-in-out 1s infinite"/><circle cx="620" cy="65" r="18" fill="#FFF0D8" opacity=".2"/>
+    <!-- Stars --><circle cx="120" cy="35" r="1.2" fill="#D0D8E8" opacity=".2" style="animation:ap-breathe 7s ease-in-out 2s infinite"/><circle cx="250" cy="22" r="1" fill="#D0D8E8" opacity=".18" style="animation:ap-breathe 9s ease-in-out 4s infinite"/><circle cx="400" cy="40" r="1.3" fill="#D0D8E8" opacity=".2" style="animation:ap-breathe 6s ease-in-out 1s infinite"/><circle cx="500" cy="28" r=".9" fill="#D0D8E8" opacity=".15" style="animation:ap-breathe 8s ease-in-out 3s infinite"/><circle cx="720" cy="38" r="1.1" fill="#D0D8E8" opacity=".18" style="animation:ap-breathe 10s ease-in-out 5s infinite"/>
+    <!-- Ground --><ellipse cx="200" cy="290" rx="120" ry="15" fill="#D8D0C0" opacity=".12"/><ellipse cx="500" cy="292" rx="150" ry="12" fill="#D0C8B8" opacity=".1"/>
+    <!-- Plant --><g style="transform-origin:280px 280px;animation:ap-sway 8s ease-in-out 4s infinite">
+    <path d="M280,280 C278,255 282,225 280,165" fill="none" stroke="rgba(200,220,210,.45)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="150" style="animation:ap-stemgrow 3.5s ease-out 1s both"/>
+    <ellipse cx="265" cy="245" rx="20" ry="6.5" fill="rgba(180,210,180,.35)" transform="rotate(-40,265,245)" style="animation:ap-leafin 2s ease-out 3.5s both"/><ellipse cx="298" cy="232" rx="17" ry="5.5" fill="rgba(190,215,185,.3)" transform="rotate(35,298,232)" style="animation:ap-leafin 2s ease-out 4s both"/><ellipse cx="268" cy="218" rx="13" ry="4.5" fill="rgba(195,220,190,.25)" transform="rotate(-30,268,218)" style="animation:ap-leafin 2s ease-out 4.5s both"/>
+    <g style="animation:ap-headfade 2.5s ease-out 4.5s both"><circle cx="280" cy="160" r="7" fill="rgba(230,220,200,.35)"/>
+    <line x1="280" y1="160" x2="280" y2="118" stroke="rgba(220,210,190,.5)" stroke-width=".6" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 5.5s both"/><line x1="280" y1="160" x2="305" y2="122" stroke="rgba(220,210,190,.45)" stroke-width=".6" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 5.7s both"/><line x1="280" y1="160" x2="255" y2="122" stroke="rgba(220,210,190,.45)" stroke-width=".6" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 5.9s both"/><line x1="280" y1="160" x2="318" y2="138" stroke="rgba(220,210,190,.4)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 6.1s both"/><line x1="280" y1="160" x2="242" y2="138" stroke="rgba(220,210,190,.4)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 6.3s both"/><line x1="280" y1="160" x2="322" y2="155" stroke="rgba(220,210,190,.35)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 6.5s both"/><line x1="280" y1="160" x2="238" y2="155" stroke="rgba(220,210,190,.35)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 6.7s both"/><line x1="280" y1="160" x2="293" y2="119" stroke="rgba(220,210,190,.45)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 5.6s both"/><line x1="280" y1="160" x2="267" y2="120" stroke="rgba(220,210,190,.45)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 5.8s both"/><line x1="280" y1="160" x2="312" y2="128" stroke="rgba(220,210,190,.4)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 6s both"/><line x1="280" y1="160" x2="248" y2="128" stroke="rgba(220,210,190,.4)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 6.2s both"/><line x1="280" y1="160" x2="320" y2="146" stroke="rgba(220,210,190,.35)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 6.4s both"/><line x1="280" y1="160" x2="240" y2="146" stroke="rgba(220,210,190,.35)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 6.6s both"/><line x1="280" y1="160" x2="286" y2="117" stroke="rgba(220,210,190,.45)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 5.55s both"/><line x1="280" y1="160" x2="274" y2="118" stroke="rgba(220,210,190,.45)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 5.65s both"/><line x1="280" y1="160" x2="300" y2="120" stroke="rgba(220,210,190,.42)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 5.75s both"/><line x1="280" y1="160" x2="260" y2="121" stroke="rgba(220,210,190,.42)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 5.85s both"/><line x1="280" y1="160" x2="316" y2="133" stroke="rgba(220,210,190,.38)" stroke-width=".5" stroke-dasharray="45" style="animation:ap-filgrow 2s ease-out 6.05s both"/>
+    <circle cx="280" cy="116" r="5.5" fill="rgba(255,255,255,.55)" style="animation:ap-puffin 1.5s ease-out 7s both,ap-w1 5s ease-in-out infinite"/><circle cx="305" cy="120" r="5" fill="rgba(255,255,255,.5)" style="animation:ap-puffin 1.5s ease-out 7.2s both,ap-w2 6s ease-in-out .3s infinite"/><circle cx="255" cy="120" r="5" fill="rgba(255,255,255,.5)" style="animation:ap-puffin 1.5s ease-out 7.4s both,ap-w3 5.5s ease-in-out .6s infinite"/><circle cx="318" cy="136" r="4.5" fill="rgba(255,255,255,.45)" style="animation:ap-puffin 1.5s ease-out 7.6s both,ap-w1 6.5s ease-in-out .9s infinite"/><circle cx="242" cy="136" r="4.5" fill="rgba(255,255,255,.45)" style="animation:ap-puffin 1.5s ease-out 7.8s both,ap-w2 5s ease-in-out 1.2s infinite"/><circle cx="322" cy="153" r="4" fill="rgba(255,255,255,.4)" style="animation:ap-puffin 1.5s ease-out 8s both,ap-w3 7s ease-in-out 1.5s infinite"/><circle cx="238" cy="153" r="4" fill="rgba(255,255,255,.4)" style="animation:ap-puffin 1.5s ease-out 8.2s both,ap-w1 5.5s ease-in-out 1.8s infinite"/><circle cx="293" cy="117" r="4.5" fill="rgba(255,255,255,.5)" style="animation:ap-puffin 1.5s ease-out 7.1s both,ap-w2 6s ease-in-out .4s infinite"/><circle cx="267" cy="118" r="4.5" fill="rgba(255,255,255,.5)" style="animation:ap-puffin 1.5s ease-out 7.3s both,ap-w3 5s ease-in-out .7s infinite"/><circle cx="312" cy="126" r="4" fill="rgba(255,255,255,.45)" style="animation:ap-puffin 1.5s ease-out 7.5s both,ap-w1 6.5s ease-in-out 1s infinite"/><circle cx="248" cy="126" r="4" fill="rgba(255,255,255,.45)" style="animation:ap-puffin 1.5s ease-out 7.7s both,ap-w2 5.5s ease-in-out 1.3s infinite"/><circle cx="320" cy="144" r="4" fill="rgba(255,255,255,.4)" style="animation:ap-puffin 1.5s ease-out 7.9s both,ap-w3 7s ease-in-out 1.6s infinite"/><circle cx="240" cy="144" r="4" fill="rgba(255,255,255,.4)" style="animation:ap-puffin 1.5s ease-out 8.1s both,ap-w1 5s ease-in-out 1.9s infinite"/><circle cx="286" cy="115" r="5" fill="rgba(255,255,255,.5)" style="animation:ap-puffin 1.5s ease-out 7.05s both,ap-w2 6s ease-in-out .2s infinite"/><circle cx="274" cy="116" r="5" fill="rgba(255,255,255,.5)" style="animation:ap-puffin 1.5s ease-out 7.15s both,ap-w3 5.5s ease-in-out .5s infinite"/><circle cx="300" cy="118" r="4.5" fill="rgba(255,255,255,.48)" style="animation:ap-puffin 1.5s ease-out 7.25s both,ap-w1 6s ease-in-out .8s infinite"/><circle cx="260" cy="119" r="4.5" fill="rgba(255,255,255,.48)" style="animation:ap-puffin 1.5s ease-out 7.35s both,ap-w2 5s ease-in-out 1.1s infinite"/><circle cx="316" cy="131" r="4" fill="rgba(255,255,255,.42)" style="animation:ap-puffin 1.5s ease-out 7.55s both,ap-w3 6.5s ease-in-out 1.4s infinite"/>
+    </g></g>
+    <!-- Seeds --><g style="animation:ap-s1 22s ease-in-out 9s infinite"><line x1="270" y1="148" x2="262" y2="132" stroke="rgba(255,255,255,.3)" stroke-width=".5"/><circle cx="262" cy="130" r="4" fill="rgba(255,255,255,.8)"/></g>
+    <g style="animation:ap-s2 26s ease-in-out 10s infinite"><line x1="292" y1="145" x2="300" y2="128" stroke="rgba(255,255,255,.3)" stroke-width=".5"/><circle cx="300" cy="126" r="3.5" fill="rgba(255,255,255,.7)"/></g>
+    <g style="animation:ap-s3 24s ease-in-out 11s infinite"><line x1="265" y1="152" x2="255" y2="138" stroke="rgba(255,255,255,.25)" stroke-width=".5"/><circle cx="255" cy="136" r="3.5" fill="rgba(255,255,255,.65)"/></g>
+    <g style="animation:ap-s4 28s ease-in-out 12s infinite"><line x1="298" y1="150" x2="310" y2="135" stroke="rgba(255,255,255,.25)" stroke-width=".5"/><circle cx="310" cy="133" r="3" fill="rgba(255,255,255,.65)"/></g>
+    <g style="animation:ap-s5 23s ease-in-out 13s infinite"><line x1="258" y1="155" x2="245" y2="142" stroke="rgba(255,255,255,.25)" stroke-width=".5"/><circle cx="245" cy="140" r="3.5" fill="rgba(255,255,255,.6)"/></g>
+    <g style="animation:ap-s6 27s ease-in-out 10.5s infinite"><line x1="285" y1="140" x2="292" y2="124" stroke="rgba(255,255,255,.3)" stroke-width=".5"/><circle cx="292" cy="122" r="3" fill="rgba(255,255,255,.65)"/></g>
+    <g style="animation:ap-s7 30s ease-in-out 14s infinite"><line x1="275" y1="145" x2="268" y2="128" stroke="rgba(255,255,255,.25)" stroke-width=".5"/><circle cx="268" cy="126" r="3.5" fill="rgba(255,255,255,.6)"/></g>
+    <g style="animation:ap-s8 25s ease-in-out 11.5s infinite"><line x1="302" y1="148" x2="314" y2="134" stroke="rgba(255,255,255,.25)" stroke-width=".5"/><circle cx="314" cy="132" r="3" fill="rgba(255,255,255,.65)"/></g>
+    <g style="animation:ap-s9 29s ease-in-out 15s infinite"><line x1="278" y1="138" x2="274" y2="120" stroke="rgba(255,255,255,.3)" stroke-width=".5"/><circle cx="274" cy="118" r="3.5" fill="rgba(255,255,255,.6)"/></g>
+    <g style="animation:ap-s10 24s ease-in-out 12.5s infinite"><line x1="290" y1="138" x2="298" y2="120" stroke="rgba(255,255,255,.25)" stroke-width=".5"/><circle cx="298" cy="118" r="3" fill="rgba(255,255,255,.6)"/></g>
+    <g style="animation:ap-s11 32s ease-in-out 16s infinite"><line x1="260" y1="148" x2="248" y2="136" stroke="rgba(255,255,255,.2)" stroke-width=".5"/><circle cx="248" cy="134" r="3" fill="rgba(255,255,255,.55)"/></g>
+    <g style="animation:ap-s12 26s ease-in-out 13.5s infinite"><line x1="282" y1="135" x2="286" y2="118" stroke="rgba(255,255,255,.3)" stroke-width=".5"/><circle cx="286" cy="116" r="3.5" fill="rgba(255,255,255,.6)"/></g>
+    <g style="animation:ap-s13 34s ease-in-out 17s infinite"><line x1="276" y1="142" x2="272" y2="122" stroke="rgba(255,255,255,.2)" stroke-width=".5"/><circle cx="272" cy="120" r="3" fill="rgba(255,255,255,.55)"/></g>
+    <g style="animation:ap-s14 28s ease-in-out 14.5s infinite"><line x1="305" y1="155" x2="318" y2="142" stroke="rgba(255,255,255,.2)" stroke-width=".5"/><circle cx="318" cy="140" r="3" fill="rgba(255,255,255,.55)"/></g>
+    <g style="animation:ap-s15 31s ease-in-out 18s infinite"><line x1="255" y1="150" x2="240" y2="138" stroke="rgba(255,255,255,.2)" stroke-width=".5"/><circle cx="240" cy="136" r="3.5" fill="rgba(255,255,255,.55)"/></g>
+    <!-- Text --><text x="560" y="170" font-family="Quicksand,sans-serif" font-size="17" font-weight="300" fill="rgba(255,255,255,.8)" style="animation:ap-textfade 4s ease-in-out 8s both">Tu możesz odpuścić.</text>
+    <text x="560" y="195" font-family="Quicksand,sans-serif" font-size="12" font-weight="300" fill="rgba(255,255,255,.45)" style="animation:ap-textfade 4s ease-in-out 10s both">Krok po kroku. W Twoim tempie.</text>
+    </svg>
+    </div>
+
+        <div class="card card-warm">
+        <div class="card-title">Czy wiesz, że...?</div>
+        <p style="font-size:.85rem;line-height:1.6">Około <strong>co piąty dorosły</strong> w Niemczech odczuwa silny lęk przed wizytą u dentysty. Kolejne 60–70% czuje przynajmniej dyskomfort. Jesteś więc w dobrym towarzystwie i nie ma powodu, by się tego wstydzić.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Skąd bierze się lęk?</div>
+        <p style="font-size:.85rem;line-height:1.6;margin-bottom:.5rem">Lęk przed dentystą ma wiele przyczyn i każda z nich jest zrozumiała:</p>
+        <p style="font-size:.84rem;padding:.25rem 0;padding-left:.8rem;border-left:3px solid var(--blue-light)"><strong>Złe doświadczenia:</strong> Ból podczas wcześniejszych zabiegów, który pozostał w pamięci</p>
+        <p style="font-size:.84rem;padding:.25rem 0;padding-left:.8rem;border-left:3px solid var(--blue-light)"><strong>Utrata kontroli:</strong> Poczucie bycia zdanym na innych, bez możliwości interwencji</p>
+        <p style="font-size:.84rem;padding:.25rem 0;padding-left:.8rem;border-left:3px solid var(--blue-light)"><strong>Wstyd:</strong> Obawa przed oceną stanu zębów</p>
+        <p style="font-size:.84rem;padding:.25rem 0;padding-left:.8rem;border-left:3px solid var(--blue-light)"><strong>Dźwięki i zapachy:</strong> Typowy „zapach gabinetu" lub dźwięk wiertła</p>
+        <p style="font-size:.84rem;padding:.25rem 0;padding-left:.8rem;border-left:3px solid var(--blue-light)"><strong>Opowieści innych:</strong> Straszne historie od znajomych lub rodziny</p>
+    </div>
+
+    <div class="hint" style="background:#EEF6EA;border-color:#c3ddb8;color:#3d6b32"><strong>Nasze podejście:</strong> W FRYDENT nie ma wyrzutów, niezależnie od tego, jak dawno była Twoja ostatnia wizyta. Cieszymy się, że teraz tu jesteś. To jedyne, co się liczy.</div>
+    <div class="nav-arrows"><button class="nav-arrow prev" disabled>← Wstecz</button><button class="nav-arrow next" onclick="go('approach')">Dalej →</button></div>
+</div>
+
+<!-- UNSER ANSATZ -->
+<div class="tab-section" id="s-approach">
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg>
+        Nasze podejście w FRYDENT
+    </div>
+    <p class="section-sub">Jak pracujemy z pacjentami z lękiem</p>
+
+    <div class="promise-grid">
+        <div class="promise-card">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <h4>Twoje tempo</h4>
+            <p>To nie my decydujemy, jak szybko idziemy. To Ty. Każdy zabieg przebiega w Twoim tempie.</p>
+        </div>
+        <div class="promise-card">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+            <h4>Wszystko wyjaśniamy</h4>
+            <p>Przed każdym krokiem wyjaśniamy dokładnie, co się stanie. Żadnych niespodzianek. Nigdy.</p>
+        </div>
+        <div class="promise-card">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 01-3.46 0"></path></svg>
+            <h4>Sygnał stop</h4>
+            <p>W każdej chwili możesz nas zatrzymać gestem ręki. Natychmiast przerywamy. Bez pytań, bez presji.</p>
+        </div>
+        <div class="promise-card">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"></path></svg>
+            <h4>Bez oceniania</h4>
+            <p>Niezależnie od stanu Twoich zębów: jesteśmy tu, żeby pomóc. Nie żeby oceniać.</p>
+        </div>
+    </div>
+
+    <div class="card card-warm">
+        <div class="card-title">☕ Nasza atmosfera: Inaczej niż myślisz</div>
+        <p style="font-size:.85rem;line-height:1.6;margin-bottom:.5rem">Zapomnij o wszystkim, co kojarzysz z gabinetem dentystycznym. W FRYDENT nie pachnie dentystą. Pachnie <strong>świeżo parzoną kawą</strong>, która na Ciebie czeka. Nasza praktyka jest żywa, swobodna i serdeczna. Tutaj się śmiejemy. I to często..</p>
+        <p style="font-size:.85rem;line-height:1.6">Żadnej sterylnej, wyniosłej ciszy. Żadnej niedostępnej atmosfery. To miejsce, w którym jesteś mile widziany/a jako człowiek. Ze wszystkim, co do tego należy. Również z Twoim lękiem.</p>
+    </div>
+
+    <div class="card card-green">
+        <div class="card-title">Łzy są dozwolone</div>
+        <p style="font-size:.85rem;line-height:1.6">Szczególnie pierwsze wizyty mogą być emocjonalne. Czasem samo przyjście wywołuje uczucia, które długo były tłumione. <strong>Jeśli łzy przychodzą, to przychodzą.</strong> To jest zupełnie w porządku i nie ma powodu do wstydu. Jesteśmy przy Tobie. A jeśli chcesz, po prostu podamy Ci rękę.</p>
+    </div>
+
+    <div class="card card-blue">
+        <div class="card-title">Nasza obietnica</div>
+        <p style="font-size:.85rem;line-height:1.6">„U nas każde leczenie zaczyna się od rozmowy. Słuchamy, zanim zaczniemy. A jeśli podczas pierwszej wizyty chcesz tylko usiąść na fotelu i się rozejrzeć, to jest zupełnie w porządku. Czasem właśnie to jest najważniejszy pierwszy krok."</p>
+        <p style="font-size:.8rem;color:var(--gray-600);margin-top:.5rem;font-style:italic">— Twój zespół FRYDENT</p>
+    </div>
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('understand')">← Wstecz</button><button class="nav-arrow next" onclick="go('methods')">Dalej →</button></div>
+</div>
+
+<!-- METHODEN -->
+<div class="tab-section" id="s-methods">
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        Tak robimy to bezboleśnie
+    </div>
+    <p class="section-sub">Nasze możliwości leczenia bez lęku</p>
+
+    <div class="card card-green">
+        <div class="card-title">✓ Empatyczna opieka i atmosfera praktyki</div>
+        <p style="font-size:.85rem;line-height:1.6">Najważniejsze nie pochodzi ze strzykawki, lecz ze wzajemnego kontaktu. Nasz zespół jest specjalnie przeszkolony w pracy z pacjentami z lękiem. Traktujemy Twój lęk poważnie, wyjaśniamy każdy krok z wyprzedzeniem i pracujemy wyłącznie w Twoim tempie. Swobodna, serdeczna atmosfera w naszej praktyce robi resztę: tutaj czujesz się bardziej jak u przyjaciół niż u dentysty.</p>
+    </div>
+
+    <div class="card card-green">
+        <div class="card-title">✓ Znieczulenie powierzchniowe</div>
+        <p style="font-size:.85rem;line-height:1.6">Zanim postawimy zastrzyk, znieczulamy miejsce wkłucia specjalnym żelem lub spray'em. Dzięki temu prawie lub w ogóle nie czujesz ukłucia. Wielu pacjentów jest zaskoczonych, jak mało odczuwają.</p>
+    </div>
+
+    <div class="card card-green">
+        <div class="card-title">✓ Sedacja doustna z Dormicum</div>
+        <p style="font-size:.85rem;line-height:1.6">W przypadku szczególnie silnego lęku możemy wspomóc proces przyzwyczajania <strong>farmakologicznie</strong>. Za pomocą Dormicum (środka uspokajającego w formie tabletek) leczymy Cię w stanie głębokiego odprężenia. <strong>Nie</strong> śpisz. Jesteś przytomny/a i możesz z nami współpracować, ale czujesz się całkowicie rozluźniony/a i spokojny/a. Wielu pacjentów opisuje to jako „jakby owinięty/a w watę".</p>
+    </div>
+
+    <div class="card card-green">
+        <div class="card-title">✓ Krótkie odstępy między wizytami</div>
+        <p style="font-size:.85rem;line-height:1.6">Dla pacjentów z lękiem planujemy celowo <strong>krótkie odstępy między wizytami</strong>. Dlaczego? Ponieważ długie przerwy pozwalają lękowi znowu rosnąć. Im krótsza przerwa, tym łatwiej jest przyjść na kolejną wizytę. Krok po kroku powstaje efekt przyzwyczajenia, a lęk się zmniejsza.</p>
+    </div>
+
+    <div class="card card-amber">
+        <div class="card-title">🔜 W planach: Sedacja gazem rozweselającym</div>
+        <p style="font-size:.85rem;line-height:1.6">Pracujemy nad tym, aby w przyszłości oferować również <strong>sedację gazem rozweselającym</strong>. Wdychasz relaksujący gaz przez małą maskę nosową. Działanie rozpoczyna się w ciągu kilku minut i szybko ustępuje po zabiegu. Jak tylko ta opcja będzie dostępna, poinformujemy Cię tutaj.</p>
+    </div>
+
+    <div class="hint" style="background:#F8F7F2;border-color:#E2DACE;color:#3A3226"><strong>Ważne:</strong> Kombinacja empatycznej opieki, znieczulenia powierzchniowego, krótkich odstępów między wizytami i, jeśli to konieczne, sedacji doustnej w zdecydowanej większości przypadków wystarcza, aby bezpiecznie i komfortowo leczyć nawet bardzo lękliwych pacjentów.</div>
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('approach')">← Wstecz</button><button class="nav-arrow next" onclick="go('first')">Dalej →</button></div>
+</div>
+
+<!-- ERSTER BESUCH -->
+<div class="tab-section" id="s-first">
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+        Twoja pierwsza wizyta: Krok po kroku
+    </div>
+    <p class="section-sub">Żebyś wiedział/a, czego się spodziewać</p>
+
+    <div class="step-list">
+        <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <h4>Telefon lub rezerwacja online</h4>
+                <p>Powiedz nam przy umawianiu wizyty, że jesteś pacjentem/ką z lękiem. Zaplanujemy wtedy szczególnie dużo czasu. Bez pośpiechu.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <h4>Przyjście i rozmowa</h4>
+                <p>Podczas pierwszej wizyty siadamy w spokoju razem. Żadnego fotela, żadnego wiertła, tylko rozmowa. Słuchamy i wspólnie omawiamy, czego sobie życzysz i czego się obawiasz.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <h4>Ostrożne badanie</h4>
+                <p>Kiedy poczujesz się gotowy/a, obejrzymy Twoje zęby. Delikatnie i ostrożnie. Jeśli nie, przeniesiemy to na następną wizytę. Żaden problem.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <h4>Wspólny plan</h4>
+                <p>Tworzymy razem plan leczenia, który do Ciebie pasuje. Małe kroki, bez presji czasowej, pełna kontrola. Zawsze.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hint" style="background:#EEF6EA;border-color:#c3ddb8;color:#3d6b32"><strong>Przy okazji:</strong> Wielu pacjentów z lękiem jest podczas pierwszej wizyty bardzo emocjonalnych. Niektórzy płaczą, i to jest zupełnie normalne. To wielki krok i wiemy o tym. Jesteśmy przy Tobie, z wyrozumiałością i, jeśli chcesz, również z ręką do trzymania.</div>
+
+    <div class="card card-blue">
+        <div class="card-title">A co, jeśli nie chcę być leczony/a podczas pierwszej wizyty?</div>
+        <p style="font-size:.85rem;line-height:1.6">To zupełnie w porządku! Wielu naszych pacjentów z lękiem przychodzi na pierwszą wizytę tylko po to, żeby się poznać. Czasem wystarczy raz usiąść na fotelu i zobaczyć, że nic złego się nie dzieje. Ten krok jest często najważniejszy.</p>
+    </div>
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('methods')">← Wstecz</button><button class="nav-arrow next" onclick="go('tips')">Dalej →</button></div>
+</div>
+
+<!-- TIPPS -->
+<div class="tab-section" id="s-tips">
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        Porady na przed wizytą
+    </div>
+    <p class="section-sub">Co możesz zrobić, żeby się przygotować</p>
+
+    <div class="do-dont">
+        <div class="do-card">
+            <h4>To pomaga</h4>
+            <p class="rule">Umów wizytę rano, mniej czasu na zamartwianie się</p>
+            <p class="rule">Zabierz ze sobą osobę zaufaną</p>
+            <p class="rule">Zabierz własną muzykę/słuchawki</p>
+            <p class="rule">Poinformuj nas wcześniej o swoich lękach</p>
+            <p class="rule">Małe kroki: najpierw poznanie, potem leczenie</p>
+        </div>
+        <div class="dont-card">
+            <h4>Lepiej unikaj</h4>
+            <p class="rule">Kofeiny rano w dniu wizyty (zwiększa niepokój)</p>
+            <p class="rule">Przychodzenia na czczo (niski cukier we krwi wzmacnia lęk)</p>
+            <p class="rule">Pozwalania się zniechęcić „strasznym historiom"</p>
+            <p class="rule">Ciągłego przekładania wizyt. Lęk przez to rośnie</p>
+        </div>
+    </div>
+
+    <div class="card card-warm">
+        <div class="card-title">Technika oddechowa na wizytę u dentysty</div>
+        <p style="font-size:.85rem;line-height:1.6">Prosta metoda, która natychmiast pomaga:</p>
+        <p style="font-size:.85rem;line-height:1.8;margin-top:.5rem">
+            <strong>4 sekundy wdech</strong> (przez nos)<br>
+            <strong>4 sekundy wstrzymaj</strong><br>
+            <strong>6 sekund powolny wydech</strong> (przez usta)<br>
+        </p>
+        <p style="font-size:.84rem;color:var(--gray-600);margin-top:.5rem">Powtórz to 3–5 razy. Ta technika aktywuje Twój układ nerwowy i pomaga uspokoić ciało.</p>
+    </div>
+
+    <div class="hint" style="background:#EEF6EA;border-color:#c3ddb8;color:#3d6b32"><strong>Tipp:</strong> Vereinbaren Sie ein Sygnał stop mit uns (z.B. linke Hand heben). Das gibt Ihnen die Kontrolle zurück. Und allein dieses Wissen reduziert die Angst deutlich.</div>
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('first')">← Wstecz</button><button class="nav-arrow next" onclick="go('faq')">Dalej →</button></div>
+</div>
+
+<!-- FAQ -->
+<div class="tab-section" id="s-faq">
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"></path></svg>
+        Częste pytania
+    </div>
+    <p class="section-sub">Twoje pytania, nasze odpowiedzi</p>
+
+    <div class="card">
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Czy będziecie mnie oceniać, jeśli moje zęby są w złym stanie? <span class="faq-arrow">&#x25BC;</span></div>
+            <div class="faq-a">Nie. Nigdy. Codziennie widzimy pacjentów, którzy dawno nie byli u dentysty, z różnych powodów. Naszym jedynym celem jest pomoc. Nie ocenianie.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Co się stanie, jeśli podczas zabiegu dostanę ataku paniki? <span class="faq-arrow">&#x25BC;</span></div>
+            <div class="faq-a">Natychmiast przerywamy. Bez dyskusji. Robimy przerwę, możesz się uspokoić, i wspólnie decydujemy, czy i jak kontynuować. Nie ma żadnej presji.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Czy mogę przyprowadzić osobę towarzyszącą? <span class="faq-arrow">&#x25BC;</span></div>
+            <div class="faq-a">Tak, oczywiście! Bliska osoba u Twojego boku może bardzo uspokajać. Twoja osoba towarzysząca może wejść do gabinetu zabiegowego.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Czy poczuję zastrzyk ze znieczuleniem? <span class="faq-arrow">&#x25BC;</span></div>
+            <div class="faq-a">Dzięki naszemu znieczuleniu powierzchniowemu (żel znieczulający, który nakładamy przed zastrzykiem) większość pacjentów prawie lub w ogóle nie czuje ukłucia. Poświęcamy szczególnie dużo czasu na ten etap.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Czy muszę być leczony/a już podczas pierwszej wizyty? <span class="faq-arrow">&#x25BC;</span></div>
+            <div class="faq-a">Nie! Twoja pierwsza wizyta może być czystą rozmową zapoznawczą. Robimy tylko to, na co jesteś gotowy/a. Krok po kroku.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Jak długo trwa wizyta dla pacjentów z lękiem? <span class="faq-arrow">&#x25BC;</span></div>
+            <div class="faq-a">Celowo planujemy więcej czasu niż zwykle, z reguły 45–60 minut. Dzięki temu nie ma presji czasowej i możemy pracować w spokoju.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Co muszę wiedzieć o zabiegu z Dormicum? <span class="faq-arrow">&#x25BC;</span></div>
+            <div class="faq-a">Proszę, przyprowadź osobę towarzyszącą, która może Cię odwieźć do domu po zabiegu. Nie wolno Ci prowadzić samochodu po przyjęciu Dormicum. Zaplanuj również spokojną resztę dnia. Szczegóły omówimy wcześniej w spokoju.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Czy oferujecie gaz rozweselający lub narkozę? <span class="faq-arrow">&#x25BC;</span></div>
+            <div class="faq-a">Gaz rozweselający jest u nas aktualnie w planach. Co już oferujemy: <strong>sedację doustną z Dormicum</strong>, środek uspokajający w formie tabletek, dzięki któremu podczas zabiegu jesteś przytomny/a, ale całkowicie rozluźniony/a. W połączeniu z naszą empatyczną opieką i znieczuleniem powierzchniowym jest to dla większości pacjentów z lękiem doskonałe rozwiązanie.</div>
+        </div>
+    </div>
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('tips')">← Wstecz</button><button class="nav-arrow prev" disabled>Dalej →</button></div>
+</div>
+</div>
+
+<div class="hint" style="background:#F8F7F2;border-color:#E2DACE;color:#3A3226"><strong>Warto wiedzieć:</strong> Te informacje nie zastępują osobistej rozmowy z Twoją dentystką. W przypadku indywidualnych pytań prosimy o bezpośredni kontakt.</div>
+
+<!-- DR. FLEX BOOKING CTA -->
+<div style="background:linear-gradient(135deg,#E8EEF7 0%,#F0F4FA 100%);border:1px solid #3D5A98;border-radius:8px;padding:1.5rem 2rem;margin:2rem 0;text-align:center">
+    <div style="font-family:'Quicksand',sans-serif;font-size:1.1rem;font-weight:700;color:#2C4170;margin-bottom:.4rem">Pierwszy krok jest najtrudniejszy. Ale idziemy go z Tobą.</div>
+    <div style="font-size:.85rem;color:#6B7280;margin-bottom:1rem">Umów się na niezobowiązującą rozmowę zapoznawczą.</div>
+    <a href="javascript:toggleDrFlexAppointments()" style="display:inline-flex;align-items:center;gap:8px;background:#D4A843;color:#1E2D4D;font-weight:700;font-size:.85rem;padding:9px 24px;border-radius:8px;text-decoration:none;cursor:pointer;transition:all .3s;box-shadow:0 2px 8px rgba(212,168,67,.3)" onmouseover="this.style.background='#2C4170';this.style.color='#FFFFFF'" onmouseout="this.style.background='#D4A843';this.style.color='#1E2D4D'">Umów wizytę</a>
+    <div style="margin-top:.8rem"><a href="tel:+497703284" style="font-size:1rem;font-weight:700;color:#2C4170;text-decoration:none">07703 284</a></div>
+</div>
+
+<!-- PRINT & BACK -->
+<div class="print-bar">
+    <button class="btn-print" onclick="window.print()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg> Drukuj</button>
+</div>
+</main>
+
+<footer><p>© 2026 FRYDENT · Zahnarztpraxis Tatiana Frydrych · <a href="https://frydent.de/">www.frydent.de</a><br>Stan: Marzec 2026</p></footer>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<a href="javascript:toggleDrFlexAppointments()" class="sidebar-tab termin">
+    <span class="sidebar-label">Umów wizytę online</span>
+    <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></div>
+</a>
+<a href="tel:+497703284" class="sidebar-tab phone">
+    <span class="sidebar-label">07703 284</span>
+    <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></div>
+</a>
+<a href="mailto:info@frydent.de" class="sidebar-tab email">
+    <span class="sidebar-label">Napisz e-mail</span>
+    <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
+</a>
+<a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank" class="sidebar-tab location">
+    <span class="sidebar-label">Martinstraße 21, Bonndorf</span>
+    <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><circle cx="12" cy="11" r="3"></circle></svg></div>
+</a>
+</div>
+
+<!-- MOBILE BAR -->
+<div class="mobile-bar">
+    <a href="tel:+497703284" class="phone-m"><svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>Zadzwoń</a>
+    <a href="javascript:toggleDrFlexAppointments()" class="termin-m"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Umów wizytę</a>
+    <a href="mailto:info@frydent.de"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>E-Mail</a>
+    <a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><circle cx="12" cy="11" r="3"></circle></svg>Adres</a>
+</div>
+
+<script>
+function go(id){
+    document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('s-'+id).classList.add('active');
+    const tabs=['understand','approach','methods','first','tips','faq'];
+    const i=tabs.indexOf(id);
+    document.querySelectorAll('.tab-btn')[i].classList.add('active');
+    window.scrollTo({top:document.querySelector('.tab-nav').offsetTop-80,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
