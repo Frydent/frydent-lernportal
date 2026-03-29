@@ -9,7 +9,7 @@
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
             --blue:#3D5A98;--blue-dark:#2C4170;--blue-darker:#1E2D4D;--blue-light:#E8EEF7;
-            --gold:#D4A843;--gold-light:#F5ECD4;--gold-dark:#B8922E;
+            --gold:#E2C26A;--gold-light:#F8F0DC;--gold-dark:#C4A44E;
             --white:#FFFFFF;--gray-50:#F7F8FA;--gray-100:#F0F2F5;--gray-200:#E4E6EB;
             --gray-400:#B0B3B8;--gray-600:#6B7280;--gray-800:#1F2937;
             --red-soft:#FEF2F2;--red-border:#FECACA;--red-text:#991B1B;
@@ -31,7 +31,7 @@
         .header-back:hover{background:#1E2D4D}
         .header-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
         .header-back .back-text{display:inline}
-        .header-termin{background:#D4A843;color:#1E2D4D}
+        .header-termin{background:#E2C26A;color:#1E2D4D}
         .header-termin:hover{background:#2C4170;color:#FFFFFF}
         @media(max-width:640px){.header-back .back-text{display:none}.header-back{padding:9px 10px}}
 
@@ -47,7 +47,7 @@
         /* TAB NAVIGATION */
         .tab-nav{display:flex;gap:.4rem;padding-bottom:.5rem;margin-bottom:1.75rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
         .tab-nav::-webkit-scrollbar{display:none}
-        .tab-btn{display:flex;align-items:center;gap:6px;padding:.55rem 1rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid #D4C48A;background:#F0E8C4;color:#5A4A1E;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
+        .tab-btn{display:flex;align-items:center;gap:6px;padding:.55rem 1rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid #E2D4A0;background:#F0E8C4;color:#5A4A1E;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
         .tab-btn:hover{border-color:var(--gold);color:#3D3010;background:#E6DBB0}
         .tab-btn.active{background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)}
         @media(max-width:640px){.tab-btn{flex:0 0 auto}}
@@ -116,9 +116,9 @@
 
         /* MOOD CARD */
         .intro-card-inner{display:flex;align-items:stretch;min-height:120px}
-        .intro-accent{flex:0 0 200px;background:linear-gradient(160deg,#f5ecd4 0%,#efe3c4 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem 1.25rem;border-right:1px solid rgba(212,168,67,.15)}
+        .intro-accent{flex:0 0 200px;background:linear-gradient(160deg,#f5ecd4 0%,#efe3c4 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem 1.25rem;border-right:1px solid rgba(226,194,106,.15)}
         .intro-content{flex:1;padding:1.5rem 1.75rem}
-        @media(max-width:640px){.intro-card-inner{flex-direction:column}.intro-accent{flex:none;padding:1.2rem;border-right:none;border-bottom:1px solid rgba(212,168,67,.15)}}
+        @media(max-width:640px){.intro-card-inner{flex-direction:column}.intro-accent{flex:none;padding:1.2rem;border-right:none;border-bottom:1px solid rgba(226,194,106,.15)}}
 
         /* FAQ */
         .faq-item{border-bottom:1px solid var(--gray-200);padding:.8rem 0;cursor:pointer}
@@ -145,8 +145,8 @@
         .sidebar-tab.phone .sidebar-icon{background:#7a96b8}
         .sidebar-tab.phone .sidebar-label{background:#7a96b8;color:white}
         .sidebar-tab.phone .sidebar-icon svg{stroke:white}
-        .sidebar-tab.termin .sidebar-icon{background:#D4A843}
-        .sidebar-tab.termin .sidebar-label{background:#D4A843;color:#1E2D4D}
+        .sidebar-tab.termin .sidebar-icon{background:#E2C26A}
+        .sidebar-tab.termin .sidebar-label{background:#E2C26A;color:#1E2D4D}
         .sidebar-tab.termin .sidebar-icon svg{stroke:#1E2D4D}
         .sidebar-tab.email .sidebar-icon{background:#5a7da8}
         .sidebar-tab.email .sidebar-label{background:#5a7da8;color:white}
@@ -162,8 +162,8 @@
         .mobile-bar svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5}
         .mobile-bar .phone-m{color:var(--blue)}
         .mobile-bar .phone-m svg{stroke:var(--blue)}
-        .mobile-bar a.termin-m svg{stroke:#D4A843!important}
-        .mobile-bar a.termin-m{color:#D4A843!important;font-weight:700}
+        .mobile-bar a.termin-m svg{stroke:#E2C26A!important}
+        .mobile-bar a.termin-m{color:#E2C26A!important;font-weight:700}
         @media(max-width:640px){.mobile-bar{display:flex!important}}
 
         @media print{.sidebar,.mobile-bar,.header-right,.nav-arrows,.print-bar{display:none!important}main{padding:1rem}}
@@ -206,13 +206,13 @@
         <div class="intro-card-inner">
             <div class="intro-accent">
                 <svg width="72" height="56" viewBox="0 0 48 38" fill="none" style="margin-bottom:.7rem">
-                    <ellipse cx="16" cy="8" rx="2.5" ry="2.5" fill="#D4A843" opacity=".55">
+                    <ellipse cx="16" cy="8" rx="2.5" ry="2.5" fill="#E2C26A" opacity=".55">
                         <animate attributeName="ry" values="2.5;2.5;.3;2.5;2.5" keyTimes="0;.9;.95;1;1" dur="5s" repeatCount="indefinite"/>
                     </ellipse>
-                    <ellipse cx="32" cy="8" rx="2.5" ry="2.5" fill="#D4A843" opacity=".55">
+                    <ellipse cx="32" cy="8" rx="2.5" ry="2.5" fill="#E2C26A" opacity=".55">
                         <animate attributeName="ry" values="2.5;2.5;.3;2.5;2.5" keyTimes="0;.9;.95;1;1" dur="5s" begin=".15s" repeatCount="indefinite"/>
                     </ellipse>
-                    <path stroke="#D4A843" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".6" d="M12 18 Q24 22 36 18">
+                    <path stroke="#E2C26A" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".6" d="M12 18 Q24 22 36 18">
                         <animate attributeName="d" values="M12 18 Q24 22 36 18;M8 17 Q24 30 40 17;M12 18 Q24 22 36 18" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines=".42 0 .58 1;.42 0 .58 1"/>
                     </path>
                 </svg>
