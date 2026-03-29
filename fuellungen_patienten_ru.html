@@ -128,13 +128,14 @@
         @media(max-width:640px){.do-dont{grid-template-columns:1fr}}
 
         /* FAQ */
-        .faq-item{border-bottom:1px solid var(--gray-200);padding:.8rem 0;cursor:pointer}
+        .faq-item{border-bottom:1px solid var(--gray-200);padding:1rem 0;cursor:pointer}
+        .faq-item:first-child{padding-top:0}
         .faq-item:last-child{border-bottom:none}
-        .faq-q{font-weight:600;font-size:.9rem;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:center}
-        .faq-arrow{font-size:.7rem;color:#9B72CF;transition:transform .3s}
+        .faq-q{font-family:'Quicksand',sans-serif;font-weight:600;font-size:.9rem;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:center}
+        .faq-a{font-size:.84rem;color:var(--gray-600);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding-top:0;line-height:1.6}
+        .faq-item.open .faq-a{max-height:300px;padding-top:.6rem}
+        .faq-arrow{transition:transform .3s;font-size:.7rem;color:#9B72CF}
         .faq-item.open .faq-arrow{transform:rotate(180deg)}
-        .faq-a{display:none;font-size:.84rem;color:var(--gray-600);padding-top:.6rem;line-height:1.6}
-        .faq-item.open .faq-a{display:block}
 
         /* NAV ARROWS */
         .nav-arrows{display:flex;justify-content:center;gap:1rem;margin:2.5rem 0}
@@ -523,6 +524,7 @@
     </div>
 
 
+        <div class="card">
     <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q">Болезненна ли процедура пломбирования? <span class="faq-arrow">&#x25BC;</span></div>
         <div class="faq-a">Нет. Благодаря современной местной анестезии лечение <strong>безболезненно</strong>. Обезболивание выполняется осторожно и бережно. Во время лечения Вы не чувствуете боли.</div>
@@ -552,12 +554,11 @@
         <div class="faq-q">Покрывает ли страховка расходы? <span class="faq-arrow">&#x25BC;</span></div>
         <div class="faq-a">Да — каждый застрахованный по закону имеет право на <strong>бесплатное базовое обслуживание</strong>. Для высококачественных композитных пломб заключается соглашение о дополнительных расходах — страховка покрывает свою фиксированную долю, Вы несёте только разницу. Для вкладок мы заранее составляем прозрачный план расходов.</div>
     </div>
+    </div>
 
-
-
-    <div style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));border-radius:var(--radius);padding:2rem;text-align:center;margin-top:2rem;color:white">
-        <div style="font-size:1.3rem;font-weight:700;margin-bottom:.5rem">Запишитесь на приём</div>
-        <p style="font-size:.88rem;opacity:.92;margin-bottom:1.2rem;line-height:1.5">Контрольный осмотр, консультация или острые жалобы — мы здесь для Вас.</p>
+    <div style="background:linear-gradient(135deg,#E8EEF7 0%,#F0F4FA 100%);border:1px solid #3D5A98;border-radius:var(--radius);padding:1.5rem 2rem;margin-top:2rem;text-align:center">
+        <div style="font-family:'Quicksand',sans-serif;font-size:1.1rem;font-weight:700;color:#2C4170;margin-bottom:.4rem">Запишитесь на приём</div>
+        <p style="font-size:.85rem;color:#6B7280;margin-bottom:1rem">Контрольный осмотр, консультация или острые жалобы — мы здесь для Вас.</p>
         <a href="javascript:toggleDrFlexAppointments()" style="display:inline-flex;align-items:center;gap:8px;background:#E2C26A;color:#1E2D4D;font-weight:700;font-size:.85rem;padding:9px 24px;border-radius:8px;text-decoration:none;cursor:pointer;transition:all .3s" onmouseover="this.style.background='#2C4170';this.style.color='#FFFFFF'" onmouseout="this.style.background='#E2C26A';this.style.color='#1E2D4D'">Записаться на приём</a>
     </div>
 
