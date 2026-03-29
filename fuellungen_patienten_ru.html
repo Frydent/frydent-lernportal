@@ -131,7 +131,7 @@
         .faq-item{border-bottom:1px solid var(--gray-200);padding:.8rem 0;cursor:pointer}
         .faq-item:last-child{border-bottom:none}
         .faq-q{font-weight:600;font-size:.9rem;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:center}
-        .faq-arrow{font-size:.7rem;color:var(--gold);transition:transform .3s}
+        .faq-arrow{font-size:.7rem;color:#9B72CF;transition:transform .3s}
         .faq-item.open .faq-arrow{transform:rotate(180deg)}
         .faq-a{display:none;font-size:.84rem;color:var(--gray-600);padding-top:.6rem;line-height:1.6}
         .faq-item.open .faq-a{display:block}
@@ -522,17 +522,38 @@
         Часто задаваемые вопросы
     </div>
 
-    <div class="card"><div class="card-title">Болезненна ли процедура пломбирования?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Нет. Благодаря современной местной анестезии лечение <strong>безболезненно</strong>. Обезболивание выполняется осторожно и бережно. Во время лечения Вы не чувствуете боли.</p></div>
 
-    <div class="card"><div class="card-title">Вы используете амальгаму?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Нет. С 2025 года амальгама в ЕС <strong>практически не используется</strong>. Мы применяем исключительно высококачественные композитные материалы в цвет зуба — эстетичные, биосовместимые и долговечные.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Болезненна ли процедура пломбирования? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Нет. Благодаря современной местной анестезии лечение <strong>безболезненно</strong>. Обезболивание выполняется осторожно и бережно. Во время лечения Вы не чувствуете боли.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Как долго служит композитная пломба?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">При хорошей гигиене полости рта и регулярных осмотрах композитная пломба служит обычно <strong>5–10 лет</strong>. Золотые и керамические вкладки могут прослужить 15–25 лет и дольше.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Вы используете амальгаму? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Нет. С 2025 года амальгама в ЕС <strong>практически не используется</strong>. Мы применяем исключительно высококачественные композитные материалы в цвет зуба — эстетичные, биосовместимые и долговечные.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Можно ли заменить старые амальгамные пломбы?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Да, конечно. Мы удаляем старые амальгамные пломбы <strong>бережно и безопасно</strong> и заменяем их эстетичными композитными пломбами или керамическими вкладками.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Как долго служит композитная пломба? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">При хорошей гигиене полости рта и регулярных осмотрах композитная пломба служит обычно <strong>5–10 лет</strong>. Золотые и керамические вкладки могут прослужить 15–25 лет и дольше.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Когда нужна вкладка вместо пломбы?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">При крупных дефектах, особенно в боковых зубах, <strong>вкладка (золотая или керамическая)</strong> может быть стабильнее и долговечнее прямой композитной пломбы. Мы консультируем индивидуально.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Можно ли заменить старые амальгамные пломбы? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Да, конечно. Мы удаляем старые амальгамные пломбы <strong>бережно и безопасно</strong> и заменяем их эстетичными композитными пломбами или керамическими вкладками.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Покрывает ли страховка расходы?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Да — каждый застрахованный по закону имеет право на <strong>бесплатное базовое обслуживание</strong>. Для высококачественных композитных пломб заключается соглашение о дополнительных расходах — страховка покрывает свою фиксированную долю, Вы несёте только разницу. Для вкладок мы заранее составляем прозрачный план расходов.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Когда нужна вкладка вместо пломбы? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">При крупных дефектах, особенно в боковых зубах, <strong>вкладка (золотая или керамическая)</strong> может быть стабильнее и долговечнее прямой композитной пломбы. Мы консультируем индивидуально.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Покрывает ли страховка расходы? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Да — каждый застрахованный по закону имеет право на <strong>бесплатное базовое обслуживание</strong>. Для высококачественных композитных пломб заключается соглашение о дополнительных расходах — страховка покрывает свою фиксированную долю, Вы несёте только разницу. Для вкладок мы заранее составляем прозрачный план расходов.</div>
+    </div>
+
+
 
     <div style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));border-radius:var(--radius);padding:2rem;text-align:center;margin-top:2rem;color:white">
         <div style="font-size:1.3rem;font-weight:700;margin-bottom:.5rem">Запишитесь на приём</div>

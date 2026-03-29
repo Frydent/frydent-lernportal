@@ -131,7 +131,7 @@
         .faq-item{border-bottom:1px solid var(--gray-200);padding:.8rem 0;cursor:pointer}
         .faq-item:last-child{border-bottom:none}
         .faq-q{font-weight:600;font-size:.9rem;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:center}
-        .faq-arrow{font-size:.7rem;color:var(--gold);transition:transform .3s}
+        .faq-arrow{font-size:.7rem;color:#9B72CF;transition:transform .3s}
         .faq-item.open .faq-arrow{transform:rotate(180deg)}
         .faq-a{display:none;font-size:.84rem;color:var(--gray-600);padding-top:.6rem;line-height:1.6}
         .faq-item.open .faq-a{display:block}
@@ -522,17 +522,38 @@
         Frequently Asked Questions
     </div>
 
-    <div class="card"><div class="card-title">Does a filling procedure hurt?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">No. Thanks to modern local anesthesia, the treatment is <strong>painless</strong>. The anesthesia is administered carefully and gently. You feel no pain during the procedure.</p></div>
 
-    <div class="card"><div class="card-title">Do you use amalgam?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">No. Since 2025, amalgam is <strong>largely no longer used</strong> in the EU. We exclusively use high-quality, tooth-colored composite materials — aesthetic, biocompatible and durable.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Does a filling procedure hurt? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">No. Thanks to modern local anesthesia, the treatment is <strong>painless</strong>. The anesthesia is administered carefully and gently. You feel no pain during the procedure.</div>
+    </div>
 
-    <div class="card"><div class="card-title">How long does a composite filling last?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">With good oral hygiene and regular check-ups, a composite filling typically lasts <strong>5–10 years</strong>. Gold and ceramic inlays can last 15–25 years and more.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Do you use amalgam? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">No. Since 2025, amalgam is <strong>largely no longer used</strong> in the EU. We exclusively use high-quality, tooth-colored composite materials — aesthetic, biocompatible and durable.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Can old amalgam fillings be replaced?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Yes, of course. We remove old amalgam fillings <strong>gently and safely</strong> and replace them with aesthetic composite fillings or ceramic inlays.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">How long does a composite filling last? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">With good oral hygiene and regular check-ups, a composite filling typically lasts <strong>5–10 years</strong>. Gold and ceramic inlays can last 15–25 years and more.</div>
+    </div>
 
-    <div class="card"><div class="card-title">When do I need an inlay instead of a filling?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">For larger defects, especially in back teeth, an <strong>inlay (gold or ceramic)</strong> can be more stable and durable than a direct composite filling. We advise you individually.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Can old amalgam fillings be replaced? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Yes, of course. We remove old amalgam fillings <strong>gently and safely</strong> and replace them with aesthetic composite fillings or ceramic inlays.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Does insurance cover the costs?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Yes — every statutory insured person is entitled to <strong>basic care free of charge</strong>. For high-quality composite fillings, an additional cost agreement is made — the insurer covers its fixed share, you only pay the difference. For inlays we prepare a transparent cost plan in advance.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">When do I need an inlay instead of a filling? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">For larger defects, especially in back teeth, an <strong>inlay (gold or ceramic)</strong> can be more stable and durable than a direct composite filling. We advise you individually.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Does insurance cover the costs? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Yes — every statutory insured person is entitled to <strong>basic care free of charge</strong>. For high-quality composite fillings, an additional cost agreement is made — the insurer covers its fixed share, you only pay the difference. For inlays we prepare a transparent cost plan in advance.</div>
+    </div>
+
+
 
     <div style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));border-radius:var(--radius);padding:2rem;text-align:center;margin-top:2rem;color:white">
         <div style="font-size:1.3rem;font-weight:700;margin-bottom:.5rem">Book your appointment</div>

@@ -131,7 +131,7 @@
         .faq-item{border-bottom:1px solid var(--gray-200);padding:.8rem 0;cursor:pointer}
         .faq-item:last-child{border-bottom:none}
         .faq-q{font-weight:600;font-size:.9rem;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:center}
-        .faq-arrow{font-size:.7rem;color:var(--gold);transition:transform .3s}
+        .faq-arrow{font-size:.7rem;color:#9B72CF;transition:transform .3s}
         .faq-item.open .faq-arrow{transform:rotate(180deg)}
         .faq-a{display:none;font-size:.84rem;color:var(--gray-600);padding-top:.6rem;line-height:1.6}
         .faq-item.open .faq-a{display:block}
@@ -522,17 +522,38 @@
         Najczęściej zadawane pytania
     </div>
 
-    <div class="card"><div class="card-title">Czy zabieg wypełnieniowy boli?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Nie. Dzięki nowoczesnemu znieczuleniu miejscowemu zabieg jest <strong>bezbolesny</strong>. Znieczulenie jest podawane ostrożnie i delikatnie. Podczas zabiegu nie odczuwają Państwo bólu.</p></div>
 
-    <div class="card"><div class="card-title">Czy stosujecie amalgam?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Nie. Od 2025 roku amalgam <strong>nie jest już szeroko stosowany</strong> w UE. Stosujemy wyłącznie wysokiej jakości materiały kompozytowe w kolorze zęba — estetyczne, biokompatybilne i trwałe.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Czy zabieg wypełnieniowy boli? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Nie. Dzięki nowoczesnemu znieczuleniu miejscowemu zabieg jest <strong>bezbolesny</strong>. Znieczulenie jest podawane ostrożnie i delikatnie. Podczas zabiegu nie odczuwają Państwo bólu.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Jak długo trwa wypełnienie kompozytowe?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Przy dobrej higienie jamy ustnej i regularnych kontrolach wypełnienie kompozytowe trwa zwykle <strong>5–10 lat</strong>. Wkłady złote i ceramiczne mogą wytrzymać 15–25 lat i dłużej.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Czy stosujecie amalgam? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Nie. Od 2025 roku amalgam <strong>nie jest już szeroko stosowany</strong> w UE. Stosujemy wyłącznie wysokiej jakości materiały kompozytowe w kolorze zęba — estetyczne, biokompatybilne i trwałe.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Czy można wymienić stare wypełnienia amalgamowe?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Tak, oczywiście. Usuwamy stare wypełnienia amalgamowe <strong>delikatnie i bezpiecznie</strong> i zastępujemy je estetycznymi wypełnieniami kompozytowymi lub wkładami ceramicznymi.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Jak długo trwa wypełnienie kompozytowe? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Przy dobrej higienie jamy ustnej i regularnych kontrolach wypełnienie kompozytowe trwa zwykle <strong>5–10 lat</strong>. Wkłady złote i ceramiczne mogą wytrzymać 15–25 lat i dłużej.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Kiedy potrzebuję wkładu zamiast wypełnienia?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Przy większych ubytkach, szczególnie w zębach bocznych, <strong>wkład (złoty lub ceramiczny)</strong> może być stabilniejszy i trwalszy niż bezpośrednie wypełnienie kompozytowe. Doradzimy indywidualnie.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Czy można wymienić stare wypełnienia amalgamowe? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Tak, oczywiście. Usuwamy stare wypełnienia amalgamowe <strong>delikatnie i bezpiecznie</strong> i zastępujemy je estetycznymi wypełnieniami kompozytowymi lub wkładami ceramicznymi.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Czy kasa chorych pokrywa koszty?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Tak — każdy ubezpieczony ustawowo ma prawo do <strong>bezpłatnego zaopatrzenia podstawowego</strong>. Dla wysokiej jakości wypełnień kompozytowych zawierana jest umowa o dodatkowych kosztach — kasa pokrywa swój stały udział, Państwo ponoszą tylko różnicę. Przy wkładach przygotowujemy z góry przejrzysty plan kosztów.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Kiedy potrzebuję wkładu zamiast wypełnienia? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Przy większych ubytkach, szczególnie w zębach bocznych, <strong>wkład (złoty lub ceramiczny)</strong> może być stabilniejszy i trwalszy niż bezpośrednie wypełnienie kompozytowe. Doradzimy indywidualnie.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Czy kasa chorych pokrywa koszty? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Tak — każdy ubezpieczony ustawowo ma prawo do <strong>bezpłatnego zaopatrzenia podstawowego</strong>. Dla wysokiej jakości wypełnień kompozytowych zawierana jest umowa o dodatkowych kosztach — kasa pokrywa swój stały udział, Państwo ponoszą tylko różnicę. Przy wkładach przygotowujemy z góry przejrzysty plan kosztów.</div>
+    </div>
+
+
 
     <div style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));border-radius:var(--radius);padding:2rem;text-align:center;margin-top:2rem;color:white">
         <div style="font-size:1.3rem;font-weight:700;margin-bottom:.5rem">Umów wizytę</div>

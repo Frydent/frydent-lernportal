@@ -131,7 +131,7 @@
         .faq-item{border-bottom:1px solid var(--gray-200);padding:.8rem 0;cursor:pointer}
         .faq-item:last-child{border-bottom:none}
         .faq-q{font-weight:600;font-size:.9rem;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:center}
-        .faq-arrow{font-size:.7rem;color:var(--gold);transition:transform .3s}
+        .faq-arrow{font-size:.7rem;color:#9B72CF;transition:transform .3s}
         .faq-item.open .faq-arrow{transform:rotate(180deg)}
         .faq-a{display:none;font-size:.84rem;color:var(--gray-600);padding-top:.6rem;line-height:1.6}
         .faq-item.open .faq-a{display:block}
@@ -522,17 +522,38 @@
         Häufig gestellte Fragen
     </div>
 
-    <div class="card"><div class="card-title">Tut eine Füllungsbehandlung weh?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Nein. Dank moderner Lokalanästhesie ist die Behandlung <strong>schmerzfrei</strong>. Die Betäubung wird vorsichtig und schonend gesetzt. Sie spüren während der Behandlung keine Schmerzen.</p></div>
 
-    <div class="card"><div class="card-title">Verwenden Sie Amalgam?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Nein. Seit 2025 wird Amalgam in der EU <strong>weitgehend nicht mehr verwendet</strong>. Wir setzen ausschließlich hochwertige, zahnfarbene Kompositmaterialien ein — ästhetisch, biokompatibel und langlebig.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Tut eine Füllungsbehandlung weh? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Nein. Dank moderner Lokalanästhesie ist die Behandlung <strong>schmerzfrei</strong>. Die Betäubung wird vorsichtig und schonend gesetzt. Sie spüren während der Behandlung keine Schmerzen.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Wie lange hält eine Kompositfüllung?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Bei guter Mundhygiene und regelmäßigen Kontrollen hält eine Kompositfüllung in der Regel <strong>5–10 Jahre</strong>. Gold- und Keramikinlays können 15–25 Jahre und länger halten.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Verwenden Sie Amalgam? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Nein. Seit 2025 wird Amalgam in der EU <strong>weitgehend nicht mehr verwendet</strong>. Wir setzen ausschließlich hochwertige, zahnfarbene Kompositmaterialien ein — ästhetisch, biokompatibel und langlebig.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Kann ich alte Amalgamfüllungen ersetzen lassen?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Ja, selbstverständlich. Wir entfernen alte Amalgamfüllungen <strong>schonend und sicher</strong> und ersetzen sie durch ästhetische Kompositfüllungen oder Keramikinlays.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Wie lange hält eine Kompositfüllung? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Bei guter Mundhygiene und regelmäßigen Kontrollen hält eine Kompositfüllung in der Regel <strong>5–10 Jahre</strong>. Gold- und Keramikinlays können 15–25 Jahre und länger halten.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Wann brauche ich ein Inlay statt einer Füllung?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Bei größeren Defekten, besonders im Seitenzahnbereich, kann ein <strong>Inlay (Gold oder Keramik)</strong> stabiler und langlebiger sein als eine direkte Kompositfüllung. Wir beraten Sie individuell.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Kann ich alte Amalgamfüllungen ersetzen lassen? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Ja, selbstverständlich. Wir entfernen alte Amalgamfüllungen <strong>schonend und sicher</strong> und ersetzen sie durch ästhetische Kompositfüllungen oder Keramikinlays.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Übernimmt die Kasse die Kosten?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Ja — jeder gesetzlich Versicherte hat Anspruch auf eine <strong>zuzahlungsfreie Basisversorgung</strong>. Für hochwertige Kompositfüllungen (Nano-Kunststoff) wird eine Mehrkostenvereinbarung geschlossen — die Kasse übernimmt ihren festen Anteil, Sie tragen nur die Differenz. Bei Inlays erstellen wir vorab einen transparenten Kostenplan.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Wann brauche ich ein Inlay statt einer Füllung? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Bei größeren Defekten, besonders im Seitenzahnbereich, kann ein <strong>Inlay (Gold oder Keramik)</strong> stabiler und langlebiger sein als eine direkte Kompositfüllung. Wir beraten Sie individuell.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Übernimmt die Kasse die Kosten? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Ja — jeder gesetzlich Versicherte hat Anspruch auf eine <strong>zuzahlungsfreie Basisversorgung</strong>. Für hochwertige Kompositfüllungen (Nano-Kunststoff) wird eine Mehrkostenvereinbarung geschlossen — die Kasse übernimmt ihren festen Anteil, Sie tragen nur die Differenz. Bei Inlays erstellen wir vorab einen transparenten Kostenplan.</div>
+    </div>
+
+
 
     <div style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));border-radius:var(--radius);padding:2rem;text-align:center;margin-top:2rem;color:white">
         <div style="font-size:1.3rem;font-weight:700;margin-bottom:.5rem">Vereinbaren Sie Ihren Termin</div>

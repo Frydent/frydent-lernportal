@@ -131,7 +131,7 @@
         .faq-item{border-bottom:1px solid var(--gray-200);padding:.8rem 0;cursor:pointer}
         .faq-item:last-child{border-bottom:none}
         .faq-q{font-weight:600;font-size:.9rem;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:center}
-        .faq-arrow{font-size:.7rem;color:var(--gold);transition:transform .3s}
+        .faq-arrow{font-size:.7rem;color:#9B72CF;transition:transform .3s}
         .faq-item.open .faq-arrow{transform:rotate(180deg)}
         .faq-a{display:none;font-size:.84rem;color:var(--gray-600);padding-top:.6rem;line-height:1.6}
         .faq-item.open .faq-a{display:block}
@@ -522,17 +522,38 @@
         Întrebări frecvente
     </div>
 
-    <div class="card"><div class="card-title">O procedură de obturație doare?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Nu. Datorită anesteziei locale moderne, tratamentul este <strong>nedureros</strong>. Anestezia se administrează cu grijă și blând. Nu simțiți nicio durere în timpul procedurii.</p></div>
 
-    <div class="card"><div class="card-title">Folosiți amalgam?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Nu. Din 2025, amalgamul <strong>nu mai este utilizat pe scară largă</strong> în UE. Folosim exclusiv materiale compozite de înaltă calitate, în culoarea dintelui — estetice, biocompatibile și durabile.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">O procedură de obturație doare? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Nu. Datorită anesteziei locale moderne, tratamentul este <strong>nedureros</strong>. Anestezia se administrează cu grijă și blând. Nu simțiți nicio durere în timpul procedurii.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Cât durează o obturație din compozit?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Cu o igienă orală bună și controale regulate, o obturație din compozit durează de obicei <strong>5–10 ani</strong>. Inlay-urile de aur și ceramică pot dura 15–25 de ani și mai mult.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Folosiți amalgam? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Nu. Din 2025, amalgamul <strong>nu mai este utilizat pe scară largă</strong> în UE. Folosim exclusiv materiale compozite de înaltă calitate, în culoarea dintelui — estetice, biocompatibile și durabile.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Se pot înlocui obturațiile vechi de amalgam?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Da, desigur. Îndepărtăm obturațiile vechi de amalgam <strong>blând și sigur</strong> și le înlocuim cu obturații estetice din compozit sau inlay-uri ceramice.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Cât durează o obturație din compozit? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Cu o igienă orală bună și controale regulate, o obturație din compozit durează de obicei <strong>5–10 ani</strong>. Inlay-urile de aur și ceramică pot dura 15–25 de ani și mai mult.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Când am nevoie de un inlay în loc de obturație?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">La defecte mai mari, mai ales la dinții laterali, un <strong>inlay (aur sau ceramică)</strong> poate fi mai stabil și mai durabil decât o obturație directă din compozit. Vă consiliem individual.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Se pot înlocui obturațiile vechi de amalgam? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Da, desigur. Îndepărtăm obturațiile vechi de amalgam <strong>blând și sigur</strong> și le înlocuim cu obturații estetice din compozit sau inlay-uri ceramice.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Acoperă asigurarea costurile?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Da — fiecare asigurat legal are dreptul la <strong>îngrijire de bază fără plată suplimentară</strong>. Pentru obturații din compozit de înaltă calitate se încheie un acord de costuri suplimentare — asigurarea acoperă partea sa fixă, dumneavoastră suportați doar diferența. La inlay-uri pregătim în prealabil un plan transparent de costuri.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Când am nevoie de un inlay în loc de obturație? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">La defecte mai mari, mai ales la dinții laterali, un <strong>inlay (aur sau ceramică)</strong> poate fi mai stabil și mai durabil decât o obturație directă din compozit. Vă consiliem individual.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Acoperă asigurarea costurile? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Da — fiecare asigurat legal are dreptul la <strong>îngrijire de bază fără plată suplimentară</strong>. Pentru obturații din compozit de înaltă calitate se încheie un acord de costuri suplimentare — asigurarea acoperă partea sa fixă, dumneavoastră suportați doar diferența. La inlay-uri pregătim în prealabil un plan transparent de costuri.</div>
+    </div>
+
+
 
     <div style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));border-radius:var(--radius);padding:2rem;text-align:center;margin-top:2rem;color:white">
         <div style="font-size:1.3rem;font-weight:700;margin-bottom:.5rem">Programați-vă vizita</div>

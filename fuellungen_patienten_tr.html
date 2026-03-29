@@ -131,7 +131,7 @@
         .faq-item{border-bottom:1px solid var(--gray-200);padding:.8rem 0;cursor:pointer}
         .faq-item:last-child{border-bottom:none}
         .faq-q{font-weight:600;font-size:.9rem;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:center}
-        .faq-arrow{font-size:.7rem;color:var(--gold);transition:transform .3s}
+        .faq-arrow{font-size:.7rem;color:#9B72CF;transition:transform .3s}
         .faq-item.open .faq-arrow{transform:rotate(180deg)}
         .faq-a{display:none;font-size:.84rem;color:var(--gray-600);padding-top:.6rem;line-height:1.6}
         .faq-item.open .faq-a{display:block}
@@ -522,17 +522,38 @@
         Sıkça Sorulan Sorular
     </div>
 
-    <div class="card"><div class="card-title">Dolgu tedavisi acıtır mı?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Hayır. Modern lokal anestezi sayesinde tedavi <strong>ağrısızdır</strong>. Uyuşturma dikkatli ve nazik bir şekilde yapılır. Tedavi sırasında hiçbir ağrı hissetmezsiniz.</p></div>
 
-    <div class="card"><div class="card-title">Amalgam kullanıyor musunuz?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Hayır. 2025'ten beri amalgam AB'de <strong>büyük ölçüde kullanılmamaktadır</strong>. Yalnızca yüksek kaliteli, diş renginde kompozit malzemeler kullanıyoruz — estetik, biyouyumlu ve dayanıklı.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Dolgu tedavisi acıtır mı? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Hayır. Modern lokal anestezi sayesinde tedavi <strong>ağrısızdır</strong>. Uyuşturma dikkatli ve nazik bir şekilde yapılır. Tedavi sırasında hiçbir ağrı hissetmezsiniz.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Kompozit dolgu ne kadar dayanır?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">İyi ağız bakımı ve düzenli kontrollerle kompozit dolgu genellikle <strong>5–10 yıl</strong> dayanır. Altın ve seramik inleyler 15–25 yıl ve daha uzun süre dayanabilir.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Amalgam kullanıyor musunuz? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Hayır. 2025'ten beri amalgam AB'de <strong>büyük ölçüde kullanılmamaktadır</strong>. Yalnızca yüksek kaliteli, diş renginde kompozit malzemeler kullanıyoruz — estetik, biyouyumlu ve dayanıklı.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Eski amalgam dolguları değiştirilebilir mi?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Evet, elbette. Eski amalgam dolguları <strong>nazik ve güvenli</strong> şekilde çıkarıyor ve estetik kompozit dolgular veya seramik inleylerle değiştiriyoruz.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Kompozit dolgu ne kadar dayanır? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">İyi ağız bakımı ve düzenli kontrollerle kompozit dolgu genellikle <strong>5–10 yıl</strong> dayanır. Altın ve seramik inleyler 15–25 yıl ve daha uzun süre dayanabilir.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Dolgu yerine ne zaman inley gerekir?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Daha büyük defektlerde, özellikle arka dişlerde, bir <strong>inley (altın veya seramik)</strong> doğrudan kompozit dolgudan daha stabil ve dayanıklı olabilir. Size bireysel danışmanlık sunuyoruz.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Eski amalgam dolguları değiştirilebilir mi? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Evet, elbette. Eski amalgam dolguları <strong>nazik ve güvenli</strong> şekilde çıkarıyor ve estetik kompozit dolgular veya seramik inleylerle değiştiriyoruz.</div>
+    </div>
 
-    <div class="card"><div class="card-title">Kasa masrafları karşılar mı?</div><p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Evet — her yasal sigortalı <strong>ek ödemesiz temel bakım</strong> hakkına sahiptir. Yüksek kaliteli kompozit dolgular için ek maliyet anlaşması yapılır — kasa sabit payını karşılar, siz sadece farkı ödersiniz. İnleylerde önceden şeffaf bir maliyet planı hazırlarız.</p></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Dolgu yerine ne zaman inley gerekir? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Daha büyük defektlerde, özellikle arka dişlerde, bir <strong>inley (altın veya seramik)</strong> doğrudan kompozit dolgudan daha stabil ve dayanıklı olabilir. Size bireysel danışmanlık sunuyoruz.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Kasa masrafları karşılar mı? <span class="faq-arrow">&#x25BC;</span></div>
+        <div class="faq-a">Evet — her yasal sigortalı <strong>ek ödemesiz temel bakım</strong> hakkına sahiptir. Yüksek kaliteli kompozit dolgular için ek maliyet anlaşması yapılır — kasa sabit payını karşılar, siz sadece farkı ödersiniz. İnleylerde önceden şeffaf bir maliyet planı hazırlarız.</div>
+    </div>
+
+
 
     <div style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));border-radius:var(--radius);padding:2rem;text-align:center;margin-top:2rem;color:white">
         <div style="font-size:1.3rem;font-weight:700;margin-bottom:.5rem">Randevunuzu alın</div>
