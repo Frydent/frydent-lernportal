@@ -192,6 +192,32 @@
         footer a{color:var(--blue);text-decoration:none}
 
         @media print{.sidebar,.mobile-bar,.header-right,.nav-arrows,.print-bar{display:none!important}main{padding:1rem}}
+
+        /* WARUM-BOX */
+        .warum-box{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:1.2rem 1.5rem;margin-bottom:1.25rem;margin-top:-.6rem}
+        .warum-box h4{font-family:'Quicksand',sans-serif;font-size:.88rem;font-weight:600;color:var(--gray-800);margin-bottom:.4rem}
+        .warum-box p{font-size:.82rem;color:var(--gray-600);line-height:1.55;margin-bottom:.6rem}
+        .warum-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+        .warum-tag{background:#fff;font-size:.76rem;font-weight:600;padding:.3rem .7rem;border-radius:20px;display:inline-flex;align-items:center;gap:.3rem}
+        .warum-tag::before{content:"+";font-weight:700;font-size:.85rem}
+        .warum-tag.green{border:1.5px solid #43a047;color:#3d6b32}
+        .warum-tag.gold{border:1.5px solid #d4a917;color:#8b6914}
+        .warum-tag.purple{border:1.5px solid #9c69c7;color:#5B3E8A}
+
+        /* COMPARISON TABLE */
+        .compare-title{font-family:'Quicksand',sans-serif;font-size:.95rem;font-weight:600;color:var(--blue-dark);margin:1.75rem 0 .75rem;display:flex;align-items:center;gap:10px}
+        .compare-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;margin-bottom:1.25rem}
+        @media(max-width:640px){.compare-grid{grid-template-columns:1fr}}
+        .compare-col{background:var(--white);border-radius:var(--radius);overflow:hidden;border:1px solid var(--gray-200)}
+        .compare-header{padding:.7rem 1rem;text-align:center;font-family:'Quicksand',sans-serif;font-weight:600;font-size:.85rem;display:flex;align-items:center;justify-content:center;gap:.4rem}
+        .compare-header.ch-green{background:#EEF4EA;color:#3d6b32}
+        .compare-header.ch-gold{background:var(--gold-light);color:#8b6914}
+        .compare-header.ch-purple{background:#F5F0FA;color:#5B3E8A}
+        .compare-row{padding:.5rem 1rem;font-size:.78rem;color:var(--gray-600);border-top:1px solid var(--gray-100);display:flex;justify-content:space-between;align-items:center}
+        .compare-row:nth-child(even){background:var(--gray-50)}
+        .compare-label{font-weight:600;color:var(--gray-800);font-size:.75rem}
+        .compare-value{text-align:right;font-size:.78rem}
+        .stars{color:var(--gold);letter-spacing:1px}
     </style>
     <script src="https://dr-flex.de/embed.js?medicalPracticeId=60190"></script>
 </head>
@@ -274,7 +300,15 @@
         <strong>Einsatz:</strong> Kleine bis mittelgroße Defekte im Front- und Seitenzahnbereich.</p>
     </div>
 
-    <div class="hint" style="margin-bottom:1rem"><strong>Warum Komposit?</strong> Kompositfüllungen ermöglichen eine besonders natürliche Ästhetik, da sie farblich exakt an den Zahn angepasst werden. Sie sind stabil, schonen die gesunde Zahnsubstanz und bieten bei guter Pflege eine langfristige Versorgung. Gerade im sichtbaren Bereich, aber auch bei höheren ästhetischen Ansprüchen, entscheiden sich viele Patienten bewusst für diese hochwertige Lösung.</div>
+    <div class="warum-box">
+        <h4>Warum Komposit?</h4>
+        <p>Kompositfüllungen ermöglichen eine besonders natürliche Ästhetik, da sie farblich exakt an den Zahn angepasst werden. Sie sind stabil, schonen die gesunde Zahnsubstanz und bieten bei guter Pflege eine langfristige Versorgung. Gerade im sichtbaren Bereich, aber auch bei höheren ästhetischen Ansprüchen, entscheiden sich viele Patienten bewusst für diese hochwertige Lösung.</p>
+        <div class="warum-tags">
+            <span class="warum-tag green">Natürlich & unauffällig</span>
+            <span class="warum-tag green">Substanzschonend</span>
+            <span class="warum-tag green">Gute Haltbarkeit im Alltag</span>
+        </div>
+    </div>
 
     <div class="card">
         <div class="card-title"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#F0C040;vertical-align:middle;margin-right:6px"></span> Gold (Goldinlay / Goldrestauration)</div>
@@ -282,6 +316,16 @@
         <strong>Vorteile:</strong> Extrem langlebig, exzellente Passgenauigkeit, sehr gute Verträglichkeit, bewährtes Material.<br>
         <strong>Haltbarkeit:</strong> 15–25+ Jahre.<br>
         <strong>Einsatz:</strong> Mittelgroße bis große Defekte im Seitenzahnbereich. Erfordert 2 Sitzungen.</p>
+    </div>
+
+    <div class="warum-box">
+        <h4>Warum Gold?</h4>
+        <p>Goldinlays gehören zu den langlebigsten Versorgungen in der Zahnmedizin. Sie zeichnen sich durch eine sehr hohe Passgenauigkeit, ausgezeichnete Verträglichkeit und enorme Stabilität aus. Viele Patienten entscheiden sich bewusst für Gold, wenn ihnen maximale Haltbarkeit und Funktion wichtiger sind als die Ästhetik.</p>
+        <div class="warum-tags">
+            <span class="warum-tag gold">Maximale Präzision</span>
+            <span class="warum-tag gold">Sehr lange Haltbarkeit</span>
+            <span class="warum-tag gold">Bewährte Stabilität</span>
+        </div>
     </div>
 
     <div class="card">
@@ -292,7 +336,50 @@
         <strong>Einsatz:</strong> Mittelgroße bis große Defekte, besonders wenn Ästhetik wichtig ist. Erfordert 2 Sitzungen.</p>
     </div>
 
-    <div class="hint"><strong>Unsere Empfehlung:</strong> Für die meisten Fälle ist Komposit eine hervorragende Wahl — ästhetisch, langlebig und sofort fertig. Bei größeren Defekten beraten wir Sie gern zu Gold- oder Keramikinlays.</div>
+    <div class="warum-box">
+        <h4>Warum Keramik?</h4>
+        <p>Keramikinlays verbinden höchste Ästhetik mit sehr guter Haltbarkeit. Sie wirken besonders natürlich, da sie Licht ähnlich wie ein echter Zahn reflektieren, und sind gleichzeitig stabil und biokompatibel. Gerade bei sichtbaren Bereichen oder hohen ästhetischen Ansprüchen wählen viele Patienten diese hochwertige Versorgung.</p>
+        <div class="warum-tags">
+            <span class="warum-tag purple">Besonders ästhetisch</span>
+            <span class="warum-tag purple">Biokompatibel</span>
+            <span class="warum-tag purple">Langfristig stabil</span>
+        </div>
+    </div>
+
+    <!-- VERGLEICHSTABELLE -->
+    <div class="compare-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18M15 3v18"/></svg>
+        Auf einen Blick — Füllungsarten im Vergleich
+    </div>
+    <div class="compare-grid">
+        <div class="compare-col">
+            <div class="compare-header ch-green"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#4CAF76"></span> Komposit</div>
+            <div class="compare-row"><span class="compare-label">Ästhetik</span><span class="compare-value stars">★★★★☆</span></div>
+            <div class="compare-row"><span class="compare-label">Haltbarkeit</span><span class="compare-value">5–10 Jahre</span></div>
+            <div class="compare-row"><span class="compare-label">Verträglichkeit</span><span class="compare-value stars">★★★★☆</span></div>
+            <div class="compare-row"><span class="compare-label">Sitzungen</span><span class="compare-value">1</span></div>
+            <div class="compare-row"><span class="compare-label">Eigenanteil</span><span class="compare-value">40–160 €</span></div>
+            <div class="compare-row"><span class="compare-label">Ideal für</span><span class="compare-value" style="font-size:.72rem">Kleine–mittlere Defekte</span></div>
+        </div>
+        <div class="compare-col">
+            <div class="compare-header ch-gold"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#E2C26A"></span> Gold</div>
+            <div class="compare-row"><span class="compare-label">Ästhetik</span><span class="compare-value stars">★★★☆☆</span></div>
+            <div class="compare-row"><span class="compare-label">Haltbarkeit</span><span class="compare-value">15–25+ Jahre</span></div>
+            <div class="compare-row"><span class="compare-label">Verträglichkeit</span><span class="compare-value stars">★★★★★</span></div>
+            <div class="compare-row"><span class="compare-label">Sitzungen</span><span class="compare-value">2</span></div>
+            <div class="compare-row"><span class="compare-label">Eigenanteil</span><span class="compare-value">350–600 €</span></div>
+            <div class="compare-row"><span class="compare-label">Ideal für</span><span class="compare-value" style="font-size:.72rem">Seitenzähne, max. Haltbarkeit</span></div>
+        </div>
+        <div class="compare-col">
+            <div class="compare-header ch-purple"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#9B72CF"></span> Keramik</div>
+            <div class="compare-row"><span class="compare-label">Ästhetik</span><span class="compare-value stars">★★★★★</span></div>
+            <div class="compare-row"><span class="compare-label">Haltbarkeit</span><span class="compare-value">10–20+ Jahre</span></div>
+            <div class="compare-row"><span class="compare-label">Verträglichkeit</span><span class="compare-value stars">★★★★★</span></div>
+            <div class="compare-row"><span class="compare-label">Sitzungen</span><span class="compare-value">2</span></div>
+            <div class="compare-row"><span class="compare-label">Eigenanteil</span><span class="compare-value">400–700 €</span></div>
+            <div class="compare-row"><span class="compare-label">Ideal für</span><span class="compare-value" style="font-size:.72rem">Sichtbare Bereiche, höchste Ästhetik</span></div>
+        </div>
+    </div>
 
     <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('wann')">← Zurück</button><button class="nav-arrow next" onclick="go('ablauf')">Weiter →</button></div>
 </div>
