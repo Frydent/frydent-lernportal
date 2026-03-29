@@ -275,8 +275,8 @@
     <div style="display:flex;gap:6px;justify-content:center;margin:.5rem 0 1rem" id="wk-dots"></div>
     
     <div style="display:flex;gap:8px;align-items:center;margin-top:.8rem">
-        <button class="nav-arrow prev" id="wk-prev" onclick="wkGo(-1)">&#8592; Zur&uuml;ck</button>
-        <button class="nav-arrow next" id="wk-next" onclick="wkGo(1)">Weiter &#8594;</button>
+        <button class="nav-arrow prev" id="wk-prev" onclick="wkGo(-1)">&#8592; Înapoi</button>
+        <button class="nav-arrow next" id="wk-next" onclick="wkGo(1)">Mai departe &#8594;</button>
         <label style="margin-left:auto;font-size:.75rem;color:var(--gray-400);display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" id="wk-auto" onchange="wkToggleAuto(this.checked)"> Automat</label>
     </div>
     </div>
@@ -586,7 +586,7 @@ function wkRender(){
   info.innerHTML='<div class="wk-badge"><span class="wk-num">'+s.num+'</span><span class="wk-cat">'+s.cat+'</span></div><h3 class="wk-title">'+s.title+'</h3><p class="wk-desc">'+s.desc+'</p><div class="wk-detail"><div class="wk-detail-label">'+s.detail.label+'</div><p class="wk-detail-text">'+s.detail.text+'</p></div><div class="wk-reassure"><div class="wk-reassure-bar"></div><p>'+s.reassure+'</p></div>';
   document.getElementById("wk-dots").innerHTML=wkSteps.map(function(_,i){return '<div class="wk-dot'+(i===wkCur?' active':'')+'"></div>';}).join('');
   document.getElementById("wk-prev").disabled=wkCur===0;
-  document.getElementById("wk-next").textContent=wkCur===wkSteps.length-1?"\u21ba Din nou":"Weiter \u2192";
+  document.getElementById("wk-next").textContent=wkCur===wkSteps.length-1?"\u21ba Din nou":"Mai departe \u2192";
 }
 function wkGo(d){if(wkCur===wkSteps.length-1&&d===1)wkCur=0;else wkCur=Math.max(0,Math.min(wkSteps.length-1,wkCur+d));wkRender();}
 function wkGoTo(i){wkCur=i;wkRender();}
