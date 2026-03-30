@@ -145,6 +145,8 @@ header{background:#fff;border-bottom:2px solid #1e3a6b;height:64px;padding:0 32p
 .vert-entry{background:#f8fafd;border:1.5px solid #e0e6f0;border-radius:8px;padding:10px 12px;margin-bottom:8px;position:relative}
 .vert-entry .vert-head{display:flex;align-items:center;gap:6px;margin-bottom:6px}
 .vert-entry .vert-head input[type=text]{flex:1}
+.vert-select{flex:1;padding:7px 10px;border-radius:7px;border:1.5px solid #ddd;font-size:13px;font-family:'Lato',sans-serif;outline:none;background:#fff;cursor:pointer;color:#1a1a1a}
+.vert-select:focus{border-color:#1e3a6b}
 .vert-remove{width:28px;height:28px;border-radius:50%;border:1.5px solid #ddd;background:#fff;color:#c0392b;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Lato',sans-serif;line-height:1;padding:0}
 .vert-remove:hover{background:#fdecea;border-color:#c0392b}
 .vert-dates{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -263,6 +265,20 @@ function fmtShort(str){
   return new Date(str+"T12:00:00").toLocaleDateString("de-DE",{day:"numeric",month:"long"});
 }
 
+var PRAXEN=[
+  {name:"Zahnarztpraxis Tisch-Rottensteiner",adr:"Schulstraße 2, 79853 Lenzkirch",tel:"+49 7653 961601"},
+  {name:"Zahnarztpraxis Mikael Ebbesen",adr:"Hauptstraße 33, 79780 Stühlingen",tel:"+49 7744 1007"},
+  {name:"Zahnarztpraxis Dr. Kaiser",adr:"Todtmooserstraße 5, 79837 St. Blasien",tel:"+49 7672 1555"},
+  {name:"Zahnarztpraxis Dr. Gudrun Holm",adr:"Paulinerstraße 5, 79848 Bonndorf im Schwarzwald",tel:"+49 7703 1616"},
+  {name:"Zahnheilkunde am Schluchsee – Dr. Heinrichsbauer",adr:"Fischbacher Straße 11, 79859 Schluchsee",tel:"+49 7656 1628"}
+];
+function praxenOptions(){
+  var opts='<option value="">– Praxis auswählen –</option>';
+  for(var i=0;i<PRAXEN.length;i++){
+    opts+='<option value="'+i+'">'+PRAXEN[i].name+'</option>';
+  }
+  return opts;
+}
 var vertCount=0;
 function addVert(){
   vertCount++;
@@ -272,15 +288,27 @@ function addVert(){
   div.id="vert_"+id;
   div.innerHTML='<div class="vert-head">'
     +'<span class="vert-nr">'+id+'</span>'
-    +'<input type="text" placeholder="z.B. Praxis Dr. Müller, Tel. 07703 ..." oninput="update()"/>'
+    +'<select class="vert-select" onchange="onVertSelect(this);update()">'
+    +praxenOptions()
+    +'</select>'
     +'<button class="vert-remove" onclick="removeVert('+id+')" title="Entfernen">✕</button>'
     +'</div>'
+    +'<div class="vert-detail" style="display:none;font-size:12px;color:#666;font-family:Lato,sans-serif;margin:4px 0 6px 24px;line-height:1.5"></div>'
     +'<div class="vert-dates">'
     +'<div><label>Von</label><input type="date" oninput="update()"/></div>'
     +'<div><label>Bis</label><input type="date" oninput="update()"/></div>'
     +'</div>';
   document.getElementById("vertList").appendChild(div);
   update();
+}
+function onVertSelect(sel){
+  var entry=sel.closest(".vert-entry");
+  var detail=entry.querySelector(".vert-detail");
+  var idx=sel.value;
+  if(idx===""){detail.style.display="none";detail.innerHTML="";return;}
+  var p=PRAXEN[parseInt(idx)];
+  detail.style.display="block";
+  detail.innerHTML=p.adr+' · Tel. '+p.tel;
 }
 
 function removeVert(id){
@@ -302,11 +330,15 @@ function getVertretungen(){
   var list=[];
   var entries=document.querySelectorAll("#vertList .vert-entry");
   entries.forEach(function(e){
-    var inputs=e.querySelectorAll("input");
-    var name=inputs[0].value.trim();
-    var von=inputs[1].value;
-    var bis=inputs[2].value;
-    if(name){list.push({name:name,von:von,bis:bis})}
+    var sel=e.querySelector(".vert-select");
+    var inputs=e.querySelectorAll("input[type=date]");
+    var idx=sel.value;
+    if(idx==="")return;
+    var p=PRAXEN[parseInt(idx)];
+    var fullName=p.name+", "+p.adr+", Tel. "+p.tel;
+    var von=inputs[0].value;
+    var bis=inputs[1].value;
+    list.push({name:p.name,adr:p.adr,tel:p.tel,fullName:fullName,von:von,bis:bis});
   });
   return list;
 }
@@ -324,7 +356,8 @@ function notfallBlock(verts){
         dateStr=' <span style="font-size:12px;color:#666;font-weight:400;font-family:Lato,sans-serif">(ab '+fmtShort(v.von)+')</span>';
       }
       html+='<div class="nrow"><span class="nlabel">Vertretung'+(verts.length>1?' '+(i+1):'')+'</span>';
-      html+='<span style="font-size:15px;font-weight:700;color:#1e3a6b;font-family:Quicksand,sans-serif">'+v.name+dateStr+'</span></div>';
+      html+='<span><span style="font-size:15px;font-weight:700;color:#1e3a6b;font-family:Quicksand,sans-serif">'+v.name+'</span>'+dateStr
+        +'<br><span style="font-size:12px;color:#555;font-family:Lato,sans-serif">'+v.adr+' · Tel. '+v.tel+'</span></span></div>';
     }
   }
   html+='<div class="nrow"><span class="nlabel">Zahnärztlicher Notfalldienst</span>';
