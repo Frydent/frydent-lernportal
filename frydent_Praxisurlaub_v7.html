@@ -351,13 +351,13 @@ function notfallBlock(verts){
       var v=verts[i];
       var dateStr="";
       if(v.von&&v.bis){
-        dateStr=' <span style="font-size:12px;color:#666;font-weight:400;font-family:Lato,sans-serif">('+fmtShort(v.von)+' – '+fmtShort(v.bis)+')</span>';
+        dateStr='<br><span style="font-size:14px;color:#1e3a6b;font-weight:700;font-family:Quicksand,sans-serif">'+fmtShort(v.von)+' – '+fmtShort(v.bis)+'</span>';
       } else if(v.von){
-        dateStr=' <span style="font-size:12px;color:#666;font-weight:400;font-family:Lato,sans-serif">(ab '+fmtShort(v.von)+')</span>';
+        dateStr='<br><span style="font-size:14px;color:#1e3a6b;font-weight:700;font-family:Quicksand,sans-serif">ab '+fmtShort(v.von)+'</span>';
       }
       html+='<div class="nrow"><span class="nlabel">Vertretung'+(verts.length>1?' '+(i+1):'')+'</span>';
       html+='<span><span style="font-size:15px;font-weight:700;color:#1e3a6b;font-family:Quicksand,sans-serif">'+v.name+'</span>'+dateStr
-        +'<br><span style="font-size:12px;color:#555;font-family:Lato,sans-serif">'+v.adr+' · Tel. '+v.tel+'</span></span></div>';
+        +'<br><span style="font-size:12px;color:#444;font-family:Lato,sans-serif">'+v.adr+' · Tel. '+v.tel+'</span></span></div>';
     }
   }
   html+='<div class="nrow"><span class="nlabel">Zahnärztlicher Notfalldienst</span>';
