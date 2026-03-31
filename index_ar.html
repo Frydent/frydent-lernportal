@@ -21,9 +21,9 @@ header{background:var(--white);position:sticky;top:0;z-index:100}
 .hero p{font-size:.95rem;opacity:.85;max-width:520px;margin:0 auto;font-weight:300}
 main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 1rem}
 .section{margin-bottom:2.5rem}
-.section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.2rem}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.2rem;padding-right:.75rem}
 .section-icon{width:6px;height:32px;border-radius:3px;flex-shrink:0}
-.section-icon.gold{background:var(--gold)}.section-icon.granat{background:var(--blue-dark)}.section-icon.grayblue{background:#8FA3BF}
+.section-icon.gold{background:var(--gold)}.section-icon.granat{background:var(--blue-dark)}.section-icon.grayblue{background:#7088A8}
 .section-title{font-size:1.1rem;font-weight:700;color:var(--blue-dark)}
 .section-subtitle{font-size:.8rem;color:var(--gray-600);margin-top:1px}
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
@@ -38,6 +38,8 @@ main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 1rem}
 .section-collapsible .cards-grid{grid-template-columns:1fr}
 .section-chevron{transition:transform .3s;flex-shrink:0;margin-left:auto}
 .section-collapsible.closed .section-chevron{transform:rotate(-90deg)}
+.chevron-circle{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto;transition:transform .3s}
+.section-collapsible.closed .chevron-circle{transform:rotate(-90deg)}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between}
 .card-arrow{width:28px;height:28px;border-radius:50%;background:var(--gray-100);display:flex;align-items:center;justify-content:center}
 .card:hover .card-arrow{background:var(--blue)}.card:hover .card-arrow svg{stroke:var(--white)}
@@ -121,21 +123,21 @@ footer a{color:var(--blue);text-decoration:none}
 <main>
 
 <!-- SPRECHZEITEN: SLIM BANNER -->
-<a href="praxisinfo_ar.html" style="display:flex;align-items:center;justify-content:space-between;background:#FDFAF2;border:1.5px solid #E2D4A0;border-radius:var(--radius);padding:.7rem 1.1rem;text-decoration:none;transition:all .3s;margin-bottom:2.5rem;box-shadow:0 2px 6px rgba(226,194,106,.06)" onmouseover="this.style.borderColor='#E2C26A';this.style.boxShadow='0 3px 12px rgba(226,194,106,.12)'" onmouseout="this.style.borderColor='#E2D4A0';this.style.boxShadow='0 2px 6px rgba(226,194,106,.06)'">
-<div style="font-size:1.05rem;font-weight:700;color:var(--blue-dark)">ساعات العمل والمعلومات الحالية</div>
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" style="flex-shrink:0"><path d="M9 18l6-6-6-6"/></svg>
+<a href="praxisinfo_ar.html" style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#FFFDF6 0%,#FDF6E3 100%);border:2px solid #E2C26A;border-radius:var(--radius);padding:1rem 0.75rem 1rem 1rem;margin-left:-.5rem;text-decoration:none;transition:all .3s;margin-bottom:2.5rem;box-shadow:0 3px 12px rgba(226,194,106,.12)" onmouseover="this.style.borderColor='#C4A44E';this.style.boxShadow='0 5px 20px rgba(226,194,106,.2)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#E2C26A';this.style.boxShadow='0 3px 12px rgba(226,194,106,.12)';this.style.transform='translateY(0)'">
+<div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4A44E" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div style="font-size:1.1rem;font-weight:700;color:var(--blue-dark)">ساعات العمل والمعلومات الحالية</div></div>
+<div class="chevron-circle" style="background:#E2C26A"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
 </a>
 
 <!-- 2. EINGRIFF (granat) -->
 <!-- ANGSTPATIENTEN -->
-<div class="section">
-<div class="section-header"><div class="section-icon gold"></div><div><div class="section-title">مرضى الخوف</div><div class="section-subtitle">لا خوف من طبيب الأسنان</div></div></div>
+<div class="section section-collapsible closed">
+<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon gold"></div><div><div class="section-title">مرضى الخوف</div><div class="section-subtitle">لا خوف من طبيب الأسنان</div></div><div class="chevron-circle" style="background:#E2C26A"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
 <a href="angstpatienten_ar.html" class="card tool"><div class="card-top"><h3>لا خوف من طبيب الأسنان</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>هل تخاف من طبيب الأسنان؟ نأخذ وقتنا معك. تعرف على كيفية علاجنا للمرضى الخائفين بلطف وتعاطف.</p></a>
 </div></div>
 
 <div class="section section-collapsible closed">
-<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon granat"></div><div><div class="section-title">معلومات بعد العلاج</div><div class="section-subtitle">ما يجب مراعاته بعد العلاج</div></div><svg class="section-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon granat"></div><div><div class="section-title">معلومات بعد العلاج</div><div class="section-subtitle">ما يجب مراعاته بعد العلاج</div></div><div class="chevron-circle" style="background:#2C4170"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
 <a href="nach_zahnentfernung_ar.html" class="card"><div class="card-top"><h3>بعد خلع السن</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>معلومات مهمة للفترة التي تلي خلع السن.</p></a>
 <a href="bleaching_patienten_ar.html" class="card"><div class="card-top"><h3>بعد التبييض</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>نصائح العناية بعد تبييض الأسنان المهني.</p></a>
@@ -148,35 +150,35 @@ footer a{color:var(--blue);text-decoration:none}
 
 <!-- ZAHNERHALTUNG -->
 <div class="section section-collapsible closed">
-<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">طب الأسنان التحفظي</div><div class="section-subtitle">الحشوات والعلاجات التحفظية</div></div><svg class="section-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">طب الأسنان التحفظي</div><div class="section-subtitle">الحشوات والعلاجات التحفظية</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
 <a href="fuellungen_patienten_ar.html" class="card"><div class="card-top"><h3>حشوات الأسنان</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>كل شيء عن حشوات الأسنان: كمبوزيت وذهب وسيراميك — الإجراء والأنواع والتكاليف والرعاية اللاحقة.</p></a>
 </div></div>
 
 <!-- ENDODONTIE -->
 <div class="section section-collapsible closed">
-<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">علاج الجذور</div><div class="section-subtitle">علاج قناة الجذر — الحفاظ على أسنانك</div></div><svg class="section-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">علاج الجذور</div><div class="section-subtitle">علاج قناة الجذر — الحفاظ على أسنانك</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
 <a href="wurzelbehandlung_patienten_ar.html" class="card"><div class="card-top"><h3>علاج قناة الجذر</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>كل شيء عن علاج قناة الجذر الحديث: المراحل والتقنية (RECIPROC® والليزر والموجات فوق الصوتية) والتكاليف وما يمكن توقعه.</p></a>
 </div></div>
 
 <!-- 3. ZAHNERSATZ (grayblue) -->
 <div class="section section-collapsible closed">
-<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">تعويضات سنية</div><div class="section-subtitle">التيجان والجسور وأطقم الأسنان</div></div><svg class="section-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">تعويضات سنية</div><div class="section-subtitle">التيجان والجسور وأطقم الأسنان</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
 <a href="kronen_bruecken_patienten_ar.html" class="card"><div class="card-top"><h3>التيجان والجسور</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>معلومات حول تيجان الأسنان وترميمات الجسور.</p></a>
 </div></div>
 
 <!-- 4b. ZAHNKORREKTUR (grayblue) -->
 <div class="section section-collapsible closed">
-<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">تصحيح الأسنان</div><div class="section-subtitle">أسنان مستقيمة بقوالب شفافة</div></div><svg class="section-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">تصحيح الأسنان</div><div class="section-subtitle">أسنان مستقيمة بقوالب شفافة</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
 <a href="aligner_patienten_ar.html" class="card"><div class="card-top"><h3>أليناينر — أسنان مستقيمة بلطف وبشكل غير مرئي</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>تصحيح الأسنان بقوالب شفافة: المراحل، الحياة اليومية، التكاليف والتقسيط — كل شيء في لمحة.</p></a>
 </div></div>
 
 <!-- 4. PARODONTOLOGIE (grayblue) -->
 <div class="section section-collapsible closed">
-<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">أمراض اللثة</div><div class="section-subtitle">علاج اللثة والوقاية</div></div><svg class="section-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">أمراض اللثة</div><div class="section-subtitle">علاج اللثة والوقاية</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
 <a href="parodontologie_patienten_ar.html" class="card"><div class="card-top"><h3>علاج التهاب اللثة</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>كل ما تحتاج معرفته عن التهاب اللثة: الأسباب والعلامات والعلاج الحديث والتكاليف والرعاية اللاحقة.</p></a>
 <a href="curaprox_produkte_ar.html" class="card"><div class="card-top"><h3>Curaprox — منتجات نحبها</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>جودة سويسرية للعناية بأسنانك: فرش أسنان وفرش ما بين الأسنان والمزيد — متوفرة لدينا في العيادة.</p></a>
@@ -184,7 +186,7 @@ footer a{color:var(--blue);text-decoration:none}
 
 <!-- 5. PROPHYLAXE (grayblue) -->
 <div class="section section-collapsible closed">
-<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">الوقاية</div><div class="section-subtitle">الرعاية الوقائية وتنظيف الأسنان الاحترافي</div></div><svg class="section-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">الوقاية</div><div class="section-subtitle">الرعاية الوقائية وتنظيف الأسنان الاحترافي</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
 <a href="pzr_patienten_ar.html" class="card"><div class="card-top"><h3>تنظيف الأسنان الاحترافي (PZR)</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>كل ما تحتاج معرفته عن تنظيف الأسنان الاحترافي اللطيف: الإجراء والتكاليف والتقنية.</p></a>
 <a href="curaprox_produkte_ar.html" class="card"><div class="card-top"><h3>Curaprox — منتجات نحبها</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>جودة سويسرية للعناية بأسنانك: فرش أسنان وفرش ما بين الأسنان والمزيد — متوفرة لدينا في العيادة.</p></a>
@@ -192,14 +194,14 @@ footer a{color:var(--blue);text-decoration:none}
 
 <!-- 6. FUNKTION & SCHIENEN (grayblue) - placeholder -->
 <div class="section section-collapsible closed">
-<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">الوظيفة والجبائر</div><div class="section-subtitle">علاج المفصل الصدغي الفكي وجبائر العض</div></div><svg class="section-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">الوظيفة والجبائر</div><div class="section-subtitle">علاج المفصل الصدغي الفكي وجبائر العض</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
 <a href="curaprox_produkte_ar.html" class="card"><div class="card-top"><h3>Curaprox — منتجات نحبها</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>جودة سويسرية للعناية بأسنانك: فرش أسنان وفرش ما بين الأسنان والمزيد — متوفرة لدينا في العيادة.</p></a>
 </div></div>
 
 <!-- 7. ÄSTHETIK (grayblue) -->
 <div class="section section-collapsible closed">
-<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">التجميل</div><div class="section-subtitle">التبييض والفينير وطب الأسنان التجميلي</div></div><svg class="section-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+<div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">التجميل</div><div class="section-subtitle">التبييض والفينير وطب الأسنان التجميلي</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
 <a href="bleaching_patienten_ar.html" class="card"><div class="card-top"><h3>التبييض</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>كل شيء عن تبييض الأسنان المهني.</p></a>
 <a href="veneers_patienten_ar.html" class="card"><div class="card-top"><h3>الفينير</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>نصائح العناية والسلوك لقشور الأسنان الجديدة.</p></a>
