@@ -41,9 +41,9 @@ main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 1rem}
 .chevron-circle{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto;transition:transform .3s}
 .section-collapsible.closed .chevron-circle{transform:rotate(-90deg)}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between}
-.card-arrow{width:28px;height:28px;border-radius:50%;background:var(--gray-100);display:flex;align-items:center;justify-content:center}
-.card:hover .card-arrow{background:var(--blue)}.card:hover .card-arrow svg{stroke:var(--white)}
-.card-arrow svg{width:14px;height:14px;stroke:var(--gray-600);stroke-width:2.5;fill:none}
+.card-arrow{width:28px;height:28px;display:flex;align-items:center;justify-content:center}
+.card:hover .card-arrow svg{stroke:var(--blue-dark)}
+.card-arrow svg{width:16px;height:16px;stroke:#B0B3B8;stroke-width:2.5;fill:none;transition:stroke .3s}
 .lang-bar{display:flex;align-items:center;justify-content:center;padding:14px 1.5rem;background:var(--white);border-bottom:1px solid var(--gray-200)}
 .lang-bar-flags{display:flex;gap:8px}
 .lang-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 12px;border-radius:8px;text-decoration:none;font-size:10px;font-weight:700;color:var(--gray-600);background:var(--gray-100);min-width:42px}
@@ -132,7 +132,7 @@ footer a{color:var(--blue);text-decoration:none}
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon gold"></div><div><div class="section-title">Angstpatienten</div><div class="section-subtitle">Keine Angst vor dem Zahnarzt</div></div><div class="chevron-circle" style="background:#E2C26A"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="angstpatienten.html" class="card tool"><div class="card-top"><h3>Keine Angst vor dem Zahnarzt</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Sie haben Angst vor dem Zahnarzt? Wir nehmen uns Zeit für Sie. Erfahren Sie, wie wir Angstpatienten behutsam und einfühlsam behandeln.</p></a>
+<a href="angstpatienten.html" class="card tool"><div class="card-top"><h3>Keine Angst vor dem Zahnarzt</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Sie haben Angst vor dem Zahnarzt? Wir nehmen uns Zeit für Sie. Erfahren Sie, wie wir Angstpatienten behutsam und einfühlsam behandeln.</p></a>
 </div></div>
 
 <!-- 2. EINGRIFF (granat) -->
@@ -141,64 +141,64 @@ footer a{color:var(--blue);text-decoration:none}
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon rot"></div><div><div class="section-title">Erste Hilfe</div><div class="section-subtitle">Was tun bei Zahnschmerzen, Zahnunfall oder Schwellung?</div></div><div class="chevron-circle" style="background:#C0392B"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="erste_hilfe.html" class="card"><div class="card-top"><h3>Erste Hilfe bei Zahnproblemen</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Zahnschmerzen, Füllung verloren, Zahn abgebrochen, Schwellung — schnelle Hilfe und was Sie sofort tun können.</p></a>
+<a href="erste_hilfe.html" class="card"><div class="card-top"><h3>Erste Hilfe bei Zahnproblemen</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Zahnschmerzen, Füllung verloren, Zahn abgebrochen, Schwellung — schnelle Hilfe und was Sie sofort tun können.</p></a>
 </div></div>
 
 <!-- 2b. EINGRIFF (granat) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon granat"></div><div><div class="section-title">Informationen nach dem Eingriff</div><div class="section-subtitle">Was Sie nach Ihrer Behandlung beachten sollten</div></div><div class="chevron-circle" style="background:#2C4170"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="nach_zahnentfernung.html" class="card"><div class="card-top"><h3>Nach der Zahnentfernung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Wichtige Hinweise für die Zeit nach einer Zahnentfernung.</p></a>
-<a href="bleaching_patienten.html" class="card"><div class="card-top"><h3>Nach dem Bleaching</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Pflegehinweise nach einer professionellen Zahnaufhellung.</p></a>
-<a href="nach_betaeubung.html" class="card"><div class="card-top"><h3>Nach der Betäubung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Wichtige Hinweise, solange das Taubheitsgefühl anhält — besonders für Eltern mit Kindern.</p></a>
-<a href="fuellungen_patienten.html" class="card"><div class="card-top"><h3>Nach der Füllung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Was Sie nach einer Zahnfüllung beachten sollten — Essen, Empfindlichkeit und Pflege.</p></a>
-<a href="wurzelbehandlung_patienten.html" class="card"><div class="card-top"><h3>Nach der Wurzelbehandlung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Hinweise für die Zeit nach einer Wurzelkanalbehandlung — Schmerzen, Schonen, Krone.</p></a>
-<a href="parodontologie_patienten.html" class="card"><div class="card-top"><h3>Nach der PA-Behandlung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Nachsorge nach der Parodontitis-Behandlung — Mundhygiene, Heilung und Kontrolle.</p></a>
-<a href="kronen_bruecken_patienten.html" class="card"><div class="card-top"><h3>Nach Kronen & Brücken</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Was Sie nach dem Einsetzen von Kronen oder Brücken wissen und beachten sollten.</p></a>
+<a href="nach_zahnentfernung.html" class="card"><div class="card-top"><h3>Nach der Zahnentfernung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Wichtige Hinweise für die Zeit nach einer Zahnentfernung.</p></a>
+<a href="bleaching_patienten.html" class="card"><div class="card-top"><h3>Nach dem Bleaching</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Pflegehinweise nach einer professionellen Zahnaufhellung.</p></a>
+<a href="nach_betaeubung.html" class="card"><div class="card-top"><h3>Nach der Betäubung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Wichtige Hinweise, solange das Taubheitsgefühl anhält — besonders für Eltern mit Kindern.</p></a>
+<a href="fuellungen_patienten.html" class="card"><div class="card-top"><h3>Nach der Füllung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Was Sie nach einer Zahnfüllung beachten sollten — Essen, Empfindlichkeit und Pflege.</p></a>
+<a href="wurzelbehandlung_patienten.html" class="card"><div class="card-top"><h3>Nach der Wurzelbehandlung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Hinweise für die Zeit nach einer Wurzelkanalbehandlung — Schmerzen, Schonen, Krone.</p></a>
+<a href="parodontologie_patienten.html" class="card"><div class="card-top"><h3>Nach der PA-Behandlung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Nachsorge nach der Parodontitis-Behandlung — Mundhygiene, Heilung und Kontrolle.</p></a>
+<a href="kronen_bruecken_patienten.html" class="card"><div class="card-top"><h3>Nach Kronen & Brücken</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Was Sie nach dem Einsetzen von Kronen oder Brücken wissen und beachten sollten.</p></a>
 </div></div>
 
 <!-- 2b. ZAHNERHALTUNG (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Zahnerhaltung</div><div class="section-subtitle">Füllungen und konservierende Behandlungen</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="fuellungen_patienten.html" class="card"><div class="card-top"><h3>Zahnfüllungen</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Alles über Zahnfüllungen: Komposit, Gold und Keramik — Ablauf, Arten, Kosten und Nachsorge verständlich erklärt.</p></a>
+<a href="fuellungen_patienten.html" class="card"><div class="card-top"><h3>Zahnfüllungen</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Alles über Zahnfüllungen: Komposit, Gold und Keramik — Ablauf, Arten, Kosten und Nachsorge verständlich erklärt.</p></a>
 </div></div>
 
 <!-- 3. ZAHNERSATZ (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Endodontie</div><div class="section-subtitle">Wurzelkanalbehandlung — Ihren Zahn erhalten</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="wurzelbehandlung_patienten.html" class="card"><div class="card-top"><h3>Wurzelkanalbehandlung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Alles über moderne Wurzelkanalbehandlung: Ablauf, Technik (RECIPROC®, Laser, Ultraschall), Kosten und was Sie erwartet.</p></a>
+<a href="wurzelbehandlung_patienten.html" class="card"><div class="card-top"><h3>Wurzelkanalbehandlung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Alles über moderne Wurzelkanalbehandlung: Ablauf, Technik (RECIPROC®, Laser, Ultraschall), Kosten und was Sie erwartet.</p></a>
 </div></div>
 
 <!-- 4. ZAHNERSATZ (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Zahnersatz</div><div class="section-subtitle">Kronen, Brücken und Prothesen</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="kronen_bruecken_patienten.html" class="card"><div class="card-top"><h3>Kronen &amp; Brücken</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Informationen rund um Zahnkronen und Brückenversorgung.</p></a>
+<a href="kronen_bruecken_patienten.html" class="card"><div class="card-top"><h3>Kronen &amp; Brücken</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Informationen rund um Zahnkronen und Brückenversorgung.</p></a>
 </div></div>
 
 <!-- 4b. ZAHNKORREKTUR (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Zahnkorrektur</div><div class="section-subtitle">Gerade Zähne mit transparenten Schienen</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="aligner_patienten.html" class="card"><div class="card-top"><h3>Aligner — Gerade Zähne sanft &amp; unsichtbar</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Zahnkorrektur mit transparenten Schienen: Ablauf, Alltag, Kosten und Ratenzahlung — alles auf einen Blick.</p></a>
+<a href="aligner_patienten.html" class="card"><div class="card-top"><h3>Aligner — Gerade Zähne sanft &amp; unsichtbar</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Zahnkorrektur mit transparenten Schienen: Ablauf, Alltag, Kosten und Ratenzahlung — alles auf einen Blick.</p></a>
 </div></div>
 
 <!-- 4. PARODONTOLOGIE (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Parodontologie</div><div class="section-subtitle">Zahnfleischbehandlung und Prophylaxe</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="parodontologie_patienten.html" class="card"><div class="card-top"><h3>Parodontitis-Behandlung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Alles über Parodontitis: Ursachen, Anzeichen, moderne Behandlung (PZR, Tiefenreinigung, Laser), Kosten und Nachsorge verständlich erklärt.</p></a>
-<a href="curaprox_produkte.html" class="card"><div class="card-top"><h3>Curaprox — Unsere Empfehlung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Schweizer Qualität für Ihre Zahnpflege: Zahnbürsten, Interdentalbürsten und mehr — bei uns in der Praxis erhältlich.</p></a>
+<a href="parodontologie_patienten.html" class="card"><div class="card-top"><h3>Parodontitis-Behandlung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Alles über Parodontitis: Ursachen, Anzeichen, moderne Behandlung (PZR, Tiefenreinigung, Laser), Kosten und Nachsorge verständlich erklärt.</p></a>
+<a href="curaprox_produkte.html" class="card"><div class="card-top"><h3>Curaprox — Unsere Empfehlung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Schweizer Qualität für Ihre Zahnpflege: Zahnbürsten, Interdentalbürsten und mehr — bei uns in der Praxis erhältlich.</p></a>
 </div></div>
 
 <!-- 5. PROPHYLAXE (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Prophylaxe</div><div class="section-subtitle">Vorsorge und professionelle Zahnreinigung</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="pzr_patienten.html" class="card"><div class="card-top"><h3>Professionelle Zahnreinigung (PZR)</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Alles über unsere schonende PZR: Ablauf, Kosten, Technik und warum Vorsorge die beste Behandlung ist.</p></a>
-<a href="curaprox_produkte.html" class="card"><div class="card-top"><h3>Curaprox — Unsere Empfehlung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Schweizer Qualität für Ihre Zahnpflege: Zahnbürsten, Interdentalbürsten und mehr — bei uns in der Praxis erhältlich.</p></a>
+<a href="pzr_patienten.html" class="card"><div class="card-top"><h3>Professionelle Zahnreinigung (PZR)</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Alles über unsere schonende PZR: Ablauf, Kosten, Technik und warum Vorsorge die beste Behandlung ist.</p></a>
+<a href="curaprox_produkte.html" class="card"><div class="card-top"><h3>Curaprox — Unsere Empfehlung</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Schweizer Qualität für Ihre Zahnpflege: Zahnbürsten, Interdentalbürsten und mehr — bei uns in der Praxis erhältlich.</p></a>
 </div></div>
 
 <!-- 6. FUNKTION & SCHIENEN (grayblue) - placeholder -->
@@ -212,8 +212,8 @@ footer a{color:var(--blue);text-decoration:none}
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Ästhetik</div><div class="section-subtitle">Bleaching, Veneers und ästhetische Zahnmedizin</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="bleaching_patienten.html" class="card"><div class="card-top"><h3>Bleaching</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Alles rund um professionelle Zahnaufhellung.</p></a>
-<a href="veneers_patienten.html" class="card"><div class="card-top"><h3>Veneers</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Pflege und Verhaltenshinweise für Ihre neuen Veneers.</p></a>
+<a href="bleaching_patienten.html" class="card"><div class="card-top"><h3>Bleaching</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Alles rund um professionelle Zahnaufhellung.</p></a>
+<a href="veneers_patienten.html" class="card"><div class="card-top"><h3>Veneers</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Pflege und Verhaltenshinweise für Ihre neuen Veneers.</p></a>
 </div></div>
 
 

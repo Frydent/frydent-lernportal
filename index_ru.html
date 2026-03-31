@@ -41,9 +41,9 @@ main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 1rem}
 .chevron-circle{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto;transition:transform .3s}
 .section-collapsible.closed .chevron-circle{transform:rotate(-90deg)}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between}
-.card-arrow{width:28px;height:28px;border-radius:50%;background:var(--gray-100);display:flex;align-items:center;justify-content:center}
-.card:hover .card-arrow{background:var(--blue)}.card:hover .card-arrow svg{stroke:var(--white)}
-.card-arrow svg{width:14px;height:14px;stroke:var(--gray-600);stroke-width:2.5;fill:none}
+.card-arrow{width:28px;height:28px;display:flex;align-items:center;justify-content:center}
+.card:hover .card-arrow svg{stroke:var(--blue-dark)}
+.card-arrow svg{width:16px;height:16px;stroke:#B0B3B8;stroke-width:2.5;fill:none;transition:stroke .3s}
 .lang-bar{display:flex;align-items:center;justify-content:center;padding:14px 1.5rem;background:var(--white);border-bottom:1px solid var(--gray-200)}
 .lang-bar-flags{display:flex;gap:8px}
 .lang-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 12px;border-radius:8px;text-decoration:none;font-size:10px;font-weight:700;color:var(--gray-600);background:var(--gray-100);min-width:42px}
@@ -133,78 +133,78 @@ footer a{color:var(--blue);text-decoration:none}
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon gold"></div><div><div class="section-title">Пациенты с тревожностью</div><div class="section-subtitle">Без страха перед стоматологом</div></div><div class="chevron-circle" style="background:#E2C26A"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="angstpatienten_ru.html" class="card tool"><div class="card-top"><h3>Без страха перед стоматологом</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Вы боитесь стоматолога? Мы уделяем вам время. Узнайте, как мы бережно и с сочувствием лечим тревожных пациентов.</p></a>
+<a href="angstpatienten_ru.html" class="card tool"><div class="card-top"><h3>Без страха перед стоматологом</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Вы боитесь стоматолога? Мы уделяем вам время. Узнайте, как мы бережно и с сочувствием лечим тревожных пациентов.</p></a>
 </div></div>
 
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon granat"></div><div><div class="section-title">Информация после процедуры</div><div class="section-subtitle">Что следует учитывать после лечения</div></div><div class="chevron-circle" style="background:#2C4170"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="nach_zahnentfernung_ru.html" class="card"><div class="card-top"><h3>После удаления зуба</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Важные рекомендации на период после удаления зуба.</p></a>
-<a href="bleaching_patienten_ru.html" class="card"><div class="card-top"><h3>После отбеливания</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Рекомендации по уходу после профессионального отбеливания.</p></a>
-<a href="nach_betaeubung_ru.html" class="card"><div class="card-top"><h3>После анестезии</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Важные рекомендации, пока действует обезболивание — особенно для родителей с детьми.</p></a>
-<a href="fuellungen_patienten_ru.html" class="card"><div class="card-top"><h3>После пломбирования</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Рекомендации после установки пломбы — питание, чувствительность и уход.</p></a>
-<a href="wurzelbehandlung_patienten_ru.html" class="card"><div class="card-top"><h3>После лечения каналов</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Рекомендации после лечения корневых каналов — боль, щадящий режим, коронка.</p></a>
-<a href="parodontologie_patienten_ru.html" class="card"><div class="card-top"><h3>После лечения дёсен</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Рекомендации после пародонтологического лечения — гигиена, заживление и контроль.</p></a>
-<a href="kronen_bruecken_patienten_ru.html" class="card"><div class="card-top"><h3>После коронок и мостов</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Что важно знать после установки коронок или мостовидных протезов.</p></a>
+<a href="nach_zahnentfernung_ru.html" class="card"><div class="card-top"><h3>После удаления зуба</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Важные рекомендации на период после удаления зуба.</p></a>
+<a href="bleaching_patienten_ru.html" class="card"><div class="card-top"><h3>После отбеливания</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Рекомендации по уходу после профессионального отбеливания.</p></a>
+<a href="nach_betaeubung_ru.html" class="card"><div class="card-top"><h3>После анестезии</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Важные рекомендации, пока действует обезболивание — особенно для родителей с детьми.</p></a>
+<a href="fuellungen_patienten_ru.html" class="card"><div class="card-top"><h3>После пломбирования</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Рекомендации после установки пломбы — питание, чувствительность и уход.</p></a>
+<a href="wurzelbehandlung_patienten_ru.html" class="card"><div class="card-top"><h3>После лечения каналов</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Рекомендации после лечения корневых каналов — боль, щадящий режим, коронка.</p></a>
+<a href="parodontologie_patienten_ru.html" class="card"><div class="card-top"><h3>После лечения дёсен</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Рекомендации после пародонтологического лечения — гигиена, заживление и контроль.</p></a>
+<a href="kronen_bruecken_patienten_ru.html" class="card"><div class="card-top"><h3>После коронок и мостов</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Что важно знать после установки коронок или мостовидных протезов.</p></a>
 </div></div>
 
 <!-- ZAHNERHALTUNG -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Терапевтическая стоматология</div><div class="section-subtitle">Пломбы и консервативное лечение</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="fuellungen_patienten_ru.html" class="card"><div class="card-top"><h3>Зубные пломбы</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Всё о зубных пломбах: композит, золото и керамика — процедура, виды, стоимость и уход после лечения.</p></a>
+<a href="fuellungen_patienten_ru.html" class="card"><div class="card-top"><h3>Зубные пломбы</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Всё о зубных пломбах: композит, золото и керамика — процедура, виды, стоимость и уход после лечения.</p></a>
 </div></div>
 
 <!-- ENDODONTIE -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Эндодонтия</div><div class="section-subtitle">Лечение корневых каналов — сохраните свой зуб</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="wurzelbehandlung_patienten_ru.html" class="card"><div class="card-top"><h3>Лечение корневых каналов</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Всё о современном лечении корневых каналов: процедура, технология (RECIPROC®, лазер, ультразвук), стоимость и чего ожидать.</p></a>
+<a href="wurzelbehandlung_patienten_ru.html" class="card"><div class="card-top"><h3>Лечение корневых каналов</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Всё о современном лечении корневых каналов: процедура, технология (RECIPROC®, лазер, ультразвук), стоимость и чего ожидать.</p></a>
 </div></div>
 
 <!-- 3. ZAHNERSATZ (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Протезирование</div><div class="section-subtitle">Коронки, мосты и протезы</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="kronen_bruecken_patienten_ru.html" class="card"><div class="card-top"><h3>Коронки и мосты</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Информация о зубных коронках и мостовидных конструкциях.</p></a>
+<a href="kronen_bruecken_patienten_ru.html" class="card"><div class="card-top"><h3>Коронки и мосты</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Информация о зубных коронках и мостовидных конструкциях.</p></a>
 </div></div>
 
 <!-- 4b. ZAHNKORREKTUR (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Коррекция зубов</div><div class="section-subtitle">Ровные зубы с прозрачными капами</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="aligner_patienten_ru.html" class="card"><div class="card-top"><h3>Элайнеры — Ровные зубы мягко и незаметно</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Коррекция зубов прозрачными капами: этапы, повседневная жизнь, стоимость и рассрочка — всё в одном месте.</p></a>
+<a href="aligner_patienten_ru.html" class="card"><div class="card-top"><h3>Элайнеры — Ровные зубы мягко и незаметно</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Коррекция зубов прозрачными капами: этапы, повседневная жизнь, стоимость и рассрочка — всё в одном месте.</p></a>
 </div></div>
 
 <!-- 4. PARODONTOLOGIE (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Пародонтология</div><div class="section-subtitle">Лечение дёсен и профилактика</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="parodontologie_patienten_ru.html" class="card"><div class="card-top"><h3>Лечение пародонтита</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Всё о пародонтите: причины, признаки, современное лечение (PZR, глубокая чистка, лазер), стоимость и послеоперационный уход.</p></a>
-<a href="curaprox_produkte_ru.html" class="card"><div class="card-top"><h3>Curaprox — Продукты, которые мы любим</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Швейцарское качество для ухода за зубами: щётки, межзубные щётки и многое другое — доступно у нас в кабинете.</p></a>
+<a href="parodontologie_patienten_ru.html" class="card"><div class="card-top"><h3>Лечение пародонтита</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Всё о пародонтите: причины, признаки, современное лечение (PZR, глубокая чистка, лазер), стоимость и послеоперационный уход.</p></a>
+<a href="curaprox_produkte_ru.html" class="card"><div class="card-top"><h3>Curaprox — Продукты, которые мы любим</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Швейцарское качество для ухода за зубами: щётки, межзубные щётки и многое другое — доступно у нас в кабинете.</p></a>
 </div></div>
 
 <!-- 5. PROPHYLAXE (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Профилактика</div><div class="section-subtitle">Профилактика и профессиональная чистка зубов</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="pzr_patienten_ru.html" class="card"><div class="card-top"><h3>Профессиональная чистка зубов (PZR)</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Всё о нашей щадящей PZR: процедура, стоимость, технология и почему профилактика — лучшее лечение.</p></a>
-<a href="curaprox_produkte_ru.html" class="card"><div class="card-top"><h3>Curaprox — Продукты, которые мы любим</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Швейцарское качество для ухода за зубами: щётки, межзубные щётки и многое другое — доступно у нас в кабинете.</p></a>
+<a href="pzr_patienten_ru.html" class="card"><div class="card-top"><h3>Профессиональная чистка зубов (PZR)</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Всё о нашей щадящей PZR: процедура, стоимость, технология и почему профилактика — лучшее лечение.</p></a>
+<a href="curaprox_produkte_ru.html" class="card"><div class="card-top"><h3>Curaprox — Продукты, которые мы любим</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Швейцарское качество для ухода за зубами: щётки, межзубные щётки и многое другое — доступно у нас в кабинете.</p></a>
 </div></div>
 
 <!-- 6. FUNKTION & SCHIENEN (grayblue) - placeholder -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Функция и шины</div><div class="section-subtitle">Терапия ВНЧС и окклюзионные шины</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="curaprox_produkte_ru.html" class="card"><div class="card-top"><h3>Curaprox — Продукты, которые мы любим</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Швейцарское качество для ухода за зубами: щётки, межзубные щётки и многое другое — доступно у нас в кабинете.</p></a>
+<a href="curaprox_produkte_ru.html" class="card"><div class="card-top"><h3>Curaprox — Продукты, которые мы любим</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Швейцарское качество для ухода за зубами: щётки, межзубные щётки и многое другое — доступно у нас в кабинете.</p></a>
 </div></div>
 
 <!-- 7. ÄSTHETIK (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Эстетика</div><div class="section-subtitle">Отбеливание, виниры и эстетическая стоматология</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="bleaching_patienten_ru.html" class="card"><div class="card-top"><h3>Отбеливание</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Всё о профессиональном отбеливании зубов.</p></a>
-<a href="veneers_patienten_ru.html" class="card"><div class="card-top"><h3>Виниры</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Уход и рекомендации для ваших новых виниров.</p></a>
+<a href="bleaching_patienten_ru.html" class="card"><div class="card-top"><h3>Отбеливание</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Всё о профессиональном отбеливании зубов.</p></a>
+<a href="veneers_patienten_ru.html" class="card"><div class="card-top"><h3>Виниры</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Уход и рекомендации для ваших новых виниров.</p></a>
 </div></div>
 
 

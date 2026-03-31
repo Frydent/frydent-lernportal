@@ -41,9 +41,9 @@ main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 1rem}
 .chevron-circle{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto;transition:transform .3s}
 .section-collapsible.closed .chevron-circle{transform:rotate(-90deg)}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between}
-.card-arrow{width:28px;height:28px;border-radius:50%;background:var(--gray-100);display:flex;align-items:center;justify-content:center}
-.card:hover .card-arrow{background:var(--blue)}.card:hover .card-arrow svg{stroke:var(--white)}
-.card-arrow svg{width:14px;height:14px;stroke:var(--gray-600);stroke-width:2.5;fill:none}
+.card-arrow{width:28px;height:28px;display:flex;align-items:center;justify-content:center}
+.card:hover .card-arrow svg{stroke:var(--blue-dark)}
+.card-arrow svg{width:16px;height:16px;stroke:#B0B3B8;stroke-width:2.5;fill:none;transition:stroke .3s}
 .lang-bar{display:flex;align-items:center;justify-content:center;padding:14px 1.5rem;background:var(--white);border-bottom:1px solid var(--gray-200)}
 .lang-bar-flags{display:flex;gap:8px}
 .lang-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 12px;border-radius:8px;text-decoration:none;font-size:10px;font-weight:700;color:var(--gray-600);background:var(--gray-100);min-width:42px}
@@ -133,63 +133,63 @@ footer a{color:var(--blue);text-decoration:none}
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon gold"></div><div><div class="section-title">Pacjenci z lękiem</div><div class="section-subtitle">Nie bój się dentysty</div></div><div class="chevron-circle" style="background:#E2C26A"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="angstpatienten_pl.html" class="card tool"><div class="card-top"><h3>Nie bój się dentysty</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Boisz się dentysty? Poświęcamy Ci czas. Dowiedz się, jak delikatnie i z empatią leczymy pacjentów z lękiem.</p></a>
+<a href="angstpatienten_pl.html" class="card tool"><div class="card-top"><h3>Nie bój się dentysty</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Boisz się dentysty? Poświęcamy Ci czas. Dowiedz się, jak delikatnie i z empatią leczymy pacjentów z lękiem.</p></a>
 </div></div>
 
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon granat"></div><div><div class="section-title">Informacje po zabiegu</div><div class="section-subtitle">Co należy wiedzieć po leczeniu</div></div><div class="chevron-circle" style="background:#2C4170"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="nach_zahnentfernung_pl.html" class="card"><div class="card-top"><h3>Po usunięciu zęba</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Ważne wskazówki na czas po usunięciu zęba.</p></a>
-<a href="bleaching_patienten_pl.html" class="card"><div class="card-top"><h3>Po wybielaniu</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Wskazówki pielęgnacyjne po profesjonalnym wybielaniu zębów.</p></a>
-<a href="nach_betaeubung_pl.html" class="card"><div class="card-top"><h3>Po znieczuleniu</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Ważne wskazówki na czas utrzymywania się znieczulenia — szczególnie dla rodziców z dziećmi.</p></a>
-<a href="fuellungen_patienten_pl.html" class="card"><div class="card-top"><h3>Po wypełnieniu</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Jak postępować po założeniu plomby — jedzenie, wrażliwość i pielęgnacja.</p></a>
-<a href="wurzelbehandlung_patienten_pl.html" class="card"><div class="card-top"><h3>Po leczeniu kanałowym</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Wskazówki na czas po leczeniu kanałowym — ból, oszczędzanie zęba, korona.</p></a>
-<a href="parodontologie_patienten_pl.html" class="card"><div class="card-top"><h3>Po leczeniu przyzębia</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Postępowanie po leczeniu paradontozy — higiena jamy ustnej, gojenie i kontrola.</p></a>
-<a href="kronen_bruecken_patienten_pl.html" class="card"><div class="card-top"><h3>Po koronach i mostach</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Co warto wiedzieć po osadzeniu koron lub mostów.</p></a>
+<a href="nach_zahnentfernung_pl.html" class="card"><div class="card-top"><h3>Po usunięciu zęba</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Ważne wskazówki na czas po usunięciu zęba.</p></a>
+<a href="bleaching_patienten_pl.html" class="card"><div class="card-top"><h3>Po wybielaniu</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Wskazówki pielęgnacyjne po profesjonalnym wybielaniu zębów.</p></a>
+<a href="nach_betaeubung_pl.html" class="card"><div class="card-top"><h3>Po znieczuleniu</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Ważne wskazówki na czas utrzymywania się znieczulenia — szczególnie dla rodziców z dziećmi.</p></a>
+<a href="fuellungen_patienten_pl.html" class="card"><div class="card-top"><h3>Po wypełnieniu</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Jak postępować po założeniu plomby — jedzenie, wrażliwość i pielęgnacja.</p></a>
+<a href="wurzelbehandlung_patienten_pl.html" class="card"><div class="card-top"><h3>Po leczeniu kanałowym</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Wskazówki na czas po leczeniu kanałowym — ból, oszczędzanie zęba, korona.</p></a>
+<a href="parodontologie_patienten_pl.html" class="card"><div class="card-top"><h3>Po leczeniu przyzębia</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Postępowanie po leczeniu paradontozy — higiena jamy ustnej, gojenie i kontrola.</p></a>
+<a href="kronen_bruecken_patienten_pl.html" class="card"><div class="card-top"><h3>Po koronach i mostach</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Co warto wiedzieć po osadzeniu koron lub mostów.</p></a>
 </div></div>
 
 <!-- ZAHNERHALTUNG -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Stomatologia zachowawcza</div><div class="section-subtitle">Wypełnienia i leczenie zachowawcze</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="fuellungen_patienten_pl.html" class="card"><div class="card-top"><h3>Wypełnienia zębów</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Wszystko o wypełnieniach: kompozyt, złoto i ceramika — przebieg, rodzaje, koszty i pielęgnacja po zabiegu.</p></a>
+<a href="fuellungen_patienten_pl.html" class="card"><div class="card-top"><h3>Wypełnienia zębów</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Wszystko o wypełnieniach: kompozyt, złoto i ceramika — przebieg, rodzaje, koszty i pielęgnacja po zabiegu.</p></a>
 </div></div>
 
 <!-- ENDODONTIE -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Endodoncja</div><div class="section-subtitle">Leczenie kanałowe — zachowaj swój ząb</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="wurzelbehandlung_patienten_pl.html" class="card"><div class="card-top"><h3>Leczenie kanałowe</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Wszystko o nowoczesnym leczeniu kanałowym: przebieg, technika (RECIPROC®, laser, ultradźwięki), koszty i czego się spodziewać.</p></a>
+<a href="wurzelbehandlung_patienten_pl.html" class="card"><div class="card-top"><h3>Leczenie kanałowe</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Wszystko o nowoczesnym leczeniu kanałowym: przebieg, technika (RECIPROC®, laser, ultradźwięki), koszty i czego się spodziewać.</p></a>
 </div></div>
 
 <!-- 3. ZAHNERSATZ (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Protetyka</div><div class="section-subtitle">Korony, mosty i uzupełnienia protetyczne</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="kronen_bruecken_patienten_pl.html" class="card"><div class="card-top"><h3>Korony i mosty</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Informacje o koronach i mostach protetycznych.</p></a>
+<a href="kronen_bruecken_patienten_pl.html" class="card"><div class="card-top"><h3>Korony i mosty</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Informacje o koronach i mostach protetycznych.</p></a>
 </div></div>
 
 <!-- 4b. ZAHNKORREKTUR (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Korekta zgryzu</div><div class="section-subtitle">Przezroczyste nakładki ortodontyczne</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="aligner_patienten_pl.html" class="card"><div class="card-top"><h3>Alignery — korekta zgryzu przezroczystymi nakładkami</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Korekta zgryzu przezroczystymi nakładkami: przebieg, codzienność, koszty i raty — najważniejsze informacje.</p></a>
+<a href="aligner_patienten_pl.html" class="card"><div class="card-top"><h3>Alignery — korekta zgryzu przezroczystymi nakładkami</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Korekta zgryzu przezroczystymi nakładkami: przebieg, codzienność, koszty i raty — najważniejsze informacje.</p></a>
 </div></div>
 
 <!-- 4. PARODONTOLOGIE (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Periodontologia</div><div class="section-subtitle">Leczenie dziąseł i profilaktyka</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="parodontologie_patienten_pl.html" class="card"><div class="card-top"><h3>Leczenie paradontozy</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Wszystko o paradontozie: przyczyny, objawy, nowoczesne leczenie (PZR, głębokie czyszczenie, laser), koszty i opieka pozabiegowa.</p></a>
-<a href="curaprox_produkte_pl.html" class="card"><div class="card-top"><h3>Rekomendowane produkty do higieny jamy ustnej</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Produkty do codziennej higieny jamy ustnej — sprawdzone w praktyce i dostępne w naszym gabinecie.</p></a>
+<a href="parodontologie_patienten_pl.html" class="card"><div class="card-top"><h3>Leczenie paradontozy</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Wszystko o paradontozie: przyczyny, objawy, nowoczesne leczenie (PZR, głębokie czyszczenie, laser), koszty i opieka pozabiegowa.</p></a>
+<a href="curaprox_produkte_pl.html" class="card"><div class="card-top"><h3>Rekomendowane produkty do higieny jamy ustnej</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Produkty do codziennej higieny jamy ustnej — sprawdzone w praktyce i dostępne w naszym gabinecie.</p></a>
 </div></div>
 
 <!-- 5. PROPHYLAXE (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Profilaktyka</div><div class="section-subtitle">Zapobieganie i profesjonalne czyszczenie zębów</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="pzr_patienten_pl.html" class="card"><div class="card-top"><h3>Profesjonalne czyszczenie zębów (PZR)</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Wszystko o naszym delikatnym PZR: przebieg, koszty, technologia i dlaczego profilaktyka jest tak ważna.</p></a>
-<a href="curaprox_produkte_pl.html" class="card"><div class="card-top"><h3>Rekomendowane produkty do higieny jamy ustnej</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Produkty do codziennej higieny jamy ustnej — sprawdzone w praktyce i dostępne w naszym gabinecie.</p></a>
+<a href="pzr_patienten_pl.html" class="card"><div class="card-top"><h3>Profesjonalne czyszczenie zębów (PZR)</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Wszystko o naszym delikatnym PZR: przebieg, koszty, technologia i dlaczego profilaktyka jest tak ważna.</p></a>
+<a href="curaprox_produkte_pl.html" class="card"><div class="card-top"><h3>Rekomendowane produkty do higieny jamy ustnej</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Produkty do codziennej higieny jamy ustnej — sprawdzone w praktyce i dostępne w naszym gabinecie.</p></a>
 </div></div>
 
 <!-- 6. FUNKTION & SCHIENEN (grayblue) - placeholder -->
@@ -202,8 +202,8 @@ footer a{color:var(--blue);text-decoration:none}
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Estetyka</div><div class="section-subtitle">Wybielanie, licówki i stomatologia estetyczna</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="bleaching_patienten_pl.html" class="card"><div class="card-top"><h3>Wybielanie</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Wszystko o profesjonalnym wybielaniu zębów.</p></a>
-<a href="veneers_patienten_pl.html" class="card"><div class="card-top"><h3>Licówki</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Pielęgnacja i zalecenia dotyczące nowych licówek.</p></a>
+<a href="bleaching_patienten_pl.html" class="card"><div class="card-top"><h3>Wybielanie</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Wszystko o profesjonalnym wybielaniu zębów.</p></a>
+<a href="veneers_patienten_pl.html" class="card"><div class="card-top"><h3>Licówki</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Pielęgnacja i zalecenia dotyczące nowych licówek.</p></a>
 </div></div>
 
 

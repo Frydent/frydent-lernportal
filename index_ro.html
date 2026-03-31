@@ -41,9 +41,9 @@ main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 1rem}
 .chevron-circle{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto;transition:transform .3s}
 .section-collapsible.closed .chevron-circle{transform:rotate(-90deg)}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between}
-.card-arrow{width:28px;height:28px;border-radius:50%;background:var(--gray-100);display:flex;align-items:center;justify-content:center}
-.card:hover .card-arrow{background:var(--blue)}.card:hover .card-arrow svg{stroke:var(--white)}
-.card-arrow svg{width:14px;height:14px;stroke:var(--gray-600);stroke-width:2.5;fill:none}
+.card-arrow{width:28px;height:28px;display:flex;align-items:center;justify-content:center}
+.card:hover .card-arrow svg{stroke:var(--blue-dark)}
+.card-arrow svg{width:16px;height:16px;stroke:#B0B3B8;stroke-width:2.5;fill:none;transition:stroke .3s}
 .lang-bar{display:flex;align-items:center;justify-content:center;padding:14px 1.5rem;background:var(--white);border-bottom:1px solid var(--gray-200)}
 .lang-bar-flags{display:flex;gap:8px}
 .lang-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 12px;border-radius:8px;text-decoration:none;font-size:10px;font-weight:700;color:var(--gray-600);background:var(--gray-100);min-width:42px}
@@ -133,78 +133,78 @@ footer a{color:var(--blue);text-decoration:none}
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon gold"></div><div><div class="section-title">Pacienți anxioși</div><div class="section-subtitle">Fără frică de dentist</div></div><div class="chevron-circle" style="background:#E2C26A"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="angstpatienten_ro.html" class="card tool"><div class="card-top"><h3>Fără frică de dentist</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Vă este frică de dentist? Ne luăm timp pentru dvs. Aflați cum tratăm pacienții anxioși cu blândețe și empatie.</p></a>
+<a href="angstpatienten_ro.html" class="card tool"><div class="card-top"><h3>Fără frică de dentist</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Vă este frică de dentist? Ne luăm timp pentru dvs. Aflați cum tratăm pacienții anxioși cu blândețe și empatie.</p></a>
 </div></div>
 
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon granat"></div><div><div class="section-title">Informații post-tratament</div><div class="section-subtitle">Ce trebuie să știți după tratament</div></div><div class="chevron-circle" style="background:#2C4170"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="nach_zahnentfernung_ro.html" class="card"><div class="card-top"><h3>După extracția dentară</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Informații importante pentru perioada de după extracția dentară.</p></a>
-<a href="bleaching_patienten_ro.html" class="card"><div class="card-top"><h3>După albire</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Sfaturi de îngrijire după albirea profesională a dinților.</p></a>
-<a href="nach_betaeubung_ro.html" class="card"><div class="card-top"><h3>După anestezie</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Sfaturi importante cât timp durează amorțeala — mai ales pentru părinți cu copii.</p></a>
-<a href="fuellungen_patienten_ro.html" class="card"><div class="card-top"><h3>După plombare</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Ce trebuie știut după o plombare — alimentație, sensibilitate și îngrijire.</p></a>
-<a href="wurzelbehandlung_patienten_ro.html" class="card"><div class="card-top"><h3>După tratamentul de canal</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Sfaturi după tratamentul de canal radicular — durere, protejare și coroană.</p></a>
-<a href="parodontologie_patienten_ro.html" class="card"><div class="card-top"><h3>După tratamentul gingival</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Îngrijirea după tratamentul parodontal — igienă orală, vindecare și control.</p></a>
-<a href="kronen_bruecken_patienten_ro.html" class="card"><div class="card-top"><h3>După coroane și punți</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Ce trebuie știut după montarea coroanelor sau punților dentare.</p></a>
+<a href="nach_zahnentfernung_ro.html" class="card"><div class="card-top"><h3>După extracția dentară</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Informații importante pentru perioada de după extracția dentară.</p></a>
+<a href="bleaching_patienten_ro.html" class="card"><div class="card-top"><h3>După albire</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Sfaturi de îngrijire după albirea profesională a dinților.</p></a>
+<a href="nach_betaeubung_ro.html" class="card"><div class="card-top"><h3>După anestezie</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Sfaturi importante cât timp durează amorțeala — mai ales pentru părinți cu copii.</p></a>
+<a href="fuellungen_patienten_ro.html" class="card"><div class="card-top"><h3>După plombare</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Ce trebuie știut după o plombare — alimentație, sensibilitate și îngrijire.</p></a>
+<a href="wurzelbehandlung_patienten_ro.html" class="card"><div class="card-top"><h3>După tratamentul de canal</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Sfaturi după tratamentul de canal radicular — durere, protejare și coroană.</p></a>
+<a href="parodontologie_patienten_ro.html" class="card"><div class="card-top"><h3>După tratamentul gingival</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Îngrijirea după tratamentul parodontal — igienă orală, vindecare și control.</p></a>
+<a href="kronen_bruecken_patienten_ro.html" class="card"><div class="card-top"><h3>După coroane și punți</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Ce trebuie știut după montarea coroanelor sau punților dentare.</p></a>
 </div></div>
 
 <!-- ZAHNERHALTUNG -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Odontologie conservatoare</div><div class="section-subtitle">Obturații și tratamente conservative</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="fuellungen_patienten_ro.html" class="card"><div class="card-top"><h3>Obturații dentare</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Totul despre obturații: compozit, aur și ceramică — procedură, tipuri, costuri și îngrijire post-tratament.</p></a>
+<a href="fuellungen_patienten_ro.html" class="card"><div class="card-top"><h3>Obturații dentare</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Totul despre obturații: compozit, aur și ceramică — procedură, tipuri, costuri și îngrijire post-tratament.</p></a>
 </div></div>
 
 <!-- ENDODONTIE -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Endodonție</div><div class="section-subtitle">Tratamentul de canal — Salvați-vă dintele</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="wurzelbehandlung_patienten_ro.html" class="card"><div class="card-top"><h3>Tratamentul de canal</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Totul despre tratamentul modern de canal: procedură, tehnologie (RECIPROC®, laser, ultrasunete), costuri și la ce să vă așteptați.</p></a>
+<a href="wurzelbehandlung_patienten_ro.html" class="card"><div class="card-top"><h3>Tratamentul de canal</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Totul despre tratamentul modern de canal: procedură, tehnologie (RECIPROC®, laser, ultrasunete), costuri și la ce să vă așteptați.</p></a>
 </div></div>
 
 <!-- 3. ZAHNERSATZ (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Protetică dentară</div><div class="section-subtitle">Coroane, punți și proteze</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="kronen_bruecken_patienten_ro.html" class="card"><div class="card-top"><h3>Coroane și punți</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Informații despre coroane dentare și restaurări prin punți.</p></a>
+<a href="kronen_bruecken_patienten_ro.html" class="card"><div class="card-top"><h3>Coroane și punți</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Informații despre coroane dentare și restaurări prin punți.</p></a>
 </div></div>
 
 <!-- 4b. ZAHNKORREKTUR (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Corecția dinților</div><div class="section-subtitle">Dinți drepți cu gutiere transparente</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="aligner_patienten_ro.html" class="card"><div class="card-top"><h3>Aligner — Dinți drepți delicat &amp; invizibil</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Corecția dinților cu gutiere transparente: etape, viața de zi cu zi, costuri și rate — totul dintr-o privire.</p></a>
+<a href="aligner_patienten_ro.html" class="card"><div class="card-top"><h3>Aligner — Dinți drepți delicat &amp; invizibil</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Corecția dinților cu gutiere transparente: etape, viața de zi cu zi, costuri și rate — totul dintr-o privire.</p></a>
 </div></div>
 
 <!-- 4. PARODONTOLOGIE (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Parodontologie</div><div class="section-subtitle">Tratamentul gingiilor și profilaxie</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="parodontologie_patienten_ro.html" class="card"><div class="card-top"><h3>Tratamentul parodontitei</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Totul despre parodontită: cauze, semne, tratament modern (PZR, curățare profundă, laser), costuri și îngrijire post-tratament.</p></a>
-<a href="curaprox_produkte_ro.html" class="card"><div class="card-top"><h3>Curaprox — Produse pe care le iubim</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Calitate elvețiană pentru îngrijirea dentară: periuțe, periuțe interdentare și mai mult — disponibile la cabinetul nostru.</p></a>
+<a href="parodontologie_patienten_ro.html" class="card"><div class="card-top"><h3>Tratamentul parodontitei</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Totul despre parodontită: cauze, semne, tratament modern (PZR, curățare profundă, laser), costuri și îngrijire post-tratament.</p></a>
+<a href="curaprox_produkte_ro.html" class="card"><div class="card-top"><h3>Curaprox — Produse pe care le iubim</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Calitate elvețiană pentru îngrijirea dentară: periuțe, periuțe interdentare și mai mult — disponibile la cabinetul nostru.</p></a>
 </div></div>
 
 <!-- 5. PROPHYLAXE (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Profilaxie</div><div class="section-subtitle">Prevenție și curățare dentară profesională</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="pzr_patienten_ro.html" class="card"><div class="card-top"><h3>Curățarea dentară profesională (PZR)</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Tot ce trebuie să știți despre PZR: procedură, costuri, tehnologie și de ce prevenția este cel mai bun tratament.</p></a>
-<a href="curaprox_produkte_ro.html" class="card"><div class="card-top"><h3>Curaprox — Produse pe care le iubim</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Calitate elvețiană pentru îngrijirea dentară: periuțe, periuțe interdentare și mai mult — disponibile la cabinetul nostru.</p></a>
+<a href="pzr_patienten_ro.html" class="card"><div class="card-top"><h3>Curățarea dentară profesională (PZR)</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Tot ce trebuie să știți despre PZR: procedură, costuri, tehnologie și de ce prevenția este cel mai bun tratament.</p></a>
+<a href="curaprox_produkte_ro.html" class="card"><div class="card-top"><h3>Curaprox — Produse pe care le iubim</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Calitate elvețiană pentru îngrijirea dentară: periuțe, periuțe interdentare și mai mult — disponibile la cabinetul nostru.</p></a>
 </div></div>
 
 <!-- 6. FUNKTION & SCHIENEN (grayblue) - placeholder -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Funcție și atele</div><div class="section-subtitle">Terapia ATM și atele ocluzale</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="curaprox_produkte_ro.html" class="card"><div class="card-top"><h3>Curaprox — Produse pe care le iubim</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Calitate elvețiană pentru îngrijirea dentară: periuțe, periuțe interdentare și mai mult — disponibile la cabinetul nostru.</p></a>
+<a href="curaprox_produkte_ro.html" class="card"><div class="card-top"><h3>Curaprox — Produse pe care le iubim</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Calitate elvețiană pentru îngrijirea dentară: periuțe, periuțe interdentare și mai mult — disponibile la cabinetul nostru.</p></a>
 </div></div>
 
 <!-- 7. ÄSTHETIK (grayblue) -->
 <div class="section section-collapsible closed">
 <div class="section-header" onclick="this.parentElement.classList.toggle('closed')"><div class="section-icon grayblue"></div><div><div class="section-title">Estetică</div><div class="section-subtitle">Albire, fațete și stomatologie estetică</div></div><div class="chevron-circle" style="background:#7088A8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
 <div class="cards-grid">
-<a href="bleaching_patienten_ro.html" class="card"><div class="card-top"><h3>Albire</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Totul despre albirea profesională a dinților.</p></a>
-<a href="veneers_patienten_ro.html" class="card"><div class="card-top"><h3>Fațete</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div></div><p>Sfaturi de îngrijire și comportament pentru fațetele noi.</p></a>
+<a href="bleaching_patienten_ro.html" class="card"><div class="card-top"><h3>Albire</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Totul despre albirea profesională a dinților.</p></a>
+<a href="veneers_patienten_ro.html" class="card"><div class="card-top"><h3>Fațete</h3><div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div><p>Sfaturi de îngrijire și comportament pentru fațetele noi.</p></a>
 </div></div>
 
 
