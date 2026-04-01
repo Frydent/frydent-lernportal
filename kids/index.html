@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#5c35a3">
+<link rel="manifest" href="manifest.json">
+<title>FRYDENT Zahnputz-App</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Quicksand',sans-serif;background:#f5f0ff;color:#333;-webkit-user-select:none;user-select:none}
+
+/* ===== APP SHELL ===== */
+.app{display:flex;flex-direction:column;height:100vh;height:100dvh;max-width:480px;margin:0 auto;background:#f5f0ff;position:relative;overflow:hidden}
+.app-content{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding:20px 20px 24px}
+
+/* ===== BOTTOM NAV ===== */
+.bottom-nav{display:flex;background:white;border-top:2px solid #ede7f6;padding:6px 0 env(safe-area-inset-bottom,8px);box-shadow:0 -4px 20px rgba(92,53,163,.08)}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border:none;background:none;cursor:pointer;font-family:'Quicksand',sans-serif;transition:all .2s}
+.nav-btn .nav-icon{font-size:26px;transition:transform .2s}
+.nav-btn .nav-label{font-size:.65rem;font-weight:700;color:#aaa;transition:color .2s}
+.nav-btn.active .nav-icon{transform:scale(1.15)}
+.nav-btn.active .nav-label{color:#5c35a3}
+
+/* ===== SCREENS ===== */
+.screen{display:none;animation:fadeUp .4s ease}
+.screen.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== HOME SCREEN ===== */
+.home-hero{text-align:center;padding:20px 0 12px}
+.home-mascot{font-size:80px;animation:mascot-bounce 3s ease-in-out infinite}
+@keyframes mascot-bounce{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-10px) rotate(-5deg)}75%{transform:translateY(-10px) rotate(5deg)}}
+.home-title{font-size:1.6rem;font-weight:800;color:#5c35a3;margin:8px 0 2px}
+.home-sub{font-size:.9rem;color:#8e6cc0;font-weight:600;margin-bottom:24px}
+
+.feature-card{background:white;border-radius:20px;padding:20px;margin-bottom:14px;display:flex;align-items:center;gap:16px;box-shadow:0 4px 16px rgba(92,53,163,.08);cursor:pointer;transition:all .25s;border:2px solid transparent}
+.feature-card:hover,.feature-card:active{border-color:#7c4dff;transform:scale(1.02)}
+.feature-emoji{font-size:42px;flex-shrink:0}
+.feature-info h3{font-size:1rem;font-weight:700;color:#5c35a3;margin-bottom:2px}
+.feature-info p{font-size:.8rem;color:#999;font-weight:600;line-height:1.3}
+.feature-arrow{margin-left:auto;font-size:20px;color:#ccc}
+
+.home-tip{background:linear-gradient(135deg,#fff9e6,#fff3cd);border-radius:16px;padding:16px;margin-top:8px;text-align:center;border:2px solid #ffe082}
+.home-tip .tip-icon{font-size:24px}
+.home-tip p{font-size:.82rem;color:#8d6e00;font-weight:600;margin-top:4px;line-height:1.4}
+
+/* ===== QUIZ SCREEN ===== */
+.quiz-progress-bar{background:rgba(124,77,255,.12);border-radius:20px;height:12px;margin-bottom:20px;overflow:hidden}
+.quiz-progress-fill{height:100%;background:linear-gradient(90deg,#7c4dff,#e040fb);border-radius:20px;transition:width .5s}
+.quiz-progress-text{text-align:center;font-size:.78rem;color:#7c4dff;font-weight:700;margin-bottom:6px}
+
+.quiz-card{background:white;border-radius:20px;padding:28px 20px;box-shadow:0 4px 20px rgba(92,53,163,.08);animation:slideIn .4s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}
+.quiz-emoji{font-size:48px;text-align:center;margin-bottom:10px}
+.quiz-question{font-size:1.1rem;font-weight:700;text-align:center;margin-bottom:20px;line-height:1.4;color:#333}
+
+.quiz-answers{display:flex;flex-direction:column;gap:10px}
+.quiz-ans{padding:14px 16px;border:3px solid #ede7f6;border-radius:14px;background:#faf5ff;font-family:'Quicksand',sans-serif;font-size:.95rem;font-weight:600;color:#5c35a3;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px;text-align:left}
+.quiz-ans:active{transform:scale(.97)}
+.quiz-ans .a-icon{font-size:22px;flex-shrink:0}
+.quiz-ans.correct{border-color:#4caf50;background:#e8f5e9;color:#2e7d32}
+.quiz-ans.wrong{border-color:#ef5350;background:#ffebee;color:#c62828;opacity:.6}
+.quiz-ans.correct::after{content:'✅';margin-left:auto}
+.quiz-ans.wrong::after{content:'❌';margin-left:auto}
+
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:.88rem;font-weight:600;text-align:center;display:none}
+.quiz-feedback.show{display:block;animation:fadeUp .3s ease}
+.quiz-feedback.ok{background:#e8f5e9;color:#2e7d32}
+.quiz-feedback.no{background:#fff3e0;color:#e65100}
+
+.quiz-next{display:none;margin:16px auto 0;padding:12px 32px;border:none;border-radius:24px;background:linear-gradient(135deg,#7c4dff,#e040fb);color:white;font-family:'Quicksand',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(124,77,255,.3)}
+.quiz-next.show{display:block}
+
+.quiz-stars{text-align:center;font-size:22px;letter-spacing:3px;margin-top:10px}
+
+/* Quiz results */
+.quiz-result{text-align:center;animation:fadeUp .5s ease}
+.qr-emoji{font-size:64px;margin-bottom:8px;animation:mascot-bounce 2s ease-in-out infinite}
+.qr-title{font-size:1.4rem;font-weight:800;color:#5c35a3;margin-bottom:4px}
+.qr-score{font-size:.95rem;color:#888;margin-bottom:12px;font-weight:600}
+.qr-stars{font-size:32px;letter-spacing:5px;margin-bottom:16px}
+.qr-msg{font-size:.92rem;color:#8e6cc0;font-weight:600;margin-bottom:20px;line-height:1.5}
+
+/* Diploma */
+.diploma{background:linear-gradient(135deg,#fff9e6,#fff3cd);border:4px double #e2c26a;border-radius:20px;padding:28px 20px;text-align:center;margin-bottom:16px}
+.diploma-scroll{font-size:42px;margin-bottom:6px}
+.diploma h3{font-size:1.2rem;color:#5c35a3;margin-bottom:4px}
+.diploma .sub{font-size:.82rem;color:#8e6cc0}
+.diploma .child-name{font-size:1.3rem;color:#e040fb;font-weight:800;margin:12px 0;outline:none;border-bottom:2px dashed #e040fb;display:inline-block;min-width:140px;padding:4px 8px}
+.diploma .badge{font-size:56px;margin:8px 0}
+.diploma .brand{font-size:.7rem;color:#bbb;margin-top:8px}
+
+.btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-print{padding:10px 24px;border:2px solid #e2c26a;border-radius:20px;background:white;font-family:'Quicksand',sans-serif;font-size:.85rem;font-weight:700;color:#5c35a3;cursor:pointer}
+.btn-again{padding:10px 24px;border:none;border-radius:20px;background:linear-gradient(135deg,#7c4dff,#e040fb);color:white;font-family:'Quicksand',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer}
+
+/* ===== TIMER SCREEN ===== */
+.timer-ring-wrap{position:relative;width:200px;height:200px;margin:0 auto 16px}
+.timer-svg{width:200px;height:200px;transform:rotate(-90deg)}
+.timer-bg-circle{fill:none;stroke:#ede7f6;stroke-width:14}
+.timer-fill-circle{fill:none;stroke-width:14;stroke-linecap:round;transition:stroke-dashoffset 1s linear,stroke .4s}
+.timer-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.timer-digits{font-size:2.4rem;font-weight:800;color:#1565c0;line-height:1}
+.timer-status{font-size:.75rem;color:#90caf9;font-weight:700;margin-top:2px}
+
+.mouth-card{background:white;border-radius:18px;padding:16px;margin-bottom:16px;box-shadow:0 4px 16px rgba(21,101,192,.08)}
+.mouth-title{font-size:.9rem;font-weight:700;color:#1565c0;margin-bottom:10px;text-align:center}
+.mouth-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:260px;margin:0 auto}
+.quadrant{padding:14px 10px;border-radius:12px;border:3px solid #e3f2fd;background:#fafafa;transition:all .3s;text-align:center;position:relative}
+.quadrant.active{border-color:#42a5f5;background:#e3f2fd;transform:scale(1.05);box-shadow:0 4px 14px rgba(66,165,245,.25)}
+.quadrant.done{border-color:#66bb6a;background:#e8f5e9}
+.quadrant.done::after{content:'✅';position:absolute;top:3px;right:5px;font-size:12px}
+.quad-icon{font-size:24px}
+.quad-name{font-size:.7rem;font-weight:700;color:#888;margin-top:2px}
+.quadrant.active .quad-name{color:#1565c0}
+.quadrant.done .quad-name{color:#2e7d32}
+
+.timer-encourage{font-size:1rem;font-weight:700;color:#42a5f5;text-align:center;margin-bottom:16px;min-height:28px}
+
+.timer-btn{display:block;margin:0 auto;padding:14px 44px;border:none;border-radius:28px;background:linear-gradient(135deg,#42a5f5,#1565c0);color:white;font-family:'Quicksand',sans-serif;font-size:1.1rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(21,101,192,.3);transition:all .2s}
+.timer-btn:active{transform:scale(.95)}
+.timer-btn:disabled{opacity:.5}
+
+.timer-finish{display:none;text-align:center;animation:fadeUp .5s ease}
+.tf-emoji{font-size:64px;animation:mascot-bounce 2s ease-in-out infinite}
+.tf-title{font-size:1.4rem;font-weight:800;color:#2e7d32;margin:8px 0 4px}
+.tf-sub{font-size:.92rem;color:#66bb6a;font-weight:600;margin-bottom:16px}
+.tf-stars{font-size:32px;letter-spacing:5px;margin-bottom:16px}
+
+/* ===== INFO SCREEN ===== */
+.info-card{background:white;border-radius:18px;padding:20px;margin-bottom:14px;box-shadow:0 4px 16px rgba(92,53,163,.06)}
+.info-card h3{font-size:1rem;font-weight:700;color:#5c35a3;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.info-card h3 span{font-size:22px}
+.info-list{list-style:none;padding:0}
+.info-list li{font-size:.85rem;color:#666;font-weight:600;padding:6px 0;border-bottom:1px solid #f5f0ff;display:flex;align-items:center;gap:8px}
+.info-list li:last-child{border:none}
+.info-list .il-icon{font-size:18px}
+
+.install-card{background:linear-gradient(135deg,#ede7f6,#e8eaf6);border-radius:18px;padding:20px;text-align:center;border:2px dashed #7c4dff}
+.install-card h3{font-size:1rem;color:#5c35a3;font-weight:700;margin-bottom:8px}
+.install-card p{font-size:.82rem;color:#7c4dff;font-weight:600;line-height:1.5}
+
+/* ===== CONFETTI ===== */
+.confetti{position:fixed;width:8px;height:8px;border-radius:2px;z-index:999;animation:conf-fall 3s ease-in forwards;pointer-events:none}
+@keyframes conf-fall{0%{opacity:1;transform:translateY(0) rotate(0)}100%{opacity:0;transform:translateY(100vh) rotate(720deg)}}
+
+/* ===== PRINT ===== */
+@media print{
+  body>*{display:none!important}
+  .diploma-print-area{display:block!important;position:fixed;top:0;left:0;width:100%;height:100%;background:white;z-index:9999;display:flex;align-items:center;justify-content:center}
+  .diploma{border:4px double #c4a44e;padding:48px 32px;max-width:400px;margin:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="app-content" id="appContent">
+
+    <!-- ===== HOME ===== -->
+    <div class="screen active" id="screenHome">
+      <div class="home-hero">
+        <div class="home-mascot">🦷</div>
+        <div class="home-title">FRYDENT Kids</div>
+        <div class="home-sub">Deine Zahnputz-App! ✨</div>
+      </div>
+
+      <div class="feature-card" onclick="switchScreen('quiz')">
+        <div class="feature-emoji">🧠</div>
+        <div class="feature-info">
+          <h3>Zahnquiz</h3>
+          <p>6 Fragen rund um deine Zähne – wirst du Zahn-Champion?</p>
+        </div>
+        <div class="feature-arrow">›</div>
+      </div>
+
+      <div class="feature-card" onclick="switchScreen('timer')">
+        <div class="feature-emoji">⏱️</div>
+        <div class="feature-info">
+          <h3>Zahnputz-Timer</h3>
+          <p>2 Minuten mit Anleitung – so putzt du richtig!</p>
+        </div>
+        <div class="feature-arrow">›</div>
+      </div>
+
+      <div class="home-tip" id="dailyTip">
+        <div class="tip-icon">💡</div>
+        <p id="tipText">Wusstest du? Deine Zähne sind so hart wie Knochen!</p>
+      </div>
+    </div>
+
+    <!-- ===== QUIZ ===== -->
+    <div class="screen" id="screenQuiz">
+      <div class="quiz-progress-text" id="qProgText">Frage 1 von 6</div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="qProgFill" style="width:0%"></div></div>
+      <div class="quiz-card" id="quizCard"></div>
+    </div>
+
+    <!-- ===== TIMER ===== -->
+    <div class="screen" id="screenTimer">
+      <div id="timerArea">
+        <div style="text-align:center;margin-bottom:12px">
+          <span style="font-size:36px">🪥</span>
+          <div style="font-size:1.1rem;font-weight:800;color:#1565c0;margin-top:4px">Zahnputz-Timer</div>
+        </div>
+        <div class="timer-ring-wrap">
+          <svg class="timer-svg" viewBox="0 0 200 200">
+            <circle class="timer-bg-circle" cx="100" cy="100" r="88"/>
+            <circle class="timer-fill-circle" id="tFill" cx="100" cy="100" r="88" stroke="#42a5f5" stroke-dasharray="553" stroke-dashoffset="0"/>
+          </svg>
+          <div class="timer-center">
+            <div class="timer-digits" id="tDigits">2:00</div>
+            <div class="timer-status" id="tStatus">Bereit?</div>
+          </div>
+        </div>
+        <div class="mouth-card">
+          <div class="mouth-title">Wo putzt du gerade?</div>
+          <div class="mouth-grid">
+            <div class="quadrant" id="mq0"><div class="quad-icon">↖️</div><div class="quad-name">Oben links</div></div>
+            <div class="quadrant" id="mq1"><div class="quad-icon">↗️</div><div class="quad-name">Oben rechts</div></div>
+            <div class="quadrant" id="mq2"><div class="quad-icon">↙️</div><div class="quad-name">Unten links</div></div>
+            <div class="quadrant" id="mq3"><div class="quad-icon">↘️</div><div class="quad-name">Unten rechts</div></div>
+          </div>
+        </div>
+        <div class="timer-encourage" id="tEnc">Drücke Start und los geht's! 💪</div>
+        <button class="timer-btn" id="tBtn" onclick="timerStart()">▶️ Start!</button>
+      </div>
+      <div class="timer-finish" id="timerFinish">
+        <div class="tf-emoji">🌟</div>
+        <div class="tf-title">Toll gemacht!</div>
+        <div class="tf-sub">Deine Zähne sind jetzt blitzsauber!</div>
+        <div class="tf-stars">⭐⭐⭐⭐⭐</div>
+        <button class="timer-btn" onclick="timerReset()">🔄 Nochmal!</button>
+      </div>
+    </div>
+
+    <!-- ===== INFO ===== -->
+    <div class="screen" id="screenInfo">
+      <div style="text-align:center;margin-bottom:20px">
+        <span style="font-size:42px">ℹ️</span>
+        <div style="font-size:1.2rem;font-weight:800;color:#5c35a3;margin-top:4px">Zahnwissen</div>
+      </div>
+
+      <div class="info-card">
+        <h3><span>🪥</span> Richtig Zähne putzen</h3>
+        <ul class="info-list">
+          <li><span class="il-icon">⏰</span> 2 Mal am Tag: morgens und abends</li>
+          <li><span class="il-icon">⏱️</span> Immer 2 Minuten lang putzen</li>
+          <li><span class="il-icon">🔄</span> Kleine Kreise machen, nicht schrubben</li>
+          <li><span class="il-icon">👅</span> Zunge nicht vergessen!</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3><span>🍎</span> Zahngesunde Ernährung</h3>
+        <ul class="info-list">
+          <li><span class="il-icon">✅</span> Obst, Gemüse und Wasser</li>
+          <li><span class="il-icon">✅</span> Käse und Milch stärken die Zähne</li>
+          <li><span class="il-icon">⚠️</span> Süßes nur einmal am Tag, nicht ständig</li>
+          <li><span class="il-icon">❌</span> Cola und Limonade greifen den Zahnschmelz an</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3><span>🧑‍⚕️</span> Beim Zahnarzt</h3>
+        <ul class="info-list">
+          <li><span class="il-icon">📅</span> 2 Mal im Jahr zur Kontrolle</li>
+          <li><span class="il-icon">😊</span> Dein Zahnarzt hilft dir – kein Grund zur Angst!</li>
+          <li><span class="il-icon">🦷</span> Prophylaxe hält deine Zähne gesund</li>
+        </ul>
+      </div>
+
+      <div class="install-card">
+        <h3>📲 App installieren</h3>
+        <p>Tippe auf „Teilen" ➜ „Zum Startbildschirm" und du hast FRYDENT Kids immer dabei!</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== BOTTOM NAV ===== -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" onclick="switchScreen('home')" id="navHome">
+      <span class="nav-icon">🏠</span><span class="nav-label">Home</span>
+    </button>
+    <button class="nav-btn" onclick="switchScreen('quiz')" id="navQuiz">
+      <span class="nav-icon">🧠</span><span class="nav-label">Quiz</span>
+    </button>
+    <button class="nav-btn" onclick="switchScreen('timer')" id="navTimer">
+      <span class="nav-icon">⏱️</span><span class="nav-label">Timer</span>
+    </button>
+    <button class="nav-btn" onclick="switchScreen('info')" id="navInfo">
+      <span class="nav-icon">ℹ️</span><span class="nav-label">Wissen</span>
+    </button>
+  </nav>
+</div>
+
+<script>
+/* ===== NAVIGATION ===== */
+function switchScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const screenId = 'screen' + id.charAt(0).toUpperCase() + id.slice(1);
+  document.getElementById(screenId).classList.add('active');
+  document.getElementById('nav' + id.charAt(0).toUpperCase() + id.slice(1)).classList.add('active');
+  document.getElementById('appContent').scrollTop = 0;
+  if (id === 'quiz' && quizCurrent === 0 && !quizAnswered) renderQuiz();
+}
+
+/* ===== DAILY TIP ===== */
+const TIPS = [
+  'Wusstest du? Deine Zähne sind so hart wie Knochen! 🦴',
+  'Ein Hai bekommt bis zu 30.000 Zähne in seinem Leben! 🦈',
+  'Dein Zahnschmelz ist das härteste Material in deinem Körper! 💎',
+  'Jeder Mensch hat einen einzigartigen Zahnabdruck – wie ein Fingerabdruck! 🔍',
+  'Milchzähne sind Platzhalter für die bleibenden Zähne! 🌱',
+  'Kaugummi kauen (ohne Zucker!) kann helfen, die Zähne sauber zu halten! 🫧',
+  'Elefanten haben Backenzähne, die so groß wie Ziegelsteine sind! 🐘',
+];
+document.getElementById('tipText').textContent = TIPS[Math.floor(Math.random() * TIPS.length)];
+
+/* ===== QUIZ ===== */
+const QUESTIONS = [
+  { emoji:'🪥', text:'Wie oft sollst du am Tag deine Zähne putzen?',
+    answers:[{icon:'1️⃣',text:'Einmal',c:false},{icon:'2️⃣',text:'Zweimal',c:true},{icon:'4️⃣',text:'Viermal',c:false}],
+    ok:'Genau! Morgens und abends – perfekt! 🌅🌙', no:'Zweimal am Tag: morgens und abends! 🌅🌙' },
+  { emoji:'⏱️', text:'Wie lange sollst du deine Zähne putzen?',
+    answers:[{icon:'⚡',text:'30 Sekunden',c:false},{icon:'⏱️',text:'2 Minuten',c:true},{icon:'⏰',text:'10 Minuten',c:false}],
+    ok:'Super! 2 Minuten sind genau richtig! ⏱️✨', no:'2 Minuten sind richtig! Stell dir einen Timer ⏱️' },
+  { emoji:'🍎', text:'Was ist am besten für deine Zähne?',
+    answers:[{icon:'🍬',text:'Gummibärchen',c:false},{icon:'🍎',text:'Ein Apfel',c:true},{icon:'🍭',text:'Lollipop',c:false}],
+    ok:'Richtig! Obst ist viel besser als Süßes! 🍎💪', no:'Ein Apfel wäre besser! Obst macht Zähne stark! 🍎' },
+  { emoji:'🧑‍⚕️', text:'Wie oft sollst du zum Zahnarzt gehen?',
+    answers:[{icon:'📅',text:'2 Mal im Jahr',c:true},{icon:'🗓️',text:'Einmal in 5 Jahren',c:false},{icon:'🤷',text:'Nur wenn es weh tut',c:false}],
+    ok:'Genau! 2 Mal im Jahr hält Zähne gesund! 🦷✅', no:'Am besten 2 Mal im Jahr! 🦷✅' },
+  { emoji:'🥤', text:'Welches Getränk ist am besten für deine Zähne?',
+    answers:[{icon:'🥤',text:'Cola',c:false},{icon:'🧃',text:'Süßer Saft',c:false},{icon:'💧',text:'Wasser',c:true}],
+    ok:'Perfekt! Wasser ist der beste Freund deiner Zähne! 💧', no:'Wasser ist die beste Wahl! 💧' },
+  { emoji:'🦷', text:'Wie viele Milchzähne hast du?',
+    answers:[{icon:'🔟',text:'10 Zähne',c:false},{icon:'2️⃣',text:'20 Zähne',c:true},{icon:'3️⃣',text:'32 Zähne',c:false}],
+    ok:'Richtig! 20 Milchzähne! Pass gut auf sie auf! 🌟', no:'20 Milchzähne! 32 kommen später als Erwachsener 🦷' }
+];
+
+let quizCurrent = 0, quizScore = 0, quizAnswered = false;
+
+function renderQuiz() {
+  quizAnswered = false;
+  const q = QUESTIONS[quizCurrent];
+  const total = QUESTIONS.length;
+  document.getElementById('qProgText').textContent = `Frage ${quizCurrent+1} von ${total}`;
+  document.getElementById('qProgFill').style.width = `${(quizCurrent/total)*100}%`;
+
+  document.getElementById('quizCard').innerHTML = `
+    <div class="quiz-emoji">${q.emoji}</div>
+    <div class="quiz-question">${q.text}</div>
+    <div class="quiz-answers">${q.answers.map((a,i)=>`<button class="quiz-ans" onclick="quizCheck(${i})"><span class="a-icon">${a.icon}</span>${a.text}</button>`).join('')}</div>
+    <div class="quiz-feedback" id="qFb"></div>
+    <button class="quiz-next" id="qNext" onclick="quizNext()">Weiter ➜</button>
+    <div class="quiz-stars">${'⭐'.repeat(quizScore)}${'☆'.repeat(total-quizScore)}</div>
+  `;
+}
+
+function quizCheck(idx) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  const q = QUESTIONS[quizCurrent];
+  const btns = document.querySelectorAll('.quiz-ans');
+  const fb = document.getElementById('qFb');
+  btns.forEach((b,i) => { b.disabled = true; if(q.answers[i].c) b.classList.add('correct'); else if(i===idx) b.classList.add('wrong'); });
+  if (q.answers[idx].c) { quizScore++; fb.textContent=q.ok; fb.className='quiz-feedback show ok'; }
+  else { fb.textContent=q.no; fb.className='quiz-feedback show no'; }
+  document.querySelector('.quiz-stars').innerHTML = '⭐'.repeat(quizScore)+'☆'.repeat(QUESTIONS.length-quizScore);
+  document.getElementById('qNext').classList.add('show');
+}
+
+function quizNext() {
+  quizCurrent++;
+  if (quizCurrent < QUESTIONS.length) renderQuiz();
+  else quizShowResults();
+}
+
+function quizShowResults() {
+  document.getElementById('qProgFill').style.width = '100%';
+  document.getElementById('qProgText').textContent = 'Fertig! 🎉';
+  const t = QUESTIONS.length;
+  let emoji, title, msg;
+  if (quizScore===t) { emoji='🏆'; title='Zahn-Champion!'; msg='Du weißt alles über deine Zähne!'; confetti(); }
+  else if (quizScore>=t*.7) { emoji='🌟'; title='Super gemacht!'; msg='Du weißt richtig viel!'; confetti(); }
+  else if (quizScore>=t*.4) { emoji='😊'; title='Gut gemacht!'; msg='Beim nächsten Mal schaffst du noch mehr!'; }
+  else { emoji='💪'; title='Weiter üben!'; msg='Jetzt weißt du schon viel mehr!'; }
+
+  document.getElementById('quizCard').innerHTML = `
+    <div class="quiz-result">
+      <div class="qr-emoji">${emoji}</div>
+      <div class="qr-title">${title}</div>
+      <div class="qr-score">${quizScore} von ${t} richtig!</div>
+      <div class="qr-stars">${'⭐'.repeat(quizScore)}</div>
+      <div class="qr-msg">${msg}</div>
+      <div class="diploma">
+        <div class="diploma-scroll">📜</div>
+        <h3>FRYDENT Zahnputz-Diplom</h3>
+        <div class="sub">Hiermit wird bestätigt, dass</div>
+        <div class="child-name" contenteditable="true">Dein Name</div>
+        <div class="sub">das FRYDENT Zahnquiz bestanden hat!</div>
+        <div class="badge">🦷🏅</div>
+        <div class="brand">FRYDENT · Zahnarztpraxis Bonndorf</div>
+        <button class="btn-print" onclick="window.print()" style="margin-top:12px">🖨️ Drucken</button>
+      </div>
+      <div class="btn-row" style="margin-top:14px">
+        <button class="btn-again" onclick="quizRestart()">🔄 Nochmal!</button>
+      </div>
+    </div>
+  `;
+}
+
+function quizRestart() { quizCurrent=0; quizScore=0; quizAnswered=false; renderQuiz(); }
+
+/* ===== TIMER ===== */
+const T_TOTAL=120, T_CIRC=553, T_QT=30;
+const T_ENC=[
+  ['Super, weiter so! 💪','Schön kreisen! 🔄','Toll gemacht! ✨'],
+  ['Jetzt oben rechts! 👉','Auch hinten putzen! 🦷','Halbzeit! 🎯'],
+  ['Unten links dran! 👇','Klasse! 🌟','Fast geschafft! 💫'],
+  ['Letzter Bereich! 🏁','Noch ein bisschen! 💪','Gleich fertig! 🎉']
+];
+let tRemain=T_TOTAL, tInterval=null, tQuad=-1, audioCtx=null;
+
+function playBeep(f,d){try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext);const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.frequency.value=f;g.gain.setValueAtTime(.12,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.01,audioCtx.currentTime+d);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+d)}catch(e){}}
+
+function timerStart(){
+  document.getElementById('tBtn').disabled=true;
+  document.getElementById('tBtn').textContent='Läuft... 🪥';
+  document.getElementById('tStatus').textContent='Putz los!';
+  timerTick();
+  tInterval=setInterval(()=>{tRemain--;timerTick();if(tRemain<=0){clearInterval(tInterval);timerDone();}},1000);
+}
+
+function timerTick(){
+  const m=Math.floor(tRemain/60),s=tRemain%60;
+  document.getElementById('tDigits').textContent=`${m}:${s.toString().padStart(2,'0')}`;
+  const p=(T_TOTAL-tRemain)/T_TOTAL;
+  document.getElementById('tFill').style.strokeDashoffset=T_CIRC*(1-p);
+  document.getElementById('tFill').style.stroke=p<.5?'#42a5f5':p<.75?'#66bb6a':'#fdd835';
+  const el=T_TOTAL-tRemain, nq=Math.min(Math.floor(el/T_QT),3);
+  if(nq!==tQuad){if(tQuad>=0){document.getElementById('mq'+tQuad).classList.remove('active');document.getElementById('mq'+tQuad).classList.add('done');}tQuad=nq;document.getElementById('mq'+tQuad).classList.add('active');if(el>0){playBeep(523,.12);setTimeout(()=>playBeep(659,.12),80);setTimeout(()=>playBeep(784,.15),160);}}
+  const siq=el%T_QT;if(siq===2||siq===12||siq===22){const enc=T_ENC[tQuad];document.getElementById('tEnc').textContent=enc[Math.min(Math.floor(siq/10),2)];}
+  if(tRemain<=5&&tRemain>0){playBeep(800,.05);document.getElementById('tDigits').style.color='#ef5350';}
+}
+
+function timerDone(){
+  document.getElementById('mq'+tQuad).classList.remove('active');document.getElementById('mq'+tQuad).classList.add('done');
+  [523,659,784,1047].forEach((f,i)=>setTimeout(()=>playBeep(f,.25),i*120));
+  document.getElementById('timerArea').style.display='none';document.getElementById('timerFinish').style.display='block';
+  confetti();
+}
+
+function timerReset(){
+  tRemain=T_TOTAL;tQuad=-1;
+  document.getElementById('tDigits').textContent='2:00';document.getElementById('tDigits').style.color='#1565c0';
+  document.getElementById('tFill').style.strokeDashoffset='0';document.getElementById('tStatus').textContent='Bereit?';
+  document.getElementById('tEnc').textContent="Drücke Start und los geht's! 💪";
+  for(let i=0;i<4;i++){const q=document.getElementById('mq'+i);q.classList.remove('active','done');}
+  document.getElementById('tBtn').disabled=false;document.getElementById('tBtn').textContent='▶️ Start!';
+  document.getElementById('timerArea').style.display='block';document.getElementById('timerFinish').style.display='none';
+}
+
+/* ===== CONFETTI ===== */
+function confetti(){
+  const cols=['#7c4dff','#e040fb','#ff4081','#fdd835','#4caf50','#29b6f6'];
+  for(let i=0;i<50;i++){const p=document.createElement('div');p.className='confetti';p.style.left=Math.random()*100+'vw';p.style.top='-10px';p.style.background=cols[Math.floor(Math.random()*6)];p.style.animationDelay=Math.random()*1.5+'s';p.style.width=(5+Math.random()*7)+'px';p.style.height=(5+Math.random()*7)+'px';document.body.appendChild(p);setTimeout(()=>p.remove(),5000);}
+}
+
+/* ===== PWA INSTALL ===== */
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
+
+/* Init quiz */
+renderQuiz();
+</script>
+</body>
+</html>
