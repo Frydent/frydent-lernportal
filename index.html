@@ -493,7 +493,7 @@ var topics=[];document.querySelectorAll('.cb-opt.checked input').forEach(functio
 var pill=document.querySelector('.pill-btn.active');
 var data={rating:starVal,topics:topics,understandable:pill?pill.textContent:'',feedback:document.getElementById('feedbackText').value,language:document.documentElement.lang||'de'};
 if(SURVEY_URL&&SURVEY_URL!=='https://script.google.com/macros/s/AKfycbwj6krbiOj8exB9NzjTgkaZqgw0vOgOQzB7oZxg6FrpaNosS3KObdrlJlkMX_ackqij/exec'){
-fetch(SURVEY_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(function(){});
+var img=new Image();img.src=SURVEY_URL+'?data='+encodeURIComponent(JSON.stringify(data));
 }else{console.log('Survey data:',data)}
 var fa=document.getElementById('formArea'),ty=document.getElementById('thankYou');
 fa.style.transition='opacity .4s';fa.style.opacity='0';
