@@ -1,6 +1,6 @@
 // FRYDENT Kids v2 - Service Worker
 // Clears old caches and uses network-first strategy
-const CACHE_NAME = 'frydent-kids-v2';
+const CACHE_NAME = 'frydent-kids-v3';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
