@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#7BA490">
+<title>Zahnputz-Uhr — FRYDENT Kids</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --parchment:#FAF6EF;--sage:#7BA490;--sage-light:#A8C8B8;
+  --honey:#D4A76A;--honey-light:#E8CFA0;
+  --rose:#C17B6E;--rose-light:#DCABA2;
+  --bark:#5A4E42;--bark-light:#8A7E72;--cream:#FFFCF5;
+}
+html,body{height:100%;overflow:hidden;font-family:'Nunito',sans-serif;background:var(--parchment);color:var(--bark);user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+body{display:flex;justify-content:center;align-items:center}
+.app{width:100%;max-width:480px;height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:20px 20px 28px;position:relative;overflow:hidden}
+.app::before{content:'';position:absolute;top:-40px;left:-40px;width:200px;height:200px;background:rgba(168,200,184,.15);border-radius:50%;filter:blur(60px)}
+.app::after{content:'';position:absolute;bottom:-20px;right:-30px;width:180px;height:180px;background:rgba(212,167,106,.1);border-radius:50%;filter:blur(50px)}
+
+/* Header */
+.header{text-align:center;z-index:1}
+.header h1{font-family:'Quicksand',sans-serif;font-size:22px;font-weight:700;color:var(--sage)}
+.header p{font-size:13px;color:var(--bark-light);font-style:italic;margin-top:2px}
+.back-link{position:absolute;top:16px;left:16px;width:36px;height:36px;border:1.5px solid var(--sage-light);border-radius:50%;background:var(--cream);color:var(--sage);font-size:16px;display:flex;align-items:center;justify-content:center;text-decoration:none;z-index:10}
+
+/* Timer circle */
+.timer-area{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:12px}
+
+.circle-wrap{position:relative;width:260px;height:260px}
+.circle-bg{width:100%;height:100%;border-radius:50%;border:6px solid var(--cream);box-shadow:0 4px 20px rgba(90,78,66,.08)}
+svg.progress-ring{position:absolute;top:0;left:0;width:100%;height:100%;transform:rotate(-90deg)}
+.progress-ring circle{fill:none;stroke-width:6;stroke-linecap:round}
+.progress-ring .track{stroke:rgba(168,200,184,.2)}
+.progress-ring .fill{stroke:var(--sage);transition:stroke-dashoffset .5s ease;filter:drop-shadow(0 0 4px rgba(123,164,144,.3))}
+
+.timer-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hourglass{width:140px;height:140px;transition:transform .3s}
+.hourglass img{width:100%;height:100%;object-fit:contain}
+.hourglass.running{animation:hourglassPulse 2s ease-in-out infinite}
+@keyframes hourglassPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+
+.time-display{font-family:'Quicksand',sans-serif;font-size:42px;font-weight:700;color:var(--sage);margin-top:4px}
+.time-label{font-size:12px;color:var(--bark-light)}
+
+/* Quadrant indicator */
+.quadrant-area{z-index:1;text-align:center}
+.quadrant-label{font-family:'Quicksand',sans-serif;font-size:17px;font-weight:700;color:var(--bark);margin-bottom:10px}
+.mouth-diagram{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:160px;margin:0 auto}
+.quadrant{padding:10px 6px;border-radius:10px;background:var(--cream);border:2px solid rgba(90,78,66,.06);font-size:11px;font-weight:600;color:var(--bark-light);transition:all .4s;text-align:center;line-height:1.3}
+.quadrant.active{border-color:var(--sage);background:rgba(168,200,184,.15);color:var(--sage);transform:scale(1.05);box-shadow:0 2px 12px rgba(123,164,144,.2)}
+.quadrant.done{border-color:var(--honey-light);background:rgba(212,167,106,.08);color:var(--honey)}
+.quadrant-icon{font-size:18px;display:block;margin-bottom:2px}
+
+/* Buttons */
+.controls{z-index:1;display:flex;gap:12px}
+.btn{padding:14px 36px;border:2px solid var(--sage);border-radius:50px;background:var(--cream);color:var(--sage);font-family:'Quicksand',sans-serif;font-size:18px;font-weight:700;cursor:pointer;transition:all .2s}
+.btn:active{transform:scale(.96)}
+.btn.primary{background:var(--sage);color:white;border-color:var(--sage);box-shadow:0 4px 16px rgba(123,164,144,.25)}
+.btn.small{padding:10px 24px;font-size:14px}
+
+/* Win state */
+.win-state{display:none;flex-direction:column;align-items:center;gap:12px;text-align:center;z-index:1}
+.win-state.active{display:flex}
+.win-state img{width:160px;height:160px;object-fit:contain;animation:bounce .6s ease}
+.win-state h2{font-family:'Quicksand',sans-serif;font-size:26px;color:var(--sage)}
+.win-state p{font-size:15px;color:var(--bark-light);font-style:italic}
+@keyframes bounce{0%{transform:scale(0) rotate(-5deg)}60%{transform:scale(1.1) rotate(3deg)}100%{transform:scale(1)}}
+
+.confetti{position:fixed;z-index:100;animation:fall 2.5s ease-out forwards}
+@keyframes fall{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+
+/* States */
+.app[data-state="idle"] .timer-area{display:flex}
+.app[data-state="idle"] .quadrant-area{display:block}
+.app[data-state="idle"] .win-state{display:none}
+.app[data-state="running"] .timer-area{display:flex}
+.app[data-state="running"] .quadrant-area{display:block}
+.app[data-state="running"] .win-state{display:none}
+.app[data-state="done"] .timer-area{display:none}
+.app[data-state="done"] .quadrant-area{display:none}
+.app[data-state="done"] .win-state{display:flex}
+
+@media(max-height:680px){.circle-wrap{width:220px;height:220px}.hourglass{width:110px;height:110px}.time-display{font-size:36px}.mouth-diagram{width:140px}}
+</style>
+</head>
+<body>
+<div class="app" id="app" data-state="idle">
+  <a href="index.html" class="back-link">←</a>
+  
+  <div class="header">
+    <h1>Zahnputz-Uhr</h1>
+    <p>2 Minuten für strahlende Zähne!</p>
+  </div>
+
+  <div class="timer-area">
+    <div class="circle-wrap">
+      <svg class="progress-ring" viewBox="0 0 260 260">
+        <circle class="track" cx="130" cy="130" r="124"/>
+        <circle class="fill" id="progress" cx="130" cy="130" r="124"/>
+      </svg>
+      <div class="timer-content">
+        <div class="hourglass" id="hourglass"><img src="img/card-hourglass.png" alt="Sanduhr"></div>
+        <div class="time-display" id="timeDisplay">2:00</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quadrant-area">
+    <div class="quadrant-label" id="quadLabel">Bereit? Los geht's!</div>
+    <div class="mouth-diagram">
+      <div class="quadrant" id="q0"><span class="quadrant-icon">↖</span>Oben<br>links</div>
+      <div class="quadrant" id="q1"><span class="quadrant-icon">↗</span>Oben<br>rechts</div>
+      <div class="quadrant" id="q2"><span class="quadrant-icon">↙</span>Unten<br>links</div>
+      <div class="quadrant" id="q3"><span class="quadrant-icon">↘</span>Unten<br>rechts</div>
+    </div>
+  </div>
+
+  <div class="win-state" id="winState">
+    <img src="img/zaehni-winner.png" alt="Zähni feiert">
+    <h2>Super geputzt!</h2>
+    <p>Deine Zähne strahlen jetzt!</p>
+    <div id="winStars" style="font-size:32px;letter-spacing:8px">⭐⭐⭐</div>
+    <button class="btn primary" onclick="resetTimer()">Nochmal!</button>
+    <a href="index.html" class="btn small">Zurück zu den Spielen</a>
+  </div>
+
+  <div class="controls" id="controls">
+    <button class="btn primary" id="startBtn" onclick="startTimer()">Start!</button>
+  </div>
+</div>
+
+<script>
+const TOTAL=120;
+const QUADRANTS=['Oben links putzen!','Oben rechts putzen!','Unten links putzen!','Unten rechts putzen!'];
+const circumference=2*Math.PI*124;
+
+let timeLeft=TOTAL,running=false,timer=null,currentQuad=-1;
+const progress=document.getElementById('progress');
+const timeDisplay=document.getElementById('timeDisplay');
+const quadLabel=document.getElementById('quadLabel');
+const hourglass=document.getElementById('hourglass');
+const app=document.getElementById('app');
+
+progress.style.strokeDasharray=circumference;
+progress.style.strokeDashoffset=circumference;
+
+const audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+function playTone(freq,dur,vol){if(audioCtx.state==='suspended')audioCtx.resume();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(audioCtx.destination);o.frequency.setValueAtTime(freq,audioCtx.currentTime);g.gain.setValueAtTime(vol||.1,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);o.start();o.stop(audioCtx.currentTime+dur)}
+
+function playQuadChange(){playTone(660,.08);setTimeout(()=>playTone(880,.12),100)}
+function playTick(){playTone(500,.03,.05)}
+function playWin(){[523,659,784,1047].forEach((f,i)=>{setTimeout(()=>playTone(f,.25,.12),i*150)})}
+
+function updateDisplay(){
+  const m=Math.floor(timeLeft/60);
+  const s=timeLeft%60;
+  timeDisplay.textContent=m+':'+(s<10?'0':'')+s;
+  const pct=(TOTAL-timeLeft)/TOTAL;
+  progress.style.strokeDashoffset=circumference*(1-pct);
+  
+  // Update quadrant (30s each)
+  const newQuad=Math.min(3,Math.floor((TOTAL-timeLeft)/30));
+  if(newQuad!==currentQuad&&timeLeft<TOTAL){
+    currentQuad=newQuad;
+    quadLabel.textContent=QUADRANTS[currentQuad];
+    for(let i=0;i<4;i++){
+      const el=document.getElementById('q'+i);
+      el.classList.remove('active','done');
+      if(i<currentQuad)el.classList.add('done');
+      else if(i===currentQuad)el.classList.add('active');
+    }
+    playQuadChange();
+  }
+  
+  // Color change as time progresses
+  if(pct>.75)progress.style.stroke='#D4A76A';
+  else if(pct>.5)progress.style.stroke='#A8C8B8';
+  else progress.style.stroke='#7BA490';
+}
+
+function startTimer(){
+  if(running)return;
+  running=true;
+  app.dataset.state='running';
+  hourglass.classList.add('running');
+  document.getElementById('startBtn').textContent='Läuft...';
+  document.getElementById('startBtn').style.pointerEvents='none';
+  document.getElementById('startBtn').style.opacity='.5';
+  
+  timer=setInterval(()=>{
+    timeLeft--;
+    if(timeLeft%10===0)playTick();
+    updateDisplay();
+    if(timeLeft<=0){
+      clearInterval(timer);
+      running=false;
+      hourglass.classList.remove('running');
+      // Mark all done
+      for(let i=0;i<4;i++)document.getElementById('q'+i).classList.add('done');
+      // Show win
+      setTimeout(()=>{
+        app.dataset.state='done';
+        playWin();
+        spawnConfetti();
+      },500);
+    }
+  },1000);
+  
+  // Start first quadrant
+  currentQuad=-1;
+  updateDisplay();
+  // Force first quadrant
+  timeLeft=TOTAL;
+  updateDisplay();
+  timeLeft--;
+  currentQuad=-1;
+  updateDisplay();
+}
+
+function resetTimer(){
+  timeLeft=TOTAL;
+  running=false;
+  currentQuad=-1;
+  clearInterval(timer);
+  app.dataset.state='idle';
+  hourglass.classList.remove('running');
+  document.getElementById('startBtn').textContent='Start!';
+  document.getElementById('startBtn').style.pointerEvents='';
+  document.getElementById('startBtn').style.opacity='';
+  progress.style.strokeDashoffset=circumference;
+  progress.style.stroke='#7BA490';
+  timeDisplay.textContent='2:00';
+  quadLabel.textContent='Bereit? Los geht\u2019s!';
+  for(let i=0;i<4;i++){const el=document.getElementById('q'+i);el.classList.remove('active','done')}
+}
+
+function spawnConfetti(){
+  const colors=['#7BA490','#D4A76A','#C17B6E','#A88BAE','#8FAEBB'];
+  for(let i=0;i<30;i++){
+    const el=document.createElement('div');
+    el.className='confetti';
+    el.style.left=Math.random()*100+'%';
+    el.style.background=colors[Math.floor(Math.random()*colors.length)];
+    el.style.borderRadius=Math.random()>.5?'50%':'2px';
+    const s=5+Math.random()*7;
+    el.style.width=s+'px';el.style.height=s+'px';
+    el.style.animationDelay=Math.random()*.6+'s';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),3500);
+  }
+}
+</script>
+</body>
+</html>
