@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sfaturi pentru părinți – FRYDENT Colțul copiilor</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+        :root{
+            --blue:#3D5A98;--blue-dark:#2C4170;--blue-darker:#1E2D4D;--blue-light:#E8EEF7;
+            --gold:#E2C26A;--gold-light:#F8F0DC;--gold-dark:#C4A44E;
+            --white:#FFFFFF;--gray-50:#F7F8FA;--gray-100:#F0F2F5;--gray-200:#E4E6EB;
+            --gray-400:#B0B3B8;--gray-600:#6B7280;--gray-800:#1F2937;
+            --red-soft:#FEF2F2;--red-border:#FECACA;--red-text:#991B1B;
+            --green-soft:#EEF6EA;--green-border:#c3ddb8;--green-text:#3d6b32;
+            --amber-soft:#FFFBEB;--amber-border:#FDE68A;--amber-text:#92400E;
+            --radius:14px;--radius-sm:8px;
+            /* Kinderecke pastels — warm muted */
+            --ke-mint:#7BACA7;--ke-mint-dark:#5A8F8A;--ke-mint-soft:#EBF5F3;--ke-mint-border:#C5DDD9;
+            --ke-coral:#D4937F;--ke-coral-soft:#FBF0EC;--ke-coral-border:#E8C9BF;
+            --ke-lavender:#9B8FBF;--ke-lavender-soft:#F3F0F8;--ke-lavender-border:#D4CEE4;
+            --ke-sun:#D4B85A;--ke-sun-soft:#FBF7E8;--ke-sun-border:#E6DDB5;
+            --ke-sky:#7BA5C4;--ke-sky-soft:#EDF4F9;--ke-sky-border:#C0D6E8
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Plus Jakarta Sans',-apple-system,sans-serif;background:var(--gray-50);color:var(--gray-800);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+        /* HEADER */
+        header{background:var(--white);border-bottom:1px solid var(--gray-200);position:sticky;top:0;z-index:100}
+        .header-inner{max-width:820px;margin:0 auto;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+        .logo-img{height:32px;width:auto}
+        .header-right{display:flex;align-items:center;gap:8px}
+        .header-btn{font-size:12px;font-weight:700;padding:9px 20px;border-radius:8px;text-decoration:none;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:6px}
+        .header-back{background:#2C4170;color:#FFFFFF}
+        .header-back:hover{background:#1E2D4D}
+        .header-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+        .header-back .back-text{display:inline}
+        .header-termin{background:#E2C26A;color:#1E2D4D}
+        .header-termin:hover{background:#2C4170;color:#FFFFFF}
+        @media(max-width:640px){.header-back .back-text{display:none}.header-back{padding:9px 10px}}
+
+        /* HERO — warm Kinderecke gradient */
+        .hero{background:linear-gradient(145deg,#8BBDB8 0%,var(--ke-mint) 40%,var(--ke-mint-dark) 100%);padding:4rem 1.5rem 3.5rem;text-align:center;box-shadow:0 8px 30px rgba(90,143,138,.2);position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-30%;right:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}
+        .hero::after{content:'';position:absolute;bottom:-20%;left:-5%;width:250px;height:250px;background:radial-gradient(circle,rgba(255,255,255,.05) 0%,transparent 70%);border-radius:50%}
+        .hero h1{font-family:'Quicksand',sans-serif;font-size:2.1rem;font-weight:400;color:var(--white);margin-bottom:.6rem;letter-spacing:-.3px}
+        .hero-divider{width:280px;max-width:80%;height:2px;background:linear-gradient(90deg,var(--ke-coral),var(--ke-sun),var(--ke-coral));margin:.8rem auto;opacity:.6}
+        .hero p{color:rgba(255,255,255,.8);font-size:1rem;font-weight:300;max-width:520px;margin:0 auto;line-height:1.6}
+
+        /* MAIN */
+        main{max-width:820px;margin:0 auto;padding:2rem 1.5rem 3rem}
+
+        /* TAB NAVIGATION — Kinderecke warm style */
+        .tab-nav{display:flex;gap:.4rem;padding-bottom:.5rem;margin-bottom:1.75rem;overflow-x:auto;-webkit-overflow-scrolling:touch;position:relative;mask-image:linear-gradient(to right,#000 85%,transparent);-webkit-mask-image:linear-gradient(to right,#000 85%,transparent)}
+        .tab-nav.scrolled-end{mask-image:none;-webkit-mask-image:none}
+        .tab-nav::-webkit-scrollbar{display:none}
+        .tab-btn{display:flex;align-items:center;gap:6px;padding:.55rem 1rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid var(--ke-mint-border);background:var(--ke-mint-soft);color:var(--ke-mint-dark);cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:0 0 auto}
+        .tab-btn:hover{border-color:var(--ke-mint);background:#d8ece9}
+        .tab-btn.active{background:var(--ke-mint-dark);color:var(--white);border-color:var(--ke-mint-dark)}
+        .tab-btn svg{flex-shrink:0}
+
+        /* SECTION */
+        .tab-section{display:none}
+        .tab-section.active{display:block}
+        .section-title{font-family:'Quicksand',sans-serif;font-size:1.05rem;font-weight:600;color:var(--ke-mint-dark);margin:1.75rem 0 .75rem;display:flex;align-items:center;gap:10px}
+        .section-title:first-child{margin-top:0}
+        .section-title svg{flex-shrink:0}
+        .section-sub{color:var(--gray-600);font-size:.88rem;margin-bottom:1.25rem;margin-top:-.4rem}
+
+        /* CARDS */
+        .card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:1.5rem 1.75rem;margin-bottom:1.25rem}
+        .card-title{font-family:'Quicksand',sans-serif;font-weight:600;color:var(--ke-mint-dark);font-size:.95rem;margin-bottom:.6rem}
+        .card p,.card li{font-size:.88rem;color:var(--gray-600);line-height:1.65}
+
+        .card-mint{background:var(--ke-mint-soft);border:1px solid var(--ke-mint-border)}
+        .card-coral{background:var(--ke-coral-soft);border:1px solid var(--ke-coral-border)}
+        .card-coral .card-title{color:#8B5A48}
+        .card-lavender{background:var(--ke-lavender-soft);border:1px solid var(--ke-lavender-border)}
+        .card-lavender .card-title{color:#5A4E78}
+        .card-sun{background:var(--ke-sun-soft);border:1px solid var(--ke-sun-border)}
+        .card-sun .card-title{color:#6B5A2A}
+        .card-sky{background:var(--ke-sky-soft);border:1px solid var(--ke-sky-border)}
+        .card-sky .card-title{color:#3D6080}
+
+        /* DO / DON'T CARDS */
+        .do-card{background:var(--green-soft);border:1px solid var(--green-border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1rem}
+        .do-card h4{color:var(--green-text);font-family:'Quicksand',sans-serif;font-size:.9rem;font-weight:600;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:2px solid #c3ddb8;display:flex;align-items:center;gap:8px}
+        .dont-card{background:var(--red-soft);border:1px solid var(--red-border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1rem}
+        .dont-card h4{color:var(--red-text);font-family:'Quicksand',sans-serif;font-size:.9rem;font-weight:600;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:2px solid #FECACA;display:flex;align-items:center;gap:8px}
+        .do-card li,.dont-card li{font-size:.85rem;line-height:1.6;margin-bottom:.35rem;color:var(--gray-800)}
+        .do-card ul,.dont-card ul{list-style:none;padding:0}
+        .do-card li::before{content:'✓ ';color:var(--green-text);font-weight:700}
+        .dont-card li::before{content:'✗ ';color:var(--red-text);font-weight:700}
+
+        /* HINT BOX */
+        .hint-box{background:var(--ke-sun-soft);border:1px solid var(--ke-sun-border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:1.25rem 0;display:flex;gap:12px;align-items:flex-start}
+        .hint-box .hint-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
+        .hint-box p{font-size:.85rem;color:#6B5A2A;line-height:1.6}
+        .hint-box strong{color:#5A4A1E}
+
+        /* INFO BOX */
+        .info-box{background:var(--ke-sky-soft);border:1px solid var(--ke-sky-border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:1.25rem 0;display:flex;gap:12px;align-items:flex-start}
+        .info-box .info-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
+        .info-box p{font-size:.85rem;color:#3D6080;line-height:1.6}
+
+        /* QUOTE CARD */
+        .quote-card{background:var(--ke-lavender-soft);border-left:4px solid var(--ke-lavender);border-radius:0 var(--radius) var(--radius) 0;padding:1.25rem 1.5rem;margin:1.25rem 0}
+        .quote-card p{font-size:.88rem;color:#5A4E78;font-style:italic;line-height:1.65}
+        .quote-card .quote-source{font-style:normal;font-size:.78rem;color:var(--gray-400);margin-top:.5rem}
+
+        /* CTA CARD */
+        .cta-card{background:linear-gradient(135deg,var(--ke-mint-soft) 0%,#ddf0ed 100%);border:1px solid var(--ke-mint);border-radius:var(--radius);padding:2rem;text-align:center;margin:1.5rem 0}
+        .cta-card h3{font-family:'Quicksand',sans-serif;font-size:1.1rem;font-weight:700;color:var(--ke-mint-dark);margin-bottom:.4rem}
+        .cta-card p{font-size:.85rem;color:var(--gray-600);margin-bottom:.8rem}
+        .cta-card .phone{margin-top:.5rem}
+        .cta-card .phone a{font-size:1.2rem;font-weight:700;color:var(--ke-mint-dark);text-decoration:none}
+
+        /* LINK CARD */
+        .link-card{display:flex;align-items:center;gap:14px;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:1.25rem 1.5rem;text-decoration:none;transition:all .2s;margin-bottom:1rem}
+        .link-card:hover{border-color:var(--ke-mint);box-shadow:0 4px 12px rgba(123,172,167,.12);transform:translateY(-1px)}
+        .link-card .link-emoji{font-size:1.8rem;flex-shrink:0}
+        .link-card .link-info h4{font-family:'Quicksand',sans-serif;font-size:.9rem;font-weight:600;color:var(--ke-mint-dark);margin-bottom:2px}
+        .link-card .link-info p{font-size:.8rem;color:var(--gray-600);line-height:1.4}
+        .link-card .link-arrow{margin-left:auto;color:var(--gray-400);font-size:1.2rem}
+
+        /* NUMBERED STEPS */
+        .step-list{counter-reset:step}
+        .step-item{counter-increment:step;display:flex;gap:14px;margin-bottom:1.25rem;align-items:flex-start}
+        .step-item::before{content:counter(step);background:var(--ke-mint);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;margin-top:2px}
+        .step-item p{font-size:.88rem;color:var(--gray-600);line-height:1.6}
+        .step-item strong{color:var(--gray-800)}
+
+        /* FOOTER */
+        footer{max-width:820px;margin:0 auto;padding:1rem 1.5rem 2rem;text-align:center;color:var(--gray-400);font-size:.72rem;border-top:1px solid var(--gray-200)}
+        footer a{color:var(--ke-mint-dark);text-decoration:none}
+
+        /* RESPONSIVE */
+        @media(max-width:640px){
+            .hero h1{font-size:1.6rem}
+            .hero p{font-size:.88rem}
+            .card{padding:1.25rem}
+            .do-dont-grid{grid-template-columns:1fr}
+        }
+        .do-dont-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        @media(max-width:700px){.do-dont-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="header-inner">
+    <a href="index_ro.html"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJFYmVuZV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4OTEuODcgMTg1LjI2Ij48ZGVmcz48c3R5bGU+LmNscy0xLC5jbHMtMntzdHJva2Utd2lkdGg6MHB4O30uY2xzLTJ7ZmlsbDojMzc1MzhlO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im0xOS42NywxMDAuNzNjMCwxLjMsMCwyLjIzLDAsMy4xNSwwLDI2LjE5LDAsNTIuMzgsMCw3OC41N3EwLDIuODEtMi44MiwyLjgxYy00LjgsMC05LjYsMC0xNC4zOSwwSC4wNGMwLS45NCwwLTEuNjUsMC0yLjM2Qy4wNCwxMjIuNzMuMDUsNjIuNTUsMCwyLjM4LDAsLjQ3LjU5LjA0LDIuMzYuMDRjMzcuNzkuMDQsNzUuNTctLjE0LDExMy4zNi4xMiwxNC4yNC4xLDI3LjEzLDUuMDEsMzguNDgsMTMuNjgsMTMuMzcsMTAuMjEsMjIuMDQsMjMuOCwyNy44NSwzOS4zNyw1LjY0LDE1LjEyLDcuOTMsMzAuODEsNy4yNSw0Ni44Ni0uNzksMTguNjgtNS41MSwzNi4zMy0xNi4wMSw1Mi4wMi0xMS4xOCwxNi43MS0yNi43NCwyNy4wOS00Ni42NSwzMC4yNy03LjUyLDEuMi0xNS4yMywxLjM1LTIyLjg3LDEuNjQtMTQuMzEuNTUtMjguNjMuODUtNDIuOTQsMS4yNS0uNzIuMDItMS40NSwwLTIuNCwwLS4wNi0uODgtLjE2LTEuNjUtLjE2LTIuNDEsMC0yMS41MywwLTQzLjA1LDAtNjQuNTgsMC0yLjYyLjAxLTIuNjMsMi42Ny0yLjYzLDUuNCwwLDEwLjguMDYsMTYuMTktLjAzLDEuNzktLjAzLDIuMzkuNDYsMi4zNiwyLjM1LS4yMiwxNS4yNi0uMzMsMzAuNTItLjQ2LDQ1Ljc3LS4wMiwyLjUxLDAsMi40MywyLjU3LDIuMzcsNi43My0uMTQsMTMuNDYtLjA4LDIwLjE4LS4zMyw5Ljk4LS4zOCwxOS45NS0uODgsMjkuNTQtNC4xNiwxMC4xOS0zLjQ5LDE3Ljg1LTEwLjAxLDIzLjUzLTE5LjA2LDcuMzYtMTEuNzQsMTEuMzItMjQuNTgsMTIuOC0zOC4yOCwxLjgtMTYuNjUtLjAyLTMyLjgyLTYuMjgtNDguNC01LjI3LTEzLjExLTE0LjA4LTIzLjI2LTI2LjI4LTMwLjMzLTYuMTUtMy41Ni0xMi45My01LjM2LTIwLjA0LTUuMzgtMzAuODUtLjA3LTYxLjcxLS4wMy05Mi41Ni0uMDMtLjg1LDAtMS43LDAtMi42NywwdjYwLjM2Yy45LjA1LDEuNzMuMTMsMi41Ni4xMywyMi45MiwwLDQ1Ljg1LjA0LDY4Ljc3LS4wNSwyLjM1LDAsMy40Ny44NiwzLjk1LDIuOTUsMS4xMiw0LjgxLDEuMTksOS42Mi0uMDgsMTQuNDItLjUzLDIuMDEtMS43MiwyLjg0LTMuOTEsMi44NC0yMi43OS0uMDctNDUuNTgtLjA0LTY4LjM3LS4wNC0uOTIsMC0xLjgzLDAtMy4wNiwwWiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0ibTI4Ni43MSwxMDcuMWgtMTcuMzZWLjAyaDYwLjQzdjE0Ljc5aC00My4wN3YzMy40N2g0MC4zNnYxNC44N2gtNDAuMzZ2NDMuOTVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMzYyLjUyLDY0LjMzdjQyLjc3aC0xNy41MVYuMDJoMzAuMjVjMTMuODIsMCwyNC4wNSwyLjU5LDMwLjY5LDcuNzYsNi42NCw1LjE4LDkuOTYsMTIuOTksOS45NiwyMy40NCwwLDEzLjMzLTYuOTMsMjIuODMtMjAuOCwyOC40OWwzMC4yNSw0Ny4zOWgtMTkuOTJsLTI1LjYzLTQyLjc3aC0xNy4yOVptMC0xNC41aDEyLjE2YzguMTUsMCwxNC4wNi0xLjUxLDE3LjcyLTQuNTQsMy42Ni0zLjAzLDUuNDktNy41Miw1LjQ5LTEzLjQ4cy0xLjk4LTEwLjQtNS45My0xMy4wNC05LjkxLTMuOTYtMTcuODctMy45NmgtMTEuNTd2MzUuMDFaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNDY2LjA3LDQ4Ljg3TDQ5MS40MS4wMmgxOS4wNGwtMzUuNjcsNjUuNTV2NDEuNTNoLTE3LjU4di00MC45NEw0MjEuNjguMDJoMTkuMDRsMjUuMzQsNDguODVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjA5Ljc5LDUyLjUzYzAsMTcuNjgtNC45MSwzMS4xOS0xNC43Miw0MC41NC05LjgxLDkuMzUtMjMuOTUsMTQuMDMtNDIuNDEsMTQuMDNoLTI5Ljk2Vi4wMmgzMy4xMWMxNy4wNCwwLDMwLjMsNC41OSwzOS43NywxMy43Nyw5LjQ3LDkuMTgsMTQuMjEsMjIuMSwxNC4yMSwzOC43NVptLTE4LjQ2LjU5YzAtMjUuNjMtMTEuOTktMzguNDUtMzUuOTYtMzguNDVoLTE1LjE2djc3LjcxaDEyLjQ1YzI1Ljc4LDAsMzguNjctMTMuMDgsMzguNjctMzkuMjZaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjg5LjMzLDEwNy4xaC02MC41N1YuMDJoNjAuNTd2MTQuNzloLTQzLjA3djI5LjE1aDQwLjM2djE0LjY1aC00MC4zNnYzMy42Mmg0My4wN3YxNC44N1oiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im03OTcuNjQsMTA3LjFoLTIxLjQ2bC01Mi42Ni04NS4zM2gtLjU5bC4zNyw0Ljc2Yy42OCw5LjA0LDEuMDMsMTcuMzgsMS4wMywyNC45djU1LjY2aC0xNS44OVYuMDJoMjEuMjRsNTIuNTIsODQuODloLjQ0Yy0uMS0xLjEyLS4yOS01LjIxLS41OS0xMi4yNy0uMjktNy4wNi0uNDQtMTIuNTYtLjQ0LTE2LjUyVi4wMmgxNi4wNHYxMDcuMDhaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtODYwLjM4LDEwNy4xaC0xNy41VjE1LjAzaC0zMS40OVYuMDJoODAuNDl2MTUuMDFoLTMxLjQ5djkyLjA3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTI5Ny41NiwxODQuNzJoLTI4LjIxdi00LjQ4bDE5Ljg4LTI5LjQyaC0xOS4zNHYtNS41M2gyNy4xM3Y0LjUzbC0xOS45NiwyOS4zN2gyMC41djUuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzIyLjU3LDE4NC43MmwtMS4yNy00LjE1aC0uMjJjLTEuNDQsMS44Mi0yLjg5LDMuMDUtNC4zNCwzLjcxLTEuNDYuNjYtMy4zMy45OC01LjYxLjk4LTIuOTMsMC01LjIyLS43OS02Ljg2LTIuMzctMS42NS0xLjU4LTIuNDctMy44Mi0yLjQ3LTYuNzIsMC0zLjA3LDEuMTQtNS4zOSwzLjQyLTYuOTZzNS43Ni0yLjQyLDEwLjQ0LTIuNTZsNS4xNS0uMTZ2LTEuNTljMC0xLjkxLS40NC0zLjMzLTEuMzMtNC4yNy0uODktLjk0LTIuMjctMS40Mi00LjE0LTEuNDItMS41MywwLTIuOTkuMjItNC40LjY3LTEuNC40NS0yLjc1Ljk4LTQuMDUsMS41OWwtMi4wNS00LjUzYzEuNjItLjg1LDMuMzktMS40OSw1LjMxLTEuOTMsMS45Mi0uNDQsMy43NC0uNjYsNS40NS0uNjYsMy43OSwwLDYuNjYuODMsOC41OSwyLjQ4LDEuOTMsMS42NSwyLjksNC4yNSwyLjksNy43OXYyMC4wOWgtNC41M1ptLTkuNDQtNC4zMWMyLjMsMCw0LjE1LS42NCw1LjU0LTEuOTMsMS4zOS0xLjI5LDIuMDktMy4wOSwyLjA5LTUuNDF2LTIuNTlsLTMuODMuMTZjLTIuOTguMTEtNS4xNi42MS02LjUxLDEuNS0xLjM2Ljg5LTIuMDQsMi4yNS0yLjA0LDQuMDksMCwxLjMzLjM5LDIuMzYsMS4xOSwzLjA5Ljc5LjczLDEuOTgsMS4wOSwzLjU2LDEuMDlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzYxLjA4LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjYsMC00LjYxLjgtNS44NiwyLjM5LTEuMjUsMS41OS0xLjg4LDQuMjYtMS44OCw4djE0LjgxaC02LjM0di00MS45Nmg2LjM0djEwLjY1YzAsMS43MS0uMTEsMy41My0uMzIsNS40OGguNGMuODYtMS40NCwyLjA2LTIuNTUsMy42LTMuMzRzMy4zMy0xLjE5LDUuMzgtMS4xOWM3LjIzLDAsMTAuODQsMy42NCwxMC44NCwxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im0zOTUuMDYsMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQyMS4zNSwxODQuNzJsLTEuMjctNC4xNWgtLjIyYy0xLjQ0LDEuODItMi44OSwzLjA1LTQuMzQsMy43MXMtMy4zMy45OC01LjYxLjk4Yy0yLjkzLDAtNS4yMi0uNzktNi44Ni0yLjM3LTEuNjQtMS41OC0yLjQ3LTMuODItMi40Ny02LjcyLDAtMy4wNywxLjE0LTUuMzksMy40Mi02Ljk2czUuNzYtMi40MiwxMC40NC0yLjU2bDUuMTUtLjE2di0xLjU5YzAtMS45MS0uNDUtMy4zMy0xLjM0LTQuMjctLjg5LS45NC0yLjI3LTEuNDItNC4xNC0xLjQyLTEuNTMsMC0yLjk5LjIyLTQuNC42Ny0xLjQuNDUtMi43NS45OC00LjA0LDEuNTlsLTIuMDUtNC41M2MxLjYyLS44NSwzLjM5LTEuNDksNS4zMS0xLjkzLDEuOTItLjQ0LDMuNzQtLjY2LDUuNDUtLjY2LDMuNzksMCw2LjY2LjgzLDguNTksMi40OCwxLjkzLDEuNjUsMi45LDQuMjUsMi45LDcuNzl2MjAuMDloLTQuNTNabS0xNS41OS0zNy43M2MwLTEuMTEuMy0xLjkyLjktMi40MS42LS40OSwxLjMzLS43NCwyLjItLjc0Ljk1LDAsMS43MS4yOCwyLjI4Ljg0LjU3LjU2Ljg1LDEuMzMuODUsMi4zMnMtLjI5LDEuNzItLjg2LDIuMjljLS41Ny41OC0xLjMzLjg2LTIuMjcuODYtLjg2LDAtMS41OS0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3Wm02LjE1LDMzLjQxYzIuMywwLDQuMTUtLjY0LDUuNTQtMS45MywxLjM5LTEuMjksMi4wOS0zLjA5LDIuMDktNS40MXYtMi41OWwtMy44My4xNmMtMi45OS4xMS01LjE2LjYxLTYuNTEsMS41LTEuMzYuODktMi4wNCwyLjI1LTIuMDQsNC4wOSwwLDEuMzMuNCwyLjM2LDEuMTksMy4wOS43OS43MywxLjk4LDEuMDksMy41NiwxLjA5Wm00LjQ1LTMzLjQxYzAtMS4xMS4zLTEuOTIuOS0yLjQxLjYtLjQ5LDEuMzMtLjc0LDIuMi0uNzQuOTUsMCwxLjcyLjI4LDIuMjkuODQuNTcuNTYuODYsMS4zMy44NiwyLjMycy0uMywxLjc0LS44OSwyLjMxYy0uNTkuNTctMS4zNS44NS0yLjI3Ljg1LS44NiwwLTEuNi0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQ0OC43NiwxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNS4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTMsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDc3LjUxLDE4NC43MmgtMjIuNjN2LTMuOTFsMTUuMDctMjEuMDZoLTE0LjE2di00Ljg1aDIxLjI4djQuNDJsLTE0Ljc1LDIwLjU1aDE1LjE4djQuODVaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDk1LjM4LDE4MC4xNGMxLjU1LDAsMy4wOS0uMjQsNC42NC0uNzN2NC43N2MtLjcuMzEtMS42LjU2LTIuNzEuNzctMS4xLjIxLTIuMjUuMzEtMy40NC4zMS02LDAtOS4wMS0zLjE2LTkuMDEtOS40OXYtMTYuMDdoLTQuMDd2LTIuOGw0LjM3LTIuMzIsMi4xNi02LjMxaDMuOTF2Ni42M2g4LjQ5djQuOGgtOC40OXYxNS45N2MwLDEuNTMuMzgsMi42NiwxLjE1LDMuMzguNzYuNzMsMS43NywxLjA5LDMuMDEsMS4wOVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im01MTcuODIsMTg1LjI2Yy00LjY0LDAtOC4yNy0xLjM1LTEwLjg4LTQuMDZzLTMuOTItNi40My0zLjkyLTExLjE4LDEuMjEtOC43LDMuNjQtMTEuNDljMi40My0yLjc5LDUuNzYtNC4xOCwxMC4wMS00LjE4LDMuOTQsMCw3LjA1LDEuMiw5LjMzLDMuNTksMi4yOCwyLjM5LDMuNDMsNS42OCwzLjQzLDkuODd2My40M2gtMTkuODhjLjA5LDIuODkuODcsNS4xMiwyLjM1LDYuNjcsMS40NywxLjU2LDMuNTUsMi4zMyw2LjIzLDIuMzMsMS43NiwwLDMuNC0uMTcsNC45Mi0uNSwxLjUyLS4zMywzLjE1LS44OSw0Ljg5LTEuNjZ2NS4xNWMtMS41NS43NC0zLjExLDEuMjYtNC42OSwxLjU2LTEuNTguMzEtMy4zOS40Ni01LjQyLjQ2Wm0tMS4xNi0yNi4xMWMtMi4wMSwwLTMuNjMuNjQtNC44NCwxLjkxLTEuMjEsMS4yOC0xLjk0LDMuMTQtMi4xNyw1LjU4aDEzLjU0Yy0uMDQtMi40Ni0uNjMtNC4zMy0xLjc4LTUuNi0xLjE1LTEuMjctMi43My0xLjktNC43NS0xLjlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTUwLjU4LDE0N2MwLTEuMTMuMzEtMiwuOTMtMi42Mi42Mi0uNjEsMS41LS45MiwyLjY2LS45MnMxLjk4LjMxLDIuNi45Mi45MywxLjQ4LjkzLDIuNjItLjMxLDEuOTMtLjkzLDIuNTVjLS42Mi42Mi0xLjQ5LjkzLTIuNi45M3MtMi4wNC0uMzEtMi42Ni0uOTNjLS42Mi0uNjItLjkzLTEuNDctLjkzLTIuNTVabTYuNzIsMzcuNzNoLTYuMzR2LTI5LjgzaDYuMzR2MjkuODNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTkxLjQ2LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjgsMC00LjY0Ljc5LTUuODgsMi4zNy0xLjI0LDEuNTgtMS44Niw0LjIzLTEuODYsNy45NnYxNC44NmgtNi4zNHYtMjkuODNoNC45NmwuODksMy45MWguMzJjLjktMS40MiwyLjE4LTIuNTIsMy44My0zLjI5LDEuNjUtLjc3LDMuNDktMS4xNiw1LjUtMS4xNiw3LjE1LDAsMTAuNzMsMy42NCwxMC43MywxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im02MTUuMywxNDUuM2gxMS43YzUuNDMsMCw5LjM1Ljc5LDExLjc3LDIuMzcsMi40MiwxLjU4LDMuNjMsNC4wOCwzLjYzLDcuNSwwLDIuMy0uNTksNC4yMi0xLjc4LDUuNzQtMS4xOSwxLjUzLTIuODksMi40OS01LjEyLDIuODl2LjI3YzIuNzcuNTIsNC44MSwxLjU1LDYuMTEsMy4wOSwxLjMsMS41NCwxLjk1LDMuNjIsMS45NSw2LjI0LDAsMy41NC0xLjI0LDYuMzEtMy43MSw4LjMyLTIuNDcsMi01LjkxLDMuMDEtMTAuMzIsMy4wMWgtMTQuMjR2LTM5LjQzWm02LjQ1LDE2LjI5aDYuMmMyLjcsMCw0LjY3LS40Myw1LjkxLTEuMjgsMS4yNC0uODUsMS44Ni0yLjMxLDEuODYtNC4zNiwwLTEuODUtLjY3LTMuMTktMi4wMS00LjAycy0zLjQ3LTEuMjQtNi4zOC0xLjI0aC01LjU4djEwLjlabTAsNS4yM3YxMi40OWg2Ljg1YzIuNywwLDQuNzMtLjUyLDYuMTEtMS41NSwxLjM3LTEuMDMsMi4wNi0yLjY3LDIuMDYtNC44OSwwLTIuMDUtLjctMy41Ny0yLjEtNC41Ni0xLjQtLjk5LTMuNTMtMS40OC02LjM5LTEuNDhoLTYuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNjc2Ljg0LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDEtMi41LDIuNzMtNS45OCw0LjEtMTAuNDQsNC4xLTIuNzksMC01LjI1LS42My03LjM5LTEuODlzLTMuNzktMy4wNy00LjkzLTUuNDJjLTEuMTUtMi4zNS0xLjczLTUuMDktMS43My04LjIsMC00Ljg0LDEuMjQtOC42MSwzLjcyLTExLjMzLDIuNDgtMi43MSw1Ljk4LTQuMDcsMTAuNDktNC4wN3M3LjczLDEuMzksMTAuMjUsNC4xN2MyLjUyLDIuNzgsMy43OCw2LjUyLDMuNzgsMTEuMjNabS0yMS43MSwwYzAsNi44OSwyLjU0LDEwLjMzLDcuNjMsMTAuMzNzNy41NS0zLjQ0LDcuNTUtMTAuMzMtMi41NC0xMC4yMi03LjYxLTEwLjIyYy0yLjY2LDAtNC41OS44OC01Ljc0LDIuNjQtMS4yLDEuNzYtMS43OSw0LjI5LTEuNzksNy41OFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im03MDkuMzksMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTc0My4zNywxODQuNzJoLTYuMzZ2LTE4LjM0YzAtMi4zLS40Ni00LjAyLTEuMzktNS4xNS0uOTMtMS4xMy0yLjM5LTEuNy00LjQxLTEuNy0yLjY4LDAtNC42NC43OS01Ljg4LDIuMzctMS4yNCwxLjU4LTEuODYsNC4yMy0xLjg2LDcuOTZ2MTQuODZoLTYuMzR2LTI5LjgzaDQuOTZsLjg5LDMuOTFoLjMyYy45LTEuNDIsMi4xOC0yLjUyLDMuODMtMy4yOSwxLjY1LS43NywzLjQ5LTEuMTYsNS41LTEuMTYsNy4xNSwwLDEwLjczLDMuNjQsMTAuNzMsMTAuOTJ2MTkuNDRaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNzYxLjQzLDE4NS4yNmMtMy43MiwwLTYuNjMtMS4zNS04LjcxLTQuMDVzLTMuMTMtNi40OC0zLjEzLTExLjM1LDEuMDYtOC43LDMuMTctMTEuNDJjMi4xMS0yLjcyLDUuMDQtNC4wOSw4Ljc4LTQuMDlzNi45LDEuNDUsOC45NSw0LjM0aC4zMmMtLjMxLTIuMTQtLjQ2LTMuODMtLjQ2LTUuMDd2LTEwLjg3aDYuMzZ2NDEuOTZoLTQuOTZsLTEuMTEtMy45MWgtLjNjLTIuMDMsMi45Ny01LjAxLDQuNDUtOC45Myw0LjQ1Wm0xLjctNS4xMmMyLjYxLDAsNC41LS43Myw1LjY5LTIuMiwxLjE5LTEuNDcsMS44LTMuODQsMS44My03LjEzdi0uODljMC0zLjc2LS42MS02LjQzLTEuODMtOC4wMS0xLjIyLTEuNTgtMy4xNC0yLjM3LTUuNzQtMi4zNy0yLjIzLDAtMy45NS45LTUuMTUsMi43MS0xLjIsMS44MS0xLjgxLDQuMzgtMS44MSw3Ljczcy41OCw1LjgzLDEuNzUsNy41NmMxLjE3LDEuNzMsMi45MiwyLjYsNS4yNiwyLjZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODExLjI5LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDFzLTUuOTgsNC4xLTEwLjQ0LDQuMWMtMi43OSwwLTUuMjUtLjYzLTcuMzktMS44OXMtMy43OC0zLjA3LTQuOTMtNS40MmMtMS4xNS0yLjM1LTEuNzMtNS4wOS0xLjczLTguMiwwLTQuODQsMS4yNC04LjYxLDMuNzItMTEuMzMsMi40OC0yLjcxLDUuOTgtNC4wNywxMC40OS00LjA3czcuNzMsMS4zOSwxMC4yNSw0LjE3YzIuNTIsMi43OCwzLjc4LDYuNTIsMy43OCwxMS4yM1ptLTIxLjcxLDBjMCw2Ljg5LDIuNTQsMTAuMzMsNy42MywxMC4zM3M3LjU1LTMuNDQsNy41NS0xMC4zMy0yLjU0LTEwLjIyLTcuNjEtMTAuMjJjLTIuNjYsMC00LjU5Ljg4LTUuNzgsMi42NC0xLjIsMS43Ni0xLjc5LDQuMjktMS43OSw3LjU4WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTgzMi43MywxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNi4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTQsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODU3LjM4LDE1OS43aC03LjI4djI1LjAzaC02LjM2di0yNS4wM2gtNC45MXYtMi45N2w0LjkxLTEuOTR2LTEuOTRjMC0zLjUyLjgzLTYuMTQsMi40OC03LjgzLDEuNjUtMS43LDQuMTgtMi41NSw3LjU4LTIuNTUsMi4yMywwLDQuNDIuMzcsNi41OCwxLjExbC0xLjY3LDQuOGMtMS41Ni0uNS0zLjA2LS43Ni00LjQ0LS43NnMtMi40OS40NS0zLjE0LDEuMzNjLS42Ni44OS0uOTgsMi4yMy0uOTgsNC4wMXYxLjk0aDcuMjh2NC44WiIvPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iMjI3LjkxIiB5PSIwIiB3aWR0aD0iMyIgaGVpZ2h0PSIxODUuMjYiLz48L3N2Zz4=" alt="FRYDENT info" class="logo-img"></a>
+    <div class="header-right">
+        <a href="index_ro.html" class="header-btn header-back"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="back-text">Prezentare generală</span></a>
+        <a href="https://www.doctolib.de/zahnarztpraxis/bonndorf-im-schwarzwald/frydent-zahnarztpraxis-bonndorf" target="_blank" class="header-btn header-termin">Termin</a>
+    </div>
+</div>
+</header>
+
+<div class="hero">
+    <h1>Sfaturi pentru părinți</h1>
+    <div class="hero-divider"></div>
+    <p>Cum să vă pregătiți cel mai bine copilul pentru vizita la dentist — și să faceți din aceasta o experiență pozitivă.</p>
+</div>
+
+<main>
+<div class="tab-nav">
+<button class="tab-btn active" onclick="go('vorbereitung')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4"/></svg>Pregătire</button>
+<button class="tab-btn" onclick="go('frueh')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Începeți devreme</button>
+<button class="tab-btn" onclick="go('philosophie')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>Filozofia noastră</button>
+<button class="tab-btn" onclick="go('eltern')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Părinți în cabinet</button>
+<button class="tab-btn" onclick="go('milchzaehne')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 6 5 6 8c0 4 2 6 3 10 .5 2 1 4 3 4s2.5-2 3-4c1-4 3-6 3-10 0-3-2-6-6-6z"/></svg>Dinții de lapte</button>
+<button class="tab-btn" onclick="go('ernaehrung')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>Alimentație</button>
+</div>
+
+<div>
+
+<!-- ===== TAB 1: VORBEREITUNG ===== -->
+<div class="tab-section active" id="s-vorbereitung">
+
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ke-mint)" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4"/></svg>
+        Cum să vă pregătiți copilul acasă
+    </div>
+    <p class="section-sub">Câțiva pași simpli fac o mare diferență</p>
+
+    <div class="card card-mint">
+        <div class="card-title">Vorbiți despre vizită — pozitiv și natural</div>
+        <p>Spuneți-i copilului în cuvinte simple ce se întâmplă la dentist. Descrieți vizita ca ceva normal și interesant: „Mergem la dentistă, care se va uita la dinții tăi și îi va număra!" Cu cât vorbiți mai natural, cu atât copilul va fi mai relaxat.</p>
+    </div>
+
+    <div class="card card-sun">
+        <div class="card-title">Pregătire prin joacă</div>
+        <p>Jucați-vă acasă „de-a dentistul": lăsați copilul să numere dinții unui ursuleț, uitați-vă reciproc în gură. Cărțile ilustrate despre vizita la dentist sunt excelente pentru pregătire. Aplicația noastră FRYDENT Kids ajută de asemenea în mod jucăuș să asocieze tema dinților cu ceva pozitiv.</p>
+    </div>
+
+    <a href="kids/" class="link-card">
+        <span class="link-emoji">🦷</span>
+        <div class="link-info">
+            <h4>Aplicația FRYDENT Kids</h4>
+            <p>Quiz despre dinți, cronometru de periaj și diplomă — învață îngrijirea dinților prin joacă</p>
+        </div>
+        <span class="link-arrow">›</span>
+    </a>
+
+    <div class="section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ke-mint)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        La ce trebuie să fiți atenți?
+    </div>
+
+    <div class="do-dont-grid">
+        <div class="do-card">
+            <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Acest lucru ajută copilul</h4>
+            <ul>
+                <li>Vorbiți despre vizită natural și relaxat</li>
+                <li>Jocuri de rol cu jucării de pluș sau păpuși</li>
+                <li>Folosiți cuvinte pozitive: „numărăm dinții", „ne uităm la dinți"</li>
+                <li>Radiați propriul calm și seninătate</li>
+                <li>Planificați suficient timp — fără stres</li>
+                <li>Preferați programările de dimineață</li>
+            </ul>
+        </div>
+        <div class="dont-card">
+            <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Acest lucru trebuie evitat</h4>
+            <ul>
+                <li>Folosirea cuvintelor „durere", „injecție", „burghiu"</li>
+                <li>„Nu trebuie să-ți fie frică" — aceasta provoacă de fapt frica</li>
+                <li>Amenințarea cu dentistul ca pedeapsă</li>
+                <li>Promiterea unor recompense mari — crește presiunea</li>
+                <li>Împărtășirea propriilor temeri sau experiențe negative</li>
+                <li>Promisiuni false: „Cu siguranță nu va durea"</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="hint-box">
+        <span class="hint-icon">💡</span>
+        <p><strong>Sfat:</strong> Dacă dumneavoastră personal ați avut experiențe foarte negative la dentist, uneori este mai bine ca altă persoană de încredere să însoțească copilul la programare. Copiii simt tensiunea părinților — adesea inconștient.</p>
+    </div>
+
+</div>
+
+<!-- ===== TAB 2: FRÜH ANFANGEN ===== -->
+<div class="tab-section" id="s-frueh">
+
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ke-mint)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Cu cât mai devreme, cu atât mai bine
+    </div>
+    <p class="section-sub">Încrederea crește prin obișnuință — nu prin cuvinte</p>
+
+    <div class="card card-mint">
+        <div class="card-title">Bineveniți încă din primele luni de viață</div>
+        <p>Nu trebuie să așteptați până apare o problemă. Veniți cu copilul încă din primele luni de viață — chiar dacă doar pentru a cunoaște cabinetul nostru și a se juca în camera de joacă. Astfel, vizita la dentist devine ceva familiar înainte de a fi nevoie de vreun tratament.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-title">De ce este atât de important?</div>
+        <p>Copiii care merg regulat și de mici la dentist dezvoltă semnificativ mai puțină frică față de vizitele viitoare. Ei învață: „Aici nu se întâmplă nimic rău — este complet normal." Când într-o zi va fi nevoie de tratament, relația de încredere există deja.</p>
+    </div>
+
+    <div class="step-list">
+        <div class="step-item">
+            <p><strong>Vizită de cunoaștere:</strong> Luați copilul la propriul control. Poate observa, explora cabinetul și se obișnui cu atmosfera.</p>
+        </div>
+        <div class="step-item">
+            <p><strong>Primul control propriu:</strong> O privire scurtă în gură, număratul dinților, descoperirea camerei de joacă — fără presiune, fără obligație. Dacă copilul nu vrea să deschidă gura: nicio problemă.</p>
+        </div>
+        <div class="step-item">
+            <p><strong>Veniți regulat:</strong> Controalele la fiecare șase luni îi dau copilului siguranță și ne permit să detectăm schimbările din timp.</p>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <span class="info-icon">ℹ️</span>
+        <p><strong>Bine de știut:</strong> Asigurarea de sănătate obligatorie acoperă un total de șase examinări dentare de depistare precoce pentru copii — trei examinări până la vârsta de trei ani și trei între patru și șase ani.</p>
+    </div>
+
+    <div class="quote-card">
+        <p>„Primul contact cu dentistul nu ar trebui să aibă loc abia când este necesar tratamentul durerii. Cu cât vine copilul mai devreme, cu atât experiența va fi mai pozitivă."</p>
+    </div>
+
+</div>
+
+<!-- ===== TAB 3: PHILOSOPHIE ===== -->
+<div class="tab-section" id="s-philosophie">
+
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ke-mint)" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+        Cu blândețe și în ritmul copilului
+    </div>
+    <p class="section-sub">Principiul nostru cel mai important: niciun copil nu este tratat împotriva voinței sale</p>
+
+    <div class="card card-lavender">
+        <div class="card-title">Tratament doar cu acordul copilului</div>
+        <p>La FRYDENT, copiii sunt tratați exclusiv fără constrângere și cu acordul lor. Aceasta înseamnă: explicăm fiecare pas într-un limbaj adecvat copiilor, arătăm instrumentele și lăsăm copilul să decidă singur dacă este pregătit. Dacă nu — este perfect în regulă.</p>
+    </div>
+
+    <div class="card card-mint">
+        <div class="card-title">Tell — Show — Do</div>
+        <p>Lucrăm cu metoda dovedită „Tell-Show-Do": mai întâi explicăm în limbaj simplu ce se va întâmpla. Apoi arătăm instrumentul — de exemplu, pe mână. Și abia apoi îl folosim în gură. Astfel, copilul are mereu controlul și știe ce urmează.</p>
+    </div>
+
+    <div class="hint-box">
+        <span class="hint-icon">🌱</span>
+        <p><strong>Nu a deschis gura?</strong> Nicio problemă. Dacă copilul nu vrea să deschidă gura la prima vizită, vom încerca data viitoare. Fiecare copil are nevoie de propriul ritm. De aceea este atât de important să veniți devreme și regulat — cât timp nu există încă probleme acute.</p>
+    </div>
+
+    <div class="section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ke-mint)" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        Când tratamentul nu este posibil la noi
+    </div>
+
+    <div class="card card-coral">
+        <div class="card-title">Trimitere la un cabinet de stomatologie pediatrică</div>
+        <p>Există situații în care tratamentul în cabinetul nostru nu este posibil — de exemplu, când este foarte mult de făcut, iar copilul este încă foarte mic sau nu cooperează. În astfel de cazuri, trimitem la un cabinet de stomatologie pediatrică specializat.</p>
+        <p style="margin-top:.75rem">Partenerul nostru pentru aceste cazuri este <strong>Smile Club din Waldshut-Tiengen</strong> (Dr. Stoll &amp; Kollegen). Acolo copiii sunt îngrijiți de stomatologi pediatri specializați — dacă este necesar și sub anestezie generală, cu blândețe și atraumatic.</p>
+        <p style="margin-top:.75rem">După tratamentul la Smile Club, copilul revine la noi — pentru controale regulate și îngrijire stomatologică normală.</p>
+    </div>
+
+</div>
+
+<!-- ===== TAB 4: ELTERN IM RAUM ===== -->
+<div class="tab-section" id="s-eltern">
+
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ke-mint)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Ar trebui să fiu prezent?
+    </div>
+    <p class="section-sub">O întrebare care preocupă mulți părinți</p>
+
+    <div class="card">
+        <div class="card-title">Depinde de copilul dumneavoastră</div>
+        <p>Nu există o regulă valabilă pentru toți copiii. Unii copii se simt mai în siguranță când mama sau tata sunt aproape. Alții se implică mai bine în tratament când părinții așteaptă în sala de așteptare — pentru că se pot concentra mai bine.</p>
+        <p style="margin-top:.75rem">Decidem întotdeauna individual, împreună cu dumneavoastră, ce este mai bine pentru copilul dumneavoastră. Pentru că: <strong>fiecare copil este diferit.</strong></p>
+    </div>
+
+    <div class="do-dont-grid">
+        <div class="card card-mint">
+            <div class="card-title">Când sunteți prezent</div>
+            <p>Prezența dumneavoastră poate avea un efect stabilizator — mai ales la copiii mici sau la prima vizită. Important: rămâneți în fundal, lăsați echipa de tratament să comunice cu copilul și păstrați-vă calmul.</p>
+        </div>
+        <div class="card card-sun">
+            <div class="card-title">Când așteptați afară</div>
+            <p>Unii copii cooperează mult mai bine fără părinți în cameră. Fără public, este mai ușor să se conecteze cu dentista și să urmeze instrucțiunile. Aceasta nu este un semn de lipsă de încredere — poate îmbunătăți rezultatul.</p>
+        </div>
+    </div>
+
+    <div class="section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ke-mint)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Rugămintea noastră către dumneavoastră
+    </div>
+
+    <div class="do-card">
+        <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Reguli pentru părinți în cabinetul de tratament</h4>
+        <ul>
+            <li>Rămâneți calmi și în fundal</li>
+            <li>Lăsați comunicarea dintre dentistă și copil să se desfășoare nestingherit</li>
+            <li>Evitați să vă adresați copilului în timpul tratamentului</li>
+            <li>Renunțați la amenințări, laude exagerate sau promisiuni</li>
+            <li>Aveți încredere în echipă — avem experiență cu pacienții mici</li>
+        </ul>
+    </div>
+
+    <div class="quote-card">
+        <p>„Părinții care rămân calm în fundal ajută copilul lor mai mult decât o mie de cuvinte de consolare în timpul tratamentului."</p>
+    </div>
+
+</div>
+
+<!-- ===== TAB 5: MILCHZÄHNE ===== -->
+<div class="tab-section" id="s-milchzaehne">
+
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ke-mint)" stroke-width="2"><path d="M12 2C8 2 6 5 6 8c0 4 2 6 3 10 .5 2 1 4 3 4s2.5-2 3-4c1-4 3-6 3-10 0-3-2-6-6-6z"/></svg>
+        De ce sunt dinții de lapte atât de importanți
+    </div>
+    <p class="section-sub">„Oricum vor cădea" — o concepție greșită foarte răspândită</p>
+
+    <div class="card card-coral">
+        <div class="card-title">Dinții de lapte nu sunt dinți de unică folosință</div>
+        <p>Dinții de lapte îndeplinesc funcții importante: permit copilului să mestece, să vorbească și să zâmbească. În plus, mențin spațiul pentru dinții permanenți care urmează. Dacă un dinte de lapte se pierde prea devreme, dinții vecini se pot înclina în gol — ceea ce duce la probleme de aliniere mai târziu.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Ce se întâmplă la caria netratată?</div>
+        <p>Caria dinților de lapte nu este inofensivă. Netratată, infecția se poate răspândi la mugurele dintelui permanent de dedesubt și îl poate deteriora înainte de erupție. De asemenea, caria avansată provoacă durere, afectează alimentația și în cel mai rău caz poate duce la abcese și umflături.</p>
+    </div>
+
+    <div class="card card-sky">
+        <div class="card-title">Dinții de lapte și dezvoltarea vorbirii</div>
+        <p>Dinții de lapte din față joacă un rol important în formarea sunetelor vorbirii. Pierderea lor prematură poate afecta dezvoltarea vorbirii — mai ales în faza în care copilul învață să vorbească.</p>
+    </div>
+
+    <div class="hint-box">
+        <span class="hint-icon">💡</span>
+        <p><strong>Concluzie:</strong> Dinții de lapte merită aceeași atenție ca și dinții permanenți. Controalele regulate, îngrijirea atentă și tratamentul precoce sunt cheia unei dezvoltări dentare sănătoase.</p>
+    </div>
+
+</div>
+
+<!-- ===== TAB 6: ERNÄHRUNG ===== -->
+<div class="tab-section" id="s-ernaehrung">
+
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ke-mint)" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+        Alimentație sănătoasă pentru dinții copiilor
+    </div>
+    <p class="section-sub">Nu doar ce — ci cât de des</p>
+
+    <div class="card card-sun">
+        <div class="card-title">Frecvența contează mai mult decât cantitatea</div>
+        <p>Nu este atât de important cât zahăr mănâncă copilul — ci cât de des. De fiecare dată când zahărul ajunge în gură, bacteriile produc acid care atacă smalțul. Ronțăitul constant sau suptul băuturilor dulci înseamnă un atac acid permanent asupra dinților.</p>
+    </div>
+
+    <div class="do-dont-grid">
+        <div class="do-card">
+            <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Prietenos cu dinții</h4>
+            <ul>
+                <li>Apa ca băutură principală — toată ziua</li>
+                <li>Legume și fructe crude ca gustare</li>
+                <li>Brânza și produsele lactate întăresc smalțul</li>
+                <li>Mai bine dulciuri o dată pe zi decât constant între mese</li>
+                <li>Așteptați 30 de minute după masă înainte de periaj</li>
+            </ul>
+        </div>
+        <div class="dont-card">
+            <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Dăunător dinților</h4>
+            <ul>
+                <li>Suptul constant din biberon cu suc, ceai îndulcit sau lapte</li>
+                <li>Cola, limonada și ceaiul rece — atacă smalțul</li>
+                <li>Sucurile de fructe și smoothie-urile — deși „sănătoase", foarte acide și zaharoase</li>
+                <li>Dulciuri lipicioase (jeleuri, caramel) — se lipesc de dinți</li>
+                <li>Ronțăitul constant — dinții nu au niciodată pauză</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <span class="info-icon">ℹ️</span>
+        <p><strong>Știați?</strong> Sucurile de fructe, spritzurile și smoothie-urile conțin de asemenea mult acid fructic și zahăr. Ca băutură zilnică, apa plată este cea mai bună alegere pentru dinții copilului.</p>
+    </div>
+
+</div>
+
+</div><!-- /tabs container -->
+
+<!-- CTA -->
+<div class="cta-card">
+    <h3>Așteptăm cu drag copilul dumneavoastră!</h3>
+    <p>Programați o vizită de cunoaștere — fără presiune, în liniște.</p>
+    <div class="phone"><a href="tel:+497703284">☎ 07703 / 284</a></div>
+</div>
+
+</main>
+
+<footer>
+    <p>FRYDENT Zahnarztpraxis · Martinstraße 4 · 79848 Bonndorf im Schwarzwald</p>
+    <p style="margin-top:4px"><a href="index_ro.html">← Înapoi la prezentarea generală</a></p>
+</footer>
+
+<script>
+function go(id){
+    document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('s-'+id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({top:document.querySelector('main').offsetTop-60,behavior:'smooth'});
+}
+const tn=document.querySelector('.tab-nav');
+function checkScroll(){if(!tn)return;const atEnd=tn.scrollLeft+tn.clientWidth>=tn.scrollWidth-8;tn.classList.toggle('scrolled-end',atEnd)}
+if(tn){tn.addEventListener('scroll',checkScroll);checkScroll()}
+</script>
+</body>
+</html>
