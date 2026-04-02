@@ -31,11 +31,11 @@ body{display:flex;justify-content:center;align-items:center}
 .timer-area{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:12px}
 
 .circle-wrap{position:relative;width:260px;height:260px}
-.circle-bg{width:100%;height:100%;border-radius:50%;border:6px solid var(--cream);background:#FAF6EF;box-shadow:0 4px 20px rgba(90,78,66,.08)}
+.circle-bg{width:100%;height:100%;border-radius:50%;border:8px solid var(--sage-light);background:#FAF6EF;box-shadow:0 4px 24px rgba(123,164,144,.15),inset 0 0 0 4px rgba(123,164,144,.1)}
 svg.progress-ring{position:absolute;top:0;left:0;width:100%;height:100%;transform:rotate(-90deg)}
-.progress-ring circle{fill:none;stroke-width:6;stroke-linecap:round}
-.progress-ring .track{stroke:rgba(168,200,184,.2)}
-.progress-ring .fill{stroke:var(--sage);transition:stroke-dashoffset .5s ease;filter:drop-shadow(0 0 4px rgba(123,164,144,.3))}
+.progress-ring circle{fill:none;stroke-width:10;stroke-linecap:round}
+.progress-ring .track{stroke:rgba(168,200,184,.35)}
+.progress-ring .fill{stroke:var(--sage);transition:stroke-dashoffset .5s ease;filter:drop-shadow(0 0 6px rgba(123,164,144,.4))}
 
 .timer-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#FAF6EF;border-radius:50%}
 .hourglass{width:140px;height:140px;transition:transform .3s}
@@ -99,8 +99,8 @@ svg.progress-ring{position:absolute;top:0;left:0;width:100%;height:100%;transfor
   <div class="timer-area">
     <div class="circle-wrap">
       <svg class="progress-ring" viewBox="0 0 260 260">
-        <circle class="track" cx="130" cy="130" r="124"/>
-        <circle class="fill" id="progress" cx="130" cy="130" r="124"/>
+        <circle class="track" cx="130" cy="130" r="120"/>
+        <circle class="fill" id="progress" cx="130" cy="130" r="120"/>
       </svg>
       <div class="timer-content">
         <div class="hourglass" id="hourglass"><img src="img/card-hourglass.png" alt="Sanduhr"></div>
@@ -136,7 +136,7 @@ svg.progress-ring{position:absolute;top:0;left:0;width:100%;height:100%;transfor
 <script>
 const TOTAL=120;
 const QUADRANTS=['Oben links putzen!','Oben rechts putzen!','Unten links putzen!','Unten rechts putzen!'];
-const circumference=2*Math.PI*124;
+const circumference=2*Math.PI*120;
 
 let timeLeft=TOTAL,running=false,timer=null,currentQuad=-1;
 const progress=document.getElementById('progress');
