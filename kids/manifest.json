@@ -1,25 +1,12 @@
 {
-  "name": "FRYDENT Kids – Zahnputz-App",
+  "name": "FRYDENT Kids — Zahnspiele",
   "short_name": "FRYDENT Kids",
-  "description": "Quiz, Timer und Zahnwissen für Kinder – von deiner Zahnarztpraxis FRYDENT!",
-  "start_url": "/kids/",
-  "scope": "/kids/",
+  "description": "Zahnspiele für Kinder von FRYDENT Zahnarztpraxis Bonndorf",
+  "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#f5f0ff",
-  "theme_color": "#5c35a3",
-  "icons": [
-    {
-      "src": "icon-192.svg",
-      "sizes": "192x192",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon-512.svg",
-      "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ]
+  "background_color": "#FAF6EF",
+  "theme_color": "#7BA490",
+  "lang": "de",
+  "icons": [{"src":"img/zaehni-welcome.png","sizes":"400x400","type":"image/png","purpose":"any"}]
 }
