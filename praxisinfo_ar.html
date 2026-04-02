@@ -60,6 +60,28 @@
         .timeline-content .dates{font-size:.92rem;font-weight:600;color:var(--gray-800);margin:2px 0}
         .timeline-content p{font-size:.82rem;color:var(--gray-600);line-height:1.5}
 
+
+        /* OSTERN NOTDIENST */
+        .ostern-notdienst{border:2px solid #c0392b;border-radius:var(--radius);padding:1.5rem;margin-bottom:2.5rem;background:#fffafa;box-shadow:0 2px 10px rgba(192,57,43,.08)}
+        .ostern-notdienst h3{font-size:1rem;font-weight:700;color:#c0392b;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+        .ostern-notdienst .nd-intro{font-size:.82rem;color:var(--gray-600);margin-bottom:1rem;line-height:1.5}
+        .nd-grid{display:grid;gap:10px}
+        .nd-entry{background:#fff;border:1px solid #fca5a5;border-radius:var(--radius-sm);padding:12px 16px;display:flex;gap:14px;align-items:flex-start}
+        .nd-date{min-width:90px;flex-shrink:0}
+        .nd-date .nd-day{font-size:.78rem;font-weight:700;color:#c0392b;text-transform:uppercase;letter-spacing:.03em}
+        .nd-date .nd-period{font-size:.72rem;color:var(--gray-500);margin-top:2px}
+        .nd-info{flex:1}
+        .nd-info .nd-name{font-size:.88rem;font-weight:700;color:var(--blue-dark);margin-bottom:2px}
+        .nd-info .nd-praxis{font-size:.78rem;color:var(--gray-500);margin-bottom:4px}
+        .nd-info .nd-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+        .nd-info .nd-links a{display:inline-flex;align-items:center;gap:4px;font-size:.78rem;color:var(--blue);text-decoration:none;font-weight:600}
+        .nd-info .nd-links a:hover{text-decoration:underline}
+        .nd-info .nd-links a svg{width:13px;height:13px;flex-shrink:0}
+        @media(max-width:640px){
+            .nd-entry{flex-direction:column;gap:6px}
+            .nd-date{min-width:auto}
+        }
+
         /* EASTER CARD */
         .easter-card{background:linear-gradient(135deg,#FEF9EF 0%,#FFF7ED 50%,#FEF3C7 100%);border-radius:var(--radius);padding:2rem;text-align:center;margin-bottom:2.5rem;border:1px solid #FDE68A;position:relative;overflow:hidden;box-shadow:0 4px 15px rgba(226,194,106,.12)}
         .easter-card h2{font-size:1.3rem;font-weight:700;color:var(--blue-dark);margin-bottom:.5rem}
@@ -218,6 +240,85 @@
         </div>
     </div>
 
+    <!-- OSTERN NOTDIENST -->
+    <div class="ostern-notdienst" id="ostern-notdienst">
+        <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> خدمة طوارئ الأسنان خلال عيد الفصح</h3>
+        <p class="nd-intro">تقدم عيادات الأسنان التالية خدمة الطوارئ في منطقتنا خلال عطلة عيد الفصح. في حالة ألم الأسنان الحاد أو الحالات الطارئة، يمكنكم الاتصال بالعيادة المعنية هاتفياً.</p>
+        <div class="nd-grid">
+            <div class="nd-entry">
+                <div class="nd-date"><div class="nd-day">الجمعة العظيمة</div><div class="nd-period">Fr 03.04. → Sa 04.04.</div></div>
+                <div class="nd-info"><div class="nd-name">Dr. Sarah Schwarz</div><div class="nd-praxis">Praxis Dr. Annekatrin Metzger</div>
+                    <div class="nd-links"><a href="tel:076619097233"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>07661 / 909 72 33</a><a href="https://maps.google.com/?q=Schauinslandstr.+11+79199+Kirchzarten" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>Schauinslandstr. 11, Kirchzarten</a></div></div>
+            </div>
+            <div class="nd-entry">
+                <div class="nd-date"><div class="nd-day">سبت عيد الفصح</div><div class="nd-period">Sa 04.04. → So 05.04.</div></div>
+                <div class="nd-info"><div class="nd-name">Jan Tisch-Rottensteiner</div><div class="nd-praxis">Praxis Jan Tisch-Rottensteiner</div>
+                    <div class="nd-links"><a href="tel:07653961601"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>07653 / 96 16 01</a><a href="https://maps.google.com/?q=Schulstrasse+2+79853+Lenzkirch" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>Schulstrasse 2, Lenzkirch</a></div></div>
+            </div>
+            <div class="nd-entry">
+                <div class="nd-date"><div class="nd-day">أحد عيد الفصح</div><div class="nd-period">So 05.04. → Mo 06.04.</div></div>
+                <div class="nd-info"><div class="nd-name">Tatiana Tkacheva</div><div class="nd-praxis">Praxis Tatiana Tkacheva</div>
+                    <div class="nd-links"><a href="tel:076521331"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>07652 / 1331</a><a href="https://maps.google.com/?q=Freiburger+Str.+3+79856+Hinterzarten" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>Freiburger Str. 3, Hinterzarten</a></div></div>
+            </div>
+            <div class="nd-entry">
+                <div class="nd-date"><div class="nd-day">إثنين عيد الفصح</div><div class="nd-period">Mo 06.04. → Di 07.04.</div></div>
+                <div class="nd-info"><div class="nd-name">Dr. med. dent. Steffi Volz</div><div class="nd-praxis">Praxis Dr. von Eichel-Streiber</div>
+                    <div class="nd-links"><a href="tel:076611305"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>07661 / 1305</a><a href="https://maps.google.com/?q=Giersbergstr.+22+79199+Kirchzarten" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>Giersbergstr. 22, Kirchzarten</a></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. NOTDIENST -->
+    <div class="notdienst" id="notdienst">
+        <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-dark)" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg> خدمة طوارئ الأسنان</h3>
+        <div class="notdienst-item">
+            <span class="label">طوارئ الأسنان بادن-فورتمبيرغ</span>
+            <a href="tel:07611201200"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>0761 – 120 120 00</a>
+        </div>
+        <div class="notdienst-item">
+            <span class="label">خدمة الطوارئ الإقليمية</span>
+            <a href="tel:018032225545"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>0180 3 – 222 555 45</a>
+        </div>
+        <div class="notdienst-item">
+            <span class="label">خدمات طوارئ أخرى</span>
+            <a href="https://www.zahnaerzte-bw.de" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>zahnaerzte-bw.de</a>
+        </div>
+        <div class="notdienst-hint">جميع أرقام الطوارئ متاحة أيضاً في أيام العطل وعطلات نهاية الأسبوع.</div>
+    </div>
+
+
+    <!-- 6. EASTER GREETING -->
+    <div class="easter-card" id="easter-greeting">
+        <svg class="easter-scene" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="egg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7AA2E3"/><stop offset="100%" stop-color="#3D5A98"/></linearGradient>
+                <linearGradient id="egg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E2C26A"/><stop offset="100%" stop-color="#C4A44E"/></linearGradient>
+                <linearGradient id="egg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#A7D397"/><stop offset="100%" stop-color="#6B9E5B"/></linearGradient>
+            </defs>
+            <path d="M0,105 Q50,95 100,105 Q150,95 200,105 Q250,95 300,105 Q350,95 400,105 L400,120 L0,120Z" fill="#A7D397" opacity=".3"/>
+            <path d="M0,110 Q50,100 100,110 Q150,100 200,110 Q250,100 300,110 Q350,100 400,110 L400,120 L0,120Z" fill="#A7D397" opacity=".5"/>
+            <g transform="translate(45,70)"><circle cx="0" cy="0" r="5" fill="#FFB996" opacity=".7"/><circle cx="-4" cy="-4" r="4" fill="#FFB996" opacity=".5"/><circle cx="4" cy="-4" r="4" fill="#FFB996" opacity=".5"/><circle cx="-4" cy="4" r="3" fill="#FFB996" opacity=".4"/><circle cx="4" cy="4" r="3" fill="#FFB996" opacity=".4"/><circle cx="0" cy="0" r="2.5" fill="#E2C26A"/><line x1="0" y1="5" x2="0" y2="35" stroke="#A7D397" stroke-width="1.5"/></g>
+            <g transform="translate(355,75)"><circle cx="0" cy="0" r="4.5" fill="#E8B4CB" opacity=".7"/><circle cx="-3.5" cy="-3.5" r="3.5" fill="#E8B4CB" opacity=".5"/><circle cx="3.5" cy="-3.5" r="3.5" fill="#E8B4CB" opacity=".5"/><circle cx="-3.5" cy="3.5" r="3" fill="#E8B4CB" opacity=".4"/><circle cx="3.5" cy="3.5" r="3" fill="#E8B4CB" opacity=".4"/><circle cx="0" cy="0" r="2" fill="#E2C26A"/><line x1="0" y1="4" x2="0" y2="30" stroke="#A7D397" stroke-width="1.5"/></g>
+            <g transform="translate(70,65)"><path d="M0,0 Q-5,-12 0,-20 Q5,-12 0,0Z" fill="#dc6b6b" opacity=".6"/><line x1="0" y1="0" x2="0" y2="40" stroke="#A7D397" stroke-width="1.5"/></g>
+            <g transform="translate(330,72)"><path d="M0,0 Q-4,-10 0,-17 Q4,-10 0,0Z" fill="#7AA2E3" opacity=".5"/><line x1="0" y1="0" x2="0" y2="33" stroke="#A7D397" stroke-width="1.5"/></g>
+            <ellipse cx="140" cy="88" rx="14" ry="18" fill="url(#egg1)" opacity=".85" transform="rotate(-8,140,88)"><animateTransform attributeName="transform" type="rotate" values="-8,140,88;-5,140,88;-8,140,88" dur="4s" repeatCount="indefinite"/></ellipse>
+            <line x1="132" y1="83" x2="148" y2="83" stroke="white" stroke-width="1" opacity=".4"/>
+            <line x1="134" y1="93" x2="146" y2="93" stroke="white" stroke-width="1" opacity=".4"/>
+            <ellipse cx="200" cy="85" rx="15" ry="19" fill="url(#egg2)" opacity=".85"><animateTransform attributeName="transform" type="rotate" values="3,200,85;6,200,85;3,200,85" dur="5s" repeatCount="indefinite"/></ellipse>
+            <circle cx="195" cy="80" r="2" fill="white" opacity=".3"/><circle cx="205" cy="88" r="2.5" fill="white" opacity=".3"/><circle cx="197" cy="92" r="1.5" fill="white" opacity=".2"/>
+            <ellipse cx="260" cy="88" rx="13" ry="17" fill="url(#egg3)" opacity=".85" transform="rotate(6,260,88)"><animateTransform attributeName="transform" type="rotate" values="6,260,88;3,260,88;6,260,88" dur="4.5s" repeatCount="indefinite"/></ellipse>
+            <path d="M252,83 Q260,78 268,83" stroke="white" stroke-width="1" fill="none" opacity=".4"/>
+            <path d="M253,93 Q260,88 267,93" stroke="white" stroke-width="1" fill="none" opacity=".4"/>
+            <g transform="translate(110,40)">
+                <path d="M0,0 Q-10,-8 -5,-15 Q0,-10 0,0Z" fill="#7AA2E3" opacity=".4"><animateTransform attributeName="transform" type="rotate" values="0,0,0;-20,0,0;0,0,0" dur="1.5s" repeatCount="indefinite"/></path>
+                <path d="M0,0 Q10,-8 5,-15 Q0,-10 0,0Z" fill="#7AA2E3" opacity=".4"><animateTransform attributeName="transform" type="rotate" values="0,0,0;20,0,0;0,0,0" dur="1.5s" repeatCount="indefinite"/></path>
+            </g>
+        </svg>
+        <h2>عيد فصح سعيد!</h2>
+        <p>نتمنى لكم ولعائلاتكم أعياداً جميلة وأياماً مريحة والكثير من شمس الربيع.</p>
+        <div class="signature">فريق FRYDENT من بوندورف</div>
+    </div>
+
     <!-- 2. SPRECHZEITEN -->
     <div class="section-title">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B9E5B" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
@@ -232,6 +333,7 @@
         <div class="hours-row day-closed"><div class="hours-dot closed"></div><span class="day">السبت</span><span class="time">مغلق</span></div>
         <div class="hours-row day-closed"><div class="hours-dot closed"></div><span class="day">الأحد</span><span class="time">مغلق</span></div>
     </div>
+
 
     <!-- 3. TIMELINE -->
     <div class="section-title">
@@ -312,55 +414,6 @@
         </div>
     </div>
 
-    <!-- 5. NOTDIENST -->
-    <div class="notdienst" id="notdienst">
-        <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-dark)" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg> خدمة طوارئ الأسنان</h3>
-        <div class="notdienst-item">
-            <span class="label">طوارئ الأسنان بادن-فورتمبيرغ</span>
-            <a href="tel:07611201200"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>0761 – 120 120 00</a>
-        </div>
-        <div class="notdienst-item">
-            <span class="label">خدمة الطوارئ الإقليمية</span>
-            <a href="tel:018032225545"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>0180 3 – 222 555 45</a>
-        </div>
-        <div class="notdienst-item">
-            <span class="label">خدمات طوارئ أخرى</span>
-            <a href="https://www.zahnaerzte-bw.de" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>zahnaerzte-bw.de</a>
-        </div>
-        <div class="notdienst-hint">جميع أرقام الطوارئ متاحة أيضاً في أيام العطل وعطلات نهاية الأسبوع.</div>
-    </div>
-
-    <!-- 6. EASTER GREETING -->
-    <div class="easter-card">
-        <svg class="easter-scene" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <linearGradient id="egg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7AA2E3"/><stop offset="100%" stop-color="#3D5A98"/></linearGradient>
-                <linearGradient id="egg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E2C26A"/><stop offset="100%" stop-color="#C4A44E"/></linearGradient>
-                <linearGradient id="egg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#A7D397"/><stop offset="100%" stop-color="#6B9E5B"/></linearGradient>
-            </defs>
-            <path d="M0,105 Q50,95 100,105 Q150,95 200,105 Q250,95 300,105 Q350,95 400,105 L400,120 L0,120Z" fill="#A7D397" opacity=".3"/>
-            <path d="M0,110 Q50,100 100,110 Q150,100 200,110 Q250,100 300,110 Q350,100 400,110 L400,120 L0,120Z" fill="#A7D397" opacity=".5"/>
-            <g transform="translate(45,70)"><circle cx="0" cy="0" r="5" fill="#FFB996" opacity=".7"/><circle cx="-4" cy="-4" r="4" fill="#FFB996" opacity=".5"/><circle cx="4" cy="-4" r="4" fill="#FFB996" opacity=".5"/><circle cx="-4" cy="4" r="3" fill="#FFB996" opacity=".4"/><circle cx="4" cy="4" r="3" fill="#FFB996" opacity=".4"/><circle cx="0" cy="0" r="2.5" fill="#E2C26A"/><line x1="0" y1="5" x2="0" y2="35" stroke="#A7D397" stroke-width="1.5"/></g>
-            <g transform="translate(355,75)"><circle cx="0" cy="0" r="4.5" fill="#E8B4CB" opacity=".7"/><circle cx="-3.5" cy="-3.5" r="3.5" fill="#E8B4CB" opacity=".5"/><circle cx="3.5" cy="-3.5" r="3.5" fill="#E8B4CB" opacity=".5"/><circle cx="-3.5" cy="3.5" r="3" fill="#E8B4CB" opacity=".4"/><circle cx="3.5" cy="3.5" r="3" fill="#E8B4CB" opacity=".4"/><circle cx="0" cy="0" r="2" fill="#E2C26A"/><line x1="0" y1="4" x2="0" y2="30" stroke="#A7D397" stroke-width="1.5"/></g>
-            <g transform="translate(70,65)"><path d="M0,0 Q-5,-12 0,-20 Q5,-12 0,0Z" fill="#dc6b6b" opacity=".6"/><line x1="0" y1="0" x2="0" y2="40" stroke="#A7D397" stroke-width="1.5"/></g>
-            <g transform="translate(330,72)"><path d="M0,0 Q-4,-10 0,-17 Q4,-10 0,0Z" fill="#7AA2E3" opacity=".5"/><line x1="0" y1="0" x2="0" y2="33" stroke="#A7D397" stroke-width="1.5"/></g>
-            <ellipse cx="140" cy="88" rx="14" ry="18" fill="url(#egg1)" opacity=".85" transform="rotate(-8,140,88)"><animateTransform attributeName="transform" type="rotate" values="-8,140,88;-5,140,88;-8,140,88" dur="4s" repeatCount="indefinite"/></ellipse>
-            <line x1="132" y1="83" x2="148" y2="83" stroke="white" stroke-width="1" opacity=".4"/>
-            <line x1="134" y1="93" x2="146" y2="93" stroke="white" stroke-width="1" opacity=".4"/>
-            <ellipse cx="200" cy="85" rx="15" ry="19" fill="url(#egg2)" opacity=".85"><animateTransform attributeName="transform" type="rotate" values="3,200,85;6,200,85;3,200,85" dur="5s" repeatCount="indefinite"/></ellipse>
-            <circle cx="195" cy="80" r="2" fill="white" opacity=".3"/><circle cx="205" cy="88" r="2.5" fill="white" opacity=".3"/><circle cx="197" cy="92" r="1.5" fill="white" opacity=".2"/>
-            <ellipse cx="260" cy="88" rx="13" ry="17" fill="url(#egg3)" opacity=".85" transform="rotate(6,260,88)"><animateTransform attributeName="transform" type="rotate" values="6,260,88;3,260,88;6,260,88" dur="4.5s" repeatCount="indefinite"/></ellipse>
-            <path d="M252,83 Q260,78 268,83" stroke="white" stroke-width="1" fill="none" opacity=".4"/>
-            <path d="M253,93 Q260,88 267,93" stroke="white" stroke-width="1" fill="none" opacity=".4"/>
-            <g transform="translate(110,40)">
-                <path d="M0,0 Q-10,-8 -5,-15 Q0,-10 0,0Z" fill="#7AA2E3" opacity=".4"><animateTransform attributeName="transform" type="rotate" values="0,0,0;-20,0,0;0,0,0" dur="1.5s" repeatCount="indefinite"/></path>
-                <path d="M0,0 Q10,-8 5,-15 Q0,-10 0,0Z" fill="#7AA2E3" opacity=".4"><animateTransform attributeName="transform" type="rotate" values="0,0,0;20,0,0;0,0,0" dur="1.5s" repeatCount="indefinite"/></path>
-            </g>
-        </svg>
-        <h2>عيد فصح سعيد!</h2>
-        <p>نتمنى لكم ولعائلاتكم أعياداً جميلة وأياماً مريحة والكثير من شمس الربيع.</p>
-        <div class="signature">فريق FRYDENT من بوندورف</div>
-    </div>
 
     <!-- 7. BESTELLPRAXIS -->
     <div class="bestellpraxis">
@@ -406,5 +459,34 @@
     <a href="mailto:info@frydent.de"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>بريد</a>
     <a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>العنوان</a>
 </div>
+
+    <script>
+    (function(){
+        var closures=[
+            {from:'2026-04-03',to:'2026-04-06',label:'Ostern',sub:'الجمعة العظيمة – إثنين عيد الفصح',greeting:'easter-greeting'},
+            {from:'2026-05-14',to:'2026-06-05',label:'Praxisurlaub',sub:'14.05. – 05.06.2026',greeting:null}
+        ];
+        function toLocal(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate());}
+        var today=toLocal(new Date()),banner=document.querySelector('.status-banner'),
+            h2=banner.querySelector('.status-text h2'),p=banner.querySelector('.status-text p'),
+            ec=document.getElementById('easter-greeting'),on=document.getElementById('ostern-notdienst'),
+            eS=new Date('2026-04-01T00:00:00'),eE=new Date('2026-04-06T23:59:59'),active=null;
+        for(var i=0;i<closures.length;i++){var c=closures[i],f=new Date(c.from+'T00:00:00'),t2=new Date(c.to+'T23:59:59');
+            if(today>=f&&today<=t2){active=c;break;}}
+        if(active){
+            banner.classList.remove('open');banner.classList.add('closed');
+            h2.textContent='عيادتنا مغلقة';p.textContent=active.label+' — '+active.sub;
+            if(ec&&active.greeting)ec.style.display='block';
+        }else{
+            banner.classList.remove('closed');banner.classList.add('open');
+            h2.textContent='عيادتنا مفتوحة';var nl='';
+            for(var j=0;j<closures.length;j++){var nf=new Date(closures[j].from+'T00:00:00');
+                if(today<nf){nl=closures[j].label+' ('+closures[j].from.slice(8)+'.'+closures[j].from.slice(5,7)+'.)';break;}}
+            p.textContent=nl?'ساعات العمل المعتادة · الإغلاق التالي: '+nl:'ساعات العمل المعتادة';
+            if(ec&&today>eE)ec.style.display='none';
+        }
+        if(on){if(today>=eS&&today<=eE)on.style.display='block';else on.style.display='none';}
+    })();
+    </script>
 </body>
 </html>
