@@ -15,7 +15,7 @@
   --rose:#C17B6E;--rose-light:#DCABA2;
   --bark:#5A4E42;--bark-light:#8A7E72;--cream:#FFFCF5;
 }
-html,body{height:100%;overflow:hidden;font-family:'Nunito',sans-serif;background:#F7F3EA;color:var(--bark);user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;font-family:'Nunito',sans-serif;background:#FAF6EF;color:var(--bark);user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
 body{display:flex;justify-content:center;align-items:center}
 .app{width:100%;max-width:480px;height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:20px 20px 28px;position:relative;overflow:hidden}
 .app::before{content:'';position:absolute;top:-40px;left:-40px;width:200px;height:200px;background:rgba(168,200,184,.15);border-radius:50%;filter:blur(60px)}
@@ -31,13 +31,13 @@ body{display:flex;justify-content:center;align-items:center}
 .timer-area{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:12px}
 
 .circle-wrap{position:relative;width:260px;height:260px}
-.circle-bg{width:100%;height:100%;border-radius:50%;border:6px solid var(--cream);background:#F7F3EA;box-shadow:0 4px 20px rgba(90,78,66,.08)}
+.circle-bg{width:100%;height:100%;border-radius:50%;border:6px solid var(--cream);background:#FAF6EF;box-shadow:0 4px 20px rgba(90,78,66,.08)}
 svg.progress-ring{position:absolute;top:0;left:0;width:100%;height:100%;transform:rotate(-90deg)}
 .progress-ring circle{fill:none;stroke-width:6;stroke-linecap:round}
 .progress-ring .track{stroke:rgba(168,200,184,.2)}
 .progress-ring .fill{stroke:var(--sage);transition:stroke-dashoffset .5s ease;filter:drop-shadow(0 0 4px rgba(123,164,144,.3))}
 
-.timer-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#F7F3EA;border-radius:50%}
+.timer-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#FAF6EF;border-radius:50%}
 .hourglass{width:140px;height:140px;transition:transform .3s}
 .hourglass img{width:100%;height:100%;object-fit:contain}
 .hourglass.running{animation:hourglassPulse 2s ease-in-out infinite}
@@ -49,11 +49,11 @@ svg.progress-ring{position:absolute;top:0;left:0;width:100%;height:100%;transfor
 /* Quadrant indicator */
 .quadrant-area{z-index:1;text-align:center}
 .quadrant-label{font-family:'Quicksand',sans-serif;font-size:17px;font-weight:700;color:var(--bark);margin-bottom:10px}
-.mouth-diagram{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:160px;margin:0 auto}
-.quadrant{padding:10px 6px;border-radius:10px;background:var(--cream);border:2px solid rgba(90,78,66,.06);font-size:11px;font-weight:600;color:var(--bark-light);transition:all .4s;text-align:center;line-height:1.3}
+.mouth-diagram{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:220px;margin:0 auto}
+.quadrant{padding:16px 10px;border-radius:12px;background:var(--cream);border:2px solid rgba(90,78,66,.06);font-size:14px;font-weight:600;color:var(--bark-light);transition:all .4s;text-align:center;line-height:1.3}
 .quadrant.active{border-color:var(--sage);background:rgba(168,200,184,.15);color:var(--sage);transform:scale(1.05);box-shadow:0 2px 12px rgba(123,164,144,.2)}
 .quadrant.done{border-color:var(--honey-light);background:rgba(212,167,106,.08);color:var(--honey)}
-.quadrant-icon{font-size:18px;display:block;margin-bottom:2px}
+.quadrant-icon{font-size:24px;display:block;margin-bottom:2px}
 
 /* Buttons */
 .controls{z-index:1;display:flex;gap:12px}
