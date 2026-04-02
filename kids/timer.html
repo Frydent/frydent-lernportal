@@ -15,7 +15,7 @@
   --rose:#C17B6E;--rose-light:#DCABA2;
   --bark:#5A4E42;--bark-light:#8A7E72;--cream:#FFFCF5;
 }
-html,body{height:100%;overflow:hidden;font-family:'Nunito',sans-serif;background:var(--parchment);color:var(--bark);user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;font-family:'Nunito',sans-serif;background:#F7F3EA;color:var(--bark);user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
 body{display:flex;justify-content:center;align-items:center}
 .app{width:100%;max-width:480px;height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:20px 20px 28px;position:relative;overflow:hidden}
 .app::before{content:'';position:absolute;top:-40px;left:-40px;width:200px;height:200px;background:rgba(168,200,184,.15);border-radius:50%;filter:blur(60px)}
@@ -31,13 +31,13 @@ body{display:flex;justify-content:center;align-items:center}
 .timer-area{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:12px}
 
 .circle-wrap{position:relative;width:260px;height:260px}
-.circle-bg{width:100%;height:100%;border-radius:50%;border:6px solid var(--cream);box-shadow:0 4px 20px rgba(90,78,66,.08)}
+.circle-bg{width:100%;height:100%;border-radius:50%;border:6px solid var(--cream);background:#F7F3EA;box-shadow:0 4px 20px rgba(90,78,66,.08)}
 svg.progress-ring{position:absolute;top:0;left:0;width:100%;height:100%;transform:rotate(-90deg)}
 .progress-ring circle{fill:none;stroke-width:6;stroke-linecap:round}
 .progress-ring .track{stroke:rgba(168,200,184,.2)}
 .progress-ring .fill{stroke:var(--sage);transition:stroke-dashoffset .5s ease;filter:drop-shadow(0 0 4px rgba(123,164,144,.3))}
 
-.timer-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.timer-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#F7F3EA;border-radius:50%}
 .hourglass{width:140px;height:140px;transition:transform .3s}
 .hourglass img{width:100%;height:100%;object-fit:contain}
 .hourglass.running{animation:hourglassPulse 2s ease-in-out infinite}
