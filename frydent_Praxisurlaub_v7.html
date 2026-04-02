@@ -405,6 +405,14 @@ function update(){
   // 5. Notfall-Block in Rahmen, kein Emoji
   html+=notfallBlock(verts);
 
+  // 5b. Feiertag-Hinweis: Detaillierte Notdienstliste online
+  if(cur.key==='Feiertag'){
+    html+='<div style="margin:12px 0;padding:12px 16px;background:#f0f7ff;border:1.5px solid #a8bee0;border-radius:8px;font-size:13px;color:#1e3a6b;line-height:1.6;font-family:Lato,sans-serif">';
+    html+='<strong style="font-family:Quicksand,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.08em">Notdienstplan über die Feiertage</strong><br>';
+    html+='Die vollständige Liste der diensthabenden Zahnarztpraxen mit Telefonnummern und Adressen finden Sie auf unserer Webseite <strong>info.frydent.de</strong> (QR-Code scannen) oder telefonisch über die oben genannten Notfallnummern.';
+    html+='</div>';
+  }
+
   // 6. QR-Code Footer (vor Signatur)
   html+='<div class="doc-qr-footer">';
   html+='<img src="data:image/png;base64,'+QRCODE+'" alt="QR-Code frydent.de"/>';
