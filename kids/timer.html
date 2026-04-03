@@ -92,8 +92,8 @@ svg.progress-ring{position:absolute;top:0;left:0;width:100%;height:100%;transfor
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){});}
 </script>
 <script>
-const LANG=(new URLSearchParams(window.location.search).get('lang')||'de').toLowerCase();
-const _TT={
+var LANG=(new URLSearchParams(window.location.search).get('lang')||'de').toLowerCase();
+var _TT={
 pl:{'Zahnputz-Uhr':'Zegar do mycia zębów','2 Minuten für strahlende Zähne!':'2 minuty na lśniące ząbki!',
 "Bereit? Los geht’s!":'Gotowy? Zaczynamy!','Oben':'Góra','Unten':'Dół','links':'lewo','rechts':'prawo',
 'Super geputzt!':'Super umyte!','Deine Zähne strahlen jetzt!':'Twoje ząbki teraz błyszczą!',
