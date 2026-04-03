@@ -6,6 +6,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#3D5A98">
 <title>Zahnputz-Timer — FRYDENT</title>
+<link rel="manifest" href="timer-manifest.json">
+<link rel="apple-touch-icon" href="kids/img/icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -20,6 +22,7 @@ body{display:flex;justify-content:center;align-items:center}
 .header p{font-size:13px;color:var(--gray-600);margin-top:2px}
 .back-link{position:absolute;top:16px;left:16px;width:36px;height:36px;border:1.5px solid var(--blue-light);border-radius:50%;background:var(--white);color:var(--blue);font-size:16px;display:flex;align-items:center;justify-content:center;text-decoration:none;z-index:10;transition:all .2s}
 .back-link:hover{background:var(--blue-light)}
+.back-link{gap:4px;width:auto;padding:0 12px 0 10px;font-size:13px;font-weight:600}
 
 .timer-area{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px}
 .circle-wrap{position:relative;width:280px;height:280px}
@@ -68,6 +71,7 @@ svg.ring{position:absolute;top:0;left:0;width:100%;height:100%;transform:rotate(
 </style>
 </head>
 <body>
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("timer-sw.js").catch(function(){})}</script>
 <script>
 var LANG=(new URLSearchParams(window.location.search).get('lang')||'de').toLowerCase();
 var _L={
@@ -102,6 +106,21 @@ ready:'Pregătit? Apasă Start!',done:'Gata — super periaj!',donesub:'Dinții 
 };
 var L=_L[LANG]||_L.de;
 var icons=['↖','↗','↙','↘'];
+
+
+// PWA Install
+var deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();deferredPrompt=e;
+  var t={de:'Auf Startbildschirm',pl:'Na ekran główny',en:'Add to Home Screen',
+    tr:'Ana ekrana ekle',ar:'أضف للشاشة',ru:'На главный экран',ro:'Pe ecranul principal'};
+  var b=document.createElement('div');
+  b.style.cssText='position:fixed;top:0;left:0;right:0;background:var(--blue);color:white;padding:10px 16px;display:flex;align-items:center;gap:10px;z-index:1000;font-family:Plus Jakarta Sans,sans-serif;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.15)';
+  b.innerHTML='<span style="flex:1;font-weight:600">'+(t[LANG]||t.de)+'</span><button id="pwa-i" style="padding:6px 14px;border:1.5px solid white;border-radius:20px;background:transparent;color:white;font-weight:700;font-size:12px;cursor:pointer">Install</button><button id="pwa-x" style="border:none;background:transparent;color:rgba(255,255,255,.6);font-size:16px;cursor:pointer">✕</button>';
+  document.body.appendChild(b);
+  document.getElementById('pwa-i').onclick=function(){deferredPrompt.prompt();deferredPrompt.userChoice.then(function(){b.remove()})};
+  document.getElementById('pwa-x').onclick=function(){b.remove()};
+});
 </script>
 
 <div class="app" id="app" data-state="idle">
@@ -155,6 +174,8 @@ document.getElementById('btnBack').textContent=L.back;
 // Set back link
 var suffix=LANG==='de'?'':'_'+LANG;
 document.getElementById('backLink').href='index'+suffix+'.html';
+var backTexts={de:'Portal',pl:'Portal',en:'Portal',tr:'Portal',ar:'البوابة',ru:'Портал',ro:'Portal'};
+document.getElementById('backLink').innerHTML='← '+(backTexts[LANG]||'Portal');
 document.getElementById('btnBack').href='index'+suffix+'.html';
 
 // Build quadrants
