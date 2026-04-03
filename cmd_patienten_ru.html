@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRYDENT &middot; CMD &middot; Нарушения функции ВНЧС</title>
-    <meta name="description" content="Kieferknacken, Kopfschmerzen, Nackenschmerzen &mdash; CMD kann viele Gesichter haben. Wir erkl&auml;ren verst&auml;ndlich, was dahintersteckt.">
+    <meta name="description" content="Щелчки в суставе, головные боли, боли в шее — CMD может проявляться по-разному. Мы понятно объясняем, что за этим стоит.">
     <style>
 
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
@@ -260,7 +260,7 @@
     <p>5 коротких вопросов — давайте вместе выясним, актуальна ли для вас тема CMD.</p>
     <button class="quiz-start-btn" onclick="openQuiz()">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-        Test starten
+        Начать тест
     </button>
 </div>
 
@@ -271,14 +271,14 @@
             <div class="quiz-dot" id="qd2"></div><div class="quiz-dot" id="qd3"></div>
             <div class="quiz-dot" id="qd4"></div>
         </div>
-        <div class="quiz-q" data-q="0"><div class="quiz-q-text">1. H&ouml;ren Sie Knack- oder Reibeger&auml;usche in Ihrem Kiefer?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(0,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(0,'nein')">Nein</button></div></div>
-        <div class="quiz-q" data-q="1"><div class="quiz-q-text">2. Haben Sie h&auml;ufige Kopfschmerzen oder Nackenverspannungen?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(1,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(1,'nein')">Nein</button></div></div>
-        <div class="quiz-q" data-q="2"><div class="quiz-q-text">3. Wachen Sie morgens mit einem m&uuml;den oder verspannten Kiefer auf?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(2,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(2,'nein')">Nein</button></div></div>
-        <div class="quiz-q" data-q="3"><div class="quiz-q-text">4. Haben Sie Schmerzen beim Kauen oder beim weit &Ouml;ffnen des Mundes?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(3,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(3,'nein')">Nein</button></div></div>
-        <div class="quiz-q" data-q="4"><div class="quiz-q-text">5. Wurden Ihnen schon abgeschliffene Z&auml;hne oder Knirschen festgestellt?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(4,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(4,'nein')">Nein</button></div></div>
-        <div class="quiz-result low" id="qResultLow"><div class="quiz-result-title">Мало признаков CMD</div><p>Ihre Antworten zeigen kaum typische CMD-Muster. Bei anhaltenden Beschwerden sprechen Sie uns gerne an.</p></div>
-        <div class="quiz-result mid" id="qResultMid"><div class="quiz-result-title">Некоторые признаки присутствуют</div><p>Einige Ihrer Antworten k&ouml;nnten auf CMD hinweisen. Ein kurzes Gespr&auml;ch in unserer Praxis kann Klarheit bringen.</p></div>
-        <div class="quiz-result high" id="qResultHigh"><div class="quiz-result-title">Несколько типичных признаков CMD</div><p>Ihre Antworten zeigen mehrere typische CMD-Muster. Wir schauen gemeinsam, was f&uuml;r Sie sinnvoll ist.</p></div>
+        <div class="quiz-q" data-q="0"><div class="quiz-q-text">1. Слышите ли вы щелчки или скрипы в челюсти?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(0,'ja')">Да</button><button class="quiz-opt no" onclick="answer(0,'nein')">Нет</button></div></div>
+        <div class="quiz-q" data-q="1"><div class="quiz-q-text">2. Часто ли у вас бывают головные боли или напряжение в шее?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(1,'ja')">Да</button><button class="quiz-opt no" onclick="answer(1,'nein')">Нет</button></div></div>
+        <div class="quiz-q" data-q="2"><div class="quiz-q-text">3. Просыпаетесь ли вы утром с усталой или напряжённой челюстью?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(2,'ja')">Да</button><button class="quiz-opt no" onclick="answer(2,'nein')">Нет</button></div></div>
+        <div class="quiz-q" data-q="3"><div class="quiz-q-text">4. Испытываете ли вы боль при жевании или при широком открывании рта?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(3,'ja')">Да</button><button class="quiz-opt no" onclick="answer(3,'nein')">Нет</button></div></div>
+        <div class="quiz-q" data-q="4"><div class="quiz-q-text">5. Выявляли ли у вас стёртые зубы или скрежетание?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(4,'ja')">Да</button><button class="quiz-opt no" onclick="answer(4,'nein')">Нет</button></div></div>
+        <div class="quiz-result low" id="qResultLow"><div class="quiz-result-title">Мало признаков CMD</div><p>Ваши ответы не показывают явных типичных признаков CMD. При сохранении симптомов обратитесь к нам.</p></div>
+        <div class="quiz-result mid" id="qResultMid"><div class="quiz-result-title">Некоторые признаки присутствуют</div><p>Некоторые ваши ответы могут указывать на CMD. Короткая беседа в нашей клинике поможет прояснить ситуацию.</p></div>
+        <div class="quiz-result high" id="qResultHigh"><div class="quiz-result-title">Несколько типичных признаков CMD</div><p>Ваши ответы показывают несколько типичных признаков CMD. Давайте вместе разберёмся, что вам подойдёт.</p></div>
         <button class="quiz-cta-btn" id="quizCta" onclick="toggleDrFlexAppointments()">Записаться на приём &rarr;</button>
         <button class="quiz-reset-btn" id="quizReset" onclick="resetQuiz()">Повторить тест</button>
     </div>
@@ -291,29 +291,29 @@
         Что такое CMD?
     </div>
     <div class="card card-blue">
-        <p>Das Kiefergelenk arbeitet t&auml;glich viele Stunden &mdash; beim Sprechen, Kauen, Schlucken. Wenn Z&auml;hne, Muskulatur und Gelenk nicht harmonisch zusammenarbeiten, kann es zu Beschwerden kommen. Dieses Zusammenspiel nennt man CMD &mdash; craniomandibuläre Dysfunktion.</p>
+        <p>Височно-нижнечелюстной сустав (ВНЧС) работает ежедневно по многу часов — при разговоре, жевании, глотании. Когда зубы, мышцы и сустав не работают слаженно, возникают жалобы. Это взаимодействие называется CMD — краниомандибулярная дисфункция.</p>
     </div>
 
     <button class="mehr-toggle" onclick="toggleMehr(this)">
         <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-        <span style="flex:1;text-align:left">Genauere Erkl&auml;rung: Wie funktioniert das Kiefergelenk?</span>
+        <span style="flex:1;text-align:left">Подробнее: как работает ВНЧС?</span>
         <span class="arr">&#9660;</span>
     </button>
     <div class="mehr-body">
         <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
-            <div class="card-title">Das Kiefergelenk &mdash; ein Hochleistungsgelenk</div>
-            <p style="font-size:.85rem;color:var(--gray-600);line-height:1.65;margin-bottom:.75rem">Das Kiefergelenk verbindet den Unterkiefer mit dem Sch&auml;del. Es ist das am st&auml;rksten beanspruchte Gelenk des K&ouml;rpers &mdash; beim Sprechen, Kauen und Schlucken bewegt es sich tausende Male t&auml;glich. Im Gelenk liegt eine Knorpelscheibe, der sogenannte Diskus, die als Puffer dient.</p>
+            <div class="card-title">ВНЧС — высоконагруженный сустав</div>
+            <p style="font-size:.85rem;color:var(--gray-600);line-height:1.65;margin-bottom:.75rem">ВНЧС соединяет нижнюю челюсть с черепом. Это самый нагруженный сустав тела — при разговоре, жевании и глотании он совершает тысячи движений ежедневно. Внутри сустава находится хрящевой диск — он служит амортизатором.</p>
             <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:.75rem">
                 <div style="flex:1;min-width:140px;background:var(--blue-light);border-radius:8px;padding:.75rem 1rem">
-                    <div style="font-weight:700;font-size:.83rem;color:var(--blue-dark);margin-bottom:.3rem">Muskul&auml;re CMD</div>
-                    <div style="font-size:.8rem;color:var(--gray-600)">Verspannungen der Kaumuskulatur</div>
+                    <div style="font-weight:700;font-size:.83rem;color:var(--blue-dark);margin-bottom:.3rem">Мышечный CMD</div>
+                    <div style="font-size:.8rem;color:var(--gray-600)">Напряжение жевательных мышц</div>
                 </div>
                 <div style="flex:1;min-width:140px;background:var(--blue-light);border-radius:8px;padding:.75rem 1rem">
-                    <div style="font-weight:700;font-size:.83rem;color:var(--blue-dark);margin-bottom:.3rem">Artikul&auml;re CMD</div>
-                    <div style="font-size:.8rem;color:var(--gray-600)">Gelenkver&auml;nderungen, Diskusverlagerung</div>
+                    <div style="font-weight:700;font-size:.83rem;color:var(--blue-dark);margin-bottom:.3rem">Суставной CMD</div>
+                    <div style="font-size:.8rem;color:var(--gray-600)">Изменения сустава, смещение диска</div>
                 </div>
             </div>
-            <p style="font-size:.82rem;color:var(--gray-500);margin-top:.75rem">Sch&auml;tzungen zufolge leiden 3&ndash;12&thinsp;% der Bev&ouml;lkerung an behandlungsbed&uuml;rftigen CMD-Beschwerden. Viele Betroffene wissen nicht, dass ihre Kopfschmerzen oder ihr Tinnitus mit dem Kiefer zusammenh&auml;ngen k&ouml;nnten.</p>
+            <p style="font-size:.82rem;color:var(--gray-500);margin-top:.75rem">По оценкам, 3–12% населения страдают от нарушений ВНЧС, требующих лечения. Многие не знают, что их головные боли или шум в ушах могут быть связаны с челюстью.</p>
         </div>
     </div>
 
@@ -321,33 +321,33 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         Как я это замечу?
     </div>
-    <p class="section-sub">Beschwerden k&ouml;nnen sehr unterschiedlich sein &mdash; nicht alle treten gleichzeitig auf.</p>
+    <p class="section-sub">Симптомы могут сильно варьироваться — не все они проявляются одновременно.</p>
     <div class="card">
-        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Kieferknacken oder Reiben</div><div class="symptom-desc">H&ouml;rbare Ger&auml;usche beim &Ouml;ffnen oder Schlie&szlig;en des Mundes &mdash; oft ein Zeichen f&uuml;r eine Verlagerung der Gelenkscheibe.</div></div></div>
-        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Schmerzen im Kiefer oder im Gesicht</div><div class="symptom-desc">Dumpfe oder belastungsabh&auml;ngige Schmerzen &mdash; in Ruhe oder beim Kauen.</div></div></div>
-        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Verspannungen im Nacken oder in den Schultern</div><div class="symptom-desc">Durch enge muskul&auml;re Verbindungen kann der Kiefer auf den R&uuml;cken ausstrahlen.</div></div></div>
-        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Kopfschmerzen oder Migr&auml;ne</div><div class="symptom-desc">Chronisch verspannte Kaumuskeln k&ouml;nnen Kopfschmerzen ausl&ouml;sen &mdash; die oft als Migr&auml;ne fehlgedeutet werden.</div></div></div>
-        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Z&auml;hneknirschen oder Pressen</div><div class="symptom-desc">Oft nachts &mdash; sichtbar an abgeschliffenen Z&auml;hnen (Schlifffacetten) und empfindlichen Z&auml;hnen.</div></div></div>
-        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Eingeschr&auml;nkte Mund&ouml;ffnung</div><div class="symptom-desc">Der Mund l&auml;sst sich nicht mehr vollst&auml;ndig &ouml;ffnen &mdash; manchmal mit seitlicher Abweichung des Unterkiefers.</div></div></div>
-        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Druckgef&uuml;hl im Ohr oder Ohrger&auml;usche</div><div class="symptom-desc">Das Kiefergelenk liegt in unmittelbarer N&auml;he zum Ohr &mdash; Schmerz, Druck oder Klingeln ohne medizinische Ursache kann ein CMD-Signal sein.</div></div></div>
-        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">M&uuml;digkeit der Kaumuskulatur</div><div class="symptom-desc">Die Kaumuskeln f&uuml;hlen sich schon morgens ersch&ouml;pft oder schwer an.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Щелчки или скрип в челюсти</div><div class="symptom-desc">Слышимые звуки при открывании или закрывании рта — нередко признак смещения суставного диска.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Боль в челюсти или лице</div><div class="symptom-desc">Тупая или нагрузочная боль — в покое или при жевании.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Напряжение в шее или плечах</div><div class="symptom-desc">Через тесные мышечные связи напряжение челюсти может отдавать в спину.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Головные боли или мигрень</div><div class="symptom-desc">Хронически напряжённые жевательные мышцы могут вызывать головные боли — которые нередко ошибочно принимают за мигрень.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Скрежетание или сжатие зубов</div><div class="symptom-desc">Чаще ночью — проявляется стёртостью зубов и повышенной чувствительностью.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Ограниченное открывание рта</div><div class="symptom-desc">Рот больше не открывается полностью — иногда с боковым смещением нижней челюсти.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Давление в ухе или шум в ушах</div><div class="symptom-desc">ВНЧС расположен в непосредственной близости от уха — боль, давление или звон без медицинской причины могут быть сигналом CMD.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Усталость жевательных мышц</div><div class="symptom-desc">Жевательные мышцы ощущаются истощёнными или тяжёлыми уже с утра.</div></div></div>
     </div>
 
     <button class="mehr-toggle" onclick="toggleMehr(this)">
         <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-        <span style="flex:1;text-align:left">Weitere Begleitsymptome (Schwindel, Tinnitus, Schlaf&hellip;)</span>
+        <span style="flex:1;text-align:left">Дополнительные сопутствующие симптомы (головокружение, шум в ушах, сон…)</span>
         <span class="arr">&#9660;</span>
     </button>
     <div class="mehr-body">
         <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
-            <div style="font-size:.82rem;color:var(--gray-500);margin-bottom:.75rem">Diese Beschwerden entstehen durch enge Verbindungen zwischen Kiefergelenk, Nerven, Muskeln und Faszien des gesamten K&ouml;rpers.</div>
-            <div class="symptom-item"><div class="symptom-dot" style="background:#9B72CF"></div><div><div class="symptom-title">Ohren&shy;schmerzen &amp; Tinnitus</div><div class="symptom-desc">Schmerzen, Druck oder Klingeln im Ohr ohne medizinische Ursache &mdash; h&auml;ufig &uuml;bersehenes CMD-Signal.</div></div></div>
-            <div class="symptom-item"><div class="symptom-dot" style="background:#9B72CF"></div><div><div class="symptom-title">Schwindel &amp; Sehst&ouml;rungen</div><div class="symptom-desc">Selten, aber m&ouml;glich durch die N&auml;he des Kiefergelenks zu sensiblen Nerven- und Muskelstrukturen.</div></div></div>
-            <div class="symptom-item"><div class="symptom-dot" style="background:#9B72CF"></div><div><div class="symptom-title">Schlafst&ouml;rungen &amp; Ersch&ouml;pfung</div><div class="symptom-desc">N&auml;chtliches Z&auml;hneknirschen und der damit verbundene Muskelstress unterbrechen den Schlaf &mdash; oft unbemerkt.</div></div></div>
+            <div style="font-size:.82rem;color:var(--gray-500);margin-bottom:.75rem">Эти жалобы возникают через тесные связи между ВНЧС, нервами, мышцами и фасциями всего тела.</div>
+            <div class="symptom-item"><div class="symptom-dot" style="background:#9B72CF"></div><div><div class="symptom-title">Боль в ухе и тиннитус</div><div class="symptom-desc">Боль, давление или звон в ухе без медицинской причины — часто упускаемый из виду сигнал CMD.</div></div></div>
+            <div class="symptom-item"><div class="symptom-dot" style="background:#9B72CF"></div><div><div class="symptom-title">Головокружение и нарушения зрения</div><div class="symptom-desc">Редко, но возможно из-за близости ВНЧС к чувствительным нервным и мышечным структурам.</div></div></div>
+            <div class="symptom-item"><div class="symptom-dot" style="background:#9B72CF"></div><div><div class="symptom-title">Нарушения сна и истощение</div><div class="symptom-desc">Ночной скрежет зубами и связанный с ним мышечный стресс прерывают сон — часто незаметно.</div></div></div>
         </div>
     </div>
 
-    <div class="hint" style="margin-top:1.5rem">CMD wird oft nicht erkannt, weil die Beschwerden auf den ersten Blick nichts mit den Z&auml;hnen zu tun haben. Ihr erster Ansprechpartner ist der Zahnarzt.</div>
+    <div class="hint" style="margin-top:1.5rem">CMD часто не выявляется, потому что симптомы на первый взгляд не связаны с зубами. Первый специалист, к которому следует обратиться, — стоматолог.</div>
     <div class="nav-arrows">
         <button class="nav-arrow prev" disabled>&larr; Назад</button>
         <button class="nav-arrow next" onclick="go('ursachen')">Далее &rarr;</button>
@@ -358,35 +358,35 @@
 <div class="tab-section" id="s-ursachen">
     <div class="section-title" style="margin-top:0">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-        Warum entstehen diese Probleme?
+        Почему возникают эти проблемы?
     </div>
-    <p class="section-sub">Oft gibt es nicht nur eine Ursache &mdash; mehrere Faktoren spielen zusammen.</p>
+    <p class="section-sub">Нередко причина не одна — несколько факторов действуют совместно.</p>
     <div class="card">
-        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="therapy-title">Fehlkontakte im Biss</div><div class="therapy-desc">Ungleichm&auml;&szlig;ige Belastung beim Zusammenbei&szlig;en zwingt Kiefergelenk und Muskeln in eine Fehlhaltung.</div></div></div>
-        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><div class="therapy-title">Z&auml;hneknirschen oder Pressen (Bruxismus)</div><div class="therapy-desc">H&auml;ufigste Ursache. Viele Menschen knirschen unbewusst nachts &mdash; oft verst&auml;rkt durch Stress. Bruxismus ist gleichzeitig Ursache und Symptom von CMD.</div></div></div>
-        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="therapy-title">Stress und innere Anspannung</div><div class="therapy-desc">Emotionaler Stress f&uuml;hrt zu erh&ouml;hter Muskelanspannung &mdash; tagsüber wie nachts, bewusst und unbewusst.</div></div></div>
-        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div><div class="therapy-title">Fehlhaltungen im Alltag</div><div class="therapy-desc">Kiefer und Wirbels&auml;ule sind &uuml;ber das muskulo-fasziale System verbunden &mdash; Haltungsprobleme k&ouml;nnen das Kiefergelenk beeinflussen.</div></div></div>
-        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div><div><div class="therapy-title">&Uuml;berlastung der Muskulatur</div><div class="therapy-desc">Einseitige Belastungen oder Parafunktionen ersch&ouml;pfen die Kaumuskulatur &uuml;ber Zeit.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="therapy-title">Нарушения окклюзии</div><div class="therapy-desc">Неравномерная нагрузка при смыкании зубов вынуждает ВНЧС и мышцы принимать неправильное положение.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><div class="therapy-title">Скрежетание или сжатие зубов (бруксизм)</div><div class="therapy-desc">Наиболее частая причина. Многие скрипят зубами бессознательно ночью — нередко усиливается из-за стресса. Бруксизм одновременно является и причиной, и симптомом CMD.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="therapy-title">Стресс и внутреннее напряжение</div><div class="therapy-desc">Эмоциональный стресс повышает тонус мышц — днём и ночью, осознанно и неосознанно.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div><div class="therapy-title">Нарушения осанки в повседневной жизни</div><div class="therapy-desc">Челюсть и позвоночник связаны через мышечно-фасциальную систему — проблемы с осанкой могут влиять на ВНЧС.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div><div><div class="therapy-title">Перегрузка мышц</div><div class="therapy-desc">Односторонние нагрузки или парафункции постепенно истощают жевательные мышцы.</div></div></div>
     </div>
 
     <button class="mehr-toggle" onclick="toggleMehr(this)">
         <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-        <span style="flex:1;text-align:left">Weitere Ausl&ouml;ser: Hormone, Genetik, Grunderkrankungen&hellip;</span>
+        <span style="flex:1;text-align:left">Другие триггеры: гормоны, генетика, сопутствующие заболевания…</span>
         <span class="arr">&#9660;</span>
     </button>
     <div class="mehr-body">
         <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
-            <p style="font-size:.84rem;color:var(--gray-600);line-height:1.65">Verletzungen des Kiefergelenks (z.&thinsp;B. durch Unf&auml;lle), genetische Faktoren, Hormonschwankungen, Schlafst&ouml;rungen sowie Grunderkrankungen wie Arthrose oder rheumatische Erkrankungen k&ouml;nnen ebenfalls zu CMD beitragen.</p>
+            <p style="font-size:.84rem;color:var(--gray-600);line-height:1.65">Травмы ВНЧС (например, при авариях), генетические факторы, гормональные колебания, нарушения сна, а также сопутствующие заболевания — артроз или ревматические болезни — также могут способствовать развитию CMD.</p>
         </div>
     </div>
 
     <div class="section-title">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0M12 8v4M12 16h.01"/></svg>
-        Zusammenhang mit dem ganzen K&ouml;rper
+        Связь со всем организмом
     </div>
     <div class="card card-warm">
-        <p>Kiefer, Muskulatur und Wirbels&auml;ule sind eng miteinander verbunden. Verspannungen im Kiefer k&ouml;nnen sich auf Nacken und R&uuml;cken &uuml;bertragen &mdash; und umgekehrt k&ouml;nnen Haltungsprobleme das Kiefergelenk beeinflussen. Auch Becken- oder H&uuml;ftfehlstellungen k&ouml;nnen &uuml;ber diese Kette CMD beg&uuml;nstigen.</p>
-        <p style="margin-top:.75rem">Der K&ouml;rper reagiert als Ganzes. Deshalb betrachten wir die Situation immer ganzheitlich.</p>
+        <p>Челюсть, мышцы и позвоночник тесно взаимосвязаны. Напряжение в челюсти может распространяться на шею и спину — и наоборот, проблемы с осанкой могут влиять на ВНЧС. Даже нарушения в тазобедренном суставе по этой цепочке могут провоцировать CMD.</p>
+        <p style="margin-top:.75rem">Организм реагирует как единое целое. Поэтому мы всегда рассматриваем ситуацию комплексно.</p>
     </div>
     <div class="nav-arrows">
         <button class="nav-arrow prev" onclick="go('was')">&larr; Назад</button>
@@ -398,30 +398,30 @@
 <div class="tab-section" id="s-diagnostik">
     <div class="section-title" style="margin-top:0">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-        Unsere Diagnostik
+        Наша диагностика
     </div>
-    <p class="section-sub">Wir nehmen uns Zeit f&uuml;r eine genaue Analyse &mdash; ohne Hast.</p>
+    <p class="section-sub">Мы уделяем время точному анализу — без спешки.</p>
     <div class="card">
         <div class="step-list">
-            <div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Gespr&auml;ch &uuml;ber Beschwerden und Gewohnheiten</h4><p>Schlafqualit&auml;t, Stress, bisherige Behandlungen, Lebensalltag &mdash; wir h&ouml;ren zu.</p></div></div>
-            <div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Untersuchung der Kiefergelenke</h4><p>Beurteilung der Beweglichkeit, Feststellung von Ger&auml;uschen, Messung der maximalen Mund&ouml;ffnung.</p></div></div>
-            <div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Palpation der Kaumuskulatur</h4><p>Wir tasten Kau-, Schl&auml;fen- und Nackenmuskulatur auf Verh&auml;rtungen und empfindliche Druckpunkte (Triggerpunkte) ab.</p></div></div>
-            <div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Okklusionsanalyse</h4><p>&Uuml;berpr&uuml;fung der Zahnkontakte im Schlussbiss und bei Bewegungen &mdash; Vorkontakte und St&ouml;rkontakte k&ouml;nnen so erkannt werden.</p></div></div>
+            <div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Беседа о жалобах и привычках</h4><p>Качество сна, стресс, прежнее лечение, повседневная жизнь — мы слушаем.</p></div></div>
+            <div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Обследование ВНЧС</h4><p>Оценка подвижности, выявление звуков, измерение максимального открывания рта.</p></div></div>
+            <div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Пальпация жевательных мышц</h4><p>Мы прощупываем жевательные, височные и шейные мышцы на предмет уплотнений и болезненных точек давления (триггерных точек).</p></div></div>
+            <div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Анализ окклюзии</h4><p>Проверка зубных контактов при смыкании и в движении — так выявляются преждевременные и мешающие контакты.</p></div></div>
         </div>
     </div>
 
     <button class="mehr-toggle" onclick="toggleMehr(this)">
         <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-        <span style="flex:1;text-align:left">Erweiterte Diagnostik bei Bedarf (R&ouml;ntgen, Artikulator, MRT&hellip;)</span>
+        <span style="flex:1;text-align:left">Расширенная диагностика при необходимости (рентген, артикулятор, МРТ…)</span>
         <span class="arr">&#9660;</span>
     </button>
     <div class="mehr-body">
         <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
-            <p style="font-size:.84rem;color:var(--gray-600);line-height:1.65">Je nach Befund erg&auml;nzen wir die Diagnose: digitales R&ouml;ntgen zur Beurteilung des Kieferknochens, bei komplexen F&auml;llen eine instrumentelle Funktionsanalyse im Artikulator (Kausimulator), oder &mdash; bei Verdacht auf strukturelle Gelenkver&auml;nderungen &mdash; eine MRT-&Uuml;berweisung an spezialisierte Radiologen.</p>
+            <p style="font-size:.84rem;color:var(--gray-600);line-height:1.65">По результатам обследования мы дополняем диагностику: цифровой рентген для оценки костной ткани, в сложных случаях — инструментальный функциональный анализ в артикуляторе, или — при подозрении на структурные изменения сустава — направление на МРТ к специализированным радиологам.</p>
         </div>
     </div>
 
-    <div class="hint" style="margin-top:1.5rem">Bei Bedarf beziehen wir weitere Fachbereiche mit ein &mdash; Physiotherapie, Orthop&auml;die, HNO. Wir schauen gemeinsam, was sinnvoll ist.</div>
+    <div class="hint" style="margin-top:1.5rem">При необходимости мы привлекаем других специалистов — физиотерапию, ортопедию, ЛОР. Вместе определяем, что целесообразно.</div>
     <div class="nav-arrows">
         <button class="nav-arrow prev" onclick="go('ursachen')">&larr; Назад</button>
         <button class="nav-arrow next" onclick="go('schienen')">Далее &rarr;</button>
@@ -432,57 +432,57 @@
 <div class="tab-section" id="s-schienen">
     <div class="section-title" style="margin-top:0">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-        Schienentherapie
+        Шинотерапия
     </div>
     <div class="card card-blue">
-        <div class="card-title">Was macht eine Schiene?</div>
-        <p>Eine individuell angepasste Schiene kann das Kiefergelenk entlasten. Sie sch&uuml;tzt die Z&auml;hne vor Abrieb, reduziert Druck auf Muskulatur und Gelenk und kann Fehlbelastungen ausgleichen. Welche Variante sinnvoll ist, entscheiden wir gemeinsam. Eine Schiene ist keine schnelle Standardl&ouml;sung &mdash; sie wird angepasst und regelm&auml;&szlig;ig kontrolliert.</p>
+        <div class="card-title">Что делает шина?</div>
+        <p>Индивидуально изготовленная шина способна разгрузить ВНЧС. Она защищает зубы от истирания, снижает нагрузку на мышцы и сустав, и может компенсировать неправильные нагрузки. Какой вариант подходит — решаем совместно. Шина — не быстрое стандартное решение: она подгоняется и регулярно контролируется.</p>
     </div>
 
-    <div class="section-title">Welche Schienen gibt es?</div>
+    <div class="section-title">Какие бывают шины?</div>
     <div class="card">
-        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="therapy-title">Entspannungsschienen</div><div class="therapy-desc">Bei Knirschen und Pressen &mdash; reduziert &Uuml;beraktivit&auml;t der Kaumuskulatur und sch&uuml;tzt die Zahnhartsubstanz.</div></div></div>
-        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div><div><div class="therapy-title">Stabilisierungsschienen</div><div class="therapy-desc">Zur F&uuml;hrung des Bisses &mdash; bringt den Unterkiefer in eine harmonische, muskelf&uuml;hrte Position.</div></div></div>
-        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="therapy-title">Individuelle Funktionsschienen</div><div class="therapy-desc">Bei komplexeren Beschwerden &mdash; z.&thinsp;B. bei Diskusverlagerung oder mehrstufiger Bissrehabilitation.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="therapy-title">Релаксационные шины</div><div class="therapy-desc">При скрежете и сжатии — снижает гиперактивность жевательных мышц и защищает твёрдые ткани зубов.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div><div><div class="therapy-title">Стабилизирующие шины</div><div class="therapy-desc">Для направления прикуса — переводит нижнюю челюсть в гармоничное, мышечно-направленное положение.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="therapy-title">Индивидуальные функциональные шины</div><div class="therapy-desc">При более сложных жалобах — например, при смещении диска или многоэтапной реабилитации прикуса.</div></div></div>
     </div>
 
     <button class="mehr-toggle" onclick="toggleMehr(this)">
         <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-        <span style="flex:1;text-align:left">Detaillierte Schienentypen: Michigan, Relaxation, Reposition, Weich&hellip;</span>
+        <span style="flex:1;text-align:left">Детальные типы шин: Мичиган, релаксационная, репозиционирующая, мягкая…</span>
         <span class="arr">&#9660;</span>
     </button>
     <div class="mehr-body">
         <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
             <div class="nachsorge-item">
                 <div class="nachsorge-icon" style="background:var(--blue-light)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                <div><div class="symptom-title">Michigan-Schiene (Equilibrierungsschiene)</div><div class="symptom-desc">Am h&auml;ufigsten eingesetzte Aufbissschiene. Hartes Kunststoff, individuell f&uuml;r den Oberkiefer gefertigt und im Artikulator eingestellt. Besonders geeignet bei muskul&auml;ren CMD-Beschwerden und Bruxismus.</div></div>
+                <div><div class="symptom-title">Мичиганская шина (выравнивающая шина)</div><div class="symptom-desc">Наиболее часто используемая окклюзионная шина. Твёрдая пластмасса, изготовленная индивидуально для верхней челюсти и отрегулированная в артикуляторе. Особенно подходит при мышечных симптомах CMD и бруксизме.</div></div>
             </div>
             <div class="nachsorge-item">
                 <div class="nachsorge-icon" style="background:#EEF4EA"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3d6b32" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg></div>
-                <div><div class="symptom-title">Relaxationsschiene / Reflexschiene</div><div class="symptom-desc">Kleines frontales Plateau hebt Seitenzahnkontakte auf &mdash; unterbricht parafunktionelle Aktivit&auml;ten. Gut bei Muskelverspannungen durch Stress. Nur f&uuml;r kurze Zeitr&auml;ume.</div></div>
+                <div><div class="symptom-title">Релаксационная шина / рефлекторная шина</div><div class="symptom-desc">Небольшой фронтальный упор устраняет боковые зубные контакты — прерывает парафункциональную активность. Хороша при мышечном напряжении от стресса. Только на короткие периоды.</div></div>
             </div>
             <div class="nachsorge-item">
                 <div class="nachsorge-icon" style="background:var(--amber-soft)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2"><path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></div>
-                <div><div class="symptom-title">Repositionsschiene / Positionierungsschiene</div><div class="symptom-desc">F&uuml;hrt den Unterkiefer aktiv in eine therapeutische Position (leicht nach vorne). Bei Diskusverlagerungen &mdash; erfordert pr&auml;zise Diagnose, da langfristige Bissver&auml;nderung m&ouml;glich.</div></div>
+                <div><div class="symptom-title">Репозиционирующая шина / позиционирующая шина</div><div class="symptom-desc">Активно переводит нижнюю челюсть в терапевтическое положение (слегка вперёд). При смещениях диска — требует точной диагностики, так как возможно долгосрочное изменение прикуса.</div></div>
             </div>
             <div class="nachsorge-item">
                 <div class="nachsorge-icon" style="background:var(--gray-100)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gray-600)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
-                <div><div class="symptom-title">Weiche Schiene / Knirscherschiene</div><div class="symptom-desc">Einfachste Variante &mdash; sch&uuml;tzt Z&auml;hne vor Abrieb, hat aber keine therapeutische Wirkung auf Muskelspannung oder Gelenkposition. F&uuml;r CMD-Therapie weniger geeignet.</div></div>
+                <div><div class="symptom-title">Мягкая шина / противоскрежетальная шина</div><div class="symptom-desc">Простейший вариант — защищает зубы от истирания, но не оказывает терапевтического воздействия на мышечное напряжение или положение сустава. Менее подходит для терапии CMD.</div></div>
             </div>
         </div>
     </div>
 
     <div class="section-title">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-        Transparenz bei den Kosten
+        Прозрачность в отношении расходов
     </div>
     <div class="card">
-        <div class="card-title">Was &uuml;bernimmt die Krankenkasse?</div>
-        <p>Die gesetzlichen Krankenkassen &uuml;bernehmen in der Regel die <strong>klinische Funktionsanalyse (FAL)</strong>. Die Schienentherapie selbst ist in den meisten F&auml;llen eine <strong>Privatleistung</strong>.</p>
+        <div class="card-title">Что покрывает страховка?</div>
+        <p>Государственные страховые фонды, как правило, покрывают <strong>клинический функциональный анализ (FAL)</strong>. Сама шинотерапия в большинстве случаев является <strong>платной услугой</strong>.</p>
     </div>
     <div class="card card-amber">
-        <div class="card-title">Individuelle Laborschienen &mdash; Sonderkosten</div>
-        <p>F&uuml;r spezielle Schienen zur schrittweisen <strong>Biserh&ouml;hung</strong> &mdash; zum Beispiel vor geplanten Versorgungen mit Zahnersatz &mdash; entstehen Kosten, die die Krankenkasse nicht &uuml;bernimmt. Diese k&ouml;nnen je nach Aufwand <strong>zwischen ca. 200 und 600 Euro</strong> liegen. Wir erstellen Ihnen vorab immer einen klaren Kostenplan &mdash; keine &Uuml;berraschungen.</p>
+        <div class="card-title">Индивидуальные лабораторные шины — дополнительные расходы</div>
+        <p>Для специальных шин с постепенным <strong>повышением прикуса</strong> — например, перед запланированным протезированием — возникают расходы, которые страховка не покрывает. В зависимости от сложности они могут составлять <strong>около 200–600 евро</strong>. Мы всегда заблаговременно предоставляем чёткий план расходов — без сюрпризов.</p>
     </div>
     <div class="nav-arrows">
         <button class="nav-arrow prev" onclick="go('diagnostik')">&larr; Назад</button>
@@ -494,40 +494,40 @@
 <div class="tab-section" id="s-behandlung">
     <div class="section-title" style="margin-top:0">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        Behandlung &mdash; was kann helfen?
+        Лечение — что может помочь?
     </div>
     <div class="card card-blue">
-        <p>Die Behandlung richtet sich nach der Ursache. M&ouml;gliche Bausteine:</p>
-        <ul style="margin:.75rem 0 0 1.1rem;font-size:.85rem;color:var(--gray-600);line-height:1.9"><li>Schienentherapie</li><li>Anpassung von F&uuml;llungen oder Zahnersatz</li><li>Gezielte &Uuml;bungen</li><li>Begleitende Physiotherapie</li></ul>
-        <p style="margin-top:.75rem;font-size:.84rem;color:var(--gray-600)">Oft ist eine Kombination sinnvoll.</p>
+        <p>Лечение зависит от причины. Возможные составляющие:</p>
+        <ul style="margin:.75rem 0 0 1.1rem;font-size:.85rem;color:var(--gray-600);line-height:1.9"><li>Шинотерапия</li><li>Коррекция пломб или протезов</li><li>Целенаправленные упражнения</li><li>Сопровождающая физиотерапия</li></ul>
+        <p style="margin-top:.75rem;font-size:.84rem;color:var(--gray-600)">Часто оптимально сочетание нескольких методов.</p>
     </div>
 
-    <div class="section-title">Physiotherapie &mdash; ein wichtiger Teil</div>
+    <div class="section-title">Физиотерапия — важная составляющая</div>
     <div class="card">
-        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg></div><div><div class="therapy-title">Manuelle Therapie &amp; Kiefermobilisation</div><div class="therapy-desc">Gezielte Mobilisationstechniken l&ouml;sen Verh&auml;rtungen in Kau- und Nackenmuskulatur und verbessern die Kieferbeweglichkeit.</div></div></div>
-        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="therapy-title">Triggerpunkt-Behandlung</div><div class="therapy-desc">Verh&auml;rtete Muskelpunkte im Kiefer-, Schl&auml;fen- und Nackenbereich werden aufgel&ouml;st &mdash; was Kopfschmerzen und Ohrschmerzen lindern kann.</div></div></div>
-        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><div class="therapy-title">Haltungsschulung &amp; K&ouml;rperbewusstsein</div><div class="therapy-desc">Kiefer und Wirbels&auml;ule beeinflussen sich gegenseitig &mdash; gezielte Korrekturen der K&ouml;rperhaltung sind oft ein wichtiger Teil der Therapie.</div></div></div>
-        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3l9 9-9 9"/></svg></div><div><div class="therapy-title">&Uuml;bungen f&uuml;r zu Hause</div><div class="therapy-desc">Dehn- und Entspannungs&uuml;bungen f&uuml;r die Kaumuskulatur sowie Stressbew&auml;ltigung (Progressive Muskelentspannung, Biofeedback).</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg></div><div><div class="therapy-title">Мануальная терапия и мобилизация челюсти</div><div class="therapy-desc">Целенаправленные техники мобилизации снимают уплотнения в жевательных и шейных мышцах и улучшают подвижность челюсти.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="therapy-title">Лечение триггерных точек</div><div class="therapy-desc">Уплотнённые мышечные точки в области челюсти, виска и шеи прорабатываются — что может облегчить головные боли и боль в ушах.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><div class="therapy-title">Коррекция осанки и осознанность тела</div><div class="therapy-desc">Челюсть и позвоночник взаимно влияют друг на друга — целенаправленная коррекция осанки нередко является важной частью терапии.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3l9 9-9 9"/></svg></div><div><div class="therapy-title">Домашние упражнения</div><div class="therapy-desc">Упражнения на растяжку и расслабление жевательных мышц, а также управление стрессом (прогрессивная мышечная релаксация, биофидбэк).</div></div></div>
     </div>
 
-    <div class="section-title">Was k&ouml;nnen Sie erwarten?</div>
+    <div class="section-title">Чего ожидать?</div>
     <div class="card card-green">
-        <div class="card-title">Ziel ist keine Perfektion &mdash; sondern sp&uuml;rbare Verbesserung</div>
-        <ul style="margin:.5rem 0 0 1.1rem;font-size:.85rem;color:var(--gray-600);line-height:1.9"><li>Weniger Schmerzen</li><li>Entspanntere Muskulatur</li><li>Mehr Beweglichkeit</li><li>Ein besseres K&ouml;rpergef&uuml;hl</li></ul>
-        <p style="margin-top:.75rem;font-size:.83rem;color:var(--gray-600)">Der Verlauf ist individuell. Wenn Sie solche Beschwerden bei sich erkennen, sprechen Sie uns gerne an.</p>
+        <div class="card-title">Цель — не совершенство, а ощутимое улучшение</div>
+        <ul style="margin:.5rem 0 0 1.1rem;font-size:.85rem;color:var(--gray-600);line-height:1.9"><li>Меньше боли</li><li>Более расслабленные мышцы</li><li>Бо́льшая подвижность</li><li>Лучшее ощущение тела</li></ul>
+        <p style="margin-top:.75rem;font-size:.83rem;color:var(--gray-600)">Динамика индивидуальна. Если вы узнаёте в этих симптомах себя, не стесняйтесь обращаться к нам.</p>
     </div>
 
     <div class="section-title">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        H&auml;ufige Fragen zur CMD-Behandlung
+        Часто задаваемые вопросы о лечении CMD
     </div>
     <div class="card">
-        <div class="faq-item"><div class="faq-q">Tut die Behandlung weh?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Die zahnärztliche Untersuchung und die Schinenanpassung sind vollständig schmerzfrei. Die Physiotherapie kann bei der Behandlung verhärteter Muskelpunkte kurzfristig unangenehm sein — ähnlich wie bei einer klassischen Massage. Die Schiene selbst verursacht nach einer kurzen Eingewöhnungsphase in der Regel keine Beschwerden.</div></div>
-        <div class="faq-item"><div class="faq-q">Wie lange dauert die Behandlung?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Das hängt von Schwere und Ursache der CMD ab. Erste Besserungen sind oft schon nach wenigen Wochen Schienentherapie spürbar. Eine vollständige Behandlung dauert in der Regel mehrere Monate. Entscheidend ist, konsequent am Ball zu bleiben.</div></div>
-        <div class="faq-item"><div class="faq-q">Zahlt die Krankenkasse f&uuml;r die CMD-Behandlung?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Die gesetzlichen Krankenkassen übernehmen in der Regel die klinische Funktionsanalyse (FAL). Die individuell angefertigte CMD-Schiene sowie die instrumentelle Funktionsanalyse sind in vielen Fällen Privatleistungen. Wir informieren Sie vor Behandlungsbeginn transparent über alle Kosten.</div></div>
-        <div class="faq-item"><div class="faq-q">Muss ich die Schiene dauerhaft tragen?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Das ist individuell verschieden. Viele Patienten tragen die Schiene zunächst täglich, später nur noch prophylaktisch in Stressphasen. Ziel ist es, durch die Kombination aus Schienentherapie und Physiotherapie eine dauerhafte Entspannung zu erreichen.</div></div>
-        <div class="faq-item"><div class="faq-q">Kann CMD ohne Operation behandelt werden?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">In der großen Mehrheit der Fälle: ja. Konservative Behandlungen wie Schienentherapie und Physiotherapie führen zu deutlichen und dauerhaften Verbesserungen. Operative Eingriffe kommen erst dann in Betracht, wenn alle anderen Möglichkeiten ausgeschöpft wurden.</div></div>
-        <div class="faq-item"><div class="faq-q">Was kann ich selbst tun?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Achten Sie darauf, die Zähne im Alltag nicht unbewusst zusammenzubeißen (Zähne sollten sich in Ruhe leicht berühren, aber nicht pressen). Regelmäßige Entspannungsübungen, ausreichend Schlaf und Stressreduktion helfen spürbar. Und: Tragen Sie Ihre Schiene regelmäßig.</div></div>
+        <div class="faq-item"><div class="faq-q">Лечение болезненно?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Стоматологическое обследование и подгонка шины полностью безболезненны. Физиотерапия при работе с уплотнёнными мышечными точками может быть кратковременно неприятной — как при классическом массаже. Сама шина, как правило, не вызывает дискомфорта после короткого периода привыкания.</div></div>
+        <div class="faq-item"><div class="faq-q">Как долго длится лечение?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Это зависит от тяжести и причины CMD. Первые улучшения нередко ощущаются уже через несколько недель шинотерапии. Полное лечение занимает, как правило, несколько месяцев. Главное — быть последовательным.</div></div>
+        <div class="faq-item"><div class="faq-q">Покрывает ли страховка лечение CMD?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Государственные страховые фонды, как правило, покрывают клинический функциональный анализ (FAL). Индивидуально изготовленная шина CMD и инструментальный функциональный анализ во многих случаях являются платными услугами. Мы заблаговременно информируем вас обо всех расходах.</div></div>
+        <div class="faq-item"><div class="faq-q">Нужно ли носить шину постоянно?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Это индивидуально. Многие пациенты вначале носят шину ежедневно, затем только профилактически в периоды стресса. Цель — добиться устойчивого расслабления через сочетание шинотерапии и физиотерапии.</div></div>
+        <div class="faq-item"><div class="faq-q">Можно ли вылечить CMD без операции?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">В подавляющем большинстве случаев: да. Консервативное лечение — шинотерапия и физиотерапия — приводит к значительным и стойким улучшениям. Хирургическое вмешательство рассматривается лишь тогда, когда исчерпаны все другие возможности.</div></div>
+        <div class="faq-item"><div class="faq-q">Что я могу сделать сам?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Следите за тем, чтобы неосознанно не сжимать зубы в повседневной жизни (в покое зубы должны слегка соприкасаться, но не сжиматься). Регулярные упражнения на расслабление, достаточный сон и снижение стресса заметно помогают. И: носите шину регулярно.</div></div>
     </div>
 
     <div class="print-bar"><button class="btn-print" onclick="window.print()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Распечатать эту страницу</button></div>
