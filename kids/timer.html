@@ -204,7 +204,7 @@ document.querySelector('.back-link').href='index.html?lang='+LANG;
 const TOTAL=120;
 const QUADRANTS=[tt('Oben links putzen!'),tt('Oben rechts putzen!'),tt('Unten links putzen!'),tt('Unten rechts putzen!')];
 var C=2*Math.PI*120;var Q=C/4;
-var qColors=['#7BA490','#D4A76A','#C17B6E','#A88BAE'];
+var qColors=['#2EAA8A','#E8A835','#E06B5E','#9B6FB5'];
 
 let timeLeft=TOTAL,running=false,timer=null,currentQuad=-1;
 const timeDisplay=document.getElementById('timeDisplay');
@@ -223,30 +223,33 @@ function playTick(){playTone(500,.03,.05)}
 function playWin(){[523,659,784,1047].forEach((f,i)=>{setTimeout(()=>playTone(f,.25,.12),i*150)})}
 
 function updateDisplay(){
-  const m=Math.floor(timeLeft/60);
-  const s=timeLeft%60;
+  var m=Math.floor(timeLeft/60),s=timeLeft%60;
   timeDisplay.textContent=m+':'+(s<10?'0':'')+s;
-  const pct=(TOTAL-timeLeft)/TOTAL;
-  progress.style.strokeDashoffset=circumference*(1-pct);
-  
-  // Update quadrant (30s each)
-  const newQuad=Math.min(3,Math.floor((TOTAL-timeLeft)/30));
+  var elapsed=TOTAL-timeLeft;
+
+  // Update 4 ring segments
+  for(var qi=0;qi<4;qi++){
+    var qel=document.getElementById('qr'+qi);
+    var segS=qi*30,segE=(qi+1)*30;
+    if(elapsed<=segS){qel.style.strokeDasharray='0 '+C}
+    else if(elapsed>=segE){qel.style.strokeDasharray=Q+' '+(C-Q)}
+    else{var len=Q*((elapsed-segS)/30);qel.style.strokeDasharray=len+' '+(C-len)}
+  }
+
+  // Update quadrant boxes (synced colors)
+  var newQuad=Math.min(3,Math.floor(elapsed/30));
   if(newQuad!==currentQuad&&timeLeft<TOTAL){
     currentQuad=newQuad;
     quadLabel.textContent=QUADRANTS[currentQuad];
-    for(let i=0;i<4;i++){
-      const el=document.getElementById('q'+i);
+    for(var i=0;i<4;i++){
+      var el=document.getElementById('q'+i);
       el.classList.remove('active','done');
-      if(i<currentQuad)el.classList.add('done');
-      else if(i===currentQuad)el.classList.add('active');
+      el.style.background='';el.style.color='';el.style.borderColor='';
+      if(i<currentQuad){el.classList.add('done');el.style.background=qColors[i];el.style.color='#fff';el.style.borderColor=qColors[i]}
+      else if(i===currentQuad){el.classList.add('active');el.style.background=qColors[i];el.style.color='#fff';el.style.borderColor=qColors[i]}
     }
     playQuadChange();
   }
-  
-  // Color change as time progresses
-  // Quadrant colors
-  var qColors=['#7BA490','#D4A76A','#C17B6E','#A88BAE'];
-  progress.style.stroke=qColors[Math.min(3,Math.floor((TOTAL-timeLeft)/30))];
 }
 
 function startTimer(){
@@ -267,7 +270,7 @@ function startTimer(){
       running=false;
       hourglass.classList.remove('running');
       // Mark all done
-      for(let i=0;i<4;i++)document.getElementById('q'+i).classList.add('done');
+      for(var i=0;i<4;i++){var ql=document.getElementById('q'+i);ql.classList.add('done');ql.style.background=qColors[i];ql.style.color='#fff';ql.style.borderColor=qColors[i];}
       // Show win
       setTimeout(()=>{
         app.dataset.state='done';
@@ -301,7 +304,7 @@ function resetTimer(){
   for(var qi=0;qi<4;qi++){document.getElementById('qr'+qi).style.strokeDasharray='0 '+C;}
   timeDisplay.textContent='2:00';
   quadLabel.textContent='Bereit? Los geht\u2019s!';
-  for(let i=0;i<4;i++){const el=document.getElementById('q'+i);el.classList.remove('active','done')}
+  for(var i=0;i<4;i++){var el=document.getElementById('q'+i);el.classList.remove('active','done');el.style.background='';el.style.color='';el.style.borderColor=''}
 }
 
 function spawnConfetti(){
