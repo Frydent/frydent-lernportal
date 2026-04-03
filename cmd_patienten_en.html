@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRYDENT · TMJ Disorders (CMD)</title>
-    <meta name="description" content="Jaw clicking, headaches, neck pain — CMD can manifest in many ways. We explain clearly what is behind it and how we can help you.">
+    <title>FRYDENT &middot; CMD &middot; Jaw Joint Disorders</title>
+    <meta name="description" content="Jaw clicking, headaches, neck pain — CMD can manifest in many ways. We explain clearly what lies behind it.">
     <style>
+
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
@@ -76,7 +77,14 @@
         /* HINT */
         .hint{font-size:.84rem;background:var(--amber-soft);border:1px solid var(--amber-border);border-radius:var(--radius-sm);padding:1rem 1.25rem;margin-bottom:1.25rem;line-height:1.55;color:var(--amber-text)}
 
-        /* SYMPTOM LIST */
+        /* STEP LIST */
+        .step-list{counter-reset:step}
+        .step-item{display:flex;gap:1rem;margin-bottom:1.25rem;align-items:flex-start}
+        .step-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--blue-dark);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+        .step-content h4{font-family:'Quicksand',sans-serif;font-size:.92rem;font-weight:600;color:var(--blue-dark);margin-bottom:.2rem}
+        .step-content p{font-size:.84rem;color:var(--gray-600);line-height:1.55}
+
+        /* SYMPTOM ITEM */
         .symptom-item{display:flex;gap:12px;align-items:flex-start;padding:.75rem 0;border-bottom:1px solid var(--gray-100)}
         .symptom-item:last-child{border-bottom:none}
         .symptom-dot{flex-shrink:0;width:10px;height:10px;border-radius:50%;margin-top:6px}
@@ -91,15 +99,11 @@
         .therapy-title{font-family:'Quicksand',sans-serif;font-weight:600;font-size:.88rem;color:var(--blue-dark);margin-bottom:.2rem}
         .therapy-desc{font-size:.82rem;color:var(--gray-600);line-height:1.5}
 
-        /* SCHIENEN ITEM */
-        .schiene-item{border-bottom:1px solid var(--gray-200);padding:1rem 0}
-        .schiene-item:last-child{border-bottom:none}
-        .schiene-header{display:flex;align-items:center;gap:10px;margin-bottom:.4rem}
-        .schiene-badge{font-size:.68rem;font-weight:700;padding:3px 8px;border-radius:20px;white-space:nowrap}
-        .schiene-badge-gold{background:var(--gold-light);color:#7A5E00;border:1px solid var(--gold-dark)}
-        .schiene-badge-blue{background:var(--blue-light);color:var(--blue-dark);border:1px solid #a8c0e8}
-        .schiene-name{font-family:'Quicksand',sans-serif;font-weight:600;font-size:.9rem;color:var(--blue-dark)}
-        .schiene-desc{font-size:.83rem;color:var(--gray-600);line-height:1.55}
+        /* NACHSORGE ITEM */
+        .nachsorge-item{display:flex;gap:14px;align-items:flex-start;padding:1rem 0;border-bottom:1px solid var(--gray-100)}
+        .nachsorge-item:last-child{border-bottom:none}
+        .nachsorge-icon{flex-shrink:0;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+        .nachsorge-icon svg{width:18px;height:18px;fill:none;stroke-width:2}
 
         /* FAQ */
         .faq-item{border-bottom:1px solid var(--gray-200);padding:1rem 0;cursor:pointer}
@@ -157,531 +161,385 @@
         .mobile-bar a.termin-m{color:#E2C26A!important;font-weight:700}
         @media(max-width:640px){.sidebar{display:none}.mobile-bar{display:flex!important}}
 
-        /* PRINT */
+        /* FOOTER */
+        footer{text-align:center;padding:2rem 1.5rem 4rem;font-size:.75rem;color:var(--gray-400);border-top:1px solid var(--gray-200);background:var(--white)}
+        footer a{color:var(--blue);text-decoration:none}
+
         @media print{.sidebar,.mobile-bar,.header-right,.nav-arrows,.print-bar{display:none!important}main{padding:1rem}}
 
-        /* ANATOMY BOX */
-        .anatomy-box{background:var(--blue-light);border:1px solid #C8D9EE;border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1.25rem}
-        .anatomy-title{font-family:'Quicksand',sans-serif;font-weight:600;color:var(--blue-dark);font-size:.9rem;margin-bottom:.5rem}
-        .anatomy-text{font-size:.83rem;color:var(--gray-700);line-height:1.6}
+    
+        /* ── MEHR ERFAHREN ── */
+        .mehr-toggle{width:100%;background:#F0F5FB;border:1px solid #C8D9EE;border-radius:var(--radius-sm);padding:.85rem 1.1rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;font-size:.84rem;font-weight:700;color:var(--blue-dark);margin-top:1rem;transition:all .2s;gap:.5rem}
+        .mehr-toggle:hover{background:#D8E8F5;border-color:var(--blue)}
+        .mehr-toggle .arr{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--blue-dark);color:white;display:flex;align-items:center;justify-content:center;font-size:.6rem;transition:transform .3s}
+        .mehr-toggle.open .arr{transform:rotate(180deg)}
+        .mehr-toggle-icon{flex-shrink:0;opacity:.7}
+        .mehr-body{display:none;margin-top:.5rem}
+        .mehr-body.open{display:block}
 
-        /* STEP LIST */
-        .step-list{counter-reset:step}
-        .step-item{display:flex;gap:1rem;margin-bottom:1.25rem;align-items:flex-start}
-        .step-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--blue-dark);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
-        .step-content h4{font-family:'Quicksand',sans-serif;font-size:.92rem;font-weight:600;color:var(--blue-dark);margin-bottom:.2rem}
-        .step-content p{font-size:.84rem;color:var(--gray-600);line-height:1.55}
+        /* ── FAQ ── */
+        .faq-item{border-bottom:1px solid var(--gray-200);padding:1rem 0;cursor:pointer}
+        .faq-item:first-child{padding-top:0}
+        .faq-item:last-child{border-bottom:none}
+        .faq-q{font-family:"Quicksand",sans-serif;font-weight:600;font-size:.9rem;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:center}
+        .faq-a{font-size:.84rem;color:var(--gray-600);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding-top:0;line-height:1.6}
+        .faq-item.open .faq-a{max-height:600px;padding-top:.6rem}
+        .faq-arrow{transition:transform .3s;font-size:.7rem;color:#9B72CF}
+        .faq-item.open .faq-arrow{transform:rotate(180deg)}
 
-        /* PHYSIO ITEM */
-        .physio-item{display:flex;gap:14px;align-items:flex-start;padding:1rem 0;border-bottom:1px solid var(--gray-100)}
-        .physio-item:last-child{border-bottom:none}
-        .physio-icon{flex-shrink:0;width:40px;height:40px;border-radius:10px;background:var(--green-soft);border:1px solid var(--green-border);display:flex;align-items:center;justify-content:center}
-        .physio-icon svg{width:20px;height:20px;stroke:var(--green-text);fill:none;stroke-width:2}
-        .physio-title{font-family:'Quicksand',sans-serif;font-weight:600;font-size:.88rem;color:var(--green-text);margin-bottom:.2rem}
-        .physio-desc{font-size:.82rem;color:var(--gray-600);line-height:1.5}
+        /* ── QUIZ PROMINENT ── */
+        .quiz-cta-hero{background:#FDF8E8;border:1px solid #DFC96A;border-radius:var(--radius);padding:1.25rem 1.5rem;margin:2rem 0 0}
+        .quiz-cta-hero-label{display:inline-block;background:var(--gold);color:#1E2D4D;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:12px;margin-bottom:.6rem;letter-spacing:.03em}
+        .quiz-cta-hero h3{font-family:"Quicksand",sans-serif;font-size:1.05rem;font-weight:700;color:var(--blue-darker);margin-bottom:.35rem}
+        .quiz-cta-hero p{font-size:.84rem;color:var(--amber-text);line-height:1.5;margin-bottom:.9rem}
+        .quiz-start-btn{display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--blue-dark);border:1.5px solid var(--blue-dark);border-radius:8px;padding:.6rem 1.2rem;font-size:.84rem;font-weight:700;cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;transition:all .2s}
+        .quiz-start-btn:hover{background:var(--blue-dark);color:white}
+
+        /* ── QUIZ PANEL ── */
+        .quiz-panel{background:white;border:1px solid var(--gray-200);border-radius:var(--radius);margin-top:1.25rem;overflow:hidden;display:none}
+        .quiz-panel.open{display:block}
+        .quiz-panel-inner{padding:1.5rem}
+        .quiz-intro{font-size:.84rem;color:var(--gray-600);margin-bottom:1.25rem;line-height:1.55}
+        .quiz-q{margin-bottom:1rem}
+        .quiz-q-text{font-size:.87rem;font-weight:600;color:var(--gray-800);margin-bottom:.5rem}
+        .quiz-options{display:flex;gap:.6rem}
+        .quiz-opt{flex:1;padding:.55rem;border:1.5px solid var(--gray-200);border-radius:var(--radius-sm);text-align:center;font-size:.83rem;font-weight:600;cursor:pointer;transition:all .2s;background:white;color:var(--gray-600);font-family:"Plus Jakarta Sans",sans-serif}
+        .quiz-opt.yes.sel{background:#EEF4EA;border-color:#C8D9BE;color:#3d6b32}
+        .quiz-opt.no.sel{background:var(--gray-100);border-color:var(--gray-400);color:var(--gray-600)}
+        .quiz-result{display:none;border-radius:var(--radius-sm);padding:1rem 1.2rem;margin-top:.75rem}
+        .quiz-result.show{display:block}
+        .quiz-result.low{background:#EEF4EA;border:1px solid #C8D9BE}
+        .quiz-result.mid{background:var(--amber-soft);border:1px solid var(--amber-border)}
+        .quiz-result.high{background:var(--red-soft);border:1px solid var(--red-border)}
+        .quiz-result-title{font-family:"Quicksand",sans-serif;font-weight:600;font-size:.92rem;margin-bottom:.35rem}
+        .quiz-result.low .quiz-result-title{color:#3d6b32}
+        .quiz-result.mid .quiz-result-title{color:var(--amber-text)}
+        .quiz-result.high .quiz-result-title{color:var(--red-text)}
+        .quiz-result p{font-size:.83rem;color:var(--gray-600);line-height:1.55}
+        .quiz-cta-btn{display:none;width:100%;margin-top:.9rem;padding:.75rem;background:var(--blue-dark);color:white;border:none;border-radius:var(--radius-sm);font-weight:700;font-size:.88rem;cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;transition:background .2s}
+        .quiz-cta-btn.show{display:block}
+        .quiz-cta-btn:hover{background:var(--blue-darker)}
+        .quiz-reset-btn{display:none;background:none;border:none;color:var(--gray-400);font-size:.75rem;margin-top:.5rem;cursor:pointer;text-decoration:underline;font-family:"Plus Jakarta Sans",sans-serif}
+        .quiz-reset-btn.show{display:block}
+        .quiz-progress{display:flex;gap:4px;margin-bottom:1.25rem}
+        .quiz-dot{flex:1;height:4px;border-radius:2px;background:var(--gray-200);transition:background .3s}
+        .quiz-dot.done{background:var(--blue)}
     </style>
+    <script src="https://dr-flex.de/embed.js?medicalPracticeId=60190"></script>
 </head>
 <body>
+<header><div class="header-inner">
+<a href="index_en.html"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJFYmVuZV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4OTEuODcgMTg1LjI2Ij48ZGVmcz48c3R5bGU+LmNscy0xLC5jbHMtMntzdHJva2Utd2lkdGg6MHB4O30uY2xzLTJ7ZmlsbDojMzc1MzhlO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im0xOS42NywxMDAuNzNjMCwxLjMsMCwyLjIzLDAsMy4xNSwwLDI2LjE5LDAsNTIuMzgsMCw3OC41N3EwLDIuODEtMi44MiwyLjgxYy00LjgsMC05LjYsMC0xNC4zOSwwSC4wNGMwLS45NCwwLTEuNjUsMC0yLjM2Qy4wNCwxMjIuNzMuMDUsNjIuNTUsMCwyLjM4LDAsLjQ3LjU5LjA0LDIuMzYuMDRjMzcuNzkuMDQsNzUuNTctLjE0LDExMy4zNi4xMiwxNC4yNC4xLDI3LjEzLDUuMDEsMzguNDgsMTMuNjgsMTMuMzcsMTAuMjEsMjIuMDQsMjMuOCwyNy44NSwzOS4zNyw1LjY0LDE1LjEyLDcuOTMsMzAuODEsNy4yNSw0Ni44Ni0uNzksMTguNjgtNS41MSwzNi4zMy0xNi4wMSw1Mi4wMi0xMS4xOCwxNi43MS0yNi43NCwyNy4wOS00Ni42NSwzMC4yNy03LjUyLDEuMi0xNS4yMywxLjM1LTIyLjg3LDEuNjQtMTQuMzEuNTUtMjguNjMuODUtNDIuOTQsMS4yNS0uNzIuMDItMS40NSwwLTIuNCwwLS4wNi0uODgtLjE2LTEuNjUtLjE2LTIuNDEsMC0yMS41MywwLTQzLjA1LDAtNjQuNTgsMC0yLjYyLjAxLTIuNjMsMi42Ny0yLjYzLDUuNCwwLDEwLjguMDYsMTYuMTktLjAzLDEuNzktLjAzLDIuMzkuNDYsMi4zNiwyLjM1LS4yMiwxNS4yNi0uMzMsMzAuNTItLjQ2LDQ1Ljc3LS4wMiwyLjUxLDAsMi40MywyLjU3LDIuMzcsNi43My0uMTQsMTMuNDYtLjA4LDIwLjE4LS4zMyw5Ljk4LS4zOCwxOS45NS0uODgsMjkuNTQtNC4xNiwxMC4xOS0zLjQ5LDE3Ljg1LTEwLjAxLDIzLjUzLTE5LjA2LDcuMzYtMTEuNzQsMTEuMzItMjQuNTgsMTIuOC0zOC4yOCwxLjgtMTYuNjUtLjAyLTMyLjgyLTYuMjgtNDguNC01LjI3LTEzLjExLTE0LjA4LTIzLjI2LTI2LjI4LTMwLjMzLTYuMTUtMy41Ni0xMi45My01LjM2LTIwLjA0LTUuMzgtMzAuODUtLjA3LTYxLjcxLS4wMy05Mi41Ni0uMDMtLjg1LDAtMS43LDAtMi42NywwdjYwLjM2Yy45LjA1LDEuNzMuMTMsMi41Ni4xMywyMi45MiwwLDQ1Ljg1LjA0LDY4Ljc3LS4wNSwyLjM1LDAsMy40Ny44NiwzLjk1LDIuOTUsMS4xMiw0LjgxLDEuMTksOS42Mi0uMDgsMTQuNDItLjUzLDIuMDEtMS43MiwyLjg0LTMuOTEsMi44NC0yMi43OS0uMDctNDUuNTgtLjA0LTY4LjM3LS4wNC0uOTIsMC0xLjgzLDAtMy4wNiwwWiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0ibTI4Ni43MSwxMDcuMWgtMTcuMzZWLjAyaDYwLjQzdjE0Ljc5aC00My4wN3YzMy40N2g0MC4zNnYxNC44N2gtNDAuMzZ2NDMuOTVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMzYyLjUyLDY0LjMzdjQyLjc3aC0xNy41MVYuMDJoMzAuMjVjMTMuODIsMCwyNC4wNSwyLjU5LDMwLjY5LDcuNzYsNi42NCw1LjE4LDkuOTYsMTIuOTksOS45NiwyMy40NCwwLDEzLjMzLTYuOTMsMjIuODMtMjAuOCwyOC40OWwzMC4yNSw0Ny4zOWgtMTkuOTJsLTI1LjYzLTQyLjc3aC0xNy4yOVptMC0xNC41aDEyLjE2YzguMTUsMCwxNC4wNi0xLjUxLDE3LjcyLTQuNTQsMy42Ni0zLjAzLDUuNDktNy41Miw1LjQ5LTEzLjQ4cy0xLjk4LTEwLjQtNS45My0xMy4wNC05LjkxLTMuOTYtMTcuODctMy45NmgtMTEuNTd2MzUuMDFaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNDY2LjA3LDQ4Ljg3TDQ5MS40MS4wMmgxOS4wNGwtMzUuNjcsNjUuNTV2NDEuNTNoLTE3LjU4di00MC45NEw0MjEuNjguMDJoMTkuMDRsMjUuMzQsNDguODVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjA5Ljc5LDUyLjUzYzAsMTcuNjgtNC45MSwzMS4xOS0xNC43Miw0MC41NC05LjgxLDkuMzUtMjMuOTUsMTQuMDMtNDIuNDEsMTQuMDNoLTI5Ljk2Vi4wMmgzMy4xMWMxNy4wNCwwLDMwLjMsNC41OSwzOS43NywxMy43Nyw5LjQ3LDkuMTgsMTQuMjEsMjIuMSwxNC4yMSwzOC43NVptLTE4LjQ2LjU5YzAtMjUuNjMtMTEuOTktMzguNDUtMzUuOTYtMzguNDVoLTE1LjE2djc3LjcxaDEyLjQ1YzI1Ljc4LDAsMzguNjctMTMuMDgsMzguNjctMzkuMjZaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjg5LjMzLDEwNy4xaC02MC41N1YuMDJoNjAuNTd2MTQuNzloLTQzLjA3djI5LjE1aDQwLjM2djE0LjY1aC00MC4zNnYzMy42Mmg0My4wN3YxNC44N1oiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im03OTcuNjQsMTA3LjFoLTIxLjQ2bC01Mi42Ni04NS4zM2gtLjU5bC4zNyw0Ljc2Yy42OCw5LjA0LDEuMDMsMTcuMzgsMS4wMywyNC45djU1LjY2aC0xNS44OVYuMDJoMjEuMjRsNTIuNTIsODQuODloLjQ0Yy0uMS0xLjEyLS4yOS01LjIxLS41OS0xMi4yNy0uMjktNy4wNi0uNDQtMTIuNTYtLjQ0LTE2LjUyVi4wMmgxNi4wNHYxMDcuMDhaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtODYwLjM4LDEwNy4xaC0xNy41VjE1LjAzaC0zMS40OVYuMDJoODAuNDl2MTUuMDFoLTMxLjQ5djkyLjA3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTI5Ny41NiwxODQuNzJoLTI4LjIxdi00LjQ4bDE5Ljg4LTI5LjQyaC0xOS4zNHYtNS41M2gyNy4xM3Y0LjUzbC0xOS45NiwyOS4zN2gyMC41djUuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzIyLjU3LDE4NC43MmwtMS4yNy00LjE1aC0uMjJjLTEuNDQsMS44Mi0yLjg5LDMuMDUtNC4zNCwzLjcxLTEuNDYuNjYtMy4zMy45OC01LjYxLjk4LTIuOTMsMC01LjIyLS43OS02Ljg2LTIuMzctMS42NS0xLjU4LTIuNDctMy44Mi0yLjQ3LTYuNzIsMC0zLjA3LDEuMTQtNS4zOSwzLjQyLTYuOTZzNS43Ni0yLjQyLDEwLjQ0LTIuNTZsNS4xNS0uMTZ2LTEuNTljMC0xLjkxLS40NC0zLjMzLTEuMzMtNC4yNy0uODktLjk0LTIuMjctMS40Mi00LjE0LTEuNDItMS41MywwLTIuOTkuMjItNC40LjY3LTEuNC40NS0yLjc1Ljk4LTQuMDUsMS41OWwtMi4wNS00LjUzYzEuNjItLjg1LDMuMzktMS40OSw1LjMxLTEuOTMsMS45Mi0uNDQsMy43NC0uNjYsNS40NS0uNjYsMy43OSwwLDYuNjYuODMsOC41OSwyLjQ4LDEuOTMsMS42NSwyLjksNC4yNSwyLjksNy43OXYyMC4wOWgtNC41M1ptLTkuNDQtNC4zMWMyLjMsMCw0LjE1LS42NCw1LjU0LTEuOTMsMS4zOS0xLjI5LDIuMDktMy4wOSwyLjA5LTUuNDF2LTIuNTlsLTMuODMuMTZjLTIuOTguMTEtNS4xNi42MS02LjUxLDEuNS0xLjM2Ljg5LTIuMDQsMi4yNS0yLjA0LDQuMDksMCwxLjMzLjM5LDIuMzYsMS4xOSwzLjA5Ljc5LjczLDEuOTgsMS4wOSwzLjU2LDEuMDlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzYxLjA4LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjYsMC00LjYxLjgtNS44NiwyLjM5LTEuMjUsMS41OS0xLjg4LDQuMjYtMS44OCw4djE0LjgxaC02LjM0di00MS45Nmg2LjM0djEwLjY1YzAsMS43MS0uMTEsMy41My0uMzIsNS40OGguNGMuODYtMS40NCwyLjA2LTIuNTUsMy42LTMuMzRzMy4zMy0xLjE5LDUuMzgtMS4xOWM3LjIzLDAsMTAuODQsMy42NCwxMC44NCwxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im0zOTUuMDYsMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQyMS4zNSwxODQuNzJsLTEuMjctNC4xNWgtLjIyYy0xLjQ0LDEuODItMi44OSwzLjA1LTQuMzQsMy43MXMtMy4zMy45OC01LjYxLjk4Yy0yLjkzLDAtNS4yMi0uNzktNi44Ni0yLjM3LTEuNjQtMS41OC0yLjQ3LTMuODItMi40Ny02LjcyLDAtMy4wNywxLjE0LTUuMzksMy40Mi02Ljk2czUuNzYtMi40MiwxMC40NC0yLjU2bDUuMTUtLjE2di0xLjU5YzAtMS45MS0uNDUtMy4zMy0xLjM0LTQuMjctLjg5LS45NC0yLjI3LTEuNDItNC4xNC0xLjQyLTEuNTMsMC0yLjk5LjIyLTQuNC42Ny0xLjQuNDUtMi43NS45OC00LjA0LDEuNTlsLTIuMDUtNC41M2MxLjYyLS44NSwzLjM5LTEuNDksNS4zMS0xLjkzLDEuOTItLjQ0LDMuNzQtLjY2LDUuNDUtLjY2LDMuNzksMCw2LjY2LjgzLDguNTksMi40OCwxLjkzLDEuNjUsMi45LDQuMjUsMi45LDcuNzl2MjAuMDloLTQuNTNabS0xNS41OS0zNy43M2MwLTEuMTEuMy0xLjkyLjktMi40MS42LS40OSwxLjMzLS43NCwyLjItLjc0Ljk1LDAsMS43MS4yOCwyLjI4Ljg0LjU3LjU2Ljg1LDEuMzMuODUsMi4zMnMtLjI5LDEuNzItLjg2LDIuMjljLS41Ny41OC0xLjMzLjg2LTIuMjcuODYtLjg2LDAtMS41OS0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3Wm02LjE1LDMzLjQxYzIuMywwLDQuMTUtLjY0LDUuNTQtMS45MywxLjM5LTEuMjksMi4wOS0zLjA5LDIuMDktNS40MXYtMi41OWwtMy44My4xNmMtMi45OS4xMS01LjE2LjYxLTYuNTEsMS41LTEuMzYuODktMi4wNCwyLjI1LTIuMDQsNC4wOSwwLDEuMzMuNCwyLjM2LDEuMTksMy4wOS43OS43MywxLjk4LDEuMDksMy41NiwxLjA5Wm00LjQ1LTMzLjQxYzAtMS4xMS4zLTEuOTIuOS0yLjQxLjYtLjQ5LDEuMzMtLjc0LDIuMi0uNzQuOTUsMCwxLjcyLjI4LDIuMjkuODQuNTcuNTYuODYsMS4zMy44NiwyLjMycy0uMywxLjc0LS44OSwyLjMxYy0uNTkuNTctMS4zNS44NS0yLjI3Ljg1LS44NiwwLTEuNi0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQ0OC43NiwxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNS4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTMsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDc3LjUxLDE4NC43MmgtMjIuNjN2LTMuOTFsMTUuMDctMjEuMDZoLTE0LjE2di00Ljg1aDIxLjI4djQuNDJsLTE0Ljc1LDIwLjU1aDE1LjE4djQuODVaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDk1LjM4LDE4MC4xNGMxLjU1LDAsMy4wOS0uMjQsNC42NC0uNzN2NC43N2MtLjcuMzEtMS42LjU2LTIuNzEuNzctMS4xLjIxLTIuMjUuMzEtMy40NC4zMS02LDAtOS4wMS0zLjE2LTkuMDEtOS40OXYtMTYuMDdoLTQuMDd2LTIuOGw0LjM3LTIuMzIsMi4xNi02LjMxaDMuOTF2Ni42M2g4LjQ5djQuOGgtOC40OXYxNS45N2MwLDEuNTMuMzgsMi42NiwxLjE1LDMuMzguNzYuNzMsMS43NywxLjA5LDMuMDEsMS4wOVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im01MTcuODIsMTg1LjI2Yy00LjY0LDAtOC4yNy0xLjM1LTEwLjg4LTQuMDZzLTMuOTItNi40My0zLjkyLTExLjE4LDEuMjEtOC43LDMuNjQtMTEuNDljMi40My0yLjc5LDUuNzYtNC4xOCwxMC4wMS00LjE4LDMuOTQsMCw3LjA1LDEuMiw5LjMzLDMuNTksMi4yOCwyLjM5LDMuNDMsNS42OCwzLjQzLDkuODd2My40M2gtMTkuODhjLjA5LDIuODkuODcsNS4xMiwyLjM1LDYuNjcsMS40NywxLjU2LDMuNTUsMi4zMyw2LjIzLDIuMzMsMS43NiwwLDMuNC0uMTcsNC45Mi0uNSwxLjUyLS4zMywzLjE1LS44OSw0Ljg5LTEuNjZ2NS4xNWMtMS41NS43NC0zLjExLDEuMjYtNC42OSwxLjU2LTEuNTguMzEtMy4zOS40Ni01LjQyLjQ2Wm0tMS4xNi0yNi4xMWMtMi4wMSwwLTMuNjMuNjQtNC44NCwxLjkxLTEuMjEsMS4yOC0xLjk0LDMuMTQtMi4xNyw1LjU4aDEzLjU0Yy0uMDQtMi40Ni0uNjMtNC4zMy0xLjc4LTUuNi0xLjE1LTEuMjctMi43My0xLjktNC43NS0xLjlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTUwLjU4LDE0N2MwLTEuMTMuMzEtMiwuOTMtMi42Mi42Mi0uNjEsMS41LS45MiwyLjY2LS45MnMxLjk4LjMxLDIuNi45Mi45MywxLjQ4LjkzLDIuNjItLjMxLDEuOTMtLjkzLDIuNTVjLS42Mi42Mi0xLjQ5LjkzLTIuNi45M3MtMi4wNC0uMzEtMi42Ni0uOTNjLS42Mi0uNjItLjkzLTEuNDctLjkzLTIuNTVabTYuNzIsMzcuNzNoLTYuMzR2LTI5LjgzaDYuMzR2MjkuODNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTkxLjQ2LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjgsMC00LjY0Ljc5LTUuODgsMi4zNy0xLjI0LDEuNTgtMS44Niw0LjIzLTEuODYsNy45NnYxNC44NmgtNi4zNHYtMjkuODNoNC45NmwuODksMy45MWguMzJjLjktMS40MiwyLjE4LTIuNTIsMy44My0zLjI5LDEuNjUtLjc3LDMuNDktMS4xNiw1LjUtMS4xNiw3LjE1LDAsMTAuNzMsMy42NCwxMC43MywxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im02MTUuMywxNDUuM2gxMS43YzUuNDMsMCw5LjM1Ljc5LDExLjc3LDIuMzcsMi40MiwxLjU4LDMuNjMsNC4wOCwzLjYzLDcuNSwwLDIuMy0uNTksNC4yMi0xLjc4LDUuNzQtMS4xOSwxLjUzLTIuODksMi40OS01LjEyLDIuODl2LjI3YzIuNzcuNTIsNC44MSwxLjU1LDYuMTEsMy4wOSwxLjMsMS41NCwxLjk1LDMuNjIsMS45NSw2LjI0LDAsMy41NC0xLjI0LDYuMzEtMy43MSw4LjMyLTIuNDcsMi01LjkxLDMuMDEtMTAuMzIsMy4wMWgtMTQuMjR2LTM5LjQzWm02LjQ1LDE2LjI5aDYuMmMyLjcsMCw0LjY3LS40Myw1LjkxLTEuMjgsMS4yNC0uODUsMS44Ni0yLjMxLDEuODYtNC4zNiwwLTEuODUtLjY3LTMuMTktMi4wMS00LjAycy0zLjQ3LTEuMjQtNi4zOC0xLjI0aC01LjU4djEwLjlabTAsNS4yM3YxMi40OWg2Ljg1YzIuNywwLDQuNzMtLjUyLDYuMTEtMS41NSwxLjM3LTEuMDMsMi4wNi0yLjY3LDIuMDYtNC44OSwwLTIuMDUtLjctMy41Ny0yLjEtNC41Ni0xLjQtLjk5LTMuNTMtMS40OC02LjM5LTEuNDhoLTYuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNjc2Ljg0LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDEtMi41LDIuNzMtNS45OCw0LjEtMTAuNDQsNC4xLTIuNzksMC01LjI1LS42My03LjM5LTEuODlzLTMuNzktMy4wNy00LjkzLTUuNDJjLTEuMTUtMi4zNS0xLjczLTUuMDktMS43My04LjIsMC00Ljg0LDEuMjQtOC42MSwzLjcyLTExLjMzLDIuNDgtMi43MSw1Ljk4LTQuMDcsMTAuNDktNC4wN3M3LjczLDEuMzksMTAuMjUsNC4xN2MyLjUyLDIuNzgsMy43OCw2LjUyLDMuNzgsMTEuMjNabS0yMS43MSwwYzAsNi44OSwyLjU0LDEwLjMzLDcuNjMsMTAuMzNzNy41NS0zLjQ0LDcuNTUtMTAuMzMtMi41NC0xMC4yMi03LjYxLTEwLjIyYy0yLjY2LDAtNC41OS44OC01Ljc0LDIuNjQtMS4yLDEuNzYtMS43OSw0LjI5LTEuNzksNy41OFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im03MDkuMzksMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTc0My4zNywxODQuNzJoLTYuMzZ2LTE4LjM0YzAtMi4zLS40Ni00LjAyLTEuMzktNS4xNS0uOTMtMS4xMy0yLjM5LTEuNy00LjQxLTEuNy0yLjY4LDAtNC42NC43OS01Ljg4LDIuMzctMS4yNCwxLjU4LTEuODYsNC4yMy0xLjg2LDcuOTZ2MTQuODZoLTYuMzR2LTI5LjgzaDQuOTZsLjg5LDMuOTFoLjMyYy45LTEuNDIsMi4xOC0yLjUyLDMuODMtMy4yOSwxLjY1LS43NywzLjQ5LTEuMTYsNS41LTEuMTYsNy4xNSwwLDEwLjczLDMuNjQsMTAuNzMsMTAuOTJ2MTkuNDRaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNzYxLjQzLDE4NS4yNmMtMy43MiwwLTYuNjMtMS4zNS04LjcxLTQuMDVzLTMuMTMtNi40OC0zLjEzLTExLjM1LDEuMDYtOC43LDMuMTctMTEuNDJjMi4xMS0yLjcyLDUuMDQtNC4wOSw4Ljc4LTQuMDlzNi45LDEuNDUsOC45NSw0LjM0aC4zMmMtLjMxLTIuMTQtLjQ2LTMuODMtLjQ2LTUuMDd2LTEwLjg3aDYuMzZ2NDEuOTZoLTQuOTZsLTEuMTEtMy45MWgtLjNjLTIuMDMsMi45Ny01LjAxLDQuNDUtOC45Myw0LjQ1Wm0xLjctNS4xMmMyLjYxLDAsNC41LS43Myw1LjY5LTIuMiwxLjE5LTEuNDcsMS44LTMuODQsMS44My03LjEzdi0uODljMC0zLjc2LS42MS02LjQzLTEuODMtOC4wMS0xLjIyLTEuNTgtMy4xNC0yLjM3LTUuNzQtMi4zNy0yLjIzLDAtMy45NS45LTUuMTUsMi43MS0xLjIsMS44MS0xLjgxLDQuMzgtMS44MSw3Ljczcy41OCw1LjgzLDEuNzUsNy41NmMxLjE3LDEuNzMsMi45MiwyLjYsNS4yNiwyLjZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODExLjI5LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDFzLTUuOTgsNC4xLTEwLjQ0LDQuMWMtMi43OSwwLTUuMjUtLjYzLTcuMzktMS44OXMtMy43OC0zLjA3LTQuOTMtNS40MmMtMS4xNS0yLjM1LTEuNzMtNS4wOS0xLjczLTguMiwwLTQuODQsMS4yNC04LjYxLDMuNzItMTEuMzMsMi40OC0yLjcxLDUuOTgtNC4wNywxMC40OS00LjA3czcuNzMsMS4zOSwxMC4yNSw0LjE3YzIuNTIsMi43OCwzLjc4LDYuNTIsMy43OCwxMS4yM1ptLTIxLjcxLDBjMCw2Ljg5LDIuNTQsMTAuMzMsNy42MywxMC4zM3M3LjU1LTMuNDQsNy41NS0xMC4zMy0yLjU0LTEwLjIyLTcuNjEtMTAuMjJjLTIuNjYsMC00LjU5Ljg4LTUuNzgsMi42NC0xLjIsMS43Ni0xLjc5LDQuMjktMS43OSw3LjU4WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTgzMi43MywxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNi4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTQsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODU3LjM4LDE1OS43aC03LjI4djI1LjAzaC02LjM2di0yNS4wM2gtNC45MXYtMi45N2w0LjkxLTEuOTR2LTEuOTRjMC0zLjUyLjgzLTYuMTQsMi40OC03LjgzLDEuNjUtMS43LDQuMTgtMi41NSw3LjU4LTIuNTUsMi4yMywwLDQuNDIuMzcsNi41OCwxLjExbC0xLjY3LDQuOGMtMS41Ni0uNS0zLjA2LS43Ni00LjQ0LS43NnMtMi40OS40NS0zLjE0LDEuMzNjLS42Ni44OS0uOTgsMi4yMy0uOTgsNC4wMXYxLjk0aDcuMjh2NC44WiIvPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iMjI3LjkxIiB5PSIwIiB3aWR0aD0iMyIgaGVpZ2h0PSIxODUuMjYiLz48L3N2Zz4=" alt="FRYDENT" class="logo-img"></a>
+<div class="header-right">
+<a href="index_en.html" class="header-btn header-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span class="back-text">Back to Portal</span></a>
+<a href="javascript:toggleDrFlexAppointments()" class="header-btn header-termin">Book appointment</a>
+</div>
+</div></header>
 
-<header>
-    <div class="header-inner">
-        <a href="https://frydent.de/" target="_blank">
-            <img src="img/logo_blau.png" class="logo-img" alt="FRYDENT Logo">
-        </a>
-        <div class="header-right">
-            <a href="index.html" class="header-btn header-back">
-                <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-                <span class="back-text">Back</span>
-            </a>
-            <a href="javascript:toggleDrFlexAppointments()" class="header-btn header-termin">Book appointment</a>
-        </div>
-    </div>
-</header>
-
-<!-- HERO -->
 <div class="hero">
-    <h1>Jaw Joint Disorders (CMD)</h1>
-    <div class="hero-divider"></div>
-    <p>Jaw clicking, headaches, neck pain — CMD can manifest in many ways. We explain clearly what is behind it and how we can help you.</p>
+<h1>Jaw Joint Disorders (CMD)</h1>
+<div class="hero-divider"></div>
+<p>Jaw clicking, headaches, neck pain — CMD can manifest in many ways. We explain clearly what lies behind it.</p>
 </div>
 
 <main>
 
-<!-- TAB NAVIGATION -->
-<nav class="tab-nav">
-    <button class="tab-btn active" onclick="go('wascmd')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        Was ist CMD?
-    </button>
-    <button class="tab-btn" onclick="go('symptome')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Symptome
-    </button>
-    <button class="tab-btn" onclick="go('ursachen')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        Ursachen & Diagnose
-    </button>
-    <button class="tab-btn" onclick="go('schienen')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-        Schienentherapie
-    </button>
-    <button class="tab-btn" onclick="go('faq')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        Physio &amp; FAQ
-    </button>
-</nav>
+<!-- ══ TABS ══ -->
+<div class="tab-nav" style="margin-top:1.75rem">
+<button class="tab-btn active" onclick="go('was')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>What is CMD?</button>
+<button class="tab-btn" onclick="go('ursachen')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>Causes</button>
+<button class="tab-btn" onclick="go('diagnostik')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Diagnosis</button>
+<button class="tab-btn" onclick="go('schienen')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>Splints &amp; Costs</button>
+<button class="tab-btn" onclick="go('behandlung')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Treatment &amp; FAQ</button>
+</div>
 
-<!-- ═══════════ SECTION 1: WAS IST CMD? ═══════════ -->
-<div class="tab-section active" id="s-wascmd">
-    <div class="section-title" style="margin-top:0">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        What does CMD mean?
-    </div>
-    <p class="section-sub">CMD stands for Craniomandibular Dysfunction — a functional disorder of the jaw joint.</p>
+<!-- ══ QUIZ HERO (prominent, vor Tabs) ══ -->
+<div class="quiz-cta-hero">
+    <div style="font-size:.78rem;font-weight:700;color:var(--blue-dark);margin-bottom:.5rem">&#10003; 30-Second Test</div>
+    <h3>Does your headache start in your mouth?</h3>
+    <p>5 short questions — let us find out together whether CMD could be a concern for you.</p>
+    <button class="quiz-start-btn" onclick="openQuiz()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        Test starten
+    </button>
+</div>
 
-    <div class="anatomy-box">
-        <div class="anatomy-title">The jaw joint — an extraordinarily active joint</div>
-        <p class="anatomy-text">The jaw joint connects the lower jaw to the skull. It is the most heavily used joint in the body — during speaking, chewing and swallowing it moves thousands of times daily. Inside the joint lies a cartilage disc — the so-called articular disc — which acts as a cushion. When the interplay of teeth, muscles and joints is disrupted, CMD develops.</p>
-    </div>
-
-    <div class="card">
-        <div class="card-title">What happens with CMD?</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">The term CMD encompasses various disorders of the chewing apparatus: functional disorders of the jaw joints, changes to the articular disc, tension in the chewing muscles and misalignment of the teeth. These disorders can occur individually or in combination and reinforce each other.</p>
-        <div class="card" style="background:var(--gray-50);border:none;padding:.9rem 1rem;margin-top:1rem;margin-bottom:0">
-            <div style="display:flex;gap:1.25rem;flex-wrap:wrap">
-                <div style="font-size:.82rem;color:var(--gray-700)"><strong style="color:var(--blue-dark)">Muscular CMD</strong><br>Tension in the chewing muscles</div>
-                <div style="font-size:.82rem;color:var(--gray-700)"><strong style="color:var(--blue-dark)">Articular CMD</strong><br>Joint changes, disc displacement</div>
-                <div style="font-size:.82rem;color:var(--gray-700)"><strong style="color:var(--blue-dark)">Kombiniert</strong><br>Often both forms simultaneously</div>
-            </div>
+<div class="quiz-panel" id="quizPanel">
+    <div class="quiz-panel-inner">
+        <div class="quiz-progress">
+            <div class="quiz-dot" id="qd0"></div><div class="quiz-dot" id="qd1"></div>
+            <div class="quiz-dot" id="qd2"></div><div class="quiz-dot" id="qd3"></div>
+            <div class="quiz-dot" id="qd4"></div>
         </div>
-    </div>
-
-    <div class="card card-amber">
-        <div class="card-title">How common is CMD?</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Estimates suggest that 3 to 12% of the population suffer from CMD complaints requiring treatment — women more often than men. Many sufferers do not know that their headaches, tinnitus or neck pain could be related to the jaw. CMD therefore often goes unrecognised for years.</p>
-    </div>
-
-    <div class="card card-green">
-        <div class="card-title">The good news</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">CMD is very treatable. In most cases no surgical intervention is necessary. Significant and lasting improvements can be achieved with a combined treatment of splint therapy and physiotherapy — provided the causes are identified and treated consistently.</p>
-    </div>
-
-    <div class="nav-arrows">
-        <button class="nav-arrow prev" disabled>← Zurück</button>
-        <button class="nav-arrow next" onclick="go('symptome')">Weiter →</button>
+        <div class="quiz-q" data-q="0"><div class="quiz-q-text">1. Do you hear clicking or grinding sounds in your jaw?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(0,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(0,'nein')">Nein</button></div></div>
+        <div class="quiz-q" data-q="1"><div class="quiz-q-text">2. Do you frequently have headaches or neck tension?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(1,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(1,'nein')">Nein</button></div></div>
+        <div class="quiz-q" data-q="2"><div class="quiz-q-text">3. Do you wake up in the morning with a tired or tense jaw?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(2,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(2,'nein')">Nein</button></div></div>
+        <div class="quiz-q" data-q="3"><div class="quiz-q-text">4. Do you have pain when chewing or opening your mouth wide?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(3,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(3,'nein')">Nein</button></div></div>
+        <div class="quiz-q" data-q="4"><div class="quiz-q-text">5. Have worn teeth or grinding already been identified in your case?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(4,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(4,'nein')">Nein</button></div></div>
+        <div class="quiz-result low" id="qResultLow"><div class="quiz-result-title">Few indications of CMD</div><p>Your answers show few typical CMD patterns. If complaints persist, please do not hesitate to contact us.</p></div>
+        <div class="quiz-result mid" id="qResultMid"><div class="quiz-result-title">Some indications present</div><p>Some of your answers could indicate CMD. A brief conversation at our practice can bring clarity.</p></div>
+        <div class="quiz-result high" id="qResultHigh"><div class="quiz-result-title">Several typical CMD signs</div><p>Your answers show several typical CMD patterns. Let us look together at what makes sense for you.</p></div>
+        <button class="quiz-cta-btn" id="quizCta" onclick="toggleDrFlexAppointments()">Book appointment &rarr;</button>
+        <button class="quiz-reset-btn" id="quizReset" onclick="resetQuiz()">Repeat test</button>
     </div>
 </div>
 
-<!-- ═══════════ SECTION 2: SYMPTOME ═══════════ -->
-<div class="tab-section" id="s-symptome">
-    <div class="section-title" style="margin-top:0">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Symptoms — complex and often overlooked
+<!-- TAB 1: WAS IST CMD -->
+<div class="tab-section active" id="s-was">
+    <div class="section-title" style="margin-top:1.75rem">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+        What is CMD?
     </div>
-    <p class="section-sub">CMD does not always manifest as jaw pain. Many complaints arise far from the jaw.</p>
+    <div class="card card-blue">
+        <p>The jaw joint works for many hours every day — during speaking, chewing and swallowing. When teeth, muscles and joint do not work together harmoniously, complaints can arise. This interplay is called CMD — craniomandibular dysfunction.</p>
+    </div>
 
-    <div class="hint">CMD is often not recognised because the complaints appear at first glance to have nothing to do with the teeth. Neurologists, ENT specialists and orthopaedists often treat only the symptoms — the cause in the jaw remains undiscovered.</div>
-
-    <div class="card">
-        <div class="card-title">Main symptoms — directly at the jaw</div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#3D5A98"></div>
-            <div>
-                <div class="symptom-title">Pain in the jaw joint</div>
-                <div class="symptom-desc">Dull, persistent or load-dependent pain in one or both jaw joints — at rest or while chewing.</div>
+    <button class="mehr-toggle" onclick="toggleMehr(this)">
+        <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span style="flex:1;text-align:left">Detailed explanation: how does the jaw joint work?</span>
+        <span class="arr">&#9660;</span>
+    </button>
+    <div class="mehr-body">
+        <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
+            <div class="card-title">Das Kiefergelenk &mdash; ein Hochleistungsgelenk</div>
+            <p style="font-size:.85rem;color:var(--gray-600);line-height:1.65;margin-bottom:.75rem">The jaw joint connects the lower jaw to the skull. It is the most heavily used joint in the body — moving thousands of times daily during speaking, chewing and swallowing. Inside the joint lies a cartilage disc — the articular disc — acting as a cushion.</p>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:.75rem">
+                <div style="flex:1;min-width:140px;background:var(--blue-light);border-radius:8px;padding:.75rem 1rem">
+                    <div style="font-weight:700;font-size:.83rem;color:var(--blue-dark);margin-bottom:.3rem">Muscular CMD</div>
+                    <div style="font-size:.8rem;color:var(--gray-600)">Tension in the chewing muscles</div>
+                </div>
+                <div style="flex:1;min-width:140px;background:var(--blue-light);border-radius:8px;padding:.75rem 1rem">
+                    <div style="font-weight:700;font-size:.83rem;color:var(--blue-dark);margin-bottom:.3rem">Articular CMD</div>
+                    <div style="font-size:.8rem;color:var(--gray-600)">Joint changes, disc displacement</div>
+                </div>
             </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#3D5A98"></div>
-            <div>
-                <div class="symptom-title">Clicking and grinding sounds</div>
-                <div class="symptom-desc">Audible sounds when opening or closing the mouth — often a sign of displacement of the articular disc.</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#3D5A98"></div>
-            <div>
-                <div class="symptom-title">Limited mouth opening</div>
-                <div class="symptom-desc">The mouth can no longer be opened fully or without difficulty — sometimes accompanied by a lateral deviation of the lower jaw.</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#3D5A98"></div>
-            <div>
-                <div class="symptom-title">Tense chewing muscles</div>
-                <div class="symptom-desc">Hardening and pressure pain in the temporal and chewing muscles, often particularly pronounced in the morning after waking.</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#3D5A98"></div>
-            <div>
-                <div class="symptom-title">Worn teeth</div>
-                <div class="symptom-desc">Recognisable tooth wear (grinding facets), loss of incisal edges and sensitive teeth — an indication of nocturnal grinding (bruxism).</div>
-            </div>
+            <p style="font-size:.82rem;color:var(--gray-500);margin-top:.75rem">Estimates suggest 3–12% of the population suffer from CMD requiring treatment. Many do not know that their headaches or tinnitus could be related to the jaw.</p>
         </div>
     </div>
 
     <div class="section-title">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        Accompanying symptoms — signals from the body
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        How do I recognise it?
     </div>
-    <p class="section-sub">These complaints arise through the close connections between the jaw joint, nerves, muscles and fascia of the entire body.</p>
-
+    <p class="section-sub">Symptoms can vary greatly — not all occur simultaneously.</p>
     <div class="card">
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#C4A44E"></div>
-            <div>
-                <div class="symptom-title">Tension headaches &amp; migraine</div>
-                <div class="symptom-desc">Chronically tense chewing muscles can trigger headaches that extend from the temples to the back of the head. They are often misinterpreted as migraine.</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#C4A44E"></div>
-            <div>
-                <div class="symptom-title">Ear pain &amp; tinnitus</div>
-                <div class="symptom-desc">The jaw joint is in the immediate vicinity of the ear. Pain, pressure or ringing in the ear without medical cause can be a CMD signal.</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#C4A44E"></div>
-            <div>
-                <div class="symptom-title">Neck &amp; shoulder pain</div>
-                <div class="symptom-desc">Through the close muscular connection between the jaw and neck muscles, CMD tension can radiate far into the back.</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#C4A44E"></div>
-            <div>
-                <div class="symptom-title">Dizziness &amp; visual disturbances</div>
-                <div class="symptom-desc">Less common, but possible: balance disorders or visual problems arising from the proximity of the jaw joint to sensitive nerve and muscle structures.</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#C4A44E"></div>
-            <div>
-                <div class="symptom-title">Sleep disorders &amp; fatigue</div>
-                <div class="symptom-desc">Nocturnal tooth grinding and the associated muscle stress interrupt sleep — often without those affected noticing.</div>
-            </div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Jaw clicking or grinding</div><div class="symptom-desc">Audible sounds when opening or closing the mouth — often a sign of disc displacement.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Pain in the jaw or face</div><div class="symptom-desc">Dull or load-dependent pain — at rest or while chewing.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Tension in the neck or shoulders</div><div class="symptom-desc">Through close muscular connections, jaw tension can radiate to the back.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Headaches or migraine</div><div class="symptom-desc">Chronically tense chewing muscles can trigger headaches — often misinterpreted as migraine.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Tooth grinding or clenching</div><div class="symptom-desc">Often at night — visible as worn teeth (grinding facets) and sensitivity.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Limited mouth opening</div><div class="symptom-desc">The mouth can no longer be fully opened — sometimes with lateral deviation of the lower jaw.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Pressure in the ear or ear sounds</div><div class="symptom-desc">The jaw joint lies very close to the ear — pain, pressure or ringing without medical cause can be a CMD signal.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Fatigue of the chewing muscles</div><div class="symptom-desc">The chewing muscles feel exhausted or heavy already in the morning.</div></div></div>
+    </div>
+
+    <button class="mehr-toggle" onclick="toggleMehr(this)">
+        <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span style="flex:1;text-align:left">Further accompanying symptoms (dizziness, tinnitus, sleep…)</span>
+        <span class="arr">&#9660;</span>
+    </button>
+    <div class="mehr-body">
+        <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
+            <div style="font-size:.82rem;color:var(--gray-500);margin-bottom:.75rem">These complaints arise through close connections between the jaw joint, nerves, muscles and fascia of the entire body.</div>
+            <div class="symptom-item"><div class="symptom-dot" style="background:#9B72CF"></div><div><div class="symptom-title">Ear pain &amp; tinnitus</div><div class="symptom-desc">Pain, pressure or ringing in the ear without medical cause — a frequently overlooked CMD signal.</div></div></div>
+            <div class="symptom-item"><div class="symptom-dot" style="background:#9B72CF"></div><div><div class="symptom-title">Dizziness &amp; visual disturbances</div><div class="symptom-desc">Rare but possible, due to the jaw joint's proximity to sensitive nerve and muscle structures.</div></div></div>
+            <div class="symptom-item"><div class="symptom-dot" style="background:#9B72CF"></div><div><div class="symptom-title">Sleep disorders &amp; exhaustion</div><div class="symptom-desc">Nocturnal tooth grinding and the associated muscle stress interrupt sleep — often unnoticed.</div></div></div>
         </div>
     </div>
 
-    <div class="hint">
-        <strong>When to see the dentist?</strong> Please visit us if you have several of these complaints simultaneously — especially if they are stronger after waking or increase when chewing. Your first point of contact for jaw joint complaints is always the dentist.
-    </div>
-
+    <div class="hint" style="margin-top:1.5rem">CMD is often not recognised because the complaints appear at first glance unrelated to the teeth. Your first point of contact is the dentist.</div>
     <div class="nav-arrows">
-        <button class="nav-arrow prev" onclick="go('wascmd')">← Zurück</button>
-        <button class="nav-arrow next" onclick="go('ursachen')">Weiter →</button>
+        <button class="nav-arrow prev" disabled>&larr; Back</button>
+        <button class="nav-arrow next" onclick="go('ursachen')">Next &rarr;</button>
     </div>
 </div>
 
-<!-- ═══════════ SECTION 3: URSACHEN & DIAGNOSE ═══════════ -->
+<!-- TAB 2: URSACHEN -->
 <div class="tab-section" id="s-ursachen">
     <div class="section-title" style="margin-top:0">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        Causes — a multifactorial process
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        Why do these problems arise?
     </div>
-    <p class="section-sub">CMD rarely arises from a single cause. Most often several factors work together.</p>
-
+    <p class="section-sub">There is often not just one cause — several factors work together.</p>
     <div class="card">
-        <div class="therapy-feature">
-            <div class="therapy-icon">
-                <svg viewBox="0 0 24 24"><path d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/></svg>
-            </div>
-            <div>
-                <div class="therapy-title">Bruxism — tooth grinding and clenching</div>
-                <div class="therapy-desc">The most common cause. Many people unconsciously grind or clench their teeth at night — often amplified by stress. The pressure on teeth, muscles and joints exceeds many times the normal chewing load. Bruxism is simultaneously a cause and symptom of CMD.</div>
-            </div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="therapy-title">Faulty bite contacts</div><div class="therapy-desc">Uneven loading when biting together forces the jaw joint and muscles into a misaligned position.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><div class="therapy-title">Tooth grinding or clenching (Bruxismus)</div><div class="therapy-desc">Most common cause. Many people grind unconsciously at night — often amplified by stress. Bruxism is simultaneously a cause and symptom of CMD.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="therapy-title">Stress and inner tension</div><div class="therapy-desc">Emotionaler Stress f&uuml;hrt zu erh&ouml;hter Muskelanspannung &mdash; tagsüber wie nachts, bewusst und unbewusst.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div><div class="therapy-title">Poor posture in daily life</div><div class="therapy-desc">The jaw and spine are connected through the musculofascial system — posture problems can affect the jaw joint.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div><div><div class="therapy-title">Muscle overload</div><div class="therapy-desc">One-sided loads or parafunctions gradually exhaust the chewing muscles.</div></div></div>
+    </div>
+
+    <button class="mehr-toggle" onclick="toggleMehr(this)">
+        <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span style="flex:1;text-align:left">Further triggers: hormones, genetics, underlying conditions…</span>
+        <span class="arr">&#9660;</span>
+    </button>
+    <div class="mehr-body">
+        <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
+            <p style="font-size:.84rem;color:var(--gray-600);line-height:1.65">Injuries to the jaw joint (e.g. through accidents), genetic factors, hormonal fluctuations, sleep disorders and underlying conditions such as arthrosis or rheumatic diseases can also contribute to CMD.</p>
         </div>
-        <div class="therapy-feature">
-            <div class="therapy-icon">
-                <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            </div>
-            <div>
-                <div class="therapy-title">Stress &amp; psychological burden</div>
-                <div class="therapy-desc">Emotional stress leads to increased muscle tension in the jaw and neck area. Many people involuntarily clench their teeth — not only at night, but also during the day under tension.</div>
-            </div>
+    </div>
+
+    <div class="section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0M12 8v4M12 16h.01"/></svg>
+        Connection with the whole body
+    </div>
+    <div class="card card-warm">
+        <p>The jaw, muscles and spine are closely interconnected. Jaw tension can spread to the neck and back — and conversely, posture problems can affect the jaw joint. Even pelvic or hip misalignments can promote CMD through this chain.</p>
+        <p style="margin-top:.75rem">The body responds as a whole. That is why we always view the situation holistically.</p>
+    </div>
+    <div class="nav-arrows">
+        <button class="nav-arrow prev" onclick="go('was')">&larr; Back</button>
+        <button class="nav-arrow next" onclick="go('diagnostik')">Next &rarr;</button>
+    </div>
+</div>
+
+<!-- TAB 3: DIAGNOSTIK -->
+<div class="tab-section" id="s-diagnostik">
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        Our diagnostics
+    </div>
+    <p class="section-sub">We take time for a precise analysis — without hurry.</p>
+    <div class="card">
+        <div class="step-list">
+            <div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Discussion of complaints and habits</h4><p>Sleep quality, stress, previous treatments, daily life — we listen.</p></div></div>
+            <div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Examination of the jaw joints</h4><p>Assessment of mobility, identification of sounds, measurement of maximum mouth opening.</p></div></div>
+            <div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Palpation of the chewing muscles</h4><p>We palpate the chewing, temporal and neck muscles for hardening and sensitive pressure points (trigger points).</p></div></div>
+            <div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Occlusal analysis</h4><p>Checking of tooth contacts in the intercuspal position and during movements — premature and interfering contacts can be identified.</p></div></div>
         </div>
-        <div class="therapy-feature">
-            <div class="therapy-icon">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            </div>
-            <div>
-                <div class="therapy-title">Malocclusion &amp; occlusal disorders</div>
-                <div class="therapy-desc">A "wrong bite" — i.e. uneven loading when biting together — forces the jaw joint and chewing muscles into a misaligned position. Missing teeth, poorly fitting dentures or orthodontic changes can also promote CMD.</div>
-            </div>
+    </div>
+
+    <button class="mehr-toggle" onclick="toggleMehr(this)">
+        <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span style="flex:1;text-align:left">Extended diagnostics if needed (X-ray, articulator, MRI…)</span>
+        <span class="arr">&#9660;</span>
+    </button>
+    <div class="mehr-body">
+        <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
+            <p style="font-size:.84rem;color:var(--gray-600);line-height:1.65">Depending on findings we supplement the diagnosis: digital X-ray for jaw bone assessment, in complex cases an instrumental functional analysis in the articulator, or — if structural joint changes are suspected — an MRI referral to specialised radiologists.</p>
         </div>
-        <div class="therapy-feature">
-            <div class="therapy-icon">
-                <svg viewBox="0 0 24 24"><path d="M16 12a4 4 0 01-8 0 4 4 0 018 0z"/><path d="M12 2v1M12 21v1M4.22 4.22l.71.71M19.07 19.07l.71.71M2 12h1M21 12h1M4.22 19.78l.71-.71M19.07 4.93l.71-.71"/></svg>
+    </div>
+
+    <div class="hint" style="margin-top:1.5rem">If needed we involve further specialities — physiotherapy, orthopaedics, ENT. We look together at what makes sense.</div>
+    <div class="nav-arrows">
+        <button class="nav-arrow prev" onclick="go('ursachen')">&larr; Back</button>
+        <button class="nav-arrow next" onclick="go('schienen')">Next &rarr;</button>
+    </div>
+</div>
+
+<!-- TAB 4: SCHIENEN & KOSTEN -->
+<div class="tab-section" id="s-schienen">
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+        Splint therapy
+    </div>
+    <div class="card card-blue">
+        <div class="card-title">What does a splint do?</div>
+        <p>An individually fitted splint can relieve the jaw joint. It protects the teeth from wear, reduces pressure on muscles and joint, and can compensate for faulty loading. Which variant makes sense is decided together. A splint is not a quick standard solution — it is adjusted and regularly checked.</p>
+    </div>
+
+    <div class="section-title">What types of splints are there?</div>
+    <div class="card">
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="therapy-title">Relaxation splints</div><div class="therapy-desc">For grinding and clenching — reduces overactivity of the chewing muscles and protects the dental hard tissue.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div><div><div class="therapy-title">Stabilisation splints</div><div class="therapy-desc">For guiding the bite — brings the lower jaw into a harmonious, muscle-guided position.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="therapy-title">Individual functional splints</div><div class="therapy-desc">For more complex complaints — e.g. disc displacement or multi-stage bite rehabilitation.</div></div></div>
+    </div>
+
+    <button class="mehr-toggle" onclick="toggleMehr(this)">
+        <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span style="flex:1;text-align:left">Detailed splint types: Michigan, relaxation, repositioning, soft…</span>
+        <span class="arr">&#9660;</span>
+    </button>
+    <div class="mehr-body">
+        <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
+            <div class="nachsorge-item">
+                <div class="nachsorge-icon" style="background:var(--blue-light)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <div><div class="symptom-title">Michigan splint (equilibration splint)</div><div class="symptom-desc">Most frequently used occlusal splint. Hard plastic, individually made for the upper jaw and adjusted in the articulator. Particularly suitable for muscular CMD complaints and bruxism.</div></div>
             </div>
-            <div>
-                <div class="therapy-title">Posture &amp; musculoskeletal factors</div>
-                <div class="therapy-desc">The jaw joint and spine are connected through the musculofascial system. A misalignment of the cervical spine can act back on the jaw — and vice versa. Even pelvic or hip misalignments can promote CMD through this chain.</div>
+            <div class="nachsorge-item">
+                <div class="nachsorge-icon" style="background:#EEF4EA"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3d6b32" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg></div>
+                <div><div class="symptom-title">Relaxation splint / reflex splint</div><div class="symptom-desc">Small frontal plateau eliminates lateral tooth contacts — interrupts parafunctional activities. Good for muscle tension from stress. For short periods only.</div></div>
             </div>
-        </div>
-        <div class="therapy-feature">
-            <div class="therapy-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <div class="nachsorge-item">
+                <div class="nachsorge-icon" style="background:var(--amber-soft)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2"><path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></div>
+                <div><div class="symptom-title">Repositioning splint / positioning splint</div><div class="symptom-desc">Actively guides the lower jaw into a therapeutic position (slightly forward). For disc displacements — requires precise diagnosis as long-term bite changes are possible.</div></div>
             </div>
-            <div>
-                <div class="therapy-title">Further triggers</div>
-                <div class="therapy-desc">Injuries to the jaw joint (e.g. through accidents), genetic factors, hormonal fluctuations, sleep disorders and underlying conditions such as arthrosis or rheumatic diseases can also contribute to CMD.</div>
+            <div class="nachsorge-item">
+                <div class="nachsorge-icon" style="background:var(--gray-100)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gray-600)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
+                <div><div class="symptom-title">Weiche Schiene / Knirscherschiene</div><div class="symptom-desc">Einfachste Variante &mdash; sch&uuml;tzt Z&auml;hne vor Abrieb, hat aber keine therapeutische Wirkung auf Muskelspannung oder Gelenkposition. F&uuml;r CMD-Therapie weniger geeignet.</div></div>
             </div>
         </div>
     </div>
 
     <div class="section-title">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-        Diagnosis — how we proceed
-    </div>
-
-    <div class="card">
-        <div class="card-title">Clinical functional analysis (FAL)</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6;margin-bottom:1rem">The basis of every CMD diagnosis is the manual functional analysis. We examine by hand, without complex equipment:</p>
-        <div class="step-list">
-            <div class="step-item">
-                <div class="step-num">1</div>
-                <div class="step-content">
-                    <h4>Medical history &amp; consultation</h4>
-                    <p>We take time to understand your medical history: sleep quality, stress, dentures, accidents, previous treatments.</p>
-                </div>
-            </div>
-            <div class="step-item">
-                <div class="step-num">2</div>
-                <div class="step-content">
-                    <h4>Palpation of the chewing muscles</h4>
-                    <p>We palpate the chewing muscles, temporal muscles and neck muscles for hardening and sensitive pressure points (trigger points).</p>
-                </div>
-            </div>
-            <div class="step-item">
-                <div class="step-num">3</div>
-                <div class="step-content">
-                    <h4>Examination of the jaw joints</h4>
-                    <p>Assessment of joint mobility, measurement of maximum mouth opening and identification of sounds (clicking, grinding).</p>
-                </div>
-            </div>
-            <div class="step-item">
-                <div class="step-num">4</div>
-                <div class="step-content">
-                    <h4>Occlusal analysis</h4>
-                    <p>Checking of tooth contacts in the intercuspal position and during movements — premature and interfering contacts can be identified this way.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card card-blue" style="margin-top:1rem">
-        <div class="card-title">Extended diagnostics if needed</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Depending on findings, we supplement the diagnosis with further procedures: digital X-ray for assessment of the jaw bone, in complex cases an instrumental functional analysis in the articulator (chewing simulator), or — if structural joint changes are suspected — an MRI referral to specialised radiologists.</p>
-    </div>
-
-    <div class="nav-arrows">
-        <button class="nav-arrow prev" onclick="go('symptome')">← Zurück</button>
-        <button class="nav-arrow next" onclick="go('schienen')">Weiter →</button>
-    </div>
-</div>
-
-<!-- ═══════════ SECTION 4: SCHIENENTHERAPIE ═══════════ -->
-<div class="tab-section" id="s-schienen">
-    <div class="section-title" style="margin-top:0">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-        Splint therapy — the central building block
-    </div>
-    <p class="section-sub">An individually fabricated occlusal splint is the most frequently used dental treatment for CMD — with good effectiveness and high acceptance.</p>
-
-    <div class="hint">
-        <strong>What does a splint do?</strong> It brings the lower jaw into a relaxed, muscle-guided position, relieves the jaw joint, reduces overactivity of the chewing muscles and protects the dental hard tissue from further wear. The precise choice of splint always depends on the individual findings.
-    </div>
-
-    <div class="card">
-        <div class="card-title">Splint types at a glance</div>
-
-        <div class="schiene-item">
-            <div class="schiene-header">
-                <div class="schiene-badge schiene-badge-gold">Goldstandard</div>
-                <div class="schiene-name">Michigan splint (equilibration splint)</div>
-            </div>
-            <div class="schiene-desc">Die am häufigsten eingesetzte und am besten untersuchte Aufbissschiene. Sie wird individuell aus hartem Kunststoff für den Oberkiefer gefertigt und im Artikulator auf die exakten Kieferbewegungen eingestellt. Ziel ist eine harmonische Bisslage mit gleichmäßiger Belastung aller Zähne. Sie wird in der Regel nachts getragen, in manchen Fällen auch tagsüber. Besonders geeignet bei muskulären CMD-Beschwerden und Bruxismus.</div>
-        </div>
-
-        <div class="schiene-item">
-            <div class="schiene-header">
-                <div class="schiene-badge schiene-badge-blue">Muskelentspannung</div>
-                <div class="schiene-name">Relaxation splint / reflex splint</div>
-            </div>
-            <div class="schiene-desc">This splint has a small frontal plateau (anterior plateau) that eliminates lateral tooth contacts. This interrupts parafunctional activities (grinding, clenching) and relieves the chewing muscles. Particularly suitable for muscle tension caused by psycho-emotional burden (stress). It should only be used for short periods.</div>
-        </div>
-
-        <div class="schiene-item">
-            <div class="schiene-header">
-                <div class="schiene-badge schiene-badge-blue">Gelenkentlastung</div>
-                <div class="schiene-name">Repositioning splint / positioning splint</div>
-            </div>
-            <div class="schiene-desc">This splint actively guides the lower jaw into a therapeutic position — usually slightly forward. It is used for disc displacements (displaced articular disc) to relieve structural joint structures and reduce clicking. Its use requires a precise diagnosis, as a long-term change in bite position can occur.</div>
-        </div>
-
-        <div class="schiene-item">
-            <div class="schiene-header">
-                <div class="schiene-badge schiene-badge-blue">Zahnschutz</div>
-                <div class="schiene-name">Soft splint / night guard</div>
-            </div>
-            <div class="schiene-desc">The simplest and most cost-effective option. It consists of soft plastic and protects the teeth from further wear through grinding. However, it has no therapeutic effect on muscle tension or joint position and can even further activate the chewing muscles. It is less suitable for CMD therapy — as pure tooth protection it can be an option.</div>
-        </div>
-    </div>
-
-    <div class="card card-green" style="margin-top:1rem">
-        <div class="card-title">How long is the splint worn?</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Most patients wear the splint every night at first. Initial improvements are often noticeable after just a few weeks. Regular check-up appointments are important: we assess the effect, adjust the splint if necessary and plan further treatment. A CMD splint is not a substitute for therapy — it is a central tool in a comprehensive treatment concept.</p>
-    </div>
-
-    <div class="section-title" style="margin-top:1.75rem">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
         Transparency about costs
     </div>
-
-    <div class="hint">We openly inform you about all costs before treatment begins — before we start. This allows you to decide calmly and have full planning security.</div>
-
     <div class="card">
-        <div class="card-title">What does statutory health insurance (GKV) cover?</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Die gesetzlichen Krankenkassen übernehmen in der Regel die <strong>klinische Funktionsanalyse (FAL)</strong> — also die manuelle Examination of the jaw joints und Kaumuskulatur. Die Schienentherapie selbst sowie die instrumentelle Funktionsanalyse sind hingegen in den meisten Fällen <strong>Privatleistungen</strong>, die von der Kasse nicht oder nur teilweise erstattet werden.</p>
+        <div class="card-title">What does health insurance cover?</div>
+        <p>Die gesetzlichen Krankenkassen &uuml;bernehmen in der Regel die <strong>klinische Funktionsanalyse (FAL)</strong>. Die Splint therapy selbst ist in den meisten F&auml;llen eine <strong>Privatleistung</strong>.</p>
     </div>
-
     <div class="card card-amber">
-        <div class="card-title">Costs of individually fabricated splints</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6;margin-bottom:.75rem">Costs depend on the type of splint, the manufacturing process and the findings. Simple protective splints from the practice laboratory are cheaper; complex individually customised therapy splints from specialised dental laboratories are more expensive to produce.</p>
-        <div class="card" style="background:var(--gray-50);border:none;padding:.9rem 1rem;margin-bottom:0">
-            <div style="font-size:.83rem;color:var(--gray-700);line-height:1.7">
-                <strong style="color:var(--blue-dark)">Besondere Kostenhinweise</strong><br>
-                Für spezielle Schienen, die in mehreren Phasen zur schrittweisen <strong>Bisserhöhung</strong> eingesetzt werden — zum Beispiel im Rahmen einer funktionellen Rehabilitation des Kiefergelenks vor geplanten Versorgungen mit Zahnersatz — entstehen Kosten, die von der Krankenkasse nicht übernommen werden. Diese können je nach Aufwand und Laborverfahren <strong>zwischen ca. 200 und 600 Euro</strong> liegen. Wir besprechen dies transparent mit Ihnen und erstellen vorab einen klaren Kostenplan.
-            </div>
-        </div>
+        <div class="card-title">Individual laboratory splints — additional costs</div>
+        <p>For special splints used for gradual <strong>bite elevation</strong> — for example before planned prosthetic restorations — costs arise that health insurance does not cover. These can range from <strong>approx. 200 to 600 euros</strong> depending on the complexity. We always prepare a clear cost plan in advance — no surprises.</p>
     </div>
-
-    <div class="card card-green">
-        <div class="card-title">Our commitment: cost clarity before treatment begins</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">No surprises. Before every splint we fabricate, you receive a clear breakdown of all costs. Together we decide which solution is medically appropriate and suitable for you.</p>
-    </div>
-
     <div class="nav-arrows">
-        <button class="nav-arrow prev" onclick="go('ursachen')">← Zurück</button>
-        <button class="nav-arrow next" onclick="go('faq')">Weiter →</button>
+        <button class="nav-arrow prev" onclick="go('diagnostik')">&larr; Back</button>
+        <button class="nav-arrow next" onclick="go('behandlung')">Next &rarr;</button>
     </div>
 </div>
 
-<!-- ═══════════ SECTION 5: PHYSIOTHERAPIE & FAQ ═══════════ -->
-<div class="tab-section" id="s-faq">
+<!-- TAB 5: BEHANDLUNG & FAQ -->
+<div class="tab-section" id="s-behandlung">
     <div class="section-title" style="margin-top:0">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-        Physiotherapy — your partner in CMD treatment
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Treatment — what can help?
     </div>
-    <p class="section-sub">A splint alone is often not enough. Full treatment success is only achieved in combination with physiotherapy.</p>
+    <div class="card card-blue">
+        <p>Treatment depends on the cause. Possible components:</p>
+        <ul style="margin:.75rem 0 0 1.1rem;font-size:.85rem;color:var(--gray-600);line-height:1.9"><li>Splint therapy</li><li>Adjustment of fillings or dentures</li><li>Targeted exercises</li><li>Accompanying physiotherapy</li></ul>
+        <p style="margin-top:.75rem;font-size:.84rem;color:var(--gray-600)">A combination is often sensible.</p>
+    </div>
 
+    <div class="section-title">Physiotherapy — an important part</div>
     <div class="card">
-        <div class="physio-item">
-            <div class="physio-icon">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v5l3 3M9 19H7M15 19h2"/></svg>
-            </div>
-            <div>
-                <div class="physio-title">Manual therapy &amp; jaw mobilisation</div>
-                <div class="physio-desc">The physiotherapist releases tension in the chewing and neck muscles through targeted mobilisation techniques. Restricted jaw mobility can be gradually improved this way.</div>
-            </div>
-        </div>
-        <div class="physio-item">
-            <div class="physio-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM8 12h8M12 8v8"/></svg>
-            </div>
-            <div>
-                <div class="physio-title">Trigger point treatment</div>
-                <div class="physio-desc">Hardened muscle points (trigger points) in the jaw, temple and neck area are released through pressure and special techniques — which can relieve headaches and ear pain.</div>
-            </div>
-        </div>
-        <div class="physio-item">
-            <div class="physio-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 22V12M4.93 4.93l4.24 4.24M19.07 4.93l-4.24 4.24M2 12h2M20 12h2"/></svg>
-            </div>
-            <div>
-                <div class="physio-title">Posture training &amp; body awareness</div>
-                <div class="physio-desc">Many CMD patients display postural abnormalities. The physiotherapist analyses body posture and develops targeted corrections — as the jaw and spine mutually influence each other.</div>
-            </div>
-        </div>
-        <div class="physio-item">
-            <div class="physio-icon">
-                <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <div>
-                <div class="physio-title">Home exercises</div>
-                <div class="physio-desc">Stretching and relaxation exercises for the chewing muscles, breathing exercises and targeted relaxation techniques that you can apply independently.</div>
-            </div>
-        </div>
-        <div class="physio-item">
-            <div class="physio-icon">
-                <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-            </div>
-            <div>
-                <div class="physio-title">Stress management</div>
-                <div class="physio-desc">As stress is considered a key trigger, we additionally recommend relaxation methods such as progressive muscle relaxation, biofeedback or psychological counselling.</div>
-            </div>
-        </div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg></div><div><div class="therapy-title">Manual therapy &amp; jaw mobilisation</div><div class="therapy-desc">Targeted mobilisation techniques release hardening in the chewing and neck muscles and improve jaw mobility.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="therapy-title">Trigger point treatment</div><div class="therapy-desc">Hardened muscle points in the jaw, temple and neck area are released — which can relieve headaches and ear pain.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><div class="therapy-title">Posture training &amp; body awareness</div><div class="therapy-desc">Jaw and spine mutually influence each other — targeted posture corrections are often an important part of therapy.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3l9 9-9 9"/></svg></div><div><div class="therapy-title">Home exercises</div><div class="therapy-desc">Stretching and relaxation exercises for the chewing muscles plus stress management (progressive muscle relaxation, biofeedback).</div></div></div>
     </div>
 
-    <div class="card card-amber" style="margin-top:1rem">
-        <div class="card-title">Interdisciplinary cooperation</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">CMD is a complex clinical picture that can rarely be treated by a single specialty alone. Depending on the findings, we work closely with physiotherapists, orthopaedists, ENT specialists, neurologists and, if needed, psychotherapists. The goal: holistic treatment that addresses the roots of your complaints.</p>
+    <div class="section-title">What can you expect?</div>
+    <div class="card card-green">
+        <div class="card-title">The goal is not perfection — but noticeable improvement</div>
+        <ul style="margin:.5rem 0 0 1.1rem;font-size:.85rem;color:var(--gray-600);line-height:1.9"><li>Less pain</li><li>More relaxed muscles</li><li>Greater mobility</li><li>A better sense of wellbeing</li></ul>
+        <p style="margin-top:.75rem;font-size:.83rem;color:var(--gray-600)">Progress is individual. If you recognise these complaints in yourself, please do not hesitate to contact us.</p>
     </div>
 
-    <div class="section-title" style="margin-top:1.75rem">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    <div class="section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
         Frequently asked questions about CMD treatment
     </div>
-
     <div class="card">
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-            <div class="faq-q">Does the treatment hurt? <span class="faq-arrow">&#x25BC;</span></div>
-            <div class="faq-a">The dental examination and splint fitting are completely painless. Physiotherapy can be briefly uncomfortable when treating hardened muscle points — similar to a classic massage. The splint itself generally causes no discomfort after a short settling-in period.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-            <div class="faq-q">How long does treatment take? <span class="faq-arrow">&#x25BC;</span></div>
-            <div class="faq-a">This depends on the severity and cause of the CMD. Initial improvements are often noticeable after just a few weeks of splint therapy. Complete treatment generally takes several months. What is crucial is staying consistent and not stopping treatment prematurely.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-            <div class="faq-q">Does health insurance pay for CMD treatment? <span class="faq-arrow">&#x25BC;</span></div>
-            <div class="faq-a">Statutory health insurance generally covers part of the clinical functional analysis. The individually fabricated CMD splint and the instrumental functional analysis are in many cases private services. We transparently inform you before treatment begins about all costs and prepare a clear treatment plan.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-            <div class="faq-q">Do I have to wear the splint permanently? <span class="faq-arrow">&#x25BC;</span></div>
-            <div class="faq-a">This varies individually. Many patients wear the splint daily at first, later only prophylactically during stress phases. The goal is to achieve lasting relaxation through the combination of splint therapy and physiotherapy, so that the splint is only needed as protection in the long term.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-            <div class="faq-q">Can CMD be treated without surgery? <span class="faq-arrow">&#x25BC;</span></div>
-            <div class="faq-a">In the great majority of cases: yes. Conservative treatments such as splint therapy and physiotherapy lead to significant and lasting improvements. Surgical interventions are rarely necessary and are only considered when all other therapy options have been exhausted.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-            <div class="faq-q">What can I do myself? <span class="faq-arrow">&#x25BC;</span></div>
-            <div class="faq-a">Quite a lot. Pay attention not to unconsciously clench your teeth in everyday life (teeth should lightly touch at rest but not press). Regular relaxation exercises, sufficient sleep and stress reduction help noticeably. The exercises recommended by your physiotherapist should be carried out consistently. And: wear your splint regularly.</div>
-        </div>
+        <div class="faq-item"><div class="faq-q">Does the treatment hurt?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Die zahnärztliche Untersuchung und die Schinenanpassung sind vollständig schmerzfrei. Die Physiotherapie kann bei der Behandlung verhärteter Muskelpunkte kurzfristig unangenehm sein — ähnlich wie bei einer klassischen Massage. Die Schiene selbst verursacht nach einer kurzen Eingewöhnungsphase in der Regel keine Beschwerden.</div></div>
+        <div class="faq-item"><div class="faq-q">How long does treatment take?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Das hängt von Schwere und Ursache der CMD ab. Erste Besserungen sind oft schon nach wenigen Wochen Splint therapy spürbar. Eine vollständige Behandlung dauert in der Regel mehrere Monate. Entscheidend ist, konsequent am Ball zu bleiben.</div></div>
+        <div class="faq-item"><div class="faq-q">Does health insurance pay for CMD treatment?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Die gesetzlichen Krankenkassen übernehmen in der Regel die klinische Funktionsanalyse (FAL). Die individuell angefertigte CMD-Schiene sowie die instrumentelle Funktionsanalyse sind in vielen Fällen Privatleistungen. Wir informieren Sie vor Behandlungsbeginn transparent über alle Kosten.</div></div>
+        <div class="faq-item"><div class="faq-q">Do I have to wear the splint permanently?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Das ist individuell verschieden. Viele Patienten tragen die Schiene zunächst täglich, später nur noch prophylaktisch in Stressphasen. Ziel ist es, durch die Kombination aus Splint therapy und Physiotherapie eine dauerhafte Entspannung zu erreichen.</div></div>
+        <div class="faq-item"><div class="faq-q">Can CMD be treated without surgery?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">In der großen Mehrheit der Fälle: ja. Konservative Behandlungen wie Splint therapy und Physiotherapie führen zu deutlichen und dauerhaften Verbesserungen. Operative Eingriffe kommen erst dann in Betracht, wenn alle anderen Möglichkeiten ausgeschöpft wurden.</div></div>
+        <div class="faq-item"><div class="faq-q">What can I do myself?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Achten Sie darauf, die Zähne im Alltag nicht unbewusst zusammenzubeißen (Zähne sollten sich in Ruhe leicht berühren, aber nicht pressen). Regelmäßige Entspannungsübungen, ausreichend Schlaf und Stressreduktion helfen spürbar. Und: Tragen Sie Ihre Schiene regelmäßig.</div></div>
     </div>
 
-    <div style="background:linear-gradient(135deg,#E8EEF7 0%,#F0F4FA 100%);border:1px solid #3D5A98;border-radius:var(--radius);padding:1.5rem 2rem;margin-top:2rem;text-align:center">
-        <div style="font-family:'Quicksand',sans-serif;font-size:1.1rem;font-weight:700;color:#2C4170;margin-bottom:.4rem">Book your appointment</div>
-        <p style="font-size:.85rem;color:#6B7280;margin-bottom:1rem">Jaw joint complaints should not be ignored. We listen and help.</p>
-        <a href="javascript:toggleDrFlexAppointments()" style="display:inline-flex;align-items:center;gap:8px;background:#E2C26A;color:#1E2D4D;font-weight:700;font-size:.85rem;padding:9px 24px;border-radius:8px;text-decoration:none;cursor:pointer;transition:all .3s" onmouseover="this.style.background='#2C4170';this.style.color='#FFFFFF'" onmouseout="this.style.background='#E2C26A';this.style.color='#1E2D4D'">Book appointment</a>
+    <div class="print-bar"><button class="btn-print" onclick="window.print()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Print this page</button></div>
+    <div class="nav-arrows" style="justify-content:flex-start">
+        <button class="nav-arrow prev" onclick="go('schienen')">&larr; Back</button>
+        <button class="nav-arrow next" disabled>Next &rarr;</button>
     </div>
-
-    <div class="nav-arrows">
-        <button class="nav-arrow prev" onclick="go('schienen')">← Zurück</button>
-        <button class="nav-arrow next" disabled>Weiter →</button>
-    </div>
-</div>
-
-<div class="print-bar">
-    <button class="btn-print" onclick="window.print()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Drucken</button>
 </div>
 </main>
 
 <footer><p>&copy; 2026 FRYDENT &middot; Zahnarztpraxis Tatiana Frydrych &middot; <a href="https://frydent.de/">www.frydent.de</a><br>As of: April 2026</p><p style="margin-top:6px"><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></p></footer>
 
-<!-- SIDEBAR -->
 <div class="sidebar">
 <a href="javascript:toggleDrFlexAppointments()" class="sidebar-tab termin">
     <span class="sidebar-label">Termin online buchen</span>
@@ -695,36 +553,81 @@
     <span class="sidebar-label">E-Mail schreiben</span>
     <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
 </a>
-<a href="https://maps.google.com/?q=Martinstra%C3%9Fe+4+79848+Bonndorf" target="_blank" class="sidebar-tab location">
-    <span class="sidebar-label">Martinstraße 4, Bonndorf</span>
+<a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank" class="sidebar-tab location">
+    <span class="sidebar-label">Martinstraße 21, Bonndorf</span>
     <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><circle cx="12" cy="11" r="3"></circle></svg></div>
 </a>
 </div>
 
-<!-- MOBILE BAR -->
 <div class="mobile-bar">
     <a href="tel:+497703284" class="phone-m"><svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>Anrufen</a>
     <a href="javascript:toggleDrFlexAppointments()" class="termin-m"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book appointment</a>
     <a href="/cdn-cgi/l/email-protection#88e1e6eee7c8eefaf1ecede6fca6eced"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>E-Mail</a>
-    <a href="https://maps.google.com/?q=Martinstra%C3%9Fe+4+79848+Bonndorf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><circle cx="12" cy="11" r="3"></circle></svg>Adresse</a>
+    <a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><circle cx="12" cy="11" r="3"></circle></svg>Adresse</a>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-var TABS=['wascmd','symptome','ursachen','schienen','faq'];
+<script>
+var TABS=['was','ursachen','diagnostik','schienen','behandlung'];
 function go(id){
-    document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-section').forEach(function(s){s.classList.remove('active')});
+    document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
     document.getElementById('s-'+id).classList.add('active');
-    var i=TABS.indexOf(id);
-    document.querySelectorAll('.tab-btn').forEach(function(b,j){if(j===i)b.classList.add('active');});
+    document.querySelectorAll('.tab-btn')[TABS.indexOf(id)].classList.add('active');
     window.scrollTo({top:document.querySelector('.tab-nav').offsetTop-120,behavior:'smooth'});
 }
+
+/* FAQ */
 document.querySelectorAll('.faq-q').forEach(function(q){
     q.addEventListener('click',function(){
         var item=this.parentElement;
         item.classList.toggle('open');
     });
 });
+
+/* Mehr Erfahren */
+function toggleMehr(btn){
+    btn.classList.toggle('open');
+    var body=btn.nextElementSibling;
+    body.classList.toggle('open');
+}
+
+/* QUIZ */
+var qAnswers=[null,null,null,null,null];
+function openQuiz(){
+    var panel=document.getElementById('quizPanel');
+    panel.classList.add('open');
+    panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function answer(q,val){
+    qAnswers[q]=val;
+    var qEl=document.querySelector('.quiz-q[data-q="'+q+'"]');
+    qEl.querySelectorAll('.quiz-opt').forEach(function(b){b.classList.remove('sel')});
+    qEl.querySelector('.quiz-opt.'+(val==='ja'?'yes':'no')).classList.add('sel');
+    // progress dots
+    for(var i=0;i<5;i++){
+        var dot=document.getElementById('qd'+i);
+        if(dot) dot.classList.toggle('done', qAnswers[i]!==null);
+    }
+    if(qAnswers.every(function(a){return a!==null})) showQuizResult();
+}
+function showQuizResult(){
+    var yes=qAnswers.filter(function(a){return a==='ja'}).length;
+    ['qResultLow','qResultMid','qResultHigh','quizCta','quizReset'].forEach(function(id){
+        var el=document.getElementById(id); if(el) el.classList.remove('show');
+    });
+    if(yes<=1){document.getElementById('qResultLow').classList.add('show');}
+    else if(yes<=3){document.getElementById('qResultMid').classList.add('show');document.getElementById('quizCta').classList.add('show');}
+    else{document.getElementById('qResultHigh').classList.add('show');document.getElementById('quizCta').classList.add('show');}
+    document.getElementById('quizReset').classList.add('show');
+}
+function resetQuiz(){
+    qAnswers=[null,null,null,null,null];
+    document.querySelectorAll('.quiz-opt').forEach(function(b){b.classList.remove('sel')});
+    for(var i=0;i<5;i++){var d=document.getElementById('qd'+i);if(d)d.classList.remove('done');}
+    ['qResultLow','qResultMid','qResultHigh','quizCta','quizReset'].forEach(function(id){
+        var el=document.getElementById(id);if(el)el.classList.remove('show');
+    });
+}
 </script>
 </body>
 </html>
