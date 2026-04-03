@@ -88,8 +88,8 @@
         .sv-pill.active{background:var(--sage);color:var(--cream);border-color:var(--sage);transform:scale(1.03)}
 
         .sv-body{display:flex;gap:24px;align-items:center;min-height:280px}
-        .sv-img-box{flex:0 0 220px;text-align:center;display:flex;align-items:center;justify-content:center}
-        .sv-img-box img{max-width:100%;height:auto;max-height:260px;border-radius:var(--radius);transition:opacity .4s}
+        .sv-img-box{flex:0 0 220px;text-align:center;display:flex;align-items:center;justify-content:center;min-height:200px}
+        .sv-img-box img{width:220px;height:220px;object-fit:contain;border-radius:var(--radius);transition:opacity .4s}
         .sv-info{flex:1;min-width:0}
 
         .sv-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:.5rem}
@@ -120,7 +120,8 @@
 
         @media(max-width:700px){
             .sv-body{flex-direction:column;text-align:center}
-            .sv-img-box{flex:none;width:100%;max-width:200px;margin:0 auto}
+            .sv-img-box{flex:none;width:100%;max-width:220px;margin:0 auto;min-height:160px}
+            .sv-img-box img{width:180px;height:180px}
             .sv-reassure{justify-content:center}
         }
 
@@ -189,7 +190,7 @@
     <div class="sv-wrap">
         <div id="u-pills" class="sv-pills"></div>
         <div id="u-body" class="sv-body">
-            <div class="sv-img-box" id="u-img-box"><img id="u-img" src="" alt="Schritt"></div>
+            <div class="sv-img-box" id="u-img-box"><img id="u-img" src="kids/img/ke_u_step1.png" alt="Schritt"></div>
             <div id="u-info" class="sv-info"></div>
         </div>
         <div id="u-dots" class="sv-dots"></div>
@@ -225,7 +226,7 @@
     <div class="sv-wrap">
         <div id="f-pills" class="sv-pills"></div>
         <div id="f-body" class="sv-body">
-            <div class="sv-img-box" id="f-img-box"><img id="f-img" src="" alt="Schritt"></div>
+            <div class="sv-img-box" id="f-img-box"><img id="f-img" src="kids/img/ke_f_step1.png" alt="Schritt"></div>
             <div id="f-info" class="sv-info"></div>
         </div>
         <div id="f-dots" class="sv-dots"></div>
@@ -335,8 +336,8 @@ function svRender(id){
     return '<button class="sv-pill'+(i===cur?' active':'')+'" onclick="svGoTo(\''+id+'\','+i+')">'+st.label+'</button>';
   }).join('');
   var img=document.getElementById(id+'-img');
-  img.style.opacity='0';
-  setTimeout(function(){img.src=s.img;img.alt=s.title;img.style.opacity='1';},180);
+  img.src=s.img;
+  img.alt=s.title;
   var info=document.getElementById(id+'-info');
   info.className='sv-info sv-fade';
   info.innerHTML='<div class="sv-badge"><span class="sv-num">'+s.num+'</span><span class="sv-cat">'+s.cat+'</span></div>'
