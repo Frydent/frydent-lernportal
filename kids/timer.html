@@ -35,7 +35,7 @@ body{display:flex;justify-content:center;align-items:center}
 svg.progress-ring{position:absolute;top:0;left:0;width:100%;height:100%;transform:rotate(-90deg)}
 .progress-ring circle{fill:none;stroke-width:6;stroke-linecap:round}
 .progress-ring .track{stroke:var(--sage-light)}
-.progress-ring .fill{stroke:var(--sage);transition:stroke-dashoffset .5s ease;filter:drop-shadow(0 0 6px rgba(123,164,144,.4))}
+.qseg{fill:none;stroke-width:6;stroke-linecap:round}
 
 .timer-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .hourglass{width:140px;height:140px;transition:transform .3s}
@@ -164,7 +164,10 @@ document.querySelector('.back-link').href='index.html?lang='+LANG;
     <div class="circle-wrap">
       <svg class="progress-ring" viewBox="0 0 260 260">
         <circle class="track" cx="130" cy="130" r="120"/>
-        <circle class="fill" id="progress" cx="130" cy="130" r="120"/>
+        <circle class="qseg" id="qr0" cx="130" cy="130" r="120"/>
+        <circle class="qseg" id="qr1" cx="130" cy="130" r="120"/>
+        <circle class="qseg" id="qr2" cx="130" cy="130" r="120"/>
+        <circle class="qseg" id="qr3" cx="130" cy="130" r="120"/>
       </svg>
       <div class="timer-content">
         <div class="hourglass" id="hourglass"><img src="img/card-hourglass-nobg.png" alt="Sanduhr"></div>
@@ -200,17 +203,17 @@ document.querySelector('.back-link').href='index.html?lang='+LANG;
 <script>
 const TOTAL=120;
 const QUADRANTS=[tt('Oben links putzen!'),tt('Oben rechts putzen!'),tt('Unten links putzen!'),tt('Unten rechts putzen!')];
-const circumference=2*Math.PI*120;
+var C=2*Math.PI*120;var Q=C/4;
+var qColors=['#7BA490','#D4A76A','#C17B6E','#A88BAE'];
 
 let timeLeft=TOTAL,running=false,timer=null,currentQuad=-1;
-const progress=document.getElementById('progress');
 const timeDisplay=document.getElementById('timeDisplay');
 const quadLabel=document.getElementById('quadLabel');
 const hourglass=document.getElementById('hourglass');
 const app=document.getElementById('app');
 
-progress.style.strokeDasharray=circumference;
-progress.style.strokeDashoffset=circumference;
+// Init 4 quadrant rings
+for(var qi=0;qi<4;qi++){var qel=document.getElementById('qr'+qi);qel.style.stroke=qColors[qi];qel.style.strokeDasharray='0 '+C;qel.style.strokeDashoffset=-(qi*Q);}
 
 const audioCtx=new(window.AudioContext||window.webkitAudioContext)();
 function playTone(freq,dur,vol){if(audioCtx.state==='suspended')audioCtx.resume();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(audioCtx.destination);o.frequency.setValueAtTime(freq,audioCtx.currentTime);g.gain.setValueAtTime(vol||.1,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);o.start();o.stop(audioCtx.currentTime+dur)}
@@ -295,8 +298,7 @@ function resetTimer(){
   document.getElementById('startBtn').textContent=tt('Start!');
   document.getElementById('startBtn').style.pointerEvents='';
   document.getElementById('startBtn').style.opacity='';
-  progress.style.strokeDashoffset=circumference;
-  progress.style.stroke='#7BA490';
+  for(var qi=0;qi<4;qi++){document.getElementById('qr'+qi).style.strokeDasharray='0 '+C;}
   timeDisplay.textContent='2:00';
   quadLabel.textContent='Bereit? Los geht\u2019s!';
   for(let i=0;i<4;i++){const el=document.getElementById('q'+i);el.classList.remove('active','done')}
