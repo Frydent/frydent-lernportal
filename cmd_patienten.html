@@ -188,12 +188,12 @@
         .faq-item.open .faq-arrow{transform:rotate(180deg)}
 
         /* ── QUIZ PROMINENT ── */
-        .quiz-cta-hero{background:#FAF2D4;border:1px solid #DFC96A;border-radius:var(--radius);padding:1.25rem 1.5rem;margin:2rem 0 0}
+        .quiz-cta-hero{background:#FDF8E8;border:1px solid #DFC96A;border-radius:var(--radius);padding:1.25rem 1.5rem;margin:2rem 0 0}
         .quiz-cta-hero-label{display:inline-block;background:var(--gold);color:#1E2D4D;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:12px;margin-bottom:.6rem;letter-spacing:.03em}
         .quiz-cta-hero h3{font-family:"Quicksand",sans-serif;font-size:1.05rem;font-weight:700;color:var(--blue-darker);margin-bottom:.35rem}
         .quiz-cta-hero p{font-size:.84rem;color:var(--amber-text);line-height:1.5;margin-bottom:.9rem}
-        .quiz-start-btn{display:inline-flex;align-items:center;gap:6px;background:var(--blue-dark);color:white;border:none;border-radius:8px;padding:.6rem 1.2rem;font-size:.84rem;font-weight:700;cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;transition:background .2s}
-        .quiz-start-btn:hover{background:var(--blue-darker)}
+        .quiz-start-btn{display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--blue-dark);border:1.5px solid var(--blue-dark);border-radius:8px;padding:.6rem 1.2rem;font-size:.84rem;font-weight:700;cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;transition:all .2s}
+        .quiz-start-btn:hover{background:var(--blue-dark);color:white}
 
         /* ── QUIZ PANEL ── */
         .quiz-panel{background:white;border:1px solid var(--gray-200);border-radius:var(--radius);margin-top:1.25rem;overflow:hidden;display:none}
@@ -255,7 +255,7 @@
 
 <!-- ══ QUIZ HERO (prominent, vor Tabs) ══ -->
 <div class="quiz-cta-hero">
-    <div class="quiz-cta-hero-label">&#10003; 30-Sekunden-Test</div>
+    <div style="font-size:.78rem;font-weight:700;color:var(--blue-dark);margin-bottom:.5rem">&#10003; 30-Sekunden-Test</div>
     <h3>Beginnt Ihr Kopfschmerz im Mund?</h3>
     <p>5 kurze Fragen &mdash; wir schauen gemeinsam, ob CMD ein Thema f&uuml;r Sie sein k&ouml;nnte.</p>
     <button class="quiz-start-btn" onclick="openQuiz()">
