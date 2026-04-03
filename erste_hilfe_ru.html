@@ -140,6 +140,15 @@
             body{background:white}
             main{padding:1rem 0}
         }
+    
+        /* NAV ARROWS */
+        .nav-arrows{display:flex;justify-content:center;gap:1rem;margin:2.5rem 0}
+        .nav-arrow{padding:.5rem 1.25rem;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;border:none}
+        .nav-arrow.prev{background:#E8EEF7;color:var(--blue-dark);border:1px solid #C8D9EE}
+        .nav-arrow.prev:hover{background:#D4E1F2;border-color:var(--blue)}
+        .nav-arrow.next{background:var(--blue);color:var(--white)}
+        .nav-arrow.next:hover{background:var(--blue-dark)}
+        .nav-arrow:disabled{opacity:.3;cursor:default;border-color:var(--gray-200)!important;background:var(--gray-100)!important;color:var(--gray-400)!important}
     </style>
 <script src="https://dr-flex.de/embed.js?medicalPracticeId=60190"></script>
 </head>
@@ -211,6 +220,8 @@
         <p style="font-size:.84rem;color:#7F1D1D;line-height:1.6">Сильная пульсирующая боль, не реагирующая на обезболивающие · Отёк на лице или шее · Температура выше 38,5 °C · Нарастающая пульсирующая боль · Боль при открывании рта</p>
     </div>
 
+
+    <div class="nav-arrows"><button class="nav-arrow prev" disabled>← Назад</button><button class="nav-arrow next" onclick="go('fuellung')">Выпала пломба →</button></div>
 </div>
 
 <!-- ==================== TAB 2: FÜLLUNG VERLOREN ==================== -->
@@ -247,6 +258,8 @@
 
     <div class="hint"><strong>Нашли коронку?</strong> Аккуратно очистите и храните сухой. Не пытайтесь установить самостоятельно — мы зафиксируем правильно. Просто принесите на приём.</div>
 
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('schmerz')">← Зубная боль</button><button class="nav-arrow next" onclick="go('bruch')">Сломан зуб →</button></div>
 </div>
 
 <!-- ==================== TAB 3: ZAHN ABGEBROCHEN ==================== -->
@@ -288,6 +301,8 @@
 
     <div class="hint"><strong>Бокс для спасения зубов:</strong> Продаётся в аптеках. Содержит специальный раствор, сохраняющий клетки корня живыми до 48 часов. Идеально для семей с активными детьми или спортсменов.</div>
 
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('fuellung')">← Выпала пломба</button><button class="nav-arrow next" onclick="go('blutung')">Кровоточат дёсны →</button></div>
 </div>
 
 <!-- ==================== TAB 4: ZAHNFLEISCHBLUTEN ==================== -->
@@ -327,6 +342,8 @@
         <p style="font-size:.85rem">Mehr erfahren: <a href="parodontologie_patienten_ru.html" style="color:var(--blue);text-decoration:underline">Лечение пародонтита</a></p>
     </div>
 
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('bruch')">← Сломан зуб</button><button class="nav-arrow next" onclick="go('empfindlich')">Чувствительность →</button></div>
 </div>
 
 <!-- ==================== TAB 5: EMPFINDLICHE ZÄHNE ==================== -->
@@ -362,6 +379,8 @@
 
     <div class="hint"><strong>Знаете ли вы?</strong> Мы можем защитить чувствительные шейки зубов специальным фторлаком прямо в клинике. Действует мгновенно и сохраняется несколько месяцев. Спросите нас при следующем визите.</div>
 
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('blutung')">← Кровоточат дёсны</button><button class="nav-arrow next" onclick="go('schwellung')">Отёк →</button></div>
 </div>
 
 <!-- ==================== TAB 6: SCHWELLUNG / ABSZESS ==================== -->
@@ -443,6 +462,8 @@
     <a href="javascript:toggleDrFlexAppointments()" class="termin-m"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Записаться</a>
     <a href="mailto:info@frydent.de"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>E-Mail</a>
     <a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>Маршрут</a>
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('empfindlich')">← Чувствительность</button><button class="nav-arrow next" disabled style="visibility:hidden"></button></div>
 </div>
 
 <script>
