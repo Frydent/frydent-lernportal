@@ -241,9 +241,9 @@ function updateDisplay(){
   }
   
   // Color change as time progresses
-  // Sage gradation
-  var r=Math.round(123-40*pct),g=Math.round(164-50*pct),b=Math.round(144-30*pct);
-  progress.style.stroke='rgb('+r+','+g+','+b+')';
+  // Quadrant colors
+  var qColors=['#7BA490','#D4A76A','#C17B6E','#A88BAE'];
+  progress.style.stroke=qColors[Math.min(3,Math.floor((TOTAL-timeLeft)/30))];
 }
 
 function startTimer(){
