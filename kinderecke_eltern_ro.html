@@ -143,7 +143,16 @@
         }
         .do-dont-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
         @media(max-width:700px){.do-dont-grid{grid-template-columns:1fr}}
-</style>
+
+        /* NAV ARROWS */
+        .nav-arrows{display:flex;justify-content:center;gap:1rem;margin:2.5rem 0}
+        .nav-arrow{padding:.5rem 1.25rem;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;border:none}
+        .nav-arrow.prev{background:#E8EEF7;color:var(--blue-dark);border:1px solid #C8D9EE}
+        .nav-arrow.prev:hover{background:#D4E1F2;border-color:var(--blue)}
+        .nav-arrow.next{background:var(--blue);color:var(--white)}
+        .nav-arrow.next:hover{background:var(--blue-dark)}
+        .nav-arrow:disabled{opacity:.3;cursor:default;border-color:var(--gray-200)!important;background:var(--gray-100)!important;color:var(--gray-400)!important}
+    </style>
 </head>
 <body>
 
@@ -238,6 +247,8 @@
         <p><strong>Sfat:</strong> Dacă dumneavoastră personal ați avut experiențe foarte negative la dentist, uneori este mai bine ca altă persoană de încredere să însoțească copilul la programare. Copiii simt tensiunea părinților — adesea inconștient.</p>
     </div>
 
+
+    <div class="nav-arrows"><button class="nav-arrow prev" disabled>← Înapoi</button><button class="nav-arrow next" onclick="go('frueh')">Începeți devreme →</button></div>
 </div>
 
 <!-- ===== TAB 2: FRÜH ANFANGEN ===== -->
@@ -280,6 +291,8 @@
         <p>„Primul contact cu dentistul nu ar trebui să aibă loc abia când este necesar tratamentul durerii. Cu cât vine copilul mai devreme, cu atât experiența va fi mai pozitivă."</p>
     </div>
 
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('vorbereitung')">← Pregătire</button><button class="nav-arrow next" onclick="go('philosophie')">Filozofia noastră →</button></div>
 </div>
 
 <!-- ===== TAB 3: PHILOSOPHIE ===== -->
@@ -318,6 +331,8 @@
         <p style="margin-top:.75rem">După tratamentul la Smile Club, copilul revine la noi — pentru controale regulate și îngrijire stomatologică normală.</p>
     </div>
 
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('frueh')">← Începeți devreme</button><button class="nav-arrow next" onclick="go('eltern')">Părinți în cabinet →</button></div>
 </div>
 
 <!-- ===== TAB 4: ELTERN IM RAUM ===== -->
@@ -366,6 +381,8 @@
         <p>„Părinții care rămân calm în fundal ajută copilul lor mai mult decât o mie de cuvinte de consolare în timpul tratamentului."</p>
     </div>
 
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('philosophie')">← Filozofia noastră</button><button class="nav-arrow next" onclick="go('milchzaehne')">Dinții de lapte →</button></div>
 </div>
 
 <!-- ===== TAB 5: MILCHZÄHNE ===== -->
@@ -397,6 +414,8 @@
         <p><strong>Concluzie:</strong> Dinții de lapte merită aceeași atenție ca și dinții permanenți. Controalele regulate, îngrijirea atentă și tratamentul precoce sunt cheia unei dezvoltări dentare sănătoase.</p>
     </div>
 
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('eltern')">← Părinți în cabinet</button><button class="nav-arrow next" onclick="go('ernaehrung')">Alimentație →</button></div>
 </div>
 
 <!-- ===== TAB 6: ERNÄHRUNG ===== -->
@@ -441,6 +460,8 @@
         <p><strong>Știați?</strong> Sucurile de fructe, spritzurile și smoothie-urile conțin de asemenea mult acid fructic și zahăr. Ca băutură zilnică, apa plată este cea mai bună alegere pentru dinții copilului.</p>
     </div>
 
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('milchzaehne')">← Dinții de lapte</button><button class="nav-arrow next" disabled style="visibility:hidden"></button></div>
 </div>
 
 </div><!-- /tabs container -->
@@ -464,8 +485,10 @@ function go(id){
     document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
     document.getElementById('s-'+id).classList.add('active');
-    event.currentTarget.classList.add('active');
-    window.scrollTo({top:document.querySelector('main').offsetTop-60,behavior:'smooth'});
+    const tabs=['vorbereitung', 'frueh', 'philosophie', 'eltern', 'milchzaehne', 'ernaehrung'];
+    const i=tabs.indexOf(id);
+    if(i>=0)document.querySelectorAll('.tab-btn')[i].classList.add('active');
+    window.scrollTo({top:document.querySelector('.tab-nav').offsetTop-80,behavior:'smooth'});
 }
 const tn=document.querySelector('.tab-nav');
 function checkScroll(){if(!tn)return;const atEnd=tn.scrollLeft+tn.clientWidth>=tn.scrollWidth-8;tn.classList.toggle('scrolled-end',atEnd)}

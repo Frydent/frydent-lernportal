@@ -146,7 +146,16 @@
             .story-card{padding:1.25rem}
             .sv-wrap{padding:1.25rem}
         }
-</style>
+
+        /* NAV ARROWS */
+        .nav-arrows{display:flex;justify-content:center;gap:1rem;margin:2.5rem 0}
+        .nav-arrow{padding:.5rem 1.25rem;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;border:none}
+        .nav-arrow.prev{background:#E8EEF7;color:var(--blue-dark);border:1px solid #C8D9EE}
+        .nav-arrow.prev:hover{background:#D4E1F2;border-color:var(--blue)}
+        .nav-arrow.next{background:var(--blue);color:var(--white)}
+        .nav-arrow.next:hover{background:var(--blue-dark)}
+        .nav-arrow:disabled{opacity:.3;cursor:default;border-color:var(--gray-200)!important;background:var(--gray-100)!important;color:var(--gray-400)!important}
+    </style>
 </head>
 <body>
 
@@ -209,6 +218,8 @@
         <div class="story-title">Gotowe!</div>
         <p>Widzisz? To wcale nie było straszne! Pani dentystka tylko sprawdziła, czy wszystkie ząbki są zdrowe i szczęśliwe. Następnym razem już będziesz dokładnie wiedzieć, co się dzieje.</p>
     </div>
+
+    <div class="nav-arrows"><button class="nav-arrow prev" disabled>← Wstecz</button><button class="nav-arrow next" onclick="go('fuellung')">Naprawa ząbka →</button></div>
 </div>
 
 <!-- ===== TAB 2: FÜLLUNG ===== -->
@@ -245,6 +256,8 @@
         <div class="story-title">Jesteś naprawdę dzielny/dzielna!</div>
         <p>Dostanie plomby wcale nie jest takie straszne, jak się wydaje. Wiele dzieci mówi potem: „Das war ja gar nicht schlimm!" Und dein Zahn ist danach wieder stark und gesund.</p>
     </div>
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('untersuchung')">← Badanie ząbków</button><button class="nav-arrow next" onclick="go('helden')">Porady bohatera ząbków →</button></div>
 </div>
 
 <!-- ===== TAB 3: ZAHNHELDEN-TIPPS ===== -->
@@ -343,7 +356,9 @@ function svRender(id){
     +'<p class="sv-desc">'+s.desc+'</p>'
     +'<div class="sv-reassure"><span class="sv-r-icon">🤗</span><p>'+s.reassure+'</p></div>';
   document.getElementById(id+'-dots').innerHTML=steps.map(function(_,i){
-    return '<div class="sv-dot'+(i===cur?' active':'')+'"></div>';
+    return '<div class="sv-dot'+(i===cur?' active':'')+'">
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('fuellung')">← Naprawa ząbka</button><button class="nav-arrow next" disabled style="visibility:hidden"></button></div>
+</div>';
   }).join('');
   document.getElementById(id+'-prev').disabled=cur===0;
   document.getElementById(id+'-next').textContent=cur===steps.length-1?'↺ Jeszcze raz':'Dalej →';
