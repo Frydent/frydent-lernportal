@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRYDENT · CMD · Tulburări ale articulației temporomandibulare</title>
-    <meta name="description" content="Clicuri în articulație, dureri de cap, dureri de gât — CMD poate lua multe forme. Explicăm clar ce se ascunde în spatele acestora și cum vă putem ajuta.">
+    <title>FRYDENT &middot; CMD &middot; Tulburări ale articulației temporomandibulare</title>
+    <meta name="description" content="Kieferknacken, Kopfschmerzen, Nackenschmerzen &mdash; CMD kann viele Gesichter haben. Wir erkl&auml;ren verst&auml;ndlich, was dahintersteckt.">
     <style>
+
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
@@ -76,7 +77,14 @@
         /* HINT */
         .hint{font-size:.84rem;background:var(--amber-soft);border:1px solid var(--amber-border);border-radius:var(--radius-sm);padding:1rem 1.25rem;margin-bottom:1.25rem;line-height:1.55;color:var(--amber-text)}
 
-        /* SYMPTOM LIST */
+        /* STEP LIST */
+        .step-list{counter-reset:step}
+        .step-item{display:flex;gap:1rem;margin-bottom:1.25rem;align-items:flex-start}
+        .step-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--blue-dark);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+        .step-content h4{font-family:'Quicksand',sans-serif;font-size:.92rem;font-weight:600;color:var(--blue-dark);margin-bottom:.2rem}
+        .step-content p{font-size:.84rem;color:var(--gray-600);line-height:1.55}
+
+        /* SYMPTOM ITEM */
         .symptom-item{display:flex;gap:12px;align-items:flex-start;padding:.75rem 0;border-bottom:1px solid var(--gray-100)}
         .symptom-item:last-child{border-bottom:none}
         .symptom-dot{flex-shrink:0;width:10px;height:10px;border-radius:50%;margin-top:6px}
@@ -91,15 +99,11 @@
         .therapy-title{font-family:'Quicksand',sans-serif;font-weight:600;font-size:.88rem;color:var(--blue-dark);margin-bottom:.2rem}
         .therapy-desc{font-size:.82rem;color:var(--gray-600);line-height:1.5}
 
-        /* SCHIENEN ITEM */
-        .schiene-item{border-bottom:1px solid var(--gray-200);padding:1rem 0}
-        .schiene-item:last-child{border-bottom:none}
-        .schiene-header{display:flex;align-items:center;gap:10px;margin-bottom:.4rem}
-        .schiene-badge{font-size:.68rem;font-weight:700;padding:3px 8px;border-radius:20px;white-space:nowrap}
-        .schiene-badge-gold{background:var(--gold-light);color:#7A5E00;border:1px solid var(--gold-dark)}
-        .schiene-badge-blue{background:var(--blue-light);color:var(--blue-dark);border:1px solid #a8c0e8}
-        .schiene-name{font-family:'Quicksand',sans-serif;font-weight:600;font-size:.9rem;color:var(--blue-dark)}
-        .schiene-desc{font-size:.83rem;color:var(--gray-600);line-height:1.55}
+        /* NACHSORGE ITEM */
+        .nachsorge-item{display:flex;gap:14px;align-items:flex-start;padding:1rem 0;border-bottom:1px solid var(--gray-100)}
+        .nachsorge-item:last-child{border-bottom:none}
+        .nachsorge-icon{flex-shrink:0;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+        .nachsorge-icon svg{width:18px;height:18px;fill:none;stroke-width:2}
 
         /* FAQ */
         .faq-item{border-bottom:1px solid var(--gray-200);padding:1rem 0;cursor:pointer}
@@ -157,531 +161,385 @@
         .mobile-bar a.termin-m{color:#E2C26A!important;font-weight:700}
         @media(max-width:640px){.sidebar{display:none}.mobile-bar{display:flex!important}}
 
-        /* PRINT */
+        /* FOOTER */
+        footer{text-align:center;padding:2rem 1.5rem 4rem;font-size:.75rem;color:var(--gray-400);border-top:1px solid var(--gray-200);background:var(--white)}
+        footer a{color:var(--blue);text-decoration:none}
+
         @media print{.sidebar,.mobile-bar,.header-right,.nav-arrows,.print-bar{display:none!important}main{padding:1rem}}
 
-        /* ANATOMY BOX */
-        .anatomy-box{background:var(--blue-light);border:1px solid #C8D9EE;border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1.25rem}
-        .anatomy-title{font-family:'Quicksand',sans-serif;font-weight:600;color:var(--blue-dark);font-size:.9rem;margin-bottom:.5rem}
-        .anatomy-text{font-size:.83rem;color:var(--gray-700);line-height:1.6}
+    
+        /* ── MEHR ERFAHREN ── */
+        .mehr-toggle{width:100%;background:#F0F5FB;border:1px solid #C8D9EE;border-radius:var(--radius-sm);padding:.85rem 1.1rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;font-size:.84rem;font-weight:700;color:var(--blue-dark);margin-top:1rem;transition:all .2s;gap:.5rem}
+        .mehr-toggle:hover{background:#D8E8F5;border-color:var(--blue)}
+        .mehr-toggle .arr{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--blue-dark);color:white;display:flex;align-items:center;justify-content:center;font-size:.6rem;transition:transform .3s}
+        .mehr-toggle.open .arr{transform:rotate(180deg)}
+        .mehr-toggle-icon{flex-shrink:0;opacity:.7}
+        .mehr-body{display:none;margin-top:.5rem}
+        .mehr-body.open{display:block}
 
-        /* STEP LIST */
-        .step-list{counter-reset:step}
-        .step-item{display:flex;gap:1rem;margin-bottom:1.25rem;align-items:flex-start}
-        .step-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--blue-dark);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
-        .step-content h4{font-family:'Quicksand',sans-serif;font-size:.92rem;font-weight:600;color:var(--blue-dark);margin-bottom:.2rem}
-        .step-content p{font-size:.84rem;color:var(--gray-600);line-height:1.55}
+        /* ── FAQ ── */
+        .faq-item{border-bottom:1px solid var(--gray-200);padding:1rem 0;cursor:pointer}
+        .faq-item:first-child{padding-top:0}
+        .faq-item:last-child{border-bottom:none}
+        .faq-q{font-family:"Quicksand",sans-serif;font-weight:600;font-size:.9rem;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:center}
+        .faq-a{font-size:.84rem;color:var(--gray-600);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding-top:0;line-height:1.6}
+        .faq-item.open .faq-a{max-height:600px;padding-top:.6rem}
+        .faq-arrow{transition:transform .3s;font-size:.7rem;color:#9B72CF}
+        .faq-item.open .faq-arrow{transform:rotate(180deg)}
 
-        /* PHYSIO ITEM */
-        .physio-item{display:flex;gap:14px;align-items:flex-start;padding:1rem 0;border-bottom:1px solid var(--gray-100)}
-        .physio-item:last-child{border-bottom:none}
-        .physio-icon{flex-shrink:0;width:40px;height:40px;border-radius:10px;background:var(--green-soft);border:1px solid var(--green-border);display:flex;align-items:center;justify-content:center}
-        .physio-icon svg{width:20px;height:20px;stroke:var(--green-text);fill:none;stroke-width:2}
-        .physio-title{font-family:'Quicksand',sans-serif;font-weight:600;font-size:.88rem;color:var(--green-text);margin-bottom:.2rem}
-        .physio-desc{font-size:.82rem;color:var(--gray-600);line-height:1.5}
+        /* ── QUIZ PROMINENT ── */
+        .quiz-cta-hero{background:#FDF8E8;border:1px solid #DFC96A;border-radius:var(--radius);padding:1.25rem 1.5rem;margin:2rem 0 0}
+        .quiz-cta-hero-label{display:inline-block;background:var(--gold);color:#1E2D4D;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:12px;margin-bottom:.6rem;letter-spacing:.03em}
+        .quiz-cta-hero h3{font-family:"Quicksand",sans-serif;font-size:1.05rem;font-weight:700;color:var(--blue-darker);margin-bottom:.35rem}
+        .quiz-cta-hero p{font-size:.84rem;color:var(--amber-text);line-height:1.5;margin-bottom:.9rem}
+        .quiz-start-btn{display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--blue-dark);border:1.5px solid var(--blue-dark);border-radius:8px;padding:.6rem 1.2rem;font-size:.84rem;font-weight:700;cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;transition:all .2s}
+        .quiz-start-btn:hover{background:var(--blue-dark);color:white}
+
+        /* ── QUIZ PANEL ── */
+        .quiz-panel{background:white;border:1px solid var(--gray-200);border-radius:var(--radius);margin-top:1.25rem;overflow:hidden;display:none}
+        .quiz-panel.open{display:block}
+        .quiz-panel-inner{padding:1.5rem}
+        .quiz-intro{font-size:.84rem;color:var(--gray-600);margin-bottom:1.25rem;line-height:1.55}
+        .quiz-q{margin-bottom:1rem}
+        .quiz-q-text{font-size:.87rem;font-weight:600;color:var(--gray-800);margin-bottom:.5rem}
+        .quiz-options{display:flex;gap:.6rem}
+        .quiz-opt{flex:1;padding:.55rem;border:1.5px solid var(--gray-200);border-radius:var(--radius-sm);text-align:center;font-size:.83rem;font-weight:600;cursor:pointer;transition:all .2s;background:white;color:var(--gray-600);font-family:"Plus Jakarta Sans",sans-serif}
+        .quiz-opt.yes.sel{background:#EEF4EA;border-color:#C8D9BE;color:#3d6b32}
+        .quiz-opt.no.sel{background:var(--gray-100);border-color:var(--gray-400);color:var(--gray-600)}
+        .quiz-result{display:none;border-radius:var(--radius-sm);padding:1rem 1.2rem;margin-top:.75rem}
+        .quiz-result.show{display:block}
+        .quiz-result.low{background:#EEF4EA;border:1px solid #C8D9BE}
+        .quiz-result.mid{background:var(--amber-soft);border:1px solid var(--amber-border)}
+        .quiz-result.high{background:var(--red-soft);border:1px solid var(--red-border)}
+        .quiz-result-title{font-family:"Quicksand",sans-serif;font-weight:600;font-size:.92rem;margin-bottom:.35rem}
+        .quiz-result.low .quiz-result-title{color:#3d6b32}
+        .quiz-result.mid .quiz-result-title{color:var(--amber-text)}
+        .quiz-result.high .quiz-result-title{color:var(--red-text)}
+        .quiz-result p{font-size:.83rem;color:var(--gray-600);line-height:1.55}
+        .quiz-cta-btn{display:none;width:100%;margin-top:.9rem;padding:.75rem;background:var(--blue-dark);color:white;border:none;border-radius:var(--radius-sm);font-weight:700;font-size:.88rem;cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;transition:background .2s}
+        .quiz-cta-btn.show{display:block}
+        .quiz-cta-btn:hover{background:var(--blue-darker)}
+        .quiz-reset-btn{display:none;background:none;border:none;color:var(--gray-400);font-size:.75rem;margin-top:.5rem;cursor:pointer;text-decoration:underline;font-family:"Plus Jakarta Sans",sans-serif}
+        .quiz-reset-btn.show{display:block}
+        .quiz-progress{display:flex;gap:4px;margin-bottom:1.25rem}
+        .quiz-dot{flex:1;height:4px;border-radius:2px;background:var(--gray-200);transition:background .3s}
+        .quiz-dot.done{background:var(--blue)}
     </style>
+    <script src="https://dr-flex.de/embed.js?medicalPracticeId=60190"></script>
 </head>
 <body>
+<header><div class="header-inner">
+<a href="index_ro.html"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJFYmVuZV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4OTEuODcgMTg1LjI2Ij48ZGVmcz48c3R5bGU+LmNscy0xLC5jbHMtMntzdHJva2Utd2lkdGg6MHB4O30uY2xzLTJ7ZmlsbDojMzc1MzhlO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im0xOS42NywxMDAuNzNjMCwxLjMsMCwyLjIzLDAsMy4xNSwwLDI2LjE5LDAsNTIuMzgsMCw3OC41N3EwLDIuODEtMi44MiwyLjgxYy00LjgsMC05LjYsMC0xNC4zOSwwSC4wNGMwLS45NCwwLTEuNjUsMC0yLjM2Qy4wNCwxMjIuNzMuMDUsNjIuNTUsMCwyLjM4LDAsLjQ3LjU5LjA0LDIuMzYuMDRjMzcuNzkuMDQsNzUuNTctLjE0LDExMy4zNi4xMiwxNC4yNC4xLDI3LjEzLDUuMDEsMzguNDgsMTMuNjgsMTMuMzcsMTAuMjEsMjIuMDQsMjMuOCwyNy44NSwzOS4zNyw1LjY0LDE1LjEyLDcuOTMsMzAuODEsNy4yNSw0Ni44Ni0uNzksMTguNjgtNS41MSwzNi4zMy0xNi4wMSw1Mi4wMi0xMS4xOCwxNi43MS0yNi43NCwyNy4wOS00Ni42NSwzMC4yNy03LjUyLDEuMi0xNS4yMywxLjM1LTIyLjg3LDEuNjQtMTQuMzEuNTUtMjguNjMuODUtNDIuOTQsMS4yNS0uNzIuMDItMS40NSwwLTIuNCwwLS4wNi0uODgtLjE2LTEuNjUtLjE2LTIuNDEsMC0yMS41MywwLTQzLjA1LDAtNjQuNTgsMC0yLjYyLjAxLTIuNjMsMi42Ny0yLjYzLDUuNCwwLDEwLjguMDYsMTYuMTktLjAzLDEuNzktLjAzLDIuMzkuNDYsMi4zNiwyLjM1LS4yMiwxNS4yNi0uMzMsMzAuNTItLjQ2LDQ1Ljc3LS4wMiwyLjUxLDAsMi40MywyLjU3LDIuMzcsNi43My0uMTQsMTMuNDYtLjA4LDIwLjE4LS4zMyw5Ljk4LS4zOCwxOS45NS0uODgsMjkuNTQtNC4xNiwxMC4xOS0zLjQ5LDE3Ljg1LTEwLjAxLDIzLjUzLTE5LjA2LDcuMzYtMTEuNzQsMTEuMzItMjQuNTgsMTIuOC0zOC4yOCwxLjgtMTYuNjUtLjAyLTMyLjgyLTYuMjgtNDguNC01LjI3LTEzLjExLTE0LjA4LTIzLjI2LTI2LjI4LTMwLjMzLTYuMTUtMy41Ni0xMi45My01LjM2LTIwLjA0LTUuMzgtMzAuODUtLjA3LTYxLjcxLS4wMy05Mi41Ni0uMDMtLjg1LDAtMS43LDAtMi42NywwdjYwLjM2Yy45LjA1LDEuNzMuMTMsMi41Ni4xMywyMi45MiwwLDQ1Ljg1LjA0LDY4Ljc3LS4wNSwyLjM1LDAsMy40Ny44NiwzLjk1LDIuOTUsMS4xMiw0LjgxLDEuMTksOS42Mi0uMDgsMTQuNDItLjUzLDIuMDEtMS43MiwyLjg0LTMuOTEsMi44NC0yMi43OS0uMDctNDUuNTgtLjA0LTY4LjM3LS4wNC0uOTIsMC0xLjgzLDAtMy4wNiwwWiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0ibTI4Ni43MSwxMDcuMWgtMTcuMzZWLjAyaDYwLjQzdjE0Ljc5aC00My4wN3YzMy40N2g0MC4zNnYxNC44N2gtNDAuMzZ2NDMuOTVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMzYyLjUyLDY0LjMzdjQyLjc3aC0xNy41MVYuMDJoMzAuMjVjMTMuODIsMCwyNC4wNSwyLjU5LDMwLjY5LDcuNzYsNi42NCw1LjE4LDkuOTYsMTIuOTksOS45NiwyMy40NCwwLDEzLjMzLTYuOTMsMjIuODMtMjAuOCwyOC40OWwzMC4yNSw0Ny4zOWgtMTkuOTJsLTI1LjYzLTQyLjc3aC0xNy4yOVptMC0xNC41aDEyLjE2YzguMTUsMCwxNC4wNi0xLjUxLDE3LjcyLTQuNTQsMy42Ni0zLjAzLDUuNDktNy41Miw1LjQ5LTEzLjQ4cy0xLjk4LTEwLjQtNS45My0xMy4wNC05LjkxLTMuOTYtMTcuODctMy45NmgtMTEuNTd2MzUuMDFaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNDY2LjA3LDQ4Ljg3TDQ5MS40MS4wMmgxOS4wNGwtMzUuNjcsNjUuNTV2NDEuNTNoLTE3LjU4di00MC45NEw0MjEuNjguMDJoMTkuMDRsMjUuMzQsNDguODVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjA5Ljc5LDUyLjUzYzAsMTcuNjgtNC45MSwzMS4xOS0xNC43Miw0MC41NC05LjgxLDkuMzUtMjMuOTUsMTQuMDMtNDIuNDEsMTQuMDNoLTI5Ljk2Vi4wMmgzMy4xMWMxNy4wNCwwLDMwLjMsNC41OSwzOS43NywxMy43Nyw5LjQ3LDkuMTgsMTQuMjEsMjIuMSwxNC4yMSwzOC43NVptLTE4LjQ2LjU5YzAtMjUuNjMtMTEuOTktMzguNDUtMzUuOTYtMzguNDVoLTE1LjE2djc3LjcxaDEyLjQ1YzI1Ljc4LDAsMzguNjctMTMuMDgsMzguNjctMzkuMjZaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjg5LjMzLDEwNy4xaC02MC41N1YuMDJoNjAuNTd2MTQuNzloLTQzLjA3djI5LjE1aDQwLjM2djE0LjY1aC00MC4zNnYzMy42Mmg0My4wN3YxNC44N1oiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im03OTcuNjQsMTA3LjFoLTIxLjQ2bC01Mi42Ni04NS4zM2gtLjU5bC4zNyw0Ljc2Yy42OCw5LjA0LDEuMDMsMTcuMzgsMS4wMywyNC45djU1LjY2aC0xNS44OVYuMDJoMjEuMjRsNTIuNTIsODQuODloLjQ0Yy0uMS0xLjEyLS4yOS01LjIxLS41OS0xMi4yNy0uMjktNy4wNi0uNDQtMTIuNTYtLjQ0LTE2LjUyVi4wMmgxNi4wNHYxMDcuMDhaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtODYwLjM4LDEwNy4xaC0xNy41VjE1LjAzaC0zMS40OVYuMDJoODAuNDl2MTUuMDFoLTMxLjQ5djkyLjA3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTI5Ny41NiwxODQuNzJoLTI4LjIxdi00LjQ4bDE5Ljg4LTI5LjQyaC0xOS4zNHYtNS41M2gyNy4xM3Y0LjUzbC0xOS45NiwyOS4zN2gyMC41djUuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzIyLjU3LDE4NC43MmwtMS4yNy00LjE1aC0uMjJjLTEuNDQsMS44Mi0yLjg5LDMuMDUtNC4zNCwzLjcxLTEuNDYuNjYtMy4zMy45OC01LjYxLjk4LTIuOTMsMC01LjIyLS43OS02Ljg2LTIuMzctMS42NS0xLjU4LTIuNDctMy44Mi0yLjQ3LTYuNzIsMC0zLjA3LDEuMTQtNS4zOSwzLjQyLTYuOTZzNS43Ni0yLjQyLDEwLjQ0LTIuNTZsNS4xNS0uMTZ2LTEuNTljMC0xLjkxLS40NC0zLjMzLTEuMzMtNC4yNy0uODktLjk0LTIuMjctMS40Mi00LjE0LTEuNDItMS41MywwLTIuOTkuMjItNC40LjY3LTEuNC40NS0yLjc1Ljk4LTQuMDUsMS41OWwtMi4wNS00LjUzYzEuNjItLjg1LDMuMzktMS40OSw1LjMxLTEuOTMsMS45Mi0uNDQsMy43NC0uNjYsNS40NS0uNjYsMy43OSwwLDYuNjYuODMsOC41OSwyLjQ4LDEuOTMsMS42NSwyLjksNC4yNSwyLjksNy43OXYyMC4wOWgtNC41M1ptLTkuNDQtNC4zMWMyLjMsMCw0LjE1LS42NCw1LjU0LTEuOTMsMS4zOS0xLjI5LDIuMDktMy4wOSwyLjA5LTUuNDF2LTIuNTlsLTMuODMuMTZjLTIuOTguMTEtNS4xNi42MS02LjUxLDEuNS0xLjM2Ljg5LTIuMDQsMi4yNS0yLjA0LDQuMDksMCwxLjMzLjM5LDIuMzYsMS4xOSwzLjA5Ljc5LjczLDEuOTgsMS4wOSwzLjU2LDEuMDlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzYxLjA4LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjYsMC00LjYxLjgtNS44NiwyLjM5LTEuMjUsMS41OS0xLjg4LDQuMjYtMS44OCw4djE0LjgxaC02LjM0di00MS45Nmg2LjM0djEwLjY1YzAsMS43MS0uMTEsMy41My0uMzIsNS40OGguNGMuODYtMS40NCwyLjA2LTIuNTUsMy42LTMuMzRzMy4zMy0xLjE5LDUuMzgtMS4xOWM3LjIzLDAsMTAuODQsMy42NCwxMC44NCwxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im0zOTUuMDYsMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQyMS4zNSwxODQuNzJsLTEuMjctNC4xNWgtLjIyYy0xLjQ0LDEuODItMi44OSwzLjA1LTQuMzQsMy43MXMtMy4zMy45OC01LjYxLjk4Yy0yLjkzLDAtNS4yMi0uNzktNi44Ni0yLjM3LTEuNjQtMS41OC0yLjQ3LTMuODItMi40Ny02LjcyLDAtMy4wNywxLjE0LTUuMzksMy40Mi02Ljk2czUuNzYtMi40MiwxMC40NC0yLjU2bDUuMTUtLjE2di0xLjU5YzAtMS45MS0uNDUtMy4zMy0xLjM0LTQuMjctLjg5LS45NC0yLjI3LTEuNDItNC4xNC0xLjQyLTEuNTMsMC0yLjk5LjIyLTQuNC42Ny0xLjQuNDUtMi43NS45OC00LjA0LDEuNTlsLTIuMDUtNC41M2MxLjYyLS44NSwzLjM5LTEuNDksNS4zMS0xLjkzLDEuOTItLjQ0LDMuNzQtLjY2LDUuNDUtLjY2LDMuNzksMCw2LjY2LjgzLDguNTksMi40OCwxLjkzLDEuNjUsMi45LDQuMjUsMi45LDcuNzl2MjAuMDloLTQuNTNabS0xNS41OS0zNy43M2MwLTEuMTEuMy0xLjkyLjktMi40MS42LS40OSwxLjMzLS43NCwyLjItLjc0Ljk1LDAsMS43MS4yOCwyLjI4Ljg0LjU3LjU2Ljg1LDEuMzMuODUsMi4zMnMtLjI5LDEuNzItLjg2LDIuMjljLS41Ny41OC0xLjMzLjg2LTIuMjcuODYtLjg2LDAtMS41OS0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3Wm02LjE1LDMzLjQxYzIuMywwLDQuMTUtLjY0LDUuNTQtMS45MywxLjM5LTEuMjksMi4wOS0zLjA5LDIuMDktNS40MXYtMi41OWwtMy44My4xNmMtMi45OS4xMS01LjE2LjYxLTYuNTEsMS41LTEuMzYuODktMi4wNCwyLjI1LTIuMDQsNC4wOSwwLDEuMzMuNCwyLjM2LDEuMTksMy4wOS43OS43MywxLjk4LDEuMDksMy41NiwxLjA5Wm00LjQ1LTMzLjQxYzAtMS4xMS4zLTEuOTIuOS0yLjQxLjYtLjQ5LDEuMzMtLjc0LDIuMi0uNzQuOTUsMCwxLjcyLjI4LDIuMjkuODQuNTcuNTYuODYsMS4zMy44NiwyLjMycy0uMywxLjc0LS44OSwyLjMxYy0uNTkuNTctMS4zNS44NS0yLjI3Ljg1LS44NiwwLTEuNi0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQ0OC43NiwxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNS4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTMsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDc3LjUxLDE4NC43MmgtMjIuNjN2LTMuOTFsMTUuMDctMjEuMDZoLTE0LjE2di00Ljg1aDIxLjI4djQuNDJsLTE0Ljc1LDIwLjU1aDE1LjE4djQuODVaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDk1LjM4LDE4MC4xNGMxLjU1LDAsMy4wOS0uMjQsNC42NC0uNzN2NC43N2MtLjcuMzEtMS42LjU2LTIuNzEuNzctMS4xLjIxLTIuMjUuMzEtMy40NC4zMS02LDAtOS4wMS0zLjE2LTkuMDEtOS40OXYtMTYuMDdoLTQuMDd2LTIuOGw0LjM3LTIuMzIsMi4xNi02LjMxaDMuOTF2Ni42M2g4LjQ5djQuOGgtOC40OXYxNS45N2MwLDEuNTMuMzgsMi42NiwxLjE1LDMuMzguNzYuNzMsMS43NywxLjA5LDMuMDEsMS4wOVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im01MTcuODIsMTg1LjI2Yy00LjY0LDAtOC4yNy0xLjM1LTEwLjg4LTQuMDZzLTMuOTItNi40My0zLjkyLTExLjE4LDEuMjEtOC43LDMuNjQtMTEuNDljMi40My0yLjc5LDUuNzYtNC4xOCwxMC4wMS00LjE4LDMuOTQsMCw3LjA1LDEuMiw5LjMzLDMuNTksMi4yOCwyLjM5LDMuNDMsNS42OCwzLjQzLDkuODd2My40M2gtMTkuODhjLjA5LDIuODkuODcsNS4xMiwyLjM1LDYuNjcsMS40NywxLjU2LDMuNTUsMi4zMyw2LjIzLDIuMzMsMS43NiwwLDMuNC0uMTcsNC45Mi0uNSwxLjUyLS4zMywzLjE1LS44OSw0Ljg5LTEuNjZ2NS4xNWMtMS41NS43NC0zLjExLDEuMjYtNC42OSwxLjU2LTEuNTguMzEtMy4zOS40Ni01LjQyLjQ2Wm0tMS4xNi0yNi4xMWMtMi4wMSwwLTMuNjMuNjQtNC44NCwxLjkxLTEuMjEsMS4yOC0xLjk0LDMuMTQtMi4xNyw1LjU4aDEzLjU0Yy0uMDQtMi40Ni0uNjMtNC4zMy0xLjc4LTUuNi0xLjE1LTEuMjctMi43My0xLjktNC43NS0xLjlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTUwLjU4LDE0N2MwLTEuMTMuMzEtMiwuOTMtMi42Mi42Mi0uNjEsMS41LS45MiwyLjY2LS45MnMxLjk4LjMxLDIuNi45Mi45MywxLjQ4LjkzLDIuNjItLjMxLDEuOTMtLjkzLDIuNTVjLS42Mi42Mi0xLjQ5LjkzLTIuNi45M3MtMi4wNC0uMzEtMi42Ni0uOTNjLS42Mi0uNjItLjkzLTEuNDctLjkzLTIuNTVabTYuNzIsMzcuNzNoLTYuMzR2LTI5LjgzaDYuMzR2MjkuODNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTkxLjQ2LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjgsMC00LjY0Ljc5LTUuODgsMi4zNy0xLjI0LDEuNTgtMS44Niw0LjIzLTEuODYsNy45NnYxNC44NmgtNi4zNHYtMjkuODNoNC45NmwuODksMy45MWguMzJjLjktMS40MiwyLjE4LTIuNTIsMy44My0zLjI5LDEuNjUtLjc3LDMuNDktMS4xNiw1LjUtMS4xNiw3LjE1LDAsMTAuNzMsMy42NCwxMC43MywxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im02MTUuMywxNDUuM2gxMS43YzUuNDMsMCw5LjM1Ljc5LDExLjc3LDIuMzcsMi40MiwxLjU4LDMuNjMsNC4wOCwzLjYzLDcuNSwwLDIuMy0uNTksNC4yMi0xLjc4LDUuNzQtMS4xOSwxLjUzLTIuODksMi40OS01LjEyLDIuODl2LjI3YzIuNzcuNTIsNC44MSwxLjU1LDYuMTEsMy4wOSwxLjMsMS41NCwxLjk1LDMuNjIsMS45NSw2LjI0LDAsMy41NC0xLjI0LDYuMzEtMy43MSw4LjMyLTIuNDcsMi01LjkxLDMuMDEtMTAuMzIsMy4wMWgtMTQuMjR2LTM5LjQzWm02LjQ1LDE2LjI5aDYuMmMyLjcsMCw0LjY3LS40Myw1LjkxLTEuMjgsMS4yNC0uODUsMS44Ni0yLjMxLDEuODYtNC4zNiwwLTEuODUtLjY3LTMuMTktMi4wMS00LjAycy0zLjQ3LTEuMjQtNi4zOC0xLjI0aC01LjU4djEwLjlabTAsNS4yM3YxMi40OWg2Ljg1YzIuNywwLDQuNzMtLjUyLDYuMTEtMS41NSwxLjM3LTEuMDMsMi4wNi0yLjY3LDIuMDYtNC44OSwwLTIuMDUtLjctMy41Ny0yLjEtNC41Ni0xLjQtLjk5LTMuNTMtMS40OC02LjM5LTEuNDhoLTYuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNjc2Ljg0LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDEtMi41LDIuNzMtNS45OCw0LjEtMTAuNDQsNC4xLTIuNzksMC01LjI1LS42My03LjM5LTEuODlzLTMuNzktMy4wNy00LjkzLTUuNDJjLTEuMTUtMi4zNS0xLjczLTUuMDktMS43My04LjIsMC00Ljg0LDEuMjQtOC42MSwzLjcyLTExLjMzLDIuNDgtMi43MSw1Ljk4LTQuMDcsMTAuNDktNC4wN3M3LjczLDEuMzksMTAuMjUsNC4xN2MyLjUyLDIuNzgsMy43OCw2LjUyLDMuNzgsMTEuMjNabS0yMS43MSwwYzAsNi44OSwyLjU0LDEwLjMzLDcuNjMsMTAuMzNzNy41NS0zLjQ0LDcuNTUtMTAuMzMtMi41NC0xMC4yMi03LjYxLTEwLjIyYy0yLjY2LDAtNC41OS44OC01Ljc0LDIuNjQtMS4yLDEuNzYtMS43OSw0LjI5LTEuNzksNy41OFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im03MDkuMzksMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTc0My4zNywxODQuNzJoLTYuMzZ2LTE4LjM0YzAtMi4zLS40Ni00LjAyLTEuMzktNS4xNS0uOTMtMS4xMy0yLjM5LTEuNy00LjQxLTEuNy0yLjY4LDAtNC42NC43OS01Ljg4LDIuMzctMS4yNCwxLjU4LTEuODYsNC4yMy0xLjg2LDcuOTZ2MTQuODZoLTYuMzR2LTI5LjgzaDQuOTZsLjg5LDMuOTFoLjMyYy45LTEuNDIsMi4xOC0yLjUyLDMuODMtMy4yOSwxLjY1LS43NywzLjQ5LTEuMTYsNS41LTEuMTYsNy4xNSwwLDEwLjczLDMuNjQsMTAuNzMsMTAuOTJ2MTkuNDRaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNzYxLjQzLDE4NS4yNmMtMy43MiwwLTYuNjMtMS4zNS04LjcxLTQuMDVzLTMuMTMtNi40OC0zLjEzLTExLjM1LDEuMDYtOC43LDMuMTctMTEuNDJjMi4xMS0yLjcyLDUuMDQtNC4wOSw4Ljc4LTQuMDlzNi45LDEuNDUsOC45NSw0LjM0aC4zMmMtLjMxLTIuMTQtLjQ2LTMuODMtLjQ2LTUuMDd2LTEwLjg3aDYuMzZ2NDEuOTZoLTQuOTZsLTEuMTEtMy45MWgtLjNjLTIuMDMsMi45Ny01LjAxLDQuNDUtOC45Myw0LjQ1Wm0xLjctNS4xMmMyLjYxLDAsNC41LS43Myw1LjY5LTIuMiwxLjE5LTEuNDcsMS44LTMuODQsMS44My03LjEzdi0uODljMC0zLjc2LS42MS02LjQzLTEuODMtOC4wMS0xLjIyLTEuNTgtMy4xNC0yLjM3LTUuNzQtMi4zNy0yLjIzLDAtMy45NS45LTUuMTUsMi43MS0xLjIsMS44MS0xLjgxLDQuMzgtMS44MSw3Ljczcy41OCw1LjgzLDEuNzUsNy41NmMxLjE3LDEuNzMsMi45MiwyLjYsNS4yNiwyLjZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODExLjI5LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDFzLTUuOTgsNC4xLTEwLjQ0LDQuMWMtMi43OSwwLTUuMjUtLjYzLTcuMzktMS44OXMtMy43OC0zLjA3LTQuOTMtNS40MmMtMS4xNS0yLjM1LTEuNzMtNS4wOS0xLjczLTguMiwwLTQuODQsMS4yNC04LjYxLDMuNzItMTEuMzMsMi40OC0yLjcxLDUuOTgtNC4wNywxMC40OS00LjA3czcuNzMsMS4zOSwxMC4yNSw0LjE3YzIuNTIsMi43OCwzLjc4LDYuNTIsMy43OCwxMS4yM1ptLTIxLjcxLDBjMCw2Ljg5LDIuNTQsMTAuMzMsNy42MywxMC4zM3M3LjU1LTMuNDQsNy41NS0xMC4zMy0yLjU0LTEwLjIyLTcuNjEtMTAuMjJjLTIuNjYsMC00LjU5Ljg4LTUuNzgsMi42NC0xLjIsMS43Ni0xLjc5LDQuMjktMS43OSw3LjU4WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTgzMi43MywxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNi4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTQsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODU3LjM4LDE1OS43aC03LjI4djI1LjAzaC02LjM2di0yNS4wM2gtNC45MXYtMi45N2w0LjkxLTEuOTR2LTEuOTRjMC0zLjUyLjgzLTYuMTQsMi40OC03LjgzLDEuNjUtMS43LDQuMTgtMi41NSw3LjU4LTIuNTUsMi4yMywwLDQuNDIuMzcsNi41OCwxLjExbC0xLjY3LDQuOGMtMS41Ni0uNS0zLjA2LS43Ni00LjQ0LS43NnMtMi40OS40NS0zLjE0LDEuMzNjLS42Ni44OS0uOTgsMi4yMy0uOTgsNC4wMXYxLjk0aDcuMjh2NC44WiIvPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iMjI3LjkxIiB5PSIwIiB3aWR0aD0iMyIgaGVpZ2h0PSIxODUuMjYiLz48L3N2Zz4=" alt="FRYDENT" class="logo-img"></a>
+<div class="header-right">
+<a href="index_ro.html" class="header-btn header-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span class="back-text">Înapoi la portal</span></a>
+<a href="javascript:toggleDrFlexAppointments()" class="header-btn header-termin">Programează-te</a>
+</div>
+</div></header>
 
-<header>
-    <div class="header-inner">
-        <a href="https://frydent.de/" target="_blank">
-            <img src="img/logo_blau.png" class="logo-img" alt="FRYDENT Logo">
-        </a>
-        <div class="header-right">
-            <a href="index.html" class="header-btn header-back">
-                <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-                <span class="back-text">Înapoi</span>
-            </a>
-            <a href="javascript:toggleDrFlexAppointments()" class="header-btn header-termin">Programează-te</a>
-        </div>
-    </div>
-</header>
-
-<!-- HERO -->
 <div class="hero">
-    <h1>Tulburări ale articulației temporomandibulare (CMD)</h1>
-    <div class="hero-divider"></div>
-    <p>Clicuri în articulație, dureri de cap, dureri de gât — CMD poate lua multe forme. Explicăm clar ce se ascunde în spatele acestora și cum vă putem ajuta.</p>
+<h1>Tulburări ale articulației temporomandibulare (CMD)</h1>
+<div class="hero-divider"></div>
+<p>Clicuri în articulație, dureri de cap, dureri de gât — CMD poate lua multe forme. Explicăm clar ce se află în spatele acestora.</p>
 </div>
 
 <main>
 
-<!-- TAB NAVIGATION -->
-<nav class="tab-nav">
-    <button class="tab-btn active" onclick="go('wascmd')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        Was ist CMD?
-    </button>
-    <button class="tab-btn" onclick="go('symptome')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Symptome
-    </button>
-    <button class="tab-btn" onclick="go('ursachen')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        Ursachen & Diagnose
-    </button>
-    <button class="tab-btn" onclick="go('schienen')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-        Schienentherapie
-    </button>
-    <button class="tab-btn" onclick="go('faq')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        Physio &amp; FAQ
-    </button>
-</nav>
+<!-- ══ TABS ══ -->
+<div class="tab-nav" style="margin-top:1.75rem">
+<button class="tab-btn active" onclick="go('was')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Ce este CMD?</button>
+<button class="tab-btn" onclick="go('ursachen')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>Cauze</button>
+<button class="tab-btn" onclick="go('diagnostik')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Diagnostic</button>
+<button class="tab-btn" onclick="go('schienen')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>Gutiere &amp; Costuri</button>
+<button class="tab-btn" onclick="go('behandlung')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Tratament &amp; FAQ</button>
+</div>
 
-<!-- ═══════════ SECTION 1: WAS IST CMD? ═══════════ -->
-<div class="tab-section active" id="s-wascmd">
-    <div class="section-title" style="margin-top:0">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        Ce înseamnă CMD?
-    </div>
-    <p class="section-sub">CMD este abrevierea de la Disfuncție Craniomandibulară — o tulburare funcțională a articulației temporomandibulare.</p>
+<!-- ══ QUIZ HERO (prominent, vor Tabs) ══ -->
+<div class="quiz-cta-hero">
+    <div style="font-size:.78rem;font-weight:700;color:var(--blue-dark);margin-bottom:.5rem">&#10003; Test de 30 de secunde</div>
+    <h3>Durerea de cap începe în gură?</h3>
+    <p>5 întrebări scurte — să verificăm împreună dacă CMD v-ar putea privi.</p>
+    <button class="quiz-start-btn" onclick="openQuiz()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        Test starten
+    </button>
+</div>
 
-    <div class="anatomy-box">
-        <div class="anatomy-title">Articulația temporomandibulară — o articulație de înaltă performanță</div>
-        <p class="anatomy-text">Articulația temporomandibulară leagă mandibula de craniu. Este articulația cel mai intens solicitată din organism — se mișcă de mii de ori pe zi în timpul vorbirii, masticației și deglutiției. Articulația conține un disc cartilaginos — discul articular — care funcționează ca amortizor. Când interacțiunea dintre dinți, mușchi și articulații este perturbată, apare CMD.</p>
-    </div>
-
-    <div class="card">
-        <div class="card-title">Ce se întâmplă în CMD?</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Der Begriff CMD fasst verschiedene Störungen des Kauapparates zusammen: Funktionsstörungen der Kiefergelenke, Veränderungen der Gelenkscheibe, Tensiune în mușchii masticatori sowie Fehlstellungen der Zähne. Diese Störungen können einzeln oder in Kombination auftreten und sich gegenseitig verstärken.</p>
-        <div class="card" style="background:var(--gray-50);border:none;padding:.9rem 1rem;margin-top:1rem;margin-bottom:0">
-            <div style="display:flex;gap:1.25rem;flex-wrap:wrap">
-                <div style="font-size:.82rem;color:var(--gray-700)"><strong style="color:var(--blue-dark)">CMD musculară</strong><br>Tensiune în mușchii masticatori</div>
-                <div style="font-size:.82rem;color:var(--gray-700)"><strong style="color:var(--blue-dark)">CMD articulară</strong><br>Modificări articulare, deplasarea discului</div>
-                <div style="font-size:.82rem;color:var(--gray-700)"><strong style="color:var(--blue-dark)">Kombiniert</strong><br>Frecvent ambele forme simultan</div>
-            </div>
+<div class="quiz-panel" id="quizPanel">
+    <div class="quiz-panel-inner">
+        <div class="quiz-progress">
+            <div class="quiz-dot" id="qd0"></div><div class="quiz-dot" id="qd1"></div>
+            <div class="quiz-dot" id="qd2"></div><div class="quiz-dot" id="qd3"></div>
+            <div class="quiz-dot" id="qd4"></div>
         </div>
-    </div>
-
-    <div class="card card-amber">
-        <div class="card-title">Cât de frecventă este CMD?</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Conform estimărilor, 3 până la 12% din populație suferă de tulburări CMD care necesită tratament — femeile mai frecvent decât bărbații. Viele Betroffene wissen nicht, dass ihre Kopfschmerzen, ihr Tinnitus oder ihre Nackenschmerzen mit dem Kiefer zusammenhängen könnten. CMD bleibt daher oft über Jahre unerkannt.</p>
-    </div>
-
-    <div class="card card-green">
-        <div class="card-title">Vestea bună</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">CMD se tratează bine. În cele mai multe cazuri nu sunt necesare intervenții chirurgicale. Mit einer kombinierten Behandlung aus Schienentherapie und Physiotherapie lassen sich deutliche und dauerhafte Verbesserungen erzielen — vorausgesetzt, die Ursachen werden erkannt und konsequent behandelt.</p>
-    </div>
-
-    <div class="nav-arrows">
-        <button class="nav-arrow prev" disabled>← Zurück</button>
-        <button class="nav-arrow next" onclick="go('symptome')">Weiter →</button>
+        <div class="quiz-q" data-q="0"><div class="quiz-q-text">1. H&ouml;ren Sie Knack- oder Reibeger&auml;usche in Ihrem Kiefer?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(0,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(0,'nein')">Nein</button></div></div>
+        <div class="quiz-q" data-q="1"><div class="quiz-q-text">2. Haben Sie h&auml;ufige Kopfschmerzen oder Nackenverspannungen?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(1,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(1,'nein')">Nein</button></div></div>
+        <div class="quiz-q" data-q="2"><div class="quiz-q-text">3. Wachen Sie morgens mit einem m&uuml;den oder verspannten Kiefer auf?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(2,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(2,'nein')">Nein</button></div></div>
+        <div class="quiz-q" data-q="3"><div class="quiz-q-text">4. Haben Sie Schmerzen beim Kauen oder beim weit &Ouml;ffnen des Mundes?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(3,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(3,'nein')">Nein</button></div></div>
+        <div class="quiz-q" data-q="4"><div class="quiz-q-text">5. Wurden Ihnen schon abgeschliffene Z&auml;hne oder Knirschen festgestellt?</div><div class="quiz-options"><button class="quiz-opt yes" onclick="answer(4,'ja')">Ja</button><button class="quiz-opt no" onclick="answer(4,'nein')">Nein</button></div></div>
+        <div class="quiz-result low" id="qResultLow"><div class="quiz-result-title">Puține indicii pentru CMD</div><p>Ihre Antworten zeigen kaum typische CMD-Muster. Bei anhaltenden Beschwerden sprechen Sie uns gerne an.</p></div>
+        <div class="quiz-result mid" id="qResultMid"><div class="quiz-result-title">Unele indicii prezente</div><p>Einige Ihrer Antworten k&ouml;nnten auf CMD hinweisen. Ein kurzes Gespr&auml;ch in unserer Praxis kann Klarheit bringen.</p></div>
+        <div class="quiz-result high" id="qResultHigh"><div class="quiz-result-title">Mai multe semne tipice de CMD</div><p>Ihre Antworten zeigen mehrere typische CMD-Muster. Wir schauen gemeinsam, was f&uuml;r Sie sinnvoll ist.</p></div>
+        <button class="quiz-cta-btn" id="quizCta" onclick="toggleDrFlexAppointments()">Programați-vă &rarr;</button>
+        <button class="quiz-reset-btn" id="quizReset" onclick="resetQuiz()">Repetați testul</button>
     </div>
 </div>
 
-<!-- ═══════════ SECTION 2: SYMPTOME ═══════════ -->
-<div class="tab-section" id="s-symptome">
-    <div class="section-title" style="margin-top:0">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Simptome — complexe și adesea nerecunoscute
+<!-- TAB 1: WAS IST CMD -->
+<div class="tab-section active" id="s-was">
+    <div class="section-title" style="margin-top:1.75rem">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+        Ce este CMD?
     </div>
-    <p class="section-sub">CMD nu se manifestă întotdeauna ca durere de maxilar. Multe simptome apar departe de maxilar.</p>
+    <div class="card card-blue">
+        <p>Das Kiefergelenk arbeitet t&auml;glich viele Stunden &mdash; beim Sprechen, Kauen, Schlucken. Wenn Z&auml;hne, Muskulatur und Gelenk nicht harmonisch zusammenarbeiten, kann es zu Beschwerden kommen. Dieses Zusammenspiel nennt man CMD &mdash; craniomandibuläre Dysfunktion.</p>
+    </div>
 
-    <div class="hint">CMD wird häufig nicht erkannt, weil die Beschwerden auf den ersten Blick nichts mit den Zähnen zu tun haben. Neurologen, HNO-Ärzte und Orthopäden behandeln oft nur die Symptome — die Ursache am Kiefer bleibt dabei unentdeckt.</div>
-
-    <div class="card">
-        <div class="card-title">Simptome principale — direct la nivelul maxilarului</div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#3D5A98"></div>
-            <div>
-                <div class="symptom-title">Durere în articulația temporomandibulară</div>
-                <div class="symptom-desc">Dumpfe, beständige oder belastungsabhängige Schmerzen in einem oder beiden Kiefergelenken — in Ruhe oder beim Kauen.</div>
+    <button class="mehr-toggle" onclick="toggleMehr(this)">
+        <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span style="flex:1;text-align:left">Genauere Erkl&auml;rung: Wie funktioniert das Kiefergelenk?</span>
+        <span class="arr">&#9660;</span>
+    </button>
+    <div class="mehr-body">
+        <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
+            <div class="card-title">Das Kiefergelenk &mdash; ein Hochleistungsgelenk</div>
+            <p style="font-size:.85rem;color:var(--gray-600);line-height:1.65;margin-bottom:.75rem">Das Kiefergelenk verbindet den Unterkiefer mit dem Sch&auml;del. Es ist das am st&auml;rksten beanspruchte Gelenk des K&ouml;rpers &mdash; beim Sprechen, Kauen und Schlucken bewegt es sich tausende Male t&auml;glich. Im Gelenk liegt eine Knorpelscheibe, der sogenannte Diskus, die als Puffer dient.</p>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:.75rem">
+                <div style="flex:1;min-width:140px;background:var(--blue-light);border-radius:8px;padding:.75rem 1rem">
+                    <div style="font-weight:700;font-size:.83rem;color:var(--blue-dark);margin-bottom:.3rem">Muskul&auml;re CMD</div>
+                    <div style="font-size:.8rem;color:var(--gray-600)">Verspannungen der Kaumuskulatur</div>
+                </div>
+                <div style="flex:1;min-width:140px;background:var(--blue-light);border-radius:8px;padding:.75rem 1rem">
+                    <div style="font-weight:700;font-size:.83rem;color:var(--blue-dark);margin-bottom:.3rem">Artikul&auml;re CMD</div>
+                    <div style="font-size:.8rem;color:var(--gray-600)">Gelenkver&auml;nderungen, Diskusverlagerung</div>
+                </div>
             </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#3D5A98"></div>
-            <div>
-                <div class="symptom-title">Clicuri și sunete de frecare</div>
-                <div class="symptom-desc">Hörbare Geräusche beim Öffnen oder Schließen des Mundes — oft ein Zeichen für eine Verlagerung der Gelenkscheibe (Diskus).</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#3D5A98"></div>
-            <div>
-                <div class="symptom-title">Deschiderea limitată a gurii</div>
-                <div class="symptom-desc">Der Mund lässt sich nicht mehr vollständig oder problemlos öffnen — manchmal verbunden mit einer seitlichen Abweichung des Unterkiefers.</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#3D5A98"></div>
-            <div>
-                <div class="symptom-title">Tensionarea mușchilor masticatori</div>
-                <div class="symptom-desc">Verhärtungen und Druckschmerz der Schläfen- und Kaumuskeln, oft morgens nach dem Aufwachen besonders ausgeprägt.</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#3D5A98"></div>
-            <div>
-                <div class="symptom-title">Dinți abraziați</div>
-                <div class="symptom-desc">Erkennbarer Zahnabrieb (Schlifffacetten), Verlust der Schneidekanten und empfindliche Zähne — Hinweis auf nächtliches Knirschen (Bruxismus).</div>
-            </div>
+            <p style="font-size:.82rem;color:var(--gray-500);margin-top:.75rem">Sch&auml;tzungen zufolge leiden 3&ndash;12&thinsp;% der Bev&ouml;lkerung an behandlungsbed&uuml;rftigen CMD-Beschwerden. Viele Betroffene wissen nicht, dass ihre Kopfschmerzen oder ihr Tinnitus mit dem Kiefer zusammenh&auml;ngen k&ouml;nnten.</p>
         </div>
     </div>
 
     <div class="section-title">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        Simptome asociate — semnale ale corpului
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Cum îmi dau seama?
     </div>
-    <p class="section-sub">Diese Beschwerden entstehen durch die engen Verbindungen zwischen Kiefergelenk, Nerven, Muskeln und Faszien des gesamten Körpers.</p>
-
+    <p class="section-sub">Beschwerden k&ouml;nnen sehr unterschiedlich sein &mdash; nicht alle treten gleichzeitig auf.</p>
     <div class="card">
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#C4A44E"></div>
-            <div>
-                <div class="symptom-title">Cefalee de tensiune și migrenă</div>
-                <div class="symptom-desc">Chronisch verspannte Kaumuskeln können Kopfschmerzen auslösen, die sich von den Schläfen bis in den Hinterkopf ziehen. Sie werden oft als Migräne fehlgedeutet.</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#C4A44E"></div>
-            <div>
-                <div class="symptom-title">Otalgie și tinitus</div>
-                <div class="symptom-desc">Das Kiefergelenk liegt in unmittelbarer Nähe zum Ohr. Schmerzen, Druck oder Klingeln im Ohr ohne medizinische Ursache können ein CMD-Signal sein.</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#C4A44E"></div>
-            <div>
-                <div class="symptom-title">Dureri de gât și umeri</div>
-                <div class="symptom-desc">Durch die enge muskuläre Verbindung zwischen Kiefer- und Nackenmuskulatur können CMD-Verspannungen weit in den Rücken ausstrahlen.</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#C4A44E"></div>
-            <div>
-                <div class="symptom-title">Amețeli și tulburări de vedere</div>
-                <div class="symptom-desc">Seltener, aber möglich: Gleichgewichtsstörungen oder Sehprobleme, die durch die Nähe des Kiefergelenks zu sensiblen Nerven- und Muskelstrukturen entstehen.</div>
-            </div>
-        </div>
-        <div class="symptom-item">
-            <div class="symptom-dot" style="background:#C4A44E"></div>
-            <div>
-                <div class="symptom-title">Tulburări de somn și oboseală</div>
-                <div class="symptom-desc">Nächtliches Zähneknirschen und der damit verbundene Muskelstress unterbrechen den Schlaf — oft ohne dass Betroffene es bemerken.</div>
-            </div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Kieferknacken oder Reiben</div><div class="symptom-desc">H&ouml;rbare Ger&auml;usche beim &Ouml;ffnen oder Schlie&szlig;en des Mundes &mdash; oft ein Zeichen f&uuml;r eine Verlagerung der Gelenkscheibe.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Schmerzen im Kiefer oder im Gesicht</div><div class="symptom-desc">Dumpfe oder belastungsabh&auml;ngige Schmerzen &mdash; in Ruhe oder beim Kauen.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Verspannungen im Nacken oder in den Schultern</div><div class="symptom-desc">Durch enge muskul&auml;re Verbindungen kann der Kiefer auf den R&uuml;cken ausstrahlen.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Kopfschmerzen oder Migr&auml;ne</div><div class="symptom-desc">Chronisch verspannte Kaumuskeln k&ouml;nnen Kopfschmerzen ausl&ouml;sen &mdash; die oft als Migr&auml;ne fehlgedeutet werden.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Z&auml;hneknirschen oder Pressen</div><div class="symptom-desc">Oft nachts &mdash; sichtbar an abgeschliffenen Z&auml;hnen (Schlifffacetten) und empfindlichen Z&auml;hnen.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Eingeschr&auml;nkte Mund&ouml;ffnung</div><div class="symptom-desc">Der Mund l&auml;sst sich nicht mehr vollst&auml;ndig &ouml;ffnen &mdash; manchmal mit seitlicher Abweichung des Unterkiefers.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">Druckgef&uuml;hl im Ohr oder Ohrger&auml;usche</div><div class="symptom-desc">Das Kiefergelenk liegt in unmittelbarer N&auml;he zum Ohr &mdash; Schmerz, Druck oder Klingeln ohne medizinische Ursache kann ein CMD-Signal sein.</div></div></div>
+        <div class="symptom-item"><div class="symptom-dot" style="background:#5a7da8"></div><div><div class="symptom-title">M&uuml;digkeit der Kaumuskulatur</div><div class="symptom-desc">Die Kaumuskeln f&uuml;hlen sich schon morgens ersch&ouml;pft oder schwer an.</div></div></div>
+    </div>
+
+    <button class="mehr-toggle" onclick="toggleMehr(this)">
+        <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span style="flex:1;text-align:left">Weitere Begleitsymptome (Schwindel, Tinnitus, Schlaf&hellip;)</span>
+        <span class="arr">&#9660;</span>
+    </button>
+    <div class="mehr-body">
+        <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
+            <div style="font-size:.82rem;color:var(--gray-500);margin-bottom:.75rem">Diese Beschwerden entstehen durch enge Verbindungen zwischen Kiefergelenk, Nerven, Muskeln und Faszien des gesamten K&ouml;rpers.</div>
+            <div class="symptom-item"><div class="symptom-dot" style="background:#9B72CF"></div><div><div class="symptom-title">Ohren&shy;schmerzen &amp; Tinnitus</div><div class="symptom-desc">Schmerzen, Druck oder Klingeln im Ohr ohne medizinische Ursache &mdash; h&auml;ufig &uuml;bersehenes CMD-Signal.</div></div></div>
+            <div class="symptom-item"><div class="symptom-dot" style="background:#9B72CF"></div><div><div class="symptom-title">Schwindel &amp; Sehst&ouml;rungen</div><div class="symptom-desc">Selten, aber m&ouml;glich durch die N&auml;he des Kiefergelenks zu sensiblen Nerven- und Muskelstrukturen.</div></div></div>
+            <div class="symptom-item"><div class="symptom-dot" style="background:#9B72CF"></div><div><div class="symptom-title">Schlafst&ouml;rungen &amp; Ersch&ouml;pfung</div><div class="symptom-desc">N&auml;chtliches Z&auml;hneknirschen und der damit verbundene Muskelstress unterbrechen den Schlaf &mdash; oft unbemerkt.</div></div></div>
         </div>
     </div>
 
-    <div class="hint">
-        <strong>Când la stomatolog?</strong> Suchen Sie uns auf, wenn Sie mehrere dieser Beschwerden gleichzeitig haben — besonders wenn sie nach dem Aufwachen stärker sind oder beim Kauen zunehmen. Ihr erster Ansprechpartner bei Kiefergelenksbeschwerden ist immer der Zahnarzt.
-    </div>
-
+    <div class="hint" style="margin-top:1.5rem">CMD wird oft nicht erkannt, weil die Beschwerden auf den ersten Blick nichts mit den Z&auml;hnen zu tun haben. Ihr erster Ansprechpartner ist der Zahnarzt.</div>
     <div class="nav-arrows">
-        <button class="nav-arrow prev" onclick="go('wascmd')">← Zurück</button>
-        <button class="nav-arrow next" onclick="go('ursachen')">Weiter →</button>
+        <button class="nav-arrow prev" disabled>&larr; Înapoi</button>
+        <button class="nav-arrow next" onclick="go('ursachen')">Înainte &rarr;</button>
     </div>
 </div>
 
-<!-- ═══════════ SECTION 3: URSACHEN & DIAGNOSE ═══════════ -->
+<!-- TAB 2: URSACHEN -->
 <div class="tab-section" id="s-ursachen">
     <div class="section-title" style="margin-top:0">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        Cauze — un fenomen multifactorial
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        Warum entstehen diese Probleme?
     </div>
-    <p class="section-sub">CMD entsteht selten aus einer einzigen Ursache. Meistens wirken mehrere Faktoren zusammen.</p>
-
+    <p class="section-sub">Oft gibt es nicht nur eine Ursache &mdash; mehrere Faktoren spielen zusammen.</p>
     <div class="card">
-        <div class="therapy-feature">
-            <div class="therapy-icon">
-                <svg viewBox="0 0 24 24"><path d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/></svg>
-            </div>
-            <div>
-                <div class="therapy-title">Bruxism — scrâșnit și strâns din dinți</div>
-                <div class="therapy-desc">Die häufigste Ursache. Viele Menschen knirschen oder pressen unbewusst nachts — oft verstärkt durch Stress. Der Druck auf Zähne, Muskeln und Gelenke übersteigt dabei das Vielfache normaler Kaubelastung. Bruxismus ist gleichzeitig Ursache und Symptom von CMD.</div>
-            </div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="therapy-title">Fehlkontakte im Biss</div><div class="therapy-desc">Ungleichm&auml;&szlig;ige Belastung beim Zusammenbei&szlig;en zwingt Kiefergelenk und Muskeln in eine Fehlhaltung.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><div class="therapy-title">Z&auml;hneknirschen oder Pressen (Bruxismus)</div><div class="therapy-desc">H&auml;ufigste Ursache. Viele Menschen knirschen unbewusst nachts &mdash; oft verst&auml;rkt durch Stress. Bruxismus ist gleichzeitig Ursache und Symptom von CMD.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="therapy-title">Stress und innere Anspannung</div><div class="therapy-desc">Emotionaler Stress f&uuml;hrt zu erh&ouml;hter Muskelanspannung &mdash; tagsüber wie nachts, bewusst und unbewusst.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div><div class="therapy-title">Fehlhaltungen im Alltag</div><div class="therapy-desc">Kiefer und Wirbels&auml;ule sind &uuml;ber das muskulo-fasziale System verbunden &mdash; Haltungsprobleme k&ouml;nnen das Kiefergelenk beeinflussen.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div><div><div class="therapy-title">&Uuml;berlastung der Muskulatur</div><div class="therapy-desc">Einseitige Belastungen oder Parafunktionen ersch&ouml;pfen die Kaumuskulatur &uuml;ber Zeit.</div></div></div>
+    </div>
+
+    <button class="mehr-toggle" onclick="toggleMehr(this)">
+        <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span style="flex:1;text-align:left">Weitere Ausl&ouml;ser: Hormone, Genetik, Grunderkrankungen&hellip;</span>
+        <span class="arr">&#9660;</span>
+    </button>
+    <div class="mehr-body">
+        <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
+            <p style="font-size:.84rem;color:var(--gray-600);line-height:1.65">Verletzungen des Kiefergelenks (z.&thinsp;B. durch Unf&auml;lle), genetische Faktoren, Hormonschwankungen, Schlafst&ouml;rungen sowie Grunderkrankungen wie Arthrose oder rheumatische Erkrankungen k&ouml;nnen ebenfalls zu CMD beitragen.</p>
         </div>
-        <div class="therapy-feature">
-            <div class="therapy-icon">
-                <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            </div>
-            <div>
-                <div class="therapy-title">Stres și sarcină psihologică</div>
-                <div class="therapy-desc">Emotionaler Stress führt zu erhöhter Muskelanspannung im Kiefer- und Nackenbereich. Viele Menschen pressen unwillkürlich die Zähne zusammen — nicht nur nachts, sondern auch tagsüber unter Anspannung.</div>
-            </div>
+    </div>
+
+    <div class="section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0M12 8v4M12 16h.01"/></svg>
+        Zusammenhang mit dem ganzen K&ouml;rper
+    </div>
+    <div class="card card-warm">
+        <p>Kiefer, Muskulatur und Wirbels&auml;ule sind eng miteinander verbunden. Verspannungen im Kiefer k&ouml;nnen sich auf Nacken und R&uuml;cken &uuml;bertragen &mdash; und umgekehrt k&ouml;nnen Haltungsprobleme das Kiefergelenk beeinflussen. Auch Becken- oder H&uuml;ftfehlstellungen k&ouml;nnen &uuml;ber diese Kette CMD beg&uuml;nstigen.</p>
+        <p style="margin-top:.75rem">Der K&ouml;rper reagiert als Ganzes. Deshalb betrachten wir die Situation immer ganzheitlich.</p>
+    </div>
+    <div class="nav-arrows">
+        <button class="nav-arrow prev" onclick="go('was')">&larr; Înapoi</button>
+        <button class="nav-arrow next" onclick="go('diagnostik')">Înainte &rarr;</button>
+    </div>
+</div>
+
+<!-- TAB 3: DIAGNOSTIK -->
+<div class="tab-section" id="s-diagnostik">
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        Unsere Diagnostik
+    </div>
+    <p class="section-sub">Wir nehmen uns Zeit f&uuml;r eine genaue Analyse &mdash; ohne Hast.</p>
+    <div class="card">
+        <div class="step-list">
+            <div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Gespr&auml;ch &uuml;ber Beschwerden und Gewohnheiten</h4><p>Schlafqualit&auml;t, Stress, bisherige Behandlungen, Lebensalltag &mdash; wir h&ouml;ren zu.</p></div></div>
+            <div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Untersuchung der Kiefergelenke</h4><p>Beurteilung der Beweglichkeit, Feststellung von Ger&auml;uschen, Messung der maximalen Mund&ouml;ffnung.</p></div></div>
+            <div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Palpation der Kaumuskulatur</h4><p>Wir tasten Kau-, Schl&auml;fen- und Nackenmuskulatur auf Verh&auml;rtungen und empfindliche Druckpunkte (Triggerpunkte) ab.</p></div></div>
+            <div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Okklusionsanalyse</h4><p>&Uuml;berpr&uuml;fung der Zahnkontakte im Schlussbiss und bei Bewegungen &mdash; Vorkontakte und St&ouml;rkontakte k&ouml;nnen so erkannt werden.</p></div></div>
         </div>
-        <div class="therapy-feature">
-            <div class="therapy-icon">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            </div>
-            <div>
-                <div class="therapy-title">Malocluzii și tulburări de ocluzie</div>
-                <div class="therapy-desc">Ein „falscher Biss" — also eine ungleichmäßige Belastung beim Zusammenbeißen — zwingt Kiefergelenk und Kaumuskulatur in eine Fehlhaltung. Fehlende Zähne, schlecht sitzender Zahnersatz oder kieferorthopädische Veränderungen können ebenfalls eine CMD begünstigen.</div>
-            </div>
+    </div>
+
+    <button class="mehr-toggle" onclick="toggleMehr(this)">
+        <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span style="flex:1;text-align:left">Erweiterte Diagnostik bei Bedarf (R&ouml;ntgen, Artikulator, MRT&hellip;)</span>
+        <span class="arr">&#9660;</span>
+    </button>
+    <div class="mehr-body">
+        <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
+            <p style="font-size:.84rem;color:var(--gray-600);line-height:1.65">Je nach Befund erg&auml;nzen wir die Diagnose: digitales R&ouml;ntgen zur Beurteilung des Kieferknochens, bei komplexen F&auml;llen eine instrumentelle Funktionsanalyse im Artikulator (Kausimulator), oder &mdash; bei Verdacht auf strukturelle Gelenkver&auml;nderungen &mdash; eine MRT-&Uuml;berweisung an spezialisierte Radiologen.</p>
         </div>
-        <div class="therapy-feature">
-            <div class="therapy-icon">
-                <svg viewBox="0 0 24 24"><path d="M16 12a4 4 0 01-8 0 4 4 0 018 0z"/><path d="M12 2v1M12 21v1M4.22 4.22l.71.71M19.07 19.07l.71.71M2 12h1M21 12h1M4.22 19.78l.71-.71M19.07 4.93l.71-.71"/></svg>
+    </div>
+
+    <div class="hint" style="margin-top:1.5rem">Bei Bedarf beziehen wir weitere Fachbereiche mit ein &mdash; Physiotherapie, Orthop&auml;die, HNO. Wir schauen gemeinsam, was sinnvoll ist.</div>
+    <div class="nav-arrows">
+        <button class="nav-arrow prev" onclick="go('ursachen')">&larr; Înapoi</button>
+        <button class="nav-arrow next" onclick="go('schienen')">Înainte &rarr;</button>
+    </div>
+</div>
+
+<!-- TAB 4: SCHIENEN & KOSTEN -->
+<div class="tab-section" id="s-schienen">
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+        Schienentherapie
+    </div>
+    <div class="card card-blue">
+        <div class="card-title">Was macht eine Schiene?</div>
+        <p>Eine individuell angepasste Schiene kann das Kiefergelenk entlasten. Sie sch&uuml;tzt die Z&auml;hne vor Abrieb, reduziert Druck auf Muskulatur und Gelenk und kann Fehlbelastungen ausgleichen. Welche Variante sinnvoll ist, entscheiden wir gemeinsam. Eine Schiene ist keine schnelle Standardl&ouml;sung &mdash; sie wird angepasst und regelm&auml;&szlig;ig kontrolliert.</p>
+    </div>
+
+    <div class="section-title">Welche Schienen gibt es?</div>
+    <div class="card">
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="therapy-title">Entspannungsschienen</div><div class="therapy-desc">Bei Knirschen und Pressen &mdash; reduziert &Uuml;beraktivit&auml;t der Kaumuskulatur und sch&uuml;tzt die Zahnhartsubstanz.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div><div><div class="therapy-title">Stabilisierungsschienen</div><div class="therapy-desc">Zur F&uuml;hrung des Bisses &mdash; bringt den Unterkiefer in eine harmonische, muskelf&uuml;hrte Position.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="therapy-title">Individuelle Funktionsschienen</div><div class="therapy-desc">Bei komplexeren Beschwerden &mdash; z.&thinsp;B. bei Diskusverlagerung oder mehrstufiger Bissrehabilitation.</div></div></div>
+    </div>
+
+    <button class="mehr-toggle" onclick="toggleMehr(this)">
+        <svg class="mehr-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span style="flex:1;text-align:left">Detaillierte Schienentypen: Michigan, Relaxation, Reposition, Weich&hellip;</span>
+        <span class="arr">&#9660;</span>
+    </button>
+    <div class="mehr-body">
+        <div class="card" style="margin-top:0;border-top-left-radius:0;border-top-right-radius:0;border-top:none">
+            <div class="nachsorge-item">
+                <div class="nachsorge-icon" style="background:var(--blue-light)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <div><div class="symptom-title">Michigan-Schiene (Equilibrierungsschiene)</div><div class="symptom-desc">Am h&auml;ufigsten eingesetzte Aufbissschiene. Hartes Kunststoff, individuell f&uuml;r den Oberkiefer gefertigt und im Artikulator eingestellt. Besonders geeignet bei muskul&auml;ren CMD-Beschwerden und Bruxismus.</div></div>
             </div>
-            <div>
-                <div class="therapy-title">Postura și factori musculoscheletici</div>
-                <div class="therapy-desc">Kiefergelenk und Wirbelsäule sind über das muskulofasziale System verbunden. Eine Fehlhaltung der Halswirbelsäule kann auf den Kiefer rückwirken — und umgekehrt. Auch Becken- oder Hüftfehlstellungen können über diese Kette CMD begünstigen.</div>
+            <div class="nachsorge-item">
+                <div class="nachsorge-icon" style="background:#EEF4EA"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3d6b32" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg></div>
+                <div><div class="symptom-title">Relaxationsschiene / Reflexschiene</div><div class="symptom-desc">Kleines frontales Plateau hebt Seitenzahnkontakte auf &mdash; unterbricht parafunktionelle Aktivit&auml;ten. Gut bei Muskelverspannungen durch Stress. Nur f&uuml;r kurze Zeitr&auml;ume.</div></div>
             </div>
-        </div>
-        <div class="therapy-feature">
-            <div class="therapy-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <div class="nachsorge-item">
+                <div class="nachsorge-icon" style="background:var(--amber-soft)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--amber-text)" stroke-width="2"><path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></div>
+                <div><div class="symptom-title">Repositionsschiene / Positionierungsschiene</div><div class="symptom-desc">F&uuml;hrt den Unterkiefer aktiv in eine therapeutische Position (leicht nach vorne). Bei Diskusverlagerungen &mdash; erfordert pr&auml;zise Diagnose, da langfristige Bissver&auml;nderung m&ouml;glich.</div></div>
             </div>
-            <div>
-                <div class="therapy-title">Alți factori declanșatori</div>
-                <div class="therapy-desc">Verletzungen des Kiefergelenks (z. B. durch Unfälle), genetische Faktoren, Hormonschwankungen, Schlafstörungen sowie Grunderkrankungen wie Arthrose oder rheumatische Erkrankungen können ebenfalls zu CMD beitragen.</div>
+            <div class="nachsorge-item">
+                <div class="nachsorge-icon" style="background:var(--gray-100)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gray-600)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
+                <div><div class="symptom-title">Weiche Schiene / Knirscherschiene</div><div class="symptom-desc">Einfachste Variante &mdash; sch&uuml;tzt Z&auml;hne vor Abrieb, hat aber keine therapeutische Wirkung auf Muskelspannung oder Gelenkposition. F&uuml;r CMD-Therapie weniger geeignet.</div></div>
             </div>
         </div>
     </div>
 
     <div class="section-title">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-        Diagnostic — cum procedăm
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        Transparenz bei den Kosten
     </div>
-
     <div class="card">
-        <div class="card-title">Analiza funcțională clinică (FAL)</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6;margin-bottom:1rem">Die Grundlage jeder CMD-Diagnose ist die manuelle Funktionsanalyse. Wir untersuchen mit den Händen, ohne aufwendige Geräte:</p>
-        <div class="step-list">
-            <div class="step-item">
-                <div class="step-num">1</div>
-                <div class="step-content">
-                    <h4>Anamneză și interviu</h4>
-                    <p>Wir nehmen uns Zeit, Ihre Krankengeschichte zu verstehen: Schlafqualität, Stress, Zahnersatz, Unfälle, bisherige Behandlungen.</p>
-                </div>
-            </div>
-            <div class="step-item">
-                <div class="step-num">2</div>
-                <div class="step-content">
-                    <h4>Palparea mușchilor masticatori</h4>
-                    <p>Wir tasten Kaumuskeln, Schläfenmuskeln und Nackenmuskulatur auf Verhärtungen und empfindliche Druckpunkte (Triggerpunkte) ab.</p>
-                </div>
-            </div>
-            <div class="step-item">
-                <div class="step-num">3</div>
-                <div class="step-content">
-                    <h4>Examinarea articulațiilor temporomandibulare</h4>
-                    <p>Beurteilung der Gelenkbeweglichkeit, Messung der maximalen Mundöffnung sowie Feststellung von Geräuschen (Knacken, Reiben).</p>
-                </div>
-            </div>
-            <div class="step-item">
-                <div class="step-num">4</div>
-                <div class="step-content">
-                    <h4>Analiza ocluziei</h4>
-                    <p>Überprüfung der Zahnkontakte im Schlussbiss und bei Bewegungen — Vorkontakte und Störkontakte können so erkannt werden.</p>
-                </div>
-            </div>
-        </div>
+        <div class="card-title">Was &uuml;bernimmt die Krankenkasse?</div>
+        <p>Die gesetzlichen Krankenkassen &uuml;bernehmen in der Regel die <strong>klinische Funktionsanalyse (FAL)</strong>. Die Schienentherapie selbst ist in den meisten F&auml;llen eine <strong>Privatleistung</strong>.</p>
     </div>
-
-    <div class="card card-blue" style="margin-top:1rem">
-        <div class="card-title">Diagnostic extins la nevoie</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Je nach Befund ergänzen wir die Diagnose durch weitere Verfahren: digitales Röntgen zur Beurteilung des Kieferknochens, bei komplexen Fällen eine instrumentelle Funktionsanalyse im Artikulator (Kausimulator), oder — bei Verdacht auf strukturelle Gelenkveränderungen — eine MRT-Überweisung an spezialisierte Radiologen.</p>
-    </div>
-
-    <div class="nav-arrows">
-        <button class="nav-arrow prev" onclick="go('symptome')">← Zurück</button>
-        <button class="nav-arrow next" onclick="go('schienen')">Weiter →</button>
-    </div>
-</div>
-
-<!-- ═══════════ SECTION 4: SCHIENENTHERAPIE ═══════════ -->
-<div class="tab-section" id="s-schienen">
-    <div class="section-title" style="margin-top:0">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-        Terapia cu gutiere — elementul central
-    </div>
-    <p class="section-sub">Eine individuell angefertigte Aufbissschiene ist das am häufigsten eingesetzte zahnärztliche Behandlungsmittel bei CMD — mit guter Wirksamkeit und hoher Akzeptanz.</p>
-
-    <div class="hint">
-        <strong>Was leistet eine Schiene?</strong> Sie bringt den Unterkiefer in eine entspannte, muskelgeführte Position, entlastet das Kiefergelenk, reduziert die Überaktivität der Kaumuskulatur und schützt die Zahnhartsubstanz vor weiterem Abrieb. Die genaue Wahl der Schiene hängt immer vom individuellen Befund ab.
-    </div>
-
-    <div class="card">
-        <div class="card-title">Tipuri de gutiere — prezentare generală</div>
-
-        <div class="schiene-item">
-            <div class="schiene-header">
-                <div class="schiene-badge schiene-badge-gold">Goldstandard</div>
-                <div class="schiene-name">Gutiera Michigan (gutiera de echilibrare)</div>
-            </div>
-            <div class="schiene-desc">Die am häufigsten eingesetzte und am besten untersuchte Aufbissschiene. Sie wird individuell aus hartem Kunststoff für den Oberkiefer gefertigt und im Artikulator auf die exakten Kieferbewegungen eingestellt. Ziel ist eine harmonische Bisslage mit gleichmäßiger Belastung aller Zähne. Sie wird in der Regel nachts getragen, in manchen Fällen auch tagsüber. Besonders geeignet bei muskulären CMD-Beschwerden und Bruxismus.</div>
-        </div>
-
-        <div class="schiene-item">
-            <div class="schiene-header">
-                <div class="schiene-badge schiene-badge-blue">Muskelentspannung</div>
-                <div class="schiene-name">Gutiera de relaxare / reflexă</div>
-            </div>
-            <div class="schiene-desc">Diese Schiene hat ein kleines frontales Plateau (anteriores Plateau), das die Seitenzahnkontakte aufhebt. Dadurch werden parafunktionelle Aktivitäten (Knirschen, Pressen) unterbrochen und die Kaumuskulatur entlastet. Besonders gut geeignet bei Muskelverspannungen durch psycho-emotionale Belastung (Stress). Sie sollte nur für kurze Zeiträume eingesetzt werden.</div>
-        </div>
-
-        <div class="schiene-item">
-            <div class="schiene-header">
-                <div class="schiene-badge schiene-badge-blue">Gelenkentlastung</div>
-                <div class="schiene-name">Gutiera de repoziționare</div>
-            </div>
-            <div class="schiene-desc">Diese Schiene führt den Unterkiefer aktiv in eine therapeutische Position — meist leicht nach vorne. Sie wird bei Diskusverlagerungen (verlagerte Gelenkscheibe) eingesetzt, um strukturelle Gelenkstrukturen zu entlasten und das Knacken zu reduzieren. Ihre Anwendung erfordert eine präzise Diagnose, da eine langfristige Veränderung der Bisslage entstehen kann.</div>
-        </div>
-
-        <div class="schiene-item">
-            <div class="schiene-header">
-                <div class="schiene-badge schiene-badge-blue">Zahnschutz</div>
-                <div class="schiene-name">Gutiera moale / pentru bruxism</div>
-            </div>
-            <div class="schiene-desc">Die einfachste und kostengünstigste Variante. Sie besteht aus weichem Kunststoff und schützt die Zähne vor weiterem Abrieb durch Knirschen. Sie hat jedoch keine therapeutische Wirkung auf Muskelspannung oder Gelenkposition und kann die Kaumuskulatur sogar weiter aktivieren. Für die CMD-Therapie ist sie weniger geeignet — zum reinen Zahnschutz kann sie eine Option sein.</div>
-        </div>
-    </div>
-
-    <div class="card card-green" style="margin-top:1rem">
-        <div class="card-title">Cât timp se poartă gutiera?</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Die meisten Patienten tragen die Schiene zunächst jede Nacht. Erste Verbesserungen sind oft schon nach wenigen Wochen spürbar. Regelmäßige Kontrolltermine sind wichtig: Wir prüfen die Wirkung, passen die Schiene bei Bedarf an und planen die weitere Behandlung. Eine CMD-Schiene ist kein Ersatz für die Therapie — sie ist ein zentrales Werkzeug in einem umfassenden Behandlungskonzept.</p>
-    </div>
-
-    <div class="section-title" style="margin-top:1.75rem">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg>
-        Transparență în privința costurilor
-    </div>
-
-    <div class="hint">Wir informieren Sie vor Behandlungsbeginn offen über alle anfallenden Kosten — bevor wir beginnen. So können Sie in Ruhe entscheiden und haben volle Planungssicherheit.</div>
-
-    <div class="card">
-        <div class="card-title">Ce acoperă asigurarea de sănătate (GKV)?</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Die gesetzlichen Krankenkassen übernehmen in der Regel die <strong>klinische Funktionsanalyse (FAL)</strong> — also die manuelle Examinarea articulațiilor temporomandibulare und Kaumuskulatur. Die Schienentherapie selbst sowie die instrumentelle Funktionsanalyse sind hingegen in den meisten Fällen <strong>Privatleistungen</strong>, die von der Kasse nicht oder nur teilweise erstattet werden.</p>
-    </div>
-
     <div class="card card-amber">
-        <div class="card-title">Costurile gutierei fabricate individual</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6;margin-bottom:.75rem">Die Kosten hängen von der Art der Schiene, dem Herstellungsverfahren und dem Befund ab. Einfache Schutzschienen aus dem Praxislabor sind günstiger; komplex individualisierte Therapieschienen aus spezialisierten zahntechnischen Laboren sind aufwendiger in der Herstellung.</p>
-        <div class="card" style="background:var(--gray-50);border:none;padding:.9rem 1rem;margin-bottom:0">
-            <div style="font-size:.83rem;color:var(--gray-700);line-height:1.7">
-                <strong style="color:var(--blue-dark)">Besondere Kostenhinweise</strong><br>
-                Für spezielle Schienen, die in mehreren Phasen zur schrittweisen <strong>Bisserhöhung</strong> eingesetzt werden — zum Beispiel im Rahmen einer funktionellen Rehabilitation des Kiefergelenks vor geplanten Versorgungen mit Zahnersatz — entstehen Kosten, die von der Krankenkasse nicht übernommen werden. Diese können je nach Aufwand und Laborverfahren <strong>zwischen ca. 200 und 600 Euro</strong> liegen. Wir besprechen dies transparent mit Ihnen und erstellen vorab einen klaren Kostenplan.
-            </div>
-        </div>
+        <div class="card-title">Individuelle Laborschienen &mdash; Sonderkosten</div>
+        <p>F&uuml;r spezielle Schienen zur schrittweisen <strong>Biserh&ouml;hung</strong> &mdash; zum Beispiel vor geplanten Versorgungen mit Zahnersatz &mdash; entstehen Kosten, die die Krankenkasse nicht &uuml;bernimmt. Diese k&ouml;nnen je nach Aufwand <strong>zwischen ca. 200 und 600 Euro</strong> liegen. Wir erstellen Ihnen vorab immer einen klaren Kostenplan &mdash; keine &Uuml;berraschungen.</p>
     </div>
-
-    <div class="card card-green">
-        <div class="card-title">Angajamentul nostru: claritate asupra costurilor înainte de tratament</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">Keine Überraschungen. Vor jeder Schiene, die wir anfertigen, erhalten Sie eine verständliche Aufstellung aller Kosten. Gemeinsam entscheiden wir, welche Lösung medizinisch sinnvoll und für Sie passend ist.</p>
-    </div>
-
     <div class="nav-arrows">
-        <button class="nav-arrow prev" onclick="go('ursachen')">← Zurück</button>
-        <button class="nav-arrow next" onclick="go('faq')">Weiter →</button>
+        <button class="nav-arrow prev" onclick="go('diagnostik')">&larr; Înapoi</button>
+        <button class="nav-arrow next" onclick="go('behandlung')">Înainte &rarr;</button>
     </div>
 </div>
 
-<!-- ═══════════ SECTION 5: PHYSIOTHERAPIE & FAQ ═══════════ -->
-<div class="tab-section" id="s-faq">
+<!-- TAB 5: BEHANDLUNG & FAQ -->
+<div class="tab-section" id="s-behandlung">
     <div class="section-title" style="margin-top:0">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-        Fizioterapia — partenerul dumneavoastră în tratamentul CMD
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Behandlung &mdash; was kann helfen?
     </div>
-    <p class="section-sub">Gutiera singură adesea nu este suficientă. Succesul complet al tratamentului se obține doar în combinație cu fizioterapia.</p>
+    <div class="card card-blue">
+        <p>Die Behandlung richtet sich nach der Ursache. M&ouml;gliche Bausteine:</p>
+        <ul style="margin:.75rem 0 0 1.1rem;font-size:.85rem;color:var(--gray-600);line-height:1.9"><li>Schienentherapie</li><li>Anpassung von F&uuml;llungen oder Zahnersatz</li><li>Gezielte &Uuml;bungen</li><li>Begleitende Physiotherapie</li></ul>
+        <p style="margin-top:.75rem;font-size:.84rem;color:var(--gray-600)">Oft ist eine Kombination sinnvoll.</p>
+    </div>
 
+    <div class="section-title">Physiotherapie &mdash; ein wichtiger Teil</div>
     <div class="card">
-        <div class="physio-item">
-            <div class="physio-icon">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v5l3 3M9 19H7M15 19h2"/></svg>
-            </div>
-            <div>
-                <div class="physio-title">Terapie manuală și mobilizarea maxilarului</div>
-                <div class="physio-desc">Der Physiotherapeut löst Verspannungen der Kau- und Nackenmuskulatur durch gezielte Mobilisationstechniken. Eingeschränkte Kieferbeweglichkeit kann so schrittweise verbessert werden.</div>
-            </div>
-        </div>
-        <div class="physio-item">
-            <div class="physio-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM8 12h8M12 8v8"/></svg>
-            </div>
-            <div>
-                <div class="physio-title">Tratamentul punctelor trigger</div>
-                <div class="physio-desc">Verhärtete Muskelpunkte (Triggerpunkte) im Kiefer-, Schläfen- und Nackenbereich werden durch Druck und spezielle Techniken aufgelöst — was Kopfschmerzen und Ohrenschmerzen lindern kann.</div>
-            </div>
-        </div>
-        <div class="physio-item">
-            <div class="physio-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 22V12M4.93 4.93l4.24 4.24M19.07 4.93l-4.24 4.24M2 12h2M20 12h2"/></svg>
-            </div>
-            <div>
-                <div class="physio-title">Educarea posturii și conștientizarea corpului</div>
-                <div class="physio-desc">Viele CMD-Patienten weisen Haltungsauffälligkeiten auf. Der Physiotherapeut analysiert die Körperhaltung und erarbeitet gezielte Korrekturen — denn Kiefer und Wirbelsäule beeinflussen sich gegenseitig.</div>
-            </div>
-        </div>
-        <div class="physio-item">
-            <div class="physio-icon">
-                <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <div>
-                <div class="physio-title">Exerciții acasă</div>
-                <div class="physio-desc">Dehn- und Entspannungsübungen für die Kaumuskulatur, Atemübungen und gezielte Entspannungstechniken, die Sie eigenständig anwenden können.</div>
-            </div>
-        </div>
-        <div class="physio-item">
-            <div class="physio-icon">
-                <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-            </div>
-            <div>
-                <div class="physio-title">Gestionarea stresului</div>
-                <div class="physio-desc">Da Stress als wesentlicher Auslöser gilt, empfehlen wir ergänzend Entspannungsverfahren wie Progressive Muskelentspannung, Biofeedback oder psychologische Beratung.</div>
-            </div>
-        </div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg></div><div><div class="therapy-title">Manuelle Therapie &amp; Kiefermobilisation</div><div class="therapy-desc">Gezielte Mobilisationstechniken l&ouml;sen Verh&auml;rtungen in Kau- und Nackenmuskulatur und verbessern die Kieferbeweglichkeit.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="therapy-title">Triggerpunkt-Behandlung</div><div class="therapy-desc">Verh&auml;rtete Muskelpunkte im Kiefer-, Schl&auml;fen- und Nackenbereich werden aufgel&ouml;st &mdash; was Kopfschmerzen und Ohrschmerzen lindern kann.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><div class="therapy-title">Haltungsschulung &amp; K&ouml;rperbewusstsein</div><div class="therapy-desc">Kiefer und Wirbels&auml;ule beeinflussen sich gegenseitig &mdash; gezielte Korrekturen der K&ouml;rperhaltung sind oft ein wichtiger Teil der Therapie.</div></div></div>
+        <div class="therapy-feature"><div class="therapy-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3l9 9-9 9"/></svg></div><div><div class="therapy-title">&Uuml;bungen f&uuml;r zu Hause</div><div class="therapy-desc">Dehn- und Entspannungs&uuml;bungen f&uuml;r die Kaumuskulatur sowie Stressbew&auml;ltigung (Progressive Muskelentspannung, Biofeedback).</div></div></div>
     </div>
 
-    <div class="card card-amber" style="margin-top:1rem">
-        <div class="card-title">Colaborare interdisciplinară</div>
-        <p style="font-size:.84rem;color:var(--gray-600);line-height:1.6">CMD ist ein komplexes Krankheitsbild, das selten von einer einzigen Fachrichtung alleine behandelt werden kann. Wir arbeiten je nach Befund eng mit Physiotherapeuten, Orthopäden, HNO-Ärzten, Neurologen und bei Bedarf auch Psychotherapeuten zusammen. Das Ziel: eine ganzheitliche Behandlung, die an den Wurzeln Ihrer Beschwerden ansetzt.</p>
+    <div class="section-title">Was k&ouml;nnen Sie erwarten?</div>
+    <div class="card card-green">
+        <div class="card-title">Ziel ist keine Perfektion &mdash; sondern sp&uuml;rbare Verbesserung</div>
+        <ul style="margin:.5rem 0 0 1.1rem;font-size:.85rem;color:var(--gray-600);line-height:1.9"><li>Weniger Schmerzen</li><li>Entspanntere Muskulatur</li><li>Mehr Beweglichkeit</li><li>Ein besseres K&ouml;rpergef&uuml;hl</li></ul>
+        <p style="margin-top:.75rem;font-size:.83rem;color:var(--gray-600)">Der Verlauf ist individuell. Wenn Sie solche Beschwerden bei sich erkennen, sprechen Sie uns gerne an.</p>
     </div>
 
-    <div class="section-title" style="margin-top:1.75rem">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4170" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        Întrebări frecvente despre tratamentul CMD
+    <div class="section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        H&auml;ufige Fragen zur CMD-Behandlung
     </div>
-
     <div class="card">
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-            <div class="faq-q">Tratamentul doare? <span class="faq-arrow">&#x25BC;</span></div>
-            <div class="faq-a">Die zahnärztliche Untersuchung und die Schinenanpassung sind vollständig schmerzfrei. Die Physiotherapie kann bei der Behandlung verhärteter Muskelpunkte kurzfristig unangenehm sein — ähnlich wie bei einer klassischen Massage. Die Schiene selbst verursacht nach einer kurzen Eingewöhnungsphase in der Regel keine Beschwerden.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-            <div class="faq-q">Cât durează tratamentul? <span class="faq-arrow">&#x25BC;</span></div>
-            <div class="faq-a">Das hängt von der Schwere und Ursache der CMD ab. Erste Besserungen sind oft schon nach wenigen Wochen Schienentherapie spürbar. Eine vollständige Behandlung dauert in der Regel mehrere Monate. Entscheidend ist, konsequent am Ball zu bleiben und die Behandlung nicht vorzeitig abzubrechen.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-            <div class="faq-q">Asigurarea de sănătate acoperă tratamentul CMD? <span class="faq-arrow">&#x25BC;</span></div>
-            <div class="faq-a">Die gesetzlichen Krankenkassen übernehmen in der Regel einen Teil der klinischen Funktionsanalyse. Die individuell angefertigte CMD-Schiene sowie die instrumentelle Funktionsanalyse sind in vielen Fällen Privatleistungen. Wir informieren Sie vor Behandlungsbeginn transparent über alle anfallenden Kosten und erstellen Ihnen einen klaren Behandlungsplan.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-            <div class="faq-q">Trebuie să port gutiera permanent? <span class="faq-arrow">&#x25BC;</span></div>
-            <div class="faq-a">Das ist individuell verschieden. Viele Patienten tragen die Schiene zunächst täglich, später nur noch prophylaktisch in Stressphasen. Ziel ist es, durch die Kombination aus Schienentherapie und Physiotherapie eine dauerhafte Entspannung zu erreichen, sodass die Schiene langfristig nur noch als Schutz benötigt wird.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-            <div class="faq-q">Se poate trata CMD fără operație? <span class="faq-arrow">&#x25BC;</span></div>
-            <div class="faq-a">In der großen Mehrheit der Fälle: ja. Konservative Behandlungen wie Schienentherapie und Physiotherapie führen zu deutlichen und dauerhaften Verbesserungen. Operative Eingriffe sind selten notwendig und kommen erst dann in Betracht, wenn alle anderen Therapiemöglichkeiten ausgeschöpft wurden.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-            <div class="faq-q">Ce pot face eu însumi? <span class="faq-arrow">&#x25BC;</span></div>
-            <div class="faq-a">Einiges. Achten Sie darauf, die Zähne im Alltag nicht unbewusst zusammenzubeißen (Zähne sollten sich in Ruhe leicht berühren, aber nicht pressen). Regelmäßige Entspannungsübungen, ausreichend Schlaf und Stressreduktion helfen spürbar. Die empfohlenen Übungen Ihres Physiotherapeuten sollten konsequent durchgeführt werden. Und: Tragen Sie Ihre Schiene regelmäßig.</div>
-        </div>
+        <div class="faq-item"><div class="faq-q">Tut die Behandlung weh?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Die zahnärztliche Untersuchung und die Schinenanpassung sind vollständig schmerzfrei. Die Physiotherapie kann bei der Behandlung verhärteter Muskelpunkte kurzfristig unangenehm sein — ähnlich wie bei einer klassischen Massage. Die Schiene selbst verursacht nach einer kurzen Eingewöhnungsphase in der Regel keine Beschwerden.</div></div>
+        <div class="faq-item"><div class="faq-q">Wie lange dauert die Behandlung?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Das hängt von Schwere und Ursache der CMD ab. Erste Besserungen sind oft schon nach wenigen Wochen Schienentherapie spürbar. Eine vollständige Behandlung dauert in der Regel mehrere Monate. Entscheidend ist, konsequent am Ball zu bleiben.</div></div>
+        <div class="faq-item"><div class="faq-q">Zahlt die Krankenkasse f&uuml;r die CMD-Behandlung?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Die gesetzlichen Krankenkassen übernehmen in der Regel die klinische Funktionsanalyse (FAL). Die individuell angefertigte CMD-Schiene sowie die instrumentelle Funktionsanalyse sind in vielen Fällen Privatleistungen. Wir informieren Sie vor Behandlungsbeginn transparent über alle Kosten.</div></div>
+        <div class="faq-item"><div class="faq-q">Muss ich die Schiene dauerhaft tragen?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Das ist individuell verschieden. Viele Patienten tragen die Schiene zunächst täglich, später nur noch prophylaktisch in Stressphasen. Ziel ist es, durch die Kombination aus Schienentherapie und Physiotherapie eine dauerhafte Entspannung zu erreichen.</div></div>
+        <div class="faq-item"><div class="faq-q">Kann CMD ohne Operation behandelt werden?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">In der großen Mehrheit der Fälle: ja. Konservative Behandlungen wie Schienentherapie und Physiotherapie führen zu deutlichen und dauerhaften Verbesserungen. Operative Eingriffe kommen erst dann in Betracht, wenn alle anderen Möglichkeiten ausgeschöpft wurden.</div></div>
+        <div class="faq-item"><div class="faq-q">Was kann ich selbst tun?<span class="faq-arrow">&#9660;</span></div><div class="faq-a">Achten Sie darauf, die Zähne im Alltag nicht unbewusst zusammenzubeißen (Zähne sollten sich in Ruhe leicht berühren, aber nicht pressen). Regelmäßige Entspannungsübungen, ausreichend Schlaf und Stressreduktion helfen spürbar. Und: Tragen Sie Ihre Schiene regelmäßig.</div></div>
     </div>
 
-    <div style="background:linear-gradient(135deg,#E8EEF7 0%,#F0F4FA 100%);border:1px solid #3D5A98;border-radius:var(--radius);padding:1.5rem 2rem;margin-top:2rem;text-align:center">
-        <div style="font-family:'Quicksand',sans-serif;font-size:1.1rem;font-weight:700;color:#2C4170;margin-bottom:.4rem">Programați-vă</div>
-        <p style="font-size:.85rem;color:#6B7280;margin-bottom:1rem">Tulburările articulației temporomandibulare nu trebuie ignorate. Ascultăm și ajutăm.</p>
-        <a href="javascript:toggleDrFlexAppointments()" style="display:inline-flex;align-items:center;gap:8px;background:#E2C26A;color:#1E2D4D;font-weight:700;font-size:.85rem;padding:9px 24px;border-radius:8px;text-decoration:none;cursor:pointer;transition:all .3s" onmouseover="this.style.background='#2C4170';this.style.color='#FFFFFF'" onmouseout="this.style.background='#E2C26A';this.style.color='#1E2D4D'">Programează-te</a>
+    <div class="print-bar"><button class="btn-print" onclick="window.print()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Tipărire această pagină</button></div>
+    <div class="nav-arrows" style="justify-content:flex-start">
+        <button class="nav-arrow prev" onclick="go('schienen')">&larr; Înapoi</button>
+        <button class="nav-arrow next" disabled>Înainte &rarr;</button>
     </div>
-
-    <div class="nav-arrows">
-        <button class="nav-arrow prev" onclick="go('schienen')">← Zurück</button>
-        <button class="nav-arrow next" disabled>Weiter →</button>
-    </div>
-</div>
-
-<div class="print-bar">
-    <button class="btn-print" onclick="window.print()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Drucken</button>
 </div>
 </main>
 
 <footer><p>&copy; 2026 FRYDENT &middot; Zahnarztpraxis Tatiana Frydrych &middot; <a href="https://frydent.de/">www.frydent.de</a><br>Aprilie 2026</p><p style="margin-top:6px"><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></p></footer>
 
-<!-- SIDEBAR -->
 <div class="sidebar">
 <a href="javascript:toggleDrFlexAppointments()" class="sidebar-tab termin">
     <span class="sidebar-label">Termin online buchen</span>
@@ -695,36 +553,81 @@
     <span class="sidebar-label">E-Mail schreiben</span>
     <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
 </a>
-<a href="https://maps.google.com/?q=Martinstra%C3%9Fe+4+79848+Bonndorf" target="_blank" class="sidebar-tab location">
-    <span class="sidebar-label">Martinstraße 4, Bonndorf</span>
+<a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank" class="sidebar-tab location">
+    <span class="sidebar-label">Martinstraße 21, Bonndorf</span>
     <div class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><circle cx="12" cy="11" r="3"></circle></svg></div>
 </a>
 </div>
 
-<!-- MOBILE BAR -->
 <div class="mobile-bar">
     <a href="tel:+497703284" class="phone-m"><svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>Anrufen</a>
     <a href="javascript:toggleDrFlexAppointments()" class="termin-m"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Programează-te</a>
     <a href="/cdn-cgi/l/email-protection#88e1e6eee7c8eefaf1ecede6fca6eced"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>E-Mail</a>
-    <a href="https://maps.google.com/?q=Martinstra%C3%9Fe+4+79848+Bonndorf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><circle cx="12" cy="11" r="3"></circle></svg>Adresse</a>
+    <a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><circle cx="12" cy="11" r="3"></circle></svg>Adresse</a>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-var TABS=['wascmd','symptome','ursachen','schienen','faq'];
+<script>
+var TABS=['was','ursachen','diagnostik','schienen','behandlung'];
 function go(id){
-    document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-section').forEach(function(s){s.classList.remove('active')});
+    document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
     document.getElementById('s-'+id).classList.add('active');
-    var i=TABS.indexOf(id);
-    document.querySelectorAll('.tab-btn').forEach(function(b,j){if(j===i)b.classList.add('active');});
+    document.querySelectorAll('.tab-btn')[TABS.indexOf(id)].classList.add('active');
     window.scrollTo({top:document.querySelector('.tab-nav').offsetTop-120,behavior:'smooth'});
 }
+
+/* FAQ */
 document.querySelectorAll('.faq-q').forEach(function(q){
     q.addEventListener('click',function(){
         var item=this.parentElement;
         item.classList.toggle('open');
     });
 });
+
+/* Mehr Erfahren */
+function toggleMehr(btn){
+    btn.classList.toggle('open');
+    var body=btn.nextElementSibling;
+    body.classList.toggle('open');
+}
+
+/* QUIZ */
+var qAnswers=[null,null,null,null,null];
+function openQuiz(){
+    var panel=document.getElementById('quizPanel');
+    panel.classList.add('open');
+    panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function answer(q,val){
+    qAnswers[q]=val;
+    var qEl=document.querySelector('.quiz-q[data-q="'+q+'"]');
+    qEl.querySelectorAll('.quiz-opt').forEach(function(b){b.classList.remove('sel')});
+    qEl.querySelector('.quiz-opt.'+(val==='ja'?'yes':'no')).classList.add('sel');
+    // progress dots
+    for(var i=0;i<5;i++){
+        var dot=document.getElementById('qd'+i);
+        if(dot) dot.classList.toggle('done', qAnswers[i]!==null);
+    }
+    if(qAnswers.every(function(a){return a!==null})) showQuizResult();
+}
+function showQuizResult(){
+    var yes=qAnswers.filter(function(a){return a==='ja'}).length;
+    ['qResultLow','qResultMid','qResultHigh','quizCta','quizReset'].forEach(function(id){
+        var el=document.getElementById(id); if(el) el.classList.remove('show');
+    });
+    if(yes<=1){document.getElementById('qResultLow').classList.add('show');}
+    else if(yes<=3){document.getElementById('qResultMid').classList.add('show');document.getElementById('quizCta').classList.add('show');}
+    else{document.getElementById('qResultHigh').classList.add('show');document.getElementById('quizCta').classList.add('show');}
+    document.getElementById('quizReset').classList.add('show');
+}
+function resetQuiz(){
+    qAnswers=[null,null,null,null,null];
+    document.querySelectorAll('.quiz-opt').forEach(function(b){b.classList.remove('sel')});
+    for(var i=0;i<5;i++){var d=document.getElementById('qd'+i);if(d)d.classList.remove('done');}
+    ['qResultLow','qResultMid','qResultHigh','quizCta','quizReset'].forEach(function(id){
+        var el=document.getElementById(id);if(el)el.classList.remove('show');
+    });
+}
 </script>
 </body>
 </html>
