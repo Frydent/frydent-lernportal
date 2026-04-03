@@ -299,6 +299,8 @@
     <h3>Czekamy na Ciebie! 🎉</h3>
     <p>Masz jeszcze pytania? Twoi rodzice mogą chętnie umówić wizytę.</p>
     <div class="phone"><a href="tel:+497703284">☎ 07703 284</a></div>
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('fuellung')">← Naprawa ząbka</button><button class="nav-arrow next" disabled style="visibility:hidden"></button></div>
 </div>
 
 </main>
@@ -358,9 +360,7 @@ function svRender(id){
     +'<p class="sv-desc">'+s.desc+'</p>'
     +'<div class="sv-reassure"><span class="sv-r-icon">🤗</span><p>'+s.reassure+'</p></div>';
   document.getElementById(id+'-dots').innerHTML=steps.map(function(_,i){
-    return '<div class="sv-dot'+(i===cur?' active':'')+'">
-    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('fuellung')">← Naprawa ząbka</button><button class="nav-arrow next" disabled style="visibility:hidden"></button></div>
-</div>';
+    return '<div class="sv-dot'+(i===cur?' active':'')+'"></div>';
   }).join('');
   document.getElementById(id+'-prev').disabled=cur===0;
   document.getElementById(id+'-next').textContent=cur===steps.length-1?'↺ Jeszcze raz':'Dalej →';
