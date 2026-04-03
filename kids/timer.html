@@ -213,7 +213,7 @@ const hourglass=document.getElementById('hourglass');
 const app=document.getElementById('app');
 
 // Init 4 quadrant rings
-for(var qi=0;qi<4;qi++){var qel=document.getElementById('qr'+qi);qel.style.stroke=qColors[qi];qel.style.strokeDasharray='0 '+C;qel.style.strokeDashoffset=-(qi*Q);}
+for(var qi=0;qi<4;qi++){var qel=document.getElementById('qr'+qi);qel.style.stroke=qColors[qi];qel.style.strokeDasharray='0 '+C;qel.setAttribute('transform','rotate('+(qi*90)+' 130 130)');}
 
 const audioCtx=new(window.AudioContext||window.webkitAudioContext)();
 function playTone(freq,dur,vol){if(audioCtx.state==='suspended')audioCtx.resume();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(audioCtx.destination);o.frequency.setValueAtTime(freq,audioCtx.currentTime);g.gain.setValueAtTime(vol||.1,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);o.start();o.stop(audioCtx.currentTime+dur)}
