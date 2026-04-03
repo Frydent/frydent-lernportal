@@ -15,7 +15,7 @@
             --red-soft:#FEF2F2;--red-border:#FECACA;--red-text:#991B1B;
             --green-soft:#EEF6EA;--green-border:#c3ddb8;--green-text:#3d6b32;
             --amber-soft:#FFFBEB;--amber-border:#FDE68A;--amber-text:#92400E;
-            --teal-soft:#ECFDF5;--teal-border:#A7F3D0;--teal-text:#065F46;
+            --teal-soft:#EEF6EA;--teal-border:#c3ddb8;--teal-text:#3d6b32;
             --purple-soft:#F5F3FF;--purple-border:#C4B5FD;--purple-text:#5B21B6;
             --radius:14px;--radius-sm:8px
         }
@@ -101,15 +101,16 @@
         @media(max-width:640px){.promise-grid{grid-template-columns:1fr}}
 
         /* COMPARISON TABLE */
-        .compare-table{width:100%;border-collapse:collapse;font-size:.84rem;margin-bottom:1.25rem}
+        .compare-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:var(--radius-sm);overflow:hidden;font-size:.84rem;margin-bottom:1.25rem}
         .compare-table th{background:var(--blue-dark);color:var(--white);padding:.7rem 1rem;text-align:left;font-weight:600;font-family:'Quicksand',sans-serif}
-        .compare-table td{padding:.6rem 1rem;border-bottom:1px solid var(--gray-200);color:var(--gray-600)}
-        .compare-table tr:nth-child(even){background:var(--gray-50)}
+        .compare-table td{padding:.6rem 1rem;border-bottom:1px solid var(--gray-200);color:var(--gray-800)}
+        .compare-table tr:nth-child(even) td{background:var(--gray-50)}
+        .compare-table tr:last-child td{border-bottom:none}
         .compare-table .check{color:var(--green-text);font-weight:700}
         .compare-table .cross{color:#991B1B;font-weight:700}
 
         /* COST CARD */
-        .cost-card{background:linear-gradient(135deg,var(--teal-soft),#f0fdf4);border:2px solid var(--teal-border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem;text-align:center}
+        .cost-card{background:linear-gradient(135deg,var(--teal-soft),#f5f8f0);border:2px solid var(--teal-border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem;text-align:center}
         .cost-card .cost-label{font-size:.82rem;color:var(--teal-text);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.3rem}
         .cost-card .cost-range{font-family:'Quicksand',sans-serif;font-size:1.6rem;font-weight:700;color:var(--teal-text);margin-bottom:.4rem}
         .cost-card .cost-note{font-size:.82rem;color:var(--gray-600)}
@@ -277,13 +278,14 @@
         </ul>
     </div>
 
-    <div class="hint"><strong>Важно знать:</strong> При серьёзных нарушениях челюсти или очень сложных поворотах зубов классические брекеты или комбинация обоих методов могут быть лучшим выбором. Мы обсуждаем это индивидуально на консультации.</div>
+    <div class="hint" style="background:#FDFBF5;border-color:#E8DEBA;color:#7A6B3A"><strong>Важно знать:</strong> При серьёзных нарушениях челюсти или очень сложных поворотах зубов классические брекеты или комбинация обоих методов могут быть лучшим выбором. Мы обсуждаем это индивидуально на консультации.</div>
 
     <div class="section-title">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D5A98" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
         Элайнеры vs. брекеты
     </div>
 
+    <div class="card">
     <table class="compare-table">
         <tr><th></th><th>Элайнеры</th><th>Брекеты</th></tr>
         <tr><td>Видимость</td><td class="check">Почти невидимые</td><td class="cross">Видимы</td></tr>
@@ -293,6 +295,7 @@
         <tr><td>Сложные случаи</td><td>Ограничено</td><td class="check">Отлично подходят</td></tr>
         <tr><td>Нужна дисциплина</td><td>Носить 22 ч/день</td><td>Автоматически активны</td></tr>
     </table>
+    </div>
 
     <div class="nav-arrows"><button class="nav-arrow prev" disabled>← Назад</button><button class="nav-arrow next" onclick="go('process')">Этапы →</button></div>
 </div>
@@ -446,7 +449,7 @@
         <p>Государственные больничные кассы в Германии, как правило, не покрывают расходы на лечение элайнерами у взрослых, так как лечение обычно классифицируется как эстетическое. При частном страховании частичное покрытие возможно в зависимости от тарифа. Если у вас есть дополнительная стоматологическая страховка, проверьте до начала лечения, включены ли ортодонтические услуги.</p>
     </div>
 
-    <div class="hint"><strong>Наш совет:</strong> Запишитесь на необязывающую консультацию. Первый осмотр даст вам ясность о вариантах лечения и стоимости — до принятия решения.</div>
+    <div class="hint" style="background:#FDFBF5;border-color:#E8DEBA;color:#7A6B3A"><strong>Наш совет:</strong> Запишитесь на необязывающую консультацию. Первый осмотр даст вам ясность о вариантах лечения и стоимости — до принятия решения.</div>
 
     <div class="card card-blue">
         <div class="card-title">Что входит в стоимость?</div>
