@@ -167,6 +167,15 @@
         @media(max-width:640px){.mobile-bar{display:flex!important}}
 
         @media print{.sidebar,.mobile-bar,.header-right,.nav-arrows,.print-bar{display:none!important}main{padding:1rem}}
+    
+        /* NAV ARROWS */
+        .nav-arrows{display:flex;justify-content:center;gap:1rem;margin:2.5rem 0}
+        .nav-arrow{padding:.5rem 1.25rem;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;border:none}
+        .nav-arrow.prev{background:#E8EEF7;color:var(--blue-dark);border:1px solid #C8D9EE}
+        .nav-arrow.prev:hover{background:#D4E1F2;border-color:var(--blue)}
+        .nav-arrow.next{background:var(--blue);color:var(--white)}
+        .nav-arrow.next:hover{background:var(--blue-dark)}
+        .nav-arrow:disabled{opacity:.3;cursor:default;border-color:var(--gray-200)!important;background:var(--gray-100)!important;color:var(--gray-400)!important}
     </style>
     <script src="https://dr-flex.de/embed.js?medicalPracticeId=60190"></script>
 </head>
@@ -284,6 +293,8 @@
         <tr><td>حالات شديدة</td><td>محدود</td><td class="check">مناسب جداً</td></tr>
         <tr><td>يتطلب انضباطاً</td><td>ارتداء 22 ساعة/يوم</td><td>نشط تلقائياً</td></tr>
     </table>
+
+    <div class="nav-arrows"><button class="nav-arrow prev" disabled>← رجوع</button><button class="nav-arrow next" onclick="go('process')">المراحل →</button></div>
 </div>
 
 <!-- ═══════════════════════════════════════════════ TAB 2: ABLAUF ═══════════════════════════════════════════════ -->
@@ -352,6 +363,8 @@
     </div>
 
     <div class="hint"><strong>مهم:</strong> قبل بدء علاج الأليناينر يجب أن تكون أسنانك ولثتك سليمة. يتم علاج التسوس والتهاب اللثة أو مشاكل أخرى مسبقاً — لضمان نجاح التصحيح.</div>
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('overview')">← نظرة عامة</button><button class="nav-arrow next" onclick="go('daily')">الحياة اليومية →</button></div>
 </div>
 
 <!-- ═══════════════════════════════════════════════ TAB 3: ALLTAG ═══════════════════════════════════════════════ -->
@@ -400,6 +413,8 @@
             <li style="padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:#991B1B;font-weight:700">✗</span>لا تستخدم معجون الأسنان لتنظيف القوالب</li>
         </ul>
     </div>
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('process')">← المراحل</button><button class="nav-arrow next" onclick="go('costs')">التكاليف →</button></div>
 </div>
 
 <!-- ═══════════════════════════════════════════════ TAB 4: KOSTEN ═══════════════════════════════════════════════ -->
@@ -443,6 +458,8 @@
             <li>مثبت أو قالب تثبيت للاستقرار بعد الانتهاء</li>
         </ul>
     </div>
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('daily')">← الحياة اليومية</button><button class="nav-arrow next" onclick="go('faq')">أسئلة شائعة →</button></div>
 </div>
 
 <!-- ═══════════════════════════════════════════════ TAB 5: FAQ ═══════════════════════════════════════════════ -->
@@ -531,6 +548,8 @@
     <a href="javascript:toggleDrFlexAppointments()" class="termin-m"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>حجز موعد</a>
     <a href="mailto:info@frydent.de"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>بريد</a>
     <a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><circle cx="12" cy="11" r="3"></circle></svg>العنوان</a>
+
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('costs')">← التكاليف</button><button class="nav-arrow next" disabled style="visibility:hidden"></button></div>
 </div>
 
 <script>
