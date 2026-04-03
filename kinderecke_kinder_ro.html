@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Lumea Dinților pentru Copii – FRYDENT</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+        :root{
+            --parchment:#FAF6EF;--parchment-warm:#F3ECE0;
+            --sage:#7BA490;--sage-light:#A8C8B8;--sage-pale:#D8E8DE;--sage-dark:#5E8A78;
+            --honey:#E2C26A;--honey-light:#F8F0DC;--honey-pale:#FBF5E8;
+            --rose:#C17B6E;--rose-light:#DCABA2;--rose-pale:#F2DDD9;
+            --sky:#89B8CC;--sky-light:#B8D8E4;--sky-pale:#E0F0F6;
+            --lavender:#A88BAE;--lavender-light:#C8B4CC;--lavender-pale:#EDE4F0;
+            --sunshine:#E2CC5A;--sunshine-light:#F0E28C;--sunshine-pale:#FBF7DC;
+            --bark:#5A4E42;--bark-light:#8A7E72;
+            --cream:#FFFCF5;
+            --radius:14px;--radius-sm:10px;
+            --shadow:0 3px 16px rgba(90,78,66,0.08);
+            --shadow-card:0 2px 10px rgba(90,78,66,0.07)
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Nunito',sans-serif;background:var(--parchment);color:var(--bark);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+        header{background:var(--cream);border-bottom:1px solid rgba(90,78,66,.08);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(90,78,66,.05)}
+        .header-inner{max-width:820px;margin:0 auto;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+        .logo-img{height:32px;width:auto}
+        .header-right{display:flex;align-items:center;gap:8px}
+        .header-btn{font-size:12px;font-weight:700;padding:9px 20px;border-radius:var(--radius-sm);text-decoration:none;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:6px;font-family:'Quicksand',sans-serif}
+        .header-back{background:var(--sage);color:var(--cream)}
+        .header-back:hover{background:var(--sage-dark)}
+        .header-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+        .header-back .back-text{display:inline}
+        .header-termin{background:var(--honey);color:var(--bark)}
+        .header-termin:hover{background:var(--sage);color:var(--cream)}
+        @media(max-width:640px){.header-back .back-text{display:none}.header-back{padding:9px 10px}}
+
+        .hero{background:#CBDBD0;padding:2.5rem 1.5rem 2rem;text-align:center;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(123,164,144,.2)}
+        .hero-character{width:140px;height:140px;margin:0 auto .5rem;animation:heroFloat 3.5s ease-in-out infinite}
+        .hero-character img{width:100%;height:100%;object-fit:contain}
+        @keyframes heroFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+        .hero h1{font-family:'Quicksand',sans-serif;font-size:1.8rem;font-weight:700;color:var(--sage-dark);margin-bottom:.3rem}
+        .hero-divider{width:160px;max-width:60%;height:2px;background:linear-gradient(90deg,var(--honey),var(--sunshine),var(--honey));margin:.5rem auto;border-radius:2px;opacity:.6}
+        .hero p{color:var(--bark-light);font-size:.95rem;max-width:440px;margin:0 auto;line-height:1.6}
+
+        main{max-width:820px;margin:0 auto;padding:1.75rem 1.5rem 3rem}
+
+        .tab-nav{display:flex;gap:.4rem;padding-bottom:.5rem;margin-bottom:1.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;mask-image:linear-gradient(to right,#000 85%,transparent);-webkit-mask-image:linear-gradient(to right,#000 85%,transparent)}
+        .tab-nav.scrolled-end{mask-image:none;-webkit-mask-image:none}
+        .tab-nav::-webkit-scrollbar{display:none}
+        .tab-btn{display:flex;align-items:center;gap:6px;padding:.55rem 1rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid var(--sage-pale);background:var(--parchment);color:var(--sage-dark);cursor:pointer;transition:all .2s;font-family:'Quicksand',sans-serif;flex:0 0 auto}
+        .tab-btn:hover{border-color:var(--sage-light);background:var(--sage-pale)}
+        .tab-btn.active{background:var(--sage-dark);color:var(--cream);border-color:var(--sage-dark)}
+
+        .tab-section{display:none}
+        .tab-section.active{display:block}
+        .section-title{font-family:'Quicksand',sans-serif;font-size:1.05rem;font-weight:700;color:var(--sage-dark);margin:1.75rem 0 .6rem}
+        .section-title:first-child{margin-top:0}
+        .section-sub{color:var(--bark-light);font-size:.88rem;margin-bottom:1.25rem;margin-top:-.3rem;font-style:italic}
+
+        .story-card{background:var(--cream);border:1.5px solid rgba(90,78,66,.08);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.1rem;box-shadow:var(--shadow-card);position:relative;overflow:hidden}
+        .story-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--radius) var(--radius) 0 0}
+        .story-card.sage::before{background:linear-gradient(90deg,var(--sage-light),var(--sage))}
+        .story-card.honey::before{background:linear-gradient(90deg,var(--honey-light),var(--honey))}
+        .story-card.rose::before{background:linear-gradient(90deg,var(--rose-light),var(--rose))}
+        .story-card.sky::before{background:linear-gradient(90deg,var(--sky-light),var(--sky))}
+        .story-card.sunshine::before{background:linear-gradient(90deg,var(--sunshine-light),var(--sunshine))}
+        .story-card.lavender::before{background:linear-gradient(90deg,var(--lavender-light),var(--lavender))}
+        .story-emoji{font-size:1.8rem;margin-bottom:.5rem;display:block}
+        .story-img{width:100%;max-width:280px;margin:0 auto .8rem;display:block;border-radius:var(--radius-sm)}
+        .story-title{font-family:'Quicksand',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:.4rem;color:var(--bark)}
+        .story-card p{font-size:.88rem;color:var(--bark-light);line-height:1.7}
+
+        .speech{background:var(--cream);border:1.5px solid rgba(90,78,66,.1);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:1.25rem 0;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--shadow-card);position:relative}
+        .speech::after{content:'';position:absolute;bottom:-8px;left:40px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid var(--cream)}
+        .speech .speech-img{width:56px;height:56px;flex-shrink:0;border-radius:50%;overflow:hidden;border:2px solid var(--sage-pale);background:var(--parchment)}
+        .speech .speech-img img{width:100%;height:100%;object-fit:contain}
+        .speech p{font-size:.88rem;color:var(--bark-light);line-height:1.65;font-style:italic}
+        .speech strong{color:var(--sage-dark);font-style:normal}
+
+        .sv-wrap{background:var(--cream);border:1.5px solid rgba(90,78,66,.08);border-radius:var(--radius);padding:1.5rem;margin:1.5rem 0;box-shadow:var(--shadow)}
+        .sv-pills{display:flex;gap:5px;justify-content:center;margin-bottom:1.25rem;flex-wrap:wrap}
+        .sv-pill{font-family:'Quicksand',sans-serif;font-size:.75rem;font-weight:600;padding:7px 13px;border-radius:var(--radius-sm);border:1px solid var(--sage-pale);background:var(--parchment);color:var(--sage-dark);cursor:pointer;transition:all .25s;white-space:nowrap}
+        .sv-pill:hover{border-color:var(--sage-light);background:var(--sage-pale)}
+        .sv-pill.active{background:var(--sage-dark);color:var(--cream);border-color:var(--sage-dark)}
+
+        .sv-body{display:flex;gap:24px;align-items:center;min-height:280px}
+        .sv-img-box{flex:0 0 50%;text-align:center;display:flex;align-items:center;justify-content:center;min-height:200px}
+        .sv-img-box img{width:100%;height:auto;border-radius:var(--radius)}
+        .sv-info{flex:1;min-width:0}
+
+        .sv-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:.5rem}
+        .sv-num{width:28px;height:28px;line-height:28px;text-align:center;border-radius:50%;background:var(--sage);color:var(--cream);font-size:.78rem;font-weight:700;font-family:'Quicksand',sans-serif}
+        .sv-cat{font-size:.68rem;font-weight:700;color:var(--honey);text-transform:uppercase;letter-spacing:.5px}
+        .sv-title{font-family:'Quicksand',sans-serif;font-size:1.08rem;font-weight:700;color:var(--bark);margin-bottom:.4rem;line-height:1.3}
+        .sv-desc{font-size:.88rem;line-height:1.7;color:var(--bark-light);margin-bottom:.8rem}
+
+        .sv-reassure{background:var(--sunshine-pale);border:1.5px solid rgba(226,204,90,.25);border-radius:var(--radius-sm);padding:.7rem 1rem;display:flex;gap:8px;align-items:center}
+        .sv-reassure .sv-r-icon{font-size:1.1rem;flex-shrink:0}
+        .sv-reassure p{font-size:.82rem;color:var(--bark);line-height:1.5;font-weight:600}
+
+        .sv-dots{display:flex;gap:6px;justify-content:center;margin:1rem 0 .5rem}
+        .sv-dot{width:8px;height:8px;border-radius:50%;background:var(--parchment-warm);transition:all .3s}
+        .sv-dot.active{background:var(--honey);width:20px;border-radius:5px}
+
+        .sv-nav{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:.5rem}
+        .sv-btn{font-family:'Quicksand',sans-serif;font-size:.8rem;font-weight:700;padding:8px 16px;border-radius:var(--radius-sm);border:none;cursor:pointer;transition:all .2s}
+        .sv-btn.prev{background:var(--parchment-warm);color:var(--bark-light)}
+        .sv-btn.prev:hover{background:var(--sage-pale)}
+        .sv-btn.prev:disabled{opacity:.35;cursor:not-allowed}
+        .sv-btn.next{background:var(--sage);color:var(--cream)}
+        .sv-btn.next:hover{background:var(--sage-dark)}
+        .sv-auto-label{font-size:.72rem;color:var(--bark-light);display:flex;align-items:center;gap:4px;cursor:pointer;margin-left:8px}
+
+        .sv-fade{animation:svFade .4s ease both}
+        @keyframes svFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+        @media(max-width:700px){
+            .sv-body{flex-direction:column;text-align:center}
+            .sv-img-box{flex:none;width:100%;max-width:280px;margin:0 auto;min-height:160px}
+            .sv-img-box img{width:100%;height:auto}
+            .sv-reassure{justify-content:center}
+        }
+
+        .hint-box{background:var(--sunshine-pale);border:1.5px solid rgba(226,204,90,.3);border-radius:var(--radius);padding:1.1rem 1.3rem;margin:1.25rem 0;display:flex;gap:10px;align-items:flex-start}
+        .hint-box .hint-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+        .hint-box p{font-size:.85rem;color:var(--bark);line-height:1.65}
+
+        .fun-fact{background:var(--sky-pale);border:1.5px solid rgba(137,184,204,.25);border-radius:var(--radius);padding:1.1rem 1.3rem;margin:1.25rem 0;display:flex;gap:10px;align-items:flex-start}
+        .fun-fact .ff-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+        .fun-fact p{font-size:.85rem;color:var(--bark);line-height:1.65}
+
+        .cta-card{background:linear-gradient(135deg,var(--sage-pale) 0%,#d0e4d6 100%);border:1.5px solid var(--sage-light);border-radius:var(--radius);padding:2rem;text-align:center;margin:1.5rem 0}
+        .cta-card h3{font-family:'Quicksand',sans-serif;font-size:1.05rem;font-weight:700;color:var(--sage-dark);margin-bottom:.4rem}
+        .cta-card p{font-size:.85rem;color:var(--bark-light);margin-bottom:.8rem}
+        .cta-card .phone a{font-size:1.15rem;font-weight:700;color:var(--sage-dark);text-decoration:none}
+
+        footer{max-width:820px;margin:0 auto;padding:1rem 1.5rem 2rem;text-align:center;color:var(--bark-light);font-size:.72rem;border-top:1px solid rgba(90,78,66,.08)}
+        footer a{color:var(--sage-dark);text-decoration:none}
+
+        @media(max-width:640px){
+            .hero h1{font-size:1.5rem}
+            .hero p{font-size:.85rem}
+            .hero-character{width:110px;height:110px}
+            .story-card{padding:1.25rem}
+            .sv-wrap{padding:1.25rem}
+        }
+</style>
+</head>
+<body>
+
+<header>
+<div class="header-inner">
+    <a href="index_ro.html"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJFYmVuZV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4OTEuODcgMTg1LjI2Ij48ZGVmcz48c3R5bGU+LmNscy0xLC5jbHMtMntzdHJva2Utd2lkdGg6MHB4O30uY2xzLTJ7ZmlsbDojMzc1MzhlO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im0xOS42NywxMDAuNzNjMCwxLjMsMCwyLjIzLDAsMy4xNSwwLDI2LjE5LDAsNTIuMzgsMCw3OC41N3EwLDIuODEtMi44MiwyLjgxYy00LjgsMC05LjYsMC0xNC4zOSwwSC4wNGMwLS45NCwwLTEuNjUsMC0yLjM2Qy4wNCwxMjIuNzMuMDUsNjIuNTUsMCwyLjM4LDAsLjQ3LjU5LjA0LDIuMzYuMDRjMzcuNzkuMDQsNzUuNTctLjE0LDExMy4zNi4xMiwxNC4yNC4xLDI3LjEzLDUuMDEsMzguNDgsMTMuNjgsMTMuMzcsMTAuMjEsMjIuMDQsMjMuOCwyNy44NSwzOS4zNyw1LjY0LDE1LjEyLDcuOTMsMzAuODEsNy4yNSw0Ni44Ni0uNzksMTguNjgtNS41MSwzNi4zMy0xNi4wMSw1Mi4wMi0xMS4xOCwxNi43MS0yNi43NCwyNy4wOS00Ni42NSwzMC4yNy03LjUyLDEuMi0xNS4yMywxLjM1LTIyLjg3LDEuNjQtMTQuMzEuNTUtMjguNjMuODUtNDIuOTQsMS4yNS0uNzIuMDItMS40NSwwLTIuNCwwLS4wNi0uODgtLjE2LTEuNjUtLjE2LTIuNDEsMC0yMS41MywwLTQzLjA1LDAtNjQuNTgsMC0yLjYyLjAxLTIuNjMsMi42Ny0yLjYzLDUuNCwwLDEwLjguMDYsMTYuMTktLjAzLDEuNzktLjAzLDIuMzkuNDYsMi4zNiwyLjM1LS4yMiwxNS4yNi0uMzMsMzAuNTItLjQ2LDQ1Ljc3LS4wMiwyLjUxLDAsMi40MywyLjU3LDIuMzcsNi43My0uMTQsMTMuNDYtLjA4LDIwLjE4LS4zMyw5Ljk4LS4zOCwxOS45NS0uODgsMjkuNTQtNC4xNiwxMC4xOS0zLjQ5LDE3Ljg1LTEwLjAxLDIzLjUzLTE5LjA2LDcuMzYtMTEuNzQsMTEuMzItMjQuNTgsMTIuOC0zOC4yOCwxLjgtMTYuNjUtLjAyLTMyLjgyLTYuMjgtNDguNC01LjI3LTEzLjExLTE0LjA4LTIzLjI2LTI2LjI4LTMwLjMzLTYuMTUtMy41Ni0xMi45My01LjM2LTIwLjA0LTUuMzgtMzAuODUtLjA3LTYxLjcxLS4wMy05Mi41Ni0uMDMtLjg1LDAtMS43LDAtMi42NywwdjYwLjM2Yy45LjA1LDEuNzMuMTMsMi41Ni4xMywyMi45MiwwLDQ1Ljg1LjA0LDY4Ljc3LS4wNSwyLjM1LDAsMy40Ny44NiwzLjk1LDIuOTUsMS4xMiw0LjgxLDEuMTksOS42Mi0uMDgsMTQuNDItLjUzLDIuMDEtMS43MiwyLjg0LTMuOTEsMi44NC0yMi43OS0uMDctNDUuNTgtLjA0LTY4LjM3LS4wNC0uOTIsMC0xLjgzLDAtMy4wNiwwWiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0ibTI4Ni43MSwxMDcuMWgtMTcuMzZWLjAyaDYwLjQzdjE0Ljc5aC00My4wN3YzMy40N2g0MC4zNnYxNC44N2gtNDAuMzZ2NDMuOTVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMzYyLjUyLDY0LjMzdjQyLjc3aC0xNy41MVYuMDJoMzAuMjVjMTMuODIsMCwyNC4wNSwyLjU5LDMwLjY5LDcuNzYsNi42NCw1LjE4LDkuOTYsMTIuOTksOS45NiwyMy40NCwwLDEzLjMzLTYuOTMsMjIuODMtMjAuOCwyOC40OWwzMC4yNSw0Ny4zOWgtMTkuOTJsLTI1LjYzLTQyLjc3aC0xNy4yOVptMC0xNC41aDEyLjE2YzguMTUsMCwxNC4wNi0xLjUxLDE3LjcyLTQuNTQsMy42Ni0zLjAzLDUuNDktNy41Miw1LjQ5LTEzLjQ4cy0xLjk4LTEwLjQtNS45My0xMy4wNC05LjkxLTMuOTYtMTcuODctMy45NmgtMTEuNTd2MzUuMDFaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNDY2LjA3LDQ4Ljg3TDQ5MS40MS4wMmgxOS4wNGwtMzUuNjcsNjUuNTV2NDEuNTNoLTE3LjU4di00MC45NEw0MjEuNjguMDJoMTkuMDRsMjUuMzQsNDguODVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjA5Ljc5LDUyLjUzYzAsMTcuNjgtNC45MSwzMS4xOS0xNC43Miw0MC41NC05LjgxLDkuMzUtMjMuOTUsMTQuMDMtNDIuNDEsMTQuMDNoLTI5Ljk2Vi4wMmgzMy4xMWMxNy4wNCwwLDMwLjMsNC41OSwzOS43NywxMy43Nyw5LjQ3LDkuMTgsMTQuMjEsMjIuMSwxNC4yMSwzOC43NVptLTE4LjQ2LjU5YzAtMjUuNjMtMTEuOTktMzguNDUtMzUuOTYtMzguNDVoLTE1LjE2djc3LjcxaDEyLjQ1YzI1Ljc4LDAsMzguNjctMTMuMDgsMzguNjctMzkuMjZaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtNjg5LjMzLDEwNy4xaC02MC41N1YuMDJoNjAuNTd2MTQuNzloLTQzLjA3djI5LjE1aDQwLjM2djE0LjY1aC00MC4zNnYzMy42Mmg0My4wN3YxNC44N1oiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im03OTcuNjQsMTA3LjFoLTIxLjQ2bC01Mi42Ni04NS4zM2gtLjU5bC4zNyw0Ljc2Yy42OCw5LjA0LDEuMDMsMTcuMzgsMS4wMywyNC45djU1LjY2aC0xNS44OVYuMDJoMjEuMjRsNTIuNTIsODQuODloLjQ0Yy0uMS0xLjEyLS4yOS01LjIxLS41OS0xMi4yNy0uMjktNy4wNi0uNDQtMTIuNTYtLjQ0LTE2LjUyVi4wMmgxNi4wNHYxMDcuMDhaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJtODYwLjM4LDEwNy4xaC0xNy41VjE1LjAzaC0zMS40OVYuMDJoODAuNDl2MTUuMDFoLTMxLjQ5djkyLjA3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTI5Ny41NiwxODQuNzJoLTI4LjIxdi00LjQ4bDE5Ljg4LTI5LjQyaC0xOS4zNHYtNS41M2gyNy4xM3Y0LjUzbC0xOS45NiwyOS4zN2gyMC41djUuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzIyLjU3LDE4NC43MmwtMS4yNy00LjE1aC0uMjJjLTEuNDQsMS44Mi0yLjg5LDMuMDUtNC4zNCwzLjcxLTEuNDYuNjYtMy4zMy45OC01LjYxLjk4LTIuOTMsMC01LjIyLS43OS02Ljg2LTIuMzctMS42NS0xLjU4LTIuNDctMy44Mi0yLjQ3LTYuNzIsMC0zLjA3LDEuMTQtNS4zOSwzLjQyLTYuOTZzNS43Ni0yLjQyLDEwLjQ0LTIuNTZsNS4xNS0uMTZ2LTEuNTljMC0xLjkxLS40NC0zLjMzLTEuMzMtNC4yNy0uODktLjk0LTIuMjctMS40Mi00LjE0LTEuNDItMS41MywwLTIuOTkuMjItNC40LjY3LTEuNC40NS0yLjc1Ljk4LTQuMDUsMS41OWwtMi4wNS00LjUzYzEuNjItLjg1LDMuMzktMS40OSw1LjMxLTEuOTMsMS45Mi0uNDQsMy43NC0uNjYsNS40NS0uNjYsMy43OSwwLDYuNjYuODMsOC41OSwyLjQ4LDEuOTMsMS42NSwyLjksNC4yNSwyLjksNy43OXYyMC4wOWgtNC41M1ptLTkuNDQtNC4zMWMyLjMsMCw0LjE1LS42NCw1LjU0LTEuOTMsMS4zOS0xLjI5LDIuMDktMy4wOSwyLjA5LTUuNDF2LTIuNTlsLTMuODMuMTZjLTIuOTguMTEtNS4xNi42MS02LjUxLDEuNS0xLjM2Ljg5LTIuMDQsMi4yNS0yLjA0LDQuMDksMCwxLjMzLjM5LDIuMzYsMS4xOSwzLjA5Ljc5LjczLDEuOTgsMS4wOSwzLjU2LDEuMDlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzYxLjA4LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjYsMC00LjYxLjgtNS44NiwyLjM5LTEuMjUsMS41OS0xLjg4LDQuMjYtMS44OCw4djE0LjgxaC02LjM0di00MS45Nmg2LjM0djEwLjY1YzAsMS43MS0uMTEsMy41My0uMzIsNS40OGguNGMuODYtMS40NCwyLjA2LTIuNTUsMy42LTMuMzRzMy4zMy0xLjE5LDUuMzgtMS4xOWM3LjIzLDAsMTAuODQsMy42NCwxMC44NCwxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im0zOTUuMDYsMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQyMS4zNSwxODQuNzJsLTEuMjctNC4xNWgtLjIyYy0xLjQ0LDEuODItMi44OSwzLjA1LTQuMzQsMy43MXMtMy4zMy45OC01LjYxLjk4Yy0yLjkzLDAtNS4yMi0uNzktNi44Ni0yLjM3LTEuNjQtMS41OC0yLjQ3LTMuODItMi40Ny02LjcyLDAtMy4wNywxLjE0LTUuMzksMy40Mi02Ljk2czUuNzYtMi40MiwxMC40NC0yLjU2bDUuMTUtLjE2di0xLjU5YzAtMS45MS0uNDUtMy4zMy0xLjM0LTQuMjctLjg5LS45NC0yLjI3LTEuNDItNC4xNC0xLjQyLTEuNTMsMC0yLjk5LjIyLTQuNC42Ny0xLjQuNDUtMi43NS45OC00LjA0LDEuNTlsLTIuMDUtNC41M2MxLjYyLS44NSwzLjM5LTEuNDksNS4zMS0xLjkzLDEuOTItLjQ0LDMuNzQtLjY2LDUuNDUtLjY2LDMuNzksMCw2LjY2LjgzLDguNTksMi40OCwxLjkzLDEuNjUsMi45LDQuMjUsMi45LDcuNzl2MjAuMDloLTQuNTNabS0xNS41OS0zNy43M2MwLTEuMTEuMy0xLjkyLjktMi40MS42LS40OSwxLjMzLS43NCwyLjItLjc0Ljk1LDAsMS43MS4yOCwyLjI4Ljg0LjU3LjU2Ljg1LDEuMzMuODUsMi4zMnMtLjI5LDEuNzItLjg2LDIuMjljLS41Ny41OC0xLjMzLjg2LTIuMjcuODYtLjg2LDAtMS41OS0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3Wm02LjE1LDMzLjQxYzIuMywwLDQuMTUtLjY0LDUuNTQtMS45MywxLjM5LTEuMjksMi4wOS0zLjA5LDIuMDktNS40MXYtMi41OWwtMy44My4xNmMtMi45OS4xMS01LjE2LjYxLTYuNTEsMS41LTEuMzYuODktMi4wNCwyLjI1LTIuMDQsNC4wOSwwLDEuMzMuNCwyLjM2LDEuMTksMy4wOS43OS43MywxLjk4LDEuMDksMy41NiwxLjA5Wm00LjQ1LTMzLjQxYzAtMS4xMS4zLTEuOTIuOS0yLjQxLjYtLjQ5LDEuMzMtLjc0LDIuMi0uNzQuOTUsMCwxLjcyLjI4LDIuMjkuODQuNTcuNTYuODYsMS4zMy44NiwyLjMycy0uMywxLjc0LS44OSwyLjMxYy0uNTkuNTctMS4zNS44NS0yLjI3Ljg1LS44NiwwLTEuNi0uMjYtMi4yLS43OC0uNi0uNTItLjktMS4zMS0uOS0yLjM3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTQ0OC43NiwxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNS4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTMsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDc3LjUxLDE4NC43MmgtMjIuNjN2LTMuOTFsMTUuMDctMjEuMDZoLTE0LjE2di00Ljg1aDIxLjI4djQuNDJsLTE0Ljc1LDIwLjU1aDE1LjE4djQuODVaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNDk1LjM4LDE4MC4xNGMxLjU1LDAsMy4wOS0uMjQsNC42NC0uNzN2NC43N2MtLjcuMzEtMS42LjU2LTIuNzEuNzctMS4xLjIxLTIuMjUuMzEtMy40NC4zMS02LDAtOS4wMS0zLjE2LTkuMDEtOS40OXYtMTYuMDdoLTQuMDd2LTIuOGw0LjM3LTIuMzIsMi4xNi02LjMxaDMuOTF2Ni42M2g4LjQ5djQuOGgtOC40OXYxNS45N2MwLDEuNTMuMzgsMi42NiwxLjE1LDMuMzguNzYuNzMsMS43NywxLjA5LDMuMDEsMS4wOVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im01MTcuODIsMTg1LjI2Yy00LjY0LDAtOC4yNy0xLjM1LTEwLjg4LTQuMDZzLTMuOTItNi40My0zLjkyLTExLjE4LDEuMjEtOC43LDMuNjQtMTEuNDljMi40My0yLjc5LDUuNzYtNC4xOCwxMC4wMS00LjE4LDMuOTQsMCw3LjA1LDEuMiw5LjMzLDMuNTksMi4yOCwyLjM5LDMuNDMsNS42OCwzLjQzLDkuODd2My40M2gtMTkuODhjLjA5LDIuODkuODcsNS4xMiwyLjM1LDYuNjcsMS40NywxLjU2LDMuNTUsMi4zMyw2LjIzLDIuMzMsMS43NiwwLDMuNC0uMTcsNC45Mi0uNSwxLjUyLS4zMywzLjE1LS44OSw0Ljg5LTEuNjZ2NS4xNWMtMS41NS43NC0zLjExLDEuMjYtNC42OSwxLjU2LTEuNTguMzEtMy4zOS40Ni01LjQyLjQ2Wm0tMS4xNi0yNi4xMWMtMi4wMSwwLTMuNjMuNjQtNC44NCwxLjkxLTEuMjEsMS4yOC0xLjk0LDMuMTQtMi4xNyw1LjU4aDEzLjU0Yy0uMDQtMi40Ni0uNjMtNC4zMy0xLjc4LTUuNi0xLjE1LTEuMjctMi43My0xLjktNC43NS0xLjlaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTUwLjU4LDE0N2MwLTEuMTMuMzEtMiwuOTMtMi42Mi42Mi0uNjEsMS41LS45MiwyLjY2LS45MnMxLjk4LjMxLDIuNi45Mi45MywxLjQ4LjkzLDIuNjItLjMxLDEuOTMtLjkzLDIuNTVjLS42Mi42Mi0xLjQ5LjkzLTIuNi45M3MtMi4wNC0uMzEtMi42Ni0uOTNjLS42Mi0uNjItLjkzLTEuNDctLjkzLTIuNTVabTYuNzIsMzcuNzNoLTYuMzR2LTI5LjgzaDYuMzR2MjkuODNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNTkxLjQ2LDE4NC43MmgtNi4zNnYtMTguMzRjMC0yLjMtLjQ2LTQuMDItMS4zOS01LjE1LS45My0xLjEzLTIuMzktMS43LTQuNDEtMS43LTIuNjgsMC00LjY0Ljc5LTUuODgsMi4zNy0xLjI0LDEuNTgtMS44Niw0LjIzLTEuODYsNy45NnYxNC44NmgtNi4zNHYtMjkuODNoNC45NmwuODksMy45MWguMzJjLjktMS40MiwyLjE4LTIuNTIsMy44My0zLjI5LDEuNjUtLjc3LDMuNDktMS4xNiw1LjUtMS4xNiw3LjE1LDAsMTAuNzMsMy42NCwxMC43MywxMC45MnYxOS40NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im02MTUuMywxNDUuM2gxMS43YzUuNDMsMCw5LjM1Ljc5LDExLjc3LDIuMzcsMi40MiwxLjU4LDMuNjMsNC4wOCwzLjYzLDcuNSwwLDIuMy0uNTksNC4yMi0xLjc4LDUuNzQtMS4xOSwxLjUzLTIuODksMi40OS01LjEyLDIuODl2LjI3YzIuNzcuNTIsNC44MSwxLjU1LDYuMTEsMy4wOSwxLjMsMS41NCwxLjk1LDMuNjIsMS45NSw2LjI0LDAsMy41NC0xLjI0LDYuMzEtMy43MSw4LjMyLTIuNDcsMi01LjkxLDMuMDEtMTAuMzIsMy4wMWgtMTQuMjR2LTM5LjQzWm02LjQ1LDE2LjI5aDYuMmMyLjcsMCw0LjY3LS40Myw1LjkxLTEuMjgsMS4yNC0uODUsMS44Ni0yLjMxLDEuODYtNC4zNiwwLTEuODUtLjY3LTMuMTktMi4wMS00LjAycy0zLjQ3LTEuMjQtNi4zOC0xLjI0aC01LjU4djEwLjlabTAsNS4yM3YxMi40OWg2Ljg1YzIuNywwLDQuNzMtLjUyLDYuMTEtMS41NSwxLjM3LTEuMDMsMi4wNi0yLjY3LDIuMDYtNC44OSwwLTIuMDUtLjctMy41Ny0yLjEtNC41Ni0xLjQtLjk5LTMuNTMtMS40OC02LjM5LTEuNDhoLTYuNTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNjc2Ljg0LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDEtMi41LDIuNzMtNS45OCw0LjEtMTAuNDQsNC4xLTIuNzksMC01LjI1LS42My03LjM5LTEuODlzLTMuNzktMy4wNy00LjkzLTUuNDJjLTEuMTUtMi4zNS0xLjczLTUuMDktMS43My04LjIsMC00Ljg0LDEuMjQtOC42MSwzLjcyLTExLjMzLDIuNDgtMi43MSw1Ljk4LTQuMDcsMTAuNDktNC4wN3M3LjczLDEuMzksMTAuMjUsNC4xN2MyLjUyLDIuNzgsMy43OCw2LjUyLDMuNzgsMTEuMjNabS0yMS43MSwwYzAsNi44OSwyLjU0LDEwLjMzLDcuNjMsMTAuMzNzNy41NS0zLjQ0LDcuNTUtMTAuMzMtMi41NC0xMC4yMi03LjYxLTEwLjIyYy0yLjY2LDAtNC41OS44OC01Ljc0LDIuNjQtMS4yLDEuNzYtMS43OSw0LjI5LTEuNzksNy41OFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im03MDkuMzksMTg0LjcyaC02LjM2di0xOC4zNGMwLTIuMy0uNDYtNC4wMi0xLjM5LTUuMTUtLjkzLTEuMTMtMi4zOS0xLjctNC40MS0xLjctMi42OCwwLTQuNjQuNzktNS44OCwyLjM3LTEuMjQsMS41OC0xLjg2LDQuMjMtMS44Niw3Ljk2djE0Ljg2aC02LjM0di0yOS44M2g0Ljk2bC44OSwzLjkxaC4zMmMuOS0xLjQyLDIuMTgtMi41MiwzLjgzLTMuMjksMS42NS0uNzcsMy40OS0xLjE2LDUuNS0xLjE2LDcuMTUsMCwxMC43MywzLjY0LDEwLjczLDEwLjkydjE5LjQ0WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTc0My4zNywxODQuNzJoLTYuMzZ2LTE4LjM0YzAtMi4zLS40Ni00LjAyLTEuMzktNS4xNS0uOTMtMS4xMy0yLjM5LTEuNy00LjQxLTEuNy0yLjY4LDAtNC42NC43OS01Ljg4LDIuMzctMS4yNCwxLjU4LTEuODYsNC4yMy0xLjg2LDcuOTZ2MTQuODZoLTYuMzR2LTI5LjgzaDQuOTZsLjg5LDMuOTFoLjMyYy45LTEuNDIsMi4xOC0yLjUyLDMuODMtMy4yOSwxLjY1LS43NywzLjQ5LTEuMTYsNS41LTEuMTYsNy4xNSwwLDEwLjczLDMuNjQsMTAuNzMsMTAuOTJ2MTkuNDRaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtNzYxLjQzLDE4NS4yNmMtMy43MiwwLTYuNjMtMS4zNS04LjcxLTQuMDVzLTMuMTMtNi40OC0zLjEzLTExLjM1LDEuMDYtOC43LDMuMTctMTEuNDJjMi4xMS0yLjcyLDUuMDQtNC4wOSw4Ljc4LTQuMDlzNi45LDEuNDUsOC45NSw0LjM0aC4zMmMtLjMxLTIuMTQtLjQ2LTMuODMtLjQ2LTUuMDd2LTEwLjg3aDYuMzZ2NDEuOTZoLTQuOTZsLTEuMTEtMy45MWgtLjNjLTIuMDMsMi45Ny01LjAxLDQuNDUtOC45Myw0LjQ1Wm0xLjctNS4xMmMyLjYxLDAsNC41LS43Myw1LjY5LTIuMiwxLjE5LTEuNDcsMS44LTMuODQsMS44My03LjEzdi0uODljMC0zLjc2LS42MS02LjQzLTEuODMtOC4wMS0xLjIyLTEuNTgtMy4xNC0yLjM3LTUuNzQtMi4zNy0yLjIzLDAtMy45NS45LTUuMTUsMi43MS0xLjIsMS44MS0xLjgxLDQuMzgtMS44MSw3Ljczcy41OCw1LjgzLDEuNzUsNy41NmMxLjE3LDEuNzMsMi45MiwyLjYsNS4yNiwyLjZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODExLjI5LDE2OS43NmMwLDQuODctMS4yNSw4LjY3LTMuNzUsMTEuNDFzLTUuOTgsNC4xLTEwLjQ0LDQuMWMtMi43OSwwLTUuMjUtLjYzLTcuMzktMS44OXMtMy43OC0zLjA3LTQuOTMtNS40MmMtMS4xNS0yLjM1LTEuNzMtNS4wOS0xLjczLTguMiwwLTQuODQsMS4yNC04LjYxLDMuNzItMTEuMzMsMi40OC0yLjcxLDUuOTgtNC4wNywxMC40OS00LjA3czcuNzMsMS4zOSwxMC4yNSw0LjE3YzIuNTIsMi43OCwzLjc4LDYuNTIsMy43OCwxMS4yM1ptLTIxLjcxLDBjMCw2Ljg5LDIuNTQsMTAuMzMsNy42MywxMC4zM3M3LjU1LTMuNDQsNy41NS0xMC4zMy0yLjU0LTEwLjIyLTcuNjEtMTAuMjJjLTIuNjYsMC00LjU5Ljg4LTUuNzgsMi42NC0xLjIsMS43Ni0xLjc5LDQuMjktMS43OSw3LjU4WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTgzMi43MywxNTQuMzZjMS4yOCwwLDIuMzMuMDksMy4xNi4yN2wtLjYyLDUuOTFjLS45LS4yMi0xLjgzLS4zMi0yLjgtLjMyLTIuNTQsMC00LjU5LjgzLTYuMTYsMi40OC0xLjU3LDEuNjUtMi4zNiwzLjgtMi4zNiw2LjQ1djE1LjU5aC02LjM0di0yOS44M2g0Ljk2bC44NCw1LjI2aC4zMmMuOTktMS43OCwyLjI4LTMuMTksMy44Ny00LjIzLDEuNTktMS4wNCwzLjMtMS41Niw1LjE0LTEuNTZaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODU3LjM4LDE1OS43aC03LjI4djI1LjAzaC02LjM2di0yNS4wM2gtNC45MXYtMi45N2w0LjkxLTEuOTR2LTEuOTRjMC0zLjUyLjgzLTYuMTQsMi40OC03LjgzLDEuNjUtMS43LDQuMTgtMi41NSw3LjU4LTIuNTUsMi4yMywwLDQuNDIuMzcsNi41OCwxLjExbC0xLjY3LDQuOGMtMS41Ni0uNS0zLjA2LS43Ni00LjQ0LS43NnMtMi40OS40NS0zLjE0LDEuMzNjLS42Ni44OS0uOTgsMi4yMy0uOTgsNC4wMXYxLjk0aDcuMjh2NC44WiIvPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iMjI3LjkxIiB5PSIwIiB3aWR0aD0iMyIgaGVpZ2h0PSIxODUuMjYiLz48L3N2Zz4=" alt="FRYDENT" class="logo-img"></a>
+    <div class="header-right">
+        <a class="header-btn header-back" href="kinderecke_eltern_ro.html"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg><span class="back-text">Părinți</span></a>
+        <a class="header-btn header-termin" href="tel:+497703284">Termin</a>
+    </div>
+</div>
+</header>
+
+<section class="hero">
+    <div class="hero-character"><img src="kids/img/zaehni-hero.png" alt="Zähni begrüßt dich"></div>
+    <h1>Bine ai venit în Lumea Dinților!</h1>
+    <div class="hero-divider"></div>
+    <p>Salut! Eu sunt Zähni. Îți arăt ce se întâmplă la dentist. Nu te teme — va fi super!</p>
+</section>
+
+<main>
+
+<nav class="tab-nav">
+    <button class="tab-btn active" onclick="go('untersuchung')">Examinarea dinților</button>
+    <button class="tab-btn" onclick="go('fuellung')">Repararea unui dinte</button>
+    <button class="tab-btn" onclick="go('helden')">Sfaturi de erou</button>
+</nav>
+
+<!-- ===== TAB 1: UNTERSUCHUNG ===== -->
+<div class="tab-section active" id="s-untersuchung">
+    <div class="section-title" style="margin-top:0">Ce se întâmplă când ne uităm la dinții tăi?</div>
+    <p class="section-sub">Pas cu pas — ca să știi exact ce se întâmplă!</p>
+
+    <div class="speech">
+        <div class="speech-img"><img src="kids/img/zaehni-detective.png" alt="Zähni"></div>
+        <p><strong>Salut!</strong> Eu sunt dentista ta. Astăzi vreau să mă uit la dinții tăi. Nu doare — doar mă uit! Hai, îți arăt…</p>
+    </div>
+
+    <div class="sv-wrap">
+        <div id="u-pills" class="sv-pills"></div>
+        <div id="u-body" class="sv-body">
+            <div class="sv-img-box" id="u-img-box"><img id="u-img" src="kids/img/ke_u_step1.png" alt="Schritt"></div>
+            <div id="u-info" class="sv-info"></div>
+        </div>
+        <div id="u-dots" class="sv-dots"></div>
+        <div class="sv-nav">
+            <button class="sv-btn prev" id="u-prev" onclick="svGo('u',-1)">← Înapoi</button>
+            <button class="sv-btn next" id="u-next" onclick="svGo('u',1)">Înainte →</button>
+            <label class="sv-auto-label"><input type="checkbox" onchange="svAuto('u',this.checked)"> Auto</label>
+        </div>
+    </div>
+
+    <div class="fun-fact">
+        <span class="ff-icon">🌟</span>
+        <p><strong>Știai?</strong> Ai 20 de dinți de lapte. Când vei crește, vei avea 32 de dinți mari!</p>
+    </div>
+
+    <div class="story-card sage">
+        <span class="story-emoji">🏆</span>
+        <div class="story-title">Gata!</div>
+        <p>Vezi? Nu a fost deloc rău! Dentista a verificat că toți dinții sunt sănătoși. Data viitoare vei ști deja.</p>
+    </div>
+</div>
+
+<!-- ===== TAB 2: FÜLLUNG ===== -->
+<div class="tab-section" id="s-fuellung">
+    <div class="section-title" style="margin-top:0">Când un dinte trebuie reparat</div>
+    <p class="section-sub">Uneori un dinte are nevoie de ajutor — complet normal!</p>
+
+    <div class="speech">
+        <div class="speech-img"><img src="kids/img/zaehni-welcome.png" alt="Zähni"></div>
+        <p><strong>Vai!</strong> În dintele meu s-a ascuns o găuriță. Bacteriile ștrengărești fac petreceri. Dar dentista poate repara! Uite…</p>
+    </div>
+
+    <div class="sv-wrap">
+        <div id="f-pills" class="sv-pills"></div>
+        <div id="f-body" class="sv-body">
+            <div class="sv-img-box" id="f-img-box"><img id="f-img" src="kids/img/ke_f_step1.png" alt="Schritt"></div>
+            <div id="f-info" class="sv-info"></div>
+        </div>
+        <div id="f-dots" class="sv-dots"></div>
+        <div class="sv-nav">
+            <button class="sv-btn prev" id="f-prev" onclick="svGo('f',-1)">← Înapoi</button>
+            <button class="sv-btn next" id="f-next" onclick="svGo('f',1)">Înainte →</button>
+            <label class="sv-auto-label"><input type="checkbox" onchange="svAuto('f',this.checked)"> Auto</label>
+        </div>
+    </div>
+
+    <div class="hint-box">
+        <span class="hint-icon">💡</span>
+        <p><strong>Important:</strong> Dacă gura ta se simte ciudat după tratament — e normal! Nu mușca buza sau obrazul.</p>
+    </div>
+
+    <div class="story-card rose">
+        <span class="story-emoji">💪</span>
+        <div class="story-title">Ești foarte curajos/curajoasă!</div>
+        <p>Plomba nu e atât de înspăimântătoare. Mulți copii spun: „Nu a fost rău!” Dintele e din nou puternic și sănătos.</p>
+    </div>
+</div>
+
+<!-- ===== TAB 3: ZAHNHELDEN-TIPPS ===== -->
+<div class="tab-section" id="s-helden">
+    <div class="section-title" style="margin-top:0">Devino un erou al dinților!</div>
+    <p class="section-sub">Cu aceste sfaturi dinții rămân super puternici</p>
+
+    <div class="story-card sunshine">
+        <img src="kids/img/ke_h_putzen.png" alt="Zähne putzen" class="story-img">
+        <div class="story-title">Spală-ți dinții de două ori pe zi!</div>
+        <p>Dimineața după mic dejun și seara înainte de somn — 2 minute! Imaginează-ți că strălucesc.</p>
+    </div>
+
+    <div class="story-card sky">
+        <img src="kids/img/ke_h_wasser.png" alt="Wasser trinken" class="story-img">
+        <div class="story-title">Apa e băutura ta super!</div>
+        <p>Apa e cea mai bună băutură. Sucul e gustos, dar zahărul hrănește bacteriile. Mai puțin zahăr = mai puține bacterii!</p>
+    </div>
+
+    <div class="story-card lavender">
+        <img src="kids/img/ke_h_essen.png" alt="Zahn-Power-Essen" class="story-img">
+        <div class="story-title">Mâncare cu putere</div>
+        <p>Morcovii, merele și gulia sunt antrenament! Mestecatul produce salivă care curăță dinții. Brânza e și ea grozavă!</p>
+    </div>
+
+    <div class="story-card sage">
+        <img src="kids/img/ke_h_besuch.png" alt="Zum Zahnarzt kommen" class="story-img">
+        <div class="story-title">Vino regulat la dentist</div>
+        <p>Când vii regulat, verificăm că totul e bine. Cu cât vii mai des, cu atât ne cunoști mai bine!</p>
+    </div>
+
+    <div class="fun-fact">
+        <span class="ff-icon">🌟</span>
+        <p><strong>Secretul eroului:</strong> Dinții sunt mai tari decât oasele! Cel mai dur material din corpul tău. Tare, nu?</p>
+    </div>
+</div>
+
+<div class="cta-card">
+    <h3>Wir freuen uns auf dich! 🎉</h3>
+    <p>Ai întrebări? Părinții pot face programare.</p>
+    <div class="phone"><a href="tel:+497703284">☎ 07703 / 284</a></div>
+</div>
+
+</main>
+
+<footer>
+    <p>FRYDENT Zahnarztpraxis · Martinstraße 4 · 79848 Bonndorf im Schwarzwald</p>
+    <p style="margin-top:4px"><a href="kinderecke_eltern_ro.html">→ Sfaturi pentru părinți</a> · <a href="index_ro.html">← Înapoi la prezentare</a></p>
+</footer>
+
+<script>
+function go(id){
+    document.querySelectorAll('.tab-section').forEach(function(s){s.classList.remove('active')});
+    document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
+    document.getElementById('s-'+id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({top:document.querySelector('main').offsetTop-60,behavior:'smooth'});
+}
+var tn=document.querySelector('.tab-nav');
+function checkScroll(){if(!tn)return;var atEnd=tn.scrollLeft+tn.clientWidth>=tn.scrollWidth-8;tn.classList.toggle('scrolled-end',atEnd)}
+if(tn){tn.addEventListener('scroll',checkScroll);checkScroll()}
+
+var svData={
+  u:[
+    {"label":"Scaun","cat":"Să înceapă","num":"1","title":"Te așezi pe scaun","desc":"Scaunul e ca un șezlong! Merge sus-jos și se înclină. Fă-te confortabil!","reassure":"Ridică mâna dacă vrei pauză.","img":"kids/img/ke_u_step1.png"},
+    {"label":"Lumină","cat":"Pasul 1","num":"2","title":"Lumina se aprinde","desc":"Un bec mare strălucește. Poți închide ochii sau primi ochelari cool!","reassure":"Nu se încălzește și nu doare.","img":"kids/img/ke_u_step2.png"},
+    {"label":"Oglindă","cat":"Pasul 2","num":"3","title":"Oglinda mică","desc":"O oglindă mică rotundă — vede și spatele dinților ca un detectiv! Poate gâdila puțin.","reassure":"Marginile sunt netede.","img":"kids/img/ke_u_step3.png"},
+    {"label":"Sondă","cat":"Pasul 3","num":"4","title":"Testatorul blajin","desc":"Un băț rotunjit atinge ușor dinții. Simte dacă totul e neted. Ca un gâdilat.","reassure":"Bățul e rotunjit — nu înțeapă!","img":"kids/img/ke_u_step4.png"},
+    {"label":"Aer","cat":"Pasul 4","num":"5","title":"Aer și apă","desc":"Uneori suflă aer pe dinte. Se simte amuzant — ca o briză!","reassure":"Poți clăti gura oricând.","img":"kids/img/ke_u_step5.png"},
+    {"label":"Gata!","cat":"Terminat","num":"6","title":"Totul e gata — bravo!","desc":"Dentista spune cum sunt dinții. De obicei totul e perfect!","reassure":"Ești un erou al dinților!","img":"kids/img/zaehni-winner.png"}
+  ],
+  f:[
+    {"label":"Privire","cat":"Întâi","num":"1","title":"Dentista se uită","desc":"Se uită atent și explică. Întreabă ce vrei!","reassure":"Explicăm mereu înainte.","img":"kids/img/ke_f_step1.png"},
+    {"label":"Vraja somnului","cat":"Pasul 1","num":"2","title":"Dintele adoarme","desc":"Primește o „vrajă a somnului”. Cremă de căpșuni pe gingie, apoi dintele doarme. Nu simți nimic!","reassure":"Mică apăsare — apoi doarme adânc.","img":"kids/img/ke_f_step2.png"},
+    {"label":"Curățare","cat":"Pasul 2","num":"3","title":"Partea stricată e înlăturată","desc":"Se înlătură cu grijă. Un zumzet — instrumentul lucrează. Dintele doarme!","reassure":"Zumzetul sună mai tare decât e.","img":"kids/img/ke_f_step3.png"},
+    {"label":"Plombă","cat":"Pasul 3","num":"4","title":"Material nou în dinte","desc":"Găurița e umplută cu material special. Ca plastilina dar mai puternică!","reassure":"Arată ca un dinte adevărat!","img":"kids/img/ke_f_step4.png"},
+    {"label":"Lumină","cat":"Pasul 4","num":"5","title":"Lumina albastră întărește","desc":"Lumină albastră magică face plomba tare și puternică! Câteva secunde.","reassure":"Lumina e blajină și nu doare.","img":"kids/img/ke_f_step5.png"},
+    {"label":"Gata!","cat":"Terminat","num":"6","title":"Dintele e sănătos!","desc":"Se lustruiește, muști o dată. Gata! Dintele e puternic și reparat.","reassure":"Bravo — ai fost curajos!","img":"kids/img/zaehni-winner.png"}
+  ]
+};
+
+var svCur={u:0,f:0},svTimers={u:null,f:null};
+
+function svRender(id){
+  var steps=svData[id],cur=svCur[id],s=steps[cur];
+  document.getElementById(id+'-pills').innerHTML=steps.map(function(st,i){
+    return '<button class="sv-pill'+(i===cur?' active':'')+'" onclick="svGoTo(\''+id+'\','+i+')">'+st.label+'</button>';
+  }).join('');
+  var img=document.getElementById(id+'-img');
+  img.src=s.img;
+  img.alt=s.title;
+  var info=document.getElementById(id+'-info');
+  info.className='sv-info sv-fade';
+  info.innerHTML='<div class="sv-badge"><span class="sv-num">'+s.num+'</span><span class="sv-cat">'+s.cat+'</span></div>'
+    +'<h3 class="sv-title">'+s.title+'</h3>'
+    +'<p class="sv-desc">'+s.desc+'</p>'
+    +'<div class="sv-reassure"><span class="sv-r-icon">🤗</span><p>'+s.reassure+'</p></div>';
+  document.getElementById(id+'-dots').innerHTML=steps.map(function(_,i){
+    return '<div class="sv-dot'+(i===cur?' active':'')+'"></div>';
+  }).join('');
+  document.getElementById(id+'-prev').disabled=cur===0;
+  document.getElementById(id+'-next').textContent=cur===steps.length-1?'↺ Din nou':'Înainte →';
+}
+function svGo(id,d){var steps=svData[id];if(svCur[id]===steps.length-1&&d===1)svCur[id]=0;else svCur[id]=Math.max(0,Math.min(steps.length-1,svCur[id]+d));svRender(id);}
+function svGoTo(id,i){svCur[id]=i;svRender(id);}
+function svAuto(id,on){clearInterval(svTimers[id]);if(on)svTimers[id]=setInterval(function(){svCur[id]=(svCur[id]+1)%svData[id].length;svRender(id);},4000);}
+svRender('u');svRender('f');
+</script>
+</body>
+</html>
