@@ -218,6 +218,329 @@ body{display:flex;justify-content:center;align-items:center;background:linear-gr
   if('caches' in window){var k=await caches.keys();for(var i=0;i<k.length;i++)await caches.delete(k[i])}
 })();
 </script>
+<script>
+// ===== i18n =====
+const LANG=(new URLSearchParams(window.location.search).get('lang')||'de').toLowerCase();
+const _T={
+pl:{
+// UI
+'Zahnspiele mit Zähni':'Gry z Zähni','Los geht\'s!':'Zaczynamy!','Zahnputz-Uhr':'Zegar do mycia zębów',
+'Wähle deine Gruppe!':'Wybierz swoją grupę!','Wie alt bist du?':'Ile masz lat?',
+'Super gemacht!':'Super!','Weiter spielen':'Graj dalej',
+'Sammle Sterne!':'Zbieraj gwiazdki!',' Sterne':' gwiazdek',
+// Age groups
+'Zahnzwerge':'Ząbkowe Skrzaty','3 – 5 Jahre':'3 – 5 lat','Bläschen, Zähneputzen, Zuordnen &amp; mehr':'Bańki, mycie zębów, dopasowywanie i więcej',
+'Zahnforscher':'Odkrywcy Ząbków','5 – 7 Jahre':'5 – 7 lat','Memory, Quiz &amp; Bakterien fangen':'Memory, Quiz i łapanie bakterii',
+'Zahndetektive':'Detektywi Ząbkowi','7 – 10 Jahre':'7 – 10 lat','Großes Memory, Quiz, Jagd &amp; Diplom':'Duże Memory, Quiz, Polowanie i Dyplom',
+// Games - tiny
+'Bläschen platzen':'Pękające bańki','Fang die Bläschen!':'Łap bańki!',
+'Zähne putzen':'Mycie zębów','Putz alle Zähne sauber!':'Umyj wszystkie ząbki!',
+'Was gehört zusammen?':'Co pasuje do siebie?','Finde die 6 Paare!':'Znajdź 6 par!',
+'Gut oder Schlecht?':'Dobre czy złe?','Was mögen deine Zähne?':'Co lubią twoje ząbki?',
+'Dein Diplom':'Twój dyplom','Zahnzwerg-Urkunde!':'Dyplom Ząbkowego Skrzata!',
+// Games - mid
+'Memory':'Memory','9 Paare finden':'Znajdź 9 par',
+'Kleines Quiz':'Mały Quiz','5 Fragen über Zähne':'5 pytań o ząbki',
+'Bakterien fangen':'Łapanie bakterii','Fang sie in 25 Sekunden!':'Złap je w 25 sekund!',
+'Zuordnen':'Dopasuj','6 Paare verbinden!':'Połącz 6 par!',
+'Zahnforscher-Urkunde!':'Dyplom Odkrywcy Ząbków!',
+// Games - big
+'12 Paare — für Profis!':'12 par — dla profesjonalistów!',
+'Großes Zahnquiz':'Wielki Quiz Ząbkowy','8 knifflige Fragen':'8 trudnych pytań',
+'Bakterienjagd':'Polowanie na bakterie','30 Sekunden Jagd!':'30 sekund polowania!',
+'Zahndetektiv-Urkunde':'Dyplom Detektywa Ząbkowego',
+// Memory
+'0 Züge · 0/':'0 ruchów · 0/',' Paare':' par','Alle Paare gefunden!':'Wszystkie pary znalezione!','In ':'W ',' Zügen':' ruchach',
+// Quiz
+'Frage 1 von ':'Pytanie 1 z ','Frage ':'Pytanie ',' von ':' z ',
+'✓ Richtig!':'✓ Dobrze!','✗ Leider falsch!':'✗ Niestety źle!',
+'Zahnexperte!':'Ekspert od ząbków!','Gut gemacht!':'Dobrze!',
+' richtig':' dobrze',
+// Quiz questions
+'Wie oft solltest du am Tag Zähne putzen?':'Ile razy dziennie powinno się myć zęby?',
+'Einmal':'Raz','Zweimal':'Dwa razy','Dreimal':'Trzy razy','Gar nicht':'Wcale',
+'Was macht Zucker mit deinen Zähnen?':'Co cukier robi z twoimi zębami?',
+'Macht sie stärker':'Wzmacnia je','Bakterien machen Säure daraus':'Bakterie robią z niego kwas','Putzt sie sauber':'Czyści je','Gar nichts':'Nic',
+'Wie lange solltest du Zähne putzen?':'Jak długo powinno się myć zęby?',
+'30 Sekunden':'30 sekund','1 Minute':'1 minutę','2 Minuten':'2 minuty','5 Minuten':'5 minut',
+'Was schützt deine Zähne vor Karies?':'Co chroni zęby przed próchnicą?',
+'Schokolade':'Czekolada','Fluorid in der Zahnpasta':'Fluorek w paście do zębów','Limonade':'Lemoniada','Kaugummi':'Guma do żucia',
+'Welches Essen ist gut für deine Zähne?':'Jakie jedzenie jest dobre dla zębów?',
+'Gummibärchen':'Żelki','Bonbons':'Cukierki','Äpfel und Karotten':'Jabłka i marchewki','Eis':'Lody',
+'Wie oft solltest du zum Zahnarzt gehen?':'Jak często powinno się chodzić do dentysty?',
+'Jeden Tag':'Codziennie','Einmal im Jahr':'Raz w roku','Zweimal im Jahr':'Dwa razy w roku','Nur bei Schmerzen':'Tylko przy bólu',
+'Was reinigt die Zahnzwischenräume?':'Co czyści przestrzenie między zębami?',
+'Nur die Zahnbürste':'Tylko szczoteczka','Zahnseide':'Nić dentystyczna','Mundwasser':'Płyn do płukania','Wasser':'Woda',
+'Was passiert bei einer Professionellen Zahnreinigung?':'Co się dzieje podczas profesjonalnego czyszczenia zębów?',
+'Zähne werden gezogen':'Zęby są wyrywane','Zähne werden gründlich gereinigt':'Zęby są dokładnie czyszczone','Man bekommt neue Zähne':'Dostaje się nowe zęby','Zähne werden angemalt':'Zęby są malowane',
+'Was ist das beste Getränk für deine Zähne?':'Jaki jest najlepszy napój dla zębów?',
+'Cola':'Cola','Apfelsaft':'Sok jabłkowy',
+'Was solltest du nach dem Essen von Süßigkeiten tun?':'Co robić po zjedzeniu słodyczy?',
+'Noch mehr essen':'Jeść więcej','Zähne putzen':'Myć zęby','Limonade trinken':'Pić lemoniadę','Schlafen gehen':'Iść spać',
+// Bubbles
+'Toll gemacht!':'Świetnie!',' Bläschen geplatzt':' bańki pęknięte',' geplatzt':' pęknięte',
+// Brushing
+'Male alle Zähne weiß!':'Wyczyść wszystkie ząbki!','Wische mit dem Finger über die Zähne!':'Przesuń palcem po ząbkach!',
+'Alle Zähne sauber!':'Wszystkie ząbki czyste!','Super geputzt!':'Super umyte!',
+// Matching
+'0/6 Paare':'0/6 par','Verbinde Bild und Beschreibung!':'Połącz obrazek z opisem!',
+'Alles gefunden!':'Wszystko znalezione!','Du kennst dich aus!':'Znasz się na tym!',
+'/6 Paare':'/6 par',
+// Matching card labels
+'Zahnbürste':'Szczoteczka','Zahnpasta':'Pasta do zębów','Apfel':'Jabłko','Sanduhr':'Klepsydra',
+'Schutz vor Karies':'Ochrona przed próchnicą','Gesunder Snack':'Zdrowa przekąska','Bestes Getränk':'Najlepszy napój','2 Minuten putzen':'Myć 2 minuty','Zahnzwischenräume':'Przestrzenie między zębami',
+// Gut/Schlecht
+'Frage 1 von 8':'Pytanie 1 z 8','Ist das gut für deine Zähne?':'Czy to jest dobre dla twoich ząbków?',
+'Gut!':'Dobrze!','Schlecht!':'Źle!',
+'Das ist gut für Zähne!':'To jest dobre dla ząbków!','Das ist schlecht für Zähne!':'To jest złe dla ząbków!',
+'Zahnprofi!':'Profesjonalista!',
+// Food items
+'Bonbon':'Cukierek','Karotte':'Marchewka','Käse':'Ser','Kuchen':'Ciasto','Nüsse':'Orzechy',
+// Memory cards
+'Zahn':'Ząb','Spiegel':'Lusterko','Bakterie':'Bakteria','Bakterie 2':'Bakteria 2','Bakterie 3':'Bakteria 3','Bakterie 4':'Bakteria 4',
+// Bakterien game
+'Bakterien erwischt':' bakterii złapanych','Gut gefangen!':'Dobrze złapane!',
+' Sekunden':' sekund',
+// Diplom
+'Zahnzwerg-Diplom':'Dyplom Ząbkowego Skrzata','Zahnforscher-Diplom':'Dyplom Odkrywcy Ząbków','Zahnheld-Diplom':'Dyplom Bohatera Ząbków',
+'ein echter Zahnzwerg':'prawdziwy Ząbkowy Skrzat','ein echter Zahnforscher':'prawdziwy Odkrywca Ząbków','ein echter Zahnheld':'prawdziwy Bohater Ząbków',
+'Hiermit wird bestätigt, dass':'Niniejszym potwierdza się, że','Dein Name':'Twoje imię',
+'alle Zahnspiele gemeistert hat':'ukończył(a) wszystkie gry dentystyczne','und ':'i ','ist!':' jest!',
+'alle Zahnspiele bei FRYDENT Kids':'wszystkie gry FRYDENT Kids',
+'erfolgreich gemeistert hat und nun':'ukończył(a) z powodzeniem i teraz',
+'Diplom drucken':'Drukuj dyplom','Zahnheld':'Bohater Ząbków',
+'Dein Diplom':'Twój dyplom',
+},
+en:{
+'Zahnspiele mit Zähni':'Tooth Games with Zähni','Los geht\'s!':'Let\'s go!','Zahnputz-Uhr':'Brushing Timer',
+'Wähle deine Gruppe!':'Choose your group!','Wie alt bist du?':'How old are you?',
+'Super gemacht!':'Great job!','Weiter spielen':'Keep playing',
+'Sammle Sterne!':'Collect stars!',' Sterne':' stars',
+'Zahnzwerge':'Tooth Sprites','3 – 5 Jahre':'3 – 5 years','Bläschen, Zähneputzen, Zuordnen &amp; mehr':'Bubbles, brushing, matching & more',
+'Zahnforscher':'Tooth Explorers','5 – 7 Jahre':'5 – 7 years','Memory, Quiz &amp; Bakterien fangen':'Memory, Quiz & catching bacteria',
+'Zahndetektive':'Tooth Detectives','7 – 10 Jahre':'7 – 10 years','Großes Memory, Quiz, Jagd &amp; Diplom':'Big Memory, Quiz, Hunt & Diploma',
+'Bläschen platzen':'Pop Bubbles','Fang die Bläschen!':'Catch the bubbles!',
+'Zähne putzen':'Brush Teeth','Putz alle Zähne sauber!':'Brush all teeth clean!',
+'Was gehört zusammen?':'What goes together?','Finde die 6 Paare!':'Find the 6 pairs!',
+'Gut oder Schlecht?':'Good or Bad?','Was mögen deine Zähne?':'What do your teeth like?',
+'Dein Diplom':'Your Diploma','Zahnzwerg-Urkunde!':'Tooth Sprite Certificate!',
+'Memory':'Memory','9 Paare finden':'Find 9 pairs',
+'Kleines Quiz':'Mini Quiz','5 Fragen über Zähne':'5 questions about teeth',
+'Bakterien fangen':'Catch Bacteria','Fang sie in 25 Sekunden!':'Catch them in 25 seconds!',
+'Zuordnen':'Match','6 Paare verbinden!':'Connect 6 pairs!',
+'Zahnforscher-Urkunde!':'Tooth Explorer Certificate!',
+'12 Paare — für Profis!':'12 pairs — for pros!',
+'Großes Zahnquiz':'Big Tooth Quiz','8 knifflige Fragen':'8 tricky questions',
+'Bakterienjagd':'Bacteria Hunt','30 Sekunden Jagd!':'30-second hunt!',
+'Zahndetektiv-Urkunde':'Tooth Detective Certificate',
+'0 Züge · 0/':'0 moves · 0/',' Paare':' pairs','Alle Paare gefunden!':'All pairs found!','In ':'In ',' Zügen':' moves',
+'Frage 1 von ':'Question 1 of ','Frage ':'Question ',' von ':' of ',
+'✓ Richtig!':'✓ Correct!','✗ Leider falsch!':'✗ Wrong!',
+'Zahnexperte!':'Tooth Expert!','Gut gemacht!':'Well done!',
+' richtig':' correct',
+'Wie oft solltest du am Tag Zähne putzen?':'How often should you brush your teeth?',
+'Einmal':'Once','Zweimal':'Twice','Dreimal':'Three times','Gar nicht':'Never',
+'Was macht Zucker mit deinen Zähnen?':'What does sugar do to your teeth?',
+'Macht sie stärker':'Makes them stronger','Bakterien machen Säure daraus':'Bacteria turn it into acid','Putzt sie sauber':'Cleans them','Gar nichts':'Nothing',
+'Wie lange solltest du Zähne putzen?':'How long should you brush?',
+'30 Sekunden':'30 seconds','1 Minute':'1 minute','2 Minuten':'2 minutes','5 Minuten':'5 minutes',
+'Was schützt deine Zähne vor Karies?':'What protects your teeth from cavities?',
+'Schokolade':'Chocolate','Fluorid in der Zahnpasta':'Fluoride in toothpaste','Limonade':'Lemonade','Kaugummi':'Chewing gum',
+'Welches Essen ist gut für deine Zähne?':'Which food is good for your teeth?',
+'Gummibärchen':'Gummy bears','Bonbons':'Sweets','Äpfel und Karotten':'Apples and carrots','Eis':'Ice cream',
+'Wie oft solltest du zum Zahnarzt gehen?':'How often should you visit the dentist?',
+'Jeden Tag':'Every day','Einmal im Jahr':'Once a year','Zweimal im Jahr':'Twice a year','Nur bei Schmerzen':'Only when it hurts',
+'Was reinigt die Zahnzwischenräume?':'What cleans between your teeth?',
+'Nur die Zahnbürste':'Only the toothbrush','Zahnseide':'Dental floss','Mundwasser':'Mouthwash','Wasser':'Water',
+'Was passiert bei einer Professionellen Zahnreinigung?':'What happens during professional teeth cleaning?',
+'Zähne werden gezogen':'Teeth are pulled','Zähne werden gründlich gereinigt':'Teeth are thoroughly cleaned','Man bekommt neue Zähne':'You get new teeth','Zähne werden angemalt':'Teeth are painted',
+'Was ist das beste Getränk für deine Zähne?':'What is the best drink for your teeth?',
+'Cola':'Cola','Apfelsaft':'Apple juice',
+'Was solltest du nach dem Essen von Süßigkeiten tun?':'What should you do after eating sweets?',
+'Noch mehr essen':'Eat more','Limonade trinken':'Drink lemonade','Schlafen gehen':'Go to sleep',
+'Toll gemacht!':'Great job!',' Bläschen geplatzt':' bubbles popped',' geplatzt':' popped',
+'Male alle Zähne weiß!':'Brush all teeth white!','Wische mit dem Finger über die Zähne!':'Swipe your finger over the teeth!',
+'Alle Zähne sauber!':'All teeth clean!','Super geputzt!':'Super brushed!',
+'0/6 Paare':'0/6 pairs','Verbinde Bild und Beschreibung!':'Connect picture and description!',
+'Alles gefunden!':'All found!','Du kennst dich aus!':'You know your stuff!','/6 Paare':'/6 pairs',
+'Zahnbürste':'Toothbrush','Zahnpasta':'Toothpaste','Apfel':'Apple','Sanduhr':'Hourglass',
+'Schutz vor Karies':'Cavity protection','Gesunder Snack':'Healthy snack','Bestes Getränk':'Best drink','2 Minuten putzen':'Brush for 2 min','Zahnzwischenräume':'Between teeth',
+'Frage 1 von 8':'Question 1 of 8','Ist das gut für deine Zähne?':'Is this good for your teeth?',
+'Gut!':'Good!','Schlecht!':'Bad!',
+'Das ist gut für Zähne!':'That\'s good for teeth!','Das ist schlecht für Zähne!':'That\'s bad for teeth!',
+'Zahnprofi!':'Tooth Pro!',
+'Bonbon':'Candy','Karotte':'Carrot','Käse':'Cheese','Kuchen':'Cake','Nüsse':'Nuts',
+'Zahn':'Tooth','Spiegel':'Mirror','Bakterie':'Bacteria','Bakterie 2':'Bacteria 2','Bakterie 3':'Bacteria 3','Bakterie 4':'Bacteria 4',
+'Bakterien erwischt':' bacteria caught','Gut gefangen!':'Well caught!',' Sekunden':' seconds',
+'Zahnzwerg-Diplom':'Tooth Sprite Diploma','Zahnforscher-Diplom':'Tooth Explorer Diploma','Zahnheld-Diplom':'Tooth Hero Diploma',
+'ein echter Zahnzwerg':'a real Tooth Sprite','ein echter Zahnforscher':'a real Tooth Explorer','ein echter Zahnheld':'a real Tooth Hero',
+'Hiermit wird bestätigt, dass':'This certifies that','Dein Name':'Your name',
+'alle Zahnspiele gemeistert hat':'has mastered all tooth games','und ':'and ','ist!':' is!',
+'alle Zahnspiele bei FRYDENT Kids':'all FRYDENT Kids tooth games',
+'erfolgreich gemeistert hat und nun':'has successfully mastered and is now',
+'Diplom drucken':'Print diploma','Zahnheld':'Tooth Hero','Dein Diplom':'Your Diploma',
+},
+tr:{
+'Zahnspiele mit Zähni':'Zähni ile Diş Oyunları','Los geht\'s!':'Haydi başla!','Zahnputz-Uhr':'Fırçalama Saati',
+'Wähle deine Gruppe!':'Grubunu seç!','Wie alt bist du?':'Kaç yaşındasın?',
+'Super gemacht!':'Harika!','Weiter spielen':'Oynamaya devam',
+'Sammle Sterne!':'Yıldız topla!',' Sterne':' yıldız',
+'Zahnzwerge':'Diş Cüceleri','3 – 5 Jahre':'3 – 5 yaş','Bläschen, Zähneputzen, Zuordnen &amp; mehr':'Baloncuklar, fırçalama, eşleştirme ve daha fazlası',
+'Zahnforscher':'Diş Kaşifleri','5 – 7 Jahre':'5 – 7 yaş','Memory, Quiz &amp; Bakterien fangen':'Hafıza, Quiz ve bakteri yakalama',
+'Zahndetektive':'Diş Dedektifleri','7 – 10 Jahre':'7 – 10 yaş','Großes Memory, Quiz, Jagd &amp; Diplom':'Büyük Hafıza, Quiz, Av ve Diploma',
+'Bläschen platzen':'Baloncuk Patlatma','Fang die Bläschen!':'Baloncukları yakala!',
+'Zähne putzen':'Diş Fırçalama','Putz alle Zähne sauber!':'Tüm dişleri fırçala!',
+'Was gehört zusammen?':'Ne birbiriyle uyuşuyor?','Finde die 6 Paare!':'6 çifti bul!',
+'Gut oder Schlecht?':'İyi mi Kötü mü?','Was mögen deine Zähne?':'Dişlerin neyi sever?',
+'Dein Diplom':'Diploman','Zahnzwerg-Urkunde!':'Diş Cücesi Sertifikası!',
+'Memory':'Hafıza','9 Paare finden':'9 çift bul',
+'Kleines Quiz':'Mini Quiz','5 Fragen über Zähne':'Dişler hakkında 5 soru',
+'Bakterien fangen':'Bakteri Yakalama','Fang sie in 25 Sekunden!':'25 saniyede yakala!',
+'Zuordnen':'Eşleştir','6 Paare verbinden!':'6 çifti bağla!',
+'Zahnforscher-Urkunde!':'Diş Kaşifi Sertifikası!',
+'12 Paare — für Profis!':'12 çift — profesyoneller için!',
+'Großes Zahnquiz':'Büyük Diş Quiz','8 knifflige Fragen':'8 zor soru',
+'Bakterienjagd':'Bakteri Avı','30 Sekunden Jagd!':'30 saniyelik av!',
+'Zahndetektiv-Urkunde':'Diş Dedektifi Sertifikası',
+'0 Züge · 0/':'0 hamle · 0/',' Paare':' çift','Alle Paare gefunden!':'Tüm çiftler bulundu!','In ':'','  Zügen':' hamlede',
+'Frage 1 von ':'Soru 1 / ','Frage ':'Soru ',' von ':' / ',
+'✓ Richtig!':'✓ Doğru!','✗ Leider falsch!':'✗ Yanlış!',
+'Zahnexperte!':'Diş Uzmanı!','Gut gemacht!':'Aferin!',
+' richtig':' doğru',
+'Wie oft solltest du am Tag Zähne putzen?':'Günde kaç kez diş fırçalamalısın?',
+'Einmal':'Bir kez','Zweimal':'İki kez','Dreimal':'Üç kez','Gar nicht':'Hiç',
+'Was macht Zucker mit deinen Zähnen?':'Şeker dişlerine ne yapar?',
+'Macht sie stärker':'Güçlendirir','Bakterien machen Säure daraus':'Bakteriler asit üretir','Putzt sie sauber':'Temizler','Gar nichts':'Hiçbir şey',
+'Wie lange solltest du Zähne putzen?':'Ne kadar süre fırçalamalısın?',
+'30 Sekunden':'30 saniye','1 Minute':'1 dakika','2 Minuten':'2 dakika','5 Minuten':'5 dakika',
+'Was schützt deine Zähne vor Karies?':'Dişlerini çürükten ne korur?',
+'Schokolade':'Çikolata','Fluorid in der Zahnpasta':'Diş macunundaki flor','Limonade':'Limonata','Kaugummi':'Sakız',
+'Welches Essen ist gut für deine Zähne?':'Hangi yiyecek dişlerin için iyidir?',
+'Gummibärchen':'Jöle şeker','Bonbons':'Şekerler','Äpfel und Karotten':'Elma ve havuç','Eis':'Dondurma',
+'Wie oft solltest du zum Zahnarzt gehen?':'Dişçiye ne sıklıkla gitmelisin?',
+'Jeden Tag':'Her gün','Einmal im Jahr':'Yılda bir','Zweimal im Jahr':'Yılda iki kez','Nur bei Schmerzen':'Sadece ağrı olunca',
+'Was reinigt die Zahnzwischenräume?':'Diş aralarını ne temizler?',
+'Nur die Zahnbürste':'Sadece diş fırçası','Zahnseide':'Diş ipi','Mundwasser':'Gargara','Wasser':'Su',
+'Was passiert bei einer Professionellen Zahnreinigung?':'Profesyonel diş temizliğinde ne olur?',
+'Zähne werden gezogen':'Dişler çekilir','Zähne werden gründlich gereinigt':'Dişler iyice temizlenir','Man bekommt neue Zähne':'Yeni dişler alırsın','Zähne werden angemalt':'Dişler boyanır',
+'Was ist das beste Getränk für deine Zähne?':'Dişlerin için en iyi içecek nedir?',
+'Cola':'Kola','Apfelsaft':'Elma suyu',
+'Was solltest du nach dem Essen von Süßigkeiten tun?':'Tatlı yedikten sonra ne yapmalısın?',
+'Noch mehr essen':'Daha çok yemek','Limonade trinken':'Limonata içmek','Schlafen gehen':'Uyumaya gitmek',
+'Toll gemacht!':'Harika!',' Bläschen geplatzt':' baloncuk patlatıldı',' geplatzt':' patlatıldı',
+'Male alle Zähne weiß!':'Tüm dişleri beyaza boya!','Wische mit dem Finger über die Zähne!':'Parmağını dişlerin üzerinde kaydır!',
+'Alle Zähne sauber!':'Tüm dişler temiz!','Super geputzt!':'Süper fırçalandı!',
+'0/6 Paare':'0/6 çift','Verbinde Bild und Beschreibung!':'Resim ve açıklamayı eşleştir!',
+'Alles gefunden!':'Hepsi bulundu!','Du kennst dich aus!':'Biliyorsun!','/6 Paare':'/6 çift',
+'Zahnbürste':'Diş fırçası','Zahnpasta':'Diş macunu','Apfel':'Elma','Sanduhr':'Kum saati',
+'Schutz vor Karies':'Çürük koruması','Gesunder Snack':'Sağlıklı atıştırmalık','Bestes Getränk':'En iyi içecek','2 Minuten putzen':'2 dakika fırçala','Zahnzwischenräume':'Diş araları',
+'Frage 1 von 8':'Soru 1 / 8','Ist das gut für deine Zähne?':'Bu dişlerin için iyi mi?',
+'Gut!':'İyi!','Schlecht!':'Kötü!',
+'Das ist gut für Zähne!':'Bu dişler için iyi!','Das ist schlecht für Zähne!':'Bu dişler için kötü!',
+'Zahnprofi!':'Diş Uzmanı!',
+'Bonbon':'Şeker','Karotte':'Havuç','Käse':'Peynir','Kuchen':'Pasta','Nüsse':'Fındık',
+'Zahn':'Diş','Spiegel':'Ayna','Bakterie':'Bakteri','Bakterie 2':'Bakteri 2','Bakterie 3':'Bakteri 3','Bakterie 4':'Bakteri 4',
+'Bakterien erwischt':' bakteri yakalandı','Gut gefangen!':'İyi yakalandı!',' Sekunden':' saniye',
+'Zahnzwerg-Diplom':'Diş Cücesi Diploması','Zahnforscher-Diplom':'Diş Kaşifi Diploması','Zahnheld-Diplom':'Diş Kahramanı Diploması',
+'ein echter Zahnzwerg':'gerçek bir Diş Cücesi','ein echter Zahnforscher':'gerçek bir Diş Kaşifi','ein echter Zahnheld':'gerçek bir Diş Kahramanı',
+'Hiermit wird bestätigt, dass':'Bu belge şunu onaylar:','Dein Name':'Adın',
+'alle Zahnspiele gemeistert hat':'tüm diş oyunlarını tamamladı','und ':'ve ','ist!':' !',
+'alle Zahnspiele bei FRYDENT Kids':'FRYDENT Kids tüm diş oyunlarını',
+'erfolgreich gemeistert hat und nun':'başarıyla tamamladı ve şimdi',
+'Diplom drucken':'Diplomayı yazdır','Zahnheld':'Diş Kahramanı','Dein Diplom':'Diploman',
+},
+ar:{
+'Zahnspiele mit Zähni':'ألعاب الأسنان مع Zähni','Los geht\'s!':'!هيا بنا','Zahnputz-Uhr':'مؤقت تنظيف الأسنان',
+'Wähle deine Gruppe!':'!اختر مجموعتك','Wie alt bist du?':'كم عمرك؟',
+'Super gemacht!':'!أحسنت','Weiter spielen':'استمر باللعب',
+'Sammle Sterne!':'!اجمع النجوم',' Sterne':' نجوم',
+'Zahnzwerge':'أقزام الأسنان','3 – 5 Jahre':'3 – 5 سنوات','Bläschen, Zähneputzen, Zuordnen &amp; mehr':'فقاعات، تنظيف، مطابقة والمزيد',
+'Zahnforscher':'مستكشفو الأسنان','5 – 7 Jahre':'5 – 7 سنوات','Memory, Quiz &amp; Bakterien fangen':'ذاكرة، مسابقة وصيد البكتيريا',
+'Zahndetektive':'محققو الأسنان','7 – 10 Jahre':'7 – 10 سنوات','Großes Memory, Quiz, Jagd &amp; Diplom':'ذاكرة كبيرة، مسابقة، صيد وشهادة',
+'Bläschen platzen':'فرقع الفقاعات','Fang die Bläschen!':'!امسك الفقاعات',
+'Zähne putzen':'تنظيف الأسنان','Putz alle Zähne sauber!':'!نظف كل الأسنان',
+'Was gehört zusammen?':'ما الذي يتناسب معاً؟','Finde die 6 Paare!':'!جد 6 أزواج',
+'Gut oder Schlecht?':'جيد أم سيء؟','Was mögen deine Zähne?':'ماذا تحب أسنانك؟',
+'Dein Diplom':'شهادتك','Kleines Quiz':'مسابقة صغيرة','Großes Zahnquiz':'مسابقة الأسنان الكبرى',
+'Memory':'ذاكرة','Zahnbürste':'فرشاة أسنان','Zahnpasta':'معجون أسنان','Apfel':'تفاحة',
+'Wasser':'ماء','Zahnseide':'خيط أسنان','Sanduhr':'ساعة رملية','Spiegel':'مرآة','Zahn':'سن',
+'Schokolade':'شوكولاتة','Bonbon':'حلوى','Karotte':'جزرة','Käse':'جبن','Kuchen':'كعكة','Nüsse':'مكسرات',
+'Limonade':'عصير ليمون','Cola':'كولا','Eis':'آيس كريم','Apfelsaft':'عصير تفاح',
+'✓ Richtig!':'✓ صحيح!','✗ Leider falsch!':'✗ خطأ!','Gut gemacht!':'!أحسنت','Zahnexperte!':'!خبير أسنان',
+'Toll gemacht!':'!رائع','Gut!':'!جيد','Schlecht!':'!سيء',
+'Hiermit wird bestätigt, dass':'نشهد بأن','Dein Name':'اسمك','Diplom drucken':'طباعة الشهادة',
+'Zahnheld':'بطل الأسنان','Zahnheld-Diplom':'شهادة بطل الأسنان',
+' richtig':' صحيح',' Paare':' أزواج',
+},
+ru:{
+'Zahnspiele mit Zähni':'Зубные игры с Zähni','Los geht\'s!':'Поехали!','Zahnputz-Uhr':'Таймер чистки зубов',
+'Wähle deine Gruppe!':'Выбери свою группу!','Wie alt bist du?':'Сколько тебе лет?',
+'Super gemacht!':'Супер!','Weiter spielen':'Играть дальше',
+'Sammle Sterne!':'Собирай звёзды!',' Sterne':' звёзд',
+'Zahnzwerge':'Зубные гномы','3 – 5 Jahre':'3 – 5 лет','Bläschen, Zähneputzen, Zuordnen &amp; mehr':'Пузырьки, чистка, сопоставление и другое',
+'Zahnforscher':'Зубные исследователи','5 – 7 Jahre':'5 – 7 лет','Memory, Quiz &amp; Bakterien fangen':'Мемори, Викторина и ловля бактерий',
+'Zahndetektive':'Зубные детективы','7 – 10 Jahre':'7 – 10 лет','Großes Memory, Quiz, Jagd &amp; Diplom':'Большое Мемори, Викторина, Охота и Диплом',
+'Bläschen platzen':'Лопай пузырьки','Fang die Bläschen!':'Лови пузырьки!',
+'Zähne putzen':'Чистка зубов','Putz alle Zähne sauber!':'Почисти все зубки!',
+'Was gehört zusammen?':'Что подходит друг к другу?','Finde die 6 Paare!':'Найди 6 пар!',
+'Gut oder Schlecht?':'Хорошо или плохо?','Was mögen deine Zähne?':'Что любят твои зубки?',
+'Dein Diplom':'Твой диплом','Kleines Quiz':'Мини-Викторина','Großes Zahnquiz':'Большая Зубная Викторина',
+'Memory':'Мемори','Zahnbürste':'Зубная щётка','Zahnpasta':'Зубная паста','Apfel':'Яблоко',
+'Wasser':'Вода','Zahnseide':'Зубная нить','Sanduhr':'Песочные часы','Spiegel':'Зеркало','Zahn':'Зуб',
+'Schokolade':'Шоколад','Bonbon':'Конфета','Karotte':'Морковь','Käse':'Сыр','Kuchen':'Торт','Nüsse':'Орехи',
+'Limonade':'Лимонад','Cola':'Кола','Eis':'Мороженое','Apfelsaft':'Яблочный сок',
+'✓ Richtig!':'✓ Правильно!','✗ Leider falsch!':'✗ Неправильно!','Gut gemacht!':'Молодец!','Zahnexperte!':'Зубной эксперт!',
+'Toll gemacht!':'Отлично!',' Bläschen geplatzt':' пузырьков лопнуто',' geplatzt':' лопнуто',
+'Gut!':'Хорошо!','Schlecht!':'Плохо!',
+'Hiermit wird bestätigt, dass':'Настоящим подтверждается, что','Dein Name':'Твоё имя','Diplom drucken':'Распечатать диплом',
+'Zahnheld':'Зубной герой','Zahnheld-Diplom':'Диплом Зубного Героя',
+' richtig':' правильно',' Paare':' пар',
+},
+ro:{
+'Zahnspiele mit Zähni':'Jocuri dentare cu Zähni','Los geht\'s!':'Hai să începem!','Zahnputz-Uhr':'Cronometru de periaj',
+'Wähle deine Gruppe!':'Alege-ți grupul!','Wie alt bist du?':'Câți ani ai?',
+'Super gemacht!':'Super!','Weiter spielen':'Continuă să joci',
+'Sammle Sterne!':'Colectează stele!',' Sterne':' stele',
+'Zahnzwerge':'Piticii Dinților','3 – 5 Jahre':'3 – 5 ani','Bläschen, Zähneputzen, Zuordnen &amp; mehr':'Balonașe, periaj, potrivire și altele',
+'Zahnforscher':'Exploratorii Dinților','5 – 7 Jahre':'5 – 7 ani','Memory, Quiz &amp; Bakterien fangen':'Memorie, Quiz și prinderea bacteriilor',
+'Zahndetektive':'Detectivii Dinților','7 – 10 Jahre':'7 – 10 ani','Großes Memory, Quiz, Jagd &amp; Diplom':'Memorie Mare, Quiz, Vânătoare și Diplomă',
+'Bläschen platzen':'Sparge balonașe','Fang die Bläschen!':'Prinde balonașele!',
+'Zähne putzen':'Periatul dinților','Putz alle Zähne sauber!':'Periază toți dinții!',
+'Was gehört zusammen?':'Ce se potrivește?','Finde die 6 Paare!':'Găsește 6 perechi!',
+'Gut oder Schlecht?':'Bun sau rău?','Was mögen deine Zähne?':'Ce le place dinților tăi?',
+'Dein Diplom':'Diploma ta','Kleines Quiz':'Mini Quiz','Großes Zahnquiz':'Marele Quiz Dentar',
+'Memory':'Memorie','Zahnbürste':'Periuță','Zahnpasta':'Pastă de dinți','Apfel':'Măr',
+'Wasser':'Apă','Zahnseide':'Ață dentară','Sanduhr':'Clepsidră','Spiegel':'Oglindă','Zahn':'Dinte',
+'Schokolade':'Ciocolată','Bonbon':'Bomboană','Karotte':'Morcov','Käse':'Brânză','Kuchen':'Tort','Nüsse':'Nuci',
+'Limonade':'Limonadă','Cola':'Cola','Eis':'Înghețată','Apfelsaft':'Suc de mere',
+'✓ Richtig!':'✓ Corect!','✗ Leider falsch!':'✗ Greșit!','Gut gemacht!':'Bravo!','Zahnexperte!':'Expert dentar!',
+'Toll gemacht!':'Grozav!',' Bläschen geplatzt':' balonașe sparte',' geplatzt':' sparte',
+'Gut!':'Bun!','Schlecht!':'Rău!',
+'Hiermit wird bestätigt, dass':'Se certifică prin prezenta că','Dein Name':'Numele tău','Diplom drucken':'Tipărește diploma',
+'Zahnheld':'Eroul Dinților','Zahnheld-Diplom':'Diploma Eroului Dinților',
+' richtig':' corecte',' Paare':' perechi',
+}
+};
+function t(s){return(_T[LANG]&&_T[LANG][s])||s}
+
+// Translate static HTML after DOM loads
+document.addEventListener('DOMContentLoaded',function(){
+if(LANG==='de')return;
+// Start screen
+document.querySelector('.subtitle').textContent=t('Zahnspiele mit Zähni');
+document.querySelector('.start-btn').textContent=t("Los geht's!");
+var tl=document.querySelector('a[href*="timer"]');
+if(tl){tl.href='timer.html?lang='+LANG;var sp=tl.childNodes;for(var i=0;i<sp.length;i++)if(sp[i].nodeType===3&&sp[i].textContent.trim()==='Zahnputz-Uhr')sp[i].textContent=t('Zahnputz-Uhr')}
+// Age screen
+document.querySelector('.age-header h2').textContent=t('Wähle deine Gruppe!');
+document.querySelector('.age-header p').textContent=t('Wie alt bist du?');
+var ac=document.querySelectorAll('.age-card-text');
+var ages=[['Zahnzwerge','3 – 5 Jahre','Bläschen, Zähneputzen, Zuordnen &amp; mehr'],['Zahnforscher','5 – 7 Jahre','Memory, Quiz &amp; Bakterien fangen'],['Zahndetektive','7 – 10 Jahre','Großes Memory, Quiz, Jagd &amp; Diplom']];
+ac.forEach(function(el,i){el.querySelector('h3').textContent=t(ages[i][0]);el.querySelector('.age-range').textContent=t(ages[i][1]);el.querySelector('.age-desc').innerHTML=t(ages[i][2])});
+// Win overlay
+document.querySelector('.win-btn').textContent=t('Weiter spielen');
+});
+</script>
 <div id="app">
   <div id="start-screen" class="screen active">
     <div class="start-character"><img src="img/zaehni-brush.png?v=28" alt="Zähni"></div>
@@ -287,55 +610,55 @@ function spawnConfetti(){const c=['#7BA490','#D4A76A','#C17B6E','#A88BAE','#8FAE
 function showWin(title,sub,sc){document.getElementById('win-title').textContent=title;document.getElementById('win-subtitle').textContent=sub;document.getElementById('win-stars').textContent='⭐'.repeat(sc);document.getElementById('win-overlay').classList.add('active');playSound('win');spawnConfetti()}
 function closeWin(){document.getElementById('win-overlay').classList.remove('active');exitGame()}
 
-const GAMES={tiny:[{id:'bubbles',icon:'bubbles',name:'Bläschen platzen',desc:'Fang die Bläschen!',color:'var(--sky-light)'},{id:'brushing',icon:'brushing',name:'Zähne putzen',desc:'Putz alle Zähne sauber!',color:'var(--sage-light)'},{id:'matching',icon:'matching',name:'Was gehört zusammen?',desc:'Finde die 6 Paare!',color:'var(--lavender-light)'},{id:'gutschlecht',icon:'gutschlecht',name:'Gut oder Schlecht?',desc:'Was mögen deine Zähne?',color:'var(--honey-light)'},{id:'diplom',icon:'diplom',name:'Dein Diplom',desc:'Zahnzwerg-Urkunde!',color:'var(--rose-light)'}],mid:[{id:'memory-9',icon:'memory',name:'Memory',desc:'9 Paare finden',color:'var(--sage-light)'},{id:'quiz-easy',icon:'quiz',name:'Kleines Quiz',desc:'5 Fragen über Zähne',color:'var(--honey-light)'},{id:'bakterien-easy',icon:'bakterien',name:'Bakterien fangen',desc:'Fang sie in 25 Sekunden!',color:'var(--rose-light)'},{id:'matching',icon:'matching',name:'Zuordnen',desc:'6 Paare verbinden!',color:'var(--lavender-light)'},{id:'diplom',icon:'diplom',name:'Dein Diplom',desc:'Zahnforscher-Urkunde!',color:'var(--sky-light)'}],big:[{id:'memory-12',icon:'memory',name:'Memory',desc:'12 Paare — für Profis!',color:'var(--sage-light)'},{id:'quiz-hard',icon:'quiz',name:'Großes Zahnquiz',desc:'8 knifflige Fragen',color:'var(--honey-light)'},{id:'bakterien-hard',icon:'bakterien',name:'Bakterienjagd',desc:'30 Sekunden Jagd!',color:'var(--rose-light)'},{id:'diplom',icon:'diplom',name:'Dein Diplom',desc:'Zahndetektiv-Urkunde',color:'var(--lavender-light)'}]};
-const GN={tiny:'Zahnzwerge',mid:'Zahnforscher',big:'Zahndetektive'};
+const GAMES={tiny:[{id:'bubbles',icon:'bubbles',name:t('Bläschen platzen'),desc:t('Fang die Bläschen!'),color:'var(--sky-light)'},{id:'brushing',icon:'brushing',name:t('Zähne putzen'),desc:t('Putz alle Zähne sauber!'),color:'var(--sage-light)'},{id:'matching',icon:'matching',name:t('Was gehört zusammen?'),desc:t('Finde die 6 Paare!'),color:'var(--lavender-light)'},{id:'gutschlecht',icon:'gutschlecht',name:t('Gut oder Schlecht?'),desc:t('Was mögen deine Zähne?'),color:'var(--honey-light)'},{id:'diplom',icon:'diplom',name:t('Dein Diplom'),desc:t('Zahnzwerg-Urkunde!'),color:'var(--rose-light)'}],mid:[{id:'memory-9',icon:'memory',name:t('Memory'),desc:t('9 Paare finden'),color:'var(--sage-light)'},{id:'quiz-easy',icon:'quiz',name:t('Kleines Quiz'),desc:t('5 Fragen über Zähne'),color:'var(--honey-light)'},{id:'bakterien-easy',icon:'bakterien',name:t('Bakterien fangen'),desc:t('Fang sie in 25 Sekunden!'),color:'var(--rose-light)'},{id:'matching',icon:'matching',name:t('Zuordnen'),desc:t('6 Paare verbinden!'),color:'var(--lavender-light)'},{id:'diplom',icon:'diplom',name:t('Dein Diplom'),desc:t('Zahnforscher-Urkunde!'),color:'var(--sky-light)'}],big:[{id:'memory-12',icon:'memory',name:t('Memory'),desc:t('12 Paare — für Profis!'),color:'var(--sage-light)'},{id:'quiz-hard',icon:'quiz',name:t('Großes Zahnquiz'),desc:t('8 knifflige Fragen'),color:'var(--honey-light)'},{id:'bakterien-hard',icon:'bakterien',name:t('Bakterienjagd'),desc:t('30 Sekunden Jagd!'),color:'var(--rose-light)'},{id:'diplom',icon:'diplom',name:t('Dein Diplom'),desc:t('Zahndetektiv-Urkunde'),color:'var(--lavender-light)'}]};
+const GN={tiny:t('Zahnzwerge'),mid:t('Zahnforscher'),big:t('Zahndetektive')};
 const GM={tiny:'img/zaehni-welcome.png?v=28',mid:'img/zaehni-brush.png?v=28',big:'img/zaehni-detective.png?v=28'};
 
-function buildHub(){const games=GAMES[currentAge];document.getElementById('hub-group-name').textContent=GN[currentAge];document.getElementById('hub-mascot-img').src=GM[currentAge];const ts=getTotalStars();document.getElementById('hub-stars').textContent=ts>0?'⭐ '+ts+' Sterne':'Sammle Sterne!';document.getElementById('hub-games-grid').innerHTML=games.map(g=>'<div class="game-card" onclick="startGame(\''+g.id+'\');playSound(\'click\')"><span class="card-star '+(stars[g.id]?'earned':'')+'">⭐</span><div class="game-card-icon">'+ICONS[g.icon]+'</div><h3>'+g.name+'</h3><p>'+g.desc+'</p><div class="game-card-accent" style="background:'+g.color+'"></div></div>').join('')}
+function buildHub(){const games=GAMES[currentAge];document.getElementById('hub-group-name').textContent=GN[currentAge];document.getElementById('hub-mascot-img').src=GM[currentAge];const ts=getTotalStars();document.getElementById('hub-stars').textContent=ts>0?'⭐ '+ts+t(' Sterne'):t('Sammle Sterne!');document.getElementById('hub-games-grid').innerHTML=games.map(g=>'<div class="game-card" onclick="startGame(\''+g.id+'\');playSound(\'click\')"><span class="card-star '+(stars[g.id]?'earned':'')+'">⭐</span><div class="game-card-icon">'+ICONS[g.icon]+'</div><h3>'+g.name+'</h3><p>'+g.desc+'</p><div class="game-card-accent" style="background:'+g.color+'"></div></div>').join('')}
 
 function startGame(gid){currentGame=gid;document.getElementById('game-content').innerHTML='';if(gid.startsWith('memory-'))setupMemory(parseInt(gid.split('-')[1]));else if(gid.startsWith('quiz-'))setupQuiz(gid==='quiz-hard'?8:5);else if(gid.startsWith('bakterien-'))setupBakterien(gid==='bakterien-hard'?30:25);else if(gid==='diplom')setupDiplom();else if(gid==='bubbles')setupBubbles();else if(gid==='brushing')setupBrushing();else if(gid==='matching')setupMatching();else if(gid==='gutschlecht')setupGutSchlecht();showScreen('game-screen')}
 
-const MC=[{id:'toothbrush',img:'img/card-toothbrush.png?v=28',n:'Zahnbürste'},{id:'toothpaste',img:'img/card-toothpaste.png?v=28',n:'Zahnpasta'},{id:'apple',img:'img/card-apple.png?v=28',n:'Apfel'},{id:'water',img:'img/card-water.png?v=28',n:'Wasser'},{id:'tooth',img:'img/card-tooth.png?v=28',n:'Zahn'},{id:'hourglass',img:'img/card-hourglass.png?v=28',n:'Sanduhr'},{id:'floss',img:'img/card-floss.png?v=28',n:'Zahnseide'},{id:'mirror',img:'img/card-mirror.png?v=28',n:'Spiegel'},{id:'bacteria-purple',img:'img/bacteria-purple.png?v=28',n:'Bakterie'},{id:'bacteria-green',img:'img/bacteria-green.png?v=28',n:'Bakterie 2'},{id:'bacteria-pink',img:'img/bacteria-pink.png?v=28',n:'Bakterie 3'},{id:'bacteria-orange',img:'img/bacteria-orange.png?v=28',n:'Bakterie 4'}];
+const MC=[{id:'toothbrush',img:'img/card-toothbrush.png?v=28',n:t('Zahnbürste')},{id:'toothpaste',img:'img/card-toothpaste.png?v=28',n:t('Zahnpasta')},{id:'apple',img:'img/card-apple.png?v=28',n:t('Apfel')},{id:'water',img:'img/card-water.png?v=28',n:t('Wasser')},{id:'tooth',img:'img/card-tooth.png?v=28',n:t('Zahn')},{id:'hourglass',img:'img/card-hourglass.png?v=28',n:t('Sanduhr')},{id:'floss',img:'img/card-floss.png?v=28',n:t('Zahnseide')},{id:'mirror',img:'img/card-mirror.png?v=28',n:t('Spiegel')},{id:'bacteria-purple',img:'img/bacteria-purple.png?v=28',n:t('Bakterie')},{id:'bacteria-green',img:'img/bacteria-green.png?v=28',n:t('Bakterie 2')},{id:'bacteria-pink',img:'img/bacteria-pink.png?v=28',n:t('Bakterie 3')},{id:'bacteria-orange',img:'img/bacteria-orange.png?v=28',n:t('Bakterie 4')}];
 let memS={};
-function setupMemory(pc){document.getElementById('game-screen-title').textContent='Memory';const cards=MC.slice(0,pc);let deck=[...cards,...cards].map((c,i)=>({...c,uid:i}));for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]]}memS={deck,flipped:[],matched:[],moves:0,pairs:pc,locked:false};document.getElementById('game-screen-info').textContent='0 Züge · 0/'+pc+' Paare';const cols=3;document.getElementById('game-content').innerHTML='<div class="memory-grid" style="grid-template-columns:repeat('+cols+',1fr)">'+deck.map((c,i)=>'<div class="memory-card" data-i="'+i+'" onclick="flipC('+i+')"><div class="memory-card-inner"><div class="memory-back"><div class="memory-back-tex"></div><div class="memory-back-motif"></div></div><div class="memory-front"><img src="'+c.img+'" alt="'+c.n+'"></div></div></div>').join('')+'</div>'}
+function setupMemory(pc){document.getElementById('game-screen-title').textContent='Memory';const cards=MC.slice(0,pc);let deck=[...cards,...cards].map((c,i)=>({...c,uid:i}));for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]]}memS={deck,flipped:[],matched:[],moves:0,pairs:pc,locked:false};document.getElementById('game-screen-info').textContent=t('0 Züge · 0/')+pc+t(' Paare');const cols=3;document.getElementById('game-content').innerHTML='<div class="memory-grid" style="grid-template-columns:repeat('+cols+',1fr)">'+deck.map((c,i)=>'<div class="memory-card" data-i="'+i+'" onclick="flipC('+i+')"><div class="memory-card-inner"><div class="memory-back"><div class="memory-back-tex"></div><div class="memory-back-motif"></div></div><div class="memory-front"><img src="'+c.img+'" alt="'+c.n+'"></div></div></div>').join('')+'</div>'}
 function flipC(i){const s=memS;if(s.locked||s.flipped.includes(i)||s.matched.includes(i))return;document.querySelectorAll('.memory-card')[i].classList.add('flipped');s.flipped.push(i);playSound('click');if(s.flipped.length===2){s.moves++;s.locked=true;const[a,b]=s.flipped;if(s.deck[a].id===s.deck[b].id){setTimeout(()=>{document.querySelectorAll('.memory-card')[a].classList.add('matched');document.querySelectorAll('.memory-card')[b].classList.add('matched');s.matched.push(a,b);s.flipped=[];s.locked=false;playSound('match');updMI();if(s.matched.length===s.deck.length)setTimeout(memWin,500)},400)}else{setTimeout(()=>{document.querySelectorAll('.memory-card')[a].classList.remove('flipped');document.querySelectorAll('.memory-card')[b].classList.remove('flipped');s.flipped=[];s.locked=false;playSound('wrong');updMI()},850)}}}
-function updMI(){document.getElementById('game-screen-info').textContent=memS.moves+' Züge · '+memS.matched.length/2+'/'+memS.pairs+' Paare'}
-function memWin(){const sc=memS.moves<=memS.pairs*2?3:memS.moves<=memS.pairs*3?2:1;stars[currentGame]=true;saveStars();showWin('Alle Paare gefunden!','In '+memS.moves+' Zügen',sc)}
+function updMI(){document.getElementById('game-screen-info').textContent=memS.moves+t(' Züge · ')+memS.matched.length/2+'/'+memS.pairs+t(' Paare')}
+function memWin(){const sc=memS.moves<=memS.pairs*2?3:memS.moves<=memS.pairs*3?2:1;stars[currentGame]=true;saveStars();showWin(t('Alle Paare gefunden!'),t('In ')+memS.moves+t(' Zügen'),sc)}
 
-const QA=[{q:'Wie oft solltest du am Tag Zähne putzen?',a:['Einmal','Zweimal','Dreimal','Gar nicht'],c:1,img:null},{q:'Was macht Zucker mit deinen Zähnen?',a:['Macht sie stärker','Bakterien machen Säure daraus','Putzt sie sauber','Gar nichts'],c:1,img:'img/food-candy.png?v=28'},{q:'Wie lange solltest du Zähne putzen?',a:['30 Sekunden','1 Minute','2 Minuten','5 Minuten'],c:2,img:'img/card-hourglass.png?v=28'},{q:'Was schützt deine Zähne vor Karies?',a:['Schokolade','Fluorid in der Zahnpasta','Limonade','Kaugummi'],c:1,img:'img/card-toothpaste.png?v=28'},{q:'Welches Essen ist gut für deine Zähne?',a:['Gummibärchen','Bonbons','Äpfel und Karotten','Eis'],c:2,img:'img/food-apple.png?v=28'},{q:'Wie oft solltest du zum Zahnarzt gehen?',a:['Jeden Tag','Einmal im Jahr','Zweimal im Jahr','Nur bei Schmerzen'],c:2,img:null},{q:'Was reinigt die Zahnzwischenräume?',a:['Nur die Zahnbürste','Zahnseide','Mundwasser','Wasser'],c:1,img:'img/card-floss.png?v=28'},{q:'Was passiert bei einer Professionellen Zahnreinigung?',a:['Zähne werden gezogen','Zähne werden gründlich gereinigt','Man bekommt neue Zähne','Zähne werden angemalt'],c:1,img:null},{q:'Was ist das beste Getränk für deine Zähne?',a:['Cola','Apfelsaft','Wasser','Limonade'],c:2,img:'img/food-water.png?v=28'},{q:'Was solltest du nach dem Essen von Süßigkeiten tun?',a:['Noch mehr essen','Zähne putzen','Limonade trinken','Schlafen gehen'],c:1,img:'img/food-chocolate.png?v=28'}];
+const QA=[{q:t('Wie oft solltest du am Tag Zähne putzen?'),a:[t('Einmal'),t('Zweimal'),t('Dreimal'),t('Gar nicht')],c:1,img:null},{q:t('Was macht Zucker mit deinen Zähnen?'),a:[t('Macht sie stärker'),t('Bakterien machen Säure daraus'),t('Putzt sie sauber'),t('Gar nichts')],c:1,img:'img/food-candy.png?v=28'},{q:t('Wie lange solltest du Zähne putzen?'),a:[t('30 Sekunden'),t('1 Minute'),t('2 Minuten'),t('5 Minuten')],c:2,img:'img/card-hourglass.png?v=28'},{q:t('Was schützt deine Zähne vor Karies?'),a:[t('Schokolade'),t('Fluorid in der Zahnpasta'),t('Limonade'),t('Kaugummi')],c:1,img:'img/card-toothpaste.png?v=28'},{q:t('Welches Essen ist gut für deine Zähne?'),a:[t('Gummibärchen'),t('Bonbons'),t('Äpfel und Karotten'),t('Eis')],c:2,img:'img/food-apple.png?v=28'},{q:t('Wie oft solltest du zum Zahnarzt gehen?'),a:[t('Jeden Tag'),t('Einmal im Jahr'),t('Zweimal im Jahr'),t('Nur bei Schmerzen')],c:2,img:null},{q:t('Was reinigt die Zahnzwischenräume?'),a:[t('Nur die Zahnbürste'),t('Zahnseide'),t('Mundwasser'),t('Wasser')],c:1,img:'img/card-floss.png?v=28'},{q:t('Was passiert bei einer Professionellen Zahnreinigung?'),a:[t('Zähne werden gezogen'),t('Zähne werden gründlich gereinigt'),t('Man bekommt neue Zähne'),t('Zähne werden angemalt')],c:1,img:null},{q:t('Was ist das beste Getränk für deine Zähne?'),a:[t('Cola'),t('Apfelsaft'),t('Wasser'),t('Limonade')],c:2,img:'img/food-water.png?v=28'},{q:t('Was solltest du nach dem Essen von Süßigkeiten tun?'),a:[t('Noch mehr essen'),t('Zähne putzen'),t('Limonade trinken'),t('Schlafen gehen')],c:1,img:'img/food-chocolate.png?v=28'}];
 let qS={};
-function setupQuiz(cnt){document.getElementById('game-screen-title').textContent=cnt<=5?'Kleines Quiz':'Großes Zahnquiz';document.getElementById('game-screen-info').textContent='Frage 1 von '+cnt;const qs=[...QA].sort(()=>Math.random()-.5).slice(0,cnt);qS={qs,cur:0,score:0,ans:false,total:cnt};renderQ()}
+function setupQuiz(cnt){document.getElementById('game-screen-title').textContent=cnt<=5?t('Kleines Quiz'):t('Großes Zahnquiz');document.getElementById('game-screen-info').textContent=t('Frage 1 von ')+cnt;const qs=[...QA].sort(()=>Math.random()-.5).slice(0,cnt);qS={qs,cur:0,score:0,ans:false,total:cnt};renderQ()}
 function renderQ(){const q=qS.qs[qS.cur];const imgHtml=q.img?'<div style="width:200px;height:200px;margin:0 auto"><img src="'+q.img+'" style="width:100%;height:100%;object-fit:contain" alt=""></div>':'<div class="quiz-character"><img src="img/zaehni-detective.png?v=28" alt=""></div>';document.getElementById('game-content').innerHTML='<div class="quiz-container"><div class="quiz-progress"><div class="quiz-progress-bar" style="width:'+(qS.cur/qS.total*100)+'%"></div></div>'+imgHtml+'<div class="quiz-question"><h3>'+q.q+'</h3></div><div class="quiz-answers">'+q.a.map((a,i)=>'<button class="quiz-answer" onclick="ansQ('+i+')">'+a+'</button>').join('')+'</div><div class="quiz-feedback" id="qfb"></div></div>'}
-function ansQ(i){if(qS.ans)return;qS.ans=true;const q=qS.qs[qS.cur],btns=document.querySelectorAll('.quiz-answer'),fb=document.getElementById('qfb');btns[q.c].classList.add('correct');if(i===q.c){qS.score++;playSound('correct');fb.textContent='✓ Richtig!';fb.style.color='#4a6a38'}else{btns[i].classList.add('wrong');playSound('wrong');fb.textContent='✗ Leider falsch!';fb.style.color='#8a4a42'}btns.forEach(b=>b.style.pointerEvents='none');setTimeout(()=>{qS.cur++;qS.ans=false;if(qS.cur>=qS.total){const sc=qS.score>=qS.total-1?3:qS.score>=qS.total*.6?2:1;stars[currentGame]=true;saveStars();showWin(qS.score>=qS.total-1?'Zahnexperte!':'Gut gemacht!',qS.score+' von '+qS.total+' richtig',sc)}else{document.getElementById('game-screen-info').textContent='Frage '+(qS.cur+1)+' von '+qS.total;renderQ()}},1400)}
+function ansQ(i){if(qS.ans)return;qS.ans=true;const q=qS.qs[qS.cur],btns=document.querySelectorAll('.quiz-answer'),fb=document.getElementById('qfb');btns[q.c].classList.add('correct');if(i===q.c){qS.score++;playSound('correct');fb.textContent=t('✓ Richtig!');fb.style.color='#4a6a38'}else{btns[i].classList.add('wrong');playSound('wrong');fb.textContent=t('✗ Leider falsch!');fb.style.color='#8a4a42'}btns.forEach(b=>b.style.pointerEvents='none');setTimeout(()=>{qS.cur++;qS.ans=false;if(qS.cur>=qS.total){const sc=qS.score>=qS.total-1?3:qS.score>=qS.total*.6?2:1;stars[currentGame]=true;saveStars();showWin(qS.score>=qS.total-1?t('Zahnexperte!'):t('Gut gemacht!'),qS.score+t(' von ')+qS.total+t(' richtig'),sc)}else{document.getElementById('game-screen-info').textContent=t('Frage ')+(qS.cur+1)+t(' von ')+qS.total;renderQ()}},1400)}
 
 const BI=['img/bacteria-purple.png?v=28','img/bacteria-green.png?v=28','img/bacteria-orange.png?v=28','img/bacteria-pink.png?v=28'];
 let bakterienState={timer:null,spawner:null};
-function setupBakterien(sec){document.getElementById('game-screen-title').textContent='Bakterien fangen';document.getElementById('game-screen-info').textContent=sec+' Sekunden';const mSvg='<svg viewBox="0 0 480 50" preserveAspectRatio="none"><path d="M0,30 Q40,15 80,28 Q120,38 160,25 Q200,15 240,30 Q280,40 320,22 Q360,12 400,28 Q440,38 480,25 L480,50 L0,50 Z" fill="rgba(168,200,184,.35)"/><path d="M0,38 Q60,28 120,36 Q180,44 240,34 Q300,26 360,38 Q420,46 480,32 L480,50 L0,50 Z" fill="rgba(138,154,107,.2)"/></svg>';document.getElementById('game-content').innerHTML='<div class="bakterien-arena" id="ba"><div class="arena-hud"><div class="hud-badge" id="bs">0 gefangen</div><div class="hud-badge" id="bt">'+sec+'s</div></div><div class="meadow">'+mSvg+'</div></div>';bakterienState={score:0,timeLeft:sec,timer:null,spawner:null,active:true};setTimeout(startB,400)}
-function startB(){const s=bakterienState;s.timer=setInterval(()=>{s.timeLeft--;const e=document.getElementById('bt');if(e)e.textContent=s.timeLeft+'s';if(s.timeLeft<=0){clearInterval(s.timer);clearInterval(s.spawner);s.active=false;const sc=s.score>=20?3:s.score>=12?2:1;stars[currentGame]=true;saveStars();showWin(s.score>=20?'Bakterienjäger!':'Gut gefangen!',s.score+' Bakterien erwischt',sc)}},1000);spawnB();s.spawner=setInterval(spawnB,750)}
+function setupBakterien(sec){document.getElementById('game-screen-title').textContent='Bakterien fangen';document.getElementById('game-screen-info').textContent=sec+t(' Sekunden');const mSvg='<svg viewBox="0 0 480 50" preserveAspectRatio="none"><path d="M0,30 Q40,15 80,28 Q120,38 160,25 Q200,15 240,30 Q280,40 320,22 Q360,12 400,28 Q440,38 480,25 L480,50 L0,50 Z" fill="rgba(168,200,184,.35)"/><path d="M0,38 Q60,28 120,36 Q180,44 240,34 Q300,26 360,38 Q420,46 480,32 L480,50 L0,50 Z" fill="rgba(138,154,107,.2)"/></svg>';document.getElementById('game-content').innerHTML='<div class="bakterien-arena" id="ba"><div class="arena-hud"><div class="hud-badge" id="bs">0 gefangen</div><div class="hud-badge" id="bt">'+sec+'s</div></div><div class="meadow">'+mSvg+'</div></div>';bakterienState={score:0,timeLeft:sec,timer:null,spawner:null,active:true};setTimeout(startB,400)}
+function startB(){const s=bakterienState;s.timer=setInterval(()=>{s.timeLeft--;const e=document.getElementById('bt');if(e)e.textContent=s.timeLeft+'s';if(s.timeLeft<=0){clearInterval(s.timer);clearInterval(s.spawner);s.active=false;const sc=s.score>=20?3:s.score>=12?2:1;stars[currentGame]=true;saveStars();showWin(s.score>=20?'Bakterienjäger!':'Gut gefangen!',s.score+t(' Bakterien erwischt'),sc)}},1000);spawnB();s.spawner=setInterval(spawnB,750)}
 function spawnB(){if(!bakterienState.active)return;const a=document.getElementById('ba');if(!a)return;const e=document.createElement('div');e.className='bakterie';e.innerHTML='<img src="'+BI[Math.floor(Math.random()*BI.length)]+'" alt="">';e.style.left=(10+Math.random()*(a.offsetWidth-110))+'px';e.style.top=(50+Math.random()*(a.offsetHeight-160))+'px';e.style.animationDelay=Math.random()*.5+'s';e.addEventListener('pointerdown',ev=>{ev.preventDefault();if(e.classList.contains('caught'))return;e.classList.add('caught');bakterienState.score++;const sc=document.getElementById('bs');if(sc)sc.textContent=bakterienState.score+' gefangen';playSound('pop');setTimeout(()=>e.remove(),350)});a.appendChild(e);setTimeout(()=>{if(!e.classList.contains('caught')){e.style.transition='opacity .3s';e.style.opacity='0';setTimeout(()=>e.remove(),300)}},2300)}
 
 let bubblesState={timer:null,spawner:null};
-function setupBubbles(){document.getElementById('game-screen-title').textContent='Bläschen platzen';document.getElementById('game-screen-info').textContent='20 Sekunden';document.getElementById('game-content').innerHTML='<div class="bubble-arena" id="bua"><div class="arena-hud"><div class="hud-badge" id="bus">0 geplatzt</div><div class="hud-badge" id="but">20s</div></div></div>';bubblesState={score:0,timeLeft:20,timer:null,spawner:null,active:true};setTimeout(startBu,400)}
-function startBu(){const s=bubblesState;s.timer=setInterval(()=>{s.timeLeft--;const e=document.getElementById('but');if(e)e.textContent=s.timeLeft+'s';if(s.timeLeft<=0){clearInterval(s.timer);clearInterval(s.spawner);s.active=false;const sc=s.score>=18?3:s.score>=10?2:1;stars['bubbles']=true;saveStars();showWin('Toll gemacht!',s.score+' Bläschen geplatzt',sc)}},1000);spawnBub();s.spawner=setInterval(spawnBub,550)}
-function spawnBub(){if(!bubblesState.active)return;const a=document.getElementById('bua');if(!a)return;const cs=['rgba(50,180,240,.85)','rgba(160,60,220,.8)','rgba(240,70,90,.8)','rgba(60,200,80,.8)','rgba(250,190,30,.85)','rgba(230,50,150,.8)','rgba(40,210,190,.8)','rgba(245,120,30,.85)'];const e=document.createElement('div');e.className='bubble';const sz=55+Math.random()*55;e.style.width=sz+'px';e.style.height=sz+'px';e.style.left=(8+Math.random()*(a.offsetWidth-sz-16))+'px';e.style.background='radial-gradient(circle at 35% 30%,rgba(255,255,255,.5),'+cs[Math.floor(Math.random()*cs.length)]+')';e.style.animationDuration=(3.5+Math.random()*2)+'s';e.addEventListener('pointerdown',ev=>{ev.preventDefault();if(e.classList.contains('popped'))return;e.classList.add('popped');bubblesState.score++;const sc=document.getElementById('bus');if(sc)sc.textContent=bubblesState.score+' geplatzt';playSound('pop');setTimeout(()=>e.remove(),300)});a.appendChild(e);setTimeout(()=>e.remove(),5500)}
+function setupBubbles(){document.getElementById('game-screen-title').textContent=t('Bläschen platzen');document.getElementById('game-screen-info').textContent='20 Sekunden';document.getElementById('game-content').innerHTML='<div class="bubble-arena" id="bua"><div class="arena-hud"><div class="hud-badge" id="bus">0 geplatzt</div><div class="hud-badge" id="but">20s</div></div></div>';bubblesState={score:0,timeLeft:20,timer:null,spawner:null,active:true};setTimeout(startBu,400)}
+function startBu(){const s=bubblesState;s.timer=setInterval(()=>{s.timeLeft--;const e=document.getElementById('but');if(e)e.textContent=s.timeLeft+'s';if(s.timeLeft<=0){clearInterval(s.timer);clearInterval(s.spawner);s.active=false;const sc=s.score>=18?3:s.score>=10?2:1;stars['bubbles']=true;saveStars();showWin(t('Toll gemacht!'),s.score+t(' Bläschen geplatzt'),sc)}},1000);spawnBub();s.spawner=setInterval(spawnBub,550)}
+function spawnBub(){if(!bubblesState.active)return;const a=document.getElementById('bua');if(!a)return;const cs=['rgba(50,180,240,.85)','rgba(160,60,220,.8)','rgba(240,70,90,.8)','rgba(60,200,80,.8)','rgba(250,190,30,.85)','rgba(230,50,150,.8)','rgba(40,210,190,.8)','rgba(245,120,30,.85)'];const e=document.createElement('div');e.className='bubble';const sz=55+Math.random()*55;e.style.width=sz+'px';e.style.height=sz+'px';e.style.left=(8+Math.random()*(a.offsetWidth-sz-16))+'px';e.style.background='radial-gradient(circle at 35% 30%,rgba(255,255,255,.5),'+cs[Math.floor(Math.random()*cs.length)]+')';e.style.animationDuration=(3.5+Math.random()*2)+'s';e.addEventListener('pointerdown',ev=>{ev.preventDefault();if(e.classList.contains('popped'))return;e.classList.add('popped');bubblesState.score++;const sc=document.getElementById('bus');if(sc)sc.textContent=bubblesState.score+t(' geplatzt');playSound('pop');setTimeout(()=>e.remove(),300)});a.appendChild(e);setTimeout(()=>e.remove(),5500)}
 
 let brS={};
-function setupBrushing(){document.getElementById('game-screen-title').textContent='Zähne putzen';document.getElementById('game-screen-info').textContent='Male alle Zähne weiß!';brS={cleaned:0,total:14,painting:false};let upper='',lower='';for(let i=0;i<7;i++)upper+='<div class="brush-tooth" data-i="'+i+'"></div>';for(let i=7;i<14;i++)lower+='<div class="brush-tooth" data-i="'+i+'"></div>';document.getElementById('game-content').innerHTML='<div class="brush-area"><img src="img/zaehni-brush.png?v=28" style="width:80px;height:80px;object-fit:contain" alt=""><div class="brush-progress"><div class="brush-progress-bar" id="brbar" style="width:0%"></div></div><div class="brush-hint"><svg viewBox="0 0 20 20" fill="none"><path d="M10,4 L10,16" stroke="var(--bark-light)" stroke-width="1.5" stroke-linecap="round"/><path d="M6,8 L10,4 L14,8" stroke="var(--bark-light)" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M6,12 L10,16 L14,12" stroke="var(--bark-light)" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>Wische mit dem Finger über die Zähne!</div><div class="brush-mouth" id="brush-mouth"><div class="tooth-row upper">'+upper+'</div><div class="tooth-row lower">'+lower+'</div></div></div>';const mouth=document.getElementById("brush-mouth");mouth.addEventListener("pointerdown",function(e){e.preventDefault();brS.painting=true;paintAt(e)});mouth.addEventListener("pointermove",function(e){e.preventDefault();if(brS.painting)paintAt(e)});mouth.addEventListener("pointerup",function(){brS.painting=false});mouth.addEventListener("pointerleave",function(){brS.painting=false})}
+function setupBrushing(){document.getElementById('game-screen-title').textContent=t('Zähne putzen');document.getElementById('game-screen-info').textContent=t('Male alle Zähne weiß!');brS={cleaned:0,total:14,painting:false};let upper='',lower='';for(let i=0;i<7;i++)upper+='<div class="brush-tooth" data-i="'+i+'"></div>';for(let i=7;i<14;i++)lower+='<div class="brush-tooth" data-i="'+i+'"></div>';document.getElementById('game-content').innerHTML='<div class="brush-area"><img src="img/zaehni-brush.png?v=28" style="width:80px;height:80px;object-fit:contain" alt=""><div class="brush-progress"><div class="brush-progress-bar" id="brbar" style="width:0%"></div></div><div class="brush-hint"><svg viewBox="0 0 20 20" fill="none"><path d="M10,4 L10,16" stroke="var(--bark-light)" stroke-width="1.5" stroke-linecap="round"/><path d="M6,8 L10,4 L14,8" stroke="var(--bark-light)" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M6,12 L10,16 L14,12" stroke="var(--bark-light)" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>'+t('Wische mit dem Finger über die Zähne!')+'</div><div class="brush-mouth" id="brush-mouth"><div class="tooth-row upper">'+upper+'</div><div class="tooth-row lower">'+lower+'</div></div></div>';const mouth=document.getElementById("brush-mouth");mouth.addEventListener("pointerdown",function(e){e.preventDefault();brS.painting=true;paintAt(e)});mouth.addEventListener("pointermove",function(e){e.preventDefault();if(brS.painting)paintAt(e)});mouth.addEventListener("pointerup",function(){brS.painting=false});mouth.addEventListener("pointerleave",function(){brS.painting=false})}
 function paintAt(e){const teeth=document.querySelectorAll(".brush-tooth");teeth.forEach(function(t){const r=t.getBoundingClientRect();if(e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom){if(!t.classList.contains("clean")){if(!t.classList.contains("painting")){t.classList.add("painting");setTimeout(function(){t.classList.remove("painting");t.classList.add("clean");brS.cleaned++;playSound("pop");document.getElementById("brbar").style.width=(brS.cleaned/brS.total*100)+"%";if(brS.cleaned>=brS.total)setTimeout(function(){stars["brushing"]=true;saveStars();showWin("Alle Zähne sauber!","Super geputzt!",3)},400)},300)}}}})}
 
-const MP=[{img:'img/card-toothbrush.png?v=28',l:'Zahnbürste',m:'Zähne putzen'},{img:'img/card-toothpaste.png?v=28',l:'Zahnpasta',m:'Schutz vor Karies'},{img:'img/card-apple.png?v=28',l:'Apfel',m:'Gesunder Snack'},{img:'img/card-water.png?v=28',l:'Wasser',m:'Bestes Getränk'},{img:'img/card-hourglass.png?v=28',l:'Sanduhr',m:'2 Minuten putzen'},{img:'img/card-floss.png?v=28',l:'Zahnseide',m:'Zahnzwischenräume'}];
+const MP=[{img:'img/card-toothbrush.png?v=28',l:t('Zahnbürste'),m:t('Zähne putzen')},{img:'img/card-toothpaste.png?v=28',l:t('Zahnpasta'),m:t('Schutz vor Karies')},{img:'img/card-apple.png?v=28',l:t('Apfel'),m:t('Gesunder Snack')},{img:'img/card-water.png?v=28',l:t('Wasser'),m:t('Bestes Getränk')},{img:'img/card-hourglass.png?v=28',l:t('Sanduhr'),m:t('2 Minuten putzen')},{img:'img/card-floss.png?v=28',l:t('Zahnseide'),m:t('Zahnzwischenräume')}];
 let mS={};
-function setupMatching(){document.getElementById('game-screen-title').textContent='Was gehört zusammen?';document.getElementById('game-screen-info').textContent='0/6 Paare';mS={sel:null,matched:0,total:6};let ri=MP.map((p,i)=>({i,t:p.m}));for(let i=ri.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ri[i],ri[j]]=[ri[j],ri[i]]}document.getElementById('game-content').innerHTML='<div class="matching-container"><p style="text-align:center;font-size:13px;color:var(--bark-light);font-style:italic;margin-bottom:4px">Verbinde Bild und Beschreibung!</p><div class="matching-row"><div class="matching-col">'+MP.map((p,i)=>'<div class="matching-item" data-s="l" data-i="'+i+'" onclick="sM(\'l\','+i+')"><img src="'+p.img+'" alt=""><span>'+p.l+'</span></div>').join('')+'</div><div class="matching-col">'+ri.map(r=>'<div class="matching-item" data-s="r" data-i="'+r.i+'" onclick="sM(\'r\','+r.i+')"><span style="font-size:16px;font-weight:700;padding:8px 0">'+r.t+'</span></div>').join('')+'</div></div></div>'}
-function sM(side,idx){const el=document.querySelector('.matching-item[data-s="'+side+'"][data-i="'+idx+'"]');if(el.classList.contains('matched'))return;document.querySelectorAll('.matching-item[data-s="'+side+'"]').forEach(e=>e.classList.remove('selected'));el.classList.add('selected');playSound('click');if(!mS.sel||mS.sel.s===side){mS.sel={s:side,i:idx};return}const li=side==='l'?idx:mS.sel.i,ri=side==='r'?idx:mS.sel.i;if(li===ri){document.querySelector('.matching-item[data-s="l"][data-i="'+li+'"]').classList.add('matched');document.querySelector('.matching-item[data-s="r"][data-i="'+ri+'"]').classList.add('matched');document.querySelectorAll('.matching-item').forEach(e=>e.classList.remove('selected'));mS.matched++;mS.sel=null;playSound('match');document.getElementById('game-screen-info').textContent=mS.matched+'/'+mS.total+' Paare';if(mS.matched>=mS.total)setTimeout(()=>{stars['matching']=true;saveStars();showWin('Alles gefunden!','Du kennst dich aus!',3)},500)}else{playSound('wrong');setTimeout(()=>{document.querySelectorAll('.matching-item').forEach(e=>e.classList.remove('selected'));mS.sel=null},500)}}
+function setupMatching(){document.getElementById('game-screen-title').textContent=t('Was gehört zusammen?');document.getElementById('game-screen-info').textContent=t('0/6 Paare');mS={sel:null,matched:0,total:6};let ri=MP.map((p,i)=>({i,t:p.m}));for(let i=ri.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ri[i],ri[j]]=[ri[j],ri[i]]}document.getElementById('game-content').innerHTML='<div class="matching-container"><p style="text-align:center;font-size:13px;color:var(--bark-light);font-style:italic;margin-bottom:4px">Verbinde Bild und Beschreibung!</p><div class="matching-row"><div class="matching-col">'+MP.map((p,i)=>'<div class="matching-item" data-s="l" data-i="'+i+'" onclick="sM(\'l\','+i+')"><img src="'+p.img+'" alt=""><span>'+p.l+'</span></div>').join('')+'</div><div class="matching-col">'+ri.map(r=>'<div class="matching-item" data-s="r" data-i="'+r.i+'" onclick="sM(\'r\','+r.i+')"><span style="font-size:16px;font-weight:700;padding:8px 0">'+r.t+'</span></div>').join('')+'</div></div></div>'}
+function sM(side,idx){const el=document.querySelector('.matching-item[data-s="'+side+'"][data-i="'+idx+'"]');if(el.classList.contains('matched'))return;document.querySelectorAll('.matching-item[data-s="'+side+'"]').forEach(e=>e.classList.remove('selected'));el.classList.add('selected');playSound('click');if(!mS.sel||mS.sel.s===side){mS.sel={s:side,i:idx};return}const li=side==='l'?idx:mS.sel.i,ri=side==='r'?idx:mS.sel.i;if(li===ri){document.querySelector('.matching-item[data-s="l"][data-i="'+li+'"]').classList.add('matched');document.querySelector('.matching-item[data-s="r"][data-i="'+ri+'"]').classList.add('matched');document.querySelectorAll('.matching-item').forEach(e=>e.classList.remove('selected'));mS.matched++;mS.sel=null;playSound('match');document.getElementById('game-screen-info').textContent=mS.matched+'/'+mS.total+t(' Paare');if(mS.matched>=mS.total)setTimeout(()=>{stars['matching']=true;saveStars();showWin(t('Alles gefunden!'),t('Du kennst dich aus!'),3)},500)}else{playSound('wrong');setTimeout(()=>{document.querySelectorAll('.matching-item').forEach(e=>e.classList.remove('selected'));mS.sel=null},500)}}
 
-const GS_ITEMS=[{name:'Apfel',img:'img/food-apple.png?v=28',gut:true},{name:'Bonbon',img:'img/food-candy.png?v=28',gut:false},{name:'Karotte',img:'img/food-carrot.png?v=28',gut:true},{name:'Limonade',img:'img/food-lemonade.png?v=28',gut:false},{name:'Käse',img:'img/food-cheese.png?v=28',gut:true},{name:'Schokolade',img:'img/food-chocolate.png?v=28',gut:false},{name:'Wasser',img:'img/food-water.png?v=28',gut:true},{name:'Eis',img:'img/food-icecream.png?v=28',gut:false},{name:'Nüsse',img:'img/food-nuts.png?v=28',gut:true},{name:'Kuchen',img:'img/food-cake.png?v=28',gut:false}];
+const GS_ITEMS=[{name:t('Apfel'),img:'img/food-apple.png?v=28',gut:true},{name:t('Bonbon'),img:'img/food-candy.png?v=28',gut:false},{name:t('Karotte'),img:'img/food-carrot.png?v=28',gut:true},{name:t('Limonade'),img:'img/food-lemonade.png?v=28',gut:false},{name:t('Käse'),img:'img/food-cheese.png?v=28',gut:true},{name:t('Schokolade'),img:'img/food-chocolate.png?v=28',gut:false},{name:t('Wasser'),img:'img/food-water.png?v=28',gut:true},{name:t('Eis'),img:'img/food-icecream.png?v=28',gut:false},{name:t('Nüsse'),img:'img/food-nuts.png?v=28',gut:true},{name:t('Kuchen'),img:'img/food-cake.png?v=28',gut:false}];
 let gsS={};
-function setupGutSchlecht(){document.getElementById('game-screen-title').textContent='Gut oder Schlecht?';document.getElementById('game-screen-info').textContent='Frage 1 von 8';const items=[...GS_ITEMS].sort(()=>Math.random()-.5).slice(0,8);gsS={items,cur:0,score:0,ans:false,total:8};renderGS()}
-function renderGS(){const it=gsS.items[gsS.cur];document.getElementById('game-content').innerHTML='<div style="width:100%;max-width:340px;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="width:100%;height:6px;background:var(--parchment-warm);border-radius:3px;overflow:hidden"><div style="height:100%;width:'+(gsS.cur/gsS.total*100)+'%;background:linear-gradient(90deg,var(--sage),var(--honey));border-radius:3px;transition:width .4s"></div></div><div style="text-align:center"><img src="img/zaehni-welcome.png?v=28" style="width:70px;height:70px;object-fit:contain" alt=""><p style="font-family:Quicksand,sans-serif;font-size:16px;font-weight:700;margin-top:6px">Ist das gut für deine Zähne?</p></div><div style="width:240px;height:240px;margin:4px auto"><img src="'+it.img+'" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(90,78,66,.12))" alt="'+it.name+'"></div><div style="font-family:Quicksand,sans-serif;font-size:22px;font-weight:700;text-align:center;color:var(--bark)">'+it.name+'</div><div style="display:flex;gap:16px;margin-top:8px;width:100%"><button onclick="ansGS(true)" style="flex:1;padding:16px;border:2px solid var(--sage-light);border-radius:var(--radius);background:var(--cream);cursor:pointer;font-size:16px;font-family:Quicksand,sans-serif;font-weight:700;color:var(--sage);transition:all .2s"><span style="font-size:28px;display:block;margin-bottom:4px">😊</span>Gut!</button><button onclick="ansGS(false)" style="flex:1;padding:16px;border:2px solid var(--rose-light);border-radius:var(--radius);background:var(--cream);cursor:pointer;font-size:16px;font-family:Quicksand,sans-serif;font-weight:700;color:var(--rose);transition:all .2s"><span style="font-size:28px;display:block;margin-bottom:4px">😟</span>Schlecht!</button></div><div id="gsfb" style="text-align:center;font-weight:600;font-size:15px;min-height:36px"></div></div>'}
-function ansGS(isGut){if(gsS.ans)return;gsS.ans=true;const correct=gsS.items[gsS.cur].gut===isGut;const fb=document.getElementById('gsfb');if(correct){gsS.score++;playSound('correct');fb.textContent='✓ Richtig!';fb.style.color='#4a6a38'}else{playSound('wrong');fb.textContent='✗ '+(gsS.items[gsS.cur].gut?'Das ist gut für Zähne!':'Das ist schlecht für Zähne!');fb.style.color='#8a4a42'}setTimeout(()=>{gsS.cur++;gsS.ans=false;if(gsS.cur>=gsS.total){const sc=gsS.score>=7?3:gsS.score>=5?2:1;stars['gutschlecht']=true;saveStars();showWin(gsS.score>=7?'Zahnprofi!':'Gut gemacht!',gsS.score+' von '+gsS.total+' richtig',sc)}else{document.getElementById('game-screen-info').textContent='Frage '+(gsS.cur+1)+' von '+gsS.total;renderGS()}},1400)}
+function setupGutSchlecht(){document.getElementById('game-screen-title').textContent=t('Gut oder Schlecht?');document.getElementById('game-screen-info').textContent=t('Frage 1 von 8');const items=[...GS_ITEMS].sort(()=>Math.random()-.5).slice(0,8);gsS={items,cur:0,score:0,ans:false,total:8};renderGS()}
+function renderGS(){const it=gsS.items[gsS.cur];document.getElementById('game-content').innerHTML='<div style="width:100%;max-width:340px;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="width:100%;height:6px;background:var(--parchment-warm);border-radius:3px;overflow:hidden"><div style="height:100%;width:'+(gsS.cur/gsS.total*100)+'%;background:linear-gradient(90deg,var(--sage),var(--honey));border-radius:3px;transition:width .4s"></div></div><div style="text-align:center"><img src="img/zaehni-welcome.png?v=28" style="width:70px;height:70px;object-fit:contain" alt=""><p style="font-family:Quicksand,sans-serif;font-size:16px;font-weight:700;margin-top:6px">Ist das gut für deine Zähne?</p></div><div style="width:240px;height:240px;margin:4px auto"><img src="'+it.img+'" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(90,78,66,.12))" alt="'+it.name+'"></div><div style="font-family:Quicksand,sans-serif;font-size:22px;font-weight:700;text-align:center;color:var(--bark)">'+it.name+'</div><div style="display:flex;gap:16px;margin-top:8px;width:100%"><button onclick="ansGS(true)" style="flex:1;padding:16px;border:2px solid var(--sage-light);border-radius:var(--radius);background:var(--cream);cursor:pointer;font-size:16px;font-family:Quicksand,sans-serif;font-weight:700;color:var(--sage);transition:all .2s"><span style="font-size:28px;display:block;margin-bottom:4px">😊</span>'+t('Gut!')+'</button><button onclick="ansGS(false)" style="flex:1;padding:16px;border:2px solid var(--rose-light);border-radius:var(--radius);background:var(--cream);cursor:pointer;font-size:16px;font-family:Quicksand,sans-serif;font-weight:700;color:var(--rose);transition:all .2s"><span style="font-size:28px;display:block;margin-bottom:4px">😟</span>'+t('Schlecht!')+'</button></div><div id="gsfb" style="text-align:center;font-weight:600;font-size:15px;min-height:36px"></div></div>'}
+function ansGS(isGut){if(gsS.ans)return;gsS.ans=true;const correct=gsS.items[gsS.cur].gut===isGut;const fb=document.getElementById('gsfb');if(correct){gsS.score++;playSound('correct');fb.textContent=t('✓ Richtig!');fb.style.color='#4a6a38'}else{playSound('wrong');fb.textContent='✗ '+(gsS.items[gsS.cur].gut?t('Das ist gut für Zähne!'):t('Das ist schlecht für Zähne!'));fb.style.color='#8a4a42'}setTimeout(()=>{gsS.cur++;gsS.ans=false;if(gsS.cur>=gsS.total){const sc=gsS.score>=7?3:gsS.score>=5?2:1;stars['gutschlecht']=true;saveStars();showWin(gsS.score>=7?t('Zahnprofi!'):t('Gut gemacht!'),gsS.score+t(' von ')+gsS.total+t(' richtig'),sc)}else{document.getElementById('game-screen-info').textContent=t('Frage ')+(gsS.cur+1)+t(' von ')+gsS.total;renderGS()}},1400)}
 
-function setupDiplom(){document.getElementById('game-screen-title').textContent='Dein Diplom';document.getElementById('game-screen-info').textContent='';const ts=getTotalStars();const titles={tiny:'Zahnzwerg-Diplom',mid:'Zahnforscher-Diplom',big:'Zahnheld-Diplom'};const subtitles={tiny:'ein echter Zahnzwerg',mid:'ein echter Zahnforscher',big:'ein echter Zahnheld'};const dt=titles[currentAge]||'Zahnheld-Diplom';const ds=subtitles[currentAge]||'ein echter Zahnheld';document.getElementById('game-content').innerHTML='<div class="diplom-container"><div class="diplom-frame"><div class="diplom-corner"></div><div class="diplom-corner"></div><div class="diplom-corner"></div><div class="diplom-corner"></div><div style="width:220px;z-index:1;margin:8px 0"><img src="'+(currentAge==='tiny'?'img/zaehni-winner.png':'img/trophy.png')+'?v=28" style="width:100%;object-fit:contain;border-radius:8px" alt=""></div><div class="diplom-title">'+dt+'</div><div class="diplom-text">Hiermit wird bestätigt, dass</div><input type="text" class="diplom-name-input" id="dn" placeholder="Dein Name" maxlength="20"><div class="diplom-text">alle Zahnspiele gemeistert hat<br>und '+ds+' ist!</div><div class="diplom-stars">'+'⭐'.repeat(Math.min(ts,8))+'</div><div class="diplom-praxis">FRYDENT Zahnarztpraxis · Bonndorf im Schwarzwald<br>'+new Date().toLocaleDateString('de-DE')+'</div></div><button class="diplom-btn" onclick="printD()">Diplom drucken</button></div>'}
-function printD(){const nm=document.getElementById('dn').value||'Zahnheld';const ts=getTotalStars();stars['diplom']=true;saveStars();const titles={tiny:'Zahnzwerg-Diplom',mid:'Zahnforscher-Diplom',big:'Zahnheld-Diplom'};const subs={tiny:'ein echter Zahnzwerg',mid:'ein echter Zahnforscher',big:'ein echter Zahnheld'};const dt=titles[currentAge]||'Zahnheld-Diplom';const ds=subs[currentAge]||'ein echter Zahnheld';const diplomImg=currentAge==='tiny'?'img/zaehni-winner.png':'img/trophy.png';const trophyUrl=new URL(diplomImg,window.location.href).href;const w=window.open('','_blank');w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"><style>@page{size:A4 landscape;margin:8mm}*{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;height:100%;overflow:hidden}body{font-family:"Nunito",sans-serif;background:white}.page{width:100%;height:100%;max-height:194mm;background:#FFFCF5;border:3px solid #D4A76A;border-radius:16px;position:relative;display:flex;align-items:center;padding:8mm 15mm}.page::before{content:"";position:absolute;inset:4mm;border:1.5px solid #A8C8B8;border-radius:12px;pointer-events:none}.left{flex:0 0 35%;display:flex;align-items:center;justify-content:center;padding-right:10mm}.left img{width:100%;max-width:85mm;object-fit:contain}.right{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3mm;text-align:center}h1{font-family:"Quicksand",sans-serif;color:#7BA490;font-size:28pt}h2{font-family:"Quicksand",sans-serif;color:#D4A76A;font-size:34pt}p{color:#8A7E72;font-size:13pt;line-height:1.4;font-style:italic}.stars{font-size:20pt;letter-spacing:5px}.vine{color:#A8C8B8;font-size:12pt;letter-spacing:6px}.footer{font-size:9pt;color:#aaa;font-style:normal;margin-top:2mm}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body><div class="page"><div class="left"><img src="'+trophyUrl+'" alt="Pokal"></div><div class="right"><div class="vine">✿  ✿  ✿</div><h1>'+dt+'</h1><p>Hiermit wird bestätigt, dass</p><h2>'+nm+'</h2><p>alle Zahnspiele bei FRYDENT Kids<br>erfolgreich gemeistert hat und nun<br>'+ds+' ist!</p><div class="stars">'+'⭐'.repeat(Math.min(ts,8))+'</div><div class="vine">✿  ✿  ✿</div><div class="footer">FRYDENT Zahnarztpraxis<br>Martinstraße 4 · 79848 Bonndorf im Schwarzwald<br>'+new Date().toLocaleDateString('de-DE')+'</div></div></div><script>setTimeout(()=>window.print(),1000)<\/script></body></html>')}
+function setupDiplom(){document.getElementById('game-screen-title').textContent=t('Dein Diplom');document.getElementById('game-screen-info').textContent='';const ts=getTotalStars();const titles={tiny:t('Zahnzwerg-Diplom'),mid:t('Zahnforscher-Diplom'),big:t('Zahnheld-Diplom')};const subtitles={tiny:t('ein echter Zahnzwerg'),mid:t('ein echter Zahnforscher'),big:t('ein echter Zahnheld')};const dt=titles[currentAge]||'Zahnheld-Diplom';const ds=subtitles[currentAge]||'ein echter Zahnheld';document.getElementById('game-content').innerHTML='<div class="diplom-container"><div class="diplom-frame"><div class="diplom-corner"></div><div class="diplom-corner"></div><div class="diplom-corner"></div><div class="diplom-corner"></div><div style="width:220px;z-index:1;margin:8px 0"><img src="'+(currentAge==='tiny'?'img/zaehni-winner.png':'img/trophy.png')+'?v=28" style="width:100%;object-fit:contain;border-radius:8px" alt=""></div><div class="diplom-title">'+dt+'</div><div class="diplom-text">Hiermit wird bestätigt, dass</div><input type="text" class="diplom-name-input" id="dn" placeholder=\"'+t('Dein Name')+'\" maxlength="20"><div class="diplom-text">alle Zahnspiele gemeistert hat<br>und '+ds+' ist!</div><div class="diplom-stars">'+'⭐'.repeat(Math.min(ts,8))+'</div><div class="diplom-praxis">FRYDENT Zahnarztpraxis · Bonndorf im Schwarzwald<br>'+new Date().toLocaleDateString(LANG==='de'?'de-DE':LANG)+'</div></div><button class="diplom-btn" onclick="printD()">'+t('Diplom drucken')+'</button></div>'}
+function printD(){const nm=document.getElementById('dn').value||t('Zahnheld');const ts=getTotalStars();stars['diplom']=true;saveStars();const titles={tiny:t('Zahnzwerg-Diplom'),mid:t('Zahnforscher-Diplom'),big:t('Zahnheld-Diplom')};const subs={tiny:t('ein echter Zahnzwerg'),mid:t('ein echter Zahnforscher'),big:t('ein echter Zahnheld')};const dt=titles[currentAge]||'Zahnheld-Diplom';const ds=subs[currentAge]||'ein echter Zahnheld';const diplomImg=currentAge==='tiny'?'img/zaehni-winner.png':'img/trophy.png';const trophyUrl=new URL(diplomImg,window.location.href).href;const w=window.open('','_blank');w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"><style>@page{size:A4 landscape;margin:8mm}*{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;height:100%;overflow:hidden}body{font-family:"Nunito",sans-serif;background:white}.page{width:100%;height:100%;max-height:194mm;background:#FFFCF5;border:3px solid #D4A76A;border-radius:16px;position:relative;display:flex;align-items:center;padding:8mm 15mm}.page::before{content:"";position:absolute;inset:4mm;border:1.5px solid #A8C8B8;border-radius:12px;pointer-events:none}.left{flex:0 0 35%;display:flex;align-items:center;justify-content:center;padding-right:10mm}.left img{width:100%;max-width:85mm;object-fit:contain}.right{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3mm;text-align:center}h1{font-family:"Quicksand",sans-serif;color:#7BA490;font-size:28pt}h2{font-family:"Quicksand",sans-serif;color:#D4A76A;font-size:34pt}p{color:#8A7E72;font-size:13pt;line-height:1.4;font-style:italic}.stars{font-size:20pt;letter-spacing:5px}.vine{color:#A8C8B8;font-size:12pt;letter-spacing:6px}.footer{font-size:9pt;color:#aaa;font-style:normal;margin-top:2mm}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body><div class="page"><div class="left"><img src="'+trophyUrl+'" alt="Pokal"></div><div class="right"><div class="vine">✿  ✿  ✿</div><h1>'+dt+'</h1><p>Hiermit wird bestätigt, dass</p><h2>'+nm+'</h2><p>alle Zahnspiele bei FRYDENT Kids<br>erfolgreich gemeistert hat und nun<br>'+ds+' ist!</p><div class="stars">'+'⭐'.repeat(Math.min(ts,8))+'</div><div class="vine">✿  ✿  ✿</div><div class="footer">FRYDENT Zahnarztpraxis<br>Martinstraße 4 · 79848 Bonndorf im Schwarzwald<br>'+new Date().toLocaleDateString(LANG==='de'?'de-DE':LANG)+'</div></div></div><script>setTimeout(()=>window.print(),1000)<\/script></body></html>')}
 
 [...MC.map(c=>c.img),...BI,'img/zaehni-welcome.png?v=28','img/zaehni-brush.png?v=28','img/zaehni-winner.png?v=28','img/zaehni-detective.png?v=28','img/trophy.png?v=28','img/food-apple.png?v=28','img/food-candy.png?v=28','img/food-carrot.png?v=28','img/food-lemonade.png?v=28','img/food-cheese.png?v=28','img/food-chocolate.png?v=28','img/food-water.png?v=28','img/food-icecream.png?v=28','img/food-nuts.png?v=28','img/food-cake.png?v=28'].forEach(s=>{const i=new Image();i.src=s});
 // SW disabled - cache nuke active

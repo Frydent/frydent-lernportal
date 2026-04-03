@@ -94,6 +94,67 @@ svg.progress-ring{position:absolute;top:0;left:0;width:100%;height:100%;transfor
   if('caches' in window){var k=await caches.keys();for(var i=0;i<k.length;i++)await caches.delete(k[i])}
 })();
 </script>
+<script>
+const LANG=(new URLSearchParams(window.location.search).get('lang')||'de').toLowerCase();
+const _TT={
+pl:{'Zahnputz-Uhr':'Zegar do mycia zębów','2 Minuten für strahlende Zähne!':'2 minuty na lśniące ząbki!',
+"Bereit? Los geht’s!":'Gotowy? Zaczynamy!','Oben':'Góra','Unten':'Dół','links':'lewo','rechts':'prawo',
+'Super geputzt!':'Super umyte!','Deine Zähne strahlen jetzt!':'Twoje ząbki teraz błyszczą!',
+'Nochmal!':'Jeszcze raz!','Zurück zu den Spielen':'Powrót do gier','Start!':'Start!','Läuft...':'Trwa...',
+'Oben links putzen!':'Myj górę z lewej!','Oben rechts putzen!':'Myj górę z prawej!',
+'Unten links putzen!':'Myj dół z lewej!','Unten rechts putzen!':'Myj dół z prawej!'},
+en:{'Zahnputz-Uhr':'Brushing Timer','2 Minuten für strahlende Zähne!':'2 minutes for sparkling teeth!',
+"Bereit? Los geht’s!":'Ready? Let\'s go!','Oben':'Top','Unten':'Bottom','links':'left','rechts':'right',
+'Super geputzt!':'Super brushed!','Deine Zähne strahlen jetzt!':'Your teeth are sparkling now!',
+'Nochmal!':'Again!','Zurück zu den Spielen':'Back to games','Start!':'Start!','Läuft...':'Running...',
+'Oben links putzen!':'Brush top left!','Oben rechts putzen!':'Brush top right!',
+'Unten links putzen!':'Brush bottom left!','Unten rechts putzen!':'Brush bottom right!'},
+tr:{'Zahnputz-Uhr':'Fırçalama Saati','2 Minuten für strahlende Zähne!':'Parlak dişler için 2 dakika!',
+"Bereit? Los geht’s!":'Hazır mısın? Başla!','Oben':'Üst','Unten':'Alt','links':'sol','rechts':'sağ',
+'Super geputzt!':'Süper fırçalandı!','Deine Zähne strahlen jetzt!':'Dişlerin şimdi parlıyor!',
+'Nochmal!':'Tekrar!','Zurück zu den Spielen':'Oyunlara dön','Start!':'Başla!','Läuft...':'Çalışıyor...',
+'Oben links putzen!':'Sol üst fırçala!','Oben rechts putzen!':'Sağ üst fırçala!',
+'Unten links putzen!':'Sol alt fırçala!','Unten rechts putzen!':'Sağ alt fırçala!'},
+ar:{'Zahnputz-Uhr':'مؤقت التنظيف','2 Minuten für strahlende Zähne!':'دقيقتان لأسنان لامعة!',
+"Bereit? Los geht’s!":'جاهز؟ هيا!','Oben':'فوق','Unten':'تحت','links':'يسار','rechts':'يمين',
+'Super geputzt!':'تنظيف رائع!','Deine Zähne strahlen jetzt!':'أسنانك تلمع الآن!',
+'Nochmal!':'مرة أخرى!','Zurück zu den Spielen':'العودة للألعاب','Start!':'ابدأ!','Läuft...':'جارٍ...',
+'Oben links putzen!':'نظف فوق يسار!','Oben rechts putzen!':'نظف فوق يمين!',
+'Unten links putzen!':'نظف تحت يسار!','Unten rechts putzen!':'نظف تحت يمين!'},
+ru:{'Zahnputz-Uhr':'Таймер чистки','2 Minuten für strahlende Zähne!':'2 минуты для сияющих зубов!',
+"Bereit? Los geht’s!":'Готов? Поехали!','Oben':'Верх','Unten':'Низ','links':'лево','rechts':'право',
+'Super geputzt!':'Супер почищено!','Deine Zähne strahlen jetzt!':'Твои зубки теперь сияют!',
+'Nochmal!':'Ещё раз!','Zurück zu den Spielen':'Назад к играм','Start!':'Старт!','Läuft...':'Идёт...',
+'Oben links putzen!':'Чисти верх слева!','Oben rechts putzen!':'Чисти верх справа!',
+'Unten links putzen!':'Чисти низ слева!','Unten rechts putzen!':'Чисти низ справа!'},
+ro:{'Zahnputz-Uhr':'Cronometru de periaj','2 Minuten für strahlende Zähne!':'2 minute pentru dinți strălucitori!',
+"Bereit? Los geht’s!":'Pregătit? Hai!','Oben':'Sus','Unten':'Jos','links':'stânga','rechts':'dreapta',
+'Super geputzt!':'Super periați!','Deine Zähne strahlen jetzt!':'Dinții tăi strălucesc acum!',
+'Nochmal!':'Încă o dată!','Zurück zu den Spielen':'Înapoi la jocuri','Start!':'Start!','Läuft...':'În curs...',
+'Oben links putzen!':'Periază sus stânga!','Oben rechts putzen!':'Periază sus dreapta!',
+'Unten links putzen!':'Periază jos stânga!','Unten rechts putzen!':'Periază jos dreapta!'}
+};
+function tt(s){return(_TT[LANG]&&_TT[LANG][s])||s}
+document.addEventListener('DOMContentLoaded',function(){
+if(LANG==='de')return;
+document.querySelector('.header h1').textContent=tt('Zahnputz-Uhr');
+document.querySelector('.header p').textContent=tt('2 Minuten für strahlende Zähne!');
+document.getElementById('quadLabel').textContent=tt("Bereit? Los geht’s!");
+['q0','q1','q2','q3'].forEach(function(id,i){
+  var el=document.getElementById(id);
+  var dirs=[['Oben','links'],['Oben','rechts'],['Unten','links'],['Unten','rechts']];
+  el.innerHTML='<span class="quadrant-icon">'+['↖','↗','↙','↘'][i]+'</span>'+tt(dirs[i][0])+'<br>'+tt(dirs[i][1]);
+});
+document.querySelector('#winState h2').textContent=tt('Super geputzt!');
+document.querySelector('#winState p').textContent=tt('Deine Zähne strahlen jetzt!');
+document.querySelector('#winState .btn.primary').textContent=tt('Nochmal!');
+var backLink=document.querySelector('#winState .btn.small');
+backLink.textContent=tt('Zurück zu den Spielen');
+backLink.href='index.html?lang='+LANG;
+document.getElementById('startBtn').textContent=tt('Start!');
+document.querySelector('.back-link').href='index.html?lang='+LANG;
+});
+</script>
 <div class="app" id="app" data-state="idle">
   <a href="index.html" class="back-link">←</a>
   
@@ -141,7 +202,7 @@ svg.progress-ring{position:absolute;top:0;left:0;width:100%;height:100%;transfor
 
 <script>
 const TOTAL=120;
-const QUADRANTS=['Oben links putzen!','Oben rechts putzen!','Unten links putzen!','Unten rechts putzen!'];
+const QUADRANTS=[tt('Oben links putzen!'),tt('Oben rechts putzen!'),tt('Unten links putzen!'),tt('Unten rechts putzen!')];
 const circumference=2*Math.PI*120;
 
 let timeLeft=TOTAL,running=false,timer=null,currentQuad=-1;
@@ -193,7 +254,7 @@ function startTimer(){
   running=true;
   app.dataset.state='running';
   hourglass.classList.add('running');
-  document.getElementById('startBtn').textContent='Läuft...';
+  document.getElementById('startBtn').textContent=tt('Läuft...');
   document.getElementById('startBtn').style.pointerEvents='none';
   document.getElementById('startBtn').style.opacity='.5';
   
@@ -234,7 +295,7 @@ function resetTimer(){
   clearInterval(timer);
   app.dataset.state='idle';
   hourglass.classList.remove('running');
-  document.getElementById('startBtn').textContent='Start!';
+  document.getElementById('startBtn').textContent=tt('Start!');
   document.getElementById('startBtn').style.pointerEvents='';
   document.getElementById('startBtn').style.opacity='';
   progress.style.strokeDashoffset=circumference;
