@@ -89,10 +89,7 @@ svg.progress-ring{position:absolute;top:0;left:0;width:100%;height:100%;transfor
 </head>
 <body>
 <script>
-(async function(){
-  if('serviceWorker' in navigator){var r=await navigator.serviceWorker.getRegistrations();for(var i=0;i<r.length;i++)await r[i].unregister()}
-  if('caches' in window){var k=await caches.keys();for(var i=0;i<k.length;i++)await caches.delete(k[i])}
-})();
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){});}
 </script>
 <script>
 const LANG=(new URLSearchParams(window.location.search).get('lang')||'de').toLowerCase();

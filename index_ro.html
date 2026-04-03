@@ -138,6 +138,17 @@ footer a{color:var(--blue);text-decoration:none}
 
 </style>
 <script src="https://dr-flex.de/embed.js?medicalPracticeId=60190"></script>
+
+<style>
+.float-timer{position:fixed;bottom:24px;right:24px;z-index:999;text-decoration:none;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#00B4A0,#7BA490);color:white;padding:12px 20px 12px 16px;border-radius:50px;box-shadow:0 4px 20px rgba(0,180,160,.35);font-family:'Quicksand',sans-serif;transition:all .3s;animation:timerPulse 3s ease-in-out infinite}
+.float-timer:hover{transform:scale(1.05);box-shadow:0 6px 28px rgba(0,180,160,.45)}
+.float-timer svg{width:28px;height:28px;flex-shrink:0}
+.float-timer .ft-text{display:flex;flex-direction:column;line-height:1.2}
+.float-timer .ft-main{font-weight:700;font-size:14px}
+.float-timer .ft-sub{font-size:11px;opacity:.85}
+@keyframes timerPulse{0%,100%{box-shadow:0 4px 20px rgba(0,180,160,.35)}50%{box-shadow:0 4px 28px rgba(0,180,160,.5)}}
+@media(max-width:480px){.float-timer{bottom:16px;right:16px;padding:10px 16px 10px 12px}.float-timer .ft-main{font-size:13px}}
+</style>
 </head>
 <body>
 <header><div class="header-inner">
@@ -520,5 +531,10 @@ setTimeout(function(){fa.style.display='none';ty.style.display='block';ty.style.
 })();
 </script>
 
+
+<a href="kids/?lang=ro" class="float-timer">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6,2 L18,2 L18,4 Q18,9 12,12 Q18,15 18,20 L18,22 L6,22 L6,20 Q6,15 12,12 Q6,9 6,4 Z"/><ellipse cx="12" cy="18" rx="4" ry="2" fill="rgba(255,255,255,.3)"/></svg>
+<div class="ft-text"><span class="ft-main">Periază dinții!</span><span class="ft-sub">Cronometru 2 min</span></div>
+</a>
 </body>
 </html>
