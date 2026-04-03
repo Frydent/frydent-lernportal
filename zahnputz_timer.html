@@ -182,9 +182,9 @@ function updateDisplay(){
   timeDisplay.textContent=m+':'+(s<10?'0':'')+s;
   var pct=(TOTAL-timeLeft)/TOTAL;
   progress.style.strokeDashoffset=circumference*(1-pct);
-  if(pct>.75)progress.style.stroke='#E2C26A';
-  else if(pct>.5)progress.style.stroke='#7BA490';
-  else progress.style.stroke='#3D5A98';
+  // Blue gradation: light → dark as time progresses
+  var r=Math.round(61-25*pct),g=Math.round(90-40*pct),b=Math.round(152-20*pct);
+  progress.style.stroke='rgb('+r+','+g+','+b+')';
 
   var newQuad=Math.min(3,Math.floor((TOTAL-timeLeft)/30));
   if(newQuad!==currentQuad&&timeLeft<TOTAL){
