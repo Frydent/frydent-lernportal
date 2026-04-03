@@ -315,7 +315,8 @@ pl:{
 '0 gefangen':'0 złapanych',
 'Bakterienjäger!':'Łowca bakterii!',
 '0 geplatzt':'0 pękniętych',
-' gefangen':' złapanych'
+' gefangen':' złapanych',
+' ist!':' jest!'
 },
 en:{
 'Zahnspiele mit Zähni':'Tooth Games with Zähni','Los geht\'s!':'Let\'s go!','Zahnputz-Uhr':'Brushing Timer',
@@ -390,7 +391,8 @@ en:{
 '0 gefangen':'0 caught',
 'Bakterienjäger!':'Bacteria Hunter!',
 '0 geplatzt':'0 popped',
-' gefangen':' caught'
+' gefangen':' caught',
+' ist!':'!'
 },
 tr:{
 'Zahnspiele mit Zähni':'Zähni ile Diş Oyunları','Los geht\'s!':'Haydi başla!','Zahnputz-Uhr':'Fırçalama Saati',
@@ -466,7 +468,8 @@ tr:{
 '0 gefangen':'0 yakalandı',
 'Bakterienjäger!':'Bakteri Avcısı!',
 '0 geplatzt':'0 patlatıldı',
-' gefangen':' yakalandı'
+' gefangen':' yakalandı',
+' ist!':'!'
 },
 ar:{
 'Zahnspiele mit Zähni':'ألعاب الأسنان مع Zähni','Los geht\'s!':'!هيا بنا','Zahnputz-Uhr':'مؤقت تنظيف الأسنان',
@@ -581,7 +584,8 @@ ar:{
 '0 gefangen':'0 تم القبض',
 'Bakterienjäger!':'صياد البكتيريا!',
 '0 geplatzt':'0 فُرقعت',
-' gefangen':' تم القبض'
+' gefangen':' تم القبض',
+' ist!':'!'
 },
 ru:{
 'Zahnspiele mit Zähni':'Зубные игры с Zähni','Los geht\'s!':'Поехали!','Zahnputz-Uhr':'Таймер чистки зубов',
@@ -695,7 +699,8 @@ ru:{
 '0 gefangen':'0 поймано',
 'Bakterienjäger!':'Охотник на бактерий!',
 '0 geplatzt':'0 лопнуло',
-' gefangen':' поймано'
+' gefangen':' поймано',
+' ist!':'!'
 },
 ro:{
 'Zahnspiele mit Zähni':'Jocuri dentare cu Zähni','Los geht\'s!':'Hai să începem!','Zahnputz-Uhr':'Cronometru de periaj',
@@ -809,7 +814,8 @@ ro:{
 '0 gefangen':'0 prinse',
 'Bakterienjäger!':'Vânător de bacterii!',
 '0 geplatzt':'0 sparte',
-' gefangen':' prinse'
+' gefangen':' prinse',
+' ist!':' este!'
 }
 };
 var t=function(s){return(_T[LANG]&&_T[LANG][s])||s}
@@ -948,8 +954,8 @@ function setupGutSchlecht(){document.getElementById('game-screen-title').textCon
 function renderGS(){const it=gsS.items[gsS.cur];document.getElementById('game-content').innerHTML='<div style="width:100%;max-width:340px;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="width:100%;height:6px;background:var(--parchment-warm);border-radius:3px;overflow:hidden"><div style="height:100%;width:'+(gsS.cur/gsS.total*100)+'%;background:linear-gradient(90deg,var(--sage),var(--honey));border-radius:3px;transition:width .4s"></div></div><div style="text-align:center"><img src="img/zaehni-welcome.png?v=28" style="width:70px;height:70px;object-fit:contain" alt=""><p style="font-family:Quicksand,sans-serif;font-size:16px;font-weight:700;margin-top:6px">Ist das gut für deine Zähne?</p></div><div style="width:240px;height:240px;margin:4px auto"><img src="'+it.img+'" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(90,78,66,.12))" alt="'+it.name+'"></div><div style="font-family:Quicksand,sans-serif;font-size:22px;font-weight:700;text-align:center;color:var(--bark)">'+it.name+'</div><div style="display:flex;gap:16px;margin-top:8px;width:100%"><button onclick="ansGS(true)" style="flex:1;padding:16px;border:2px solid var(--sage-light);border-radius:var(--radius);background:var(--cream);cursor:pointer;font-size:16px;font-family:Quicksand,sans-serif;font-weight:700;color:var(--sage);transition:all .2s"><span style="font-size:28px;display:block;margin-bottom:4px">😊</span>'+t('Gut!')+'</button><button onclick="ansGS(false)" style="flex:1;padding:16px;border:2px solid var(--rose-light);border-radius:var(--radius);background:var(--cream);cursor:pointer;font-size:16px;font-family:Quicksand,sans-serif;font-weight:700;color:var(--rose);transition:all .2s"><span style="font-size:28px;display:block;margin-bottom:4px">😟</span>'+t('Schlecht!')+'</button></div><div id="gsfb" style="text-align:center;font-weight:600;font-size:15px;min-height:36px"></div></div>'}
 function ansGS(isGut){if(gsS.ans)return;gsS.ans=true;const correct=gsS.items[gsS.cur].gut===isGut;const fb=document.getElementById('gsfb');if(correct){gsS.score++;playSound('correct');fb.textContent=t('✓ Richtig!');fb.style.color='#4a6a38'}else{playSound('wrong');fb.textContent='✗ '+(gsS.items[gsS.cur].gut?t('Das ist gut für Zähne!'):t('Das ist schlecht für Zähne!'));fb.style.color='#8a4a42'}setTimeout(()=>{gsS.cur++;gsS.ans=false;if(gsS.cur>=gsS.total){const sc=gsS.score>=7?3:gsS.score>=5?2:1;stars['gutschlecht']=true;saveStars();showWin(gsS.score>=7?t('Zahnprofi!'):t('Gut gemacht!'),gsS.score+t(' von ')+gsS.total+t(' richtig'),sc)}else{document.getElementById('game-screen-info').textContent=t('Frage ')+(gsS.cur+1)+t(' von ')+gsS.total;renderGS()}},1400)}
 
-function setupDiplom(){document.getElementById('game-screen-title').textContent=t('Dein Diplom');document.getElementById('game-screen-info').textContent='';const ts=getTotalStars();const titles={tiny:t('Zahnzwerg-Diplom'),mid:t('Zahnforscher-Diplom'),big:t('Zahnheld-Diplom')};const subtitles={tiny:t('ein echter Zahnzwerg'),mid:t('ein echter Zahnforscher'),big:t('ein echter Zahnheld')};const dt=titles[currentAge]||t('Zahnheld-Diplom');const ds=subtitles[currentAge]||t('ein echter Zahnheld');document.getElementById('game-content').innerHTML='<div class="diplom-container"><div class="diplom-frame"><div class="diplom-corner"></div><div class="diplom-corner"></div><div class="diplom-corner"></div><div class="diplom-corner"></div><div style="width:220px;z-index:1;margin:8px 0"><img src="'+(currentAge==='tiny'?'img/zaehni-winner.png':'img/trophy.png')+'?v=28" style="width:100%;object-fit:contain;border-radius:8px" alt=""></div><div class="diplom-title">'+dt+'</div><div class="diplom-text">Hiermit wird bestätigt, dass</div><input type="text" class="diplom-name-input" id="dn" placeholder=\"'+t('Dein Name')+'\" maxlength="20"><div class="diplom-text">alle Zahnspiele gemeistert hat<br>und '+ds+' ist!</div><div class="diplom-stars">'+'⭐'.repeat(Math.min(ts,8))+'</div><div class="diplom-praxis">FRYDENT Zahnarztpraxis · Bonndorf im Schwarzwald<br>'+new Date().toLocaleDateString(LANG==='de'?'de-DE':LANG)+'</div></div><button class="diplom-btn" onclick="printD()">'+t('Diplom drucken')+'</button></div>'}
-function printD(){const nm=document.getElementById('dn').value||t('Zahnheld');const ts=getTotalStars();stars['diplom']=true;saveStars();const titles={tiny:t('Zahnzwerg-Diplom'),mid:t('Zahnforscher-Diplom'),big:t('Zahnheld-Diplom')};const subs={tiny:t('ein echter Zahnzwerg'),mid:t('ein echter Zahnforscher'),big:t('ein echter Zahnheld')};const dt=titles[currentAge]||t('Zahnheld-Diplom');const ds=subs[currentAge]||t('ein echter Zahnheld');const diplomImg=currentAge==='tiny'?'img/zaehni-winner.png':'img/trophy.png';const trophyUrl=new URL(diplomImg,window.location.href).href;const w=window.open('','_blank');w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"><style>@page{size:A4 landscape;margin:8mm}*{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;height:100%;overflow:hidden}body{font-family:"Nunito",sans-serif;background:white}.page{width:100%;height:100%;max-height:194mm;background:#FFFCF5;border:3px solid #D4A76A;border-radius:16px;position:relative;display:flex;align-items:center;padding:8mm 15mm}.page::before{content:"";position:absolute;inset:4mm;border:1.5px solid #A8C8B8;border-radius:12px;pointer-events:none}.left{flex:0 0 35%;display:flex;align-items:center;justify-content:center;padding-right:10mm}.left img{width:100%;max-width:85mm;object-fit:contain}.right{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3mm;text-align:center}h1{font-family:"Quicksand",sans-serif;color:#7BA490;font-size:28pt}h2{font-family:"Quicksand",sans-serif;color:#D4A76A;font-size:34pt}p{color:#8A7E72;font-size:13pt;line-height:1.4;font-style:italic}.stars{font-size:20pt;letter-spacing:5px}.vine{color:#A8C8B8;font-size:12pt;letter-spacing:6px}.footer{font-size:9pt;color:#aaa;font-style:normal;margin-top:2mm}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body><div class="page"><div class="left"><img src="'+trophyUrl+'" alt="Pokal"></div><div class="right"><div class="vine">✿  ✿  ✿</div><h1>'+dt+'</h1><p>Hiermit wird bestätigt, dass</p><h2>'+nm+'</h2><p>alle Zahnspiele bei FRYDENT Kids<br>erfolgreich gemeistert hat und nun<br>'+ds+' ist!</p><div class="stars">'+'⭐'.repeat(Math.min(ts,8))+'</div><div class="vine">✿  ✿  ✿</div><div class="footer">FRYDENT Zahnarztpraxis<br>Martinstraße 4 · 79848 Bonndorf im Schwarzwald<br>'+new Date().toLocaleDateString(LANG==='de'?'de-DE':LANG)+'</div></div></div><script>setTimeout(()=>window.print(),1000)<\/script></body></html>')}
+function setupDiplom(){document.getElementById('game-screen-title').textContent=t('Dein Diplom');document.getElementById('game-screen-info').textContent='';const ts=getTotalStars();const titles={tiny:t('Zahnzwerg-Diplom'),mid:t('Zahnforscher-Diplom'),big:t('Zahnheld-Diplom')};const subtitles={tiny:t('ein echter Zahnzwerg'),mid:t('ein echter Zahnforscher'),big:t('ein echter Zahnheld')};const dt=titles[currentAge]||t('Zahnheld-Diplom');const ds=subtitles[currentAge]||t('ein echter Zahnheld');document.getElementById('game-content').innerHTML='<div class="diplom-container"><div class="diplom-frame"><div class="diplom-corner"></div><div class="diplom-corner"></div><div class="diplom-corner"></div><div class="diplom-corner"></div><div style="width:220px;z-index:1;margin:8px 0"><img src="'+(currentAge==='tiny'?'img/zaehni-winner.png':'img/trophy.png')+'?v=28" style="width:100%;object-fit:contain;border-radius:8px" alt=""></div><div class="diplom-title">'+dt+'</div><div class="diplom-text">'+t('Hiermit wird bestätigt, dass')+'</div><input type="text" class="diplom-name-input" id="dn" placeholder=\"'+t('Dein Name')+'\" maxlength="20"><div class="diplom-text">'+t('alle Zahnspiele gemeistert hat')+'<br>'+t('und ')+ds+t(' ist!')+'</div><div class="diplom-stars">'+'⭐'.repeat(Math.min(ts,8))+'</div><div class="diplom-praxis">FRYDENT Zahnarztpraxis · Bonndorf im Schwarzwald<br>'+new Date().toLocaleDateString(LANG==='de'?'de-DE':LANG)+'</div></div><button class="diplom-btn" onclick="printD()">'+t('Diplom drucken')+'</button></div>'}
+function printD(){const nm=document.getElementById('dn').value||t('Zahnheld');const ts=getTotalStars();stars['diplom']=true;saveStars();const titles={tiny:t('Zahnzwerg-Diplom'),mid:t('Zahnforscher-Diplom'),big:t('Zahnheld-Diplom')};const subs={tiny:t('ein echter Zahnzwerg'),mid:t('ein echter Zahnforscher'),big:t('ein echter Zahnheld')};const dt=titles[currentAge]||t('Zahnheld-Diplom');const ds=subs[currentAge]||t('ein echter Zahnheld');const diplomImg=currentAge==='tiny'?'img/zaehni-winner.png':'img/trophy.png';const trophyUrl=new URL(diplomImg,window.location.href).href;const w=window.open('','_blank');w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"><style>@page{size:A4 landscape;margin:8mm}*{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;height:100%;overflow:hidden}body{font-family:"Nunito",sans-serif;background:white}.page{width:100%;height:100%;max-height:194mm;background:#FFFCF5;border:3px solid #D4A76A;border-radius:16px;position:relative;display:flex;align-items:center;padding:8mm 15mm}.page::before{content:"";position:absolute;inset:4mm;border:1.5px solid #A8C8B8;border-radius:12px;pointer-events:none}.left{flex:0 0 35%;display:flex;align-items:center;justify-content:center;padding-right:10mm}.left img{width:100%;max-width:85mm;object-fit:contain}.right{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3mm;text-align:center}h1{font-family:"Quicksand",sans-serif;color:#7BA490;font-size:28pt}h2{font-family:"Quicksand",sans-serif;color:#D4A76A;font-size:34pt}p{color:#8A7E72;font-size:13pt;line-height:1.4;font-style:italic}.stars{font-size:20pt;letter-spacing:5px}.vine{color:#A8C8B8;font-size:12pt;letter-spacing:6px}.footer{font-size:9pt;color:#aaa;font-style:normal;margin-top:2mm}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body><div class="page"><div class="left"><img src="'+trophyUrl+'" alt="Pokal"></div><div class="right"><div class="vine">✿  ✿  ✿</div><h1>'+dt+'</h1><p>'+t('Hiermit wird bestätigt, dass')+'</p><h2>'+nm+'</h2><p>'+t('alle Zahnspiele bei FRYDENT Kids')+'<br>'+t('erfolgreich gemeistert hat und nun')+'<br>'+ds+t(' ist!')+'</p><div class="stars">'+'⭐'.repeat(Math.min(ts,8))+'</div><div class="vine">✿  ✿  ✿</div><div class="footer">FRYDENT Zahnarztpraxis<br>Martinstraße 4 · 79848 Bonndorf im Schwarzwald<br>'+new Date().toLocaleDateString(LANG==='de'?'de-DE':LANG)+'</div></div></div><script>setTimeout(()=>window.print(),1000)<\/script></body></html>')}
 
 [...MC.map(c=>c.img),...BI,'img/zaehni-welcome.png?v=28','img/zaehni-brush.png?v=28','img/zaehni-winner.png?v=28','img/zaehni-detective.png?v=28','img/trophy.png?v=28','img/food-apple.png?v=28','img/food-candy.png?v=28','img/food-carrot.png?v=28','img/food-lemonade.png?v=28','img/food-cheese.png?v=28','img/food-chocolate.png?v=28','img/food-water.png?v=28','img/food-icecream.png?v=28','img/food-nuts.png?v=28','img/food-cake.png?v=28'].forEach(s=>{const i=new Image();i.src=s});
 // SW disabled - cache nuke active
