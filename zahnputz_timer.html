@@ -62,6 +62,12 @@ svg.ring{position:absolute;top:0;left:0;width:100%;height:100%;transform:rotate(
 
 @media(max-width:380px){.circle-wrap{width:200px;height:200px}.time-display{font-size:44px}}
 @media(min-height:750px){.timer-area{gap:24px}}
+
+
+.circle-wrap::after{content:"FD";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Quicksand',sans-serif;font-size:100px;font-weight:700;color:rgba(61,90,152,.04);letter-spacing:-4px;pointer-events:none;z-index:0}
+.fd-mark{width:32px;height:32px;opacity:.15;margin-bottom:4px}
+.fd-mark svg{width:100%;height:100%}
+
 </style>
 </head>
 <body>
@@ -115,7 +121,7 @@ var icons=['↖','↗','↙','↘'];
         <circle class="fill" id="progress" cx="120" cy="120" r="108"/>
       </svg>
       <div class="timer-content">
-        <div class="time-display" id="timeDisplay">2:00</div>
+        <div class="fd-mark"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><text x="20" y="28" text-anchor="middle" font-family="Quicksand,sans-serif" font-weight="700" font-size="24" fill="#3D5A98" letter-spacing="-1">FD</text></svg></div><div class="time-display" id="timeDisplay">2:00</div>
         <div class="time-label" id="timeLabel"></div>
       </div>
     </div>
