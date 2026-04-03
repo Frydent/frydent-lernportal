@@ -162,6 +162,7 @@ document.querySelector('.back-link').href='index.html?lang='+LANG;
 
   <div class="timer-area">
     <div class="circle-wrap">
+      <div class="circle-bg"></div>
       <svg class="progress-ring" viewBox="0 0 260 260">
         <circle class="track" cx="130" cy="130" r="120"/>
         <circle class="fill" id="progress" cx="130" cy="130" r="120"/>
@@ -241,9 +242,9 @@ function updateDisplay(){
   }
   
   // Color change as time progresses
-  if(pct>.75)progress.style.stroke='#D4A76A';
-  else if(pct>.5)progress.style.stroke='#A8C8B8';
-  else progress.style.stroke='#7BA490';
+  // Sage gradation
+  var r=Math.round(123-40*pct),g=Math.round(164-50*pct),b=Math.round(144-30*pct);
+  progress.style.stroke='rgb('+r+','+g+','+b+')';
 }
 
 function startTimer(){
