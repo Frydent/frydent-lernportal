@@ -259,7 +259,7 @@
         .st-item.open .st-num{animation:breathe-scale 1.8s ease-in-out 1}
 
         /* Progress bar gradient */
-        #st-progress-bar{background:linear-gradient(90deg,#A8C3B0,#C9D6E3)!important}
+        #st-progress-bar{background:linear-gradient(90deg,#A8C3B0,#C9D6E3)!important;background-size:600px 100%!important;background-repeat:no-repeat!important}
 
         /* Answered checkmark */
         .st-item.answered .st-num::after{content:'✓';font-size:.7rem}
@@ -647,7 +647,7 @@
             <span id="st-progress-pct">0 %</span>
         </div>
         <div style="background:var(--gray-200);border-radius:99px;height:6px;overflow:hidden">
-            <div id="st-progress-bar" style="background:var(--blue-dark);height:6px;width:0%;border-radius:99px;transition:width .35s ease"></div>
+            <div id="st-progress-bar" style="height:6px;width:0%;border-radius:99px;transition:width .35s ease"></div>
         </div>
     </div>
 
