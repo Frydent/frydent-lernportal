@@ -54,7 +54,7 @@
         /* TAB NAVIGATION */
         .tab-nav{display:flex;gap:.4rem;padding-bottom:.5rem;margin-bottom:1.75rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
         .tab-nav::-webkit-scrollbar{display:none}
-        .tab-btn{display:flex;align-items:center;gap:6px;padding:.55rem 1rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid #E2D4A0;background:#F0E8C4;color:#5A4A1E;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
+        .tab-btn{display:flex;align-items:center;gap:5px;padding:.5rem .8rem;border-radius:var(--radius-sm);font-size:.8rem;font-weight:600;white-space:nowrap;border:1px solid #E2D4A0;background:#F0E8C4;color:#5A4A1E;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
         .tab-btn:hover{border-color:var(--gold);color:#3D3010;background:#E6DBB0}
         .tab-btn.active{background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)}
         @media(max-width:640px){.tab-btn{flex:0 0 auto}}
@@ -177,6 +177,52 @@
         footer a{color:var(--blue);text-decoration:none}
 
         @media print{.sidebar,.mobile-bar,.header-right,.nav-arrows,.print-bar{display:none!important}main{padding:1rem}}
+        /* ── SELFTEST CSS ── */
+        .st-item{border:1px solid #E0E8EE!important;background:#fff!important;transition:border-color .5s ease,background .5s ease;border-radius:10px;overflow:hidden}
+        .st-item.open{border-color:#A8C3B0!important;background:#F8F7F2!important}
+        .st-item.answered{border-color:#A8C3B0!important}
+        .st-num{width:26px;height:26px;border-radius:50%;background:#DCE9E2;color:#2C4170;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .4s ease}
+        .st-item.open .st-num{background:#A8C3B0;color:#fff}
+        .st-item.answered .st-num{background:#A8C3B0;color:#fff;font-size:0}
+        .st-item.answered .st-num::after{content:'✓';font-size:.7rem}
+        .st-header{display:flex;align-items:center;gap:.7rem;padding:.85rem 1rem;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+        .st-qtext{flex:1;font-size:.86rem;font-weight:600;color:var(--gray-800);line-height:1.4}
+        .st-arrow{flex-shrink:0;color:var(--gray-400);transition:transform .25s}
+        .st-item.open .st-arrow{transform:rotate(180deg)}
+        .st-body{overflow:hidden;max-height:0;opacity:0;transform:translateY(-4px);transition:max-height .9s ease,opacity .6s ease,transform .7s ease;display:flex!important;flex-direction:column;gap:.45rem;padding:0 1rem}
+        .st-item.open .st-body{opacity:1;transform:translateY(0);padding:.1rem 1rem 1rem}
+        .st-section-intro{font-size:.82rem;color:var(--gray-600);margin-bottom:.3rem;font-style:italic}
+        .st-sub-q{margin-bottom:1rem}
+        .st-sub-label{font-size:.85rem;font-weight:600;color:var(--gray-800);margin-bottom:.45rem;line-height:1.4}
+        .st-opts-col{display:flex;flex-direction:column;gap:.4rem}
+        .st-weiter-btn{align-self:flex-start;margin-top:.5rem;background:transparent;color:var(--blue-dark);border:1.5px solid var(--blue-dark);border-radius:8px;padding:.5rem 1.1rem;font-size:.82rem;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s}
+        .st-weiter-btn:hover{background:var(--blue-dark);color:#fff}
+        .mdas-opt{display:flex;align-items:center;gap:.6rem;padding:.55rem .8rem;border-radius:8px;border:1px solid var(--gray-200);font-size:.85rem;color:var(--gray-800);cursor:pointer;transition:all .18s;background:#fff}
+        #s-selftest .mdas-opt:hover{border-color:#B0C4D4;background:#EEF2F8}
+        #s-selftest .mdas-opt:has(input:checked){border-color:#A8C3B0;background:#DCE9E2;font-weight:600}
+        #s-selftest input[type="radio"]{appearance:none;-webkit-appearance:none;width:16px;height:16px;border-radius:50%;border:2px solid var(--gray-400);background:#fff;cursor:pointer;flex-shrink:0;transition:all .18s;position:relative}
+        #s-selftest input[type="radio"]:checked{background:#A8C3B0;border-color:#A8C3B0}
+        #s-selftest input[type="radio"]:checked::after{content:'';position:absolute;top:2px;left:2px;width:8px;height:8px;border-radius:50%;background:#fff}
+        .jn-row{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.5rem .7rem;border:1px solid var(--gray-200);border-radius:8px;background:#fff;transition:border-color .18s}
+        .jn-row:hover{border-color:#A8C3B0}
+        .jn-text{font-size:.84rem;color:var(--gray-800);flex:1;line-height:1.4}
+        .jn-btns{display:flex;gap:.4rem;flex-shrink:0}
+        .jn-ja,.jn-nein{display:flex;align-items:center;gap:.3rem;padding:.38rem .7rem;border-radius:7px;border:1.5px solid var(--gray-200);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .18s;white-space:nowrap;color:#2C4170}
+        .jn-ja:hover,.jn-nein:hover{border-color:#A8C3B0;background:#EEF4F1}
+        .jn-ja:has(input:checked){background:#C8DDD3;border-color:#8AB5A6;color:#1B3A30;font-weight:700}
+        .jn-nein:has(input:checked){background:#C9D6E3;border-color:#7A96B8;color:#1E2D4D;font-weight:700}
+        .jn-ja input,.jn-nein input{display:none}
+        #s-selftest input[type="checkbox"]{appearance:none;-webkit-appearance:none;width:16px;height:16px;border-radius:50%;border:2px solid var(--gray-400);background:#fff;cursor:pointer;flex-shrink:0;transition:all .18s;position:relative}
+        #s-selftest input[type="checkbox"]:checked{background:#A8C3B0;border-color:#A8C3B0}
+        #s-selftest input[type="checkbox"]:checked::after{content:'';position:absolute;top:2px;left:2px;width:8px;height:8px;border-radius:50%;background:#fff}
+        #s-selftest .mdas-opt:has(input[type="checkbox"]:checked){border-color:#A8C3B0;background:#DCE9E2;font-weight:600}
+        @keyframes breathe-scale{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+        .st-item.open .st-num{animation:breathe-scale 1.8s ease-in-out 1}
+        #st-progress-bar{background:linear-gradient(90deg,#A8C3B0,#C9D6E3)!important;background-size:600px 100%!important;background-repeat:no-repeat!important}
+        .mdas-result-card{border-radius:12px;padding:1.25rem 1.4rem;margin-top:.5rem}
+        .mdas-result-card h3{font-family:'Quicksand',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+        .mdas-result-card p{font-size:.85rem;line-height:1.6;margin-bottom:.6rem}
+        .mdas-result-card .mdas-score{font-size:.75rem;font-weight:600;opacity:.7;margin-top:.6rem}
     </style>
     <script src="https://dr-flex.de/embed.js?medicalPracticeId=60190"></script>
 </head>
@@ -199,7 +245,9 @@
 <main>
 <div class="tab-nav">
 <button class="tab-btn active" onclick="go('understand')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"></path></svg>Anlamak</button>
-<button class="tab-btn" onclick="go('approach')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg>Yaklaşımımız</button>
+<button class="tab-btn" onclick="go('selftest')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Test</button>
+<button class="tab-btn" onclick="go(\'selftest\')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Test</button>
+<button class="tab-btn" onclick="go('approach')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg>Yaklaşım</button>
 <button class="tab-btn" onclick="go('methods')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Yöntemler</button>
 <button class="tab-btn" onclick="go('first')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>İlk Ziyaret</button>
 <button class="tab-btn" onclick="go('tips')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>İpuçları</button>
@@ -297,7 +345,7 @@
     </div>
 
     <div class="hint" style="background:#EEF6EA;border-color:#c3ddb8;color:#3d6b32"><strong>Tutumumuz:</strong> FRYDENT'te sitem yok, son ziyaretiniz ne kadar eski olursa olsun. Şimdi burada olmanıza sevindik. Önemli olan tek şey bu.</div>
-    <div class="nav-arrows"><button class="nav-arrow prev" disabled>← Geri</button><button class="nav-arrow next" onclick="go('approach')">Yaklaşımımız →</button></div>
+    <div class="nav-arrows"><button class="nav-arrow prev" disabled>← Geri</button><button class="nav-arrow next" onclick="go('selftest')">Test →</button></div>
 </div>
 
 <!-- UNSER ANSATZ -->
@@ -347,7 +395,7 @@
         <p style="font-size:.85rem;line-height:1.6">„Bizde her tedavi bir sohbetle başlar. Başlamadan önce dinleriz. Ve ilk randevunuzda sadece koltukta oturup etrafınıza bakmak istiyorsanız, bu tamamen normaldir. Bazen en önemli ilk adım tam olarak budur."</p>
         <p style="font-size:.8rem;color:var(--gray-600);margin-top:.5rem;font-style:italic">— FRYDENT ekibiniz</p>
     </div>
-    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('understand')">← Anlamak</button><button class="nav-arrow next" onclick="go('methods')">Yöntemler →</button></div>
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('selftest')">← Test</button><button class="nav-arrow next" onclick="go('methods')">Yöntemler →</button></div>
 </div>
 
 <!-- METHODEN -->
@@ -515,6 +563,149 @@
     </div>
     <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('tips')">← İpuçları</button><button class="nav-arrow next" disabled style="visibility:hidden"></button></div>
 </div>
+
+<div class="tab-section" id="s-selftest">
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        Diş hekimi korkusu hayatını ne kadar etkiliyor?
+    </div>
+    <p class="section-sub">Ayrıntılı bir öz-değerlendirme – yargılama yok, baskı yok.</p>
+    <div style="margin-bottom:1.25rem">
+        <div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--gray-600);margin-bottom:.35rem">
+            <span id="st-progress-label">Bölüm 1 / 6</span>
+            <span id="st-progress-pct">0 %</span>
+        </div>
+        <div style="background:var(--gray-200);border-radius:99px;height:6px;overflow:hidden">
+            <div id="st-progress-bar" style="height:6px;width:0%;border-radius:99px;transition:width .35s ease"></div>
+        </div>
+    </div>
+    <div id="st-accordion" style="display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.25rem">
+        <div class="st-item st-section-header" data-q="s1">
+            <div class="st-header" onclick="stToggle('s1')">
+                <span class="st-num">1</span><span class="st-qtext">Genel Duygular</span>
+                <svg class="st-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="st-body">
+                <div class="st-sub-q"><div class="st-sub-label">Diş hekimi randevusunu düşündüğünde nasıl hissediyorsun?</div><div class="st-opts-col"><label class="mdas-opt"><input type="radio" name="q1" value="1" onchange="stMarkSection('s1')"> Rahatım</label>
+<label class="mdas-opt"><input type="radio" name="q1" value="2" onchange="stMarkSection('s1')"> Biraz huzursuz hissediyorum</label>
+<label class="mdas-opt"><input type="radio" name="q1" value="3" onchange="stMarkSection('s1')"> Belirgin şekilde gergin oluyorum</label>
+<label class="mdas-opt"><input type="radio" name="q1" value="4" onchange="stMarkSection('s1')"> Endişeleniyorum veya düşünmekten kaçınıyorum</label></div></div>
+                <div class="st-sub-q"><div class="st-sub-label">Randevuyu genellikle ne kadar erteliyorsun?</div><div class="st-opts-col"><label class="mdas-opt"><input type="radio" name="q2" value="1" onchange="stMarkSection('s1')"> Düzenli kontrollere gidiyorum</label>
+<label class="mdas-opt"><input type="radio" name="q2" value="2" onchange="stMarkSection('s1')"> Bazen randevuları erteliyorum</label>
+<label class="mdas-opt"><input type="radio" name="q2" value="3" onchange="stMarkSection('s1')"> Şikayetler başlayana kadar genellikle bekliyorum</label>
+<label class="mdas-opt"><input type="radio" name="q2" value="4" onchange="stMarkSection('s1')"> Randevulardan mümkün olduğunca kaçınıyorum</label></div></div>
+                <div class="st-sub-q"><div class="st-sub-label">Bekleme odasındasın – randevu başlamak üzere.</div><div class="st-opts-col"><label class="mdas-opt"><input type="radio" name="q3" value="1" onchange="stMarkSection('s1')"> Rahat, sadece okuyorum</label>
+<label class="mdas-opt"><input type="radio" name="q3" value="2" onchange="stMarkSection('s1')"> Biraz gerginim</label>
+<label class="mdas-opt"><input type="radio" name="q3" value="3" onchange="stMarkSection('s1')"> Huzursuzum, gitmek istiyorum</label>
+<label class="mdas-opt"><input type="radio" name="q3" value="4" onchange="stMarkSection('s1')"> Yerinde duramıyorum</label></div></div>
+                <div class="st-sub-q"><div class="st-sub-label">Diş hekimi matkapı veya enjeksiyonu alıyor.</div><div class="st-opts-col"><label class="mdas-opt"><input type="radio" name="q4" value="1" onchange="stMarkSection('s1')"> Hiç endişeli değilim</label>
+<label class="mdas-opt"><input type="radio" name="q4" value="2" onchange="stMarkSection('s1')"> Biraz gerginim</label>
+<label class="mdas-opt"><input type="radio" name="q4" value="3" onchange="stMarkSection('s1')"> Nefesimi tutuyorum</label>
+<label class="mdas-opt"><input type="radio" name="q4" value="4" onchange="stMarkSection('s1')"> Panik oluyorum veya koltuğu terk etmek istiyorum</label></div></div>
+                <div class="st-sub-q"><div class="st-sub-label">Hiç bir randevuyu iptal ettin veya gitmedin mi?</div><div class="st-opts-col"><label class="mdas-opt"><input type="radio" name="q5" value="1" onchange="stMarkSection('s1')"> Hayır</label>
+<label class="mdas-opt"><input type="radio" name="q5" value="2" onchange="stMarkSection('s1')"> Nadiren</label>
+<label class="mdas-opt"><input type="radio" name="q5" value="3" onchange="stMarkSection('s1')"> Birkaç kez</label>
+<label class="mdas-opt"><input type="radio" name="q5" value="4" onchange="stMarkSection('s1')"> Sık sık veya düzenli olarak</label></div></div>
+                <button type="button" onclick="stNextSection('s1','s2')" class="st-weiter-btn">Devam →</button>
+            </div>
+        </div>
+        <div class="st-item st-section-header" data-q="s2">
+            <div class="st-header" onclick="stToggle('s2')">
+                <span class="st-num">2</span><span class="st-qtext">Dişlerim ve Ben</span>
+                <svg class="st-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="st-body">
+                <p class="st-section-intro">Her ifade için bir karar ver.</p>
+                <div class="jn-row"><span class="jn-text">Dişlerimden utanıyorum.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn1" value="1" onchange="stMarkSection('s2')">Evet</label><label class="jn-nein"><input type="radio" name="jn1" value="0" onchange="stMarkSection('s2')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Dişlerim hakkında kimseyle konuşmuyorum.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn2" value="1" onchange="stMarkSection('s2')">Evet</label><label class="jn-nein"><input type="radio" name="jn2" value="0" onchange="stMarkSection('s2')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Dişlerim yüzünden aşağılanmaktan korkuyorum.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn3" value="1" onchange="stMarkSection('s2')">Evet</label><label class="jn-nein"><input type="radio" name="jn3" value="0" onchange="stMarkSection('s2')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Dişlerimin durumu karşısında kendimi çaresiz hissediyorum.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn4" value="1" onchange="stMarkSection('s2')">Evet</label><label class="jn-nein"><input type="radio" name="jn4" value="0" onchange="stMarkSection('s2')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Kapanışımın doğru olmadığını hissediyorum.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn5" value="1" onchange="stMarkSection('s2')">Evet</label><label class="jn-nein"><input type="radio" name="jn5" value="0" onchange="stMarkSection('s2')">Hayır</label></div></div>
+                <button type="button" onclick="stNextSection('s2','s3')" class="st-weiter-btn">Devam →</button>
+            </div>
+        </div>
+        <div class="st-item st-section-header" data-q="s3">
+            <div class="st-header" onclick="stToggle('s3')">
+                <span class="st-num">3</span><span class="st-qtext">Olası Nedenler</span>
+                <svg class="st-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="st-body">
+                <p class="st-section-intro">Bu ifadelerden herhangi biri sana uyuyor mu?</p>
+                <div class="jn-row"><span class="jn-text">Diş hekiminde kötü deneyimler yaşadım.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn6" value="1" onchange="stMarkSection('s3')">Evet</label><label class="jn-nein"><input type="radio" name="jn6" value="0" onchange="stMarkSection('s3')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Şiddetli öğürme veya boğulma refleksim var.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn7" value="1" onchange="stMarkSection('s3')">Evet</label><label class="jn-nein"><input type="radio" name="jn7" value="0" onchange="stMarkSection('s3')">Hayır</label></div></div>
+                <button type="button" onclick="stNextSection('s3','s4')" class="st-weiter-btn">Devam →</button>
+            </div>
+        </div>
+        <div class="st-item st-section-header" data-q="s4">
+            <div class="st-header" onclick="stToggle('s4')">
+                <span class="st-num">4</span><span class="st-qtext">Hayatıma Etkisi</span>
+                <svg class="st-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="st-body">
+                <p class="st-section-intro">Hangi ifadeler sana uyuyor?</p>
+                <div class="jn-row"><span class="jn-text">Aklım sürekli dişlerimle meşgul.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn8" value="1" onchange="stMarkSection('s4')">Evet</label><label class="jn-nein"><input type="radio" name="jn8" value="0" onchange="stMarkSection('s4')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Diş hekimi korkusu işimi de etkiliyor.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn9" value="1" onchange="stMarkSection('s4')">Evet</label><label class="jn-nein"><input type="radio" name="jn9" value="0" onchange="stMarkSection('s4')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Diş sorunları uykumu kaçırıyor.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn10" value="1" onchange="stMarkSection('s4')">Evet</label><label class="jn-nein"><input type="radio" name="jn10" value="0" onchange="stMarkSection('s4')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Korkum yüzünden fiziksel yakınlık kurmak benim için zor.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn11" value="1" onchange="stMarkSection('s4')">Evet</label><label class="jn-nein"><input type="radio" name="jn11" value="0" onchange="stMarkSection('s4')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Diş hekimi korkusu öz güvenimi düşürüyor.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn12" value="1" onchange="stMarkSection('s4')">Evet</label><label class="jn-nein"><input type="radio" name="jn12" value="0" onchange="stMarkSection('s4')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Diş hekimi korkusu beni sosyal izolasyona sürüklüyor.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn13" value="1" onchange="stMarkSection('s4')">Evet</label><label class="jn-nein"><input type="radio" name="jn13" value="0" onchange="stMarkSection('s4')">Hayır</label></div></div>
+                <button type="button" onclick="stNextSection('s4','s5')" class="st-weiter-btn">Devam →</button>
+            </div>
+        </div>
+        <div class="st-item st-section-header" data-q="s5">
+            <div class="st-header" onclick="stToggle('s5')">
+                <span class="st-num">5</span><span class="st-qtext">Vücudum Nasıl Tepki Veriyor?</span>
+                <svg class="st-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="st-body">
+                <p class="st-section-intro">Diş hekimine gitmem gerektiğini düşündüğümde…</p>
+                <div class="jn-row"><span class="jn-text">Uyuyamıyorum.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn14" value="1" onchange="stMarkSection('s5')">Evet</label><label class="jn-nein"><input type="radio" name="jn14" value="0" onchange="stMarkSection('s5')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Terleme krizleri yaşıyorum.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn15" value="1" onchange="stMarkSection('s5')">Evet</label><label class="jn-nein"><input type="radio" name="jn15" value="0" onchange="stMarkSection('s5')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Vücudum titriyor.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn16" value="1" onchange="stMarkSection('s5')">Evet</label><label class="jn-nein"><input type="radio" name="jn16" value="0" onchange="stMarkSection('s5')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Kalbim hızlı çarpıyor.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn17" value="1" onchange="stMarkSection('s5')">Evet</label><label class="jn-nein"><input type="radio" name="jn17" value="0" onchange="stMarkSection('s5')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Midem bulanıyor.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn18" value="1" onchange="stMarkSection('s5')">Evet</label><label class="jn-nein"><input type="radio" name="jn18" value="0" onchange="stMarkSection('s5')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">Neredeyse nefes alamıyorum.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn19" value="1" onchange="stMarkSection('s5')">Evet</label><label class="jn-nein"><input type="radio" name="jn19" value="0" onchange="stMarkSection('s5')">Hayır</label></div></div>
+                <div class="jn-row"><span class="jn-text">İshal veya mide krampları yaşıyorum.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn20" value="1" onchange="stMarkSection('s5')">Evet</label><label class="jn-nein"><input type="radio" name="jn20" value="0" onchange="stMarkSection('s5')">Hayır</label></div></div>
+                <button type="button" onclick="stNextSection('s5','s6')" class="st-weiter-btn">Devam →</button>
+            </div>
+        </div>
+        <div class="st-item st-section-header" data-q="s6">
+            <div class="st-header" onclick="stToggle('s6')">
+                <span class="st-num">6</span><span class="st-qtext">Bana Ne Yardımcı Olabilir?</span>
+                <svg class="st-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="st-body">
+                <div class="st-sub-q">
+                    <div class="st-sub-label">Sende en fazla gerilim yaratan nedir? <span style="font-size:.75rem;font-weight:400;opacity:.7">(Çoklu seçim)</span></div>
+                    <div class="st-opts-col">
+                        <label class="mdas-opt"><input type="checkbox" name="trigger" value="geraeusche"> Sesler (matkap, aspiratör)</label>
+                        <label class="mdas-opt"><input type="checkbox" name="trigger" value="schmerzen"> Ağrı korkusu</label>
+                        <label class="mdas-opt"><input type="checkbox" name="trigger" value="kontrolle"> Kontrol kaybı / çaresizlik hissi</label>
+                        <label class="mdas-opt"><input type="checkbox" name="trigger" value="wuergen"> Öğürme refleksi</label>
+                        <label class="mdas-opt"><input type="checkbox" name="trigger" value="vergangenheit"> Geçmişten kötü deneyimler</label>
+                    </div>
+                </div>
+                <div class="st-sub-q" style="margin-top:1rem">
+                    <div class="st-sub-label">Sana en çok ne yardımcı olur? <span style="font-size:.75rem;font-weight:400;opacity:.7">(Çoklu seçim)</span></div>
+                    <div class="st-opts-col">
+                        <label class="mdas-opt"><input type="checkbox" name="hilfe" value="atmosphaere"> Sakin atmosfer, zaman baskısı yok</label>
+                        <label class="mdas-opt"><input type="checkbox" name="hilfe" value="erklaerung"> Adım adım net açıklamalar</label>
+                        <label class="mdas-opt"><input type="checkbox" name="hilfe" value="stopp"> Belirlenmiş bir durdurma işareti</label>
+                        <label class="mdas-opt"><input type="checkbox" name="hilfe" value="begleitung"> Tedavi odasında refakatçi</label>
+                        <label class="mdas-opt"><input type="checkbox" name="hilfe" value="sedierung"> Ek destek (örn. sedasyon)</label>
+                    </div>
+                </div>
+                <button type="button" onclick="mdasAuswerten()" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue-dark);color:#fff;border:none;border-radius:8px;padding:.7rem 1.4rem;font-size:.87rem;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;margin-top:.8rem" onmouseover="this.style.background='var(--blue-darker)'" onmouseout="this.style.background='var(--blue-dark)'">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/></svg>
+                    Sonuçları Gör
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="mdas-result" style="display:none;margin-bottom:1rem"></div>
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('selftest')">← Test</button><button class="nav-arrow next" onclick="go('approach')">Yaklaşım →</button></div>
+</div>
+
 </div>
 
 <div class="hint" style="background:#F8F7F2;border-color:#E2DACE;color:#3A3226"><strong>Bilmenizde fayda var:</strong> Bu bilgiler diş hekiminizle kişisel görüşmenin yerini almaz. Bireysel sorularınız için lütfen doğrudan bize ulaşın.</div>
@@ -564,11 +755,115 @@
 </div>
 
 <script>
+// ── SELFTEST ACCORDION ──
+function stOpen(item){
+    item.classList.add('open');
+    const body=item.querySelector('.st-body');
+    if(!body) return;
+    body.style.transition='';
+    body.style.maxHeight=body.scrollHeight+'px';
+    body.style.opacity='1';
+    body.style.transform='translateY(0)';
+    body.style.padding='.1rem 1rem 1rem';
+}
+function stClose(item){
+    const body=item.querySelector('.st-body');
+    if(!body) return;
+    body.style.transition='max-height 0.5s ease-in, opacity 0.35s ease, transform 0.4s ease';
+    body.style.maxHeight=body.scrollHeight+'px';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+        body.style.maxHeight='0';
+        body.style.opacity='0';
+        body.style.transform='translateY(-4px)';
+        body.style.padding='0 1rem';
+    }));
+    item.classList.remove('open');
+}
+function stToggle(id){
+    const item=document.querySelector('.st-item[data-q="'+id+'"]');
+    if(!item) return;
+    if(item.classList.contains('open')){ stClose(item); return; }
+    document.querySelectorAll('.st-item.open').forEach(el=>stClose(el));
+    stOpen(item);
+}
+function stMarkSection(id){
+    document.querySelector('.st-item[data-q="'+id+'"]')?.classList.add('answered');
+    stUpdateProgress();
+}
+function stNextSection(current, next){
+    stMarkSection(current);
+    const nxt=document.querySelector('.st-item[data-q="'+next+'"]');
+    if(!nxt) return;
+    stOpen(nxt);
+    setTimeout(()=>{
+        const headerH=document.querySelector('header')?.offsetHeight||70;
+        const top=nxt.getBoundingClientRect().top+window.scrollY-headerH-12;
+        window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+    },150);
+    stUpdateProgress();
+}
+function stUpdateProgress(){
+    const answered=document.querySelectorAll('.st-item.answered').length;
+    const pct=Math.round(answered/6*100);
+    const bar=document.getElementById('st-progress-bar');
+    const lbl=document.getElementById('st-progress-label');
+    const pctEl=document.getElementById('st-progress-pct');
+    if(bar) bar.style.width=pct+'%';
+    if(lbl) lbl.textContent=answered<6?'Bölüm '+(answered+1)+' / 6':'Tamamlandı ✓';
+    if(pctEl) pctEl.textContent=pct+' %';
+}
+function mdasAuswerten(){
+    let angst=0, missing=false;
+    for(let i=1;i<=5;i++){
+        const sel=document.querySelector('input[name="q'+i+'"]:checked');
+        if(!sel){missing=true;break;}
+        angst+=parseInt(sel.value);
+    }
+    if(missing){
+        const res=document.getElementById('mdas-result');
+        res.style.display='block';
+        res.innerHTML='<div class="mdas-result-card" style="background:#FFF3CD;border:1px solid #DFC96A"><p style="margin:0;color:#5A4A1E;font-size:.85rem">⚠️ Lütfen önce 1. bölümü tamamla (5 sorunun tümü).</p></div>';
+        res.scrollIntoView({behavior:'smooth',block:'nearest'});
+        return;
+    }
+    let impact=0;
+    for(let i=1;i<=20;i++){
+        const sel=document.querySelector('input[name="jn'+i+'"]:checked');
+        if(sel) impact+=parseInt(sel.value);
+    }
+    const trigMap={geraeusche:'sesler',schmerzen:'ağrı korkusu',kontrolle:'kontrol kaybı',wuergen:'öğürme refleksi',vergangenheit:'geçmiş deneyimler'};
+    const triggers=Array.from(document.querySelectorAll('input[name="trigger"]:checked')).map(el=>trigMap[el.value]);
+    const trigText=triggers.length?'<p style="margin:.4rem 0 .2rem"><strong>Başlıca tetikleyicilerin:</strong> '+triggers.join(', ')+'</p>':'';
+    const hilfeMap={atmosphaere:'sakin atmosfer',erklaerung:'adım adım açıklamalar',stopp:'durdurma işareti',begleitung:'refakatçi',sedierung:'sedasyon'};
+    const hilfen=Array.from(document.querySelectorAll('input[name="hilfe"]:checked')).map(el=>hilfeMap[el.value]);
+    const hilfeText=hilfen.length?'<p style="margin:.2rem 0"><strong>Sana yardımcı olacaklar:</strong> '+hilfen.join(', ')+'</p>':'';
+    let impactLabel=impact<=4?'düşük psikososyal yük':impact<=10?'günlük yaşamda belirgin yük':'günlük yaşamda ağır yük';
+    let html='';
+    if(angst<=8){
+        html=`<div class="mdas-result-card" style="background:#EDFAF1;border:1px solid #6DBE8E;color:#1B4332"><h3>🌿 Neredeyse hiç korku yok</h3><p>Diş hekimi ziyaretleriyle sakin bir şekilde başa çıkıyorsun. Düzenli kontroller bu durumu korumana yardımcı olur.</p>${trigText}${hilfeText}<div class="mdas-score">Korku puanı: ${angst}/20 · Yük: ${impact}/20 (${impactLabel})</div></div>`;
+    } else if(angst<=12){
+        html=`<div class="mdas-result-card" style="background:#F0F4FA;border:1px solid #7A96B8;color:#1E2D4D"><h3>🌤️ Hafif gerginlik</h3><p>Bu çok yaygın. Sakin bir ortam ve iyi iletişim genellikle büyük fark yaratır.</p>${trigText}${hilfeText}<p style="margin:.5rem 0 .2rem">Ziyaretten önce nasıl hissettiğini bize söyle – hızı sana göre ayarlayacağız.</p><div class="mdas-score">Korku puanı: ${angst}/20 · Yük: ${impact}/20 (${impactLabel})</div></div>`;
+    } else if(angst<=16){
+        html=`<div class="mdas-result-card" style="background:#FDF8E8;border:1px solid #DFC96A;color:#5A4A1E"><h3>🌥️ Belirgin diş hekimi korkusu</h3><p>Bununla yalnız değilsin. Önemli olan: küçük, iyi açıklanmış adımlarla ilerlemek. Modern diş hekimliği bugün çok nazik olabilir.</p>${trigText}${hilfeText}<p style="margin:.5rem 0 .6rem">Randevu almadan önce bizi ara – baskısız bir görüşme için zaman buluruz.</p><a href="tel:+497703284" style="display:inline-flex;align-items:center;gap:6px;background:var(--blue-dark);color:#fff;font-weight:700;font-size:.84rem;padding:.6rem 1.2rem;border-radius:8px;text-decoration:none">📞 07703 284</a><div class="mdas-score">Korku puanı: ${angst}/20 · Yük: ${impact}/20 (${impactLabel})</div></div>`;
+    } else {
+        html=`<div class="mdas-result-card" style="background:#EEF2F8;border:1px solid #3D5A98;color:#1E2D4D"><h3>💙 Şiddetli diş hekimi korkusu</h3><p>Bu düşünüldüğünden daha sık görülüyor. Burada empatik bir yaklaşım çok önemli – konuşma, güven ve gerektiğinde ek destek.</p>${trigText}${hilfeText}<p style="margin:.5rem 0 .6rem">Bununla yalnız geçmek zorunda değilsin. Randevu almadan önce bizi ara – seni dinliyoruz.</p><a href="tel:+497703284" style="display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#1E2D4D;font-weight:700;font-size:.84rem;padding:.6rem 1.2rem;border-radius:8px;text-decoration:none">📞 07703 284</a><div class="mdas-score">Korku puanı: ${angst}/20 · Yük: ${impact}/20 (${impactLabel})</div></div>`;
+    }
+    document.querySelectorAll('.st-item').forEach(el=>{el.classList.remove('open');el.classList.add('answered');});
+    const bar=document.getElementById('st-progress-bar');
+    if(bar) bar.style.width='100%';
+    document.getElementById('st-progress-pct').textContent='100 %';
+    document.getElementById('st-progress-label').textContent='Tamamlandı ✓';
+    const res=document.getElementById('mdas-result');
+    res.style.display='block';
+    res.innerHTML=html;
+    res.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
 function go(id){
     document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
     document.getElementById('s-'+id).classList.add('active');
-    const tabs=['understand','approach','methods','first','tips','faq'];
+    const tabs=['understand','selftest','approach','methods','first','tips','faq'];
     const i=tabs.indexOf(id);
     document.querySelectorAll('.tab-btn')[i].classList.add('active');
     window.scrollTo({top:document.querySelector('.tab-nav').offsetTop-80,behavior:'smooth'});
