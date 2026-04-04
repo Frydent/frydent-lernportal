@@ -54,7 +54,7 @@
         /* TAB NAVIGATION */
         .tab-nav{display:flex;gap:.4rem;padding-bottom:.5rem;margin-bottom:1.75rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
         .tab-nav::-webkit-scrollbar{display:none}
-        .tab-btn{display:flex;align-items:center;gap:6px;padding:.55rem 1rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid #E2D4A0;background:#F0E8C4;color:#5A4A1E;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
+        .tab-btn{display:flex;align-items:center;gap:5px;padding:.5rem .8rem;border-radius:var(--radius-sm);font-size:.8rem;font-weight:600;white-space:nowrap;border:1px solid #E2D4A0;background:#F0E8C4;color:#5A4A1E;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
         .tab-btn:hover{border-color:var(--gold);color:#3D3010;background:#E6DBB0}
         .tab-btn.active{background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)}
         @media(max-width:640px){.tab-btn{flex:0 0 auto}}
@@ -177,6 +177,122 @@
         footer a{color:var(--blue);text-decoration:none}
 
         @media print{.sidebar,.mobile-bar,.header-right,.nav-arrows,.print-bar{display:none!important}main{padding:1rem}}
+
+        /* ── MDAS SELFTEST ── */
+        .mdas-opt{display:flex;align-items:center;gap:.6rem;padding:.55rem .8rem;border-radius:8px;border:1px solid var(--gray-200);font-size:.85rem;color:var(--gray-800);cursor:pointer;transition:all .18s;background:#fff}
+        .mdas-opt:hover{border-color:var(--gold);background:var(--gold-light)}
+        .mdas-opt input{accent-color:var(--blue-dark);width:16px;height:16px;flex-shrink:0;cursor:pointer}
+        .mdas-opt:has(input:checked){border-color:var(--blue-dark);background:var(--blue-light);font-weight:600}
+        .mdas-result-card{border-radius:12px;padding:1.25rem 1.4rem;margin-top:.5rem}
+        .mdas-result-card h3{font-family:'Quicksand',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+        .mdas-result-card p{font-size:.85rem;line-height:1.6;margin-bottom:.6rem}
+        .mdas-result-card .mdas-score{font-size:.75rem;font-weight:600;opacity:.7;margin-top:.6rem}
+        /* Accordion */
+        .st-item{border:1px solid var(--gray-200);border-radius:10px;overflow:hidden;background:#fff;transition:border-color .2s}
+        .st-item.open{border-color:var(--blue-dark)}
+        .st-header{display:flex;align-items:center;gap:.7rem;padding:.85rem 1rem;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+        .st-header:active{background:var(--gray-100)}
+        .st-num{width:26px;height:26px;border-radius:50%;background:var(--blue-light);color:var(--blue-dark);font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,color .2s}
+        .st-item.open .st-num{background:var(--blue-dark);color:#fff}
+        .st-item.answered .st-num{background:#6DBE8E;color:#fff}
+        .st-qtext{flex:1;font-size:.86rem;font-weight:600;color:var(--gray-800);line-height:1.4}
+        .st-arrow{flex-shrink:0;color:var(--gray-400);transition:transform .25s}
+        .st-item.open .st-arrow{transform:rotate(180deg)}
+        .st-body{display:none;padding:.1rem 1rem 1rem;flex-direction:column;gap:.45rem}
+        .st-item.open .st-body{display:flex}
+        .st-section-intro{font-size:.82rem;color:var(--gray-600);margin-bottom:.3rem;font-style:italic}
+        .st-sub-q{margin-bottom:1rem}
+        .st-sub-label{font-size:.85rem;font-weight:600;color:var(--gray-800);margin-bottom:.45rem;line-height:1.4}
+        .st-opts-col{display:flex;flex-direction:column;gap:.4rem}
+        .st-weiter-btn{align-self:flex-start;margin-top:.5rem;background:transparent;color:var(--blue-dark);border:1.5px solid var(--blue-dark);border-radius:8px;padding:.5rem 1.1rem;font-size:.82rem;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s}
+        .st-weiter-btn:hover{background:var(--blue-dark);color:#fff}
+        /* Accordion section colors — calm palette */
+        .st-item{border:1px solid #E0E8EE!important;background:#fff!important;transition:border-color .5s ease,background .5s ease}
+        .st-item.open{border-color:#A8C3B0!important;background:#F8F7F2!important}
+        .st-item.answered{border-color:#A8C3B0!important}
+        .st-num{background:#DCE9E2;color:#2C4170;transition:background .4s ease,transform .4s ease}
+        .st-item.open .st-num{background:#A8C3B0;color:#fff}
+        .st-item.answered .st-num{background:#A8C3B0;color:#fff}
+
+        /* Soft expand animation */
+        .st-body{
+            overflow:hidden;
+            max-height:0;
+            opacity:0;
+            transform:translateY(-4px);
+            transition:max-height .9s ease, opacity .6s ease, transform .7s ease;
+            display:flex!important;
+            flex-direction:column;
+            gap:.45rem;
+            padding:0 1rem;
+        }
+        .st-item.open .st-body{
+            opacity:1;
+            transform:translateY(0);
+            padding:.1rem 1rem 1rem;
+        }
+        /* Override gold hover inside selftest */
+        #s-selftest .mdas-opt:hover{border-color:#B0C4D4;background:#EEF2F8}
+        #s-selftest .mdas-opt:has(input:checked){border-color:#A8C3B0;background:#DCE9E2;font-weight:600}
+        #s-selftest input[type="radio"]{
+            appearance:none;-webkit-appearance:none;
+            width:16px;height:16px;border-radius:50%;
+            border:2px solid var(--gray-400);
+            background:#fff;cursor:pointer;flex-shrink:0;
+            transition:all .18s;position:relative;
+        }
+        #s-selftest input[type="radio"]:checked{
+            background:#A8C3B0;border-color:#A8C3B0;
+        }
+        #s-selftest input[type="radio"]:checked::after{
+            content:'';position:absolute;
+            top:2px;left:2px;width:8px;height:8px;
+            border-radius:50%;background:#fff;
+        }
+
+        /* Breathing number on open */
+        @keyframes breathe-scale{
+            0%{transform:scale(1)}
+            50%{transform:scale(1.1)}
+            100%{transform:scale(1)}
+        }
+        .st-item.open .st-num{animation:breathe-scale 1.8s ease-in-out 1}
+
+        /* Progress bar gradient */
+        #st-progress-bar{background:linear-gradient(90deg,#A8C3B0,#C9D6E3)!important}
+
+        /* Answered checkmark */
+        .st-item.answered .st-num::after{content:'✓';font-size:.7rem}
+        .st-item.answered .st-num{font-size:0}
+        /* Ja/Nein rows — individual white cards */
+        .jn-row{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.5rem .7rem;border:1px solid var(--gray-200);border-radius:8px;background:#fff;transition:border-color .18s}
+        .jn-row:hover{border-color:#A8C3B0}
+        .jn-text{font-size:.84rem;color:var(--gray-800);flex:1;line-height:1.4}
+        .jn-btns{display:flex;gap:.4rem;flex-shrink:0}
+        .jn-ja,.jn-nein{display:flex;align-items:center;gap:.3rem;padding:.38rem .7rem;border-radius:7px;border:1.5px solid var(--gray-200);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .18s;white-space:nowrap;color:#2C4170}
+        .jn-ja:hover,.jn-nein:hover{border-color:#A8C3B0;background:#EEF4F1}
+        .jn-ja:has(input:checked){background:#C8DDD3;border-color:#8AB5A6;color:#1B3A30;font-weight:700}
+        .jn-nein:has(input:checked){background:#C9D6E3;border-color:#7A96B8;color:#1E2D4D;font-weight:700}
+        .jn-ja input,.jn-nein input{display:none}
+        /* Section 6 checkboxes — round like radio buttons */
+        #s-selftest input[type="checkbox"]{
+            appearance:none;-webkit-appearance:none;
+            width:16px;height:16px;border-radius:50%;
+            border:2px solid var(--gray-400);
+            background:#fff;cursor:pointer;flex-shrink:0;
+            transition:all .18s;position:relative;
+        }
+        #s-selftest input[type="checkbox"]:checked{
+            background:#A8C3B0;border-color:#A8C3B0;
+        }
+        #s-selftest input[type="checkbox"]:checked::after{
+            content:'';position:absolute;
+            top:2px;left:2px;width:8px;height:8px;
+            border-radius:50%;background:#fff;
+        }
+        #s-selftest .mdas-opt:has(input[type="checkbox"]:checked){
+            border-color:#A8C3B0;background:#DCE9E2;font-weight:600;
+        }
     </style>
     <script src="https://dr-flex.de/embed.js?medicalPracticeId=60190"></script>
 </head>
@@ -198,12 +314,13 @@
 
 <main>
 <div class="tab-nav">
-<button class="tab-btn active" onclick="go('understand')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"></path></svg>Verstehen</button>
-<button class="tab-btn" onclick="go('approach')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg>Unser Ansatz</button>
-<button class="tab-btn" onclick="go('methods')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Methoden</button>
-<button class="tab-btn" onclick="go('first')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>Erster Besuch</button>
-<button class="tab-btn" onclick="go('tips')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>Tipps</button>
-<button class="tab-btn" onclick="go('faq')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"></path></svg>FAQ</button>
+<button class="tab-btn active" onclick="go('understand')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"></path></svg>Verstehen</button>
+<button class="tab-btn" onclick="go('selftest')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Selbsttest</button>
+<button class="tab-btn" onclick="go('approach')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg>Ansatz</button>
+<button class="tab-btn" onclick="go('methods')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Methoden</button>
+<button class="tab-btn" onclick="go('first')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>Erster Besuch</button>
+<button class="tab-btn" onclick="go('tips')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>Tipps</button>
+<button class="tab-btn" onclick="go('faq')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"></path></svg>FAQ</button>
 </div>
 
 <div>
@@ -297,7 +414,7 @@
     </div>
 
     <div class="hint" style="background:#EEF6EA;border-color:#c3ddb8;color:#3d6b32"><strong>Unsere Haltung:</strong> Bei FRYDENT gibt es keine Vorwürfe — egal wie lange Ihr letzter Besuch zurückliegt. Wir freuen uns, dass Sie jetzt da sind. Das ist das Einzige, was zählt.</div>
-    <div class="nav-arrows"><button class="nav-arrow prev" disabled>← Zurück</button><button class="nav-arrow next" onclick="go('approach')">Unser Ansatz →</button></div>
+    <div class="nav-arrows"><button class="nav-arrow prev" disabled>← Zurück</button><button class="nav-arrow next" onclick="go('selftest')">Selbsttest →</button></div>
 </div>
 
 <!-- UNSER ANSATZ -->
@@ -347,7 +464,7 @@
         <p style="font-size:.85rem;line-height:1.6">„Bei uns beginnt jede Behandlung mit einem Gespräch. Wir hören zu, bevor wir anfangen. Und wenn Sie beim ersten Termin nur auf dem Stuhl sitzen und sich umschauen möchten, dann ist das vollkommen in Ordnung. Manchmal ist genau das der wichtigste erste Schritt."</p>
         <p style="font-size:.8rem;color:var(--gray-600);margin-top:.5rem;font-style:italic">— Ihr Team bei FRYDENT</p>
     </div>
-    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('understand')">← Verstehen</button><button class="nav-arrow next" onclick="go('methods')">Methoden →</button></div>
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('selftest')">← Selbsttest</button><button class="nav-arrow next" onclick="go('methods')">Methoden →</button></div>
 </div>
 
 <!-- METHODEN -->
@@ -513,7 +630,197 @@
             <div class="faq-a">Wir bieten <strong>orale Sedierung mit Dormicum</strong>, ein Beruhigungsmittel in Tablettenform, mit dem Sie während der Behandlung wach, ansprechbar, aber völlig entspannt sind. In Kombination mit unserer einfühlsamen Betreuung und Oberflächenanästhesie ist das für die meisten Angstpatienten eine hervorragende Lösung.</div>
         </div>
     </div>
-    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('tips')">← Tipps</button><button class="nav-arrow prev" disabled>← Zurück</button></div>
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('tips')">← Tipps</button><button class="nav-arrow next" disabled></button></div>
+</div>
+
+<div class="tab-section" id="s-selftest">
+    <div class="section-title" style="margin-top:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        Wie stark beeinflusst Zahnarztangst dein Leben?
+    </div>
+    <p class="section-sub">Ein ausführlicher Selbsttest zur Orientierung. Ohne Bewertung, ohne Druck.</p>
+
+    <!-- Progress -->
+    <div style="margin-bottom:1.25rem">
+        <div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--gray-600);margin-bottom:.35rem">
+            <span id="st-progress-label">Abschnitt 1 von 6</span>
+            <span id="st-progress-pct">0 %</span>
+        </div>
+        <div style="background:var(--gray-200);border-radius:99px;height:6px;overflow:hidden">
+            <div id="st-progress-bar" style="background:var(--blue-dark);height:6px;width:0%;border-radius:99px;transition:width .35s ease"></div>
+        </div>
+    </div>
+
+    <div id="st-accordion" style="display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.25rem">
+
+        <!-- SECTION 1: Allgemeines Befinden -->
+        <div data-q="s1" class="st-item st-section-header">
+            <div class="st-header" onclick="stToggle('s1')">
+                <span class="st-num">1</span>
+                <span class="st-qtext">Allgemeines Befinden</span>
+                <svg class="st-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="st-body">
+                <div class="st-sub-q">
+                    <div class="st-sub-label">Wie fühlst du dich, wenn du an einen Zahnarzttermin denkst?</div>
+                    <div class="st-opts-col">
+                        <label class="mdas-opt"><input type="radio" name="q1" value="1" onchange="stMarkSection('s1')"> Ich bin entspannt</label>
+                        <label class="mdas-opt"><input type="radio" name="q1" value="2" onchange="stMarkSection('s1')"> Ich fühle mich etwas unruhig</label>
+                        <label class="mdas-opt"><input type="radio" name="q1" value="3" onchange="stMarkSection('s1')"> Ich werde deutlich nervös</label>
+                        <label class="mdas-opt"><input type="radio" name="q1" value="4" onchange="stMarkSection('s1')"> Ich bekomme Angst oder vermeide den Gedanken</label>
+                    </div>
+                </div>
+                <div class="st-sub-q">
+                    <div class="st-sub-label">Wie lange schiebst du Termine normalerweise auf?</div>
+                    <div class="st-opts-col">
+                        <label class="mdas-opt"><input type="radio" name="q2" value="1" onchange="stMarkSection('s1')"> Ich gehe regelmäßig zur Kontrolle</label>
+                        <label class="mdas-opt"><input type="radio" name="q2" value="2" onchange="stMarkSection('s1')"> Manchmal verschiebe ich Termine</label>
+                        <label class="mdas-opt"><input type="radio" name="q2" value="3" onchange="stMarkSection('s1')"> Ich warte oft, bis Beschwerden auftreten</label>
+                        <label class="mdas-opt"><input type="radio" name="q2" value="4" onchange="stMarkSection('s1')"> Ich vermeide Termine so lange wie möglich</label>
+                    </div>
+                </div>
+                <div class="st-sub-q">
+                    <div class="st-sub-label">Du sitzt im Wartezimmer – der Termin beginnt gleich.</div>
+                    <div class="st-opts-col">
+                        <label class="mdas-opt"><input type="radio" name="q3" value="1" onchange="stMarkSection('s1')"> Entspannt, ich lese einfach</label>
+                        <label class="mdas-opt"><input type="radio" name="q3" value="2" onchange="stMarkSection('s1')"> Etwas angespannt</label>
+                        <label class="mdas-opt"><input type="radio" name="q3" value="3" onchange="stMarkSection('s1')"> Unruhig, ich möchte am liebsten gehen</label>
+                        <label class="mdas-opt"><input type="radio" name="q3" value="4" onchange="stMarkSection('s1')"> Ich kann kaum stillsitzen</label>
+                    </div>
+                </div>
+                <div class="st-sub-q">
+                    <div class="st-sub-label">Der Zahnarzt greift zum Bohrer oder zur Spritze.</div>
+                    <div class="st-opts-col">
+                        <label class="mdas-opt"><input type="radio" name="q4" value="1" onchange="stMarkSection('s1')"> Gar nicht aufgeregt</label>
+                        <label class="mdas-opt"><input type="radio" name="q4" value="2" onchange="stMarkSection('s1')"> Ein wenig angespannt</label>
+                        <label class="mdas-opt"><input type="radio" name="q4" value="3" onchange="stMarkSection('s1')"> Ich halte die Luft an</label>
+                        <label class="mdas-opt"><input type="radio" name="q4" value="4" onchange="stMarkSection('s1')"> Ich bekomme Panik oder möchte aufspringen</label>
+                    </div>
+                </div>
+                <div class="st-sub-q">
+                    <div class="st-sub-label">Hast du schon mal einen Termin abgesagt oder nicht wahrgenommen?</div>
+                    <div class="st-opts-col">
+                        <label class="mdas-opt"><input type="radio" name="q5" value="1" onchange="stMarkSection('s1')"> Nein</label>
+                        <label class="mdas-opt"><input type="radio" name="q5" value="2" onchange="stMarkSection('s1')"> Selten</label>
+                        <label class="mdas-opt"><input type="radio" name="q5" value="3" onchange="stMarkSection('s1')"> Mehrfach</label>
+                        <label class="mdas-opt"><input type="radio" name="q5" value="4" onchange="stMarkSection('s1')"> Häufig oder regelmäßig</label>
+                    </div>
+                </div>
+                <button type="button" onclick="stNextSection('s1','s2')" class="st-weiter-btn">Weiter →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Meine Zähne und ich -->
+        <div data-q="s2" class="st-item st-section-header">
+            <div class="st-header" onclick="stToggle('s2')">
+                <span class="st-num">2</span>
+                <span class="st-qtext">Meine Zähne und ich</span>
+                <svg class="st-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="st-body">
+                <p class="st-section-intro">Triff bei jeder Aussage eine Entscheidung.</p>
+                <div class="jn-row"><span class="jn-text">Meine Zähne sind mir peinlich.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn1" value="1" onchange="stMarkSection('s2')">Ja</label><label class="jn-nein"><input type="radio" name="jn1" value="0" onchange="stMarkSection('s2')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Ich spreche mit niemandem über meine Zähne.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn2" value="1" onchange="stMarkSection('s2')">Ja</label><label class="jn-nein"><input type="radio" name="jn2" value="0" onchange="stMarkSection('s2')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Ich habe Angst, wegen meiner Zähne gedemütigt zu werden.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn3" value="1" onchange="stMarkSection('s2')">Ja</label><label class="jn-nein"><input type="radio" name="jn3" value="0" onchange="stMarkSection('s2')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Ich fühle mich hilflos mit dem Zustand meiner Zähne.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn4" value="1" onchange="stMarkSection('s2')">Ja</label><label class="jn-nein"><input type="radio" name="jn4" value="0" onchange="stMarkSection('s2')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Ich habe das Gefühl, dass mein Biss nicht stimmt.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn5" value="1" onchange="stMarkSection('s2')">Ja</label><label class="jn-nein"><input type="radio" name="jn5" value="0" onchange="stMarkSection('s2')">Nein</label></div></div>
+                <button type="button" onclick="stNextSection('s2','s3')" class="st-weiter-btn">Weiter →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 3: Mögliche Ursachen -->
+        <div data-q="s3" class="st-item st-section-header">
+            <div class="st-header" onclick="stToggle('s3')">
+                <span class="st-num">3</span>
+                <span class="st-qtext">Mögliche Ursachen</span>
+                <svg class="st-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="st-body">
+                <p class="st-section-intro">Erkennst du dich in einer dieser Aussagen wieder?</p>
+                <div class="jn-row"><span class="jn-text">Ich hatte schlechte Erlebnisse beim Zahnarzt.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn6" value="1" onchange="stMarkSection('s3')">Ja</label><label class="jn-nein"><input type="radio" name="jn6" value="0" onchange="stMarkSection('s3')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Ich leide unter extremem Brechreiz oder Würgereiz.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn7" value="1" onchange="stMarkSection('s3')">Ja</label><label class="jn-nein"><input type="radio" name="jn7" value="0" onchange="stMarkSection('s3')">Nein</label></div></div>
+                <button type="button" onclick="stNextSection('s3','s4')" class="st-weiter-btn">Weiter →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 4: Auswirkungen auf mein Leben -->
+        <div data-q="s4" class="st-item st-section-header">
+            <div class="st-header" onclick="stToggle('s4')">
+                <span class="st-num">4</span>
+                <span class="st-qtext">Auswirkungen auf mein Leben</span>
+                <svg class="st-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="st-body">
+                <p class="st-section-intro">In welchen Aussagen findest du dich wieder?</p>
+                <div class="jn-row"><span class="jn-text">In meinem Kopf dreht sich ständig alles um meine Zähne.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn8" value="1" onchange="stMarkSection('s4')">Ja</label><label class="jn-nein"><input type="radio" name="jn8" value="0" onchange="stMarkSection('s4')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Meine Zahnarztangst behindert mich auch beruflich.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn9" value="1" onchange="stMarkSection('s4')">Ja</label><label class="jn-nein"><input type="radio" name="jn9" value="0" onchange="stMarkSection('s4')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Meine Zahnprobleme rauben mir den Schlaf.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn10" value="1" onchange="stMarkSection('s4')">Ja</label><label class="jn-nein"><input type="radio" name="jn10" value="0" onchange="stMarkSection('s4')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Wegen meiner Zahnarztangst fällt es mir schwer, körperliche Nähe zuzulassen.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn11" value="1" onchange="stMarkSection('s4')">Ja</label><label class="jn-nein"><input type="radio" name="jn11" value="0" onchange="stMarkSection('s4')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Die Zahnarztangst mindert mein Selbstwertgefühl.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn12" value="1" onchange="stMarkSection('s4')">Ja</label><label class="jn-nein"><input type="radio" name="jn12" value="0" onchange="stMarkSection('s4')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Meine Zahnarztangst führt mich in eine soziale Isolation.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn13" value="1" onchange="stMarkSection('s4')">Ja</label><label class="jn-nein"><input type="radio" name="jn13" value="0" onchange="stMarkSection('s4')">Nein</label></div></div>
+                <button type="button" onclick="stNextSection('s4','s5')" class="st-weiter-btn">Weiter →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 5: Körperliche Reaktionen -->
+        <div data-q="s5" class="st-item st-section-header">
+            <div class="st-header" onclick="stToggle('s5')">
+                <span class="st-num">5</span>
+                <span class="st-qtext">Wie reagiert mein Körper?</span>
+                <svg class="st-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="st-body">
+                <p class="st-section-intro">Beim Gedanken, zum Zahnarzt gehen zu müssen …</p>
+                <div class="jn-row"><span class="jn-text">Ich kann nicht mehr schlafen.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn14" value="1" onchange="stMarkSection('s5')">Ja</label><label class="jn-nein"><input type="radio" name="jn14" value="0" onchange="stMarkSection('s5')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Ich bekomme einen Schweißausbruch.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn15" value="1" onchange="stMarkSection('s5')">Ja</label><label class="jn-nein"><input type="radio" name="jn15" value="0" onchange="stMarkSection('s5')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Mein Körper zittert.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn16" value="1" onchange="stMarkSection('s5')">Ja</label><label class="jn-nein"><input type="radio" name="jn16" value="0" onchange="stMarkSection('s5')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Mein Herz rast.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn17" value="1" onchange="stMarkSection('s5')">Ja</label><label class="jn-nein"><input type="radio" name="jn17" value="0" onchange="stMarkSection('s5')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Mir wird übel.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn18" value="1" onchange="stMarkSection('s5')">Ja</label><label class="jn-nein"><input type="radio" name="jn18" value="0" onchange="stMarkSection('s5')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Ich kann kaum noch atmen.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn19" value="1" onchange="stMarkSection('s5')">Ja</label><label class="jn-nein"><input type="radio" name="jn19" value="0" onchange="stMarkSection('s5')">Nein</label></div></div>
+                <div class="jn-row"><span class="jn-text">Ich bekomme Durchfall oder Magenkrämpfe.</span><div class="jn-btns"><label class="jn-ja"><input type="radio" name="jn20" value="1" onchange="stMarkSection('s5')">Ja</label><label class="jn-nein"><input type="radio" name="jn20" value="0" onchange="stMarkSection('s5')">Nein</label></div></div>
+                <button type="button" onclick="stNextSection('s5','s6')" class="st-weiter-btn">Weiter →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 6: Trigger & Hilfe -->
+        <div data-q="s6" class="st-item st-section-header">
+            <div class="st-header" onclick="stToggle('s6')">
+                <span class="st-num">6</span>
+                <span class="st-qtext">Was würde mir helfen?</span>
+                <svg class="st-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="st-body">
+                <div class="st-sub-q">
+                    <div class="st-sub-label">Was löst bei dir die meiste Anspannung aus? <span style="font-size:.75rem;font-weight:400;opacity:.7">(Mehrfachauswahl)</span></div>
+                    <div class="st-opts-col">
+                        <label class="mdas-opt"><input type="checkbox" name="trigger" value="geraeusche"> Geräusche (Bohrer, Absaugung)</label>
+                        <label class="mdas-opt"><input type="checkbox" name="trigger" value="schmerzen"> Angst vor Schmerzen</label>
+                        <label class="mdas-opt"><input type="checkbox" name="trigger" value="kontrolle"> Kontrollverlust / Ausgeliefertsein</label>
+                        <label class="mdas-opt"><input type="checkbox" name="trigger" value="wuergen"> Würgereiz</label>
+                        <label class="mdas-opt"><input type="checkbox" name="trigger" value="vergangenheit"> Negative Erfahrungen aus der Vergangenheit</label>
+                    </div>
+                </div>
+                <div class="st-sub-q" style="margin-top:1rem">
+                    <div class="st-sub-label">Was würde dir am meisten helfen? <span style="font-size:.75rem;font-weight:400;opacity:.7">(Mehrfachauswahl)</span></div>
+                    <div class="st-opts-col">
+                        <label class="mdas-opt"><input type="checkbox" name="hilfe" value="atmosphaere"> Ruhige Atmosphäre, kein Zeitdruck</label>
+                        <label class="mdas-opt"><input type="checkbox" name="hilfe" value="erklaerung"> Klare Erklärungen Schritt für Schritt</label>
+                        <label class="mdas-opt"><input type="checkbox" name="hilfe" value="stopp"> Ein vereinbartes Stoppzeichen</label>
+                        <label class="mdas-opt"><input type="checkbox" name="hilfe" value="begleitung"> Eine Begleitperson im Zimmer</label>
+                        <label class="mdas-opt"><input type="checkbox" name="hilfe" value="sedierung"> Zusätzliche Unterstützung (z.&nbsp;B. Sedierung)</label>
+                    </div>
+                </div>
+                <button type="button" onclick="mdasAuswerten()" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue-dark);color:#fff;border:none;border-radius:8px;padding:.7rem 1.4rem;font-size:.87rem;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;margin-top:.8rem" onmouseover="this.style.background='var(--blue-darker)'" onmouseout="this.style.background='var(--blue-dark)'">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/></svg>
+                    Auswerten
+                </button>
+            </div>
+        </div>
+
+    </div><!-- /accordion -->
+
+    <div id="mdas-result" style="display:none;margin-bottom:1rem"></div>
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('understand')">← Verstehen</button><button class="nav-arrow next" onclick="go('approach')">Ansatz →</button></div>
 </div>
 </div>
 
@@ -564,6 +871,147 @@
 </div>
 
 <script>
+// ── SELFTEST ACCORDION ──
+function stOpen(item){
+    item.classList.add('open');
+    const body=item.querySelector('.st-body');
+    if(!body) return;
+    body.style.transition='';
+    body.style.maxHeight=body.scrollHeight+'px';
+    body.style.opacity='1';
+    body.style.transform='translateY(0)';
+    body.style.padding='.1rem 1rem 1rem';
+}
+function stClose(item){
+    const body=item.querySelector('.st-body');
+    if(!body) return;
+    body.style.transition='max-height 0.5s ease-in, opacity 0.35s ease, transform 0.4s ease';
+    body.style.maxHeight=body.scrollHeight+'px';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+        body.style.maxHeight='0';
+        body.style.opacity='0';
+        body.style.transform='translateY(-4px)';
+        body.style.padding='0 1rem';
+    }));
+    item.classList.remove('open');
+}
+function stToggle(id){
+    const item=document.querySelector('.st-item[data-q="'+id+'"]');
+    if(!item) return;
+    if(item.classList.contains('open')){ stClose(item); return; }
+    document.querySelectorAll('.st-item.open').forEach(el=>stClose(el));
+    stOpen(item);
+}
+function stMarkSection(id){
+    document.querySelector('.st-item[data-q="'+id+'"]')?.classList.add('answered');
+    stUpdateProgress();
+}
+function stNextSection(current, next){
+    stMarkSection(current);
+    const nxt=document.querySelector('.st-item[data-q="'+next+'"]');
+    if(!nxt) return;
+    stOpen(nxt);
+    setTimeout(()=>{
+        const headerH=document.querySelector('header')?.offsetHeight||70;
+        const top=nxt.getBoundingClientRect().top+window.scrollY-headerH-12;
+        window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+    },150);
+    stUpdateProgress();
+}
+function stUpdateProgress(){
+    const answered=document.querySelectorAll('.st-item.answered').length;
+    const pct=Math.round(answered/6*100);
+    const bar=document.getElementById('st-progress-bar');
+    const lbl=document.getElementById('st-progress-label');
+    const pctEl=document.getElementById('st-progress-pct');
+    if(bar) bar.style.width=pct+'%';
+    if(lbl) lbl.textContent=answered<6?'Abschnitt '+(answered+1)+' von 6':'Fast fertig!';
+    if(pctEl) pctEl.textContent=pct+' %';
+}
+
+function mdasAuswerten(){
+    // Anxiety score: Q1-Q5 radio (1-4 each = 5-20)
+    let angst=0, missing=false;
+    for(let i=1;i<=5;i++){
+        const sel=document.querySelector('input[name="q'+i+'"]:checked');
+        if(!sel){missing=true;break;}
+        angst+=parseInt(sel.value);
+    }
+    if(missing){
+        const res=document.getElementById('mdas-result');
+        res.style.display='block';
+        res.innerHTML='<div class="mdas-result-card" style="background:#FFF3CD;border:1px solid #DFC96A"><p style="margin:0;color:#5A4A1E;font-size:.85rem">⚠️ Bitte zuerst Abschnitt 1 vollständig ausfüllen (alle 5 Fragen).</p></div>';
+        res.scrollIntoView({behavior:'smooth',block:'nearest'});
+        return;
+    }
+    // Psychosocial impact: jn1-jn20
+    let impact=0;
+    for(let i=1;i<=20;i++){
+        const sel=document.querySelector('input[name="jn'+i+'"]:checked');
+        if(sel) impact+=parseInt(sel.value);
+    }
+    // Triggers
+    const trigMap={geraeusche:'Geräusche',schmerzen:'Schmerzangst',kontrolle:'Kontrollverlust',wuergen:'Würgereiz',vergangenheit:'frühere Erfahrungen'};
+    const triggers=Array.from(document.querySelectorAll('input[name="trigger"]:checked')).map(el=>trigMap[el.value]);
+    const trigText=triggers.length?'<p style="margin:.4rem 0 .2rem"><strong>Deine Auslöser:</strong> '+triggers.join(', ')+'</p>':'';
+    // What would help
+    const hilfeMap={atmosphaere:'ruhige Atmosphäre',erklaerung:'Schritt-für-Schritt-Erklärungen',stopp:'vereinbartes Stoppzeichen',begleitung:'Begleitperson',sedierung:'Sedierung'};
+    const hilfen=Array.from(document.querySelectorAll('input[name="hilfe"]:checked')).map(el=>hilfeMap[el.value]);
+    const hilfeText=hilfen.length?'<p style="margin:.2rem 0"><strong>Was dir helfen würde:</strong> '+hilfen.join(', ')+'</p>':'';
+
+    // Impact label
+    let impactLabel='';
+    if(impact<=4) impactLabel='geringe psychosoziale Beeinträchtigung';
+    else if(impact<=10) impactLabel='merkliche Beeinträchtigung im Alltag';
+    else impactLabel='starke Beeinträchtigung im Alltag';
+
+    let html='';
+    if(angst<=8){
+        html=`<div class="mdas-result-card" style="background:#EDFAF1;border:1px solid #6DBE8E;color:#1B4332">
+            <h3>🌿 Kaum Zahnarztangst</h3>
+            <p>Du gehst entspannt mit Zahnarztbesuchen um. Regelmäßige Kontrollen helfen, das so zu erhalten.</p>
+            ${trigText}${hilfeText}
+            <div class="mdas-score">Angst-Score: ${angst}/20 · Beeinträchtigung: ${impact}/20 (${impactLabel})</div>
+        </div>`;
+    } else if(angst<=12){
+        html=`<div class="mdas-result-card" style="background:#F0F4FA;border:1px solid #7A96B8;color:#1E2D4D">
+            <h3>🌤️ Leichte Anspannung</h3>
+            <p>Das ist sehr verbreitet. Eine ruhige Atmosphäre und gute Aufklärung helfen meist schon deutlich.</p>
+            ${trigText}${hilfeText}
+            <p style="margin:.5rem 0 .2rem">Sag uns vorab, wie es dir geht – wir passen das Tempo an dich an.</p>
+            <div class="mdas-score">Angst-Score: ${angst}/20 · Beeinträchtigung: ${impact}/20 (${impactLabel})</div>
+        </div>`;
+    } else if(angst<=16){
+        html=`<div class="mdas-result-card" style="background:#FDF8E8;border:1px solid #DFC96A;color:#5A4A1E">
+            <h3>🌥️ Deutliche Zahnarztangst</h3>
+            <p>Du bist nicht allein damit. Wichtig ist: in kleinen, gut erklärten Schritten vorgehen. Moderne Behandlung kann heute sehr schonend sein.</p>
+            ${trigText}${hilfeText}
+            <p style="margin:.5rem 0 .6rem">Ruf uns gerne vorab an – wir nehmen uns Zeit für ein Gespräch, ganz ohne Behandlungsdruck.</p>
+            <a href="tel:+497703284" style="display:inline-flex;align-items:center;gap:6px;background:var(--blue-dark);color:#fff;font-weight:700;font-size:.84rem;padding:.6rem 1.2rem;border-radius:8px;text-decoration:none">📞 07703 284</a>
+            <div class="mdas-score">Angst-Score: ${angst}/20 · Beeinträchtigung: ${impact}/20 (${impactLabel})</div>
+        </div>`;
+    } else {
+        html=`<div class="mdas-result-card" style="background:#EEF2F8;border:1px solid #3D5A98;color:#1E2D4D">
+            <h3>💙 Starke Zahnarztangst</h3>
+            <p>Auch das kommt häufiger vor, als man denkt. Hier ist besonders einfühlsames Vorgehen wichtig – Gespräch, Vertrauen und ggf. unterstützende Maßnahmen stehen im Vordergrund.</p>
+            ${trigText}${hilfeText}
+            <p style="margin:.5rem 0 .6rem">Du musst das nicht alleine durchstehen. Ruf uns an, bevor du buchst – wir hören zu.</p>
+            <a href="tel:+497703284" style="display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#1E2D4D;font-weight:700;font-size:.84rem;padding:.6rem 1.2rem;border-radius:8px;text-decoration:none">📞 07703 284</a>
+            <div class="mdas-score">Angst-Score: ${angst}/20 · Beeinträchtigung: ${impact}/20 (${impactLabel})</div>
+        </div>`;
+    }
+    // Finalize
+    document.querySelectorAll('.st-item').forEach(el=>{el.classList.remove('open');el.classList.add('answered');});
+    const bar=document.getElementById('st-progress-bar');
+    if(bar) bar.style.width='100%';
+    document.getElementById('st-progress-pct').textContent='100 %';
+    document.getElementById('st-progress-label').textContent='Fertig ✓';
+    const res=document.getElementById('mdas-result');
+    res.style.display='block';
+    res.innerHTML=html;
+    res.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
 function go(id){
     document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
