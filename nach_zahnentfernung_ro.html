@@ -207,6 +207,22 @@
 
 <main>
 
+<!-- STEP-VIEWER -->
+<div class="wk-viewer">
+    <h2>Îngrijirea dvs. dintr-o privire</h2>
+    <div id="wk-pills"></div>
+    <div id="wk-content-area">
+        <div id="wk-img-box"><img id="wk-img" src="" alt="Pasul de îngrijire"/></div>
+        <div id="wk-info-box"></div>
+    </div>
+    <div style="display:flex;gap:6px;justify-content:center;margin:.5rem 0 1rem" id="wk-dots"></div>
+    <div style="display:flex;gap:8px;align-items:center;margin-top:.8rem">
+        <button class="nav-arrow prev" id="wk-prev" onclick="wkGo(-1)">← Înapoi</button>
+        <button class="nav-arrow next" id="wk-next" onclick="wkGo(1)">Înainte →</button>
+        <label style="margin-left:auto;font-size:.75rem;color:var(--gray-400);display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" id="wk-auto" onchange="wkToggleAuto(this.checked)"> Automat</label>
+    </div>
+</div>
+
     <!-- 3 WICHTIGSTE REGELN -->
     <div class="alert alert-danger">
         <div class="alert-title">Cele 3 reguli cele mai importante</div>
