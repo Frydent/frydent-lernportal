@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+<meta name="robots" content="noindex, nofollow">
 <meta charset="UTF-8">
     <meta name="description" content="Briefgenerator für die Zahnarztpraxis FRYDENT — internes Werkzeug.">
 <title>frydent – Briefgenerator</title>
@@ -161,7 +162,8 @@ function upd(){if(!ak)return;var el=document.getElementById("bd"+ak);if(el)el.in
 function druck(n){
   var body=document.getElementById("bd"+n);
   var txt=body?body.innerHTML:"";
-  var html="<!DOCTYPE html><html><head><meta charset='UTF-8'><title>frydent</title><style>"+PCSS+"</style></head><body>"
+  var html="<!DOCTYPE html><html><head>
+<meta name="robots" content="noindex, nofollow"><meta charset='UTF-8'><title>frydent</title><style>"+PCSS+"</style></head><body>"
     +"<div class='page'><div class='lwrap'><img class='limg' src='data:image/png;base64,"+LG+"'><hr class='lline'></div>"
     +"<div class='cnt'>"+txt
     +"<div class='sgn'><p style='margin-bottom:3mm'>Mit freundlichen Grüßen</p>"
