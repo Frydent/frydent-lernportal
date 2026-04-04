@@ -50,7 +50,7 @@
         /* TABS */
         .tab-nav{display:flex;gap:.4rem;padding-bottom:.5rem;margin-bottom:1.75rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
         .tab-nav::-webkit-scrollbar{display:none}
-        .tab-btn{display:flex;align-items:center;gap:6px;padding:.55rem 1rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;border:1px solid #E0B0B0;background:#F5DADA;color:#6B2020;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
+        .tab-btn{display:flex;align-items:center;gap:4px;padding:.45rem .7rem;border-radius:var(--radius-sm);font-size:.78rem;font-weight:600;white-space:nowrap;border:1px solid #E0B0B0;background:#F5DADA;color:#6B2020;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;flex:1}
         .tab-btn:hover{border-color:#CC8080;color:#4A0E0E;background:#EEC8C8}
         .tab-btn.active{background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark)}
         @media(max-width:640px){.tab-btn{flex:0 0 auto}}
@@ -429,6 +429,7 @@
         <p style="font-size:.85rem">Severely limited mouth opening (lockjaw)</p>
     </div>
 
+    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('empfindlich')">← Sensitivity</button><button class="nav-arrow next" disabled style="visibility:hidden"></button></div>
 </div>
 
 <!-- ==================== NOTFALL-BOX (immer sichtbar) ==================== -->
@@ -470,8 +471,6 @@
     <a href="javascript:toggleDrFlexAppointments()" class="termin-m"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book appointment</a>
     <a href="mailto:info@frydent.de"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Email</a>
     <a href="https://maps.google.com/?q=Martinstra%C3%9Fe+21+79848+Bonndorf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>Directions</a>
-
-    <div class="nav-arrows"><button class="nav-arrow prev" onclick="go('empfindlich')">← Sensitivity</button><button class="nav-arrow next" disabled style="visibility:hidden"></button></div>
 </div>
 
 <script>
