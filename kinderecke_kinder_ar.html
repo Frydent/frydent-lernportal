@@ -166,10 +166,10 @@
 
 /* SIDEBAR */
 .sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:8px}
-.sidebar-tab{display:flex;align-items:center;justify-content:flex-end;transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:pointer;text-decoration:none;height:52px}
-.sidebar-icon{width:52px;height:52px;border-radius:14px 0 0 14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .4s cubic-bezier(.25,.46,.45,.94);box-shadow:-2px 2px 8px rgba(0,0,0,.08)}
+.sidebar-tab{display:flex;align-items:center;justify-content:flex-end;transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:pointer;text-decoration:none;height:58px}
+.sidebar-icon{width:58px;height:58px;border-radius:16px 0 0 16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .4s cubic-bezier(.25,.46,.45,.94);box-shadow:-2px 2px 8px rgba(0,0,0,.08)}
 .sidebar-icon svg{width:22px;height:22px}
-.sidebar-label{max-width:0;overflow:hidden;white-space:nowrap;font-size:.88rem;font-weight:700;height:52px;line-height:52px;padding:0;transition:all .4s cubic-bezier(.25,.46,.45,.94);opacity:0;border-radius:14px 0 0 14px;box-shadow:-2px 2px 8px rgba(0,0,0,.08);font-family:'Nunito',sans-serif}
+.sidebar-label{max-width:0;overflow:hidden;white-space:nowrap;font-size:.88rem;font-weight:700;height:58px;line-height:58px;padding:0;transition:all .4s cubic-bezier(.25,.46,.45,.94);opacity:0;border-radius:16px 0 0 16px;box-shadow:-2px 2px 8px rgba(0,0,0,.08);font-family:'Nunito',sans-serif}
 .sidebar-tab:hover .sidebar-label{max-width:280px;padding:0 16px 0 14px;opacity:1}
 .sidebar-tab:hover .sidebar-icon{border-radius:0;box-shadow:none}
 .sidebar-tab.termin .sidebar-icon{background:#EDD878}.sidebar-tab.termin .sidebar-label{background:#EDD878;color:var(--bark)}.sidebar-tab.termin .sidebar-icon svg{stroke:var(--bark)}
@@ -335,7 +335,7 @@
 
 
 <div class="sidebar">
-  <a href="javascript:void(0)" onclick="window.drFlexWidget&&drFlexWidget.open()" class="sidebar-tab termin">
+  <a href="javascript:toggleDrFlexAppointments()" class="sidebar-tab termin">
     <span class="sidebar-label">حجز موعد أونلاين</span>
     <div class="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
   </a>
@@ -354,7 +354,7 @@
 </div>
 <div class="mobile-bar">
   <a href="tel:+497703284" class="phone-m"><svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>اتصل</a>
-  <a href="javascript:void(0)" onclick="window.drFlexWidget&&drFlexWidget.open()" class="termin-m"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>حجز موعد</a>
+  <a href="javascript:toggleDrFlexAppointments()" class="termin-m"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>حجز موعد</a>
   <a href="mailto:info@frydent.de"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>بريد</a>
   <a href="index_ar.html"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>البوابة</a>
 </div>
