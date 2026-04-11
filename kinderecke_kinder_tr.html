@@ -417,7 +417,7 @@ function go(id){
     var tabs=['untersuchung','fuellung','helden'];
     var i=tabs.indexOf(id);
     if(i>=0)document.querySelectorAll('.tab-btn')[i].classList.add('active');
-    window.scrollTo({top:document.querySelector('.tab-nav').offsetTop-80,behavior:'smooth'});
+    window.scrollTo({top:document.querySelector('.tab-nav').offsetTop-20,behavior:'smooth'});
 }
 var tn=document.querySelector('.tab-nav');
 function checkScroll(){if(!tn)return;var atEnd=tn.scrollLeft+tn.clientWidth>=tn.scrollWidth-8;tn.classList.toggle('scrolled-end',atEnd)}
