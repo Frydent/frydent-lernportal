@@ -385,14 +385,18 @@
     <!-- SPRING GREETING -->
     <div class="easter-card" id="spring-greeting" style="display:block;overflow:hidden;padding:0;background:none;border:none;box-shadow:none">
       <div style="width:100%;line-height:0">
-        <svg width="100%" viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto">
+        <svg width="100%" viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;border-radius:var(--radius)">
           <defs>
             <linearGradient id="skyS" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#C8E8F8"/>
               <stop offset="100%" stop-color="#E8F5E2"/>
             </linearGradient>
+            <clipPath id="roundedS">
+              <rect width="680" height="340" rx="16"/>
+            </clipPath>
           </defs>
-          <rect width="680" height="340" fill="url(#skyS)" rx="16"/>
+          <g clip-path="url(#roundedS)">
+          <rect width="680" height="340" fill="url(#skyS)"/>
           <circle cx="600" cy="62" r="72" fill="#FDE68A" opacity="0.07"><animate attributeName="r" values="72;92;72" dur="4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.07;0.03;0.07" dur="4s" repeatCount="indefinite"/></circle>
           <circle cx="600" cy="62" r="52" fill="#FDE68A" opacity="0.16"><animate attributeName="r" values="52;66;52" dur="4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.16;0.07;0.16" dur="4s" repeatCount="indefinite"/></circle>
           <circle cx="600" cy="62" r="37" fill="#FDE68A" opacity="0.50"><animate attributeName="r" values="37;42;37" dur="4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.50;0.30;0.50" dur="4s" repeatCount="indefinite"/></circle>
@@ -413,6 +417,7 @@
           <text x="506" y="178" text-anchor="middle" font-family="'Lato','Helvetica Neue',Arial,sans-serif" font-size="11" fill="#5a8a65" opacity="0.75" letter-spacing="3">FRYDENT · BONNDORF</text>
           <text x="506" y="210" text-anchor="middle" font-family="'Segoe Script','Brush Script MT',cursive" font-size="24" fill="#3d6b4a" opacity="0.92">Schönen Frühling!</text>
           <text x="506" y="233" text-anchor="middle" font-family="'Segoe Script','Brush Script MT',cursive" font-size="11" fill="#7a9e82" opacity="0.80">eine blühende Frühlingszeit</text>
+          </g>
         </svg>
       </div>
       <script>
