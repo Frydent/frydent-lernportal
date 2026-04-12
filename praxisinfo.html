@@ -366,7 +366,7 @@
 
 
     <!-- SPRING GREETING -->
-    <div class="easter-card" id="spring-greeting" style="display:none;overflow:hidden;padding:0">
+    <div class="easter-card" id="spring-greeting" style="display:block;overflow:hidden;padding:0">
       <div style="position:relative;width:100%">
         <svg width="100%" viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -552,7 +552,7 @@
         /* ── FRYDENT Praxis-Status Automatik ── */
         var closures = [
             { from:'2026-04-03', to:'2026-04-06', label:'Ostern', sub:'Karfreitag bis Ostermontag geschlossen.', greeting:'easter-greeting' },
-            { from:'2026-05-14', to:'2026-06-05', label:'Praxisurlaub', sub:'Unsere Praxis ist bis zum 05.06. geschlossen.', greeting:'spring-greeting' }
+            { from:'2026-05-14', to:'2026-06-05', label:'Praxisurlaub', sub:'Unsere Praxis ist bis zum 05.06. geschlossen.', greeting:null }
         ];
 
         function toLocal(d){ return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
@@ -581,7 +581,6 @@
             h2.textContent = 'Unsere Praxis ist geschlossen';
             p.textContent = active.label+' — '+active.sub;
             if(easterCard && active.greeting === 'easter-greeting'){ easterCard.style.display = 'block'; }
-            if(springCard && active.greeting === 'spring-greeting'){ springCard.style.display = 'block'; }
             if(osternNotdienst && today >= easterStart && today <= easterEnd){ osternNotdienst.style.display = 'block'; } else if(osternNotdienst){ osternNotdienst.style.display = 'none'; }
         } else {
             banner.classList.remove('closed');
