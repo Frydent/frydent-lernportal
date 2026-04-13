@@ -23,8 +23,10 @@ header{background:var(--white);position:sticky;top:0;z-index:100;box-shadow:0 2p
 .back-link{font-size:.78rem;font-weight:700;color:var(--blue-darker);text-decoration:none;display:flex;align-items:center;gap:6px;padding:8px 16px;transition:all .3s;letter-spacing:.3px}
 .back-link:hover{color:var(--blue)}
 .hero{background:linear-gradient(160deg,#4E6590 0%,#3F5580 35%,#2F4268 100%);color:var(--white);padding:1.5rem 1.5rem 1.2rem;text-align:center;box-shadow:0 3px 8px rgba(30,40,60,.6)}
-.hero h1{font-family:'Quicksand',sans-serif;font-size:1.5rem;font-weight:400}
-.hero p{font-size:.88rem;opacity:.7;font-weight:300;margin-top:6px}
+.hero-flex{display:flex;align-items:center;justify-content:center;gap:16px}
+.hero-fd{height:2.8rem;width:auto;opacity:.9}
+.hero h1{font-family:'Quicksand',sans-serif;font-size:1.5rem;font-weight:400;text-align:left}
+.hero p{font-size:.88rem;opacity:.7;font-weight:300;margin-top:4px;text-align:left}
 main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 1rem;position:relative}
 .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--gray-200);box-shadow:3px 3px 8px rgba(0,0,0,.4);background:var(--white)}
 .team-card{background:var(--white);padding:2.5rem 1.5rem;text-align:center;text-decoration:none;color:inherit;transition:all .3s;cursor:pointer;border-right:1px solid var(--gray-200)}
@@ -56,10 +58,7 @@ footer a{color:var(--blue);text-decoration:none}
 <a href="../index.html" class="back-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>PORTAL</a>
 </div></header>
 
-<div class="hero">
-<h1>Ihre Ansprechpartner</h1>
-<p>Wir sind für Sie da.</p>
-</div>
+<div class="hero"><div class="hero-flex"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMzIgMTg1LjI2Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJtMTkuNjcsMTAwLjczYzAsMS4zLDAsMi4yMywwLDMuMTUsMCwyNi4xOSwwLDUyLjM4LDAsNzguNTdxMCwyLjgxLTIuODIsMi44MWMtNC44LDAtOS42LDAtMTQuMzksMEguMDRjMC0uOTQsMC0xLjY1LDAtMi4zNkMuMDQsMTIyLjczLjA1LDYyLjU1LDAsMi4zOCwwLC40Ny41OS4wNCwyLjM2LjA0YzM3Ljc5LjA0LDc1LjU3LS4xNCwxMTMuMzYuMTIsMTQuMjQuMSwyNy4xMyw1LjAxLDM4LjQ4LDEzLjY4LDEzLjM3LDEwLjIxLDIyLjA0LDIzLjgsMjcuODUsMzkuMzcsNS42NCwxNS4xMiw3LjkzLDMwLjgxLDcuMjUsNDYuODYtLjc5LDE4LjY4LTUuNTEsMzYuMzMtMTYuMDEsNTIuMDItMTEuMTgsMTYuNzEtMjYuNzQsMjcuMDktNDYuNjUsMzAuMjctNy41MiwxLjItMTUuMjMsMS4zNS0yMi44NywxLjY0LTE0LjMxLjU1LTI4LjYzLjg1LTQyLjk0LDEuMjUtLjcyLjAyLTEuNDUsMC0yLjQsMC0uMDYtLjg4LS4xNi0xLjY1LS4xNi0yLjQxLDAtMjEuNTMsMC00My4wNSwwLTY0LjU4LDAtMi42Mi4wMS0yLjYzLDIuNjctMi42Myw1LjQsMCwxMC44LjA2LDE2LjE5LS4wMywxLjc5LS4wMywyLjM5LjQ2LDIuMzYsMi4zNS0uMjIsMTUuMjYtLjMzLDMwLjUyLS40Niw0NS43Ny0uMDIsMi41MSwwLDIuNDMsMi41NywyLjM3LDYuNzMtLjE0LDEzLjQ2LS4wOCwyMC4xOC0uMzMsOS45OC0uMzgsMTkuOTUtLjg4LDI5LjU0LTQuMTYsMTAuMTktMy40OSwxNy44NS0xMC4wMSwyMy41My0xOS4wNiw3LjM2LTExLjc0LDExLjMyLTI0LjU4LDEyLjgtMzguMjgsMS44LTE2LjY1LS4wMi0zMi44Mi02LjI4LTQ4LjQtNS4yNy0xMy4xMS0xNC4wOC0yMy4yNi0yNi4yOC0zMC4zMy02LjE1LTMuNTYtMTIuOTMtNS4zNi0yMC4wNC01LjM4LTMwLjg1LS4wNy02MS43MS0uMDMtOTIuNTYtLjAzLS44NSwwLTEuNywwLTIuNjcsMHY2MC4zNmMuOS4wNSwxLjczLjEzLDIuNTYuMTMsMjIuOTIsMCw0NS44NS4wNCw2OC43Ny0uMDUsMi4zNSwwLDMuNDcuODYsMy45NSwyLjk1LDEuMTIsNC44MSwxLjE5LDkuNjItLjA4LDE0LjQyLS41MywyLjAxLTEuNzIsMi44NC0zLjkxLDIuODQtMjIuNzktLjA3LTQ1LjU4LS4wNC02OC4zNy0uMDQtLjkyLDAtMS44MywwLTMuMDYsMFoiLz48cmVjdCBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LC41KSIgeD0iMjI3LjkxIiB5PSIwIiB3aWR0aD0iMyIgaGVpZ2h0PSIxODUuMjYiLz48L3N2Zz4=" alt="FD" class="hero-fd"><div><h1>Ihre Ansprechpartner</h1><p>Wir sind für Sie da.</p></div></div></div>
 
 <main>
 <div class="team-grid">
