@@ -27,7 +27,8 @@ header{background:var(--white);position:sticky;top:0;z-index:100;box-shadow:0 2p
 .hero-divider{width:200px;max-width:60%;height:2px;background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--gold-dark));margin:.8rem auto}
 .hero h1{font-family:'Quicksand',sans-serif;font-size:1.5rem;font-weight:400}
 .hero p{font-size:.88rem;opacity:.7;font-weight:300;margin-top:6px}
-main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 1rem}
+main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 1rem;position:relative}
+main::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120%;height:130%;background:radial-gradient(ellipse at center,rgba(63,85,128,.08) 0%,rgba(63,85,128,.03) 40%,transparent 70%);pointer-events:none;z-index:-1}
 .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--gray-200);box-shadow:3px 3px 8px rgba(0,0,0,.4);background:var(--white)}
 .team-card{background:var(--white);padding:2.5rem 1.5rem;text-align:center;text-decoration:none;color:inherit;transition:all .3s;cursor:pointer;border-right:1px solid var(--gray-200)}
 .team-card:nth-child(2n){border-right:none}
