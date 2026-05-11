@@ -1,393 +1,181 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="copyright" content="© 2026 Tatiana Frydrych, FRYDENT Zahnarztpraxis">
-<meta name="robots" content="noai, noimageai">
-    <meta name="description" content="Verteiler-Dashboard — internes Werkzeug der Zahnarztpraxis FRYDENT.">
-<title>FRYDENT — Verteiler-Dashboard</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>frydent dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Quicksand:wght@300;400;500;600&family=Kalam:wght@300;400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Source Sans 3','Segoe UI',sans-serif;background:linear-gradient(180deg,#f0f4f8 0%,#e8ecf1 100%);color:#2d3748;line-height:1.7;min-height:100vh}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Quicksand',system-ui,sans-serif;min-height:100vh;background-attachment:fixed;transition:background 0.5s,color 0.3s}
+button,input{font-family:'Quicksand',system-ui,sans-serif}
+textarea{font-family:'Kalam',cursive}
 
-.header{background:linear-gradient(135deg,#1a365d 0%,#2a4a7f 50%,#2b6cb0 100%);border-bottom:4px solid #63b3ed;padding:1.5rem}
-.header-inner{max-width:900px;margin:0 auto}
-.tags{display:flex;gap:0.5rem;margin-bottom:0.5rem}
-.tag{padding:0.25rem 0.75rem;border-radius:999px;font-size:0.7rem;font-weight:700}
-.tag-portal{background:rgba(255,255,255,0.15);color:#bee3f8}
-.tag-intern{background:rgba(252,129,129,0.3);color:#fed7d7}
-h1{font-family:'Merriweather',serif;font-size:1.75rem;color:white;margin-bottom:0.25rem;line-height:1.2}
-.subtitle{color:#bee3f8;font-size:0.85rem}
-
-.content{max-width:900px;margin:0 auto;padding:1.5rem}
-
-/* Topic tabs */
-.topic-bar{display:flex;gap:0.5rem;overflow-x:auto;padding-bottom:0.5rem;margin-bottom:1.5rem;-webkit-overflow-scrolling:touch}
-.topic-bar::-webkit-scrollbar{display:none}
-.topic-btn{display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.1rem;border-radius:0.75rem;font-size:0.85rem;font-weight:700;white-space:nowrap;border:2px solid #e2e8f0;background:white;color:#4a5568;cursor:pointer;transition:all 0.2s;font-family:inherit}
-.topic-btn:hover{border-color:#1a365d;color:#1a365d}
-.topic-btn.active{background:#1a365d;color:white;border-color:#1a365d;box-shadow:0 4px 12px rgba(26,54,93,0.3)}
-
-/* Topic sections */
-.topic-section{display:none}
-.topic-section.active{display:block}
-
-/* Section title */
-.section-title{font-family:'Merriweather',serif;font-size:1.3rem;color:#1a365d;margin-bottom:0.25rem}
-.section-sub{color:#718096;font-size:0.85rem;margin-bottom:1rem}
-
-/* Language grid */
-.lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:1.5rem}
-
-/* Language card */
-.lang-card{background:white;border:1px solid #e2e8f0;border-radius:1rem;overflow:hidden;transition:all 0.2s}
-.lang-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08);border-color:#90cdf4}
-.lang-header{padding:0.75rem 1rem;display:flex;align-items:center;gap:0.75rem;cursor:pointer;user-select:none}
-.lang-flag{font-size:1.5rem}
-.lang-name{font-weight:700;font-size:0.9rem;color:#1a365d}
-.lang-native{font-size:0.8rem;color:#718096}
-.lang-arrow{margin-left:auto;font-size:0.7rem;color:#a0aec0;transition:transform 0.3s}
-.lang-card.open .lang-arrow{transform:rotate(180deg)}
-
-.lang-body{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
-.lang-card.open .lang-body{max-height:800px}
-.lang-body-inner{padding:0 1rem 1rem}
-
-/* QR container */
-.qr-box{background:#f7fafc;border:1px solid #e2e8f0;border-radius:0.75rem;padding:1rem;text-align:center;margin-bottom:0.75rem}
-.qr-box canvas{border-radius:0.5rem}
-.qr-label{font-size:0.7rem;color:#a0aec0;margin-top:0.5rem}
-
-/* Action buttons */
-.actions{display:flex;flex-direction:column;gap:0.5rem}
-.act-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.6rem 1rem;border-radius:0.75rem;font-size:0.8rem;font-weight:700;border:none;cursor:pointer;transition:all 0.2s;font-family:inherit;width:100%}
-.act-wa{background:#25D366;color:white}
-.act-wa:hover{background:#1da851}
-.act-link{background:#3182ce;color:white}
-.act-link:hover{background:#2b6cb0}
-.act-open{background:white;color:#3182ce;border:1px solid #3182ce}
-.act-open:hover{background:#ebf8ff}
-.act-btn.copied{background:#38a169!important;color:white!important;border-color:#38a169!important}
-
-/* WhatsApp preview */
-.wa-preview{background:#dcf8c6;border-radius:0.75rem;padding:0.75rem;font-size:0.8rem;color:#1a1a1a;margin-bottom:0.75rem;border:1px solid #b7eb8f;line-height:1.5;position:relative}
-.wa-preview::before{content:'';position:absolute;top:-6px;left:12px;width:12px;height:12px;background:#dcf8c6;transform:rotate(45deg);border-left:1px solid #b7eb8f;border-top:1px solid #b7eb8f}
-
-/* Info cards */
-.info-card{background:linear-gradient(135deg,#ebf8ff 0%,#bee3f8 100%);border:1px solid #90cdf4;border-radius:1rem;padding:1.25rem;margin-bottom:1.5rem}
-.info-card p{font-size:0.85rem;color:#2b6cb0}
-
-/* Print section */
-.print-section{background:white;border:1px solid #e2e8f0;border-radius:1rem;padding:1.25rem;margin-bottom:1.5rem}
-.print-title{font-family:'Merriweather',serif;font-weight:700;font-size:0.95rem;color:#1a365d;margin-bottom:0.75rem}
-.print-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.25rem;border-radius:0.75rem;font-size:0.85rem;font-weight:700;border:2px solid #1a365d;background:white;color:#1a365d;cursor:pointer;transition:all 0.2s;font-family:inherit}
-.print-btn:hover{background:#1a365d;color:white}
-
-/* QR print grid */
-.qr-print-grid{display:none}
-
-.footer{text-align:center;font-size:0.7rem;color:#a0aec0;padding-bottom:2rem;margin-top:1rem}
-
-/* Toast */
-.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:#1a365d;color:white;padding:0.75rem 1.5rem;border-radius:999px;font-size:0.85rem;font-weight:700;z-index:1000;transition:transform 0.3s ease;pointer-events:none}
-.toast.show{transform:translateX(-50%) translateY(0)}
-
-@media print{
-  body{background:white!important}
-  .header,.topic-bar,.info-card,.print-section,.footer,.lang-card,.toast{display:none!important}
-  .qr-print-grid{display:grid!important;grid-template-columns:repeat(2,1fr);gap:2rem;padding:1rem}
-  .qr-print-item{text-align:center;border:1px solid #ddd;border-radius:1rem;padding:1.5rem;break-inside:avoid}
-  .qr-print-item h3{font-family:'Merriweather',serif;font-size:1rem;margin-bottom:0.25rem}
-  .qr-print-item p{font-size:0.8rem;color:#666;margin-bottom:0.75rem}
-  .qr-print-item canvas{margin:0 auto}
-  .qr-print-item .print-url{font-size:0.65rem;color:#999;margin-top:0.5rem;word-break:break-all}
-}
-
-@media(max-width:640px){
-  h1{font-size:1.4rem}
-  .lang-grid{grid-template-columns:1fr}
-}
+#intro{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#1A3548,#2A5570 50%,#3A6F7E);color:#fff;animation:fadeIn 0.8s ease-out;transition:opacity 0.6s}
+#intro.hide{opacity:0;pointer-events:none}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.anim{animation:cardIn 0.6s ease-out both}
 </style>
 </head>
 <body>
-
-<div class="header">
-  <div class="header-inner">
-    <div class="tags">
-      <span class="tag tag-portal">FRYDENT Praxis-Portal</span>
-      <span class="tag tag-intern">🔒 Nur für das Team</span>
-    </div>
-    <h1>📋 Verteiler-Dashboard</h1>
-    <p class="subtitle">QR-Codes, WhatsApp-Nachrichten & Links für Patienteninfos — alles an einem Ort.</p>
-  </div>
+<div id="intro">
+<div style="animation:slideUp 0.8s ease-out 0.2s both;text-align:center">
+<div style="font-family:'Quicksand',sans-serif;font-size:72px;font-weight:300;letter-spacing:0.06em">frydent</div>
+<div style="font-family:'Instrument Serif',serif;font-size:26px;font-style:italic;opacity:0.5;letter-spacing:0.12em">dashboard</div>
 </div>
-
-<div class="content">
-
-  <div class="info-card">
-    <p><strong>💡 So funktioniert's:</strong> Thema wählen → Sprache aufklappen → WhatsApp-Nachricht kopieren oder QR-Code zeigen. Fertig!</p>
-  </div>
-
-  <!-- TOPIC TABS -->
-  <div class="topic-bar">
-    <button class="topic-btn active" onclick="showTopic('extraction',this)">🦷 Nach Zahnentfernung</button>
-    <button class="topic-btn" onclick="showTopic('bleaching',this)">✨ Bleaching</button>
-    <button class="topic-btn" onclick="showTopic('veneers',this)">💎 Veneers</button>
-    <button class="topic-btn" onclick="showTopic('kronen',this)">👑 Kronen & Brücken</button>
-  </div>
-
-  <!-- ============================================ -->
-  <!-- NACH ZAHNENTFERNUNG -->
-  <!-- ============================================ -->
-  <div class="topic-section active" id="t-extraction">
-    <h2 class="section-title">Nach der Zahnentfernung</h2>
-    <p class="section-sub">Patienteninformation in 7 Sprachen verfügbar</p>
-    <div class="lang-grid" id="grid-extraction"></div>
-  </div>
-
-  <!-- ============================================ -->
-  <!-- BLEACHING -->
-  <!-- ============================================ -->
-  <div class="topic-section" id="t-bleaching">
-    <h2 class="section-title">Professionelles Zahnbleaching</h2>
-    <p class="section-sub">Patienteninformation</p>
-    <div class="lang-grid" id="grid-bleaching"></div>
-  </div>
-
-  <!-- ============================================ -->
-  <!-- VENEERS -->
-  <!-- ============================================ -->
-  <div class="topic-section" id="t-veneers">
-    <h2 class="section-title">Veneers</h2>
-    <p class="section-sub">Patienteninformation</p>
-    <div class="lang-grid" id="grid-veneers"></div>
-  </div>
-
-  <!-- ============================================ -->
-  <!-- KRONEN -->
-  <!-- ============================================ -->
-  <div class="topic-section" id="t-kronen">
-    <h2 class="section-title">Kronen & Brücken</h2>
-    <p class="section-sub">Patienteninformation</p>
-    <div class="lang-grid" id="grid-kronen"></div>
-  </div>
-
-  <!-- PRINT SECTION -->
-  <div class="print-section">
-    <div class="print-title">🖨️ QR-Codes zum Ausdrucken</div>
-    <p style="font-size:0.85rem;color:#718096;margin-bottom:0.75rem">Alle QR-Codes des aktuellen Themas auf einer Seite ausdrucken — perfekt fürs Wartezimmer oder die Rezeption.</p>
-    <button class="print-btn" onclick="printQRs()">🖨️ QR-Codes drucken</button>
-  </div>
-
-  <!-- Hidden print grid -->
-  <div class="qr-print-grid" id="print-grid"></div>
-
+<div style="animation:slideUp 0.8s ease-out 0.6s both;margin-top:44px;font-family:'Instrument Serif',serif;font-size:18px;font-style:italic;opacity:0.4">— a quiet morning —</div>
+<div style="animation:pulse 1.5s ease-in-out infinite;margin-top:50px;width:6px;height:6px;border-radius:50%;background:#D4DE7A"></div>
 </div>
-
-<div class="footer">FRYDENT Zahnärzte in Bonndorf · Verteiler-Dashboard · Internes Tool<br>Stand: Februar 2026</div>
-
-<div class="toast" id="toast"></div>
+<div id="app" style="display:none;max-width:1280px;margin:0 auto;padding:20px 28px"></div>
 
 <script>
-var BASE = 'https://frydent.github.io/frydent-lernportal/';
+const FD="'Instrument Serif',Georgia,serif",FB="'Quicksand',sans-serif",FM="'JetBrains Mono',monospace";
+const DAY={bg:"#F2F8FB",bgImg:"radial-gradient(900px 600px at 0% 0%,#DCEDF6 0%,transparent 60%),radial-gradient(900px 600px at 100% 100%,#E4F2E0 0%,transparent 55%)",ink:"#1E3A4A",is:"#5A7A8A",if:"#A8BFCE",c:"rgba(255,255,255,0.82)",cb:"rgba(30,58,74,0.10)",sh:"0 2px 4px rgba(30,58,74,0.06),0 8px 24px -4px rgba(30,58,74,0.12),0 1px 0 rgba(255,255,255,0.8) inset",hero:"linear-gradient(135deg,#B8DCEC,#8FC4DC 45%,#3A85A8)",grn:"linear-gradient(160deg,#E4F2E0,#B5DCAE 50%,#7AB58E)",lime:"linear-gradient(160deg,#F4F8D0,#E4EC90 50%,#C8D870)",cd1:"linear-gradient(110deg,#B8DCEC,#3A85A8)",cd2:"linear-gradient(110deg,#B5DCAE,#7AB58E)",cd3:"linear-gradient(110deg,#EEF4C8,#C8D870)",a:"#3A85A8",a2:"#7AB58E",a3:"#C8D870",warn:"#3A85A8",praca:"#3A85A8",dom:"#7AB58E",osob:"#C8D870",ch:"rgba(58,133,168,0.08)",dv:"rgba(30,58,74,0.08)",inp:"rgba(58,133,168,0.06)",greetC:"#1E5A78",greenC:"#0E3A4A",limeC:"#1A3518",limeTitleC:"#1A3518",cdC:"#0E3A4A",tagC:"#fff",barC:"#fff"};
+const NIGHT={bg:"#1A3548",bgImg:"radial-gradient(900px 700px at 0% 0%,#2A5570 0%,transparent 60%),radial-gradient(800px 600px at 100% 100%,#3A6F7E 0%,transparent 55%),radial-gradient(700px 500px at 100% 0%,#2E6A66 0%,transparent 60%)",ink:"#F0F8FD",is:"#C4DEEC",if:"#8AB0C8",c:"rgba(255,255,255,0.06)",cb:"rgba(200,230,245,0.14)",sh:"0 2px 4px rgba(0,0,0,0.15),0 8px 24px -4px rgba(0,0,0,0.3),0 1px 0 rgba(255,255,255,0.06) inset",hero:"linear-gradient(135deg,#3A7090,#2A5F7A 50%,#1E4458)",grn:"linear-gradient(160deg,#2E6A66,#3A8A7E 50%,#5AA09A)",lime:"linear-gradient(160deg,#5A6A30,#7A8A4A 50%,#9AAE5A)",cd1:"linear-gradient(110deg,#3A7090,#A8D4E8)",cd2:"linear-gradient(110deg,#4A8A8E,#C8E8DC)",cd3:"linear-gradient(110deg,#8A9E5A,#D4DE7A)",a:"#A8D4E8",a2:"#C8E8DC",a3:"#D4DE7A",warn:"#A8D4E8",praca:"#A8D4E8",dom:"#C8E8DC",osob:"#D4DE7A",ch:"rgba(200,230,245,0.10)",dv:"rgba(200,230,245,0.14)",inp:"rgba(200,230,245,0.07)",greetC:"#D4DE7A",greenC:"#D4DE7A",limeC:"#1A3518",limeTitleC:"#D4DE7A",cdC:"#fff",tagC:"#1A3548",barC:"#0E2245"};
+const QQ=["Każdy poranek to nowa strona","Małe kroki tworzą wielkie zmiany","Niech będzie ci dziś lekko","Tatiana, twój czas właśnie się zaczyna","Spokój to supermoce"];
+const ic=c=>c<=1?"☀️":c<=3?"⛅":c<=48?"🌫️":c<=67?"🌧️":c<=82?"🌦️":"⛈️";
+const dn=d=>["nd","pn","wt","śr","cz","pt","sb"][new Date(d).getDay()];
+const gradSh="0 4px 12px rgba(0,0,0,0.1),0 12px 32px -8px rgba(0,0,0,0.18)";
 
-var DATA = {
-  extraction: {
-    title: 'Nach der Zahnentfernung',
-    items: [
-      {flag:'🇩🇪',lang:'Deutsch',native:'Deutsch',file:'nach_zahnentfernung.html',
-       wa:'Liebe/r Patient/in,\nhier finden Sie wichtige Hinweise nach Ihrer Zahnentfernung:\n{link}\nBei Fragen rufen Sie uns an: 07703 284\nIhr FRYDENT-Team 🦷'},
-      {flag:'🇬🇧',lang:'English',native:'English',file:'nach_zahnentfernung_en.html',
-       wa:'Dear Patient,\nhere you will find important information after your tooth extraction:\n{link}\nIf you have any questions, please call: 07703 284\nYour FRYDENT Team 🦷'},
-      {flag:'🇹🇷',lang:'Türkisch',native:'Türkçe',file:'nach_zahnentfernung_tr.html',
-       wa:'Sayın Hastamız,\ndiş çekimi sonrası önemli bilgileri buradan bulabilirsiniz:\n{link}\nSorularınız için bizi arayın: 07703 284\nFRYDENT Ekibi 🦷'},
-      {flag:'🇷🇴',lang:'Rumänisch',native:'Română',file:'nach_zahnentfernung_ro.html',
-       wa:'Stimat(ă) Pacient(ă),\naici găsiți informații importante după extracția dentară:\n{link}\nPentru întrebări sunați-ne: 07703 284\nEchipa FRYDENT 🦷'},
-      {flag:'🇷🇺',lang:'Russisch',native:'Русский',file:'nach_zahnentfernung_ru.html',
-       wa:'Уважаемый(ая) пациент(ка),\nздесь Вы найдёте важную информацию после удаления зуба:\n{link}\nПри вопросах звоните: 07703 284\nВаша команда FRYDENT 🦷'},
-      {flag:'🇵🇱',lang:'Polnisch',native:'Polski',file:'nach_zahnentfernung_pl.html',
-       wa:'Szanowna Pacjentko / Szanowny Pacjencie,\ntutaj znajdą Państwo ważne wskazówki po usunięciu zęba:\n{link}\nW razie pytań proszę dzwonić: 07703 284\nZespół FRYDENT 🦷'},
-      {flag:'🇸🇦',lang:'Arabisch',native:'العربية',file:'nach_zahnentfernung_ar.html',
-       wa:'عزيزي/عزيزتي المريض/ة،\nهنا تجدون معلومات مهمة بعد خلع السن:\n{link}\nللأسئلة اتصلوا بنا: 07703 284\nفريق FRYDENT 🦷'}
-    ]
-  },
-  bleaching: {
-    title: 'Professionelles Zahnbleaching',
-    items: [
-      {flag:'🇩🇪',lang:'Deutsch',native:'Deutsch',file:'bleaching_patienten.html',
-       wa:'Liebe/r Patient/in,\nhier finden Sie alle Informationen zum professionellen Zahnbleaching bei FRYDENT:\n{link}\nWir beraten Sie gerne! 07703 284\nIhr FRYDENT-Team ✨🦷'}
-    ]
-  },
-  veneers: {
-    title: 'Veneers',
-    items: [
-      {flag:'🇩🇪',lang:'Deutsch',native:'Deutsch',file:'veneers_patienten.html',
-       wa:'Liebe/r Patient/in,\nhier finden Sie alle Informationen zu Veneers bei FRYDENT:\n{link}\nWir beraten Sie gerne! 07703 284\nIhr FRYDENT-Team 💎🦷'}
-    ]
-  },
-  kronen: {
-    title: 'Kronen & Brücken',
-    items: [
-      {flag:'🇩🇪',lang:'Deutsch',native:'Deutsch',file:'kronen_bruecken_patienten.html',
-       wa:'Liebe/r Patient/in,\nhier finden Sie alle Informationen zu Kronen und Brücken bei FRYDENT:\n{link}\nWir beraten Sie gerne! 07703 284\nIhr FRYDENT-Team 👑🦷'}
-    ]
-  }
-};
+let night=true,P=NIGHT,wData=null;
+let tasks=[{id:1,t:"F2c-NEW klonen — Schritte 2–6",d:false,c:"praca"},{id:2,t:"DKIM CNAMEs bei Hosteurope",d:false,c:"praca"},{id:3,t:"F2e Brief an Cowork",d:false,c:"praca"},{id:4,t:"Camping Marzamemi",d:false,c:"osob"},{id:5,t:"Podlać kwiatki",d:true,c:"dom"},{id:6,t:"GMI kündigen",d:false,c:"praca"},{id:7,t:"Pakowanie Sycylia",d:true,c:"osob"}];
+let memos=[{id:1,n:"Pomysł na F2e",d:"0:34",t:"14:20"},{id:2,n:"Notatka camping",d:"1:12",t:"11:05"}];
+let notesText="Pomysł: sprawdzić camping Marzamemi\nZadzwonić do Hosteurope ws. DKIM";
+let rec=false,recTimer=null,recEl=0;
 
-var currentTopic = 'extraction';
+setTimeout(()=>{document.getElementById('intro').classList.add('hide');document.getElementById('app').style.display='block';render()},2800);
+fetch("https://api.open-meteo.com/v1/forecast?latitude=47.82&longitude=8.34&current=temperature_2m,weathercode,windspeed_10m&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=Europe/Berlin&forecast_days=6").then(r=>r.json()).then(d=>{wData=d;render()}).catch(()=>{});
+setInterval(()=>{const e=document.getElementById('hTime');if(e){const t=new Date();e.innerHTML=t.toLocaleString("pl-PL",{timeZone:"Europe/Berlin",hour:"2-digit",minute:"2-digit"})+'<span style="font-size:22px;opacity:0.5;margin-left:4px">'+t.toLocaleString("pl-PL",{timeZone:"Europe/Berlin",second:"2-digit"}).slice(-2)+'</span>';document.getElementById('hDate').textContent=t.toLocaleString("pl-PL",{timeZone:"Europe/Berlin",weekday:"long",day:"numeric",month:"long",year:"numeric"})}},1000);
 
-function showTopic(topic, btn) {
-  document.querySelectorAll('.topic-section').forEach(function(s){s.classList.remove('active')});
-  document.querySelectorAll('.topic-btn').forEach(function(b){b.classList.remove('active')});
-  document.getElementById('t-'+topic).classList.add('active');
-  btn.classList.add('active');
-  currentTopic = topic;
-  buildGrid(topic);
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function toggle(){night=!night;P=night?NIGHT:DAY;render()}
+
+function render(){
+const app=document.getElementById('app');
+const t=new Date(),hr=parseInt(t.toLocaleString("de-DE",{timeZone:"Europe/Berlin",hour:"numeric",hour12:false})),
+g=hr<12?"dzień dobry":hr<17?"miłego popołudnia":"dobry wieczór",
+f=o=>t.toLocaleString("pl-PL",{timeZone:"Europe/Berlin",...o}),
+left=Math.max(0,18-hr),
+mp=(t.getDate()*13+3)%30,moon=mp<7?"🌑 nów":mp<14?"🌓 pierwsza kw.":mp<21?"🌕 pełnia":"🌗 ostatnia kw.",
+cc={praca:P.praca,osob:P.osob,dom:P.dom},
+td=new Date();td.setHours(0,0,0,0);
+
+document.body.style.background=P.bg;document.body.style.backgroundImage=P.bgImg;document.body.style.color=P.ink;
+
+// Weather forecast HTML
+let wCurr='<div style="opacity:0.5;margin-top:10px">...</div>';
+let wFore='';
+if(wData&&wData.current){
+wCurr=`<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:10px"><div><div style="font-family:${FD};font-size:76px;line-height:1;color:${P.greenC}">${Math.round(wData.current.temperature_2m)}<sup style="font-size:26px;opacity:0.5">°C</sup></div><div style="font-size:16px;margin-top:5px;font-family:${FD};font-style:italic;color:${P.greenC};opacity:0.7">Bonndorf · ${Math.round(wData.current.windspeed_10m)} km/h</div></div><span style="font-size:44px;opacity:0.8">${ic(wData.current.weathercode)}</span></div>`;
+wFore=wData.daily.time.slice(1,4).map((d,i)=>`<div style="text-align:center;padding:5px 8px;border-radius:8px;border:1px solid rgba(30,90,120,0.1);background:rgba(255,255,255,0.2)"><div style="font-size:11px;font-family:${FD};font-style:italic;color:${P.greenC}">${dn(d)}</div><div style="font-size:18px;margin:2px 0">${ic(wData.daily.weathercode[i+1])}</div><div style="font-size:13px;color:${P.greenC};font-weight:500">${Math.round(wData.daily.temperature_2m_max[i+1])}°</div></div>`).join('');
 }
 
-function buildGrid(topic) {
-  var grid = document.getElementById('grid-'+topic);
-  if (grid.children.length > 0) return; // already built
+// Tasks HTML
+const tasksH=tasks.map(t=>`<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid ${P.dv};opacity:${t.d?0.3:1}"><div onclick="toggleTask(${t.id})" style="width:18px;height:18px;border-radius:50%;border:1.5px solid ${t.d?P.a:P.if};background:${t.d?P.a:'transparent'};cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;flex-shrink:0">${t.d?'✓':''}</div><div style="width:4px;height:14px;border-radius:2px;background:${cc[t.c]};flex-shrink:0"></div><span style="flex:1;font-size:14px;color:${P.ink};text-decoration:${t.d?'line-through':'none'}">${esc(t.t)}</span><span onclick="delTask(${t.id})" style="color:${P.if};cursor:pointer;font-size:13px">×</span></div>`).join('');
 
-  var items = DATA[topic].items;
-  items.forEach(function(item, idx) {
-    var url = BASE + item.file;
-    var waText = item.wa.replace('{link}', url);
+// Reminders
+const rems=[{i:"💊",t:"Wziąć witaminę D",w:"Codziennie · 08:00",tag:"pilne",tc:P.warn},{i:"📧",t:"Mail do Steuerberater",w:"Do piątku",tag:"wkrótce",tc:P.a2},{i:"⚡",t:"Rachunek za prąd",w:"25 maja · 260 €",tag:"wkrótce",tc:P.a2},{i:"🪴",t:"Podlać kwiatki",w:"Jutro rano",tag:"później",tc:P.if}];
+const remsH=rems.map(r=>`<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid ${P.dv}"><span style="font-size:18px">${r.i}</span><div style="flex:1"><div style="font-size:14px;font-weight:400;color:${P.ink}">${r.t}</div><div style="font-size:13px;color:${P.if};font-family:${FD};font-style:italic">${r.w}</div></div><span style="padding:5px 14px;border-radius:14px;font-size:12px;font-weight:500;background:${r.tc};color:${P.tagC}">${r.tag}</span></div>`).join('');
 
-    var card = document.createElement('div');
-    card.className = 'lang-card';
-    card.innerHTML =
-      '<div class="lang-header" onclick="toggleCard(this)">' +
-        '<span class="lang-flag">' + item.flag + '</span>' +
-        '<div><div class="lang-name">' + item.lang + '</div><div class="lang-native">' + item.native + '</div></div>' +
-        '<span class="lang-arrow">▼</span>' +
-      '</div>' +
-      '<div class="lang-body"><div class="lang-body-inner">' +
-        '<div class="qr-box"><div id="qr-' + topic + '-' + idx + '"></div><div class="qr-label">QR-Code scannen = Patienteninfo öffnen</div></div>' +
-        '<div class="wa-preview">' + escapeHtml(waText) + '</div>' +
-        '<div class="actions">' +
-          '<button class="act-btn act-wa" onclick="copyWA(this,\'' + topic + '\',' + idx + ')">📋 WhatsApp-Nachricht kopieren</button>' +
-          '<button class="act-btn act-link" onclick="copyLink(this,\'' + topic + '\',' + idx + ')">🔗 Link kopieren</button>' +
-          '<button class="act-btn act-open" onclick="openLink(\'' + topic + '\',' + idx + ')">↗️ Seite öffnen</button>' +
-        '</div>' +
-      '</div></div>';
+// Invoices
+const invData=[{n:"Offen",c:74,clr:P.a,pct:82.2},{n:"Neu",c:5,clr:P.a2,pct:5.6},{n:"DATEV",c:3,clr:P.a3,pct:3.3},{n:"Klären",c:2,clr:P.warn,pct:2.2},{n:"Geprüft",c:2,clr:P.a2,pct:2.2},{n:"Archiv",c:3,clr:P.if,pct:3.3},{n:"in Arbeit",c:1,clr:P.a3,pct:1.1}];
+let off=0;const segs=invData.map(d=>{const s={...d,offset:off};off+=d.pct;return s});
+const r=44,ci=2*Math.PI*r;
+const circles=segs.map(s=>`<circle cx="60" cy="60" r="${r}" fill="none" stroke="${s.clr}" stroke-width="10" stroke-dasharray="${(s.pct/100)*ci} ${ci-(s.pct/100)*ci}" stroke-dashoffset="${-(s.offset/100)*ci}" transform="rotate(-90 60 60)"/>`).join('');
+const legend=segs.map(s=>`<div style="display:flex;align-items:center;gap:5px"><div style="width:6px;height:6px;border-radius:3px;background:${s.clr}"></div><span style="font-size:12px;color:${P.is};width:52px">${s.n}</span><span style="font-size:12px;font-weight:600;color:${P.ink};font-family:${FM}">${s.c}</span></div>`).join('');
+const months=[{m:"Sty",s:22719},{m:"Lut",s:14460},{m:"Mar",s:8248},{m:"Kwi",s:2423}];
+const monthsH=months.map(m=>`<div style="display:flex;align-items:center;gap:5px;margin-bottom:3px"><span style="width:24px;font-size:12px;color:${P.if};font-family:${FM}">${m.m}</span><div style="flex:1;height:14px;background:${P.ch};border-radius:3px;overflow:hidden"><div style="height:100%;width:${(m.s/22719)*100}%;background:linear-gradient(90deg,${P.a},${P.a2});border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:5px"><span style="font-size:10px;color:${P.barC};font-weight:600">${(m.s/1000).toFixed(1)}k</span></div></div></div>`).join('');
+const topS=[{n:"Unbekannt",c:34,f:1},{n:"Dampsoft",c:7},{n:"Henry Schein",c:6},{n:"Microsoft",c:6},{n:"DentalXL",c:4}];
+const topSH=topS.map(x=>`<div style="display:flex;align-items:center;gap:5px;margin-bottom:3px"><span style="width:80px;font-size:12px;color:${x.f?P.a:P.is};font-weight:${x.f?700:400};overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${x.n}</span><div style="flex:1;height:10px;background:${P.ch};border-radius:3px;overflow:hidden"><div style="height:100%;width:${(x.c/34)*100}%;background:${x.f?P.a:P.a2};border-radius:3px;opacity:0.6"></div></div><span style="font-size:12px;font-family:${FM};font-weight:600;color:${P.ink};width:22px;text-align:right">${x.c}</span></div>`).join('');
+const klaren=[{l:"Dampsoft GmbH",b:"237,99 €",r:"seit 14.01."},{l:"DentalXL",b:"645,54 €",r:"seit 07.01."}];
+const klarenH=klaren.map(k=>`<div style="padding:5px 8px;background:${P.a}10;border-radius:8px;border-left:3px solid ${P.a};margin-bottom:4px"><div style="font-size:13px;font-weight:400;color:${P.ink}">${k.l} — ${k.b}</div><div style="font-size:12px;color:${P.if}">${k.r}</div></div>`).join('');
+const cats=[{n:"Labor",v:13290,c:P.a},{n:"Software",v:5694,c:P.a2},{n:"Marketing",v:1940,c:P.a3},{n:"Steuerberater",v:595,c:P.if}];
+const catsH=cats.map(c=>`<div style="display:flex;align-items:center;gap:5px;margin-bottom:3px"><span style="width:80px;font-size:12px;color:${P.is}">${c.n}</span><div style="flex:1;height:10px;background:${P.ch};border-radius:3px;overflow:hidden"><div style="height:100%;width:${(c.v/13290)*100}%;background:${c.c};border-radius:3px;opacity:0.6"></div></div><span style="font-size:12px;font-family:${FM};color:${P.ink};width:44px;text-align:right">${(c.v/1000).toFixed(1)}k</span></div>`).join('');
+const alerts=["128 dni — najstarsza otwarta rachunku (03.01.2026)","44 rachunki bez kategorii — do uzupełnienia","7× Unbekannt powyżej 500 € (razem 11.908 €)","Microsoft 41,77 € — możliwy duplikat (03.01.)"].map(a=>`<div style="padding:5px 8px;background:${P.a}10;border-radius:8px;border-left:3px solid ${P.a};font-size:12px;color:${P.ink};margin-bottom:4px">${a}</div>`).join('');
 
-    grid.appendChild(card);
+// Countdowns
+const evts=[{n:"Sycylia!",dt:"2026-05-14",i:"🏖️",g:P.cd1},{n:"Powrót",dt:"2026-06-05",i:"🚗",g:P.cd2},{n:"Ślub Nikoliny",dt:"2026-09-10",i:"💒",g:P.cd3}];
+const cdH=evts.map(e=>{const days=Math.ceil((new Date(e.dt)-td)/86400000);return`<div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:${e.g};border-radius:14px;color:${P.cdC};position:relative;overflow:hidden;margin-bottom:6px;box-shadow:${gradSh}"><div style="position:absolute;inset:0;background:radial-gradient(200px 150px at 100% 0%,rgba(255,255,255,0.15),transparent 60%);pointer-events:none"></div><span style="font-size:20px;position:relative">${e.i}</span><div style="flex:1;position:relative"><div style="font-size:14px;font-weight:500">${e.n}</div><div style="font-size:12px;opacity:0.65">${new Date(e.dt).toLocaleDateString("pl-PL",{day:"numeric",month:"long"})}</div></div><div style="text-align:right;position:relative;padding-right:6px"><div style="font-size:32px;font-family:${FD}">${days}</div><div style="font-size:13px;opacity:0.65">dni</div></div></div>`}).join('');
 
-    // Generate QR
-    setTimeout(function(){
-      var qrEl = document.getElementById('qr-' + topic + '-' + idx);
-      if (qrEl && !qrEl.hasChildNodes()) {
-        new QRCode(qrEl, {
-          text: url,
-          width: 160,
-          height: 160,
-          colorDark: '#1a365d',
-          colorLight: '#ffffff',
-          correctLevel: QRCode.CorrectLevel.M
-        });
-      }
-    }, 100);
-  });
+// Flows
+const flows=[{n:"F2a",l:"RE-tf-Direkterfassung",s:"a",i:"Produktiv 02.05."},{n:"F2b",l:"RE-praxis-Erfassung",s:"a",i:"Stabil"},{n:"F2c",l:"RE-office-Erfassung",s:"w",i:"Schritte 2–6"},{n:"F2e",l:"RE-Papier-Erfassung",s:"p",i:"Brief Cowork"},{n:"F4",l:"LABOR-Pipeline",s:"a",i:"Schütz/MDH/Gässler"}];
+const ss={a:{bg:P.a+'15',c:P.a,l:"AKTIV"},w:{bg:P.a3+'25',c:P.a3,l:"IN ARBEIT"},p:{bg:P.ch,c:P.is,l:"GEPLANT"}};
+const flowsH=flows.map(f=>{const s=ss[f.s];return`<div style="display:flex;align-items:center;gap:7px;padding:7px 0;border-bottom:1px solid ${P.dv}"><span style="font-family:${FM};font-size:13px;font-weight:700;color:${P.a};width:32px">${f.n}</span><div style="flex:1"><div style="font-size:13px;font-weight:600;color:${P.ink}">${f.l}</div><div style="font-size:11px;color:${P.if}">${f.i}</div></div><span style="padding:2px 7px;border-radius:12px;font-size:10px;font-weight:700;background:${s.bg};color:${s.c}">${s.l}</span></div>`}).join('');
+
+// Voice memos
+const memosH=memos.map(m=>`<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid ${P.dv}"><div style="width:28px;height:28px;border-radius:8px;background:${P.ch};display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer">▶</div><div style="flex:1"><div style="font-size:13px;font-weight:400;color:${P.ink}">${esc(m.n)}</div><div style="font-size:10px;color:${P.if}">${m.t} · ${m.d}</div></div><span onclick="delMemo(${m.id})" style="color:${P.if};cursor:pointer;font-size:13px">×</span></div>`).join('');
+
+// Lime card links
+const links=["SP Lista","Mein BÜRO","Power Automate","Outlook","Patientenportal","DATEV"].map(l=>`<div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(255,255,255,0.35);border-radius:10px;cursor:pointer;border:1px solid rgba(58,90,42,0.08)"><div style="width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,${P.limeC}aa,${P.limeC}44);flex-shrink:0"></div><span style="font-size:12px;font-weight:400;color:${P.limeC}">${l}</span></div>`).join('');
+
+function mkCard(title,sub,inner){return`<div style="background:${P.c};backdrop-filter:blur(12px);border:1px solid ${P.cb};border-radius:18px;padding:20px 22px;box-shadow:${P.sh}"><div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><div style="width:6px;height:6px;border-radius:50%;background:${P.a}"></div><span style="font-family:${FD};font-size:22px;font-style:italic;color:${P.ink}">${title}</span>${sub?`<span style="font-size:14px;color:${P.if}">${sub}</span>`:''}</div>${inner}</div>`}
+
+app.innerHTML=`
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+<span style="font-size:22px;color:${P.ink}"><span style="font-family:${FB};font-weight:300;letter-spacing:0.04em">frydent</span> <span style="font-family:${FD};font-style:italic;color:${P.a}">dashboard</span></span>
+<button onclick="toggle()" style="padding:6px 18px;border-radius:18px;font-size:12px;font-family:${FD};font-style:italic;border:1px solid ${P.cb};background:${P.ch};color:${P.ink};display:flex;align-items:center;gap:6px">${night?'☀️ tryb dzienny':'🌙 tryb wieczorny'}</button>
+</div>
+
+<div class="anim" style="display:grid;grid-template-columns:7fr 3fr;gap:14px;margin-bottom:14px;animation-delay:0.1s">
+<div style="background:${P.hero};border-radius:22px;padding:34px 38px;color:#fff;display:grid;grid-template-columns:1fr auto;align-items:center;gap:30px;position:relative;overflow:hidden;box-shadow:${gradSh}">
+<div style="position:absolute;inset:0;background:radial-gradient(500px 300px at 100% 0%,rgba(255,255,255,0.15),transparent 55%),radial-gradient(400px 250px at 0% 100%,rgba(255,255,255,0.08),transparent 55%);pointer-events:none"></div>
+<div style="position:relative">
+<div style="font-size:24px;font-family:${FD};font-style:italic;color:${P.greetC};letter-spacing:0.04em">— ${g} —</div>
+<h1 style="font-family:${FD};font-style:italic;font-size:52px;line-height:1.1;margin:12px 0 22px;max-width:16ch;font-weight:400">${QQ[t.getDate()%QQ.length]}</h1>
+<div style="width:40px;height:1px;background:rgba(255,255,255,0.3);margin-bottom:14px"></div>
+<div style="display:flex;gap:24px">
+<div style="padding-left:12px;border-left:1px solid rgba(255,255,255,0.25);display:flex;flex-direction:column;gap:2px"><b style="font-weight:300;font-size:24px;line-height:1">5</b><span style="font-size:10px;opacity:0.7">zadań</span></div>
+<div style="padding-left:12px;border-left:1px solid rgba(255,255,255,0.25);display:flex;flex-direction:column;gap:2px"><b style="font-weight:300;font-size:24px;line-height:1">3</b><span style="font-size:10px;opacity:0.7">spotkania</span></div>
+<div style="padding-left:12px;border-left:1px solid rgba(255,255,255,0.25);display:flex;flex-direction:column;gap:2px"><b style="font-weight:300;font-size:24px;line-height:1">90</b><span style="font-size:10px;opacity:0.7">rachunków</span></div>
+</div></div>
+<div style="position:relative;text-align:right"><div id="hTime" style="font-family:${FD};font-size:64px;line-height:1">${f({hour:"2-digit",minute:"2-digit"})}</div><div id="hDate" style="font-size:13px;opacity:0.7;margin-top:6px;font-family:${FD};font-style:italic">${f({weekday:"long",day:"numeric",month:"long",year:"numeric"})}</div></div>
+</div>
+<div style="display:grid;grid-template-rows:1fr 1fr;gap:14px">
+<div style="background:${P.grn};border-radius:22px;padding:22px 24px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;box-shadow:${gradSh}"><div style="position:absolute;inset:0;background:radial-gradient(350px 220px at 100% 0%,rgba(255,255,255,0.18),transparent 55%);pointer-events:none"></div><div style="position:relative"><div style="font-size:18px;font-family:${FD};font-style:italic;color:${P.greenC};opacity:0.8">— pogoda i dzień —</div>${wCurr}</div><div style="position:relative;display:flex;justify-content:space-between;align-items:flex-end;margin-top:14px;padding-top:12px;border-top:1px solid rgba(30,90,120,0.15)"><div><div style="font-size:15px;color:${P.greenC};opacity:0.6">do końca pracy</div><div style="font-family:${FD};font-size:46px;line-height:1;margin-top:2px;color:${P.greenC}">${left}<small style="font-size:18px;opacity:0.5;font-family:${FB}"> godz.</small></div></div><div style="display:flex;gap:8px">${wFore}</div></div></div>
+<div style="background:${P.lime};border-radius:22px;padding:22px 24px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;box-shadow:${gradSh}"><div style="position:absolute;inset:0;background:radial-gradient(300px 200px at 100% 0%,rgba(255,255,255,0.2),transparent 55%);pointer-events:none"></div><div style="position:relative"><div style="font-size:13px;font-family:${FD};font-style:italic;color:${P.limeTitleC};opacity:0.7">— szybkie linki —</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px">${links}</div></div></div>
+</div></div>
+
+<div class="anim" style="display:grid;grid-template-columns:7fr 5fr;gap:14px;margin-bottom:14px;animation-delay:0.2s">
+${mkCard('zadania','5 otwartych',tasksH+`<div style="display:flex;gap:6px;margin-top:10px"><input id="taskInp" placeholder="dodaj zadanie…" style="flex:1;padding:7px 10px;border-radius:8px;border:1px solid ${P.cb};font-size:13px;outline:none;background:${P.inp};color:${P.ink}" onkeydown="if(event.key==='Enter')addTask()"><button onclick="addTask()" style="padding:7px 12px;border-radius:8px;border:none;background:${P.a};color:#fff;font-weight:600;font-size:13px">+</button></div>`)}
+${mkCard('przypomnienia','',remsH)}
+</div>
+
+<div class="anim" style="display:grid;grid-template-columns:5fr 4fr 3fr;gap:14px;margin-bottom:14px;animation-delay:0.3s">
+${mkCard('rachunki 2026','',`
+<div style="display:flex;gap:6px;margin-bottom:14px">${[{v:"90",l:"Rachunków"},{v:"48,2k€",l:"Brutto"},{v:"34",l:"Unbek.",x:1}].map(k=>`<div style="flex:1;text-align:center;padding:10px 4px;background:${k.x?P.a+'18':P.ch};border-radius:10px"><div style="font-size:18px;font-family:${FD};color:${k.x?P.a:P.ink}">${k.v}</div><div style="font-size:11px;color:${P.is}">${k.l}</div></div>`).join('')}</div>
+<div style="display:flex;align-items:center;gap:14px;margin-bottom:14px"><svg viewBox="0 0 120 120" width="90" height="90">${circles}<text x="60" y="57" text-anchor="middle" style="font-size:16px;fill:${P.ink};font-family:${FD}">90</text><text x="60" y="68" text-anchor="middle" style="font-size:7px;fill:${P.if}">rachunków</text></svg><div style="display:flex;flex-direction:column;gap:1px">${legend}</div></div>
+<div style="font-size:12px;font-weight:600;color:${P.is};margin-bottom:6px;text-transform:uppercase">Miesięcznie</div>${monthsH}
+<div style="font-size:12px;font-weight:600;color:${P.is};margin-top:12px;margin-bottom:6px;text-transform:uppercase">Top dostawcy</div>${topSH}
+<div style="font-size:12px;font-weight:600;color:${P.a};margin-top:12px;margin-bottom:6px;text-transform:uppercase">Do wyjaśnienia</div>${klarenH}
+<div style="font-size:12px;font-weight:600;color:${P.is};margin-top:14px;margin-bottom:6px;text-transform:uppercase">Wg kategorii</div>${catsH}
+<div style="margin-top:14px;display:flex;flex-direction:column;gap:4px">${alerts}</div>
+`)}
+${mkCard('licznik dni','',cdH)}
+${mkCard('notatki','',`<textarea id="notesArea" oninput="notesText=this.value;document.getElementById('notesCnt').textContent=this.value.length+' zn.'" style="width:100%;min-height:80px;padding:12px;border-radius:10px;border:none;background:transparent;font-weight:300;font-size:16px;color:${P.ink};outline:none;resize:vertical;line-height:1.6">${esc(notesText)}</textarea><div style="display:flex;justify-content:space-between;font-size:12px;color:${P.if};margin-top:3px"><span id="notesCnt">${notesText.length} zn.</span><span style="font-family:${FD};font-style:italic">— zapisano —</span></div>`)}
+</div>
+
+<div class="anim" style="display:grid;grid-template-columns:5fr 4fr;gap:14px;animation-delay:0.4s">
+${mkCard('flow monitor','',flowsH)}
+${mkCard('notatki głosowe','',`<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><button onclick="toggleRec()" style="width:44px;height:44px;border-radius:50%;border:2px solid ${rec?P.a:P.a2};background:${rec?P.a+'20':P.ch};display:flex;align-items:center;justify-content:center">${rec?`<div style="width:14px;height:14px;border-radius:3px;background:${P.a}"></div>`:`<div style="width:18px;height:18px;border-radius:50%;background:${P.a2}"></div>`}</button><div><div style="font-size:12px;font-weight:600;color:${rec?P.a:P.ink}">${rec?'Nagrywam...':'Naciśnij, żeby nagrać'}</div>${rec?`<div style="font-family:${FM};font-size:18px;color:${P.a};margin-top:2px">${Math.floor(recEl/60)}:${String(recEl%60).padStart(2,'0')}</div>`:''}</div></div>${memosH}`)}
+</div>
+
+<div style="text-align:center;margin-top:20px;font-size:9px;color:${P.if};font-family:${FD};font-style:italic">FRYDENT · Martinstraße 21 · 79848 Bonndorf · SharePoint "Rechnungen 2026 Tracking"</div>
+`;
 }
 
-function toggleCard(header) {
-  var card = header.parentElement;
-  card.classList.toggle('open');
+function toggleTask(id){tasks=tasks.map(t=>t.id===id?{...t,d:!t.d}:t);render()}
+function delTask(id){tasks=tasks.filter(t=>t.id!==id);render()}
+function addTask(){const inp=document.getElementById('taskInp');if(inp&&inp.value.trim()){tasks.push({id:Date.now(),t:inp.value.trim(),d:false,c:'praca'});render()}}
+function delMemo(id){memos=memos.filter(m=>m.id!==id);render()}
+function toggleRec(){
+if(rec){rec=false;clearInterval(recTimer);memos.unshift({id:Date.now(),n:'Notatka '+(memos.length+1),d:Math.floor(recEl/60)+':'+String(recEl%60).padStart(2,'0'),t:'teraz'});recEl=0;render()}
+else{rec=true;recEl=0;render();recTimer=setInterval(()=>{recEl++;const e=document.querySelector('[data-rec]');if(e)e.textContent=Math.floor(recEl/60)+':'+String(recEl%60).padStart(2,'0')},1000)}
 }
-
-function escapeHtml(text) {
-  return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
-}
-
-function copyWA(btn, topic, idx) {
-  var item = DATA[topic].items[idx];
-  var url = BASE + item.file;
-  var text = item.wa.replace('{link}', url);
-  navigator.clipboard.writeText(text).then(function(){
-    btn.classList.add('copied');
-    btn.innerHTML = '✅ Kopiert!';
-    showToast('WhatsApp-Nachricht kopiert!');
-    setTimeout(function(){
-      btn.classList.remove('copied');
-      btn.innerHTML = '📋 WhatsApp-Nachricht kopieren';
-    }, 2500);
-  });
-}
-
-function copyLink(btn, topic, idx) {
-  var item = DATA[topic].items[idx];
-  var url = BASE + item.file;
-  navigator.clipboard.writeText(url).then(function(){
-    btn.classList.add('copied');
-    btn.innerHTML = '✅ Kopiert!';
-    showToast('Link kopiert!');
-    setTimeout(function(){
-      btn.classList.remove('copied');
-      btn.innerHTML = '🔗 Link kopieren';
-    }, 2500);
-  });
-}
-
-function openLink(topic, idx) {
-  var item = DATA[topic].items[idx];
-  window.open(BASE + item.file, '_blank');
-}
-
-function showToast(msg) {
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 2000);
-}
-
-function printQRs() {
-  var pg = document.getElementById('print-grid');
-  pg.innerHTML = '';
-  var items = DATA[currentTopic].items;
-  var title = DATA[currentTopic].title;
-
-  var header = document.createElement('div');
-  header.style.cssText = 'grid-column:1/-1;text-align:center;padding:1rem 0';
-  header.innerHTML = '<h2 style="font-family:Merriweather,serif;font-size:1.3rem;color:#1a365d">FRYDENT — ' + title + '</h2><p style="color:#718096;font-size:0.85rem">QR-Codes für Patienteninformationen</p>';
-  pg.appendChild(header);
-
-  items.forEach(function(item, idx) {
-    var url = BASE + item.file;
-    var div = document.createElement('div');
-    div.className = 'qr-print-item';
-    div.innerHTML = '<h3>' + item.flag + ' ' + item.lang + '</h3><p>' + item.native + '</p><div id="qr-print-' + currentTopic + '-' + idx + '"></div><div class="print-url">' + url + '</div>';
-    pg.appendChild(div);
-
-    setTimeout(function(){
-      var qrEl = document.getElementById('qr-print-' + currentTopic + '-' + idx);
-      if (qrEl) {
-        new QRCode(qrEl, {
-          text: url,
-          width: 200,
-          height: 200,
-          colorDark: '#1a365d',
-          colorLight: '#ffffff',
-          correctLevel: QRCode.CorrectLevel.M
-        });
-      }
-    }, 100);
-  });
-
-  setTimeout(function(){ window.print(); }, 500);
-}
-
-// Build initial grid
-buildGrid('extraction');
 </script>
-
 </body>
 </html>
