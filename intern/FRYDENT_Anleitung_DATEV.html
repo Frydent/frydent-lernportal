@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -9,186 +8,193 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-–bg: #faf7f2;
-–ink: #1a1a1a;
-–soft: #4a4a4a;
-–faint: #8a8a8a;
-–line: #e8e2d6;
-–paper: #ffffff;
+  --bg: #faf7f2;
+  --ink: #1a1a1a;
+  --soft: #4a4a4a;
+  --faint: #8a8a8a;
+  --line: #e8e2d6;
+  --paper: #ffffff;
 
-–neu: #c75b8a;        –neu-soft: #fbe7f0;
-–gepr: #4a7ba6;       –gepr-soft: #dce9f3;
-–datev: #5b8c5a;      –datev-soft: #e4f0e3;
-–fehler: #c44a4a;     –fehler-soft: #f8e4e4;
-–klaeren: #d08a3c;    –klaeren-soft: #faecd8;
+  --neu: #c75b8a;        --neu-soft: #fbe7f0;
+  --gepr: #4a7ba6;       --gepr-soft: #dce9f3;
+  --datev: #5b8c5a;      --datev-soft: #e4f0e3;
+  --fehler: #c44a4a;     --fehler-soft: #f8e4e4;
+  --klaeren: #d08a3c;    --klaeren-soft: #faecd8;
+  --archiviert: #8a6a8a; --archiviert-soft: #ede2ed;
 }
 
-- { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-font-family: ‘Inter’, sans-serif;
-background: var(–bg);
-color: var(–ink);
-font-size: 15px;
-line-height: 1.55;
-padding: 28px 18px 60px;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.55;
+  padding: 28px 18px 60px;
 }
 .container { max-width: 780px; margin: 0 auto; }
 
 /* Top header */
 .doc-head {
-border-bottom: 2px solid var(–ink);
-padding-bottom: 18px;
-margin-bottom: 22px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 18px;
+  margin-bottom: 22px;
 }
 .doc-head h1 {
-font-family: ‘DM Serif Display’, serif;
-font-size: 34px;
-font-weight: 400;
-letter-spacing: -0.02em;
+  font-family: 'DM Serif Display', serif;
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
-.doc-head .sub { color: var(–soft); font-size: 14px; margin-top: 6px; font-style: italic; }
+.doc-head .sub { color: var(--soft); font-size: 14px; margin-top: 6px; font-style: italic; }
 .doc-head .meta {
-font-family: ‘JetBrains Mono’, monospace;
-font-size: 11px; color: var(–faint); margin-top: 10px;
-text-transform: uppercase; letter-spacing: 0.05em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--faint); margin-top: 10px;
+  text-transform: uppercase; letter-spacing: 0.05em;
 }
 
 /* Nav pills */
 .nav {
-display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px;
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px;
 }
 .nav a {
-text-decoration: none;
-font-family: ‘JetBrains Mono’, monospace;
-font-size: 11px; font-weight: 500;
-padding: 7px 13px; border-radius: 16px;
-text-transform: uppercase; letter-spacing: 0.04em;
-transition: transform .15s ease;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  padding: 7px 13px; border-radius: 16px;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  transition: transform .15s ease;
 }
 .nav a:hover { transform: translateY(-1px); }
-.n-neu { background: var(–neu-soft); color: var(–neu); }
-.n-gepr { background: var(–gepr-soft); color: var(–gepr); }
-.n-datev { background: var(–datev-soft); color: var(–datev); }
-.n-fehler { background: var(–fehler-soft); color: var(–fehler); }
-.n-klaeren { background: var(–klaeren-soft); color: var(–klaeren); }
+.n-neu { background: var(--neu-soft); color: var(--neu); }
+.n-gepr { background: var(--gepr-soft); color: var(--gepr); }
+.n-datev { background: var(--datev-soft); color: var(--datev); }
+.n-fehler { background: var(--fehler-soft); color: var(--fehler); }
+.n-klaeren { background: var(--klaeren-soft); color: var(--klaeren); }
+.n-archiviert { background: var(--archiviert-soft); color: var(--archiviert); }
 
 /* Section */
 .sec { margin-bottom: 40px; scroll-margin-top: 16px; }
 
 .sec-head {
-border-radius: 10px;
-padding: 20px 24px;
-display: flex; align-items: center; gap: 18px;
-margin-bottom: 18px;
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: flex; align-items: center; gap: 18px;
+  margin-bottom: 18px;
 }
 .sec-icon { font-size: 32px; line-height: 1; flex-shrink: 0; }
 .sec-head .kicker {
-font-family: ‘JetBrains Mono’, monospace;
-font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
-font-weight: 600; margin-bottom: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+  font-weight: 600; margin-bottom: 3px;
 }
 .sec-head h2 {
-font-family: ‘DM Serif Display’, serif;
-font-size: 25px; font-weight: 400; line-height: 1.05; color: var(–ink);
+  font-family: 'DM Serif Display', serif;
+  font-size: 25px; font-weight: 400; line-height: 1.05; color: var(--ink);
 }
-.sec-head .tag { font-size: 13px; color: var(–soft); margin-top: 4px; }
+.sec-head .tag { font-size: 13px; color: var(--soft); margin-top: 4px; }
 
-.h-neu { background: linear-gradient(135deg,var(–neu-soft) 0%,var(–paper) 70%); border-left: 6px solid var(–neu); }
-.h-neu .kicker { color: var(–neu); }
-.h-gepr { background: linear-gradient(135deg,var(–gepr-soft) 0%,var(–paper) 70%); border-left: 6px solid var(–gepr); }
-.h-gepr .kicker { color: var(–gepr); }
-.h-datev { background: linear-gradient(135deg,var(–datev-soft) 0%,var(–paper) 70%); border-left: 6px solid var(–datev); }
-.h-datev .kicker { color: var(–datev); }
-.h-fehler { background: linear-gradient(135deg,var(–fehler-soft) 0%,var(–paper) 70%); border-left: 6px solid var(–fehler); }
-.h-fehler .kicker { color: var(–fehler); }
-.h-klaeren { background: linear-gradient(135deg,var(–klaeren-soft) 0%,var(–paper) 70%); border-left: 6px solid var(–klaeren); }
-.h-klaeren .kicker { color: var(–klaeren); }
+.h-neu { background: linear-gradient(135deg,var(--neu-soft) 0%,var(--paper) 70%); border-left: 6px solid var(--neu); }
+.h-neu .kicker { color: var(--neu); }
+.h-gepr { background: linear-gradient(135deg,var(--gepr-soft) 0%,var(--paper) 70%); border-left: 6px solid var(--gepr); }
+.h-gepr .kicker { color: var(--gepr); }
+.h-datev { background: linear-gradient(135deg,var(--datev-soft) 0%,var(--paper) 70%); border-left: 6px solid var(--datev); }
+.h-datev .kicker { color: var(--datev); }
+.h-fehler { background: linear-gradient(135deg,var(--fehler-soft) 0%,var(--paper) 70%); border-left: 6px solid var(--fehler); }
+.h-fehler .kicker { color: var(--fehler); }
+.h-klaeren { background: linear-gradient(135deg,var(--klaeren-soft) 0%,var(--paper) 70%); border-left: 6px solid var(--klaeren); }
+.h-klaeren .kicker { color: var(--klaeren); }
+.h-archiviert { background: linear-gradient(135deg,var(--archiviert-soft) 0%,var(--paper) 70%); border-left: 6px solid var(--archiviert); }
+.h-archiviert .kicker { color: var(--archiviert); }
 
 .meaning {
-background: var(–paper); border: 1px solid var(–line);
-border-radius: 8px; padding: 16px 20px; margin-bottom: 18px;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 8px; padding: 16px 20px; margin-bottom: 18px;
 }
 .meaning .label {
-font-family: ‘JetBrains Mono’, monospace;
-font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
-color: var(–faint); margin-bottom: 7px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--faint); margin-bottom: 7px;
 }
-.meaning p { color: var(–soft); }
+.meaning p { color: var(--soft); }
 
 .steps-label {
-font-family: ‘DM Serif Display’, serif;
-font-size: 18px; margin-bottom: 12px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px; margin-bottom: 12px;
 }
 .step { display: grid; grid-template-columns: 34px 1fr; gap: 14px; margin-bottom: 12px; align-items: start; }
 .step-num {
-width: 30px; height: 30px; border-radius: 50%;
-color: #fff; font-family: ‘DM Serif Display’, serif; font-size: 15px;
-display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: 30px; height: 30px; border-radius: 50%;
+  color: #fff; font-family: 'DM Serif Display', serif; font-size: 15px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
-.step-body { background: var(–paper); border: 1px solid var(–line); border-radius: 8px; padding: 12px 16px; }
+.step-body { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; }
 .step-body strong { font-weight: 600; }
-.step-body .detail { font-size: 13px; color: var(–soft); margin-top: 3px; }
+.step-body .detail { font-size: 13px; color: var(--soft); margin-top: 3px; }
 
 code {
-font-family: ‘JetBrains Mono’, monospace; font-size: 12px;
-padding: 2px 6px; border-radius: 4px; white-space: nowrap;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  padding: 2px 6px; border-radius: 4px; white-space: nowrap;
 }
-.c-neu { background: var(–neu-soft); color: var(–neu); }
-.c-gepr { background: var(–gepr-soft); color: var(–gepr); }
-.c-datev { background: var(–datev-soft); color: var(–datev); }
-.c-fehler { background: var(–fehler-soft); color: var(–fehler); }
-.c-klaeren { background: var(–klaeren-soft); color: var(–klaeren); }
-.num-neu { background: var(–neu); } .num-gepr { background: var(–gepr); }
-.num-datev { background: var(–datev); } .num-fehler { background: var(–fehler); }
-.num-klaeren { background: var(–klaeren); }
+.c-neu { background: var(--neu-soft); color: var(--neu); }
+.c-gepr { background: var(--gepr-soft); color: var(--gepr); }
+.c-datev { background: var(--datev-soft); color: var(--datev); }
+.c-fehler { background: var(--fehler-soft); color: var(--fehler); }
+.c-klaeren { background: var(--klaeren-soft); color: var(--klaeren); }
+.c-archiviert { background: var(--archiviert-soft); color: var(--archiviert); }
+.num-neu { background: var(--neu); } .num-gepr { background: var(--gepr); }
+.num-datev { background: var(--datev); } .num-fehler { background: var(--fehler); }
+.num-klaeren { background: var(--klaeren); }
+.num-archiviert { background: var(--archiviert); }
 
 .warn {
-border-radius: 8px; padding: 14px 18px; margin-top: 16px;
+  border-radius: 8px; padding: 14px 18px; margin-top: 16px;
 }
 .warn .label {
-font-family: ‘JetBrains Mono’, monospace; font-size: 10px;
-text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 5px;
 }
-.warn p { font-size: 13px; color: var(–soft); }
-.w-fehler { background: #fdf3f3; border: 1px dashed var(–fehler); }
-.w-fehler .label { color: var(–fehler); }
-.w-datev { background: #f1f7f0; border: 1px dashed var(–datev); }
-.w-datev .label { color: var(–datev); }
-.w-klaeren { background: #fdf6ec; border: 1px dashed var(–klaeren); }
-.w-klaeren .label { color: var(–klaeren); }
-.w-gepr { background: #f0f5fa; border: 1px dashed var(–gepr); }
-.w-gepr .label { color: var(–gepr); }
-.w-neu { background: #fdeff5; border: 1px dashed var(–neu); }
-.w-neu .label { color: var(–neu); }
+.warn p { font-size: 13px; color: var(--soft); }
+.w-fehler { background: #fdf3f3; border: 1px dashed var(--fehler); }
+.w-fehler .label { color: var(--fehler); }
+.w-datev { background: #f1f7f0; border: 1px dashed var(--datev); }
+.w-datev .label { color: var(--datev); }
+.w-klaeren { background: #fdf6ec; border: 1px dashed var(--klaeren); }
+.w-klaeren .label { color: var(--klaeren); }
+.w-gepr { background: #f0f5fa; border: 1px dashed var(--gepr); }
+.w-gepr .label { color: var(--gepr); }
+.w-neu { background: #fdeff5; border: 1px dashed var(--neu); }
+.w-neu .label { color: var(--neu); }
+.w-archiviert { background: #f3eef3; border: 1px dashed var(--archiviert); }
+.w-archiviert .label { color: var(--archiviert); }
 
 /* PL collapsible */
 details.pl {
-margin-top: 16px; border: 1px solid var(–line); border-radius: 8px;
-background: #fcfaf6; overflow: hidden;
+  margin-top: 16px; border: 1px solid var(--line); border-radius: 8px;
+  background: #fcfaf6; overflow: hidden;
 }
 details.pl summary {
-cursor: pointer; padding: 11px 18px; list-style: none;
-font-family: ‘JetBrains Mono’, monospace; font-size: 11px;
-text-transform: uppercase; letter-spacing: 0.05em; color: var(–faint);
-font-weight: 500;
+  cursor: pointer; padding: 11px 18px; list-style: none;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--faint);
+  font-weight: 500;
 }
 details.pl summary::-webkit-details-marker { display: none; }
-details.pl summary::before { content: ‘🇵🇱  ‘; }
-details.pl summary::after { content: ’  ▾’; }
-details.pl[open] summary::after { content: ’  ▴’; }
-details.pl .pl-body { padding: 4px 18px 16px; font-size: 13px; color: var(–soft); }
-details.pl .pl-body strong { color: var(–ink); }
+details.pl summary::before { content: '🇵🇱  '; }
+details.pl summary::after { content: '  ▾'; }
+details.pl[open] summary::after { content: '  ▴'; }
+details.pl .pl-body { padding: 4px 18px 16px; font-size: 13px; color: var(--soft); }
+details.pl .pl-body strong { color: var(--ink); }
 details.pl .pl-body ol { margin: 6px 0 0 18px; }
 details.pl .pl-body li { margin-bottom: 4px; }
 
 footer {
-margin-top: 40px; padding-top: 16px; border-top: 1px solid var(–line);
-font-family: ‘JetBrains Mono’, monospace; font-size: 11px;
-color: var(–faint); text-align: center; letter-spacing: 0.05em;
+  margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--line);
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--faint); text-align: center; letter-spacing: 0.05em;
 }
 </style>
-
 </head>
 <body>
 <div class="container">
@@ -205,10 +211,10 @@ color: var(–faint); text-align: center; letter-spacing: 0.05em;
     <a class="n-datev" href="#datev">✅ DATEV bestätigt</a>
     <a class="n-fehler" href="#fehler">🔴 DATEV Fehler</a>
     <a class="n-klaeren" href="#klaeren">🟠 Klären</a>
+    <a class="n-archiviert" href="#archiviert">🟣 Archiviert</a>
   </div>
 
   <!-- ============ NEU ============ -->
-
   <section class="sec" id="neu">
     <div class="sec-head h-neu">
       <div class="sec-icon">🌸</div>
@@ -219,33 +225,29 @@ color: var(–faint); text-align: center; letter-spacing: 0.05em;
       </div>
     </div>
 
-```
-<div class="meaning">
-  <div class="label">Was bedeutet das?</div>
-  <p>Ein Erfassungs-Flow (F2a–F2e) hat die Rechnung aus einem Postfach oder Scan in die Liste geschrieben — mit PDF und OCR-Daten. <strong>Neu ist der Wartebereich</strong>: nichts wurde verschickt, nichts ist verbindlich. Hier liegt alles, was du im Freitags-Review durchsiehst.</p>
-</div>
+    <div class="meaning">
+      <div class="label">Was bedeutet das?</div>
+      <p>Ein Erfassungs-Flow (F2a–F2e) hat die Rechnung aus einem Postfach oder Scan in die Liste geschrieben — mit PDF und OCR-Daten. <strong>Neu ist der Wartebereich</strong>: nichts wurde verschickt, nichts ist verbindlich. Hier liegt alles, was du im Freitags-Review durchsiehst.</p>
+    </div>
 
-<div class="steps-label">Was zu tun ist</div>
-<div class="step"><div class="step-num num-neu">1</div><div class="step-body"><strong>Eintrag im Freitags-Review öffnen</strong><div class="detail">Ansicht „1 – Freitags-Review“ zeigt nur die offenen Neu-Einträge.</div></div></div>
-<div class="step"><div class="step-num num-neu">2</div><div class="step-body"><strong>PDF, Lieferant, Betrag und Datum prüfen</strong><div class="detail">Stimmen die OCR-Werte? Ist das PDF lesbar? Kategorie und Bucket korrekt?</div></div></div>
-<div class="step"><div class="step-num num-neu">3</div><div class="step-body"><strong>Entscheiden, wohin der Eintrag geht</strong><div class="detail">Alles korrekt und reif zum Senden → Status <code class="c-datev">DATEV</code>. Korrekt, aber noch zurückhalten → <code class="c-gepr">Geprüft</code>. Etwas fehlt (kein PDF, Unklarheit) → <code class="c-klaeren">Klären</code>.</div></div></div>
+    <div class="steps-label">Was zu tun ist</div>
+    <div class="step"><div class="step-num num-neu">1</div><div class="step-body"><strong>Eintrag im Freitags-Review öffnen</strong><div class="detail">Ansicht „1 – Freitags-Review“ zeigt nur die offenen Neu-Einträge.</div></div></div>
+    <div class="step"><div class="step-num num-neu">2</div><div class="step-body"><strong>PDF, Lieferant, Betrag und Datum prüfen</strong><div class="detail">Stimmen die OCR-Werte? Ist das PDF lesbar? Kategorie und Bucket korrekt?</div></div></div>
+    <div class="step"><div class="step-num num-neu">3</div><div class="step-body"><strong>Entscheiden, wohin der Eintrag geht</strong><div class="detail">Alles korrekt und reif zum Senden → Status <code class="c-datev">DATEV</code>. Korrekt, aber noch zurückhalten → <code class="c-gepr">Geprüft</code>. Etwas fehlt (kein PDF, Unklarheit) → <code class="c-klaeren">Klären</code>.</div></div></div>
 
-<div class="warn w-neu"><div class="label">Hinweis</div><p>Neu heißt nie „erledigt“. Ein Eintrag bleibt sichtbar, bis du ihn aktiv weiterschiebst. Nichts geht von allein an DATEV.</p></div>
+    <div class="warn w-neu"><div class="label">Hinweis</div><p>Neu heißt nie „erledigt“. Ein Eintrag bleibt sichtbar, bis du ihn aktiv weiterschiebst. Nichts geht von allein an DATEV.</p></div>
 
-<details class="pl"><summary>Skrót po polsku</summary><div class="pl-body">
-  <strong>Neu = poczekalnia.</strong> Automat (F2a–F2e) zapisał rachunek z PDF i OCR. Nic nie wysłane, nic wiążącego. To są pozycje do Freitags-Review.
-  <ol>
-    <li>Otwórz w widoku „1 – Freitags-Review“.</li>
-    <li>Sprawdź PDF, dostawcę, kwotę, datę (czy OCR się zgadza).</li>
-    <li>Decyzja: wszystko OK i wysyłam → <strong>DATEV</strong>. OK ale wstrzymuję → <strong>Geprüft</strong>. Czegoś brak → <strong>Klären</strong>.</li>
-  </ol>
-</div></details>
-```
-
+    <details class="pl"><summary>Skrót po polsku</summary><div class="pl-body">
+      <strong>Neu = poczekalnia.</strong> Automat (F2a–F2e) zapisał rachunek z PDF i OCR. Nic nie wysłane, nic wiążącego. To są pozycje do Freitags-Review.
+      <ol>
+        <li>Otwórz w widoku „1 – Freitags-Review“.</li>
+        <li>Sprawdź PDF, dostawcę, kwotę, datę (czy OCR się zgadza).</li>
+        <li>Decyzja: wszystko OK i wysyłam → <strong>DATEV</strong>. OK ale wstrzymuję → <strong>Geprüft</strong>. Czegoś brak → <strong>Klären</strong>.</li>
+      </ol>
+    </div></details>
   </section>
 
   <!-- ============ GEPRÜFT ============ -->
-
   <section class="sec" id="geprueft">
     <div class="sec-head h-gepr">
       <div class="sec-icon">🔵</div>
@@ -256,33 +258,29 @@ color: var(–faint); text-align: center; letter-spacing: 0.05em;
       </div>
     </div>
 
-```
-<div class="meaning">
-  <div class="label">Was bedeutet das?</div>
-  <p>Du hast die Rechnung kontrolliert und für richtig befunden — aber sie soll <strong>noch nicht</strong> an DATEV. Geprüft ist die Warteschleife für Belege, die inhaltlich passen, aber aus einem Grund warten (offene Zahlung, Wochenabschluss, Rückfrage beim Lieferanten noch offen). <strong>Geprüft löst keinen Versand aus.</strong></p>
-</div>
+    <div class="meaning">
+      <div class="label">Was bedeutet das?</div>
+      <p>Du hast die Rechnung kontrolliert und für richtig befunden — aber sie soll <strong>noch nicht</strong> an DATEV. Geprüft ist die Warteschleife für Belege, die inhaltlich passen, aber aus einem Grund warten (offene Zahlung, Wochenabschluss, Rückfrage beim Lieferanten noch offen). <strong>Geprüft löst keinen Versand aus.</strong></p>
+    </div>
 
-<div class="steps-label">Was zu tun ist</div>
-<div class="step"><div class="step-num num-gepr">1</div><div class="step-body"><strong>Kurz vermerken, warum es wartet</strong><div class="detail">Ein Wort im Notiz-Feld genügt — z. B. „wartet auf Zahlung“ — damit später klar ist, warum der Beleg liegt.</div></div></div>
-<div class="step"><div class="step-num num-gepr">2</div><div class="step-body"><strong>Wenn der Grund wegfällt: Status auf <code class="c-datev">DATEV</code></strong><div class="detail">Sobald nichts mehr dagegenspricht, Status auf DATEV setzen — F3a sendet dann automatisch.</div></div></div>
-<div class="step"><div class="step-num num-gepr">3</div><div class="step-body"><strong>Geprüft-Einträge regelmäßig durchgehen</strong><div class="detail">Beim Freitags-Review auch die Geprüft-Liege prüfen, damit nichts dauerhaft hängenbleibt.</div></div></div>
+    <div class="steps-label">Was zu tun ist</div>
+    <div class="step"><div class="step-num num-gepr">1</div><div class="step-body"><strong>Kurz vermerken, warum es wartet</strong><div class="detail">Ein Wort im Notiz-Feld genügt — z. B. „wartet auf Zahlung“ — damit später klar ist, warum der Beleg liegt.</div></div></div>
+    <div class="step"><div class="step-num num-gepr">2</div><div class="step-body"><strong>Wenn der Grund wegfällt: Status auf <code class="c-datev">DATEV</code></strong><div class="detail">Sobald nichts mehr dagegenspricht, Status auf DATEV setzen — F3a sendet dann automatisch.</div></div></div>
+    <div class="step"><div class="step-num num-gepr">3</div><div class="step-body"><strong>Geprüft-Einträge regelmäßig durchgehen</strong><div class="detail">Beim Freitags-Review auch die Geprüft-Liege prüfen, damit nichts dauerhaft hängenbleibt.</div></div></div>
 
-<div class="warn w-gepr"><div class="label">Unterschied zu „Neu“</div><p>Neu = noch nicht angesehen. Geprüft = angesehen und für gut befunden, aber bewusst geparkt. Der Unterschied ist Absicht, nicht Zufall.</p></div>
+    <div class="warn w-gepr"><div class="label">Unterschied zu „Neu“</div><p>Neu = noch nicht angesehen. Geprüft = angesehen und für gut befunden, aber bewusst geparkt. Der Unterschied ist Absicht, nicht Zufall.</p></div>
 
-<details class="pl"><summary>Skrót po polsku</summary><div class="pl-body">
-  <strong>Geprüft = sprawdzone, ale świadomie wstrzymane.</strong> Rachunek jest OK, ale jeszcze go nie wysyłasz (czekasz na płatność, koniec tygodnia, odpowiedź dostawcy). Ten status NIE wysyła do DATEV.
-  <ol>
-    <li>Dopisz w Notiz krótko, dlaczego czeka (np. „czeka na płatność“).</li>
-    <li>Gdy powód znika → ustaw <strong>DATEV</strong>, F3a wyśle automatycznie.</li>
-    <li>Przeglądaj listę Geprüft regularnie, żeby nic nie utknęło na stałe.</li>
-  </ol>
-</div></details>
-```
-
+    <details class="pl"><summary>Skrót po polsku</summary><div class="pl-body">
+      <strong>Geprüft = sprawdzone, ale świadomie wstrzymane.</strong> Rachunek jest OK, ale jeszcze go nie wysyłasz (czekasz na płatność, koniec tygodnia, odpowiedź dostawcy). Ten status NIE wysyła do DATEV.
+      <ol>
+        <li>Dopisz w Notiz krótko, dlaczego czeka (np. „czeka na płatność“).</li>
+        <li>Gdy powód znika → ustaw <strong>DATEV</strong>, F3a wyśle automatycznie.</li>
+        <li>Przeglądaj listę Geprüft regularnie, żeby nic nie utknęło na stałe.</li>
+      </ol>
+    </div></details>
   </section>
 
   <!-- ============ DATEV BESTÄTIGT ============ -->
-
   <section class="sec" id="datev">
     <div class="sec-head h-datev">
       <div class="sec-icon">✅</div>
@@ -293,31 +291,27 @@ color: var(–faint); text-align: center; letter-spacing: 0.05em;
       </div>
     </div>
 
-```
-<div class="meaning">
-  <div class="label">Was bedeutet das?</div>
-  <p>Du hast den Status auf DATEV gesetzt, F3a hat die PDF an <code class="c-datev">uploadmail.datev.de</code> gesendet, und F3c hat die Bestätigung („AW: …“) zurückgemeldet. <strong>Der Beleg liegt im rechtlichen Archiv (DATEV Unternehmen online).</strong> Das ist der Normal- und Endzustand jeder Rechnung.</p>
-</div>
+    <div class="meaning">
+      <div class="label">Was bedeutet das?</div>
+      <p>Du hast den Status auf DATEV gesetzt, F3a hat die PDF an <code class="c-datev">uploadmail.datev.de</code> gesendet, und F3c hat die Bestätigung („AW: …“) zurückgemeldet. <strong>Der Beleg liegt im rechtlichen Archiv (DATEV Unternehmen online).</strong> Das ist der Normal- und Endzustand jeder Rechnung.</p>
+    </div>
 
-<div class="steps-label">Was zu tun ist</div>
-<div class="step"><div class="step-num num-datev">1</div><div class="step-body"><strong>Nichts — der Beleg ist fertig</strong><div class="detail">Kein weiterer Schritt nötig. Der Eintrag darf in der Liste bleiben oder auf <code class="c-datev">Archiviert</code> gesetzt werden, wenn du aufräumst.</div></div></div>
-<div class="step"><div class="step-num num-datev">2</div><div class="step-body"><strong>Nur beim Monatsaudit (5. des Monats)</strong><div class="detail">Stichprobe: liegt der Beleg auch wirklich in DATEV UO? SP-Liste gegen DATEV-Belegübersicht abgleichen.</div></div></div>
+    <div class="steps-label">Was zu tun ist</div>
+    <div class="step"><div class="step-num num-datev">1</div><div class="step-body"><strong>Nichts — der Beleg ist fertig</strong><div class="detail">Kein weiterer Schritt nötig. Der Eintrag darf in der Liste bleiben oder auf <code class="c-datev">Archiviert</code> gesetzt werden, wenn du aufräumst.</div></div></div>
+    <div class="step"><div class="step-num num-datev">2</div><div class="step-body"><strong>Nur beim Monatsaudit (5. des Monats)</strong><div class="detail">Stichprobe: liegt der Beleg auch wirklich in DATEV UO? SP-Liste gegen DATEV-Belegübersicht abgleichen.</div></div></div>
 
-<div class="warn w-datev"><div class="label">Gut zu wissen</div><p>„DATEV bestätigt“ ist die einzige verlässliche Bestätigung, dass der Beleg angekommen ist. Erst dieser grüne Status zählt — nicht das bloße Absenden.</p></div>
+    <div class="warn w-datev"><div class="label">Gut zu wissen</div><p>„DATEV bestätigt“ ist die einzige verlässliche Bestätigung, dass der Beleg angekommen ist. Erst dieser grüne Status zählt — nicht das bloße Absenden.</p></div>
 
-<details class="pl"><summary>Skrót po polsku</summary><div class="pl-body">
-  <strong>DATEV bestätigt = w archiwum, gotowe.</strong> Ustawiłaś DATEV, F3a wysłał PDF, F3c odebrał potwierdzenie „AW:“. Rachunek leży w DATEV Unternehmen online (archiwum prawne). To stan końcowy.
-  <ol>
-    <li>Nic nie robisz — gotowe.</li>
-    <li>Tylko przy audycie 5. dnia miesiąca: sprawdź wyrywkowo, czy faktycznie jest w DATEV UO.</li>
-  </ol>
-</div></details>
-```
-
+    <details class="pl"><summary>Skrót po polsku</summary><div class="pl-body">
+      <strong>DATEV bestätigt = w archiwum, gotowe.</strong> Ustawiłaś DATEV, F3a wysłał PDF, F3c odebrał potwierdzenie „AW:“. Rachunek leży w DATEV Unternehmen online (archiwum prawne). To stan końcowy.
+      <ol>
+        <li>Nic nie robisz — gotowe.</li>
+        <li>Tylko przy audycie 5. dnia miesiąca: sprawdź wyrywkowo, czy faktycznie jest w DATEV UO.</li>
+      </ol>
+    </div></details>
   </section>
 
   <!-- ============ FEHLER ============ -->
-
   <section class="sec" id="fehler">
     <div class="sec-head h-fehler">
       <div class="sec-icon">🔴</div>
@@ -328,38 +322,34 @@ color: var(–faint); text-align: center; letter-spacing: 0.05em;
       </div>
     </div>
 
-```
-<div class="meaning">
-  <div class="label">Was bedeutet das?</div>
-  <p>Beim Versand ging etwas schief. Den genauen Grund nennt das <strong>Notiz-Feld</strong> — bitte zuerst dort hineinsehen. Zwei Fälle sind möglich: (A) F3a konnte die PDF nicht aus SharePoint laden, oder (B) DATEV hat den Anhang per Antwort-Mail abgelehnt und F3b hat das gemeldet.</p>
-</div>
+    <div class="meaning">
+      <div class="label">Was bedeutet das?</div>
+      <p>Beim Versand ging etwas schief. Den genauen Grund nennt das <strong>Notiz-Feld</strong> — bitte zuerst dort hineinsehen. Zwei Fälle sind möglich: (A) F3a konnte die PDF nicht aus SharePoint laden, oder (B) DATEV hat den Anhang per Antwort-Mail abgelehnt und F3b hat das gemeldet.</p>
+    </div>
 
-<div class="steps-label">Szenario A — PDF-Download fehlgeschlagen</div>
-<div class="step"><div class="step-num num-fehler">1</div><div class="step-body"><strong>Notiz beginnt mit „⚠️ FEHLER PDF Download“</strong><div class="detail">F3a kam nicht an die Datei. Ursache meist: PDF verschoben/gelöscht oder kaputter Link in der PDF-Spalte.</div></div></div>
-<div class="step"><div class="step-num num-fehler">2</div><div class="step-body"><strong>PDF-Feld prüfen und Link reparieren</strong><div class="detail">PDF in „04. Rechnungen“ bzw. „05. LABORRECHNUNGEN“ neu suchen, vollständige URL (inkl. https://) ins PDF-Feld setzen.</div></div></div>
-<div class="step"><div class="step-num num-fehler">3</div><div class="step-body"><strong>Status zurück auf <code class="c-datev">DATEV</code></strong><div class="detail">F3a startet beim nächsten Lauf (binnen ~5 Min.) erneut. Datei dauerhaft weg → Status <code class="c-klaeren">Klären</code>, neue Rechnung beim Lieferanten anfordern.</div></div></div>
+    <div class="steps-label">Szenario A — PDF-Download fehlgeschlagen</div>
+    <div class="step"><div class="step-num num-fehler">1</div><div class="step-body"><strong>Notiz beginnt mit „⚠️ FEHLER PDF Download“</strong><div class="detail">F3a kam nicht an die Datei. Ursache meist: PDF verschoben/gelöscht oder kaputter Link in der PDF-Spalte.</div></div></div>
+    <div class="step"><div class="step-num num-fehler">2</div><div class="step-body"><strong>PDF-Feld prüfen und Link reparieren</strong><div class="detail">PDF in „04. Rechnungen“ bzw. „05. LABORRECHNUNGEN“ neu suchen, vollständige URL (inkl. https://) ins PDF-Feld setzen.</div></div></div>
+    <div class="step"><div class="step-num num-fehler">3</div><div class="step-body"><strong>Status zurück auf <code class="c-datev">DATEV</code></strong><div class="detail">F3a startet beim nächsten Lauf (binnen ~5 Min.) erneut. Datei dauerhaft weg → Status <code class="c-klaeren">Klären</code>, neue Rechnung beim Lieferanten anfordern.</div></div></div>
 
-<div class="steps-label" style="margin-top:18px;">Szenario B — DATEV-Rückläufer</div>
-<div class="step"><div class="step-num num-fehler">1</div><div class="step-body"><strong>Notiz beginnt mit „⚠️ DATEV Rückläufer“</strong><div class="detail">DATEV hat per Mail von noreply@uploadmail.datev.de abgelehnt. Häufigster Grund: Anhang ist keine PDF/TIFF (XRechnung, Word, Excel, ZIP).</div></div></div>
-<div class="step"><div class="step-num num-fehler">2</div><div class="step-body"><strong>Reject-Mail lesen (Ordner DATEV in tf@)</strong><div class="detail">Subject „Fehler beim Hochladen AW: …“. Der Body nennt den genauen Grund.</div></div></div>
-<div class="step"><div class="step-num num-fehler">3</div><div class="step-body"><strong>Echte PDF besorgen, hochladen, erneut <code class="c-datev">DATEV</code></strong><div class="detail">Falsches Format → beim Lieferanten PDF anfordern oder umwandeln. Neue PDF in SharePoint, PDF-Feld aktualisieren, Status auf DATEV.</div></div></div>
+    <div class="steps-label" style="margin-top:18px;">Szenario B — DATEV-Rückläufer</div>
+    <div class="step"><div class="step-num num-fehler">1</div><div class="step-body"><strong>Notiz beginnt mit „⚠️ DATEV Rückläufer“</strong><div class="detail">DATEV hat per Mail von noreply@uploadmail.datev.de abgelehnt. Häufigster Grund: Anhang ist keine PDF/TIFF (XRechnung, Word, Excel, ZIP).</div></div></div>
+    <div class="step"><div class="step-num num-fehler">2</div><div class="step-body"><strong>Reject-Mail lesen (Ordner DATEV in tf@)</strong><div class="detail">Subject „Fehler beim Hochladen AW: …“. Der Body nennt den genauen Grund.</div></div></div>
+    <div class="step"><div class="step-num num-fehler">3</div><div class="step-body"><strong>Echte PDF besorgen, hochladen, erneut <code class="c-datev">DATEV</code></strong><div class="detail">Falsches Format → beim Lieferanten PDF anfordern oder umwandeln. Neue PDF in SharePoint, PDF-Feld aktualisieren, Status auf DATEV.</div></div></div>
 
-<div class="warn w-fehler"><div class="label">⚠ Wichtig</div><p>Einen roten Beleg nie einfach auf „Archiviert“ setzen, solange er nicht wirklich in DATEV liegt — sonst fehlt er bei der Betriebsprüfung. Bei Zweifeln, ob die Rechnung überhaupt korrekt ist (Lieferant, Betrag): erst <code class="c-klaeren">Klären</code>, dann DATEV.</p></div>
+    <div class="warn w-fehler"><div class="label">⚠ Wichtig</div><p>Einen roten Beleg nie einfach auf „Archiviert“ setzen, solange er nicht wirklich in DATEV liegt — sonst fehlt er bei der Betriebsprüfung. Bei Zweifeln, ob die Rechnung überhaupt korrekt ist (Lieferant, Betrag): erst <code class="c-klaeren">Klären</code>, dann DATEV.</p></div>
 
-<details class="pl"><summary>Skrót po polsku</summary><div class="pl-body">
-  <strong>DATEV Fehler = odrzucony, nie ma go w archiwum.</strong> Powód jest w polu Notiz — sprawdź najpierw.
-  <ol>
-    <li><strong>Scenariusz A</strong> („FEHLER PDF Download“): F3a nie pobrał pliku. Napraw link w polu PDF → status z powrotem na DATEV. Plik zaginął na stałe → Klären.</li>
-    <li><strong>Scenariusz B</strong> („DATEV Rückläufer“): DATEV odrzucił załącznik (zły format, np. XRechnung/Word/ZIP). Przeczytaj mail „Fehler beim Hochladen AW:“, zdobądź prawdziwy PDF, wgraj, status na DATEV.</li>
-    <li>Czerwonego nigdy nie ustawiaj na „Archiviert“ bez realnego wgrania do DATEV.</li>
-  </ol>
-</div></details>
-```
-
+    <details class="pl"><summary>Skrót po polsku</summary><div class="pl-body">
+      <strong>DATEV Fehler = odrzucony, nie ma go w archiwum.</strong> Powód jest w polu Notiz — sprawdź najpierw.
+      <ol>
+        <li><strong>Scenariusz A</strong> („FEHLER PDF Download“): F3a nie pobrał pliku. Napraw link w polu PDF → status z powrotem na DATEV. Plik zaginął na stałe → Klären.</li>
+        <li><strong>Scenariusz B</strong> („DATEV Rückläufer“): DATEV odrzucił załącznik (zły format, np. XRechnung/Word/ZIP). Przeczytaj mail „Fehler beim Hochladen AW:“, zdobądź prawdziwy PDF, wgraj, status na DATEV.</li>
+        <li>Czerwonego nigdy nie ustawiaj na „Archiviert“ bez realnego wgrania do DATEV.</li>
+      </ol>
+    </div></details>
   </section>
 
   <!-- ============ KLÄREN ============ -->
-
   <section class="sec" id="klaeren">
     <div class="sec-head h-klaeren">
       <div class="sec-icon">🟠</div>
@@ -370,31 +360,59 @@ color: var(–faint); text-align: center; letter-spacing: 0.05em;
       </div>
     </div>
 
-```
-<div class="meaning">
-  <div class="label">Was bedeutet das?</div>
-  <p>Klären ist reserviert für Belege, die <strong>nicht automatisch verarbeitet werden konnten</strong> — fast immer, weil kein verwertbares PDF da ist: die Rechnung steckt nur als Portal-Link, im Mail-Text oder in einer ZIP-Datei. Der Eintrag wartet darauf, dass du das PDF von Hand beschaffst.</p>
-</div>
+    <div class="meaning">
+      <div class="label">Was bedeutet das?</div>
+      <p>Klären ist reserviert für Belege, die <strong>nicht automatisch verarbeitet werden konnten</strong> — fast immer, weil kein verwertbares PDF da ist: die Rechnung steckt nur als Portal-Link, im Mail-Text oder in einer ZIP-Datei. Der Eintrag wartet darauf, dass du das PDF von Hand beschaffst.</p>
+    </div>
 
-<div class="steps-label">Was zu tun ist</div>
-<div class="step"><div class="step-num num-klaeren">1</div><div class="step-body"><strong>Notiz lesen — was fehlt genau?</strong><div class="detail">Dort steht der Hinweis, z. B. „KEIN PDF – Portal-Link“ oder „PDF in ZIP“.</div></div></div>
-<div class="step"><div class="step-num num-klaeren">2</div><div class="step-body"><strong>Über Mail-EML-Link die Original-Mail öffnen</strong><div class="detail">Spalte Mail-EML (blau) führt dauerhaft zur Mail — auch wenn sie längst verschoben wurde.</div></div></div>
-<div class="step"><div class="step-num num-klaeren">3</div><div class="step-body"><strong>PDF beschaffen</strong><div class="detail">Portal-Link → einloggen, Rechnung als PDF herunterladen. ZIP → entpacken. Nur im Mail-Text → als PDF drucken/speichern.</div></div></div>
-<div class="step"><div class="step-num num-klaeren">4</div><div class="step-body"><strong>PDF in den Ordner <code class="c-klaeren">_Papierscans</code> ablegen</strong><div class="detail">F2e erfasst es automatisch als neuen Eintrag mit Status <code class="c-neu">Neu</code> — dann läuft es den normalen Weg. Den alten Klären-Eintrag auf <code>Archiviert</code> setzen.</div></div></div>
+    <div class="steps-label">Was zu tun ist</div>
+    <div class="step"><div class="step-num num-klaeren">1</div><div class="step-body"><strong>Notiz lesen — was fehlt genau?</strong><div class="detail">Dort steht der Hinweis, z. B. „KEIN PDF – Portal-Link“ oder „PDF in ZIP“.</div></div></div>
+    <div class="step"><div class="step-num num-klaeren">2</div><div class="step-body"><strong>Über Mail-EML-Link die Original-Mail öffnen</strong><div class="detail">Spalte Mail-EML (blau) führt dauerhaft zur Mail — auch wenn sie längst verschoben wurde.</div></div></div>
+    <div class="step"><div class="step-num num-klaeren">3</div><div class="step-body"><strong>PDF beschaffen</strong><div class="detail">Portal-Link → einloggen, Rechnung als PDF herunterladen. ZIP → entpacken. Nur im Mail-Text → als PDF drucken/speichern.</div></div></div>
+    <div class="step"><div class="step-num num-klaeren">4</div><div class="step-body"><strong>PDF in den Ordner <code class="c-klaeren">_Papierscans</code> ablegen</strong><div class="detail">F2e erfasst es automatisch als neuen Eintrag mit Status <code class="c-neu">Neu</code> — dann läuft es den normalen Weg. Den alten Klären-Eintrag auf <code>Archiviert</code> setzen.</div></div></div>
 
-<div class="warn w-klaeren"><div class="label">Faustregel</div><p>Klären = „hier muss ein Mensch ran“. Sobald ein echtes PDF existiert, gehört der Beleg nicht mehr in Klären, sondern zurück in den Automaten (über _Papierscans → Neu).</p></div>
+    <div class="warn w-klaeren"><div class="label">Faustregel</div><p>Klären = „hier muss ein Mensch ran“. Sobald ein echtes PDF existiert, gehört der Beleg nicht mehr in Klären, sondern zurück in den Automaten (über _Papierscans → Neu).</p></div>
 
-<details class="pl"><summary>Skrót po polsku</summary><div class="pl-body">
-  <strong>Klären = brakuje czegoś, najczęściej PDF.</strong> Rachunek przyszedł jako link do portalu, w treści maila albo w ZIP-ie. Czeka, aż ręcznie zdobędziesz PDF.
-  <ol>
-    <li>Przeczytaj Notiz — co brakuje.</li>
-    <li>Otwórz oryginał przez link Mail-EML (niebieski, trwały).</li>
-    <li>Zdobądź PDF: portal → pobierz, ZIP → rozpakuj, treść → wydrukuj do PDF.</li>
-    <li>Wrzuć PDF do folderu <strong>_Papierscans</strong> → F2e złapie jako Neu. Stary wpis Klären → Archiviert.</li>
-  </ol>
-</div></details>
-```
+    <details class="pl"><summary>Skrót po polsku</summary><div class="pl-body">
+      <strong>Klären = brakuje czegoś, najczęściej PDF.</strong> Rachunek przyszedł jako link do portalu, w treści maila albo w ZIP-ie. Czeka, aż ręcznie zdobędziesz PDF.
+      <ol>
+        <li>Przeczytaj Notiz — co brakuje.</li>
+        <li>Otwórz oryginał przez link Mail-EML (niebieski, trwały).</li>
+        <li>Zdobądź PDF: portal → pobierz, ZIP → rozpakuj, treść → wydrukuj do PDF.</li>
+        <li>Wrzuć PDF do folderu <strong>_Papierscans</strong> → F2e złapie jako Neu. Stary wpis Klären → Archiviert.</li>
+      </ol>
+    </div></details>
+  </section>
 
+  <!-- ============ ARCHIVIERT ============ -->
+  <section class="sec" id="archiviert">
+    <div class="sec-head h-archiviert">
+      <div class="sec-icon">🟣</div>
+      <div>
+        <div class="kicker">Status · Archiviert</div>
+        <h2>Abgeschlossen und abgelegt</h2>
+        <div class="tag">Endgültig erledigt — der Vorgang ist zu.</div>
+      </div>
+    </div>
+
+    <div class="meaning">
+      <div class="label">Was bedeutet das?</div>
+      <p>Archiviert ist der endgültige Schlusszustand. Der Beleg ist in DATEV bestätigt <strong>und</strong> bewusst aus dem aktiven Arbeitsbereich genommen — er taucht in den täglichen Ansichten nicht mehr auf. Im Unterschied zu „DATEV bestätigt“ (frisch angekommen, noch im Blick) heißt Archiviert: <strong>vollständig abgeschlossen, nichts steht mehr offen.</strong></p>
+    </div>
+
+    <div class="steps-label">Was zu tun ist</div>
+    <div class="step"><div class="step-num num-archiviert">1</div><div class="step-body"><strong>Nichts — der Vorgang ist abgeschlossen</strong><div class="detail">Archiviert ist ein Endzustand. Der Eintrag bleibt als Nachweis in der Liste, verschwindet aber aus den Arbeits-Ansichten.</div></div></div>
+    <div class="step"><div class="step-num num-archiviert">2</div><div class="step-body"><strong>Nur bei einer Rückfrage wieder öffnen</strong><div class="detail">Falls ein archivierter Beleg doch noch einmal bearbeitet werden muss (Korrektur, Prüfung), Status zurück auf <code class="c-datev">DATEV</code> oder <code class="c-klaeren">Klären</code> setzen — je nachdem, was zu tun ist.</div></div></div>
+
+    <div class="warn w-archiviert"><div class="label">Abgrenzung</div><p>„DATEV bestätigt“ = gerade angekommen, noch sichtbar. „Archiviert“ = endgültig weggelegt. Erst archivieren, wenn der Beleg wirklich fertig ist und nicht mehr im täglichen Blick sein muss.</p></div>
+
+    <details class="pl"><summary>Skrót po polsku</summary><div class="pl-body">
+      <strong>Archiviert = zamknięte i odłożone.</strong> Rachunek jest potwierdzony w DATEV i świadomie zdjęty z aktywnego obszaru — znika z codziennych widoków. To stan końcowy.
+      <ol>
+        <li>Nic nie robisz — sprawa zamknięta.</li>
+        <li>Tylko gdy trzeba coś poprawić: status z powrotem na DATEV lub Klären.</li>
+      </ol>
+    </div></details>
   </section>
 
   <footer>
