@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nach dem Eingriff – FRYDENT Patienteninformationen</title>
 <link rel="icon" href="favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--blue:#3D5A98;--blue-dark:#2C4170;--blue-darker:#1E2D4D;--blue-light:#E8EEF7;--gold:#E2C26A;--gold-light:#F8F0DC;--gold-dark:#C4A44E;--white:#FFFFFF;--gray-50:#F7F8FA;--gray-100:#F0F2F5;--gray-200:#E4E6EB;--gray-400:#B0B3B8;--gray-600:#6B7280;--gray-800:#1F2937;--radius:14px;--radius-sm:8px}
@@ -63,7 +63,8 @@ footer a{color:var(--blue);text-decoration:none}
 .section{animation:fadeUp .5s ease both}
 @media(max-width:640px){.hero h1{font-size:1.3rem}.cards-grid{grid-template-columns:1fr}.sidebar{display:none}.mobile-bar{display:flex!important}}
 </style>
-<style>.fd-home{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1.5px solid #37538E;border-radius:10px;color:#37538E !important;font-weight:700;font-size:14px;letter-spacing:.5px;text-decoration:none;font-family:Quicksand,'Plus Jakarta Sans',sans-serif;flex:none;padding:0}.fd-home:hover{background:#37538E;color:#fff !important}@media(max-width:520px){.fd-home{width:32px;height:32px;font-size:12.5px;border-radius:9px}}</style></head>
+<style>.fd-home{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1.5px solid #37538E;border-radius:10px;color:#37538E !important;font-weight:700;font-size:14px;letter-spacing:.5px;text-decoration:none;font-family:Quicksand,'Plus Jakarta Sans',sans-serif;flex:none;padding:0}.fd-home:hover{background:#37538E;color:#fff !important}@media(max-width:520px){.fd-home{width:32px;height:32px;font-size:12.5px;border-radius:9px}}</style><link rel="stylesheet" href="assets/fonts/fonts.css">
+</head>
 <body>
 <header>
   <div class="header-inner">
@@ -121,13 +122,13 @@ footer a{color:var(--blue);text-decoration:none}
 </footer>
 <script>
 var langs=[
-  {code:"de",suffix:"",    flag:"https://flagcdn.com/w40/de.png",label:"DE"},
-  {code:"en",suffix:"_en", flag:"https://flagcdn.com/w40/gb.png",label:"EN"},
-  {code:"pl",suffix:"_pl", flag:"https://flagcdn.com/w40/pl.png",label:"PL"},
-  {code:"tr",suffix:"_tr", flag:"https://flagcdn.com/w40/tr.png",label:"TR"},
-  {code:"ar",suffix:"_ar", flag:"https://flagcdn.com/w40/sa.png",label:"AR"},
-  {code:"ru",suffix:"_ru", flag:"https://flagcdn.com/w40/ru.png",label:"RU"},
-  {code:"ro",suffix:"_ro", flag:"https://flagcdn.com/w40/ro.png",label:"RO"}
+  {code:"de",suffix:"",    flag:"assets/flags/de.png",label:"DE"},
+  {code:"en",suffix:"_en", flag:"assets/flags/gb.png",label:"EN"},
+  {code:"pl",suffix:"_pl", flag:"assets/flags/pl.png",label:"PL"},
+  {code:"tr",suffix:"_tr", flag:"assets/flags/tr.png",label:"TR"},
+  {code:"ar",suffix:"_ar", flag:"assets/flags/sa.png",label:"AR"},
+  {code:"ru",suffix:"_ru", flag:"assets/flags/ru.png",label:"RU"},
+  {code:"ro",suffix:"_ro", flag:"assets/flags/ro.png",label:"RO"}
 ];
 var keys=["nach_zahnentfernung","nach_bleaching","nach_betaeubung","nach_fuellung","nach_wurzelbehandlung","nach_pa_behandlung","nach_kronen_bruecken"];
 var colors=[

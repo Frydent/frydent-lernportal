@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Kinderecke – FRYDENT Patienteninformationen</title>
 <link rel="icon" href="favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -93,8 +93,9 @@ footer a{color:var(--sage-dark);text-decoration:none}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:600px){.hero h1{font-size:2.2rem}.hero-zaehni{width:160px}.hero-zaehni img{width:160px}.sidebar{display:none}.mobile-bar{display:flex!important}}
 @keyframes heroFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(1deg)}}</style>
-    <script src="https://dr-flex.de/embed.js?medicalPracticeId=60190"></script>
-<style>.fd-home{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1.5px solid #37538E;border-radius:10px;color:#37538E !important;font-weight:700;font-size:14px;letter-spacing:.5px;text-decoration:none;font-family:Quicksand,'Plus Jakarta Sans',sans-serif;flex:none;padding:0}.fd-home:hover{background:#37538E;color:#fff !important}@media(max-width:520px){.fd-home{width:32px;height:32px;font-size:12.5px;border-radius:9px}}</style></head>
+<style>.fd-home{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1.5px solid #37538E;border-radius:10px;color:#37538E !important;font-weight:700;font-size:14px;letter-spacing:.5px;text-decoration:none;font-family:Quicksand,'Plus Jakarta Sans',sans-serif;flex:none;padding:0}.fd-home:hover{background:#37538E;color:#fff !important}@media(max-width:520px){.fd-home{width:32px;height:32px;font-size:12.5px;border-radius:9px}}</style><link rel="stylesheet" href="assets/fonts/fonts.css">
+<script src="consent.js"></script>
+</head>
 <body>
 <header>
   <div class="header-inner">
@@ -151,13 +152,13 @@ footer a{color:var(--sage-dark);text-decoration:none}
 </footer>
 <script>
 var langs=[
-  {code:"de",suffix:"",    flag:"https://flagcdn.com/w40/de.png",label:"DE"},
-  {code:"en",suffix:"_en", flag:"https://flagcdn.com/w40/gb.png",label:"EN"},
-  {code:"pl",suffix:"_pl", flag:"https://flagcdn.com/w40/pl.png",label:"PL"},
-  {code:"tr",suffix:"_tr", flag:"https://flagcdn.com/w40/tr.png",label:"TR"},
-  {code:"ar",suffix:"_ar", flag:"https://flagcdn.com/w40/sa.png",label:"AR"},
-  {code:"ru",suffix:"_ru", flag:"https://flagcdn.com/w40/ru.png",label:"RU"},
-  {code:"ro",suffix:"_ro", flag:"https://flagcdn.com/w40/ro.png",label:"RO"}
+  {code:"de",suffix:"",    flag:"assets/flags/de.png",label:"DE"},
+  {code:"en",suffix:"_en", flag:"assets/flags/gb.png",label:"EN"},
+  {code:"pl",suffix:"_pl", flag:"assets/flags/pl.png",label:"PL"},
+  {code:"tr",suffix:"_tr", flag:"assets/flags/tr.png",label:"TR"},
+  {code:"ar",suffix:"_ar", flag:"assets/flags/sa.png",label:"AR"},
+  {code:"ru",suffix:"_ru", flag:"assets/flags/ru.png",label:"RU"},
+  {code:"ro",suffix:"_ro", flag:"assets/flags/ro.png",label:"RO"}
 ];
 var i18n={
   de:{h:"Hallo! Ich bin <span>Z\u00e4hni</span>",s:"W\u00e4hle deine Sprache und dann deinen Bereich!",l:"Bereich w\u00e4hlen",
