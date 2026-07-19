@@ -41,16 +41,19 @@
         main{max-width:720px;margin:0 auto;padding:2rem 1.5rem 3rem}
 
         /* STATUS BANNER */
-        .status-banner{border-radius:var(--radius);padding:.9rem 1.5rem;display:flex;align-items:flex-start;gap:14px;margin-bottom:2rem}
+        .status-banner{border-radius:var(--radius);padding:.7rem 1.5rem;display:flex;align-items:flex-start;gap:14px;margin-bottom:2rem}
         .status-banner.open{background:#EEF6EA;border:1px solid #c3ddb8}
         .status-banner.closed{background:#FEF2F2;border:1px solid #FBC5C5}
-        .status-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:6px;animation:pulse 2s infinite}
+        .status-banner.pause{background:#FDF6E7;border:1px solid #EFD9A6}
+        .status-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:calc((1.06rem * 1.35 - 12px) / 2);animation:pulse 2s infinite}
         .status-banner.open .status-dot{background:#6B9E5B}
         .status-banner.closed .status-dot{background:var(--red)}
+        .status-banner.pause .status-dot{background:#C4A44E}
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
         .status-text h2{font-size:1.06rem;font-weight:700;line-height:1.35}
         .status-banner.open .status-text h2{color:#3d6b32}
         .status-banner.closed .status-text h2{color:var(--red-dark)}
+        .status-banner.pause .status-text h2{color:#8A6D1F}
         .status-text p{font-size:.87rem;color:var(--gray-600);line-height:1.4}
 
         /* SECTION TITLE */
@@ -662,10 +665,15 @@
         var laterToday = false;
         for(var i=0;i<slots.length;i++){ if(slots[i][0] > mins){ laterToday = true; break; } }
 
+        /* echte Mittagspause nur, wenn ein Block heute bereits vorbei ist
+           und ein weiterer noch folgt; vor dem ersten Block ist es keine Pause */
+        var earlierToday = false;
+        for(var i=0;i<slots.length;i++){ if(slots[i][1] <= mins){ earlierToday = true; break; } }
+
         var nxt = nextOpening(dow, mins);
-        if(laterToday && slots.length > 1){
+        if(laterToday && earlierToday){
             setState('pause', 'Gerade in der Mittagspause', nxt);
-        } else if(laterToday){
+        } else if(laterToday && mins >= 420){
             setState('pause', 'Wir öffnen später', nxt);
         } else {
             setState('closed', 'Unsere Praxis ist geschlossen', nxt || 'Bitte beachten Sie unsere Sprechzeiten');

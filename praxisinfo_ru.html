@@ -41,16 +41,19 @@
         main{max-width:720px;margin:0 auto;padding:2rem 1.5rem 3rem}
 
         /* STATUS BANNER */
-        .status-banner{border-radius:var(--radius);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:14px;margin-bottom:2rem}
+        .status-banner{border-radius:var(--radius);padding:.7rem 1.5rem;display:flex;align-items:flex-start;gap:14px;margin-bottom:2rem}
         .status-banner.open{background:#EEF6EA;border:1px solid #c3ddb8}
         .status-banner.closed{background:var(--red-light);border:1px solid #fca5a5}
-        .status-dot{width:12px;height:12px;flex-shrink:0;animation:pulse 2s infinite}
+        .status-banner.pause{background:#FDF6E7;border:1px solid #EFD9A6}
+        .status-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:calc((1.06rem * 1.35 - 12px) / 2);animation:pulse 2s infinite}
         .status-banner.open .status-dot{background:#6B9E5B}
         .status-banner.closed .status-dot{background:var(--red)}
+        .status-banner.pause .status-dot{background:#C4A44E}
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-        .status-text h2{font-size:1rem;font-weight:700}
+        .status-text h2{font-size:1.06rem;font-weight:700;line-height:1.35}
         .status-banner.open .status-text h2{color:#3d6b32}
         .status-banner.closed .status-text h2{color:var(--red-dark)}
+        .status-banner.pause .status-text h2{color:#8A6D1F}
         .status-text p{font-size:.84rem;color:var(--gray-600)}
 
         /* SECTION TITLE */
@@ -546,6 +549,82 @@
             if(ec&&today>eE)ec.style.display='none';
         }
         if(on){if(today>=eS&&today<=eE)on.style.display='block';else on.style.display='none';}
+    })();
+    </script>
+
+    <script>
+    (function(){
+        /* FRYDENT Praxis-Status - Pflege nur in hours und closures */
+        var hours = {
+            1: [[480,720],[840,1140]],
+            2: [[480,720],[840,1140]],
+            3: [[480,750]],
+            4: [[480,720],[840,1140]],
+            5: [[480,750]],
+            6: [],
+            0: []
+        };
+        var closures = [];
+        var T = {"open": "Наша клиника открыта", "closed": "Клиника закрыта", "pause": "Сейчас обеденный перерыв", "later": "Мы откроемся позже", "today": "Сегодня до {t}", "againToday": "Сегодня снова с {t}", "tomorrow": "Завтра снова с {t}", "again": "Снова в {d}, {dt}, с {t}", "fallback": "Пожалуйста, посмотрите часы приёма", "days": ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"], "uhr": ""};
+
+        function pad(n){ return (n<10?'0':'')+n; }
+        function fmt(m){ return pad(Math.floor(m/60))+':'+pad(m%60); }
+        function toLocal(d){ return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+
+        var now = new Date(), today = toLocal(now);
+        var mins = now.getHours()*60 + now.getMinutes(), dow = now.getDay();
+
+        var banner = document.querySelector('.status-banner');
+        if(!banner) return;
+        var h2 = banner.querySelector('.status-text h2');
+        var p  = banner.querySelector('.status-text p');
+
+        function setState(cls, title, text){
+            banner.classList.remove('open','closed','pause');
+            banner.classList.add(cls);
+            h2.textContent = title;
+            p.textContent  = text;
+        }
+        function isClosed(d){
+            for(var k=0;k<closures.length;k++){
+                if(d >= new Date(closures[k].from+'T00:00:00') && d <= new Date(closures[k].to+'T23:59:59')) return true;
+            }
+            return false;
+        }
+        function nextOpening(afterMin){
+            for(var d=0; d<14; d++){
+                var probe = new Date(today.getTime() + d*86400000);
+                if(isClosed(probe)) continue;
+                var sl = hours[probe.getDay()] || [];
+                for(var i=0;i<sl.length;i++){
+                    if(d===0 && sl[i][0] <= afterMin) continue;
+                    if(d===0) return T.againToday.replace('{t}', fmt(sl[i][0]));
+                    if(d===1) return T.tomorrow.replace('{t}', fmt(sl[i][0]));
+                    return T.again.replace('{d}', T.days[probe.getDay()])
+                                  .replace('{dt}', pad(probe.getDate())+'.'+pad(probe.getMonth()+1)+'.')
+                                  .replace('{t}', fmt(sl[i][0]));
+                }
+            }
+            return '';
+        }
+
+        if(isClosed(today)){ setState('closed', T.closed, ''); return; }
+
+        var slots = hours[dow] || [], openNow = false, end = null;
+        for(var i=0;i<slots.length;i++){
+            if(mins >= slots[i][0] && mins < slots[i][1]){ openNow = true; end = slots[i][1]; break; }
+        }
+        if(openNow){ setState('open', T.open, T.today.replace('{t}', fmt(end))); return; }
+
+        var later = false, earlier = false;
+        for(var i=0;i<slots.length;i++){
+            if(slots[i][0] > mins) later = true;
+            if(slots[i][1] <= mins) earlier = true;
+        }
+        var nxt = nextOpening(mins);
+        if(later && earlier){ setState('pause', T.pause, nxt); }
+        else if(later && mins >= 420){ setState('pause', T.later, nxt); }
+        else { setState('closed', T.closed, nxt || T.fallback); }
     })();
     </script>
 </body>
