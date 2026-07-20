@@ -583,7 +583,8 @@
             banner.classList.remove('open','closed','pause');
             banner.classList.add(cls);
             h2.textContent = title;
-            p.textContent  = text;
+            p.textContent  = text || '';
+            p.style.display = text ? '' : 'none';
         }
         function isClosed(d){
             for(var k=0;k<closures.length;k++){
@@ -614,7 +615,7 @@
         for(var i=0;i<slots.length;i++){
             if(mins >= slots[i][0] && mins < slots[i][1]){ openNow = true; end = slots[i][1]; break; }
         }
-        if(openNow){ setState('open', T.open, T.today.replace('{t}', fmt(end))); return; }
+        if(openNow){ setState('open', T.open, ''); return; }
 
         var later = false, earlier = false;
         for(var i=0;i<slots.length;i++){

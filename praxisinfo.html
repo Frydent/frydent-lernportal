@@ -612,7 +612,8 @@
             banner.classList.remove('open','closed','pause');
             banner.classList.add(cls);
             h2.textContent = title;
-            p.textContent  = text;
+            p.textContent  = text || '';
+            p.style.display = text ? '' : 'none';
         }
 
         /* naechste Oeffnung suchen, bis zu 14 Tage voraus */
@@ -657,7 +658,7 @@
         }
 
         if(openNow){
-            setState('open', 'Unsere Praxis ist geöffnet', 'Heute noch bis '+fmt(currentEnd)+' für Sie da');
+            setState('open', 'Unsere Praxis ist geöffnet', '');
             return;
         }
 
