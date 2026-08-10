@@ -4,13 +4,113 @@
    Einbinden im <head>:  <script src="consent.js"></script>
    Das Dr.-Flex-Skript darf NICHT direkt eingebunden werden,
    es wird ausschliesslich hier nach Einwilligung nachgeladen.
+
+   Die Texte richten sich nach dem lang-Attribut der Seite.
+   Fehlt eine Sprache, wird Deutsch benutzt; der Dialog kann
+   dadurch nie leer bleiben.
 */
 (function () {
   'use strict';
 
   var KEY      = 'frydent-consent';       // 'all' | 'none'
   var DRFLEX   = 'https://dr-flex.de/embed.js?medicalPracticeId=60190';
+  var BASIS    = 'https://info.frydent.de/';
+  var TELEFON  = '07703 284';
   var C = { navy:'#2C4170', blue:'#37538E', gold:'#C4A44E', paper:'#F2EFE8', ink:'#3A4256', line:'#C9CEDB' };
+
+  /* ---------- Sprachtexte ---------- */
+  var I18N = {
+    de: {
+      titel:'Datenschutzhinweis',
+      start:'Unsere Website funktioniert ohne Tracking und ohne Werbe-Cookies. Für die <b>Online-Terminbuchung</b> binden wir jedoch einen externen Dienst ein (Dr. Flex). Dabei wird Ihre IP-Adresse an dessen Server übertragen, deshalb fragen wir Sie vorher.',
+      buchung:'Für die Online-Terminbuchung binden wir den Kalender unseres Dienstleisters <b>Dr. Flex</b> ein. Dabei wird Ihre IP-Adresse an dessen Server übertragen. Um den Kalender zu öffnen, benötigen wir Ihre Einwilligung.',
+      aendern:'Hier können Sie Ihre Entscheidung jederzeit ändern. Unsere Website funktioniert ohne Tracking und ohne Werbe-Cookies. Nur für die <b>Online-Terminbuchung</b> binden wir einen externen Dienst ein (Dr. Flex), dabei wird Ihre IP-Adresse an dessen Server übertragen.',
+      optKopf:'Notwendige Funktionen sind immer aktiv',
+      optLabel:'Externe Komponenten laden',
+      optHinweis:'Online-Terminkalender (Dr. Flex). Ohne Einwilligung erreichen Sie uns weiterhin telefonisch unter {tel} oder per Kontaktformular.',
+      alles:'Alles erlauben', speichern:'Auswahl speichern', ablehnen:'Alles ablehnen',
+      datenschutz:'Datenschutz', impressum:'Impressum',
+      einstellungen:'Datenschutz-Einstellungen'
+    },
+    en: {
+      titel:'Privacy notice',
+      start:'Our website works without tracking and without advertising cookies. For <b>online appointment booking</b>, however, we embed an external service (Dr. Flex). This transfers your IP address to their server, which is why we ask you beforehand.',
+      buchung:'For online appointment booking we embed the calendar of our service provider <b>Dr. Flex</b>. This transfers your IP address to their server. We need your consent to open the calendar.',
+      aendern:'You can change your decision here at any time. Our website works without tracking and without advertising cookies. Only for <b>online appointment booking</b> do we embed an external service (Dr. Flex), which transfers your IP address to their server.',
+      optKopf:'Essential functions are always active',
+      optLabel:'Load external components',
+      optHinweis:'Online appointment calendar (Dr. Flex). Without consent you can still reach us by phone on {tel} or via the contact form.',
+      alles:'Allow all', speichern:'Save selection', ablehnen:'Reject all',
+      datenschutz:'Privacy policy', impressum:'Legal notice',
+      einstellungen:'Privacy settings'
+    },
+    pl: {
+      titel:'Informacja o ochronie danych',
+      start:'Nasza strona działa bez śledzenia i bez reklamowych plików cookie. Do <b>rezerwacji wizyt online</b> osadzamy jednak zewnętrzną usługę (Dr. Flex). Państwa adres IP zostaje wtedy przekazany na jej serwer, dlatego pytamy wcześniej.',
+      buchung:'Do rezerwacji wizyt online osadzamy kalendarz naszego usługodawcy <b>Dr. Flex</b>. Państwa adres IP zostaje przekazany na jego serwer. Do otwarcia kalendarza potrzebujemy Państwa zgody.',
+      aendern:'Tutaj mogą Państwo w każdej chwili zmienić swoją decyzję. Nasza strona działa bez śledzenia i bez reklamowych plików cookie. Zewnętrzną usługę (Dr. Flex) osadzamy wyłącznie na potrzeby <b>rezerwacji wizyt online</b>, przekazywany jest wtedy Państwa adres IP.',
+      optKopf:'Funkcje niezbędne są zawsze aktywne',
+      optLabel:'Ładuj komponenty zewnętrzne',
+      optHinweis:'Kalendarz wizyt online (Dr. Flex). Bez zgody nadal mogą Państwo skontaktować się z nami telefonicznie pod numerem {tel} lub przez formularz kontaktowy.',
+      alles:'Zezwól na wszystko', speichern:'Zapisz wybór', ablehnen:'Odrzuć wszystko',
+      datenschutz:'Polityka prywatności', impressum:'Impressum',
+      einstellungen:'Ustawienia prywatności'
+    },
+    ro: {
+      titel:'Informare privind protecția datelor',
+      start:'Site-ul nostru funcționează fără urmărire și fără cookie-uri publicitare. Pentru <b>programarea online</b> integrăm însă un serviciu extern (Dr. Flex). Adresa dumneavoastră IP este transmisă către serverul acestuia, de aceea vă întrebăm în prealabil.',
+      buchung:'Pentru programarea online integrăm calendarul furnizorului nostru <b>Dr. Flex</b>. Adresa dumneavoastră IP este transmisă către serverul acestuia. Pentru a deschide calendarul avem nevoie de acordul dumneavoastră.',
+      aendern:'Aici vă puteți modifica oricând decizia. Site-ul nostru funcționează fără urmărire și fără cookie-uri publicitare. Doar pentru <b>programarea online</b> integrăm un serviciu extern (Dr. Flex), care primește adresa dumneavoastră IP.',
+      optKopf:'Funcțiile necesare sunt întotdeauna active',
+      optLabel:'Încarcă componente externe',
+      optHinweis:'Calendar de programări online (Dr. Flex). Fără acord ne puteți contacta în continuare telefonic la {tel} sau prin formularul de contact.',
+      alles:'Permite tot', speichern:'Salvează selecția', ablehnen:'Respinge tot',
+      datenschutz:'Confidențialitate', impressum:'Mențiuni legale',
+      einstellungen:'Setări de confidențialitate'
+    },
+    ru: {
+      titel:'Уведомление о защите данных',
+      start:'Наш сайт работает без отслеживания и без рекламных файлов cookie. Однако для <b>онлайн-записи на приём</b> мы подключаем внешний сервис (Dr. Flex). При этом ваш IP-адрес передаётся на его сервер, поэтому мы спрашиваем вас заранее.',
+      buchung:'Для онлайн-записи на приём мы подключаем календарь нашего поставщика услуг <b>Dr. Flex</b>. При этом ваш IP-адрес передаётся на его сервер. Чтобы открыть календарь, нам необходимо ваше согласие.',
+      aendern:'Здесь вы можете в любой момент изменить своё решение. Наш сайт работает без отслеживания и без рекламных файлов cookie. Внешний сервис (Dr. Flex) подключается только для <b>онлайн-записи на приём</b>, при этом передаётся ваш IP-адрес.',
+      optKopf:'Необходимые функции активны всегда',
+      optLabel:'Загружать внешние компоненты',
+      optHinweis:'Онлайн-календарь записи (Dr. Flex). Без согласия вы по-прежнему можете связаться с нами по телефону {tel} или через контактную форму.',
+      alles:'Разрешить всё', speichern:'Сохранить выбор', ablehnen:'Отклонить всё',
+      datenschutz:'Конфиденциальность', impressum:'Юридическая информация',
+      einstellungen:'Настройки конфиденциальности'
+    },
+    tr: {
+      titel:'Veri koruma bilgilendirmesi',
+      start:'Web sitemiz takip ve reklam çerezleri olmadan çalışır. Ancak <b>çevrimiçi randevu</b> için harici bir hizmet (Dr. Flex) kullanıyoruz. Bu sırada IP adresiniz bu hizmetin sunucusuna aktarılır, bu nedenle size önceden soruyoruz.',
+      buchung:'Çevrimiçi randevu için hizmet sağlayıcımız <b>Dr. Flex</b>’in takvimini kullanıyoruz. Bu sırada IP adresiniz sunucusuna aktarılır. Takvimi açmak için onayınıza ihtiyacımız var.',
+      aendern:'Kararınızı buradan istediğiniz zaman değiştirebilirsiniz. Web sitemiz takip ve reklam çerezleri olmadan çalışır. Harici hizmeti (Dr. Flex) yalnızca <b>çevrimiçi randevu</b> için kullanıyoruz, bu sırada IP adresiniz aktarılır.',
+      optKopf:'Gerekli işlevler her zaman etkindir',
+      optLabel:'Harici bileşenleri yükle',
+      optHinweis:'Çevrimiçi randevu takvimi (Dr. Flex). Onay vermeseniz de bize {tel} numaralı telefondan veya iletişim formu üzerinden ulaşabilirsiniz.',
+      alles:'Tümüne izin ver', speichern:'Seçimi kaydet', ablehnen:'Tümünü reddet',
+      datenschutz:'Gizlilik politikası', impressum:'Yasal bilgiler',
+      einstellungen:'Gizlilik ayarları'
+    },
+    ar: {
+      titel:'إشعار حماية البيانات',
+      start:'يعمل موقعنا دون تتبّع ودون ملفات تعريف ارتباط إعلانية. لكن من أجل <b>حجز المواعيد عبر الإنترنت</b> ندمج خدمة خارجية (Dr. Flex). عندئذ يُنقل عنوان IP الخاص بكم إلى خادمها، لذلك نسألكم مسبقاً.',
+      buchung:'من أجل حجز المواعيد عبر الإنترنت ندمج تقويم مزوّد الخدمة <b>Dr. Flex</b>. عندئذ يُنقل عنوان IP الخاص بكم إلى خادمه. لفتح التقويم نحتاج إلى موافقتكم.',
+      aendern:'يمكنكم تغيير قراركم هنا في أي وقت. يعمل موقعنا دون تتبّع ودون ملفات تعريف ارتباط إعلانية. لا ندمج الخدمة الخارجية (Dr. Flex) إلا من أجل <b>حجز المواعيد عبر الإنترنت</b>، وعندئذ يُنقل عنوان IP الخاص بكم.',
+      optKopf:'الوظائف الضرورية مفعّلة دائماً',
+      optLabel:'تحميل المكوّنات الخارجية',
+      optHinweis:'تقويم المواعيد عبر الإنترنت (Dr. Flex). بدون موافقة يمكنكم الوصول إلينا هاتفياً على {tel} أو عبر نموذج الاتصال.',
+      alles:'السماح بالكل', speichern:'حفظ الاختيار', ablehnen:'رفض الكل',
+      datenschutz:'سياسة الخصوصية', impressum:'البيانات القانونية',
+      einstellungen:'إعدادات الخصوصية'
+    }
+  };
+
+  var lang = (document.documentElement.getAttribute('lang') || 'de').slice(0, 2).toLowerCase();
+  if (!I18N[lang]) { lang = 'de'; }
+  var T = I18N[lang];
+
+  function seite(name) { return BASIS + name + (lang === 'de' ? '' : '_' + lang) + '.html'; }
 
   function get()  { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
   function save(v){ try { localStorage.setItem(KEY, v); } catch (e) {} }
@@ -94,33 +194,30 @@
   function dialog(modus) {
     if (open) { return; }
     open = true;
-    var booking  = modus === 'buchung';
+    var booking   = modus === 'buchung';
     var aenderung = modus === 'einstellungen';
     css();
     var ov = document.createElement('div');
     ov.className = 'fc-ov';
+    ov.setAttribute('dir', document.documentElement.getAttribute('dir') || (lang === 'ar' ? 'rtl' : 'ltr'));
     ov.innerHTML =
       '<div class="fc-box" role="dialog" aria-modal="true" aria-labelledby="fc-t" tabindex="-1">' +
-        '<h2 id="fc-t">Datenschutzhinweis</h2>' +
-        (booking
-          ? '<p>Für die Online-Terminbuchung binden wir den Kalender unseres Dienstleisters <b>Dr. Flex</b> ein. Dabei wird Ihre IP-Adresse an dessen Server übertragen. Um den Kalender zu öffnen, benötigen wir Ihre Einwilligung.</p>'
-          : aenderung
-          ? '<p>Hier können Sie Ihre Entscheidung jederzeit ändern. Unsere Website funktioniert ohne Tracking und ohne Werbe-Cookies. Nur für die <b>Online-Terminbuchung</b> binden wir einen externen Dienst ein (Dr. Flex), dabei wird Ihre IP-Adresse an dessen Server übertragen.</p>'
-          : '<p>Unsere Website funktioniert ohne Tracking und ohne Werbe-Cookies. Für die <b>Online-Terminbuchung</b> binden wir jedoch einen externen Dienst ein (Dr. Flex). Dabei wird Ihre IP-Adresse an dessen Server übertragen, deshalb fragen wir Sie vorher.</p>') +
+        '<h2 id="fc-t">' + T.titel + '</h2>' +
+        '<p>' + (booking ? T.buchung : aenderung ? T.aendern : T.start) + '</p>' +
         '<div class="fc-opt">' +
-          '<b>Notwendige Funktionen sind immer aktiv</b>' +
+          '<b>' + T.optKopf + '</b>' +
           '<label><input type="checkbox" id="fc-ext">' +
-            '<span>Externe Komponenten laden' +
-              '<small>Online-Terminkalender (Dr. Flex). Ohne Einwilligung erreichen Sie uns weiterhin telefonisch unter 07703 284 oder per Kontaktformular.</small>' +
+            '<span>' + T.optLabel +
+              '<small>' + T.optHinweis.replace('{tel}', TELEFON) + '</small>' +
             '</span>' +
           '</label>' +
         '</div>' +
-        '<button type="button" class="fc-btn fc-all" id="fc-yes">Alles erlauben</button>' +
-        '<button type="button" class="fc-btn fc-save" id="fc-save">Auswahl speichern</button>' +
-        '<button type="button" class="fc-btn fc-none" id="fc-no">Alles ablehnen</button>' +
+        '<button type="button" class="fc-btn fc-all" id="fc-yes">' + T.alles + '</button>' +
+        '<button type="button" class="fc-btn fc-save" id="fc-save">' + T.speichern + '</button>' +
+        '<button type="button" class="fc-btn fc-none" id="fc-no">' + T.ablehnen + '</button>' +
         '<div class="fc-links">' +
-          '<a href="https://info.frydent.de/datenschutz.html" target="_blank" rel="noopener">Datenschutz</a>·' +
-          '<a href="https://info.frydent.de/impressum.html" target="_blank" rel="noopener">Impressum</a>' +
+          '<a href="' + seite('datenschutz') + '" target="_blank" rel="noopener">' + T.datenschutz + '</a>·' +
+          '<a href="' + seite('impressum') + '" target="_blank" rel="noopener">' + T.impressum + '</a>' +
         '</div>' +
       '</div>';
     document.body.appendChild(ov);
@@ -143,6 +240,7 @@
         }, 250);
       });
     }
+
     /* Wird eine bereits erteilte Einwilligung zurueckgezogen, ist der
        Dr.-Flex-Code in dieser Seite schon geladen. Ein Neuaufbau der Seite
        ist der einzige ehrliche Weg, ihn wieder loszuwerden. */
@@ -221,7 +319,7 @@
     var a = document.createElement('a');
     a.id = 'fc-settings';
     a.href = '#';
-    a.textContent = 'Datenschutz-Einstellungen';
+    a.textContent = T.einstellungen;
     a.setAttribute('role', 'button');
     if (ziel.className) { a.className = ziel.className; }
     if (ziel.getAttribute('style')) { a.setAttribute('style', ziel.getAttribute('style')); }
