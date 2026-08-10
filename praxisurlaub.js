@@ -229,6 +229,40 @@ window.FRYDENT_URLAUB = {
     return out;
   }
 
+  /* ---------- Reihenfolge der Bloecke je nach Phase ----------
+     Vor dem Urlaub ist die Praxis offen. Wichtigste Information sind
+     die Sprechzeiten, der Urlaub ist eine Vorankuendigung und steht
+     direkt darunter, damit Patienten noch rechtzeitig einen Termin
+     machen koennen.
+
+       Status · Sprechzeiten · Urlaub · Notdienst
+
+     Waehrend des Urlaubs ist die Praxis geschlossen. Dann zaehlt nur
+     noch, wer vertritt und ab wann wir wieder da sind. Der Urlaubsblock
+     rutscht nach ganz oben, darunter der Notdienst fuer akute Faelle,
+     die reguleren Sprechzeiten zuletzt.
+
+       Status · Urlaub · Notdienst · Sprechzeiten
+  */
+  function sortieren(block) {
+    var hours = document.querySelector('.hours');
+    var notdienst = document.querySelector('.notdienst');
+    if (!hours || !notdienst || !block.parentNode) { return; }
+
+    /* Ueberschrift der Sprechzeiten gehoert zum Block dazu */
+    var kopf = hours.previousElementSibling;
+    var start = (kopf && kopf.className && kopf.className.indexOf('section-title') > -1) ? kopf : hours;
+
+    var imUrlaub = heute >= von && heute <= bis;
+
+    if (imUrlaub) {
+      start.parentNode.insertBefore(block, start);
+      block.parentNode.insertBefore(notdienst, block.nextSibling);
+    } else {
+      notdienst.parentNode.insertBefore(block, notdienst);
+    }
+  }
+
   function render() {
     var block = document.getElementById('fu-urlaub');
     if (!block) { return; }
@@ -254,6 +288,8 @@ window.FRYDENT_URLAUB = {
       /* bei nur einem Vertreter nicht auf halber Breite stehen lassen */
       grid.style.gridTemplateColumns = (U.vertretung || []).length < 2 ? '1fr' : '';
     }
+
+    sortieren(block);
 
     block.hidden = false;
     block.style.display = '';
