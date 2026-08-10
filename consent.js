@@ -85,11 +85,17 @@
     document.head.appendChild(s);
   }
 
-  /* ---------- Dialog ---------- */
+  /* ---------- Dialog ----------
+     modus: 'start'         erster Besuch, noch keine Entscheidung
+            'buchung'       Klick auf den Terminkalender
+            'einstellungen' nachtraegliche Aenderung ueber den Fusszeilenlink
+  */
   var open = false;
-  function dialog(booking) {
+  function dialog(modus) {
     if (open) { return; }
     open = true;
+    var booking  = modus === 'buchung';
+    var aenderung = modus === 'einstellungen';
     css();
     var ov = document.createElement('div');
     ov.className = 'fc-ov';
@@ -98,6 +104,8 @@
         '<h2 id="fc-t">Datenschutzhinweis</h2>' +
         (booking
           ? '<p>Für die Online-Terminbuchung binden wir den Kalender unseres Dienstleisters <b>Dr. Flex</b> ein. Dabei wird Ihre IP-Adresse an dessen Server übertragen. Um den Kalender zu öffnen, benötigen wir Ihre Einwilligung.</p>'
+          : aenderung
+          ? '<p>Hier können Sie Ihre Entscheidung jederzeit ändern. Unsere Website funktioniert ohne Tracking und ohne Werbe-Cookies. Nur für die <b>Online-Terminbuchung</b> binden wir einen externen Dienst ein (Dr. Flex), dabei wird Ihre IP-Adresse an dessen Server übertragen.</p>'
           : '<p>Unsere Website funktioniert ohne Tracking und ohne Werbe-Cookies. Für die <b>Online-Terminbuchung</b> binden wir jedoch einen externen Dienst ein (Dr. Flex). Dabei wird Ihre IP-Adresse an dessen Server übertragen, deshalb fragen wir Sie vorher.</p>') +
         '<div class="fc-opt">' +
           '<b>Notwendige Funktionen sind immer aktiv</b>' +
@@ -135,7 +143,15 @@
         }, 250);
       });
     }
-    function decline() { save('none'); close(); }
+    /* Wird eine bereits erteilte Einwilligung zurueckgezogen, ist der
+       Dr.-Flex-Code in dieser Seite schon geladen. Ein Neuaufbau der Seite
+       ist der einzige ehrliche Weg, ihn wieder loszuwerden. */
+    function decline() {
+      var vorher = get();
+      save('none');
+      close();
+      if (vorher === 'all' && loaded) { location.reload(); }
+    }
 
     /* Die Checkbox ist ein reiner Schalter. Sie schliesst den Dialog nicht
        und speichert nichts. Erst ein Klick auf einen der drei Buttons
@@ -146,11 +162,21 @@
       if (box && box.checked) { accept(); } else { decline(); }
     }
 
+    /* Nur beim allerersten Besuch bedeutet Wegklicken eine Ablehnung.
+       Bei Buchung und nachtraeglicher Aenderung bleibt alles wie es war. */
+    function abbrechen() { if (modus === 'start') { decline(); } else { close(); } }
+
     function onKey(e) {
       if (e.key === 'Escape' || e.keyCode === 27) {
         e.preventDefault();
-        if (booking) { close(); } else { decline(); }
+        abbrechen();
       }
+    }
+
+    /* Beim Nachjustieren den gespeicherten Stand anzeigen */
+    if (aenderung && get() === 'all') {
+      var vor = ov.querySelector('#fc-ext');
+      if (vor) { vor.checked = true; }
     }
 
     ov.querySelector('#fc-yes').onclick  = accept;
@@ -159,7 +185,7 @@
     document.addEventListener('keydown', onKey, true);
     ov.addEventListener('click', function (e) {
       if (e.target !== ov) { return; }
-      if (booking) { close(); } else { decline(); }
+      abbrechen();
     });
 
     /* Fokus auf den Dialog selbst, nicht auf die Checkbox. Sonst zeichnet
@@ -168,14 +194,61 @@
     if (boxEl && boxEl.focus) { try { boxEl.focus({ preventScroll: true }); } catch (e) {} }
   }
 
-  function askForBooking() { dialog(true); }
+  function askForBooking() { dialog('buchung'); }
+
+  /* ---------- Nachtraegliche Aenderung ----------
+     Die DSGVO verlangt, dass eine Einwilligung so leicht zurueckgenommen
+     werden kann wie sie erteilt wurde. Der Link dafuer wird automatisch
+     in die Fusszeile gesetzt, damit keine einzelne Seite gepflegt werden
+     muss. Er faellt weder auf noch stoert er das Layout: er uebernimmt
+     Aussehen und Trennzeichen des vorhandenen Datenschutz-Links. */
+  window.frydentConsentOpen = function (e) {
+    if (e && e.preventDefault) { e.preventDefault(); }
+    dialog('einstellungen');
+    return false;
+  };
+
+  function einstellungenLink() {
+    if (document.getElementById('fc-settings')) { return; }
+
+    var kandidaten = document.querySelectorAll('a[href*="datenschutz"], a[href*="Datenschutz"]');
+    var ziel = null;
+    for (var i = 0; i < kandidaten.length; i++) {
+      if (kandidaten[i].id !== 'fc-settings') { ziel = kandidaten[i]; }
+    }
+    if (!ziel || !ziel.parentNode) { return; }
+
+    var a = document.createElement('a');
+    a.id = 'fc-settings';
+    a.href = '#';
+    a.textContent = 'Datenschutz-Einstellungen';
+    a.setAttribute('role', 'button');
+    if (ziel.className) { a.className = ziel.className; }
+    if (ziel.getAttribute('style')) { a.setAttribute('style', ziel.getAttribute('style')); }
+    a.style.cursor = 'pointer';
+    a.onclick = window.frydentConsentOpen;
+
+    /* Trennzeichen der Fusszeile uebernehmen, falls eines benutzt wird.
+       Bei Flex-Layouts mit gap steht zwischen den Links nur Leerraum,
+       dann wird auch keines eingefuegt. */
+    var davor = ziel.previousSibling;
+    var trenner = null;
+    if (davor && davor.nodeType === 3 && /[·|•–-]/.test(davor.nodeValue)) {
+      trenner = document.createTextNode(davor.nodeValue);
+    }
+
+    var nach = ziel.nextSibling;
+    if (trenner) { ziel.parentNode.insertBefore(trenner, nach); }
+    ziel.parentNode.insertBefore(a, trenner ? trenner.nextSibling : nach);
+  }
 
   /* ---------- Start ---------- */
   function init() {
+    einstellungenLink();
     var v = get();
     if (v === 'all')  { loadDrFlex(); return; }   // Einwilligung liegt vor
     if (v === 'none') { return; }                 // abgelehnt: nichts nachladen
-    dialog(false);                                // noch keine Entscheidung
+    dialog('start');                              // noch keine Entscheidung
   }
 
   if (document.readyState === 'loading') {
