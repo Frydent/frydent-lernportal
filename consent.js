@@ -68,6 +68,10 @@
       '.fc-opt b{display:block;margin-bottom:9px;color:' + C.navy + ';font-size:13.5px}',
       '.fc-opt label{display:flex;gap:9px;align-items:flex-start;line-height:1.5;cursor:pointer}',
       '.fc-opt input{margin-top:3px;flex:none;width:16px;height:16px;accent-color:' + C.blue + '}',
+      /* Fokusrahmen nur fuer Tastaturbedienung, nicht beim Antippen */
+      '.fc-box:focus{outline:none}',
+      '.fc-opt input:focus{outline:none}',
+      '.fc-opt input:focus-visible{outline:2px solid ' + C.gold + ';outline-offset:2px}',
       '.fc-opt small{display:block;color:#6B7385;font-size:12.5px;margin-top:2px}',
       '.fc-btn{display:block;width:100%;padding:14px;margin:0 0 10px;border:none;border-radius:9px;',
       '  font-family:"Quicksand",sans-serif;font-size:15.5px;font-weight:600;cursor:pointer;transition:.2s}',
@@ -90,7 +94,7 @@
     var ov = document.createElement('div');
     ov.className = 'fc-ov';
     ov.innerHTML =
-      '<div class="fc-box" role="dialog" aria-modal="true" aria-labelledby="fc-t">' +
+      '<div class="fc-box" role="dialog" aria-modal="true" aria-labelledby="fc-t" tabindex="-1">' +
         '<h2 id="fc-t">Datenschutzhinweis</h2>' +
         (booking
           ? '<p>Für die Online-Terminbuchung binden wir den Kalender unseres Dienstleisters <b>Dr. Flex</b> ein. Dabei wird Ihre IP-Adresse an dessen Server übertragen. Um den Kalender zu öffnen, benötigen wir Ihre Einwilligung.</p>'
@@ -158,8 +162,10 @@
       if (booking) { close(); } else { decline(); }
     });
 
-    var first = ov.querySelector('#fc-ext');
-    if (first && first.focus) { try { first.focus(); } catch (e) {} }
+    /* Fokus auf den Dialog selbst, nicht auf die Checkbox. Sonst zeichnet
+       die Browser den Fokusrahmen als schwarzen Kasten um das Kaestchen. */
+    var boxEl = ov.querySelector('.fc-box');
+    if (boxEl && boxEl.focus) { try { boxEl.focus({ preventScroll: true }); } catch (e) {} }
   }
 
   function askForBooking() { dialog(true); }
