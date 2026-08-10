@@ -28,13 +28,21 @@
 
   /* Platzhalter: solange keine Einwilligung vorliegt, bleibt der
      Buchungs-Button nutzbar. Ein Klick fragt die Einwilligung ab
-     und laedt den Kalender direkt danach. */
-  window.toggleDrFlexAppointments = function () {
+     und laedt den Kalender direkt danach.
+     WICHTIG: benannte Funktion statt arguments.callee; das ist im
+     strict mode verboten und liess den Klick auf Mobilgeraeten
+     kommentarlos scheitern (Race: embed.js noch nicht uebernommen). */
+  window.toggleDrFlexAppointments = function frydentToggle() {
     if (get() === 'all') {
       loadDrFlex(function () {
-        if (window.toggleDrFlexAppointments !== arguments.callee) {
-          setTimeout(function(){ if (window.toggleDrFlexAppointments) window.toggleDrFlexAppointments(); }, 150);
-        }
+        var tries = 0;
+        (function waitFlex() {
+          if (window.toggleDrFlexAppointments !== frydentToggle) {
+            window.toggleDrFlexAppointments();
+          } else if (++tries < 20) {
+            setTimeout(waitFlex, 150);
+          }
+        })();
       });
       return;
     }
@@ -42,7 +50,10 @@
   };
 
   /* ---------- Styles ---------- */
+  var styled = false;
   function css() {
+    if (styled) { return; }
+    styled = true;
     var s = document.createElement('style');
     s.textContent = [
       '.fc-ov{position:fixed;inset:0;background:rgba(29,38,64,.55);z-index:9998;display:flex;',
@@ -61,8 +72,8 @@
       '.fc-btn{display:block;width:100%;padding:14px;margin:0 0 10px;border:none;border-radius:9px;',
       '  font-family:"Quicksand",sans-serif;font-size:15.5px;font-weight:600;cursor:pointer;transition:.2s}',
       '.fc-all{background:' + C.gold + ';color:#2A2410}.fc-all:hover{background:#b3944a}',
-      '.fc-none{background:#fff;color:' + C.navy + ';border:1.5px solid ' + C.line + '}',
-      '.fc-none:hover{background:' + C.paper + '}',
+      '.fc-none,.fc-save{background:#fff;color:' + C.navy + ';border:1.5px solid ' + C.line + '}',
+      '.fc-none:hover,.fc-save:hover{background:' + C.paper + '}',
       '.fc-links{text-align:center;margin-top:14px;font-size:12.5px}',
       '.fc-links a{color:' + C.blue + ';margin:0 8px}',
       '@media(max-width:600px){.fc-box{padding:26px 20px 20px}.fc-box h2{font-size:21px}}'
@@ -71,7 +82,10 @@
   }
 
   /* ---------- Dialog ---------- */
+  var open = false;
   function dialog(booking) {
+    if (open) { return; }
+    open = true;
     css();
     var ov = document.createElement('div');
     ov.className = 'fc-ov';
@@ -89,8 +103,9 @@
             '</span>' +
           '</label>' +
         '</div>' +
-        '<button class="fc-btn fc-all" id="fc-yes">Alles erlauben</button>' +
-        '<button class="fc-btn fc-none" id="fc-no">Alles ablehnen</button>' +
+        '<button type="button" class="fc-btn fc-all" id="fc-yes">Alles erlauben</button>' +
+        '<button type="button" class="fc-btn fc-save" id="fc-save">Auswahl speichern</button>' +
+        '<button type="button" class="fc-btn fc-none" id="fc-no">Alles ablehnen</button>' +
         '<div class="fc-links">' +
           '<a href="https://info.frydent.de/datenschutz.html" target="_blank" rel="noopener">Datenschutz</a>·' +
           '<a href="https://info.frydent.de/impressum.html" target="_blank" rel="noopener">Impressum</a>' +
@@ -98,7 +113,15 @@
       '</div>';
     document.body.appendChild(ov);
 
-    function close() { ov.remove(); }
+    var scrollLock = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    function close() {
+      document.removeEventListener('keydown', onKey, true);
+      document.body.style.overflow = scrollLock;
+      if (ov.parentNode) { ov.parentNode.removeChild(ov); }
+      open = false;
+    }
 
     function accept() {
       save('all'); close();
@@ -110,11 +133,33 @@
     }
     function decline() { save('none'); close(); }
 
-    ov.querySelector('#fc-yes').onclick = accept;
-    ov.querySelector('#fc-no').onclick  = decline;
-    // Checkbox einzeln bestaetigen: Haken + "Alles erlauben" fuehren zum selben Ergebnis
-    ov.querySelector('#fc-ext').onchange = function () { if (this.checked) accept(); };
-    ov.addEventListener('click', function (e) { if (e.target === ov && !booking) decline(); });
+    /* Die Checkbox ist ein reiner Schalter. Sie schliesst den Dialog nicht
+       und speichert nichts. Erst ein Klick auf einen der drei Buttons
+       trifft die Entscheidung. Frueher rief das change-Ereignis direkt
+       accept() auf, dadurch verschwand der Dialog beim Antippen sofort. */
+    function applySelection() {
+      var box = ov.querySelector('#fc-ext');
+      if (box && box.checked) { accept(); } else { decline(); }
+    }
+
+    function onKey(e) {
+      if (e.key === 'Escape' || e.keyCode === 27) {
+        e.preventDefault();
+        if (booking) { close(); } else { decline(); }
+      }
+    }
+
+    ov.querySelector('#fc-yes').onclick  = accept;
+    ov.querySelector('#fc-save').onclick = applySelection;
+    ov.querySelector('#fc-no').onclick   = decline;
+    document.addEventListener('keydown', onKey, true);
+    ov.addEventListener('click', function (e) {
+      if (e.target !== ov) { return; }
+      if (booking) { close(); } else { decline(); }
+    });
+
+    var first = ov.querySelector('#fc-ext');
+    if (first && first.focus) { try { first.focus(); } catch (e) {} }
   }
 
   function askForBooking() { dialog(true); }
